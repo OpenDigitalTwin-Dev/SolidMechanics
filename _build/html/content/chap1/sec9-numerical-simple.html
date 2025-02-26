@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数值方法简介 &#8212; 固体力学笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chap1/sec9-numerical-simple';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="位移法和应力法" href="sec8-two-2D-solution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">固体力学笔记</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    简介
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">基础知识</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-physical-equa.html">物理方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">数值方法简介</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/chap1/sec9-numerical-simple.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/chap1/sec9-numerical-simple.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>数值方法简介</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">问题描述</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">有限差分法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">有限元法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">弱形式</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">有限体积法</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数值方法简介<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>例如，在前面章节介绍的平面应力/应变问题中，物理量之间的关系便以偏微分方程的形式呈现</p>
+</aside>
+<p>在科学与工程领域，许多实际问题都可以通过物理方程进行建模，例如结构受力分析、热传导、流体流动和电磁场分布等。这些物理方程通常以 <b>偏微分方程（PDE）</b>的形式描述系统的基本规律，将复杂的自然现象抽象为数学模型。</p>
+<p>然而，由于实际问题常伴随<strong>复杂的几何形状、边界条件、非线性效应以及材料的非均匀性</strong>，这些方程的<strong>解析解</strong>往往难以求得。
+此时，数值求解方法成为连接理论模型与实际应用的关键工具，通过<strong>离散化</strong>和<strong>数值计算</strong>求解物理方程，为实际问题提供解决方案并支撑科学预测</p>
+<p>有限差分法（FDM）、有限元法（FEM）和有限体积法（FVM）是求解偏微分方程的三大数值方法，各自具有独特的优势和适用场景：</p>
+<ol class="arabic simple">
+<li><p><strong>有限差分法</strong>：算法简单、计算效率高，适用于规则网格和简单几何问题，广泛应用于热传导、波动方程等简单物理问题</p></li>
+<li><p><strong>有限元法</strong>：具有高度灵活性，能够处理复杂几何、非线性问题和异质材料，但实现较为复杂，计算量较大；广泛应用于固体力学、结构分析、电磁场等需要精细建模的领域</p></li>
+<li><p><strong>有限体积法</strong>：严格满足局部守恒性，并具有良好的网格适应性，特别适合计算流体力学（CFD）和传热学等守恒律问题</p></li>
+</ol>
+<p>接下来通过一个简单的例子，描述三种数值方法的核心思想</p>
+<section id="id2">
+<h2>问题描述<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="sec9-fig-1d-example">
+<a class="reference internal image-reference" href="../../_images/1D-example.png"><img alt="../../_images/1D-example.png" src="../../_images/1D-example.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">一维均匀弹性杆</span><a class="headerlink" href="#sec9-fig-1d-example" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>考虑一根长度为 <span class="math notranslate nohighlight">\(L\)</span> 的均匀弹性杆，受力后在长度方向上的位移 <span class="math notranslate nohighlight">\(u(x)\)</span> 满足以下控制方程：</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>该方程可通过平面应力问题，按位移求解方程 <a class="reference internal" href="sec8-two-2D-solution.html#equation-sec8-eq-solution-displ">(14)</a> 进一步简化成一维问题得到</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-sec9-eq-example">
+<span class="eqno">(19)<a class="headerlink" href="#equation-sec9-eq-example" title="Link to this equation">#</a></span>\[
+\frac{\partial^2 u}{\partial x^2} + f(x) = 0,\quad 0\leq x \leq L
+\]</div>
+<p>其中</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 为分布载荷，不考虑体积力</p></li>
+<li><p>左端固定：<span class="math notranslate nohighlight">\(u(0)=0\)</span>，右端固定位移：<span class="math notranslate nohighlight">\(u(L)=u_{L}\)</span></p></li>
+</ol>
+<p>如果 <span class="math notranslate nohighlight">\(f(x)\)</span> 恒等于常数 <span class="math notranslate nohighlight">\(-C\)</span>，则方程 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 是容易求得的，它具有形式</p>
+<div class="math notranslate nohighlight">
+\[
+u(x) = Cx^2 + c_{1}x + c_{0}
+\]</div>
+<p>代入边界条件：<span class="math notranslate nohighlight">\(u(0)=0\)</span> 和 <span class="math notranslate nohighlight">\(u(L)=u_{L}\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[
+c_{0} = 0,\quad c_{1} = \frac{u_{L}-cL^2}{L}.
+\]</div>
+<p>如果 <span class="math notranslate nohighlight">\(f(x)\)</span> 的形式较为复杂，此时则无法得到 <span class="math notranslate nohighlight">\(u(x)\)</span> 的解析表达式，这时需要借助数值求解的手段：</p>
+<p>将计算区域划分为若干个<strong>网格单元</strong>，如图所示，长度为 <span class="math notranslate nohighlight">\(L\)</span> 的线段被均匀划分为五个单元，每个单元的长度为 <span class="math notranslate nohighlight">\(h\)</span>，然后<strong>在单元内部或单元节点上离散化控制方程，结合边界条件来求解目标方程</strong></p>
+</section>
+<section id="id3">
+<h2>有限差分法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>有限差分方法的基本思路是利用差分公式<strong>对导数进行离散化近似</strong>，从而将偏微分方程转化为<strong>代数方程</strong>，例如一阶差分</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>记 <span class="math notranslate nohighlight">\(u(x_{n}) = u_{n}\)</span>，<span class="math notranslate nohighlight">\(f(x_{n}) = f_{n}\)</span></p>
+</aside>
+<div class="math notranslate nohighlight">
+\[
+\left.\frac{\partial u}{\partial x}\right|_{x_{2}} = \frac{u_3-u_1}{h} + o(h)\approx \frac{u_3-u_1}{h}.
+\]</div>
+<p>对于二阶导数，通常采用中心差分近似，即</p>
+<div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-1">
+<span class="eqno">(20)<a class="headerlink" href="#equation-sec9-eq-fdm-1" title="Link to this equation">#</a></span>\[
+\begin{equation}
+\begin{aligned}
+\left.\frac{\partial^2 u}{\partial x^2}\right|_{x_{n}}&amp;\approx
+\frac{u_{n+1} - 2\,u_{n} + u_{n-1}}{h^2}
+\end{aligned}
+\end{equation}
+\]</div>
+<p>令方程 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 在除边界节点外的每一个网格节点 <span class="math notranslate nohighlight">\(x_{n}\)</span> 上满足，则得到关于 <span class="math notranslate nohighlight">\(u_{n}\)</span> 的代数方程组</p>
+<div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-2">
+<span class="eqno">(21)<a class="headerlink" href="#equation-sec9-eq-fdm-2" title="Link to this equation">#</a></span>\[\begin{split}
+\frac{u_{n+1} - 2\,u_{n} + u_{n-1}}{h^2} + f_n = 0,\quad n=1,2,3,4\\
+\end{split}\]</div>
+<p>将边界条件</p>
+<div class="math notranslate nohighlight">
+\[
+u_0 = 0,\quad u_5 = u_L
+\]</div>
+<p>代入到方程 <a class="reference internal" href="#equation-sec9-eq-fdm-2">(21)</a> 中，于是共四个求解方程和四个求解变量，写成矩阵形式为</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>这是一个稀疏矩阵（非零元数量稀少），常使用迭代法进行求解</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-3">
+<span class="eqno">(22)<a class="headerlink" href="#equation-sec9-eq-fdm-3" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\frac{1}{h^2}\left[
+\begin{matrix}
+-2 &amp; 1 &amp; &amp; \\
+1 &amp; -2 &amp; 1 &amp; \\
+  &amp; 1  &amp; -2 &amp; 1 \\
+  &amp; &amp; 1 &amp; 2
+\end{matrix}\right]
+\left[
+\begin{matrix}
+u_1 \\ u_2 \\ u_3 \\ u_4
+\end{matrix}\right]=
+\left[
+\begin{matrix}
+-f_1 - \frac{0}{h^2} \\ -f_2 \\ -f_3 \\ -f_4 - \frac{u_L}{h^2}
+\end{matrix}\right]
+\end{equation}
+\end{split}\]</div>
+<p>通过求解代数方程组 <a class="reference internal" href="#equation-sec9-eq-fdm-3">(22)</a>，可以得到 <span class="math notranslate nohighlight">\(u(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_{1},x_{2},x_{3},x_{4}\)</span> 的近似值。<span class="math notranslate nohighlight">\(u(x)\)</span>在其它位置的值通常可以通过已知网格节点的值<strong>插值</strong>得到</p>
+<p>可以预见，随着 <span class="math notranslate nohighlight">\(h \to 0\)</span>，方程 <a class="reference internal" href="#equation-sec9-eq-fdm-1">(20)</a> 左端与右端的近似精度逐渐提高，线性方程组 <a class="reference internal" href="#equation-sec9-eq-fdm-2">(21)</a> 的解将越来越接近方程 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 的真解</p>
+</section>
+<section id="id4">
+<h2>有限元法<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>有限元法的核心思想是将计算区域划分为若干单元，<strong>在每个单元上选取简单的插值函数来近似真解</strong>，并通过离散化和组装形成整体方程，从而求解原问题的近似解</p>
+<section id="id5">
+<h3>弱形式<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>光滑性：函数的高阶导数存在且连续。例如，若 <span class="math notranslate nohighlight">\(f(x)\)</span> 连续，则要求 <span class="math notranslate nohighlight">\(u(x)\)</span> 的二阶导数连续</p>
+</aside>
+<p>方程 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 被称为问题的<strong>强形式</strong>，因为它要求解函数 <span class="math notranslate nohighlight">\(u(x)\)</span> 在定义域内严格满足给定的微分方程及其边界条件。这意味着 <span class="math notranslate nohighlight">\(u(x)\)</span> 必须具备足够的<strong>光滑性</strong>，以确保微分运算和边界条件的精确成立</p>
+<p>在实际问题中，材料的不连续性、载荷的突变或几何的奇异点通常会导致<strong>强解</strong>（经典解）不存在或无法满足光滑性要求。<strong>弱形式</strong>通过将微分方程转化为<strong>积分形式</strong>，降低了解函数的光滑性要求，从而能够在<strong>更广泛的函数空间</strong>（如有限元函数空间）中寻求近似解，更有效地<strong>逼近</strong>问题的真实解</p>
+<p>选择试验函数 <span class="math notranslate nohighlight">\(v(x)\in \mathcal{V}\)</span>，<span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 是某个选定的函数空间，因此方程 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 的弱形式为</p>
+<div class="math notranslate nohighlight" id="equation-sec9-eq-fem-1">
+<span class="eqno">(23)<a class="headerlink" href="#equation-sec9-eq-fem-1" title="Link to this equation">#</a></span>\[
+\int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f(x)\right)\cdot v(x) \, \mathrm{d}x = 0,\quad v(x)\in \mathcal{V}.
+\]</div>
+<p>显然，如果 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 选为全函数空间，则此时弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-1">(23)</a> 与强形式 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 是等价的，因为此时可以选择</p>
+<div class="math notranslate nohighlight">
+\[
+v = \frac{\partial^2 u}{\partial x^2} + f(x),
+\]</div>
+<p>将其代入到弱形式中，由连续性要求得到 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f(x) \equiv 0, x\in [0,L]\)</span>。</p>
+<p>弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-1">(23)</a> 可以理解为方程 <a class="reference internal" href="#equation-sec9-eq-example">(19)</a> 在某个函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 的<strong>投影</strong>为 0。可以想象，函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 越大，就越接近于全空间，弱形式的解也就越接近于真解</p>
+<p>因此，在有限元方法中，试验函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 的选择至关重要。它不仅需要具备良好的逼近能力，以确保解的精度，还应具有易于数值计算的特性，从而提高计算效率。通常情况下，<span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 会被选为<strong>分片多项式函数空间</strong></p>
+</section>
+</section>
+<section id="id6">
+<h2>有限体积法<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\chap1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sec8-two-2D-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">位移法和应力法</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">问题描述</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">有限差分法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">有限元法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">弱形式</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">有限体积法</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 李仕哲
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

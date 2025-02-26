@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>平衡方程 &#8212; 固体力学笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chap1/sec3-balance-equa';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="几何方程" href="sec4-geometry-equa.html" />
+    <link rel="prev" title="弹性力学的基本假设" href="sec2-assumptions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">固体力学笔记</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    简介
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">基础知识</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">平衡方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-physical-equa.html">物理方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec9-numerical-simple.html">数值方法简介</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/chap1/sec3-balance-equa.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/chap1/sec3-balance-equa.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>平衡方程</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">切应力互等定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平衡方程</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">任一点的应力状态</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">主应力</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>平衡方程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>如图所示，在弹性体内任一点 <span class="math notranslate nohighlight">\(C\)</span> 处取出一个矩形微分体，其尺寸为 <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> 和 <span class="math notranslate nohighlight">\(\mathrm{d}y\)</span>。舍去泰勒展开式中的高阶项后，可以得到各个面的应力分布</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>注意应力的方向规定</p>
+</aside>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>在微分体中，各个面上所受的应力被假定为均匀分布，并作用于对应面的中心</p>
+</aside>
+<figure class="align-default" id="sec3-fig-balance-equa">
+<a class="reference internal image-reference" href="../../_images/balance-equa.png"><img alt="../../_images/balance-equa.png" src="../../_images/balance-equa.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">矩形微分体应力分布示意图</span><a class="headerlink" href="#sec3-fig-balance-equa" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id2">
+<h2>切应力互等定理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>考虑以 <span class="math notranslate nohighlight">\(C\)</span> 点为中心的力矩平衡方程 <span class="math notranslate nohighlight">\(\Sigma M_{C}=0\)</span>：</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>建立方程时，采用了小变形假定，因此使用弹性体变形以前的尺寸作为微分体的几何尺寸，从而简化了力学分析</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\tau_{xy}\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x+\left(\tau_{xy}+\frac{\partial \tau_{xy}}{\partial x}\mathrm{d}x\right)\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x-\\\end{split}\\\tau_{yx}\cdot\mathrm{d}x\cdot\frac{1}{2}\mathrm{d}y+\left(\tau_{yx}+\frac{\partial \tau_{yx}}{\partial y}\mathrm{d}y\right)\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x=0,
+\end{aligned}\end{align} \]</div>
+<p>整理得到</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{xy}+\frac{1}{2}\frac{\partial \tau_{xy}}{\partial x}\mathrm{d}x=\tau_{yx}+\frac{1}{2}\frac{\partial \tau_{yx}}{\partial y}\mathrm{d}y,
+\]</div>
+<p>于是得到<strong>切应力互等方程</strong></p>
+<div class="math notranslate nohighlight" id="equation-sec3-eq-shear-stress">
+<span class="eqno">(1)<a class="headerlink" href="#equation-sec3-eq-shear-stress" title="Link to this equation">#</a></span>\[
+\tau_{xy}=\tau_{yx}.
+\]</div>
+</section>
+<section id="id3">
+<h2>平衡方程<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>考虑 <span class="math notranslate nohighlight">\(x\)</span> 轴方向的平衡方程 <span class="math notranslate nohighlight">\(\Sigma F_{x}=0\)</span>：</p>
+<div class="math notranslate nohighlight">
+\[
+\left( \sigma_x + \frac{\partial \sigma_x}{\partial x} dx \right) \cdot dy
+-\sigma_x \cdot dy
++
+\left( \tau_{yx} + \frac{\partial \tau_{yx}}{\partial y} dy \right) \cdot dx
+-\tau_{yx} \cdot dx
++f_x dx dy  = 0,
+\]</div>
+<p>整理得到</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0.
+\]</div>
+<p>类似地，可得到 <span class="math notranslate nohighlight">\(y\)</span> 方向上的平衡方程。于是，二维问题中的<strong>平衡方程</strong>为</p>
+<div class="math notranslate nohighlight" id="equation-sec3-eq-balance">
+<span class="eqno">(2)<a class="headerlink" href="#equation-sec3-eq-balance" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{cases}
+\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
+\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
+\end{cases}
+\end{split}\]</div>
+</section>
+<section id="id4">
+<h2>任一点的应力状态<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>应力定义在其所作用的截面上，这表明应力的大小和方向依赖于截面的取向。在实际问题中，为了全面了解材料在外力作用下的受力状态，通常需要研究某一点在<strong>不同取向截面上</strong>的应力分布。为此，需要采用<strong>应力张量</strong>的数学描述，并通过应力变换公式将基准截面上的应力分量转换到任意取向的截面上</p>
+<p>对于任意点 <span class="math notranslate nohighlight">\(P\)</span> ，以它为中心取一个微元直角三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span>，其中 <span class="math notranslate nohighlight">\(\overline{CA}\)</span> 平行于 <span class="math notranslate nohighlight">\(x\)</span> 轴，长度为 <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span>，<span class="math notranslate nohighlight">\(\overline{CB}\)</span> 平行于 <span class="math notranslate nohighlight">\(y\)</span> 轴，长度为 <span class="math notranslate nohighlight">\(\mathrm{d}y\)</span>，
+设 <span class="math notranslate nohighlight">\(\overline{AB}\)</span> 的单位法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}=(l,m)\)</span>，长度为 <span class="math notranslate nohighlight">\(\mathrm{d}s\)</span>，于是</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{d}x = m\mathrm{d}s,\quad \mathrm{d}y = l\mathrm{d}s.
+\]</div>
+<figure class="align-default" id="sec3-fig-stress-tensor">
+<a class="reference internal image-reference" href="../../_images/stress-tensor.png"><img alt="../../_images/stress-tensor.png" src="../../_images/stress-tensor.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">任一点的应力状态</span><a class="headerlink" href="#sec3-fig-stress-tensor" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>设 <span class="math notranslate nohighlight">\(\overline{AB}\)</span> 上全应力为 <span class="math notranslate nohighlight">\(\mathbf{p}\)</span>，沿 <span class="math notranslate nohighlight">\(x\)</span> 轴方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的应力分量分别为 <span class="math notranslate nohighlight">\(p_{x}\)</span> 和 <span class="math notranslate nohighlight">\(p_{y}\)</span>，分别建立沿 <span class="math notranslate nohighlight">\(x\)</span> 轴方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的平衡方程</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>切应力互等方程：<span class="math notranslate nohighlight">\(\tau_{xy}=\tau_{yx}\)</span></p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+p_x \, \mathrm{d}s - \sigma_x \, l\mathrm{d}s -  \tau_{yx} \, m  \mathrm{d}s + f_x \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0, \\
+p_y \, \mathrm{d}s - \sigma_y \, m  \mathrm{d}s -  \tau_{xy} \, l  \mathrm{d}s + f_y \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0.
+\end{cases}
+\end{split}\]</div>
+<p>消去微元量，得到</p>
+<div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-1" title="Link to this equation">#</a></span>\[\begin{split}
+\mathbf{p} = \begin{bmatrix}
+p_{x}\\
+p_{y}
+\end{bmatrix}= \begin{bmatrix}
+\sigma_{x} &amp; \tau_{yx} \\
+\tau_{xy} &amp; \sigma_{y}
+\end{bmatrix}
+\begin{bmatrix}
+l \\
+m
+\end{bmatrix},
+\end{split}\]</div>
+<p>这表明，只需知道过点 <span class="math notranslate nohighlight">\(P\)</span> 的平行于 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴的截面上的应力，就能够计算出任意取向截面上的应力。矩阵</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>应力张量的<strong>列向量</strong>是相应截面的应力</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\sigma}=\begin{bmatrix}
+\sigma_{x} &amp; \tau_{yx} \\
+\tau_{xy} &amp; \sigma_{y}
+\end{bmatrix}
+\end{split}\]</div>
+<p>被称为<strong>应力张量</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在二/三维情况下，只需知道任意两/三个不平行截面上的应力，就可以以类似的方法计算出任意取向截面上的应力（<strong>柯西应力定理</strong>）</p>
+</div>
+<p><span class="math notranslate nohighlight">\(\overline{AB}\)</span> 上的正应力 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span> 和切应力 <span class="math notranslate nohighlight">\(\tau_{n}\)</span> 分别为</p>
+<div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-3">
+<span class="eqno">(4)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-3" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{align*}
+\sigma_{n} &amp;= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{x} + m^{2}\sigma_{y}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
+\tau_{n} &amp;= lp_{y}-mp_{x}=lm(\sigma_y - \sigma_x)+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
+\end{align*}
+\end{split}\]</div>
+<section id="id5">
+<h3>主应力<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>如果经过点 <span class="math notranslate nohighlight">\(P\)</span> 的某一截面上的切应力为 0，仅存在正应力，则该截面称为<strong>主应力面</strong>，此时的正应力被称为点 <span class="math notranslate nohighlight">\(P\)</span> 的一个<strong>主应力</strong>，而该截面的法向方向被称为<strong>主应力方向</strong></p>
+<p>此时，切应力为 0，全应力与正应力同向，即与 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 同向。设其大小为 <span class="math notranslate nohighlight">\(p\)</span>，则有 <span class="math notranslate nohighlight">\(\mathbf{p} = p\,\mathbf{n}\)</span>，代入到<a class="reference internal" href="#equation-sec3-eq-stress-tensor-1">(3)</a>，整理得到</p>
+<div class="math notranslate nohighlight">
+\[
+(\boldsymbol{\sigma} - p\,\mathbf{I})\,\mathbf{n} = \mathbf{0},
+\]</div>
+<p>这表明，主应力的大小是应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值，其方向则是对应的特征向量。于是 <span class="math notranslate nohighlight">\(p\)</span> 满足特征方程</p>
+<div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-2">
+<span class="eqno">(5)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-2" title="Link to this equation">#</a></span>\[
+p^2 - (\sigma_x + \sigma_y)\,p + (\sigma_x \sigma_y - \tau_{xy}^2) = 0.
+\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+(\sigma_x + \sigma_y)^2 - 4\,(\sigma_x \sigma_y - \tau_{xy}^2)=(\sigma_x - \sigma_y)^2 + 4\tau_{xy}^2 &gt; 0,
+\]</div>
+<p>因此特征方程 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-2">(5)</a> 总是有两个实根 <span class="math notranslate nohighlight">\(p_{1}\geq p_{2}\)</span>，且满足</p>
+<div class="math notranslate nohighlight">
+\[
+p_{1}+p_{2} = \sigma_{x} + \sigma_{y}.
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是一个实对称矩阵，因此其特征值 <span class="math notranslate nohighlight">\(p_1, p_2\)</span> 所对应的单位特征向量 <span class="math notranslate nohighlight">\(\mathbf{n}_{1},\mathbf{n}_{2}\)</span> 是正交的。这意味着主应力方向彼此正交，即<strong>主应力相互正交</strong>。不仅如此，由于</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 是单位法向量</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[
+p_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq p_1,
+\]</div>
+<p>因此，<span class="math notranslate nohighlight">\(p_1\)</span> 和 <span class="math notranslate nohighlight">\(p_2\)</span> 分别是点 <span class="math notranslate nohighlight">\(P\)</span> 上最大与最小的正应力，即<strong>两个主应力分别是最大与最小的正应力</strong></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>应力主面上切应力为 0</p>
+</aside>
+<p>如果将 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴分别选定为两个主应力方向，则在该坐标系下，应力张量表示为一个对角矩阵</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\sigma}=\begin{bmatrix}
+p_{1} &amp; 0 \\
+0 &amp; p_{2}
+\end{bmatrix}.
+\end{split}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">基变换与张量变换</p>
+<p>将张量视为一个将任意截面法向量映射为作用在该截面上的应力的线性算子，则在不同的基选择下，应力张量的矩阵表示是相似的。</p>
+</div>
+<p>此时，根据切应力计算公式 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-3">(4)</a>，有</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{n} = lm(p_{2} - p_{1}),
+\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(l^2 + m^2 = 1\)</span> 消去 <span class="math notranslate nohighlight">\(m\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_n = \pm \sqrt{\frac{1}{4} - \left(\frac{1}{2} - l^2\right)^2} \, (\sigma_2 - \sigma_1),
+\]</div>
+<p>当 <span class="math notranslate nohighlight">\( \frac{1}{2} - l^2 = 0 \)</span> 时，切应力 <span class="math notranslate nohighlight">\( \tau_n \)</span> 取得最大值。此时，最大切应力为 <span class="math notranslate nohighlight">\(\tau_{n} = \frac{1}{2} (p_1 - p_2)\)</span>，
+且对应截面的法向量与主应力面之间的夹角为 <span class="math notranslate nohighlight">\( 45^\circ \)</span>。最小切应力为 0</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>对于三维情形，最大切应力为 <span class="math notranslate nohighlight">\(\tau_{n} = \frac{1}{2} (p_1 - p_3)\)</span></p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\chap1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sec2-assumptions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">弹性力学的基本假设</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sec4-geometry-equa.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">几何方程</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">切应力互等定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平衡方程</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">任一点的应力状态</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">主应力</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 李仕哲
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

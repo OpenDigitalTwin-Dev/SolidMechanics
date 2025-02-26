@@ -1,0 +1,19 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+parts:
+  - caption: 弹性力学
+    chapters:
+    - file: content/chap1/intro
+      sections:
+      - file: content/chap1/sec1-stress_strain_displ
+      - file: content/chap1/sec2-assumptions
+      - file: content/chap1/sec3-balance-equa
+      - file: content/chap1/sec4-geometry-equa
+      - file: content/chap1/sec5-physical-equa
+      - file: content/chap1/sec6-two-2D
+      - file: content/chap1/sec7-boundary
+      - file: content/chap1/sec8-two-2D-solution
+      - file: content/chap1/sec9-numerical-simple

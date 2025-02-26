@@ -1,0 +1,47 @@
+.note-box {
+    border-left: 4px solid #2196F3;
+    padding: 10px;
+    background-color: #f1f8ff;
+    margin-bottom: 10px;
+  }
+  
+  .tip-box {
+    border-left: 4px solid #4CAF50;
+    padding: 10px;
+    background-color: #f9fbe7;
+    margin-bottom: 10px;
+  }
+  
+  .important-box {
+    border-left: 4px solid #FF9800;
+    padding: 10px;
+    background-color: #fff8e1;
+    margin-bottom: 10px;
+  }
+  
+  .warning-box {
+    border-left: 4px solid #F44336;
+    padding: 10px;
+    background-color: #ffebee;
+    margin-bottom: 10px;
+  }
+  
+  .caution-box {
+    border-left: 4px solid #9C27B0;
+    padding: 10px;
+    background-color: #f3e5f5;
+    margin-bottom: 10px;
+  }
+
+  .custom-note {
+    display: flex;
+    align-items: flex-start;
+    border-left: 4px solid #0078D4; /* 蓝色边框 */
+    background-color: #f3f9ff; /* 浅蓝背景 */
+    padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
