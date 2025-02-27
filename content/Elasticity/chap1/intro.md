@@ -12,17 +12,17 @@
 ```
 
 ```{admonition} 弹性阶段
-:class: tip
+:class: tip, dropdown
 指材料在外力作用下发生变形，但当外力撤去后，材料能够完全恢复原状的阶段
 ```
 
 ```{admonition} 刚度
-:class: tip
+:class: tip, dropdown
 指材料或结构抵抗变形的能力
 ```
 
 ```{admonition} 强度
-:class: tip
+:class: tip, dropdown
 指材料在承受外力作用时抵抗破坏的能力。通常用材料的屈服强度、抗拉强度或压缩强度等指标来描述，
 反映了材料抵抗破坏的极限能力
 ```
