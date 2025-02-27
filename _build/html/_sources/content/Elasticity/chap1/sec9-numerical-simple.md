@@ -197,7 +197,7 @@ $$ (sec9-eq:fem-3)
 ```{figure} ../../../images/Elasticity/chap1/fem.png
 ---
 width: 400px
-name: sec5-fig:2D-stress
+name: sec9-fig:1D-fem
 ---
 分片多项式，基函数，形函数
 ```

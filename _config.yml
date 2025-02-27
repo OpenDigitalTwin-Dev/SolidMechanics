@@ -30,6 +30,11 @@ sphinx:
 
 ####################################################################
 
+# Table of Contents options
+toc:
+  numbered: true  # 启用章节编号
+
+
 parse:
     myst_enable_extensions:
 #     # don't forget to list any other extensions you want enabled,
