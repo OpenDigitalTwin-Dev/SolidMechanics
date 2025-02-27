@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>两类平面问题 &#8212; 固体力学笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/sec6-two-2D';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="边界条件" href="sec7-boundary.html" />
+    <link rel="prev" title="物理方程" href="sec5-physical-equa.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="固体力学笔记 - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="固体力学笔记 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    简介
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">基础知识</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-physical-equa.html">物理方程</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">两类平面问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec9-numerical-simple.html">数值方法简介</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Elasticity/chap1/sec6-two-2D.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/Elasticity/chap1/sec6-two-2D.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>两类平面问题</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">平面应力问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平面应变问题</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>两类平面问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>弹性体作为空间物体，其实际问题通常为空间问题。然而，当弹性体具有特殊形状，且受特定外力与约束时，可将空间问题简化为平面问题，从而降低计算复杂度，同时满足工程精度要求。接下来将讨论两类问题：<strong>平面应力问题</strong>和<strong>平面应变问题</strong></p>
+<section id="id2">
+<h2>平面应力问题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>下图展示了<strong>等厚薄板</strong>的受力情况，其中厚度远小于板的长度与宽度</p>
+<figure class="align-default" id="sec5-fig-2d-stress">
+<a class="reference internal image-reference" href="../../../_images/2D-stress.png"><img alt="../../../_images/2D-stress.png" src="../../../_images/2D-stress.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">等厚薄板的受力情况</span><a class="headerlink" href="#sec5-fig-2d-stress" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>薄板仅在边缘的 <span class="math notranslate nohighlight">\(x\)</span> 轴截面和 <span class="math notranslate nohighlight">\(y\)</span> 轴截面上受到不随厚度变化的外力，而在边缘的 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上无外力作用。由于薄板足够薄，因此在薄板内的任意一点都满足</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{z}=0,\quad \tau_{zx} = 0,\quad \tau_{zy} = 0.
+\]</div>
+<p>此外，由切应力互等定理，有</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{xz} = 0,\quad \tau_{yz} = 0.
+\]</div>
+<p>因此，<span class="math notranslate nohighlight">\(\gamma_{zx} = \gamma_{zy} = 0\)</span></p>
+<p>由于薄板很薄，且作用力不随厚度变化，因此可以认为应力分量 <span class="math notranslate nohighlight">\(\sigma_{x},\sigma_{y}, \tau_{xy}\)</span> 和应变分量 <span class="math notranslate nohighlight">\(\epsilon_{x},\epsilon_{y}, \gamma_{xy}\)</span> 是关于 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数，不随 <span class="math notranslate nohighlight">\(z\)</span> 变化</p>
+<p>这类问题被称为<strong>平面应力问题</strong>，
+此时，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(7)</a> 可简化为</p>
+<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-physical">
+<span class="eqno">(9)<a class="headerlink" href="#equation-sec6-eq-2d-stress-physical" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\begin{aligned}
+&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \mu \sigma_y ),\\
+&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \mu \sigma_x ),\\
+&amp;\gamma_{xy} = \frac{2(1+\mu)}{E} \tau_{xy}.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>此外，<span class="math notranslate nohighlight">\(\epsilon_z\)</span> 可通过 <span class="math notranslate nohighlight">\(\epsilon_z=-\frac{\mu}{E} (\sigma_x + \sigma_y)\)</span> 求得</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>物质的宏观形变源于微观分子结构及分子间作用力的耦合效应。因此，即使某方向无外力作用，内部应力传递仍可能导致该方向形变。</p>
+</div>
+<p>在<strong>平面应力问题</strong>中，所求解的方程组是</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>平衡方程+几何方程+物理方程</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-eq">
+<span class="eqno">(10)<a class="headerlink" href="#equation-sec6-eq-2d-stress-eq" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\begin{aligned}
+&amp;\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
+&amp;\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0,\\
+&amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
+&amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
+&amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
+&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \mu \sigma_y ),\\
+&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \mu \sigma_x ),\\
+&amp;\gamma_{xy} = \frac{2(1+\mu)}{E} \tau_{xy},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>求解变量为</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{x}, \, \sigma_{y}, \, \tau_{xy}, \, \epsilon_{x}, \, \epsilon_{y}, \, \gamma_{xy}, \, u, \, v
+\]</div>
+</section>
+<section id="id3">
+<h2>平面应变问题<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>假设有<strong>无限长的等截面柱形体</strong>，柱面上受有平行于 <span class="math notranslate nohighlight">\(z\)</span> 轴截面且不随长度变化的力（面力、体力）或约束</p>
+<figure class="align-default" id="sec5-fig-2d-strain">
+<a class="reference internal image-reference" href="../../../_images/2D-strain.png"><img alt="../../../_images/2D-strain.png" src="../../../_images/2D-strain.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">等截面柱形体的受力情况</span><a class="headerlink" href="#sec5-fig-2d-strain" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>假设柱体无限长，则任意 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上的应力、应变和位移分量均不随 <span class="math notranslate nohighlight">\(z\)</span> 方向变化，仅为 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数。
+此外，由于对称性，位移仅沿 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 方向发生，且 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上各点的切应力均为 0，因此</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon_{z} = 0,\quad \tau_{zx} = 0,\quad \tau_{zy}=0.
+\]</div>
+<p>由胡克定律（见<a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(7)</a>），有</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma_{zx} = 0,\quad \gamma_{zy} = 0.
+\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\sigma_{z}\)</span> 一般不为 0，以抵消 <span class="math notranslate nohighlight">\(z\)</span> 方向上可能产生的应变</p>
+</aside>
+<p>代入 <span class="math notranslate nohighlight">\(\sigma_{z}=\mu(\sigma_x + \sigma_y)\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{z}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(7)</a> 可简化为</p>
+<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-physical">
+<span class="eqno">(11)<a class="headerlink" href="#equation-sec6-eq-2d-strain-physical" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\begin{aligned}
+&amp;\varepsilon_x = \frac{1 - \mu^2}{E} \left( \sigma_x - \frac{\mu}{1 - \mu} \sigma_y \right), \\
+&amp;\varepsilon_y = \frac{1 - \mu^2}{E} \left( \sigma_y - \frac{\mu}{1 - \mu} \sigma_x \right), \\
+&amp;\gamma_{xy} = \frac{2(1 + \mu)}{E} \tau_{xy}.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>在<strong>平面应变问题</strong>中，所求解的方程组是</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>平衡方程+几何方程+物理方程</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-eq">
+<span class="eqno">(12)<a class="headerlink" href="#equation-sec6-eq-2d-strain-eq" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\begin{aligned}
+&amp;\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
+&amp;\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0,\\
+&amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
+&amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
+&amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
+&amp;\varepsilon_x = \frac{1 - \mu^2}{E} \left( \sigma_x - \frac{\mu}{1 - \mu} \sigma_y \right), \\
+&amp;\varepsilon_y = \frac{1 - \mu^2}{E} \left( \sigma_y - \frac{\mu}{1 - \mu} \sigma_x \right), \\
+&amp;\gamma_{xy} = \frac{2(1 + \mu)}{E} \tau_{xy},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>求解变量为</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{x}, \, \sigma_{y}, \, \tau_{xy}, \, \epsilon_{x}, \, \epsilon_{y}, \, \gamma_{xy}, \, u, \, v
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在平面应力问题的方程 <a class="reference internal" href="#equation-sec6-eq-2d-stress-physical">(9)</a> 中，如果将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 分别替换为</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{E}{1-\mu^2},\quad \frac{\mu}{1-\mu}
+\]</div>
+<p>就能够得到平面应变问题。如果已经得到平面应力问题的（解析）解，只需将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 作同样的转换，就可以得到相应的平面应变问题的解</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\Elasticity\chap1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sec5-physical-equa.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">物理方程</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sec7-boundary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">边界条件</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">平面应力问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平面应变问题</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 李仕哲
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

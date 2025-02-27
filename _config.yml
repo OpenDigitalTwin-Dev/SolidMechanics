@@ -5,7 +5,7 @@
 
 title     : 固体力学笔记
 author    : 李仕哲
-#logo      : logo.png
+logo      : images/Cover/logo.png
 copyright : "2025"
 
 ####################################################################
@@ -36,7 +36,7 @@ parse:
 #     # including those that are enabled by default!
     - amsmath
     - dollarmath
-
+    - colon_fence
 ####################################################################
 
 # Information about where the book exists on the web
