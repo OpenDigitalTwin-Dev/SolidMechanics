@@ -459,6 +459,8 @@ $$
 \sigma_{i} = \left.\left(E\,\frac{\partial u}{\partial x}\right)\right|_{x=x_{i}}=\frac{2E_{i-\frac{1}{2}}E_{i+\frac{1}{2}}}{E_{i-\frac{1}{2}}+E_{i+\frac{1}{2}}}\cdot \frac{u_{i+\frac{1}{2}}-u_{i-\frac{1}{2}}}{h},\quad i=0:4.
 $$ (sec9-eq:fvm-5)
 
+其中 $u_{i+\frac{1}{2}}$ 表示网格单元 $[x_{i},x_{i+1}]$ 内的 $u(x)$ 的平均水平
+
 ```{note}
 :class: dropdown
 

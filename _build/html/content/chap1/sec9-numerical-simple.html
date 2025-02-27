@@ -796,6 +796,7 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x.
 <span class="eqno">(40)<a class="headerlink" href="#equation-sec9-eq-fvm-5" title="Link to this equation">#</a></span>\[
 \sigma_{i} = \left.\left(E\,\frac{\partial u}{\partial x}\right)\right|_{x=x_{i}}=\frac{2E_{i-\frac{1}{2}}E_{i+\frac{1}{2}}}{E_{i-\frac{1}{2}}+E_{i+\frac{1}{2}}}\cdot \frac{u_{i+\frac{1}{2}}-u_{i-\frac{1}{2}}}{h},\quad i=0:4.
 \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(u_{i+\frac{1}{2}}\)</span> 表示网格单元 <span class="math notranslate nohighlight">\([x_{i},x_{i+1}]\)</span> 内的 <span class="math notranslate nohighlight">\(u(x)\)</span> 的平均水平</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
 <p>注意到，两点通量格式 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(40)</a> 和有限差分格式 <a class="reference internal" href="#equation-sec9-eq-fdm-0">(20)</a> 在形式上虽然接近，但本质上存在重要的差别</p>
