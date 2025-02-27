@@ -28,7 +28,7 @@ In preparing... ↻
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: content/chap1/intro.html
+:link: content/Elasticity/chap1/intro.html
 
 **弹性力学**
 
@@ -44,7 +44,7 @@ Explore this note {fas}`arrow-right`
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: content/chap1/intro.html
+:link: content/Elasticity/chap1/intro.html
 
 **塑性力学**
 
