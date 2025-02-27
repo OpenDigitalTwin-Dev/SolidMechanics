@@ -11,10 +11,11 @@
 抗拉强度：材料在拉伸试验中能承受的最大应力值
 ```
 
-```{admonition} 弹性阶段
+:::{admonition} 弹性阶段
 :class: tip, dropdown
+
 指材料在外力作用下发生变形，但当外力撤去后，材料能够完全恢复原状的阶段
-```
+:::
 
 ```{admonition} 刚度
 :class: tip, dropdown
@@ -43,5 +44,6 @@
 ## 参考文献
 
 ```{bibliography}
+:style: plain
 :all:
 ```
