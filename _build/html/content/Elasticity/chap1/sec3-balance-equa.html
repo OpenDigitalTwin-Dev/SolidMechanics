@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>平衡方程 &#8212; 固体力学笔记</title>
+    <title>1.4. 平衡方程 &#8212; 固体力学笔记</title>
   
   
   
@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=43f9fa53" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=58f5ee57" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -173,10 +173,10 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">基础知识</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">1. 基础知识</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sec1-stress_strain_displ.html">1.2. 应力 应变 位移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec2-assumptions.html">1.3. 弹性力学的基本假设</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">平衡方程</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.4. 平衡方程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec4-geometry-equa.html">1.5. 几何方程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec5-physical-equa.html">1.6. 物理方程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec6-two-2D.html">1.7. 两类平面问题</a></li>
@@ -377,10 +377,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">切应力互等定理</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平衡方程</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">任一点的应力状态</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">主应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.4.1. 切应力互等定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.4.2. 平衡方程</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4.3. 任一点的应力状态</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4.3.1. 主应力</a></li>
 </ul>
 </li>
 </ul>
@@ -395,7 +395,7 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>平衡方程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">1.4. </span>平衡方程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>如图所示，在弹性体内任一点 <span class="math notranslate nohighlight">\(C\)</span> 处取出一个矩形微分体，其尺寸为 <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> 和 <span class="math notranslate nohighlight">\(\mathrm{d}y\)</span>。舍去泰勒展开式中的高阶项后，可以得到各个面的应力分布</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -408,11 +408,11 @@
 <figure class="align-default" id="sec3-fig-balance-equa">
 <a class="reference internal image-reference" href="../../../_images/balance-equa.png"><img alt="../../../_images/balance-equa.png" src="../../../_images/balance-equa.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">矩形微分体应力分布示意图</span><a class="headerlink" href="#sec3-fig-balance-equa" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">矩形微分体应力分布示意图</span><a class="headerlink" href="#sec3-fig-balance-equa" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id2">
-<h2>切应力互等定理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.4.1. </span>切应力互等定理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>考虑以 <span class="math notranslate nohighlight">\(C\)</span> 点为中心的力矩平衡方程 <span class="math notranslate nohighlight">\(\Sigma M_{C}=0\)</span>：</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -429,12 +429,12 @@
 \]</div>
 <p>于是得到<strong>切应力互等方程</strong></p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-shear-stress">
-<span class="eqno">(1)<a class="headerlink" href="#equation-sec3-eq-shear-stress" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-sec3-eq-shear-stress" title="Link to this equation">#</a></span>\[
 \tau_{xy}=\tau_{yx}.
 \]</div>
 </section>
 <section id="id3">
-<h2>平衡方程<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.4.2. </span>平衡方程<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>考虑 <span class="math notranslate nohighlight">\(x\)</span> 轴方向的平衡方程 <span class="math notranslate nohighlight">\(\Sigma F_{x}=0\)</span>：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -452,7 +452,7 @@
 \]</div>
 <p>类似地，可得到 <span class="math notranslate nohighlight">\(y\)</span> 方向上的平衡方程。于是，二维问题中的<strong>平衡方程</strong>为</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-balance">
-<span class="eqno">(2)<a class="headerlink" href="#equation-sec3-eq-balance" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-sec3-eq-balance" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{cases}
 \frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
 \frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
@@ -460,7 +460,7 @@
 \end{split}\]</div>
 </section>
 <section id="id4">
-<h2>任一点的应力状态<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.4.3. </span>任一点的应力状态<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>应力定义在其所作用的截面上，这表明应力的大小和方向依赖于截面的取向。在实际问题中，为了全面了解材料在外力作用下的受力状态，通常需要研究某一点在<strong>不同取向截面上</strong>的应力分布。为此，需要采用<strong>应力张量</strong>的数学描述，并通过应力变换公式将基准截面上的应力分量转换到任意取向的截面上</p>
 <p>对于任意点 <span class="math notranslate nohighlight">\(P\)</span> ，以它为中心取一个微元直角三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span>，其中 <span class="math notranslate nohighlight">\(\overline{CA}\)</span> 平行于 <span class="math notranslate nohighlight">\(x\)</span> 轴，长度为 <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span>，<span class="math notranslate nohighlight">\(\overline{CB}\)</span> 平行于 <span class="math notranslate nohighlight">\(y\)</span> 轴，长度为 <span class="math notranslate nohighlight">\(\mathrm{d}y\)</span>，
 设 <span class="math notranslate nohighlight">\(\overline{AB}\)</span> 的单位法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}=(l,m)\)</span>，长度为 <span class="math notranslate nohighlight">\(\mathrm{d}s\)</span>，于是</p>
@@ -471,7 +471,7 @@
 <figure class="align-default" id="sec3-fig-stress-tensor">
 <a class="reference internal image-reference" href="../../../_images/stress-tensor.png"><img alt="../../../_images/stress-tensor.png" src="../../../_images/stress-tensor.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">任一点的应力状态</span><a class="headerlink" href="#sec3-fig-stress-tensor" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">任一点的应力状态</span><a class="headerlink" href="#sec3-fig-stress-tensor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>设 <span class="math notranslate nohighlight">\(\overline{AB}\)</span> 上全应力为 <span class="math notranslate nohighlight">\(\mathbf{p}\)</span>，沿 <span class="math notranslate nohighlight">\(x\)</span> 轴方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的应力分量分别为 <span class="math notranslate nohighlight">\(p_{x}\)</span> 和 <span class="math notranslate nohighlight">\(p_{y}\)</span>，分别建立沿 <span class="math notranslate nohighlight">\(x\)</span> 轴方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的平衡方程</p>
@@ -488,7 +488,7 @@ p_y \, \mathrm{d}s - \sigma_y \, m  \mathrm{d}s -  \tau_{xy} \, l  \mathrm{d}s +
 \end{split}\]</div>
 <p>消去微元量，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-1">
-<span class="eqno">(3)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-1" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-1" title="Link to this equation">#</a></span>\[\begin{split}
 \mathbf{p} = \begin{bmatrix}
 p_{x}\\
 p_{y}
@@ -520,23 +520,23 @@ m
 </div>
 <p><span class="math notranslate nohighlight">\(\overline{AB}\)</span> 上的正应力 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span> 和切应力 <span class="math notranslate nohighlight">\(\tau_{n}\)</span> 分别为</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-3" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-3" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \sigma_{n} &amp;= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{x} + m^{2}\sigma_{y}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
 \tau_{n} &amp;= lp_{y}-mp_{x}=lm(\sigma_y - \sigma_x)+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
 \end{align*}
 \end{split}\]</div>
 <section id="id5">
-<h3>主应力<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.4.3.1. </span>主应力<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>如果经过点 <span class="math notranslate nohighlight">\(P\)</span> 的某一截面上的切应力为 0，仅存在正应力，则该截面称为<strong>主应力面</strong>，此时的正应力被称为点 <span class="math notranslate nohighlight">\(P\)</span> 的一个<strong>主应力</strong>，而该截面的法向方向被称为<strong>主应力方向</strong></p>
-<p>此时，切应力为 0，全应力与正应力同向，即与 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 同向。设其大小为 <span class="math notranslate nohighlight">\(p\)</span>，则有 <span class="math notranslate nohighlight">\(\mathbf{p} = p\,\mathbf{n}\)</span>，代入到<a class="reference internal" href="#equation-sec3-eq-stress-tensor-1">(3)</a>，整理得到</p>
+<p>此时，切应力为 0，全应力与正应力同向，即与 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 同向。设其大小为 <span class="math notranslate nohighlight">\(p\)</span>，则有 <span class="math notranslate nohighlight">\(\mathbf{p} = p\,\mathbf{n}\)</span>，代入到<a class="reference internal" href="#equation-sec3-eq-stress-tensor-1">(1.3)</a>，整理得到</p>
 <div class="math notranslate nohighlight">
 \[
 (\boldsymbol{\sigma} - p\,\mathbf{I})\,\mathbf{n} = \mathbf{0},
 \]</div>
 <p>这表明，主应力的大小是应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值，其方向则是对应的特征向量。于是 <span class="math notranslate nohighlight">\(p\)</span> 满足特征方程</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-2">
-<span class="eqno">(5)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-2" title="Link to this equation">#</a></span>\[
 p^2 - (\sigma_x + \sigma_y)\,p + (\sigma_x \sigma_y - \tau_{xy}^2) = 0.
 \]</div>
 <p>由于</p>
@@ -544,7 +544,7 @@ p^2 - (\sigma_x + \sigma_y)\,p + (\sigma_x \sigma_y - \tau_{xy}^2) = 0.
 \[
 (\sigma_x + \sigma_y)^2 - 4\,(\sigma_x \sigma_y - \tau_{xy}^2)=(\sigma_x - \sigma_y)^2 + 4\tau_{xy}^2 &gt; 0,
 \]</div>
-<p>因此特征方程 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-2">(5)</a> 总是有两个实根 <span class="math notranslate nohighlight">\(p_{1}\geq p_{2}\)</span>，且满足</p>
+<p>因此特征方程 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-2">(1.5)</a> 总是有两个实根 <span class="math notranslate nohighlight">\(p_{1}\geq p_{2}\)</span>，且满足</p>
 <div class="math notranslate nohighlight">
 \[
 p_{1}+p_{2} = \sigma_{x} + \sigma_{y}.
@@ -575,7 +575,7 @@ p_{1} &amp; 0 \\
 <p class="admonition-title">基变换与张量变换</p>
 <p>将张量视为一个将任意截面法向量映射为作用在该截面上的应力的线性算子，则在不同的基选择下，应力张量的矩阵表示是相似的。</p>
 </div>
-<p>此时，根据切应力计算公式 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-3">(4)</a>，有</p>
+<p>此时，根据切应力计算公式 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-3">(1.4)</a>，有</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{n} = lm(p_{2} - p_{1}),
@@ -660,10 +660,10 @@ p_{1} &amp; 0 \\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">切应力互等定理</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平衡方程</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">任一点的应力状态</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">主应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.4.1. 切应力互等定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.4.2. 平衡方程</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4.3. 任一点的应力状态</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4.3.1. 主应力</a></li>
 </ul>
 </li>
 </ul>

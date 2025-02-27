@@ -4,9 +4,9 @@
 format: jb-book
 root: index
 options:  # The options key will be applied to all chapters, but not sub-sections
-  numbered: True
 parts:
   - caption: 弹性力学
+    numbered: True
     chapters:
     - file: content/Elasticity/chap1/intro
       sections:

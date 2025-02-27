@@ -21,7 +21,9 @@ hide-nav: true
 ```
 
 +++
+<div style="text-align: center;">
 In preparing... ↻
+</div>
 :::
 
 :::{card}
@@ -37,7 +39,9 @@ In preparing... ↻
 ```
 
 +++
-Explore this note {fas}`arrow-right`
+<div style="text-align: center;">
+Explore this note &rarr;
+</div>
 :::
 
 :::{card}
@@ -53,7 +57,9 @@ Explore this note {fas}`arrow-right`
 ```
 
 +++
+<div style="text-align: center;">
 In preparing... ↻
+</div>
 :::
 
 ::::
