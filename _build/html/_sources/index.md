@@ -4,7 +4,7 @@ hide-nav: true
 
 # 阅读指引
 
-整理并记录固体力学学习过程中的所思、所学与所悟，内容将持续更新中，版面持续建设中✨
+整理并记录固体力学学习过程中的所思、所学与所悟，内容持续更新中，版面持续建设中✨
 
 ::::{card-carousel} 3
 
@@ -63,3 +63,18 @@ In preparing... ↻
 :::
 
 ::::
+
+
+## 致谢
+
+感谢院内同事在交流与讨论中提出的宝贵建议和意见，这些启发与支持为本工作的不断完善提供了重要帮助
+
+
+<br><br><br>
+<span style="font-family: Arial, sans-serif; color: gray;">
+  上一次更新时间：<span id="update-time"></span>
+</span>
+
+<script>
+  document.getElementById("update-time").innerText = new Date().toLocaleString();
+</script>

@@ -1,6 +1,6 @@
 body {
   font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   letter-spacing: 0.065em;
   color: #333;
@@ -22,4 +22,11 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-bottom: 1.5em;
+}
+
+.gray-text {
+  color: #888888;
+  display: block;
+  margin-top: 1rem; /* 添加空行效果 */
+  margin-bottom: 1rem; /* 添加空行效果 */
 }

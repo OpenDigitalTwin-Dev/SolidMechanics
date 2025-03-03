@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=58f5ee57" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -393,11 +393,14 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.2. </span>应力 应变 位移<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>当物体受到外部作用时，其内部的受力状态、几何形状以及空间位置可能会发生变化。这些变化分别对应于<strong>应力</strong>、<strong>应变</strong>和<strong>位移</strong>的概念：</p>
+<span class="gray-text">
+应力、应变和位移是弹性力学中的基本物理量，它们共同揭示了材料在外力作用下的力学行为。应力描述了材料内部的力分布状态，应变反映了材料的变形程度，而位移则刻画了材料各点因受力而产生的位置变化。这三者通过平衡方程、几何方程和物理方程紧密联系，构成了弹性力学分析的核心框架
+</span>
+<p>当物体受到外部作用时，其内部的受力状态、几何形状以及空间位置可能会发生变化。这些变化分别对应于应力、应变和位移的概念：</p>
 <ol class="arabic simple">
-<li><p><strong>应力</strong>：描述物体内部的受力状态，反映材料在外力作用下抵抗变形或破坏的能力。应力是研究物体强度和稳定性的核心指标。</p></li>
-<li><p><strong>应变</strong>：描述物体几何形状的变化，表示物体在受力后形变的程度（如拉伸、压缩或剪切）。应变是衡量材料在外力作用下变形特性的关键参数，也是分析材料弹性和塑性力学性能的重要依据。</p></li>
-<li><p><strong>位移</strong>：描述物体空间位置的变化，指物体在受力作用下，各点从初始位置移动到新位置的过程。位移是研究物体运动和变形行为的基础参数，对预测和控制结构变形具有重要意义。</p></li>
+<li><p><strong>应力</strong>：描述物体内部的<strong>受力状态</strong>，反映材料在外力作用下抵抗变形或破坏的能力。应力是研究物体强度和稳定性的核心指标</p></li>
+<li><p><strong>应变</strong>：描述物体<strong>几何形状</strong>的变化，表示物体在受力后形变的程度。应变是衡量材料在外力作用下变形特性的关键参数</p></li>
+<li><p><strong>位移</strong>：描述物体<strong>空间位置</strong>的变化，指物体在受力作用下，各点从初始位置移动到新位置的过程。位移是研究物体运动和变形行为的基础参数</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -408,12 +411,12 @@
 <p>作用在物体上的力通常可以分为体积力和表面力两大类：</p>
 <ol class="arabic simple">
 <li><p><strong>体积力</strong>：作用在物体整个体积上的力，如重力、电磁力和惯性力，通常由场力引起</p></li>
-<li><p><strong>表面力</strong>：作用在物体表面上的力，如压力、摩擦力等，通常由物体与外部环境或其他物体的接触作用引起</p></li>
+<li><p><strong>表面力</strong>：作用在物体表面上的力，如压力、摩擦力等，通常由物体与外部环境接触引起</p></li>
 </ol>
-<p>固体由分子紧密排列而成，表面力通常作用于固体表面的分子，并<strong>通过分子间的相互作用力向各个方向传递</strong>，最终影响固体内部任意一点的受力状态。固体内部由于分子间相互作用而产生的力被称为<strong>内力</strong></p>
+<p>作用于固体表面的力通过表层分子依靠<strong>分子间的相互作用力</strong>向各个方向传递，最终影响固体内部任意一点的受力状态。固体内部由于分子间相互作用而产生的力被称为<strong>内力</strong></p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>借助微观结构，有利于理解固体的力学性质</p>
+<p>借助微观结构，有助于深入地理解固体的力学性质。例如，为什么某一点会受到来自各个方向的应力？又为什么一个方向的外力会引起另一个方向的形变？</p>
 </aside>
 <figure class="align-default" id="sec1-fig-stress-1">
 <a class="reference internal image-reference" href="../../../_images/stress-1.png"><img alt="../../../_images/stress-1.png" src="../../../_images/stress-1.png" style="width: 400px;" /></a>
@@ -441,11 +444,11 @@
 \[
 \lim_{\Delta A \to 0} \frac{\Delta \mathbf{F}}{\Delta A} = \mathbf{p}
 \]</div>
-<p>应力可以分解为沿其作用截面的法线方向的分量和切向方向的分量，分别称为<strong>正应力</strong> <span class="math notranslate nohighlight">\(\sigma\)</span> 和<strong>切应力</strong> <span class="math notranslate nohighlight">\(\tau\)</span>。这两个分量与物体的形变行为及材料的强度密切相关。</p>
+<p>应力可以分解为沿其作用截面的法线方向的分量和切向方向的分量，分别称为<strong>正应力</strong> <span class="math notranslate nohighlight">\(\sigma\)</span> 和<strong>切应力</strong> <span class="math notranslate nohighlight">\(\tau\)</span>。这两个分量与物体的形变行为及材料的强度密切相关</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">1.2.2. </span>应变<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>为了研究物体内部某一点 <span class="math notranslate nohighlight">\(P\)</span> 处的形变状态，通常以 <span class="math notranslate nohighlight">\(P\)</span> 为原点建立坐标系，并取沿 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴方向的微元线段 <span class="math notranslate nohighlight">\(\overline{PA}\)</span> 和 <span class="math notranslate nohighlight">\(\overline{PB}\)</span>。假设物体发生变形后，点 <span class="math notranslate nohighlight">\(A\)</span> 和点 <span class="math notranslate nohighlight">\(B\)</span> 分别移动到了 <span class="math notranslate nohighlight">\(A^{'}\)</span> 和 <span class="math notranslate nohighlight">\(B^{'}\)</span>。由此，线段的长度发生了伸缩变化，线段之间的夹角也发生改变</p>
+<p>假设物体发生变形后，点 <span class="math notranslate nohighlight">\(A\)</span> 和点 <span class="math notranslate nohighlight">\(B\)</span> 分别移动到了 <span class="math notranslate nohighlight">\(A^{'}\)</span> 和 <span class="math notranslate nohighlight">\(B^{'}\)</span>。由此，线段（例如，<span class="math notranslate nohighlight">\(\overline{PA},\overline{PB}\)</span>）的长度发生了伸缩变化，它们的夹角也发生改变</p>
 <figure class="align-default" id="sec1-fig-stress-2">
 <a class="reference internal image-reference" href="../../../_images/strain-1.png"><img alt="../../../_images/strain-1.png" src="../../../_images/strain-1.png" style="width: 300px;" /></a>
 <figcaption>
@@ -457,14 +460,18 @@
 <p>线应变是无量纲量，以伸长为正<br />
 切应变的单位是弧度，以直角角度变小为正</p>
 </aside>
-<p>单位长度的伸缩，即单位伸缩，称为<strong>线应变</strong>，也称<strong>正应变</strong>；线段夹角（直角）的改变，称为<strong>切应变</strong></p>
+<ol class="arabic simple">
+<li><p><strong>线应变</strong>：也称<strong>正应变</strong>，表示物体单位长度的伸缩变化</p></li>
+<li><p><strong>切应变</strong>：表示由直角夹角发生的改变，用于描述形状的剪切变形程度</p></li>
+</ol>
 </section>
 <section id="id4">
 <h2><span class="section-number">1.2.3. </span>位移<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>位移描述了物体中各点空间位置的变化，而点与点之间的相对位移决定了物体的形变状态，因为形变的本质是由不同点之间的位置变化差异所引起的</p>
+<p>位移描述了物体中各点空间位置的变化。点与点之间的相对位移决定了物体的形变状态，因为形变的本质是由不同点之间的位置变化差异所引起的</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>当物体中各个点的位移均为 <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> 时，物体一定没有发生形变；然而，当物体未发生形变时，各个点的位移未必为 <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>。例如，在刚体运动的情况下，物体可能整体发生<strong>平移</strong>或<strong>旋转</strong></p>
+<p><strong>应变描述了相对位置的变化，位移反映了绝对位置的变化</strong></p>
+<p>当物体中各个点的位移均为 <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> 时，物体一定没有发生形变；然而，当物体未发生形变时，各个点的位移未必为 <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>。例如，在<strong>刚体</strong>运动的情况下，物体可能整体发生<strong>平移</strong>或<strong>旋转</strong></p>
 </div>
 </section>
 </section>

@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=58f5ee57" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -396,14 +396,14 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.9. </span>位移法和应力法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><a class="reference internal" href="sec6-two-2D.html"><span class="std std-doc">两类平面问题</span></a>讨论了两类平面问题，即平面应力问题 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-stress-physical">(1.9)</a> 和平面应变问题 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-strain-physical">(1.11)</a>。这些问题的求解过程涉及多个方程与变量的联立求解，具有较高的复杂性，常常采用<strong>消元法</strong>对其进行求解，主要分为两类方法：</p>
+<p><a class="reference internal" href="sec6-two-2D.html"><span class="std std-doc">两类平面问题</span></a>讨论了两类平面问题，即平面应力问题 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-stress-physical">(1.8)</a> 和平面应变问题 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-strain-physical">(1.10)</a>。这些问题的求解过程涉及多个方程与变量的联立求解，具有较高的复杂性，常常采用<strong>消元法</strong>对其进行求解，主要分为两类方法：</p>
 <ol class="arabic simple">
 <li><p><strong>位移法</strong>：以位移分量为基本未知量，消去应力和应变分量，导出仅含位移的方程进行求解</p></li>
 <li><p><strong>应力法</strong>：以应力分量为基本未知量，消去应变和位移分量，导出仅含应力的方程进行求解</p></li>
 </ol>
 <section id="id2">
 <h2><span class="section-number">1.9.1. </span>位移法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>对于<strong>平面应力问题</strong>，在 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-stress-physical">(1.9)</a> 中反解出应力</p>
+<p>对于<strong>平面应力问题</strong>，在 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-stress-physical">(1.8)</a> 中反解出应力</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -414,9 +414,9 @@
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>将几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.6)</a> 代入到式</p>
+<p>将几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.5)</a> 代入到式</p>
 <div class="math notranslate nohighlight" id="equation-sec8-eq-stress-displ">
-<span class="eqno">(1.13)<a class="headerlink" href="#equation-sec8-eq-stress-displ" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-sec8-eq-stress-displ" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \sigma_x &amp;= \frac{E}{1 - \mu^2} \left( \frac{\partial u}{\partial x} + \mu \frac{\partial v}{\partial y} \right), \\
@@ -431,7 +431,7 @@
 <p>将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 分别替换成 <span class="math notranslate nohighlight">\(\frac{E}{1-\mu^2}\)</span> 和 <span class="math notranslate nohighlight">\(\frac{\mu}{1-\mu}\)</span> 就能够得到平面应变问题按位移求解的方程</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec8-eq-solution-displ">
-<span class="eqno">(1.14)<a class="headerlink" href="#equation-sec8-eq-solution-displ" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-sec8-eq-solution-displ" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \frac{E}{1 - \mu^2} \bigg(
@@ -448,17 +448,17 @@
 \end{equation}
 \end{split}\]</div>
 <p>在应变法中，应变被作为基本未知量。
-在物理方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(1.7)</a> 中，应变与应力呈线性关系，因此可以通过应变轻松表示应力。进一步结合几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.6)</a>，应力可以方便地用位移表示，如方程 <a class="reference internal" href="#equation-sec8-eq-stress-displ">(1.13)</a> 所示。这种特性使得位移法能够<strong>灵活地适应各种边界问题的求解</strong>，无论是位移边界条件、应力边界条件，还是二者的组合</p>
+在物理方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(1.6)</a> 中，应变与应力呈线性关系，因此可以通过应变轻松表示应力。进一步结合几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.5)</a>，应力可以方便地用位移表示，如方程 <a class="reference internal" href="#equation-sec8-eq-stress-displ">(1.12)</a> 所示。这种特性使得位移法能够<strong>灵活地适应各种边界问题的求解</strong>，无论是位移边界条件、应力边界条件，还是二者的组合</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">1.9.2. </span>相容方程<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>据几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.6)</a>，可以推导出<strong>相容方程</strong></p>
+<p>据几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.5)</a>，可以推导出<strong>相容方程</strong></p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>也称 <strong>形变协调方程</strong></p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec8-eq-compatibility">
-<span class="eqno">(1.15)<a class="headerlink" href="#equation-sec8-eq-compatibility" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-sec8-eq-compatibility" title="Link to this equation">#</a></span>\[
 \frac{\partial^2 \varepsilon_x}{\partial y^2} + \frac{\partial^2 \varepsilon_y}{\partial x^2}
 = \frac{\partial^3 u}{\partial x \partial y^2} + \frac{\partial^3 v}{\partial y \partial x^2}
 = \frac{\partial^2}{\partial x \partial y} \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right)= \frac{\partial^2 \gamma_{xy}}{\partial x \partial y},
@@ -467,13 +467,13 @@
 </section>
 <section id="id4">
 <h2><span class="section-number">1.9.3. </span>应力法<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>对于<strong>平面应力问题</strong>，将物理方程 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-stress-physical">(1.9)</a> 代入到方程 <a class="reference internal" href="#equation-sec8-eq-compatibility">(1.15)</a> 中，得到</p>
+<p>对于<strong>平面应力问题</strong>，将物理方程 <a class="reference internal" href="sec6-two-2D.html#equation-sec6-eq-2d-stress-physical">(1.8)</a> 代入到方程 <a class="reference internal" href="#equation-sec8-eq-compatibility">(1.14)</a> 中，得到</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>方程中仅保留了 <span class="math notranslate nohighlight">\(\mu\)</span></p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec8-eq-stress-1">
-<span class="eqno">(1.16)<a class="headerlink" href="#equation-sec8-eq-stress-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.15)<a class="headerlink" href="#equation-sec8-eq-stress-1" title="Link to this equation">#</a></span>\[
 \frac{\partial^2}{\partial y^2} (\sigma_x - \mu \sigma_y) + \frac{\partial^2}{\partial x^2} (\sigma_y - \mu \sigma_x) = 2(1 + \mu) \frac{\partial^2 \tau_{xy}}{\partial x \partial y}.
 \]</div>
 <p>联立平衡方程 <a class="reference internal" href="sec3-balance-equa.html#equation-sec3-eq-balance">(1.2)</a>，共三个方程和三个求解变量：<span class="math notranslate nohighlight">\(\sigma_{x},\sigma_{y},\tau_{xy}\)</span></p>
@@ -492,16 +492,16 @@
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>将上式代入到方程 <a class="reference internal" href="#equation-sec8-eq-stress-1">(1.16)</a>，得到应力表示的相容方程</p>
+<p>将上式代入到方程 <a class="reference internal" href="#equation-sec8-eq-stress-1">(1.15)</a>，得到应力表示的相容方程</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>将 <span class="math notranslate nohighlight">\(\mu\)</span> 替换成 <span class="math notranslate nohighlight">\(\frac{\mu}{1-\mu}\)</span> 就能够得到平面应变问题按应力求解的方程</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec8-eq-solution-stress-1">
-<span class="eqno">(1.17)<a class="headerlink" href="#equation-sec8-eq-solution-stress-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.16)<a class="headerlink" href="#equation-sec8-eq-solution-stress-1" title="Link to this equation">#</a></span>\[
 \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_x + \sigma_y) = - (1 + \mu) \left( \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} \right).
 \]</div>
-<p>在应力法中，应力作为基本未知量，通过物理方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(1.7)</a> 表示应变，并结合几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.6)</a> 间接表示位移；然而，几何方程是一个微分方程组，求解过程较为复杂，这使得通过应力表示位移变得困难。因此，应力法通常仅适用于<strong>边界条件全部为应力边界条件</strong>的问题</p>
+<p>在应力法中，应力作为基本未知量，通过物理方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(1.6)</a> 表示应变，并结合几何方程 <a class="reference internal" href="sec4-geometry-equa.html#equation-sec4-eq-geometry">(1.5)</a> 间接表示位移；然而，几何方程是一个微分方程组，求解过程较为复杂，这使得通过应力表示位移变得困难。因此，应力法通常仅适用于<strong>边界条件全部为应力边界条件</strong>的问题</p>
 <section id="id5">
 <h3><span class="section-number">1.9.3.1. </span>常体积力的情况<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>在许多情况下，体积力是常量，例如重力或在恒定加速度下的惯性力。此时，按应力求解得到的方程组如下</p>
@@ -510,7 +510,7 @@
 <p><span class="math notranslate nohighlight">\(\sigma_x + \sigma_y\)</span> 是调和函数</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec8-eq-solution-stress-2">
-<span class="eqno">(1.18)<a class="headerlink" href="#equation-sec8-eq-solution-stress-2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.17)<a class="headerlink" href="#equation-sec8-eq-solution-stress-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
@@ -535,7 +535,7 @@
 </div>
 <div class="dropdown admonition seealso">
 <p class="admonition-title">See also</p>
-<p>应力方程 <a class="reference internal" href="#equation-sec8-eq-solution-stress-2">(1.18)</a> 的求解：</p>
+<p>应力方程 <a class="reference internal" href="#equation-sec8-eq-solution-stress-2">(1.17)</a> 的求解：</p>
 <p>首先考虑平衡方程的求解，非齐次微分方程组的解由任意一个特解与齐次方程的通解相加组成，特解可以取为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -583,7 +583,7 @@ A = \frac{\partial \Phi}{\partial y},\quad B = \frac{\partial \Phi}{\partial x},
 \sigma_y = \frac{\partial^2 \Phi}{\partial x^2}, \quad 
 \tau_{xy} = -\frac{\partial^2 \Phi}{\partial x \partial y},
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\Phi\)</span> 称为平面问题的<strong>应力函数</strong>，又称<strong>艾里应力函数</strong>，通过 <span class="math notranslate nohighlight">\(\Phi\)</span> 可以表示出 <span class="math notranslate nohighlight">\(\sigma_x,\sigma_y,\tau_{xy}\)</span>。将上式代入到方程 <a class="reference internal" href="#equation-sec8-eq-solution-stress-2">(1.18)</a> 的第三式中，整理得到</p>
+<p>其中 <span class="math notranslate nohighlight">\(\Phi\)</span> 称为平面问题的<strong>应力函数</strong>，又称<strong>艾里应力函数</strong>，通过 <span class="math notranslate nohighlight">\(\Phi\)</span> 可以表示出 <span class="math notranslate nohighlight">\(\sigma_x,\sigma_y,\tau_{xy}\)</span>。将上式代入到方程 <a class="reference internal" href="#equation-sec8-eq-solution-stress-2">(1.17)</a> 的第三式中，整理得到</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial^4 \Phi}{\partial x^4} 

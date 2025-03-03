@@ -1,5 +1,9 @@
 # 几何方程
 
+<span class="gray-text">
+几何方程揭示了应变与位移之间的内在联系。应变的本质源于不同点之间相对位置的变化。因此，通过分析不同方向上两条线段端点的相对位置变化，可以推导出应变与位移的关系方程
+</span>
+
 考虑弹性体内任一点 $P$，沿 $x$ 轴和 $y$ 轴的正方向取两个微小线段$\overline{PA} = \mathrm{d}x $ 和 $\overline{PA} = \mathrm{d}y$，假定弹性体受力后 $P,A,B$ 三点分别移动到了 $P^`,A^`,B^`$
 
 ```{figure} ../../../images/Elasticity/chap1/displ_strain.png

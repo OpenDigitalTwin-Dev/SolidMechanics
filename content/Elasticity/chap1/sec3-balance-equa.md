@@ -1,5 +1,9 @@
 # 平衡方程
 
+<span class="gray-text">
+平衡方程揭示了物体在平衡状态下所受各个力之间的关系。通过力的平衡方程和力矩平衡方程，可以确定不同力之间的数值关系和方向关系
+</span>
+
 如图所示，在弹性体内任一点 $C$ 处取出一个矩形微分体，其尺寸为 $\mathrm{d}x$ 和 $\mathrm{d}y$。舍去泰勒展开式中的高阶项后，可以得到各个面的应力分布
 
 ```{margin}
@@ -29,7 +33,7 @@ name: sec3-fig:balance-equa
 $$
 \tau_{xy}\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x+\left(\tau_{xy}+\frac{\partial \tau_{xy}}{\partial x}\mathrm{d}x\right)\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x-\\
 
-\tau_{yx}\cdot\mathrm{d}x\cdot\frac{1}{2}\mathrm{d}y+\left(\tau_{yx}+\frac{\partial \tau_{yx}}{\partial y}\mathrm{d}y\right)\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x=0,
+\tau_{yx}\cdot\mathrm{d}x\cdot\frac{1}{2}\mathrm{d}y-\left(\tau_{yx}+\frac{\partial \tau_{yx}}{\partial y}\mathrm{d}y\right)\cdot\mathrm{d}y\cdot\frac{1}{2}\mathrm{d}x=0,
 $$
 
 整理得到
@@ -73,7 +77,7 @@ $$ (sec3-eq:balance)
 
 ## 任一点的应力状态
 
-应力定义在其所作用的截面上，这表明应力的大小和方向依赖于截面的取向。在实际问题中，为了全面了解材料在外力作用下的受力状态，通常需要研究某一点在**不同取向截面上**的应力分布。为此，需要采用**应力张量**的数学描述，并通过应力变换公式将基准截面上的应力分量转换到任意取向的截面上
+在实际问题中，为了全面了解材料在外力作用下的受力状态，通常需要研究某一点在不同取向截面上的应力分布。定义在同一点不同取向截面上的应力之间是否存在内在联系？
 
 对于任意点 $P$ ，以它为中心取一个微元直角三角形 $\triangle ABC$，其中 $\overline{CA}$ 平行于 $x$ 轴，长度为 $\mathrm{d}x$，$\overline{CB}$ 平行于 $y$ 轴，长度为 $\mathrm{d}y$，
 设 $\overline{AB}$ 的单位法向量为 $\mathbf{n}=(l,m)$，长度为 $\mathrm{d}s$，于是
@@ -147,49 +151,31 @@ $$
 \end{align*}
 $$ (sec3-eq:stress-tensor-3)
 
-### 主应力
+### 最大正应力和最大切应力
 
-如果经过点 $P$ 的某一截面上的切应力为 0，仅存在正应力，则该截面称为**主应力面**，此时的正应力被称为点 $P$ 的一个**主应力**，而该截面的法向方向被称为**主应力方向**
+实际工程中通常关注最大正应力和最大切应力，因为它们分别反映了材料在拉伸/压缩和剪切方向上的极限受力状态
 
-此时，切应力为 0，全应力与正应力同向，即与 $\mathbf{n}$ 同向。设其大小为 $p$，则有 $\mathbf{p} = p\,\mathbf{n}$，代入到{eq}`sec3-eq:stress-tensor-1`，整理得到
+#### 最大正应力
 
-$$
-(\boldsymbol{\sigma} - p\,\mathbf{I})\,\mathbf{n} = \mathbf{0},
-$$
-
-这表明，主应力的大小是应力张量 $\boldsymbol{\sigma}$ 的特征值，其方向则是对应的特征向量。于是 $p$ 满足特征方程
-
-$$
-p^2 - (\sigma_x + \sigma_y)\,p + (\sigma_x \sigma_y - \tau_{xy}^2) = 0.
-$$ (sec3-eq:stress-tensor-2)
-
-由于
-
-$$
-(\sigma_x + \sigma_y)^2 - 4\,(\sigma_x \sigma_y - \tau_{xy}^2)=(\sigma_x - \sigma_y)^2 + 4\tau_{xy}^2 > 0,
-$$
-
-因此特征方程 {eq}`sec3-eq:stress-tensor-2` 总是有两个实根 $p_{1}\geq p_{2}$，且满足
-
-$$
-p_{1}+p_{2} = \sigma_{x} + \sigma_{y}.
-$$
-
-由于 $\boldsymbol{\sigma}$ 是一个实对称矩阵，因此其特征值 $p_1, p_2$ 所对应的单位特征向量 $\mathbf{n}_{1},\mathbf{n}_{2}$ 是正交的。这意味着主应力方向彼此正交，即**主应力相互正交**。不仅如此，由于
-
-```{margin}
-$\mathbf{n}$ 是单位法向量
-```
+由于 $\boldsymbol{\sigma}$ 是一个实对称矩阵，因此对于任意 $\mathbf{n}$ 满足
 
 $$
 p_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq p_1,
 $$
 
-因此，$p_1$ 和 $p_2$ 分别是点 $P$ 上最大与最小的正应力，即**两个主应力分别是最大与最小的正应力**
-
 ```{margin}
-应力主面上切应力为 0
+$\mathbf{n}_{1}$ 为单位特征向量
 ```
+
+其中，$p_{1}\geq p_{2}$ 为应力张量 $\boldsymbol{\sigma}$ 的特征值。这表明，在点 $P$ 处的最大正应力等于 $\boldsymbol{\sigma}$ 的最大特征值。当截面法向量 $\mathbf{n}$ 与 $p_{1}$ 对应的特征向量 $\mathbf{n}_{1}$ 平行时，正应力达到最大值。此时
+
+$$
+\mathbf{p} = \boldsymbol{\sigma}\mathbf{n}_{1} = p_{1}\mathbf{n}_{1},
+$$
+
+这表明截面上的应力与截面的法方向相同，此时，切应力为 0。将该截面称为**主应力面**，主应力面上的正应力被称为**主应力**，主应力面的法向方向被称为**主应力方向**
+
+此外，由于 $\boldsymbol{\sigma}$ 是实对称矩阵，因此其特征值所对应的单位特征向量是正交的，即**主应力相互正交**
 
 如果将 $x$ 轴和 $y$ 轴分别选定为两个主应力方向，则在该坐标系下，应力张量表示为一个对角矩阵
 
@@ -202,10 +188,16 @@ $$
 
 ```{admonition} 基变换与张量变换
 :class: tip, dropdown
-将张量视为一个将任意截面法向量映射为作用在该截面上的应力的线性算子，则在不同的基选择下，应力张量的矩阵表示是相似的。
+将张量视为一个将任意截面法向量映射为作用在该截面上的应力的线性算子，则在不同的基选择下，应力张量的矩阵表示是相似的
 ```
 
-此时，根据切应力计算公式 {eq}`sec3-eq:stress-tensor-3`，有
+#### 最大切应力
+
+将 $x$ 轴和 $y$ 轴分别选定为两个主应力方向，此时，根据切应力计算公式 {eq}`sec3-eq:stress-tensor-3`，有
+
+```{margin}
+主应力面上切应力为 0
+```
 
 $$
 \tau_{n} = lm(p_{2} - p_{1}),
@@ -218,7 +210,7 @@ $$
 $$
 
 当 $ \frac{1}{2} - l^2 = 0 $ 时，切应力 $ \tau_n $ 取得最大值。此时，最大切应力为 $\tau_{n} = \frac{1}{2} (p_1 - p_2)$，
-且对应截面的法向量与主应力面之间的夹角为 $ 45^\circ $。最小切应力为 0
+且对应截面的法向量与主应力面之间的夹角为 $ 45^\circ $
 
 ```{note}
 对于三维情形，最大切应力为 $\tau_{n} = \frac{1}{2} (p_1 - p_3)$
