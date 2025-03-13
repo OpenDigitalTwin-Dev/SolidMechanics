@@ -12,7 +12,7 @@ hide-nav: true
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: content/Elasticity/chap1/intro.html
+:link: content/Math/chap1/intro.html
 
 **数学基础**
 
@@ -22,7 +22,7 @@ hide-nav: true
 
 +++
 <div style="text-align: center;">
-In preparing... ↻
+Explore this note &rarr;
 </div>
 :::
 
