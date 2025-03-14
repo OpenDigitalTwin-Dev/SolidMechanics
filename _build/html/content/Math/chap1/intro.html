@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. 简介 &#8212; 固体力学笔记</title>
+    <title>1. 数值积分 &#8212; 固体力学笔记</title>
   
   
   
@@ -58,10 +58,12 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2. 简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="next" title="1.1. 梯形公式" href="sec1-trapezoidal.html" />
     <link rel="prev" title="阅读指引" href="../../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,7 +184,10 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. 简介</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">1. 数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec1-trapezoidal.html">1.1. 梯形公式</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -379,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>简介</h1>
+    <h1>数值积分</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,8 +399,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">1. </span>简介<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>数值积分是计算定积分的近似值的数值方法，适用于无法解析求解或函数形式未知（如离散数据点）的情况。数值积分通过将积分区间划分为小区间，用简单几何形状（如矩形、梯形、抛物线）的面积近似曲线下面积，再求和得到积分近似值</p>
+<h1><span class="section-number">1. </span>数值积分<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>数值积分是一种用于计算定积分近似值的数值方法，特别适用于无法通过解析方法求解或函数形式未知（例如仅有离散数据点）的情况。其基本思想是将积分区间划分为若干小区间，并利用简单的几何形状（如矩形、梯形或抛物线）来近似曲线下的面积</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x) \, \mathrm{d}x \approx \sum_{i=0}^{n-1} (\text{局部近似面积}).
+\]</div>
+<p>在每个小区间内，通过简单函数（如直线或抛物线）对被积函数进行逼近，可以将积分的计算转化为对被积函数在特定采样点处函数值的加权求和</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x) \, \mathrm{d}x \approx \sum_{i=0}^{n-1} w_{i}f(x_{i}).
+\]</div>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
@@ -670,6 +684,8 @@ document.write(`
 </div>
 </details>
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -712,11 +728,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../../Elasticity/chap1/intro.html"
+       href="sec1-trapezoidal.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>简介</p>
+        <p class="prev-next-title"><span class="section-number">1.1. </span>梯形公式</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

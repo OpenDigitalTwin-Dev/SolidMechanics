@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. 弹性力学的基本假设 &#8212; 固体力学笔记</title>
+    <title>1.1. 梯形公式 &#8212; 固体力学笔记</title>
   
   
   
@@ -58,11 +58,13 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/sec2-assumptions';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/sec1-trapezoidal';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="5. 平衡方程" href="sec3-balance-equa.html" />
-    <link rel="prev" title="3. 应力 应变 位移" href="sec1-stress_strain_displ.html" />
+    <link rel="next" title="2. 简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="prev" title="1. 数值积分" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,24 +183,24 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 简介</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">1. 数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. 梯形公式</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">2. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec1-stress_strain_displ.html">3. 应力 应变 位移</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">5. 平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">6. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">7. 物理方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">8. 两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">9. 边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">10. 位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec9-numerical-simple.html">11. 数值方法简介</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">2. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">3. 应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">4. 弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">5. 平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">6. 几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">7. 物理方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">8. 两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">9. 边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">10. 位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">11. 数值方法简介</a></li>
 </ul>
 
     </div>
@@ -270,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Elasticity/chap1/sec2-assumptions.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Math/chap1/sec1-trapezoidal.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +302,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Elasticity/chap1/sec2-assumptions.md" target="_blank"
+      <li><a href="../../../_sources/content/Math/chap1/sec1-trapezoidal.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +373,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -382,11 +386,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>弹性力学的基本假设</h1>
+    <h1>梯形公式</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1.1. 矩形公式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.2. 梯形公式</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -397,91 +410,130 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4. </span>弹性力学的基本假设<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<span class="gray-text">
-弹性力学通过一系列基本假定建立数学方程，以此为基础求解物体在外力作用下的应力与应变分布。这些假定确保了理论的简化性与适用性，从而使复杂的力学问题能够通过解析方法或数值方法得到有效解决
-</span>
-<p>为建立数学方程并求解，通常需按照所研究的物体的性质，求解问题的范围，作出若干基本假定，抓住主要矛盾，略去影响很小的次要因素</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>连续性假设是<strong>宏观视角</strong>下的一种理想化处理方法，它为<strong>宏观分析</strong>奠定了理论基础，同时也是应用数学方法进行求解的基本前提</p>
-</aside>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><strong>多尺度计算</strong>是一种通过耦合不同时间和空间尺度模型，协调微观细节与宏观行为，以精准高效地解决复杂系统问题的计算方法</p>
-</aside>
-<ol class="arabic">
-<li><p><strong>连续性假设</strong>：物体的体积被其<strong>组成物质</strong>无缝填满，从而使应力、应变和位移等物理量可通过连续函数表示</p>
+<h1><span class="section-number">1.1. </span>梯形公式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>假设积分区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 被均匀地划分为 <span class="math notranslate nohighlight">\(n\)</span> 段，每段的长度为 <span class="math notranslate nohighlight">\(h=\frac{b-a}{n}\)</span>，划分节点依次为 <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span>，其中 <span class="math notranslate nohighlight">\(x_{i} = a + i\cdot h,\, i=1,2,\cdots,n\)</span></p>
+<section id="id2">
+<h2><span class="section-number">1.1.1. </span>矩形公式<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>矩形公式通过利用小区间的左端点、右端点或中点处的函数值作为矩形的高，以宽度 <span class="math notranslate nohighlight">\(h\)</span> 的矩形面积来近似积分值</p>
 <ul>
-<li><p>举例对比</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>多孔介质渗流</p></th>
-<th class="head text-center"><p>孔隙流动</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p>基于宏观尺度研究</p></td>
-<td class="text-center"><p>基于微观尺度研究</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>微小的多孔介质</p></td>
-<td class="text-center"><p>离散的流体分子</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>等效为连续介质</p></td>
-<td class="text-center"><p>孔隙尺度与分子自由程</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>连续介质力学理论</p></td>
-<td class="text-center"><p>分子动力学等微观尺度方法</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<li><p><strong>左端点公式</strong>：</p>
+<div class="math notranslate nohighlight">
+\[
+        \int_a^b f(x) \, \mathrm{d}x \approx h\sum_{i=0}^{n-1} f(x_{i})
+    \]</div>
 </li>
-<li><p>裂纹，断裂</p></li>
-</ul>
+<li><p><strong>右端点公式</strong>：</p>
+<div class="math notranslate nohighlight">
+\[
+        \int_a^b f(x) \, \mathrm{d}x \approx h\sum_{i=0}^{n-1} f(x_{i+1})
+    \]</div>
 </li>
-</ol>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>均匀性假设与各向同性假设均基于宏观尺度，在实际计算中，并不要求整个计算区域完全均匀，而是强调在计算尺度内满足均匀性的要求。此外，材料的各向异性或各项异性也可以基于这种局部均匀性假设进行建立（玻璃罐装钢珠）</p>
-</aside>
-<ol class="arabic simple" start="2">
-<li><p><strong>均匀性假设</strong>：材料属性与<strong>位置</strong>无关</p></li>
-<li><p><strong>各向同性假设</strong>：材料属性与<strong>方向</strong>无关</p></li>
-</ol>
-<ul class="simple">
-<li><p>均匀且各向同性：玻璃、金属、液体</p></li>
-<li><p>均匀但各向异性：复合材料、层状材料、单晶硅</p></li>
-<li><p>不均匀但各向同性：颗粒材料、泡沫材料</p></li>
-<li><p>不均匀且各向异性：天然木材、多晶材料、碳纤维复合材料</p></li>
+<li><p><strong>中点公式</strong>：</p>
+<div class="math notranslate nohighlight">
+\[
+        \int_a^b f(x) \, \mathrm{d}x \approx h\sum_{i=0}^{n-1} f(x_{i} + \frac{h}{2})
+    \]</div>
+</li>
 </ul>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>物体的形变在任一瞬时仅由当时所受外力决定，与过去的受力情况无关</p>
-</aside>
-<ol class="arabic simple" start="4">
-<li><p><strong>完全弹性假设</strong>：物体在引起形变的外力被除去以后能完全恢复原形</p></li>
-</ol>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>小变形假定通过忽略几何和物理的<strong>非线性效应</strong>，极大简化了力学分析</p>
-</aside>
-<ol class="arabic simple" start="5">
-<li><p><strong>小变形假设</strong>：物体在受力后，所有各点的位移都远小于物体原来的尺寸，且应变与转角都远小于1</p></li>
-</ol>
+<p>左、右端点公式的误差为 <span class="math notranslate nohighlight">\(O(h)\)</span>，中点公式的误差为 <span class="math notranslate nohighlight">\(O(h^{2})\)</span></p>
 <div class="tip dropdown admonition">
-<p class="admonition-title">微元分析法</p>
-<p>基于连续性假设，将复杂的连续体或系统<strong>划分</strong>为无数个“微元”或“微小单元”，在每个微元上建立<strong>局部的物理或数学关系</strong>，并通过<strong>积分或叠加</strong>的方法，将局部规律推广至整体范围，从而得到系统的<strong>整体规律或解答</strong></p>
+<p class="admonition-title">证明</p>
+<p>考虑单个区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上的积分误差，对于左端点法</p>
+<div class="math notranslate nohighlight">
+\[
+    E_{\text{左}} = I - I_{\text{左}} = \int_{x_{i}}^{x_{i}+h}f(x)\, \mathrm{d}x - hf(x_{i}),
+\]</div>
+<p>将 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_{i}\)</span> 处泰勒展开</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = f(x_i) + f'(x_i)(x - x_i) + \frac{f''(x_i)}{2}(x - x_i)^2 + O(h^3)
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+    I = \int_{x_{i}}^{x_{i}+h}f(x_i) + f'(x_i)(x - x_i) + \frac{f''(x_i)}{2}(x - x_i)^2 + O(h^3)\, \mathrm{d}x,
+\]</div>
+<p>逐项积分</p>
+<div class="math notranslate nohighlight">
+\[
+    I = h f(x_i) + \frac{f'(x_i)}{2} h^2 + \frac{f''(x_i)}{6} h^3 + O(h^4),
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+    E_{\text{左}} = \frac{f'(x_i)}{2} h^2 + \frac{f''(x_i)}{6} h^3 + O(h^4),
+\]</div>
+<p>因此在区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上，主误差项是 <span class="math notranslate nohighlight">\(O(h^2)\)</span>，因此总误差为</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{总误差}\approx n\cdot O(h^2) = \frac{b-a}{h}\cdot O(h^2) = O(h).
+\]</div>
+<p>右端点法的证明类似</p>
+<p>对于中点法，将 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}} = x_{i} + \frac{h}{2}\)</span> 处泰勒展开</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = f(x_{i+\frac{1}{2}}) + f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{2} (x - x_{i+\frac{1}{2}})^2 + O(h^3),
+\]</div>
+<p>代入积分公式</p>
+<div class="math notranslate nohighlight">
+\[
+    I=\int_{x_{i}}^{x_{i}+h} f(x_{i+\frac{1}{2}}) + \textcolor{red}{f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}})} + \frac{f''(x_{i+\frac{1}{2}})}{2} (x - x_{i+\frac{1}{2}})^2 + O(h^3) \,\mathrm{d}x,
+\]</div>
+<p>逐项积分，其中<strong>红色项积分为 0</strong>，因此</p>
+<div class="math notranslate nohighlight">
+\[
+    I=hf(x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{24}h^3 +O(h^4).
+\]</div>
+<p>于是在区间<span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上，主误差项是 <span class="math notranslate nohighlight">\(O(h^3)\)</span>，因此总误差为 <span class="math notranslate nohighlight">\(O(h^2)\)</span></p>
 </div>
-<p>在弹性力学问题中，通常已知物体的形状和尺寸、弹性常数、体力作用及边界作用，
-求解应力分量、形变分量和位移分量。为此，在弹性体区域内部需要综合考虑<strong>静力学</strong>、<strong>几何学</strong>
-和<strong>物理学</strong>三方面的条件，分别建立以下方程：</p>
-<ol class="arabic simple">
-<li><p><strong>平衡方程</strong>：微分体的平衡条件</p></li>
-<li><p><strong>几何方程</strong>：微分线段上应变与位移的关系</p></li>
-<li><p><strong>物理方程</strong>：应力与应变的本构关系</p></li>
-</ol>
-<p>此外，还需要在弹性体的边界上建立边界条件，如<strong>应力边界条件</strong>和<strong>位移边界条件</strong></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.1.2. </span>梯形公式<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>梯形公式通过利用小区间的左端点和右端点的函数值，构成梯形的面积，对积分进行近似计算</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_a^b f(x) \, \mathrm{d}x \approx \frac{h}{2}\sum_{i=0}^{n-1} [f(x_{i}) + f(x_{i+1})]
+\]</div>
+<p>其误差为 <span class="math notranslate nohighlight">\(O(h^2)\)</span></p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">证明</p>
+<p>虑单个区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上的积分误差，将 <span class="math notranslate nohighlight">\(f(x_i)\)</span> 和 <span class="math notranslate nohighlight">\(f(x_{i+1})\)</span> 在 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}} = x_{i} + \frac{h}{2}\)</span> 处泰勒展开</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+f(x_i) &amp;= f(x_{i+\frac{1}{2}}) - f'(x_{i+\frac{1}{2}}) \frac{h}{2} + \frac{f''(x_{i+\frac{1}{2}})}{2} \left(\frac{h}{2}\right)^2 - \frac{f'''(\xi_1)}{6} \left(\frac{h}{2}\right)^3, \\
+f(x_{i+1}) &amp;= f(x_{i+\frac{1}{2}}) + f'(x_{i+\frac{1}{2}}) \frac{h}{2} + \frac{f''(x_{i+\frac{1}{2}})}{2} \left(\frac{h}{2}\right)^2 + \frac{f'''(\xi_2)}{6} \left(\frac{h}{2}\right)^3.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+f(x_{i})+f(x_{i+1})=2f(x_{i+\frac{1}{2}})+\frac{f''(x_{i+\frac{1}{2}})}{4}h^2 + O(h^3),
+\]</div>
+<p>将 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}}\)</span> 处展开并代入积分</p>
+<div class="math notranslate nohighlight">
+\[
+    I=hf(x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{24}h^3 +O(h^4).
+\]</div>
+<p>于是区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i}+h]\)</span> 上的局部误差是</p>
+<div class="math notranslate nohighlight">
+\[
+I - \frac{h}{2}[f(x_{i})+f(x_{i+1})] = -\frac{f''(x_{i+\frac{1}{2}})}{12}h^3 + O(h^4),
+\]</div>
+<p>于是总误差</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+E_{\text{总}}&amp;=-\frac{h^3}{12}\sum_{i=0}^{n}f''(x_{i+\frac{1}{2}}) + n \cdot O(h^4)\\
+&amp;=-\frac{(b-a)}{12}h^2f''(\xi).
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -497,7 +549,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Elasticity/chap1"
+            path: "./content/Math/chap1"
         },
         predefinedOutput: true
     }
@@ -515,20 +567,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec1-stress_strain_displ.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>应力 应变 位移</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>数值积分</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec3-balance-equa.html"
+       href="../../Elasticity/chap1/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>平衡方程</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>简介</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -538,6 +590,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1.1. 矩形公式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.2. 梯形公式</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

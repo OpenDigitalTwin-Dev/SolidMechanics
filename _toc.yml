@@ -8,7 +8,9 @@ parts:
   - caption: 数学基础
     numbered: True
     chapters:
-    - file: content/Math/chap1/intro
+      - file: content/Math/chap1/intro
+        sections:
+        - file: content/Math/chap1/sec1-trapezoidal
     
   - caption: 弹性力学
     numbered: True
