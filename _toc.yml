@@ -11,7 +11,9 @@ parts:
       - file: content/Math/chap1/intro
         sections:
         - file: content/Math/chap1/sec1-trapezoidal
-    
+        - file: content/Math/chap1/sec2-simpson
+        - file: content/Math/chap1/sec3-algebraic-prec
+        - file: content/Math/chap1/sec4-gaussian
   - caption: 弹性力学
     numbered: True
     chapters:

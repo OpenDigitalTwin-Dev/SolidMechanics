@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/sec1-trapezoidal';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2. 简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="next" title="1.2. 辛普森公式" href="sec2-simpson.html" />
     <link rel="prev" title="1. 数值积分" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,6 +186,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">1. 数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. 梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-simpson.html">1.2. 辛普森公式</a></li>
 </ul>
 </details></li>
 </ul>
@@ -411,10 +412,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.1. </span>梯形公式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>假设积分区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 被均匀地划分为 <span class="math notranslate nohighlight">\(n\)</span> 段，每段的长度为 <span class="math notranslate nohighlight">\(h=\frac{b-a}{n}\)</span>，划分节点依次为 <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span>，其中 <span class="math notranslate nohighlight">\(x_{i} = a + i\cdot h,\, i=1,2,\cdots,n\)</span></p>
+<p>假设积分区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 被均匀地划分为 <span class="math notranslate nohighlight">\(n\)</span> 段，每段的长度为 <span class="math notranslate nohighlight">\(h=\frac{b-a}{n}\)</span>，划分节点依次为 <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span>，于是 <span class="math notranslate nohighlight">\(x_{i} = a + i\cdot h,\, i=0,2,\cdots,n\)</span></p>
 <section id="id2">
 <h2><span class="section-number">1.1.1. </span>矩形公式<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>矩形公式通过利用小区间的左端点、右端点或中点处的函数值作为矩形的高，以宽度 <span class="math notranslate nohighlight">\(h\)</span> 的矩形面积来近似积分值</p>
+<p>矩形公式利用 <strong>0</strong> 次多项式对 <span class="math notranslate nohighlight">\(f(x)\)</span> 插值，通过小区间的左端点、右端点或中点处的函数值作为矩形的高，以宽度 <span class="math notranslate nohighlight">\(h\)</span> 的矩形面积来近似积分值</p>
 <ul>
 <li><p><strong>左端点公式</strong>：</p>
 <div class="math notranslate nohighlight">
@@ -484,12 +485,16 @@ f(x) = f(x_{i+\frac{1}{2}}) + f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}}) + \f
 \[
     I=hf(x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{24}h^3 +O(h^4).
 \]</div>
-<p>于是在区间<span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上，主误差项是 <span class="math notranslate nohighlight">\(O(h^3)\)</span>，因此总误差为 <span class="math notranslate nohighlight">\(O(h^2)\)</span></p>
+<p>于是在区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上，主误差项是 <span class="math notranslate nohighlight">\(O(h^3)\)</span>，因此总误差为 <span class="math notranslate nohighlight">\(O(h^2)\)</span></p>
+<p>在每个小区间上，中点公式虽然也只采用 0 阶多项式逼近函数 <span class="math notranslate nohighlight">\(f(x)\)</span> （精度为 <span class="math notranslate nohighlight">\(O(h)\)</span>），但由于误差项中</p>
+<div class="math notranslate nohighlight">
+\[f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}})\]</div>
+<p>在区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上关于 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}}\)</span> 中心对称，因此积分为零,使得积分逼近精度提高了一阶（精度为 <span class="math notranslate nohighlight">\(O(h^2)\)</span>）</p>
 </div>
 </section>
 <section id="id3">
 <h2><span class="section-number">1.1.2. </span>梯形公式<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>梯形公式通过利用小区间的左端点和右端点的函数值，构成梯形的面积，对积分进行近似计算</p>
+<p>梯形公式利用 <strong>1</strong> 次多项式对 <span class="math notranslate nohighlight">\(f(x)\)</span> 插值，通过小区间的左端点和右端点的函数值，构成梯形的面积，对积分进行近似计算</p>
 <div class="math notranslate nohighlight">
 \[
     \int_a^b f(x) \, \mathrm{d}x \approx \frac{h}{2}\sum_{i=0}^{n-1} [f(x_{i}) + f(x_{i+1})]
@@ -576,11 +581,11 @@ E_{\text{总}}&amp;=-\frac{h^3}{12}\sum_{i=0}^{n}f''(x_{i+\frac{1}{2}}) + n \cdo
       </div>
     </a>
     <a class="right-next"
-       href="../../Elasticity/chap1/intro.html"
+       href="sec2-simpson.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>简介</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>辛普森公式</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

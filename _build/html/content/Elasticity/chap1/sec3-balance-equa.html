@@ -184,8 +184,11 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 简介</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec2-simpson.html">1.2. 辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec3-algebraic-prec.html">1.3. 代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
 </ul>
 </details></li>
 </ul>
@@ -574,12 +577,12 @@ m
 <p>由于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是一个实对称矩阵，因此对于任意 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 满足</p>
 <div class="math notranslate nohighlight">
 \[
-p_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq p_1,
+\sigma_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq \sigma_1,
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(p_{1}\geq p_{2}\)</span> 为应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值。这表明，在点 <span class="math notranslate nohighlight">\(P\)</span> 处的最大正应力等于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的最大特征值。当截面法向量 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 与 <span class="math notranslate nohighlight">\(p_{1}\)</span> 对应的（单位）特征向量 <span class="math notranslate nohighlight">\(\mathbf{n}_{1}\)</span> 平行时，正应力达到最大值。此时</p>
+<p>其中，<span class="math notranslate nohighlight">\(\sigma_{1}\geq \sigma_{2}\)</span> 为应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值。这表明，在点 <span class="math notranslate nohighlight">\(P\)</span> 处的最大正应力等于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的最大特征值。当截面法向量 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 与 <span class="math notranslate nohighlight">\(\sigma_{1}\)</span> 对应的（单位）特征向量 <span class="math notranslate nohighlight">\(\mathbf{n}_{1}\)</span> 平行时，正应力达到最大值。此时</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{p} = \boldsymbol{\sigma}\mathbf{n}_{1} = p_{1}\mathbf{n}_{1},
+\mathbf{p} = \boldsymbol{\sigma}\mathbf{n}_{1} = \sigma_{1}\mathbf{n}_{1},
 \]</div>
 <p>这表明截面上的应力与截面的法方向相同，此时，切应力为 0。将该截面称为<strong>主应力面</strong>，主应力面上的正应力被称为<strong>主应力</strong>，主应力面的法向方向被称为<strong>主应力方向</strong></p>
 <p>此外，由于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是实对称矩阵，因此其特征值所对应的特征向量是正交的，即<strong>主应力相互正交</strong></p>
@@ -587,8 +590,8 @@ p_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq p_1,
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{\sigma}=\begin{bmatrix}
-p_{1} &amp; 0 \\
-0 &amp; p_{2}
+\sigma_{1} &amp; 0 \\
+0 &amp; \sigma_{2}
 \end{bmatrix}.
 \end{split}\]</div>
 <div class="tip dropdown admonition">
@@ -605,18 +608,18 @@ p_{1} &amp; 0 \\
 <p>将 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴分别选定为两个主应力方向，此时，根据切应力计算公式 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-3">(5.4)</a>，有</p>
 <div class="math notranslate nohighlight">
 \[
-\tau_{n} = lm(p_{2} - p_{1}),
+\tau_{n} = lm(\sigma_{2} - \sigma_{1}),
 \]</div>
 <p>代入 <span class="math notranslate nohighlight">\(l^2 + m^2 = 1\)</span> 消去 <span class="math notranslate nohighlight">\(m\)</span>，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_n = \pm \sqrt{\frac{1}{4} - \left(\frac{1}{2} - l^2\right)^2} \, (\sigma_2 - \sigma_1),
 \]</div>
-<p>当 <span class="math notranslate nohighlight">\( \frac{1}{2} - l^2 = 0 \)</span> 时，切应力 <span class="math notranslate nohighlight">\( \tau_n \)</span> 取得最大值。此时，最大切应力为 <span class="math notranslate nohighlight">\(\tau_{n} = \frac{1}{2} (p_1 - p_2)\)</span>，
-且对应截面的法向量与主应力面之间的夹角为 <span class="math notranslate nohighlight">\( 45^\circ \)</span></p>
+<p>当 <span class="math notranslate nohighlight">\( \frac{1}{2} - l^2 = 0 \)</span> 时，切应力 <span class="math notranslate nohighlight">\( \tau_n \)</span> 取得最大值，为 <span class="math notranslate nohighlight">\(\tau_{n} = \frac{1}{2} (\sigma_1 - \sigma_2)\)</span>，
+此时对应截面的法向量与主应力面之间的夹角为 <span class="math notranslate nohighlight">\( 45^\circ \)</span>，此时正应力为 <span class="math notranslate nohighlight">\(\sigma_{n} = \frac{1}{2} (\sigma_1 + \sigma_2)\)</span></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>对于三维情形，最大切应力为 <span class="math notranslate nohighlight">\(\tau_{n} = \frac{1}{2} (p_1 - p_3)\)</span></p>
+<p>对于三维情形，最大切应力为 <span class="math notranslate nohighlight">\(\tau_{n} = \frac{1}{2} (\sigma_1 - \sigma_3)\)</span></p>
 </div>
 </section>
 </section>

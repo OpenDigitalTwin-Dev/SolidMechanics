@@ -70,6 +70,14 @@ In preparing... ↻
 感谢院内同事在交流与讨论中提出的宝贵建议和意见，这些启发与支持为本工作的不断完善提供了重要帮助
 
 
+## 参考文献
+
+```{bibliography}
+:style: plain
+:all:
+```
+
+
 ## 参考书籍资源
 - [弹性力学简明教程-徐芝纶](https://github.com/OpenDigitalTwin-Dev/SolidMechanics/blob/main/refbook/%E5%BC%B9%E6%80%A7%E5%8A%9B%E5%AD%A6%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%BE%90%E8%8A%9D%E7%BA%B6.pdf)
 

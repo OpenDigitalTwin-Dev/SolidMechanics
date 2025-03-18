@@ -175,13 +175,13 @@ $$ (sec3-eq:stress-tensor-3)
 由于 $\boldsymbol{\sigma}$ 是一个实对称矩阵，因此对于任意 $\mathbf{n}$ 满足
 
 $$
-p_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq p_1,
+\sigma_2 \leq \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} \leq \sigma_1,
 $$
 
-其中，$p_{1}\geq p_{2}$ 为应力张量 $\boldsymbol{\sigma}$ 的特征值。这表明，在点 $P$ 处的最大正应力等于 $\boldsymbol{\sigma}$ 的最大特征值。当截面法向量 $\mathbf{n}$ 与 $p_{1}$ 对应的（单位）特征向量 $\mathbf{n}_{1}$ 平行时，正应力达到最大值。此时
+其中，$\sigma_{1}\geq \sigma_{2}$ 为应力张量 $\boldsymbol{\sigma}$ 的特征值。这表明，在点 $P$ 处的最大正应力等于 $\boldsymbol{\sigma}$ 的最大特征值。当截面法向量 $\mathbf{n}$ 与 $\sigma_{1}$ 对应的（单位）特征向量 $\mathbf{n}_{1}$ 平行时，正应力达到最大值。此时
 
 $$
-\mathbf{p} = \boldsymbol{\sigma}\mathbf{n}_{1} = p_{1}\mathbf{n}_{1},
+\mathbf{p} = \boldsymbol{\sigma}\mathbf{n}_{1} = \sigma_{1}\mathbf{n}_{1},
 $$
 
 这表明截面上的应力与截面的法方向相同，此时，切应力为 0。将该截面称为**主应力面**，主应力面上的正应力被称为**主应力**，主应力面的法向方向被称为**主应力方向**
@@ -192,8 +192,8 @@ $$
 
 $$
 \boldsymbol{\sigma}=\begin{bmatrix}
-p_{1} & 0 \\
-0 & p_{2}
+\sigma_{1} & 0 \\
+0 & \sigma_{2}
 \end{bmatrix}.
 $$
 
@@ -212,7 +212,7 @@ $$
 将 $x$ 轴和 $y$ 轴分别选定为两个主应力方向，此时，根据切应力计算公式 {eq}`sec3-eq:stress-tensor-3`，有
 
 $$
-\tau_{n} = lm(p_{2} - p_{1}),
+\tau_{n} = lm(\sigma_{2} - \sigma_{1}),
 $$
 
 代入 $l^2 + m^2 = 1$ 消去 $m$，得到
@@ -221,9 +221,9 @@ $$
 \tau_n = \pm \sqrt{\frac{1}{4} - \left(\frac{1}{2} - l^2\right)^2} \, (\sigma_2 - \sigma_1),
 $$
 
-当 $ \frac{1}{2} - l^2 = 0 $ 时，切应力 $ \tau_n $ 取得最大值。此时，最大切应力为 $\tau_{n} = \frac{1}{2} (p_1 - p_2)$，
-且对应截面的法向量与主应力面之间的夹角为 $ 45^\circ $
+当 $ \frac{1}{2} - l^2 = 0 $ 时，切应力 $ \tau_n $ 取得最大值，为 $\tau_{n} = \frac{1}{2} (\sigma_1 - \sigma_2)$，
+此时对应截面的法向量与主应力面之间的夹角为 $ 45^\circ $，此时正应力为 $\sigma_{n} = \frac{1}{2} (\sigma_1 + \sigma_2)$
 
 ```{note}
-对于三维情形，最大切应力为 $\tau_{n} = \frac{1}{2} (p_1 - p_3)$
+对于三维情形，最大切应力为 $\tau_{n} = \frac{1}{2} (\sigma_1 - \sigma_3)$
 ```
