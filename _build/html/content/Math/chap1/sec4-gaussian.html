@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/sec4-gaussian';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2. 简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="next" title="1.5. 有限元计算" href="sec5-fem.html" />
     <link rel="prev" title="1.3. 代数精度" href="sec3-algebraic-prec.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,6 +189,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sec2-simpson.html">1.2. 辛普森公式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-algebraic-prec.html">1.3. 代数精度</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.4. Gaussian 公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-fem.html">1.5. 有限元计算</a></li>
 </ul>
 </details></li>
 </ul>
@@ -677,6 +678,10 @@ f(x) = Q(x)\cdot P_{n}(x)+R(x),
 \[
 \int_{a}^{b}w(x)R(x)\, \mathrm{d}x = \sum_{i}^{n}w_{i}R(x_{i})
 \]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>范德蒙矩阵</p>
+</aside>
 <p>精确成立即可，其中 <span class="math notranslate nohighlight">\(R(x)\)</span> 是次数 <span class="math notranslate nohighlight">\(\leq n-1\)</span> 的多项式，这只需使得上式对于 <span class="math notranslate nohighlight">\(R(x)=1,x,\cdots,x^{n-1}\)</span> 精确成立即可，这将得到一个线性方程组，显然该方程组存在解</p>
 <p>因此</p>
 <div class="math notranslate nohighlight">
@@ -743,11 +748,11 @@ f(x) = Q(x)\cdot P_{n}(x)+R(x),
       </div>
     </a>
     <a class="right-next"
-       href="../../Elasticity/chap1/intro.html"
+       href="sec5-fem.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>简介</p>
+        <p class="prev-next-title"><span class="section-number">1.5. </span>有限元计算</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

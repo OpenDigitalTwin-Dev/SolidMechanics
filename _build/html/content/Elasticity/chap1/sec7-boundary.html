@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -184,8 +184,12 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 简介</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec2-simpson.html">1.2. 辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec3-algebraic-prec.html">1.3. 代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec5-fem.html">1.5. 有限元计算</a></li>
 </ul>
 </details></li>
 </ul>
@@ -419,6 +423,7 @@ document.write(`
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>静力等效：两个力系如果具有相同的主矢量（合力）和主矩（相对于某点的力矩），那么这两个力系在静力学上是等效的</p>
+<p>远场：与应力分量的衰减有关，反映出应力的局部性</p>
 </aside>
 <p><strong>圣维南原理</strong>：<strong>静力等效</strong>的力分布仅影响局部区域的应力状态，而对整体结构的远场应力分布几乎没有影响</p>
 <aside class="margin sidebar">
@@ -439,7 +444,7 @@ document.write(`
 <p>在如图所示的构件中，当将右端截面的拉力替换为均匀分布的拉力（集度为 <span class="math notranslate nohighlight">\(\frac{F}{A}\)</span>）时，根据圣维南原理，只有靠近虚线所示区域的应力分布会发生显著变化，而远离该区域的其余部分受到的影响可以忽略不计</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>平衡力系：主矢量和主矩均为零</p>
+<p>平衡力系：主矢量和主矩均为零，“局部扰动”</p>
 </aside>
 <div class="tip dropdown admonition">
 <p class="admonition-title">圣维南原理推广</p>

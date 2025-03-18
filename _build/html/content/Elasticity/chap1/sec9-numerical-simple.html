@@ -183,8 +183,12 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 简介</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">1. 数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec2-simpson.html">1.2. 辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec3-algebraic-prec.html">1.3. 代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec5-fem.html">1.5. 有限元计算</a></li>
 </ul>
 </details></li>
 </ul>
@@ -647,12 +651,12 @@ g = \sum_{i=0}^{5}c_{i}\phi_{i},
 <p>此处，选取 <span class="math notranslate nohighlight">\(\mathcal{U}_{h}=\mathcal{V}_{h}=\mathcal{P}^{1}_{h}\)</span>，于是，得到弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-3">(11.8)</a> 的离散形式：求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-4">
 <span class="eqno">(11.9)<a class="headerlink" href="#equation-sec9-eq-fem-4" title="Link to this equation">#</a></span>\[
-\left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\, v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
+\left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
 \]</div>
 <p>由于算子的线性性，上述问题等价于求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-5">
 <span class="eqno">(11.10)<a class="headerlink" href="#equation-sec9-eq-fem-5" title="Link to this equation">#</a></span>\[
-\left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.
+\left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.
 \]</div>
 <p>由于 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span>，因此可以表示成</p>
 <div class="math notranslate nohighlight">
@@ -662,7 +666,7 @@ u = \sum_{i=0}^{5}c_{i}\phi_{i}.
 <p>将上式代入到 <a class="reference internal" href="#equation-sec9-eq-fem-5">(11.10)</a>，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-6">
 <span class="eqno">(11.11)<a class="headerlink" href="#equation-sec9-eq-fem-6" title="Link to this equation">#</a></span>\[
-\left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x,\quad j=0:5.
+\left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\phi_{j}\,\mathrm{d}x,\quad j=0:5.
 \]</div>
 <p>这是一个关于 <span class="math notranslate nohighlight">\(c_{i}\)</span> 的线性方程组</p>
 <section id="id8">
@@ -675,7 +679,7 @@ u = \sum_{i=0}^{5}c_{i}\phi_{i}.
 <p>由于 <span class="math notranslate nohighlight">\(u(0) = 0, u(L) = u_L\)</span>，因此 <span class="math notranslate nohighlight">\(c_{0} = 0, c_{5} = u_{L}\)</span>，代入到式 <a class="reference internal" href="#equation-sec9-eq-fem-6">(11.11)</a> 中的 <span class="math notranslate nohighlight">\(j=1,2,3,4\)</span>，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-7">
 <span class="eqno">(11.12)<a class="headerlink" href="#equation-sec9-eq-fem-7" title="Link to this equation">#</a></span>\[
-\sum_{i=1}^{4}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\,\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
+\sum_{i=1}^{4}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
 \]</div>
 <p>将其写为矩阵形式</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-8">
@@ -701,7 +705,7 @@ c_1 \\ c_2 \\ c_3 \\ c_4
 <p>左端矩阵被称为<strong>刚度矩阵</strong>，在右端项中</p>
 <div class="math notranslate nohighlight">
 \[
-f_{j} = \frac{1}{h}\int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x.
+f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 \]</div>
 <p>通过求解线性方程组 <a class="reference internal" href="#equation-sec9-eq-fem-8">(11.13)</a>，可以得到 <span class="math notranslate nohighlight">\(c_{i}\)</span>，从而得到方程 <a class="reference internal" href="#equation-sec9-eq-example">(11.1)</a> 在有限元函数空间 <span class="math notranslate nohighlight">\(\mathcal{P}_{h}^1\)</span> 的逼近解 <span class="math notranslate nohighlight">\(u(x)\approx \sum_{i=0}^{5}c_{i}\phi_{i}\)</span></p>
 <p>随着 <span class="math notranslate nohighlight">\(h\to0\)</span>，有限元函数空间 <span class="math notranslate nohighlight">\(\mathcal{P}_{h}^1\)</span> 中的函数能够以任意精度逼近任意连续函数，从而保证离散解逐渐逼近问题的真解</p>

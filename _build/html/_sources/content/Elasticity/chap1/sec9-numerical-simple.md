@@ -250,13 +250,13 @@ $$
 此处，选取 $\mathcal{U}_{h}=\mathcal{V}_{h}=\mathcal{P}^{1}_{h}$，于是，得到弱形式 {eq}`sec9-eq:fem-3` 的离散形式：求解 $u\in\mathcal{P}^{1}_{h}$ 满足
 
 $$
-\left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\, v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
+\left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
 $$ (sec9-eq:fem-4)
 
 由于算子的线性性，上述问题等价于求解 $u\in\mathcal{P}^{1}_{h}$ 满足
 
 $$
-\left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.
+\left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.
 $$ (sec9-eq:fem-5)
 
 由于 $u\in\mathcal{P}^{1}_{h}$，因此可以表示成
@@ -268,7 +268,7 @@ $$
 将上式代入到 {eq}`sec9-eq:fem-5`，得到
 
 $$
-\left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x,\quad j=0:5.
+\left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\phi_{j}\,\mathrm{d}x,\quad j=0:5.
 $$ (sec9-eq:fem-6)
 
 这是一个关于 $c_{i}$ 的线性方程组
@@ -284,7 +284,7 @@ $$
 由于 $u(0) = 0, u(L) = u_L$，因此 $c_{0} = 0, c_{5} = u_{L}$，代入到式 {eq}`sec9-eq:fem-6` 中的 $j=1,2,3,4$，得到
 
 $$
-\sum_{i=1}^{4}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\,\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
+\sum_{i=1}^{4}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
 $$ (sec9-eq:fem-7)
 
 将其写为矩阵形式
@@ -312,7 +312,7 @@ $$ (sec9-eq:fem-8)
 左端矩阵被称为**刚度矩阵**，在右端项中
 
 $$
-f_{j} = \frac{1}{h}\int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x.
+f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 $$
 
 通过求解线性方程组 {eq}`sec9-eq:fem-8`，可以得到 $c_{i}$，从而得到方程 {eq}`sec9-eq:example` 在有限元函数空间 $\mathcal{P}_{h}^1$ 的逼近解 $u(x)\approx \sum_{i=0}^{5}c_{i}\phi_{i}$
