@@ -14,6 +14,19 @@ name: sec4-fig:displ-strain
 位移和应变关系示意图
 ```
 
+$$
+\begin{equation}
+\begin{aligned}
+u(P)&=u(x_{P},y_{P}),\\
+u(A)&=u(x_{A},y_{A})=u(x_{P}+\mathrm{d}x,y_{P}) \approx u(x_{P},y_{P}) + \frac{\partial u}{\partial x}(x_P,y_P)\cdot\mathrm{d}x,\\
+u(B)&=u(x_{B},y_{B})=u(x_{P},y_{P}+\mathrm{d}y) \approx u(x_{P},y_{P}) + \frac{\partial u}{\partial y}(x_P,y_P)\cdot\mathrm{d}y,\\
+v(P)&=v(x_{P},y_{P}),\\
+v(A)&=v(x_{A},y_{A})=v(x_{P}+\mathrm{d}x,y_{P}) \approx v(x_{P},y_{P}) + \frac{\partial v}{\partial x}(x_P,y_P)\cdot\mathrm{d}x,\\
+v(B)&=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \frac{\partial v}{\partial y}(x_P,y_P)\cdot\mathrm{d}y.\\
+\end{aligned}
+\end{equation}
+$$
+
 ```{margin}
 建立方程时，采用了**小变形**假设，因此以弹性体变形前的尺寸作为微分体的几何尺寸，简化了力学分析
 ```
@@ -78,11 +91,11 @@ $$
 \gamma_{xy} = 0,
 $$
 
-根据前两式，可得
+可得
 
 $$
 u = u_{0} - wy,\quad
-v = v_{0} - vx.
+v = v_{0} + wx.
 $$
 
 $u_{0}$ 和 $v_{0}$ 分别表示物体沿 $x$ 轴和 $y$ 轴方向的**刚体平移**，而 $w$ 则为物体绕 $z$ 轴的**刚体转动**。当只有 $w$ 不为 0 时，对于坐标内任一点 $P$，其位移分量为 $u=-wy, v = wx$，满足

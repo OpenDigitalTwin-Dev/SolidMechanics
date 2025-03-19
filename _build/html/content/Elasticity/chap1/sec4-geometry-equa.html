@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -415,6 +415,19 @@ document.write(`
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">位移和应变关系示意图</span><a class="headerlink" href="#sec4-fig-displ-strain" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+u(P)&amp;=u(x_{P},y_{P}),\\
+u(A)&amp;=u(x_{A},y_{A})=u(x_{P}+\mathrm{d}x,y_{P}) \approx u(x_{P},y_{P}) + \frac{\partial u}{\partial x}(x_P,y_P)\cdot\mathrm{d}x,\\
+u(B)&amp;=u(x_{B},y_{B})=u(x_{P},y_{P}+\mathrm{d}y) \approx u(x_{P},y_{P}) + \frac{\partial u}{\partial y}(x_P,y_P)\cdot\mathrm{d}y,\\
+v(P)&amp;=v(x_{P},y_{P}),\\
+v(A)&amp;=v(x_{A},y_{A})=v(x_{P}+\mathrm{d}x,y_{P}) \approx v(x_{P},y_{P}) + \frac{\partial v}{\partial x}(x_P,y_P)\cdot\mathrm{d}x,\\
+v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \frac{\partial v}{\partial y}(x_P,y_P)\cdot\mathrm{d}y.\\
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>建立方程时，采用了<strong>小变形</strong>假设，因此以弹性体变形前的尺寸作为微分体的几何尺寸，简化了力学分析</p>
@@ -470,11 +483,11 @@ document.write(`
 \frac{\partial v}{\partial y} = 0, \quad
 \gamma_{xy} = 0,
 \]</div>
-<p>根据前两式，可得</p>
+<p>可得</p>
 <div class="math notranslate nohighlight">
 \[
 u = u_{0} - wy,\quad
-v = v_{0} - vx.
+v = v_{0} + wx.
 \]</div>
 <p><span class="math notranslate nohighlight">\(u_{0}\)</span> 和 <span class="math notranslate nohighlight">\(v_{0}\)</span> 分别表示物体沿 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴方向的<strong>刚体平移</strong>，而 <span class="math notranslate nohighlight">\(w\)</span> 则为物体绕 <span class="math notranslate nohighlight">\(z\)</span> 轴的<strong>刚体转动</strong>。当只有 <span class="math notranslate nohighlight">\(w\)</span> 不为 0 时，对于坐标内任一点 <span class="math notranslate nohighlight">\(P\)</span>，其位移分量为 <span class="math notranslate nohighlight">\(u=-wy, v = wx\)</span>，满足</p>
 <div class="math notranslate nohighlight">

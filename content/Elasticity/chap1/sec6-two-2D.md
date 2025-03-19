@@ -53,7 +53,7 @@ $$
 \end{equation}
 $$ (sec6-eq:2D-stress-physical)
 
-此外，$\epsilon_z$ 可通过 $\epsilon_z=-\frac{\mu}{E} (\sigma_x + \sigma_y)$ 求得
+$\epsilon_z$ 可通过 $\epsilon_z=-\frac{\mu}{E} (\sigma_x + \sigma_y)$ 求得
 
 ```{note}
 物质的宏观形变源于微观分子结构及分子间作用力的耦合效应。因此，即使某方向无外力作用，内部应力传递仍可能导致该方向形变。
