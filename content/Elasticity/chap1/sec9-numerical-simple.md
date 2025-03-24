@@ -140,53 +140,54 @@ $$ (sec9-eq:fdm-3)
 
 方程 {eq}`sec9-eq:example` 被称为问题的**强形式**，因为它要求解函数 $u$ 在定义域内严格满足给定的微分方程及其边界条件。这意味着 $u$ 必须具备足够的**光滑性**，以确保微分运算和边界条件的精确成立
 
-在实际问题中，材料的不连续性、载荷的突变或几何的奇异点通常会导致**强解**（经典解）不存在或无法满足光滑性要求。**弱形式**通过将微分方程转化为**积分形式**，降低了解函数的光滑性要求，从而能够在**更广泛的函数空间**（如有限元函数空间）中寻求近似解，更有效地**逼近**问题的真实解
+在实际问题中，材料的不连续性、载荷的突变或几何的奇异点通常会导致**强解**（经典解）不存在或无法满足光滑性要求。通过将微分方程转化为**积分形式**，并通过**分部积分**降低解函数的光滑性要求，能够在**更广泛的函数空间**（如有限元函数空间）中寻求近似解，从而更有效地**逼近**问题的真实解
 
-首先，选择试验函数 $v\in \mathcal{V}$，$\mathcal{V}$ 是某个选定的函数空间，于是方程 {eq}`sec9-eq:example` 的弱形式写为
+首先，选择试验函数 $v\in \mathcal{V}$，$\mathcal{V}$ 是某个选定的函数空间，于是方程 {eq}`sec9-eq:example` 写为
 
 $$
 \int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f\right)\cdot v \, \mathrm{d}x = 0,\quad \forall v\in \mathcal{V}.
 $$ (sec9-eq:fem-1)
 
-弱形式 {eq}`sec9-eq:fem-1` 可以理解为 $\frac{\partial^2 u}{\partial x^2} + f$ 在某个函数空间 $\mathcal{V}$ 的**投影**为 0。可以预见，函数空间 $\mathcal{V}$ 越大，就越接近于全空间，弱形式的解也就越接近于真解
+方程 {eq}`sec9-eq:fem-1` 可以理解为 $\frac{\partial^2 u}{\partial x^2} + f$ 在某个函数空间 $\mathcal{V}$ 的**投影**为 0。可以预见，函数空间 $\mathcal{V}$ 越大，就越接近于全空间，方程 {eq}`sec9-eq:fem-1`的解也就越接近于真解
 
-例如，如果 $\mathcal{V}$ 选为全函数空间，则此时弱形式 {eq}`sec9-eq:fem-1` 与强形式 {eq}`sec9-eq:example` 是等价的，因为此时可以选择
+例如，如果 $\mathcal{V}$ 选为全函数空间，则此时方程 {eq}`sec9-eq:fem-1` 与强形式 {eq}`sec9-eq:example` 是等价的，因为此时可以选择
 
 $$
 v = \frac{\partial^2 u}{\partial x^2} + f,
 $$
 
-将其代入到弱形式中，由连续性要求得到 $\frac{\partial^2 u}{\partial x^2} + f \equiv 0, x\in [0,L]$。
+将其代入到方程 {eq}`sec9-eq:fem-1` 中，由连续性要求得到 $\frac{\partial^2 u}{\partial x^2} + f \equiv 0, x\in [0,L]$。
 
 接下来，需要选定解函数 $u$ 的逼近空间 $\mathcal{U}$，如果
 - $\mathcal{U} = \mathcal{V}$：称为**协调有限元**
 - $\mathcal{U} \neq \mathcal{V}$：称为**非协调有限元**
 
-此时弱形式 {eq}`sec9-eq:fem-1` 为，求 $u\in \mathcal{U}$ 满足
+此时方程变为，求 $u\in \mathcal{U}$ 满足
 
 $$
 \int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f\right)\cdot v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{V}.
 $$ (sec9-eq:fem-2)
 
-使用分部积分，得到弱形式
+使用分部积分，得到**弱形式**
 
 ```{margin}
-通过分部积分公式，降低了对 $u$ 的光滑性要求
+通过分部积分公式，降低了对解函数 $u$ 的光滑性要求，自然引入边界条件，还降低了（高阶导数）对分片多项式次数的要求（通过导数分配机制，构建解与测试函数空间的协同关系）
 ```
 
 $$
 \left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\, v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{V}.
 $$ (sec9-eq:fem-3)
 
+
 ```{note}
 在有限元方法中，试验函数空间 $\mathcal{V}$ 和解空间 $\mathcal{U}$ 的选择至关重要。它不仅需要具备良好的逼近能力，以确保解的精度，还应具有易于数值计算的特性，从而提高计算效率
 ```
 
+### 基函数
+
 ```{margin}
 下标 $h$ 表示与网格相关
 ```
-
-### 基函数
 
 弱形式 {eq}`sec9-eq:fem-3` 仍然是一个连续问题。为了求解该问题，需要对其进行离散化。因此需要在 $\mathcal{V}$ 和 $\mathcal{U}$ 中选取有限维的函数子空间 $\mathcal{V}_{h}，\mathcal{U}_{h}$，这些空间通常由**分片多项式空间**构成
 
@@ -253,7 +254,13 @@ $$
 \left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
 $$ (sec9-eq:fem-4)
 
-由于算子的线性性，上述问题等价于求解 $u\in\mathcal{P}^{1}_{h}$ 满足
+```{margin}
+算子 $\mathcal{L}(x)$ 是线性的，即
+
+$\sum_{i=1}^{n}c_{i}\mathcal{L}(v_{i}) = \mathcal{L}(\sum_{i=1}^{n}c_{i}v_{i})$
+```
+
+由于算子对 $v$ 是线性的，上述问题等价于求解 $u\in\mathcal{P}^{1}_{h}$ 满足
 
 $$
 \left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.

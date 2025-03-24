@@ -554,33 +554,33 @@ u_1 \\ u_2 \\ u_3 \\ u_4
 <p>光滑性：函数的高阶导数存在且连续。例如，若 <span class="math notranslate nohighlight">\(f\)</span> 连续，则要求 <span class="math notranslate nohighlight">\(u\)</span> 的二阶导数连续</p>
 </aside>
 <p>方程 <a class="reference internal" href="#equation-sec9-eq-example">(11.1)</a> 被称为问题的<strong>强形式</strong>，因为它要求解函数 <span class="math notranslate nohighlight">\(u\)</span> 在定义域内严格满足给定的微分方程及其边界条件。这意味着 <span class="math notranslate nohighlight">\(u\)</span> 必须具备足够的<strong>光滑性</strong>，以确保微分运算和边界条件的精确成立</p>
-<p>在实际问题中，材料的不连续性、载荷的突变或几何的奇异点通常会导致<strong>强解</strong>（经典解）不存在或无法满足光滑性要求。<strong>弱形式</strong>通过将微分方程转化为<strong>积分形式</strong>，降低了解函数的光滑性要求，从而能够在<strong>更广泛的函数空间</strong>（如有限元函数空间）中寻求近似解，更有效地<strong>逼近</strong>问题的真实解</p>
-<p>首先，选择试验函数 <span class="math notranslate nohighlight">\(v\in \mathcal{V}\)</span>，<span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 是某个选定的函数空间，于是方程 <a class="reference internal" href="#equation-sec9-eq-example">(11.1)</a> 的弱形式写为</p>
+<p>在实际问题中，材料的不连续性、载荷的突变或几何的奇异点通常会导致<strong>强解</strong>（经典解）不存在或无法满足光滑性要求。通过将微分方程转化为<strong>积分形式</strong>，并通过<strong>分部积分</strong>降低解函数的光滑性要求，能够在<strong>更广泛的函数空间</strong>（如有限元函数空间）中寻求近似解，从而更有效地<strong>逼近</strong>问题的真实解</p>
+<p>首先，选择试验函数 <span class="math notranslate nohighlight">\(v\in \mathcal{V}\)</span>，<span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 是某个选定的函数空间，于是方程 <a class="reference internal" href="#equation-sec9-eq-example">(11.1)</a> 写为</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-1">
 <span class="eqno">(11.6)<a class="headerlink" href="#equation-sec9-eq-fem-1" title="Link to this equation">#</a></span>\[
 \int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f\right)\cdot v \, \mathrm{d}x = 0,\quad \forall v\in \mathcal{V}.
 \]</div>
-<p>弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a> 可以理解为 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f\)</span> 在某个函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 的<strong>投影</strong>为 0。可以预见，函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 越大，就越接近于全空间，弱形式的解也就越接近于真解</p>
-<p>例如，如果 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 选为全函数空间，则此时弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a> 与强形式 <a class="reference internal" href="#equation-sec9-eq-example">(11.1)</a> 是等价的，因为此时可以选择</p>
+<p>方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a> 可以理解为 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f\)</span> 在某个函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 的<strong>投影</strong>为 0。可以预见，函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 越大，就越接近于全空间，方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a>的解也就越接近于真解</p>
+<p>例如，如果 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 选为全函数空间，则此时方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a> 与强形式 <a class="reference internal" href="#equation-sec9-eq-example">(11.1)</a> 是等价的，因为此时可以选择</p>
 <div class="math notranslate nohighlight">
 \[
 v = \frac{\partial^2 u}{\partial x^2} + f,
 \]</div>
-<p>将其代入到弱形式中，由连续性要求得到 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f \equiv 0, x\in [0,L]\)</span>。</p>
+<p>将其代入到方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a> 中，由连续性要求得到 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f \equiv 0, x\in [0,L]\)</span>。</p>
 <p>接下来，需要选定解函数 <span class="math notranslate nohighlight">\(u\)</span> 的逼近空间 <span class="math notranslate nohighlight">\(\mathcal{U}\)</span>，如果</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{U} = \mathcal{V}\)</span>：称为<strong>协调有限元</strong></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathcal{U} \neq \mathcal{V}\)</span>：称为<strong>非协调有限元</strong></p></li>
 </ul>
-<p>此时弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-1">(11.6)</a> 为，求 <span class="math notranslate nohighlight">\(u\in \mathcal{U}\)</span> 满足</p>
+<p>此时方程变为，求 <span class="math notranslate nohighlight">\(u\in \mathcal{U}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-2">
 <span class="eqno">(11.7)<a class="headerlink" href="#equation-sec9-eq-fem-2" title="Link to this equation">#</a></span>\[
 \int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f\right)\cdot v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{V}.
 \]</div>
-<p>使用分部积分，得到弱形式</p>
+<p>使用分部积分，得到<strong>弱形式</strong></p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>通过分部积分公式，降低了对 <span class="math notranslate nohighlight">\(u\)</span> 的光滑性要求</p>
+<p>通过分部积分公式，降低了对解函数 <span class="math notranslate nohighlight">\(u\)</span> 的光滑性要求，自然引入边界条件，还降低了（高阶导数）对分片多项式次数的要求（通过导数分配机制，构建解与测试函数空间的协同关系）</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-3">
 <span class="eqno">(11.8)<a class="headerlink" href="#equation-sec9-eq-fem-3" title="Link to this equation">#</a></span>\[
@@ -590,13 +590,13 @@ v = \frac{\partial^2 u}{\partial x^2} + f,
 <p class="admonition-title">Note</p>
 <p>在有限元方法中，试验函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 和解空间 <span class="math notranslate nohighlight">\(\mathcal{U}\)</span> 的选择至关重要。它不仅需要具备良好的逼近能力，以确保解的精度，还应具有易于数值计算的特性，从而提高计算效率</p>
 </div>
+</section>
+<section id="id6">
+<h3><span class="section-number">11.3.2. </span>基函数<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>下标 <span class="math notranslate nohighlight">\(h\)</span> 表示与网格相关</p>
 </aside>
-</section>
-<section id="id6">
-<h3><span class="section-number">11.3.2. </span>基函数<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-3">(11.8)</a> 仍然是一个连续问题。为了求解该问题，需要对其进行离散化。因此需要在 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal{U}\)</span> 中选取有限维的函数子空间 <span class="math notranslate nohighlight">\(\mathcal{V}_{h}，\mathcal{U}_{h}\)</span>，这些空间通常由<strong>分片多项式空间</strong>构成</p>
 <p>在有限元方法中，分片多项式指的是在每个单元上均由多项式表示的函数，通常要求在单元交界处满足一定的连续性条件</p>
 <p>下图给出了一个线性分片多项式空间 <span class="math notranslate nohighlight">\(\mathcal{P}^{1}_h\)</span> 的示例，其中，<span class="math notranslate nohighlight">\(g\in\mathcal{P}^{1}_h\)</span> 在每个网格单元上均为一次多项式</p>
@@ -653,7 +653,12 @@ g = \sum_{i=0}^{5}c_{i}\phi_{i},
 <span class="eqno">(11.9)<a class="headerlink" href="#equation-sec9-eq-fem-4" title="Link to this equation">#</a></span>\[
 \left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
 \]</div>
-<p>由于算子的线性性，上述问题等价于求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>算子 <span class="math notranslate nohighlight">\(\mathcal{L}(x)\)</span> 是线性的，即</p>
+<p><span class="math notranslate nohighlight">\(\sum_{i=1}^{n}c_{i}\mathcal{L}(v_{i}) = \mathcal{L}(\sum_{i=1}^{n}c_{i}v_{i})\)</span></p>
+</aside>
+<p>由于算子对 <span class="math notranslate nohighlight">\(v\)</span> 是线性的，上述问题等价于求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-5">
 <span class="eqno">(11.10)<a class="headerlink" href="#equation-sec9-eq-fem-5" title="Link to this equation">#</a></span>\[
 \left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.

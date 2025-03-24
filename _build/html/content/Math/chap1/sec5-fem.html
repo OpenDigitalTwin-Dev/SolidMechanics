@@ -400,8 +400,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.1. 单元坐标映射</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.5.1.1. 形函数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.1. 形函数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.5.1.1. 三角形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.5.1.1.1. 线性形函数</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -427,14 +430,14 @@ document.write(`
 \[
 \int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x,\, \int_{0}^{L}f\phi_{j}\,\mathrm{d}x,\, \phi_{j}\frac{\partial \phi_{i}}{\partial x}
 \]</div>
-<p>这些计算最终体现为单元上的形函数及其导数的数值计算</p>
+<p>这些计算最终体现为形函数及其导数的相关数值计算</p>
 <div class="math notranslate nohighlight">
 \[
 \int_{T}\frac{\partial N_{1}}{\partial x}\frac{\partial N_{2}}{\partial x}\,\mathrm{d}x,\, \int_{T}fN_{1}\,\mathrm{d}x,\, N_{1}\frac{\partial N_{2}}{\partial x}
 \]</div>
 <section id="id2">
-<h2><span class="section-number">1.5.1. </span>单元坐标映射<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在有限元方法中，为了简化计算，通常将复杂的物理单元（实际几何形状上的单元）映射到一个标准的<strong>参考单元</strong>上进行处理。参考单元是一个简单的几何形状，例如二维问题中的标准三角形或标准矩形，三维问题中的标准四面体或立方体。通过这种映射，可以在参考单元上定义形函数和积分规则，从而统一处理不同形状的单元</p>
+<h2><span class="section-number">1.5.1. </span>形函数<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在有限元方法中，为了简化计算，通常将复杂的<strong>物理单元</strong>（实际几何形状上的单元）映射到一个标准的<strong>参考单元</strong>上进行处理。参考单元是一个简单的几何形状，例如二维问题中的标准三角形或标准矩形，三维问题中的标准四面体或立方体。通过这种映射，可以在参考单元上定义形函数和积分规则，从而统一处理不同形状的单元</p>
 <figure class="align-default" id="sec5-fig-element-switch">
 <a class="reference internal image-reference" href="../../../_images/std-element.png"><img alt="../../../_images/std-element.png" src="../../../_images/std-element.png" style="width: 400px;" />
 </a>
@@ -442,9 +445,22 @@ document.write(`
 <p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">从标准单元映射到一般单元</span><a class="headerlink" href="#sec5-fig-element-switch" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>了</p>
+<p><strong>形函数</strong>是定义在参考单元上的<strong>多项式插值函数</strong>，其主要作用包括</p>
+<ul class="simple">
+<li><p>实现参考单元到物理单元的映射</p></li>
+<li><p>对单元内部的场变量进行插值，例如对位移场插值 <span class="math notranslate nohighlight">\(u(x.y)=\sum u_{i}N_{i}(x,y)\)</span></p></li>
+</ul>
+<p>形函数需要满足特定的数学性质，以确保插值的正确性和数值计算的稳定性</p>
+<ul class="simple">
+<li><p>插值性：<span class="math notranslate nohighlight">\(N_{i}(\xi_{j}, \eta_{j}) = \delta_{ij}\)</span></p></li>
+<li><p>单位分解性：<span class="math notranslate nohighlight">\(\sum_{i=1}^{n}N_{i}(\xi, \eta) = 1\)</span></p></li>
+<li><p>连续性：在单元边界上满足 <span class="math notranslate nohighlight">\(C^{0}\)</span> 连续</p></li>
+</ul>
 <section id="id3">
-<h3><span class="section-number">1.5.1.1. </span>形函数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.1.1. </span>三角形单元<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h4><span class="section-number">1.5.1.1.1. </span>线性形函数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+</section>
 </section>
 </section>
 </section>
@@ -513,8 +529,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.1. 单元坐标映射</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.5.1.1. 形函数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.1. 形函数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.5.1.1. 三角形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.5.1.1.1. 线性形函数</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

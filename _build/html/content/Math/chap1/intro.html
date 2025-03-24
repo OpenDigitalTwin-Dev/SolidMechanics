@@ -409,11 +409,6 @@ document.write(`
 \[
 \int_a^b f(x) \, \mathrm{d}x \approx \sum_{i=0}^{n-1} (\text{局部近似面积}).
 \]</div>
-<p>在每个小区间内，通过简单函数（如直线或抛物线）对被积函数进行逼近，可以将积分的计算转化为对被积函数在特定采样点处函数值的加权求和</p>
-<div class="math notranslate nohighlight">
-\[
-\int_a^b f(x) \, \mathrm{d}x \approx \sum_{i=0}^{n-1} w_{i}f(x_{i}).
-\]</div>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
@@ -688,6 +683,11 @@ document.write(`
 </div>
 </details>
 </div>
+<p>在每个小区间内，通过简单函数（如直线或抛物线）对被积函数进行近似，可以将积分的计算转化为对被积函数在特定采样点处函数值的加权求和</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x) \, \mathrm{d}x \approx \sum_{i=0}^{n-1} w_{i}f(x_{i}).
+\]</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
