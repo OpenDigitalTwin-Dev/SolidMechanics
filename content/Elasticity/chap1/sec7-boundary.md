@@ -1,10 +1,37 @@
 # 边界条件
 
-边界条件用于描述物体在外力、位移或其他约束作用下的边界行为，是决定物体受力后变形和应力分布的关键因素。通常，边界条件分为**位移边界条件**，**应力边界条件**和**混合边界条件**
+边界条件用于描述物体在外力、位移或其他约束作用下的边界行为，是决定物体受力后变形和应力分布的关键因素。通常，边界条件分为**应力边界条件**，**位移边界条件**和**混合边界条件**。记边界为 $\mathcal{B}$
 
-## 圣维南原理
+- 应力边界条件：
+
+  $$
+  \begin{equation}
+  \boldsymbol{\sigma}\cdot\mathbf{n}= \mathbf{f}_{b},\quad \text{on}\,\, \mathcal{B}.
+  \end{equation}
+  $$
+
+- 位移边界条件：
+
+  $$
+  \mathbf{u} = \mathbf{u}_{b},\quad \text{on}\,\, \mathcal{B}.
+  $$
+
+- 混合边界条件：
+
+  $$
+  \begin{equation}
+  \begin{aligned}
+    \boldsymbol{\sigma}\cdot\mathbf{n} &= \mathbf{f}_{b},\quad &\text{on}\,\, \mathcal{B}_{1},\\
+    \mathbf{u} &= \mathbf{u}_{b},\quad &\text{on}\,\, \mathcal{B}_{2}.
+  \end{aligned}
+  \end{equation}
+  $$
+
+
 
 在求解弹性力学问题时，应力分量、形变分量和位移分量等不仅需要满足区域内的三套基本方程，还必须符合边界上的边界条件。因此，弹性力学问题属于数学物理方程中的**边值问题**
+
+## 圣维南原理
 
 严格满足边界条件通常会遇到较大的困难，而**圣维南原理**则为简化局部边界上的应力边界条件提供了极大的便利
 
@@ -15,6 +42,9 @@
 ```
 
 **圣维南原理**：**静力等效**的力分布仅影响局部区域的应力状态，而对整体结构的远场应力分布几乎没有影响
+
+
+圣维南原理表明：在距离载荷作用区域足够远的地方，载荷的具体分布方式对结构的应力和变形影响可以忽略不计，只需关注载荷的合力及合力矩的作用效果
 
 ```{margin}
 $A$ 为截面面积
@@ -52,7 +82,7 @@ name: sec7-fig:SV-principle
 假设在局部边界 $\Gamma$ 上应力需满足
 
 $$
-\boldsymbol{\sigma}|_\Gamma = \mathbf{f}
+(\boldsymbol{\sigma}\cdot \mathbf{n})|_\Gamma = \mathbf{f}
 $$
 
 这实际上是一个处处相等的函数方程。然而，这种方程不仅难以求解，而且在实际问题中往往难以严格满足。通过应用圣维南原理，可以将上述条件用**静力等效条件**替代，即
@@ -66,8 +96,8 @@ $\mathbf{r}$ 为 $\Gamma$ 上某点到参考点的位置向量
 $$
 \begin{equation}
 \begin{aligned}
-&\int_\Gamma \boldsymbol{\sigma}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\, \mathrm{d}\Gamma = \mathbf{F},\\
-&\int_\Gamma \boldsymbol{\sigma} \times \mathbf{r}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\times \mathbf{r}\, \mathrm{d}\Gamma = \mathbf{M}.
+&\int_\Gamma \boldsymbol{\sigma}\cdot \mathbf{n}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\, \mathrm{d}\Gamma = \mathbf{F},\\
+&\int_\Gamma (\boldsymbol{\sigma}\cdot \mathbf{n}) \times \mathbf{r}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\times \mathbf{r}\, \mathrm{d}\Gamma = \mathbf{M}.
 \end{aligned}
 \end{equation}
 $$

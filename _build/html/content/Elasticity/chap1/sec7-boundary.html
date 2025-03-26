@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -415,10 +415,37 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">9. </span>边界条件<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>边界条件用于描述物体在外力、位移或其他约束作用下的边界行为，是决定物体受力后变形和应力分布的关键因素。通常，边界条件分为<strong>位移边界条件</strong>，<strong>应力边界条件</strong>和<strong>混合边界条件</strong></p>
+<p>边界条件用于描述物体在外力、位移或其他约束作用下的边界行为，是决定物体受力后变形和应力分布的关键因素。通常，边界条件分为<strong>应力边界条件</strong>，<strong>位移边界条件</strong>和<strong>混合边界条件</strong>。记边界为 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span></p>
+<ul>
+<li><p>应力边界条件：</p>
+<div class="math notranslate nohighlight">
+\[
+  \begin{equation}
+  \boldsymbol{\sigma}\cdot\mathbf{n}= \mathbf{f}_{b},\quad \text{on}\,\, \mathcal{B}.
+  \end{equation}
+  \]</div>
+</li>
+<li><p>位移边界条件：</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbf{u} = \mathbf{u}_{b},\quad \text{on}\,\, \mathcal{B}.
+  \]</div>
+</li>
+<li><p>混合边界条件：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{equation}
+  \begin{aligned}
+    \boldsymbol{\sigma}\cdot\mathbf{n} &amp;= \mathbf{f}_{b},\quad &amp;\text{on}\,\, \mathcal{B}_{1},\\
+    \mathbf{u} &amp;= \mathbf{u}_{b},\quad &amp;\text{on}\,\, \mathcal{B}_{2}.
+  \end{aligned}
+  \end{equation}
+  \end{split}\]</div>
+</li>
+</ul>
+<p>在求解弹性力学问题时，应力分量、形变分量和位移分量等不仅需要满足区域内的三套基本方程，还必须符合边界上的边界条件。因此，弹性力学问题属于数学物理方程中的<strong>边值问题</strong></p>
 <section id="id2">
 <h2><span class="section-number">9.1. </span>圣维南原理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在求解弹性力学问题时，应力分量、形变分量和位移分量等不仅需要满足区域内的三套基本方程，还必须符合边界上的边界条件。因此，弹性力学问题属于数学物理方程中的<strong>边值问题</strong></p>
 <p>严格满足边界条件通常会遇到较大的困难，而<strong>圣维南原理</strong>则为简化局部边界上的应力边界条件提供了极大的便利</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -426,6 +453,7 @@ document.write(`
 <p>远场：与应力分量的衰减有关，反映出应力的局部性</p>
 </aside>
 <p><strong>圣维南原理</strong>：<strong>静力等效</strong>的力分布仅影响局部区域的应力状态，而对整体结构的远场应力分布几乎没有影响</p>
+<p>圣维南原理表明：在距离载荷作用区域足够远的地方，载荷的具体分布方式对结构的应力和变形影响可以忽略不计，只需关注载荷的合力及合力矩的作用效果</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\(A\)</span> 为截面面积</p>
@@ -461,7 +489,7 @@ document.write(`
 <p>假设在局部边界 <span class="math notranslate nohighlight">\(\Gamma\)</span> 上应力需满足</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\sigma}|_\Gamma = \mathbf{f}
+(\boldsymbol{\sigma}\cdot \mathbf{n})|_\Gamma = \mathbf{f}
 \]</div>
 <p>这实际上是一个处处相等的函数方程。然而，这种方程不仅难以求解，而且在实际问题中往往难以严格满足。通过应用圣维南原理，可以将上述条件用<strong>静力等效条件</strong>替代，即</p>
 <aside class="margin sidebar">
@@ -473,8 +501,8 @@ document.write(`
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\int_\Gamma \boldsymbol{\sigma}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\, \mathrm{d}\Gamma = \mathbf{F},\\
-&amp;\int_\Gamma \boldsymbol{\sigma} \times \mathbf{r}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\times \mathbf{r}\, \mathrm{d}\Gamma = \mathbf{M}.
+&amp;\int_\Gamma \boldsymbol{\sigma}\cdot \mathbf{n}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\, \mathrm{d}\Gamma = \mathbf{F},\\
+&amp;\int_\Gamma (\boldsymbol{\sigma}\cdot \mathbf{n}) \times \mathbf{r}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\times \mathbf{r}\, \mathrm{d}\Gamma = \mathbf{M}.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
