@@ -14,7 +14,10 @@ parts:
         - file: content/Math/chap1/sec2-simpson
         - file: content/Math/chap1/sec3-algebraic-prec
         - file: content/Math/chap1/sec4-gaussian
-        - file: content/Math/chap1/sec5-fem
+      - file: content/Math/chap2/intro
+        sections:
+        - file: content/Math/chap2/sec1-shapefunction
+        - file: content/Math/chap2/sec2-isoparametric
   - caption: 弹性力学
     numbered: True
     chapters:
