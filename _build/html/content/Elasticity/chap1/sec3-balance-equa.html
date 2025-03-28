@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -194,6 +194,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -496,6 +497,12 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 \frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
 \end{cases}
 \end{split}\]</div>
+<p>可以写为</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \mathbf{0},
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量（见后文），<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 是体积力向量</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">6.3. </span>任一点的应力状态<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>

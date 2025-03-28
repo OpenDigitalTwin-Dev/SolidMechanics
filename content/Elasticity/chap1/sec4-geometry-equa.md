@@ -55,6 +55,10 @@ $$
 \beta = \frac{\partial u}{\partial y},
 $$
 
+```{margin}
+$\gamma_{xy}$ 被称为工程剪切应变
+```
+
 于是切应变 $\gamma_{xy}$ 为
 
 $$
@@ -72,6 +76,30 @@ $$
 \end{aligned}
 \end{equation}
 $$ (sec4-eq:geometry)
+
+可以写为
+
+$$
+\boldsymbol{\epsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
+$$
+
+其中
+
+```{margin}
+$\epsilon_{xy} = \frac{\gamma_{xy}}{2}$ 被称为张量剪切应变
+```
+
+$$
+\begin{equation}
+\boldsymbol{\epsilon}=
+\begin{bmatrix}
+\epsilon_{x}  &  \epsilon_{xy} \\
+\epsilon_{yx}  &  \epsilon_{y}
+\end{bmatrix}
+\end{equation}
+$$
+
+是应变张量，$\mathbf{u} = [u\,v]^{T}$ 是位移向量
 
 ```{admonition} 刚体运动
 :class: tip, dropdown

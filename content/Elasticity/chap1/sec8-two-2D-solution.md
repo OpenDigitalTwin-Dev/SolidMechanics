@@ -12,9 +12,9 @@
 $$
 \begin{equation}
 \begin{aligned}
-\sigma_x &= \frac{E}{1 - \mu^2} \left( \varepsilon_x + \mu \varepsilon_y \right), \\
-\sigma_y &= \frac{E}{1 - \mu^2} \left( \varepsilon_y + \mu \varepsilon_x \right), \\
-\tau_{xy} &= \frac{E}{2(1 + \mu)} \gamma_{xy},
+\sigma_x &= \frac{E}{1 - \nu^2} \left( \varepsilon_x + \nu \varepsilon_y \right), \\
+\sigma_y &= \frac{E}{1 - \nu^2} \left( \varepsilon_y + \nu \varepsilon_x \right), \\
+\tau_{xy} &= \frac{E}{2(1 + \nu)} \gamma_{xy},
 \end{aligned}
 \end{equation}
 $$
@@ -24,9 +24,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\sigma_x &= \frac{E}{1 - \mu^2} \left( \frac{\partial u}{\partial x} + \mu \frac{\partial v}{\partial y} \right), \\
-\sigma_y &= \frac{E}{1 - \mu^2} \left( \frac{\partial v}{\partial y} + \mu \frac{\partial u}{\partial x} \right), \\
-\tau_{xy} &= \frac{E}{2(1 + \mu)} \left( \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y} \right),
+\sigma_x &= \frac{E}{1 - \nu^2} \left( \frac{\partial u}{\partial x} + \nu \frac{\partial v}{\partial y} \right), \\
+\sigma_y &= \frac{E}{1 - \nu^2} \left( \frac{\partial v}{\partial y} + \nu \frac{\partial u}{\partial x} \right), \\
+\tau_{xy} &= \frac{E}{2(1 + \nu)} \left( \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y} \right),
 \end{aligned}
 \end{equation}
 $$ (sec8-eq:stress-displ)
@@ -34,28 +34,28 @@ $$ (sec8-eq:stress-displ)
 将上式代入到平衡方程 {eq}`sec3-eq:balance`，整理得到
 
 ```{margin}
-将 $E$ 和 $\mu$ 分别替换成 $\frac{E}{1-\mu^2}$ 和 $\frac{\mu}{1-\mu}$ 就能够得到平面应变问题按位移求解的方程
+将 $E$ 和 $\nu$ 分别替换成 $\frac{E}{1-\nu^2}$ 和 $\frac{\nu}{1-\nu}$ 就能够得到平面应变问题按位移求解的方程
 ```
 
 $$
 \begin{equation}
 \begin{aligned}
-\frac{E}{1 - \mu^2} \bigg(
+\frac{E}{1 - \nu^2} \bigg(
 \frac{\partial^2 u}{\partial x^2}
-+\frac{1 - \mu}{2} \frac{\partial^2 u}{\partial y^2}
-+\frac{1 + \mu}{2} \frac{\partial^2 v}{\partial x \partial y}
++\frac{1 - \nu}{2} \frac{\partial^2 u}{\partial y^2}
++\frac{1 + \nu}{2} \frac{\partial^2 v}{\partial x \partial y}
 \bigg) + f_x &= 0, \\
-\frac{E}{1 - \mu^2} \bigg(
+\frac{E}{1 - \nu^2} \bigg(
 \frac{\partial^2 v}{\partial y^2}
-+\frac{1 - \mu}{2} \frac{\partial^2 v}{\partial x^2}
-+\frac{1 + \mu}{2} \frac{\partial^2 u}{\partial x \partial y}
++\frac{1 - \nu}{2} \frac{\partial^2 v}{\partial x^2}
++\frac{1 + \nu}{2} \frac{\partial^2 u}{\partial x \partial y}
 \bigg) + f_y &= 0.
 \end{aligned}
 \end{equation}
 $$ (sec8-eq:solution-displ)
 
 在应变法中，应变被作为基本未知量。
-在物理方程 {eq}`sec5-eq:strain-stress-1` 中，应变与应力呈线性关系，因此可以通过应变轻松表示应力。进一步结合几何方程 {eq}`sec4-eq:geometry`，应力可以方便地用位移表示，如方程 {eq}`sec8-eq:stress-displ` 所示。这种特性使得位移法能够**灵活地适应各种边界问题的求解**，无论是位移边界条件、应力边界条件，还是二者的组合
+在本构方程 {eq}`sec5-eq:strain-stress-1` 中，应变与应力呈线性关系，因此可以通过应变轻松表示应力。进一步结合几何方程 {eq}`sec4-eq:geometry`，应力可以方便地用位移表示，如方程 {eq}`sec8-eq:stress-displ` 所示。这种特性使得位移法能够**灵活地适应各种边界问题的求解**，无论是位移边界条件、应力边界条件，还是二者的组合
 
 ## 相容方程
 
@@ -75,14 +75,14 @@ $$ (sec8-eq:compatibility)
 
 ## 应力法
 
-对于**平面应力问题**，将物理方程 {eq}`sec6-eq:2D-stress-physical` 代入到方程 {eq}`sec8-eq:compatibility` 中，得到
+对于**平面应力问题**，将本构方程 {eq}`sec6-eq:2D-stress-physical` 代入到方程 {eq}`sec8-eq:compatibility` 中，得到
 
 ```{margin}
-方程中仅保留了 $\mu$
+方程中仅保留了 $\nu$
 ```
 
 $$
-\frac{\partial^2}{\partial y^2} (\sigma_x - \mu \sigma_y) + \frac{\partial^2}{\partial x^2} (\sigma_y - \mu \sigma_x) = 2(1 + \mu) \frac{\partial^2 \tau_{xy}}{\partial x \partial y}.
+\frac{\partial^2}{\partial y^2} (\sigma_x - \nu \sigma_y) + \frac{\partial^2}{\partial x^2} (\sigma_y - \nu \sigma_x) = 2(1 + \nu) \frac{\partial^2 \tau_{xy}}{\partial x \partial y}.
 $$ (sec8-eq:stress-1)
 
 联立平衡方程 {eq}`sec3-eq:balance`，共三个方程和三个求解变量：$\sigma_{x},\sigma_{y},\tau_{xy}$
@@ -106,14 +106,14 @@ $$
 将上式代入到方程 {eq}`sec8-eq:stress-1`，得到应力表示的相容方程
 
 ```{margin}
-将 $\mu$ 替换成 $\frac{\mu}{1-\mu}$ 就能够得到平面应变问题按应力求解的方程
+将 $\nu$ 替换成 $\frac{\nu}{1-\nu}$ 就能够得到平面应变问题按应力求解的方程
 ```
 
 $$
-\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_x + \sigma_y) = - (1 + \mu) \left( \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} \right).
+\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_x + \sigma_y) = - (1 + \nu) \left( \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} \right).
 $$ (sec8-eq:solution-stress-1)
 
-在应力法中，应力作为基本未知量，通过物理方程 {eq}`sec5-eq:strain-stress-1` 表示应变，并结合几何方程 {eq}`sec4-eq:geometry` 间接表示位移；然而，几何方程是一个微分方程组，求解过程较为复杂，这使得通过应力表示位移变得困难。因此，应力法通常仅适用于**边界条件全部为应力边界条件**的问题
+在应力法中，应力作为基本未知量，通过本构方程 {eq}`sec5-eq:strain-stress-1` 表示应变，并结合几何方程 {eq}`sec4-eq:geometry` 间接表示位移；然而，几何方程是一个微分方程组，求解过程较为复杂，这使得通过应力表示位移变得困难。因此，应力法通常仅适用于**边界条件全部为应力边界条件**的问题
 
 ### 常体积力的情况
 
@@ -133,7 +133,7 @@ $$
 \end{equation}
 $$ (sec8-eq:solution-stress-2)
 
-方程中不包含任何弹性体的材料参数，如 $E$、$G$、$\mu$
+方程中不包含任何弹性体的材料参数，如 $E$、$G$、$\nu$
 
 ```{margin}
 针对平面应力问题或平面应变问题

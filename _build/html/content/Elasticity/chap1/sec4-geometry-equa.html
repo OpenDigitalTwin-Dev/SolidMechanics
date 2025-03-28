@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/sec4-geometry-equa';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="8. 物理方程" href="sec5-physical-equa.html" />
+    <link rel="next" title="8. 本构方程" href="sec5-physical-equa.html" />
     <link rel="prev" title="6. 平衡方程" href="sec3-balance-equa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,6 +194,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -204,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">5. 弹性力学的基本假设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">6. 平衡方程</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">8. 物理方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">8. 本构方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">9. 两类平面问题</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">10. 边界条件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">11. 位移法和应力法</a></li>
@@ -456,6 +457,10 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 \[
 \beta = \frac{\partial u}{\partial y},
 \]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\gamma_{xy}\)</span> 被称为工程剪切应变</p>
+</aside>
 <p>于是切应变 <span class="math notranslate nohighlight">\(\gamma_{xy}\)</span> 为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -472,6 +477,27 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
+<p>可以写为</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\epsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
+\]</div>
+<p>其中</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\epsilon_{xy} = \frac{\gamma_{xy}}{2}\)</span> 被称为张量剪切应变</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\boldsymbol{\epsilon}=
+\begin{bmatrix}
+\epsilon_{x}  &amp;  \epsilon_{xy} \\
+\epsilon_{yx}  &amp;  \epsilon_{y}
+\end{bmatrix}
+\end{equation}
+\end{split}\]</div>
+<p>是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u} = [u\,v]^{T}\)</span> 是位移向量</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">刚体运动</p>
 <p>当位移分量 <span class="math notranslate nohighlight">\(u,v\)</span> 完全确定时，应变分量 <span class="math notranslate nohighlight">\(\epsilon_x, \epsilon_y, \gamma_{xy}\)</span> 也完全确定。反之，应变分量完全确定时，位移分量不能完全确定。
@@ -555,7 +581,7 @@ x \\ y
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>物理方程</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>本构方程</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -194,6 +194,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -204,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">5. 弹性力学的基本假设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">6. 平衡方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">7. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">8. 物理方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">8. 本构方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">9. 两类平面问题</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">10. 边界条件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">11. 位移法和应力法</a></li>
@@ -421,7 +422,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">4. </span>应力 应变 位移<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-应力、应变和位移是弹性力学中的基本物理量，它们共同揭示了材料在外力作用下的力学行为。应力描述了材料内部的力分布状态，应变反映了材料的变形程度，而位移则刻画了材料各点因受力而产生的位置变化。这三者通过平衡方程、几何方程和物理方程紧密联系，构成了弹性力学分析的核心框架
+应力、应变和位移是弹性力学中的基本物理量，它们共同揭示了材料在外力作用下的力学行为。应力描述了材料内部的力分布状态，应变反映了材料的变形程度，而位移则刻画了材料各点因受力而产生的位置变化。这三者通过平衡方程、几何方程和本构方程紧密联系，构成了弹性力学分析的核心框架
 </span>
 <p>当物体受到外部作用时，其内部的受力状态、几何形状以及空间位置可能会发生变化。这些变化分别对应于应力、应变和位移的概念：</p>
 <ol class="arabic simple">

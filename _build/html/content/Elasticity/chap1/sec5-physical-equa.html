@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. 物理方程 &#8212; 固体力学笔记</title>
+    <title>8. 本构方程 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -194,6 +194,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -204,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">5. 弹性力学的基本假设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">6. 平衡方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">7. 几何方程</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. 物理方程</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. 本构方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">9. 两类平面问题</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">10. 边界条件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">11. 位移法和应力法</a></li>
@@ -392,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>物理方程</h1>
+    <h1>本构方程</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -407,9 +408,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">8. </span>物理方程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>本构方程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-物理方程揭示了应变与应力之间的内在联系。通过实验研究与理论推导，对材料在不同载荷条件下的变形行为进行分析，建立了描述应力与应变关系的方程
+本构方程揭示了应变与应力之间的内在联系。通过实验研究与理论推导，对材料在不同载荷条件下的变形行为进行分析，建立了描述应力与应变关系的方程
 </span>
 <p>在理想弹性体中，应变与应力的分量满足<strong>胡克定律</strong></p>
 <aside class="margin sidebar">
@@ -420,10 +421,10 @@ document.write(`
 <span class="eqno">(8.1)<a class="headerlink" href="#equation-sec5-eq-strain-stress-1" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\epsilon_x = \frac{1}{E} \left[ \sigma_x - \mu (\sigma_y + \sigma_z) \right],\\
-&amp;\epsilon_y = \frac{1}{E} \left[ \sigma_y - \mu (\sigma_z + \sigma_x) \right],\\
-&amp;\epsilon_z = \frac{1}{E} \left[ \sigma_z - \mu (\sigma_x + \sigma_y) \right],\\
-&amp;\gamma_{yz} = \frac{1}{G} \tau_{yz}, \quad \gamma_{zx} = \frac{1}{G} \tau_{zx}, \quad \gamma_{xy} = \frac{1}{G} \tau_{xy}.
+&amp;\epsilon_x = \frac{1}{E} \left[ \sigma_x - \nu (\sigma_y + \sigma_z) \right],\\
+&amp;\epsilon_y = \frac{1}{E} \left[ \sigma_y - \nu (\sigma_z + \sigma_x) \right],\\
+&amp;\epsilon_z = \frac{1}{E} \left[ \sigma_z - \nu (\sigma_x + \sigma_y) \right],\\
+&amp;\gamma_{yz} = \frac{1}{G} \tau_{yz}, \quad \gamma_{zx} = \frac{1}{G} \tau_{zx}, \quad \gamma_{xy} = \frac{1}{G} \tau_{xy},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -435,13 +436,57 @@ document.write(`
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(E\)</span>（<strong>拉压弹性模量</strong>）：又称<strong>弹性模量</strong>，是衡量材料在弹性范围内抵抗拉伸或压缩形变能力的物理量，反映材料的刚性或硬度</p></li>
 <li><p><span class="math notranslate nohighlight">\(G\)</span>（<strong>切变模量</strong>）：又称<strong>剪切模量</strong>或<strong>刚度模量</strong>，是描述材料在弹性范围内抵抗剪切形变能力的物理量，反映材料在受剪切力作用下的刚性</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mu\)</span>（<strong>泊松比</strong>）：又称<strong>泊松系数</strong>，是描述材料在一个方向受拉伸或压缩时，横向形变与轴向形变之比的物理量，反映材料<strong>变形</strong>的各向异性特征</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu\)</span>（<strong>泊松比</strong>）：又称<strong>泊松系数</strong>，是描述材料在一个方向受拉伸或压缩时，横向形变与轴向形变之比的物理量，反映材料<strong>变形</strong>的各向异性特征</p></li>
 </ol>
 <p>它们之间满足</p>
 <div class="math notranslate nohighlight" id="equation-sec5-eq-strain-stress-2">
 <span class="eqno">(8.2)<a class="headerlink" href="#equation-sec5-eq-strain-stress-2" title="Link to this equation">#</a></span>\[
-G = \frac{E}{2(1+\mu)}
+G = \frac{E}{2(1+\nu)}.
 \]</div>
+<p>应力与应变的关系可以写为</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\epsilon},
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是四阶本构张量</p>
+<div class="math notranslate nohighlight">
+\[
+D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}\)</span> 是第一拉梅常数，<span class="math notranslate nohighlight">\(\mu=G=\frac{E}{2(1+\nu)}\)</span> 是第二拉梅常数，于是</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\epsilon}_{kl}
+\]</div>
+<p>也可以写为</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}=\mathbf{D}\boldsymbol{\epsilon},
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力向量，<span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> 是应变向量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是本构矩阵</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\boldsymbol{\sigma}=
+\begin{bmatrix}
+\sigma_{x}\\\sigma_{y}\\\sigma_{z}\\\tau_{xy}\\\tau_{xz}\\\tau_{yz}
+\end{bmatrix},\quad
+\boldsymbol{\epsilon}=
+\begin{bmatrix}
+\epsilon_{x}\\\epsilon_{y}\\\epsilon_{z}\\\gamma_{xy}\\\gamma_{xz}\\\gamma_{yz}
+\end{bmatrix},\quad
+\mathbf{D} =
+\begin{bmatrix}
+\lambda + 2\mu &amp; \lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
+\lambda &amp; \lambda + 2\mu &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
+\lambda &amp; \lambda &amp; \lambda + 2\mu &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu
+\end{bmatrix}.
+\end{equation}
+\end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\lambda\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 是拉梅常数</p>
 </section>
 
     <script type="text/x-thebe-config">

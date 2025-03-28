@@ -79,6 +79,14 @@ $$
 \end{cases}
 $$ (sec3-eq:balance)
 
+可以写为
+
+$$
+\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \mathbf{0},
+$$
+
+其中，$\boldsymbol{\sigma}$ 是应力张量（见后文），$\mathbf{f}$ 是体积力向量
+
 ## 任一点的应力状态
 
 在实际问题中，为了全面了解材料在外力作用下的受力状态，通常需要研究某一点在不同取向截面上的应力分布。定义在同一点不同取向截面上的应力之间是否存在内在联系？

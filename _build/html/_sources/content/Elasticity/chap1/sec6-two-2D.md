@@ -46,14 +46,14 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\epsilon_x = \frac{1}{E} ( \sigma_x - \mu \sigma_y ),\\
-&\epsilon_y = \frac{1}{E} (\sigma_y - \mu \sigma_x ),\\
-&\gamma_{xy} = \frac{2(1+\mu)}{E} \tau_{xy}.
+&\epsilon_x = \frac{1}{E} ( \sigma_x - \nu \sigma_y ),\\
+&\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x ),\\
+&\gamma_{xy} = \frac{2(1+\nu)}{E} \tau_{xy}.
 \end{aligned}
 \end{equation}
 $$ (sec6-eq:2D-stress-physical)
 
-$\epsilon_z$ 可通过 $\epsilon_z=-\frac{\mu}{E} (\sigma_x + \sigma_y)$ 求得
+$\epsilon_z$ 可通过 $\epsilon_z=-\frac{\nu}{E} (\sigma_x + \sigma_y)$ 求得
 
 ```{note}
 物质的宏观形变源于微观分子结构及分子间作用力的耦合效应。因此，即使某方向无外力作用，内部应力传递仍可能导致该方向形变。
@@ -62,7 +62,7 @@ $\epsilon_z$ 可通过 $\epsilon_z=-\frac{\mu}{E} (\sigma_x + \sigma_y)$ 求得
 在**平面应力问题**中，所求解的方程组是
 
 ```{margin}
-平衡方程+几何方程+物理方程
+平衡方程+几何方程+本构方程
 ```
 
 $$
@@ -73,9 +73,9 @@ $$
 &\epsilon_x = \frac{\partial u}{\partial x}, \\
 &\epsilon_y = \frac{\partial v}{\partial y}, \\
 &\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&\epsilon_x = \frac{1}{E} ( \sigma_x - \mu \sigma_y ),\\
-&\epsilon_y = \frac{1}{E} (\sigma_y - \mu \sigma_x ),\\
-&\gamma_{xy} = \frac{2(1+\mu)}{E} \tau_{xy},
+&\epsilon_x = \frac{1}{E} ( \sigma_x - \nu \sigma_y ),\\
+&\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x ),\\
+&\gamma_{xy} = \frac{2(1+\nu)}{E} \tau_{xy},
 \end{aligned}
 \end{equation}
 $$ (sec6-eq:2D-stress-eq)
@@ -119,14 +119,14 @@ $$
 $\sigma_{z}$ 一般不为 0，以抵消 $z$ 方向上可能产生的应变
 ```
 
-代入 $\sigma_{z}=\mu(\sigma_x + \sigma_y)$ 消去 $\sigma_{z}$，方程 {eq}`sec5-eq:strain-stress-1` 可简化为
+代入 $\sigma_{z}=\nu(\sigma_x + \sigma_y)$ 消去 $\sigma_{z}$，方程 {eq}`sec5-eq:strain-stress-1` 可简化为
 
 $$
 \begin{equation}
 \begin{aligned}
-&\varepsilon_x = \frac{1 - \mu^2}{E} \left( \sigma_x - \frac{\mu}{1 - \mu} \sigma_y \right), \\
-&\varepsilon_y = \frac{1 - \mu^2}{E} \left( \sigma_y - \frac{\mu}{1 - \mu} \sigma_x \right), \\
-&\gamma_{xy} = \frac{2(1 + \mu)}{E} \tau_{xy}.
+&\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_x - \frac{\nu}{1 - \nu} \sigma_y \right), \\
+&\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_y - \frac{\nu}{1 - \nu} \sigma_x \right), \\
+&\gamma_{xy} = \frac{2(1 + \nu)}{E} \tau_{xy}.
 \end{aligned}
 \end{equation}
 $$ (sec6-eq:2D-strain-physical)
@@ -134,7 +134,7 @@ $$ (sec6-eq:2D-strain-physical)
 在**平面应变问题**中，所求解的方程组是
 
 ```{margin}
-平衡方程+几何方程+物理方程
+平衡方程+几何方程+本构方程
 ```
 
 $$
@@ -145,9 +145,9 @@ $$
 &\epsilon_x = \frac{\partial u}{\partial x}, \\
 &\epsilon_y = \frac{\partial v}{\partial y}, \\
 &\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&\varepsilon_x = \frac{1 - \mu^2}{E} \left( \sigma_x - \frac{\mu}{1 - \mu} \sigma_y \right), \\
-&\varepsilon_y = \frac{1 - \mu^2}{E} \left( \sigma_y - \frac{\mu}{1 - \mu} \sigma_x \right), \\
-&\gamma_{xy} = \frac{2(1 + \mu)}{E} \tau_{xy},
+&\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_x - \frac{\nu}{1 - \nu} \sigma_y \right), \\
+&\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_y - \frac{\nu}{1 - \nu} \sigma_x \right), \\
+&\gamma_{xy} = \frac{2(1 + \nu)}{E} \tau_{xy},
 \end{aligned}
 \end{equation}
 $$ (sec6-eq:2D-strain-eq)
@@ -159,11 +159,11 @@ $$
 $$
 
 ```{note}
-在平面应力问题的方程 {eq}`sec6-eq:2D-stress-physical` 中，如果将 $E$ 和 $\mu$ 分别替换为
+在平面应力问题的方程 {eq}`sec6-eq:2D-stress-physical` 中，如果将 $E$ 和 $\nu$ 分别替换为
 
 $$
-\frac{E}{1-\mu^2},\quad \frac{\mu}{1-\mu}
+\frac{E}{1-\nu^2},\quad \frac{\nu}{1-\nu}
 $$
 
-就能够得到平面应变问题。如果已经得到平面应力问题的（解析）解，只需将 $E$ 和 $\mu$ 作同样的转换，就可以得到相应的平面应变问题的解
+就能够得到平面应变问题。如果已经得到平面应力问题的（解析）解，只需将 $E$ 和 $\nu$ 作同样的转换，就可以得到相应的平面应变问题的解
 ```

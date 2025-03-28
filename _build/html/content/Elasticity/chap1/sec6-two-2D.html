@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="10. 边界条件" href="sec7-boundary.html" />
-    <link rel="prev" title="8. 物理方程" href="sec5-physical-equa.html" />
+    <link rel="prev" title="8. 本构方程" href="sec5-physical-equa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,6 +194,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -204,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">5. 弹性力学的基本假设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">6. 平衡方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">7. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">8. 物理方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">8. 本构方程</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 两类平面问题</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">10. 边界条件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">11. 位移法和应力法</a></li>
@@ -459,13 +460,13 @@ document.write(`
 <span class="eqno">(9.1)<a class="headerlink" href="#equation-sec6-eq-2d-stress-physical" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \mu \sigma_y ),\\
-&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \mu \sigma_x ),\\
-&amp;\gamma_{xy} = \frac{2(1+\mu)}{E} \tau_{xy}.
+&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \nu \sigma_y ),\\
+&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x ),\\
+&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \tau_{xy}.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(\epsilon_z\)</span> 可通过 <span class="math notranslate nohighlight">\(\epsilon_z=-\frac{\mu}{E} (\sigma_x + \sigma_y)\)</span> 求得</p>
+<p><span class="math notranslate nohighlight">\(\epsilon_z\)</span> 可通过 <span class="math notranslate nohighlight">\(\epsilon_z=-\frac{\nu}{E} (\sigma_x + \sigma_y)\)</span> 求得</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>物质的宏观形变源于微观分子结构及分子间作用力的耦合效应。因此，即使某方向无外力作用，内部应力传递仍可能导致该方向形变。</p>
@@ -473,7 +474,7 @@ document.write(`
 <p>在<strong>平面应力问题</strong>中，所求解的方程组是</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>平衡方程+几何方程+物理方程</p>
+<p>平衡方程+几何方程+本构方程</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-eq">
 <span class="eqno">(9.2)<a class="headerlink" href="#equation-sec6-eq-2d-stress-eq" title="Link to this equation">#</a></span>\[\begin{split}
@@ -484,9 +485,9 @@ document.write(`
 &amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
 &amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
 &amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \mu \sigma_y ),\\
-&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \mu \sigma_x ),\\
-&amp;\gamma_{xy} = \frac{2(1+\mu)}{E} \tau_{xy},
+&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \nu \sigma_y ),\\
+&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x ),\\
+&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \tau_{xy},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -525,21 +526,21 @@ document.write(`
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\(\sigma_{z}\)</span> 一般不为 0，以抵消 <span class="math notranslate nohighlight">\(z\)</span> 方向上可能产生的应变</p>
 </aside>
-<p>代入 <span class="math notranslate nohighlight">\(\sigma_{z}=\mu(\sigma_x + \sigma_y)\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{z}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(8.1)</a> 可简化为</p>
+<p>代入 <span class="math notranslate nohighlight">\(\sigma_{z}=\nu(\sigma_x + \sigma_y)\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{z}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(8.1)</a> 可简化为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-physical">
 <span class="eqno">(9.3)<a class="headerlink" href="#equation-sec6-eq-2d-strain-physical" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\varepsilon_x = \frac{1 - \mu^2}{E} \left( \sigma_x - \frac{\mu}{1 - \mu} \sigma_y \right), \\
-&amp;\varepsilon_y = \frac{1 - \mu^2}{E} \left( \sigma_y - \frac{\mu}{1 - \mu} \sigma_x \right), \\
-&amp;\gamma_{xy} = \frac{2(1 + \mu)}{E} \tau_{xy}.
+&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_x - \frac{\nu}{1 - \nu} \sigma_y \right), \\
+&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_y - \frac{\nu}{1 - \nu} \sigma_x \right), \\
+&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \tau_{xy}.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
 <p>在<strong>平面应变问题</strong>中，所求解的方程组是</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>平衡方程+几何方程+物理方程</p>
+<p>平衡方程+几何方程+本构方程</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-eq">
 <span class="eqno">(9.4)<a class="headerlink" href="#equation-sec6-eq-2d-strain-eq" title="Link to this equation">#</a></span>\[\begin{split}
@@ -550,9 +551,9 @@ document.write(`
 &amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
 &amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
 &amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&amp;\varepsilon_x = \frac{1 - \mu^2}{E} \left( \sigma_x - \frac{\mu}{1 - \mu} \sigma_y \right), \\
-&amp;\varepsilon_y = \frac{1 - \mu^2}{E} \left( \sigma_y - \frac{\mu}{1 - \mu} \sigma_x \right), \\
-&amp;\gamma_{xy} = \frac{2(1 + \mu)}{E} \tau_{xy},
+&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_x - \frac{\nu}{1 - \nu} \sigma_y \right), \\
+&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_y - \frac{\nu}{1 - \nu} \sigma_x \right), \\
+&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \tau_{xy},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -563,12 +564,12 @@ document.write(`
 \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>在平面应力问题的方程 <a class="reference internal" href="#equation-sec6-eq-2d-stress-physical">(9.1)</a> 中，如果将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 分别替换为</p>
+<p>在平面应力问题的方程 <a class="reference internal" href="#equation-sec6-eq-2d-stress-physical">(9.1)</a> 中，如果将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\nu\)</span> 分别替换为</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{E}{1-\mu^2},\quad \frac{\mu}{1-\mu}
+\frac{E}{1-\nu^2},\quad \frac{\nu}{1-\nu}
 \]</div>
-<p>就能够得到平面应变问题。如果已经得到平面应力问题的（解析）解，只需将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 作同样的转换，就可以得到相应的平面应变问题的解</p>
+<p>就能够得到平面应变问题。如果已经得到平面应力问题的（解析）解，只需将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\nu\)</span> 作同样的转换，就可以得到相应的平面应变问题的解</p>
 </div>
 </section>
 </section>
@@ -609,7 +610,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>物理方程</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>本构方程</p>
       </div>
     </a>
     <a class="right-next"

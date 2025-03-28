@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/sec2-isoparametric';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3. 简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="next" title="2.3. 二维线弹性问题" href="sec3-2Dlinearelasticity.html" />
     <link rel="prev" title="2.1. 形函数" href="sec1-shapefunction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,6 +194,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-2Dlinearelasticity.html">2.3. 二维线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -404,7 +405,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 积分运算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 几何映射</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 场变量插值</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. 等参变换与非等参变换</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.4. 三角形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.2.4.1. 三节点 Lagrange 元</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -419,33 +426,168 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2.2. </span>等参变换<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="intro.html"><span class="std std-doc">前文</span></a>提到，物理单元上的计算关键在于单元 <span class="math notranslate nohighlight">\(E\)</span> 上的积分运算和场变量分布运算。然而，由于 <span class="math notranslate nohighlight">\(\left.\phi\right|_{E}\)</span> 与单元 <span class="math notranslate nohighlight">\(E\)</span> 的几何形状密切相关，其构造过程复杂且难以统一处理。为了解决这一问题，引入了参考单元和形函数，将物理单元上的计算变换到参考单元上进行</p>
-<p>在有限元方法中，物理单元与参考单元通过参数化映射实现积分运算与场变量分布运算的规范化处理：</p>
-<ul class="simple">
-<li><p>几何映射：通过形函数将物理单元坐标 <span class="math notranslate nohighlight">\((x,y)\)</span> 映射到参考单元坐标 <span class="math notranslate nohighlight">\((\xi, \eta)\)</span>：</p></li>
-</ul>
+<p>在有限元方法中，物理单元与参考单元通过<strong>参数化映射</strong>实现积分运算</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{E}\frac{\partial \left.\phi_{i}\right|_{E}}{\partial x}\frac{\partial \left.\phi_{j}\right|_{E}}{\partial x}\,\mathrm{d}E
+\]</div>
+<p>与场变量分布运算</p>
+<div class="math notranslate nohighlight">
+\[
+u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\left.\phi_{i}(x,y)\right|_{E_{(x,y)}}
+\]</div>
+<p>的规范化处理</p>
+<section id="id2">
+<h2><span class="section-number">2.2.1. </span>几何映射<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>几何映射通过形函数将物理单元坐标 <span class="math notranslate nohighlight">\((x,y)\)</span> 映射到参考单元坐标 <span class="math notranslate nohighlight">\((\xi, \eta)\)</span>：</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\((x_{i},y_{i})\)</span> 是物理单元节点的坐标</p>
 </aside>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-sec2-eq-coordinate-transformation">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-sec2-eq-coordinate-transformation" title="Link to this equation">#</a></span>\[
 \begin{equation}
 x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
 \end{equation}
 \]</div>
 <p>几何映射的核心目的是将不规则物理单元的积分运算转化为参考单元上的规则域积分</p>
-<ul class="simple">
-<li><p>场变量插值：通过形函数在参考单元上对场变量插值</p></li>
-</ul>
+<p>通过坐标变换，物理单元上的积分通过参考单元计算</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{E_\text{物理}}f(x,y)\,\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\,\right|\mathrm{d}\xi\mathrm{d}\eta,
+\]</div>
+<p>其中 Jacobian 矩阵</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\mathbf{J} = \frac{\partial (x,y)}{\partial (\xi,\eta)}=\left[
+\begin{matrix}
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial x}{\partial \eta} \\
+\frac{\partial y}{\partial \xi} &amp; \frac{\partial y}{\partial \eta} 
+\end{matrix}
+\right].
+\end{equation}
+\end{split}\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">积分变换公式</p>
+<p>在二维情形下，考虑坐标变换 <span class="math notranslate nohighlight">\(T\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+T:(\xi,\eta) \rightarrow (x(\xi,\eta),y(\xi,\eta))
+\]</div>
+<p>该变换将区域 <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> 映射为区域 <span class="math notranslate nohighlight">\(\mathcal{D}'\)</span>。
+如图所示，设点 <span class="math notranslate nohighlight">\(P\)</span> 被映射到了 <span class="math notranslate nohighlight">\(P'\)</span></p>
+<figure class="align-default" id="sec5-fig-integraltransform">
+<a class="reference internal image-reference" href="../../../_images/IntegralTransform.png"><img alt="../../../_images/IntegralTransform.png" src="../../../_images/IntegralTransform.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.13 </span><span class="caption-text">二维情形下面积变换公式</span><a class="headerlink" href="#sec5-fig-integraltransform" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>于是，忽略高阶项，<span class="math notranslate nohighlight">\(A',B',C'\)</span> 的坐标位置为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+x_{A'}&amp;=x(\xi+\mathrm{d}\xi,\eta)\approx x +\frac{\partial x}{\partial \xi}\mathrm{d}\xi,\\
+y_{A'}&amp;=y(\xi+\mathrm{d}\xi,\eta)\approx y +\frac{\partial y}{\partial \xi}\mathrm{d}\xi,\\
+x_{B'}&amp;=x(\xi,\eta+\mathrm{d}\eta)\approx x +\frac{\partial x}{\partial \eta}\mathrm{d}\eta,\\
+y_{B'}&amp;=y(\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \eta}\mathrm{d}\eta,\\
+x_{C'}&amp;=x(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx x +\frac{\partial x}{\partial \xi}\mathrm{d}\xi + \frac{\partial x}{\partial \eta}\mathrm{d}\eta,\\
+y_{C'}&amp;=y(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \xi}\mathrm{d}\xi + \frac{\partial xy}{\partial \eta}\mathrm{d}\eta.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>因此四边形 <span class="math notranslate nohighlight">\(P'A'C'B'\)</span> 是平行四边形，其面积为</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right| = \left|\det\left(\frac{\partial (x,y)}{\partial (\xi,\eta)}\right)\right|\mathrm{d}\xi\mathrm{d}\eta = \left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta,
+\end{equation}
+\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{S_{P'A'C'B'}}{S_{PACB}} = \left|\det(\mathbf{J})\right|.
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\mathcal{D'} &amp;= \int_{\mathcal{D'}}\mathrm{d}x\mathrm{d}y =
+\lim_{n\rightarrow\infty}\sum_{n}\mathrm{d}\mathcal{D'}\\
+&amp;=\lim_{n\rightarrow\infty}\sum_{n}\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D} = \int_{\mathcal{D}}\left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>类似地</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}x\mathrm{d}y = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta.
+\]</div>
+<p>对于 <span class="math notranslate nohighlight">\(n\)</span> 维的情形</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D}.
+\]</div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.2.2. </span>场变量插值<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>在完成几何映射后，通过形函数在参考单元上对场变量插值</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\(u_{i}\)</span> 是物理单元节点的物理量取值</p>
 </aside>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-sec2-eq-field-variable-interpolation">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-sec2-eq-field-variable-interpolation" title="Link to this equation">#</a></span>\[
 u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 \]</div>
 <p>场变量插值的核心目的是建立节点值与连续场之间的数学关联，从而支持物理量（如应变、应力）的梯度计算</p>
+<p>根据链式法则，场变量的导数计算公式如下</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{bmatrix}
+\frac{\partial u}{\partial x} \\
+\frac{\partial u}{\partial y}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{\partial \xi}{\partial x} &amp; \frac{\partial \xi}{\partial y} \\
+\frac{\partial \eta}{\partial x} &amp; \frac{\partial \eta}{\partial y}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial u}{\partial \xi} \\
+\frac{\partial u}{\partial \eta}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial x}{\partial \eta} \\
+\frac{\partial y}{\partial \xi} &amp; \frac{\partial y}{\partial \eta}
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\frac{\partial u}{\partial \xi} \\
+\frac{\partial u}{\partial \eta}
+\end{bmatrix}
+=
+\mathbf{J}^{-1}
+\begin{bmatrix}
+\frac{\partial u}{\partial \xi} \\
+\frac{\partial u}{\partial \eta}
+\end{bmatrix}.
+\end{equation}
+\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>通过几何映射与场变量插值，无需显式求解 <span class="math notranslate nohighlight">\(\left.\phi\right|_{E}\)</span> 的表达式，即可在单元 <span class="math notranslate nohighlight">\(E\)</span> 上完成积分运算和场变量梯度的计算，从而实现对一般物理单元的规范化统一处理</p>
+<p>如果几何映射是一一映射，则单元 <span class="math notranslate nohighlight">\(E\)</span> 上的基函数可以写为 <span class="math notranslate nohighlight">\(N_{i}(\xi(x,y),\eta(x,y))\)</span></p>
+<p>通常，几何映射需保持一一对应，否则可能引发积分误差、场变量插值非唯一性、Jacobian 矩阵奇异等问题，进而导致数值不稳定和求解失败。因此，网格生成需满足一定的要求</p>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.2.3. </span>等参变换与非等参变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>根据几何映射和场变量插值中所使用形函数阶次的差异，可分为等参变换和非等参变换</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -456,8 +598,8 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p><strong>形函数一致性</strong></p></td>
-<td class="text-center"><p>几何映射与场变量使用相同阶数形函数</p></td>
-<td class="text-center"><p>几何映射与场变量使用不同阶数形函数</p></td>
+<td class="text-center"><p>几何映射与场变量插值使用相同阶数形函数</p></td>
+<td class="text-center"><p>几何映射与场变量插值使用不同阶数形函数</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p><strong>计算精度</strong></p></td>
 <td class="text-center"><p>高（几何映射与场变量插值精度匹配）</p></td>
@@ -474,25 +616,53 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 </tbody>
 </table>
 </div>
-<section id="id2">
-<h2><span class="section-number">2.2.1. </span>积分运算<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>通过坐标变换，物理单元上的积分通过参考单元计算</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">2.2.4. </span>三角形单元<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="lagrange">
+<h3><span class="section-number">2.2.4.1. </span>三节点 Lagrange 元<a class="headerlink" href="#lagrange" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>参考单元</strong>：顶点 <span class="math notranslate nohighlight">\((0,0),(1,0),(0,1)\)</span>，形函数为</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-\int_{E_\text{物理}}f(x,y)\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\right|\mathrm{d}\xi\mathrm{d}\eta,
+\begin{equation}
+N_{1} = 1 - \xi - \eta,\quad N_{2} = \xi,\quad N_{3} = \eta.
+\end{equation}
 \]</div>
-<p>其中雅可比矩阵</p>
+<ul class="simple">
+<li><p><strong>几何映射</strong>：</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+x = (1-\xi-\eta)x_{1} + \xi x_{2} + \eta x_{3},\quad y = (1-\xi-\eta)y_{1} + \xi y_{2} + \eta y_{3}.
+\end{equation}
+\]</div>
+<ul class="simple">
+<li><p><strong>Jacobian 矩阵</strong>：</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{equation}
-\mathbf{J} = \frac{\partial (x,y)}{\partial (\xi,\eta)}=\left[
-\begin{matrix}
-\frac{\partial x}{\xi} &amp; \frac{\partial x}{\eta} \\
-\frac{\partial y}{\xi} &amp; \frac{\partial y}{\eta} 
-\end{matrix}
-\right].
-\end{equation}
+\mathbf{J} = 
+\begin{bmatrix}
+x_2 - x_1 &amp; x_3 - x_1 \\
+y_2 - y_1 &amp; y_3 - y_1
+\end{bmatrix}.
 \end{split}\]</div>
+<p>    行列式为</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\det(\mathbf{J})\right| = (x_{2}-x_{1})(y_{3}-y_{1}) - (x_{3}-x_{1})(y_{2}-y_{1}).
+\]</div>
+<ul class="simple">
+<li><p><strong>积分运算</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int_{E}(\nabla\left.\phi_{j}\right|_{E}\,\mathrm{d}E
+\]</div>
+</section>
 </section>
 </section>
 
@@ -536,11 +706,11 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
       </div>
     </a>
     <a class="right-next"
-       href="../../Elasticity/chap1/intro.html"
+       href="sec3-2Dlinearelasticity.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>简介</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>二维线弹性问题</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -560,7 +730,13 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 积分运算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 几何映射</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 场变量插值</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. 等参变换与非等参变换</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.4. 三角形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.2.4.1. 三节点 Lagrange 元</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
