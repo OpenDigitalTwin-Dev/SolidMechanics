@@ -44,8 +44,8 @@ $$
 \begin{equation}
 \mathbf{J} = \frac{\partial (x,y)}{\partial (\xi,\eta)}=\left[
 \begin{matrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} 
+\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} \\
+\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta} 
 \end{matrix}
 \right].
 \end{equation}
@@ -81,7 +81,7 @@ y_{A'}&=y(\xi+\mathrm{d}\xi,\eta)\approx y +\frac{\partial y}{\partial \xi}\math
 x_{B'}&=x(\xi,\eta+\mathrm{d}\eta)\approx x +\frac{\partial x}{\partial \eta}\mathrm{d}\eta,\\
 y_{B'}&=y(\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \eta}\mathrm{d}\eta,\\
 x_{C'}&=x(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx x +\frac{\partial x}{\partial \xi}\mathrm{d}\xi + \frac{\partial x}{\partial \eta}\mathrm{d}\eta,\\
-y_{C'}&=y(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \xi}\mathrm{d}\xi + \frac{\partial xy}{\partial \eta}\mathrm{d}\eta.
+y_{C'}&=y(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \xi}\mathrm{d}\xi + \frac{\partial y}{\partial \eta}\mathrm{d}\eta.
 \end{aligned}
 \end{equation}
 $$
@@ -90,7 +90,7 @@ $$
 
 $$
 \begin{equation}
-S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right| = \left|\det\left(\frac{\partial (x,y)}{\partial (\xi,\eta)}\right)\right|\mathrm{d}\xi\mathrm{d}\eta = \left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta,
+S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right| = \left|\det(\mathbf{J})\right|\,\mathrm{d}\xi\mathrm{d}\eta,
 \end{equation}
 $$
 
@@ -146,33 +146,33 @@ $$ (sec2-eq:field-variable-interpolation)
 $$
 \begin{equation}
 \begin{bmatrix}
-\frac{\partial u}{\partial x} \\
+\frac{\partial u}{\partial x} &
 \frac{\partial u}{\partial y}
 \end{bmatrix}
 =
 \begin{bmatrix}
-\frac{\partial \xi}{\partial x} & \frac{\partial \eta}{\partial x} \\
-\frac{\partial \xi}{\partial y} & \frac{\partial \eta}{\partial y}
+\frac{\partial u}{\partial \xi} &
+\frac{\partial u}{\partial \eta}
 \end{bmatrix}
 \begin{bmatrix}
-\frac{\partial u}{\partial \xi} \\
-\frac{\partial u}{\partial \eta}
+\frac{\partial \xi}{\partial x} & \frac{\partial \xi}{\partial y} \\
+\frac{\partial \eta}{\partial x} & \frac{\partial \eta}{\partial y}
 \end{bmatrix}
 =
 \begin{bmatrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta}
+\frac{\partial u}{\partial \xi} &
+\frac{\partial u}{\partial \eta}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} \\
+\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta}
 \end{bmatrix}^{-1}
+=
 \begin{bmatrix}
-\frac{\partial u}{\partial \xi} \\
+\frac{\partial u}{\partial \xi} &
 \frac{\partial u}{\partial \eta}
 \end{bmatrix}
-=
 \mathbf{J}^{-1}
-\begin{bmatrix}
-\frac{\partial u}{\partial \xi} \\
-\frac{\partial u}{\partial \eta}
-\end{bmatrix}.
 \end{equation}
 $$
 
