@@ -90,7 +90,7 @@ $$
 
 $$
 \begin{equation}
-S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right| = \left|\det(\mathbf{J})\right|\,\mathrm{d}\xi\mathrm{d}\eta,
+S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right| = \left|\frac{\partial (x,y)}{\partial (\xi,\eta)}\right|\,\mathrm{d}\xi\mathrm{d}\eta = \left|\det(\mathbf{J})\right|\,\mathrm{d}\xi\mathrm{d}\eta,
 \end{equation}
 $$
 
@@ -121,7 +121,13 @@ $$
 对于 $n$ 维的情形
 
 $$
-\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D}.
+\int_{\mathcal{D'}}f(x,y,\cdots)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta,\cdots)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D}
+$$
+
+其中
+
+$$
+\left|\mathbf{J}\right| = \left|\frac{\partial (x,y,\dots)}{\partial (\xi,\eta,\cdots)}\right|.
 $$
 
 :::
@@ -145,11 +151,12 @@ $$ (sec2-eq:field-variable-interpolation)
 
 $$
 \begin{equation}
+\begin{aligned}
 \begin{bmatrix}
 \frac{\partial u}{\partial x} &
 \frac{\partial u}{\partial y}
 \end{bmatrix}
-=
+&=
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} &
 \frac{\partial u}{\partial \eta}
@@ -157,8 +164,8 @@ $$
 \begin{bmatrix}
 \frac{\partial \xi}{\partial x} & \frac{\partial \xi}{\partial y} \\
 \frac{\partial \eta}{\partial x} & \frac{\partial \eta}{\partial y}
-\end{bmatrix}
-=
+\end{bmatrix} \\
+&=
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} &
 \frac{\partial u}{\partial \eta}
@@ -166,13 +173,14 @@ $$
 \begin{bmatrix}
 \frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} \\
 \frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta}
-\end{bmatrix}^{-1}
-=
+\end{bmatrix}^{-1}\\
+&=
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} &
 \frac{\partial u}{\partial \eta}
 \end{bmatrix}
-\mathbf{J}^{-1}
+\mathbf{J}^{-1}.
+\end{aligned}
 \end{equation}
 $$
 
