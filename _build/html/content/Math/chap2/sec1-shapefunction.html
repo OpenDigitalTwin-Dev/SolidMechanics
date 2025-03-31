@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -194,7 +194,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. 形函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec2-isoparametric.html">2.2. 等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-2Dlinearelasticity.html">2.3. 二维线弹性问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -205,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">5. 弹性力学的基本假设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">6. 平衡方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">7. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">8. 物理方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">8. 本构方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">9. 两类平面问题</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">10. 边界条件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">11. 位移法和应力法</a></li>
@@ -533,7 +533,7 @@ document.write(`
 </section>
 <section id="id7">
 <h2><span class="section-number">2.1.3. </span>面积坐标<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p>在有限元方法中，对于三角形或四面体等单纯形单元，除了常用的自然坐标系之外，还可以采用面积坐标系（或称体积坐标系）来构造形函数。这种方法基于单纯形单元的几何特性，具有显著的几何优势。其核心思想是通过空间点与单纯形顶点相关联的子单纯形（如边、面或体）的归一化面积或体积比例来定义形函数的分量</p>
+<p>在有限元方法中，对于三角形或四面体等单纯形单元，通常采用面积坐标系（或称体积坐标系）来构造形函数。这种方法基于单纯形单元的几何特性，具有显著的几何优势。其核心思想是通过空间点与单纯形顶点相关联的子单纯形（如边、面或体）的归一化面积或体积比例来定义形函数的分量</p>
 <figure class="align-default" id="sec5-fig-element-switch">
 <a class="reference internal image-reference" href="../../../_images/area-coordinate.png"><img alt="../../../_images/area-coordinate.png" src="../../../_images/area-coordinate.png" style="width: 400px;" />
 </a>

@@ -44,8 +44,8 @@ $$
 \begin{equation}
 \mathbf{J} = \frac{\partial (x,y)}{\partial (\xi,\eta)}=\left[
 \begin{matrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} \\
-\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta} 
+\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} 
 \end{matrix}
 \right].
 \end{equation}
@@ -151,8 +151,8 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-\frac{\partial \xi}{\partial x} & \frac{\partial \xi}{\partial y} \\
-\frac{\partial \eta}{\partial x} & \frac{\partial \eta}{\partial y}
+\frac{\partial \xi}{\partial x} & \frac{\partial \eta}{\partial x} \\
+\frac{\partial \xi}{\partial y} & \frac{\partial \eta}{\partial y}
 \end{bmatrix}
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} \\
@@ -160,8 +160,8 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} \\
-\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta}
+\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta}
 \end{bmatrix}^{-1}
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} \\
@@ -196,45 +196,3 @@ $$
 | **计算精度**     | 高（几何映射与场变量插值精度匹配）  |  几何映射精度可能低于场变量插值精度            |
 | **适用场景**        | 曲边单元、高阶场分析（如二次单元） | 简单几何+高阶场（如线性网格+二次温度场）           |
 | **计算复杂度**      | 较高（需处理高阶雅可比矩阵）  | 较低（几何映射简单）           |
-
-## 三角形单元
-
-### 三节点 Lagrange 元
-
-- **参考单元**：顶点 $(0,0),(1,0),(0,1)$，形函数为 
-
-$$
-\begin{equation}
-N_{1} = 1 - \xi - \eta,\quad N_{2} = \xi,\quad N_{3} = \eta.
-\end{equation}
-$$
-
-- **几何映射**：
-
-$$
-\begin{equation}
-x = (1-\xi-\eta)x_{1} + \xi x_{2} + \eta x_{3},\quad y = (1-\xi-\eta)y_{1} + \xi y_{2} + \eta y_{3}.
-\end{equation}
-$$
-
-- **Jacobian 矩阵**：
-
-$$
-\mathbf{J} = 
-\begin{bmatrix}
-x_2 - x_1 & x_3 - x_1 \\
-y_2 - y_1 & y_3 - y_1
-\end{bmatrix}.
-$$
-
-&nbsp;&nbsp;&nbsp;&nbsp;行列式为
-
-$$
-\left|\det(\mathbf{J})\right| = (x_{2}-x_{1})(y_{3}-y_{1}) - (x_{3}-x_{1})(y_{2}-y_{1}).
-$$
-
-- **积分运算**
-
-$$
-\int_{E}(\nabla\left.\phi_{j}\right|_{E}\,\mathrm{d}E
-$$

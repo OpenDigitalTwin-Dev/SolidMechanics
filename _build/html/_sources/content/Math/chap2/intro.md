@@ -13,7 +13,7 @@ u_{h} = \sum_{i=1}^{n}c_{i}\phi_{i} = \sum_{i=1}^{n}u_{i}\phi_{i}.
 $$
 
 
-由于 $\phi_{i}$ 是基于单元的分片多项式，于是，不论是刚度矩阵的计算
+由于 $\phi_{i}$ 是基于单元的分片多项式，因此不论是刚度矩阵的计算
 
 $$
 \int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x,

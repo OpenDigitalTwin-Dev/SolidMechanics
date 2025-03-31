@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/sec2-isoparametric';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.3. 二维线弹性问题" href="sec3-2Dlinearelasticity.html" />
+    <link rel="next" title="2.3. 线弹性问题" href="sec3-2Dlinearelasticity.html" />
     <link rel="prev" title="2.1. 形函数" href="sec1-shapefunction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,7 +194,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">2.1. 形函数</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. 等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-2Dlinearelasticity.html">2.3. 二维线弹性问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-2Dlinearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -205,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">5. 弹性力学的基本假设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">6. 平衡方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">7. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">8. 物理方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">8. 本构方程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">9. 两类平面问题</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">10. 边界条件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">11. 位移法和应力法</a></li>
@@ -408,10 +408,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 几何映射</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 场变量插值</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. 等参变换与非等参变换</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.4. 三角形单元</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.2.4.1. 三节点 Lagrange 元</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -462,8 +458,8 @@ x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
 \begin{equation}
 \mathbf{J} = \frac{\partial (x,y)}{\partial (\xi,\eta)}=\left[
 \begin{matrix}
-\frac{\partial x}{\partial \xi} &amp; \frac{\partial x}{\partial \eta} \\
-\frac{\partial y}{\partial \xi} &amp; \frac{\partial y}{\partial \eta} 
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta} 
 \end{matrix}
 \right].
 \end{equation}
@@ -555,8 +551,8 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 \end{bmatrix}
 =
 \begin{bmatrix}
-\frac{\partial \xi}{\partial x} &amp; \frac{\partial \xi}{\partial y} \\
-\frac{\partial \eta}{\partial x} &amp; \frac{\partial \eta}{\partial y}
+\frac{\partial \xi}{\partial x} &amp; \frac{\partial \eta}{\partial x} \\
+\frac{\partial \xi}{\partial y} &amp; \frac{\partial \eta}{\partial y}
 \end{bmatrix}
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} \\
@@ -564,8 +560,8 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 \end{bmatrix}
 =
 \begin{bmatrix}
-\frac{\partial x}{\partial \xi} &amp; \frac{\partial x}{\partial \eta} \\
-\frac{\partial y}{\partial \xi} &amp; \frac{\partial y}{\partial \eta}
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta}
 \end{bmatrix}^{-1}
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} \\
@@ -617,53 +613,6 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 </table>
 </div>
 </section>
-<section id="id5">
-<h2><span class="section-number">2.2.4. </span>三角形单元<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<section id="lagrange">
-<h3><span class="section-number">2.2.4.1. </span>三节点 Lagrange 元<a class="headerlink" href="#lagrange" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>参考单元</strong>：顶点 <span class="math notranslate nohighlight">\((0,0),(1,0),(0,1)\)</span>，形函数为</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
-N_{1} = 1 - \xi - \eta,\quad N_{2} = \xi,\quad N_{3} = \eta.
-\end{equation}
-\]</div>
-<ul class="simple">
-<li><p><strong>几何映射</strong>：</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
-x = (1-\xi-\eta)x_{1} + \xi x_{2} + \eta x_{3},\quad y = (1-\xi-\eta)y_{1} + \xi y_{2} + \eta y_{3}.
-\end{equation}
-\]</div>
-<ul class="simple">
-<li><p><strong>Jacobian 矩阵</strong>：</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{J} = 
-\begin{bmatrix}
-x_2 - x_1 &amp; x_3 - x_1 \\
-y_2 - y_1 &amp; y_3 - y_1
-\end{bmatrix}.
-\end{split}\]</div>
-<p>    行列式为</p>
-<div class="math notranslate nohighlight">
-\[
-\left|\det(\mathbf{J})\right| = (x_{2}-x_{1})(y_{3}-y_{1}) - (x_{3}-x_{1})(y_{2}-y_{1}).
-\]</div>
-<ul class="simple">
-<li><p><strong>积分运算</strong></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\int_{E}(\nabla\left.\phi_{j}\right|_{E}\,\mathrm{d}E
-\]</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -710,7 +659,7 @@ y_2 - y_1 &amp; y_3 - y_1
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.3. </span>二维线弹性问题</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>线弹性问题</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -733,10 +682,6 @@ y_2 - y_1 &amp; y_3 - y_1
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 几何映射</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 场变量插值</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. 等参变换与非等参变换</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.4. 三角形单元</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.2.4.1. 三节点 Lagrange 元</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
