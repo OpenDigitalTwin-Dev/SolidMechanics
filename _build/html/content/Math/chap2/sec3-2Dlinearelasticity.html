@@ -405,7 +405,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 变分</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 变分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voigt">2.3.1.1. Voigt 形式</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 离散</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.3.2.1. 三角形三节点 Lagrange 元</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1.1. 单元几何</a></li>
@@ -441,12 +444,12 @@ document.write(`
 \begin{equation}
 \begin{aligned}
 &amp;\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \mathbf{0},\\
-&amp;\boldsymbol{\epsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,\\
-&amp;\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\epsilon},
+&amp;\boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,\\
+&amp;\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 是体积力向量，<span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 是位移向量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是四阶本构张量</p>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 是体积力向量，<span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 是位移向量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是四阶本构张量</p>
 <p>计算区域为 <span class="math notranslate nohighlight">\(\Omega\)</span>，边界 <span class="math notranslate nohighlight">\(\partial\Omega=\Gamma_{u}\cup\Gamma_{p}\)</span>，边界条件为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -512,31 +515,114 @@ document.write(`
 <p>定义对称算子</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\epsilon}(\mathbf{u})=\frac{1}{2}\left(\nabla\mathbf{u} + (\nabla\mathbf{u})^{T}\right),
+\boldsymbol{\varepsilon}(\mathbf{u})=\frac{1}{2}\left(\nabla\mathbf{u} + (\nabla\mathbf{u})^{T}\right),
 \]</div>
 <p>类似地</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\epsilon}(\mathbf{v})=\frac{1}{2}\left(\nabla\mathbf{v} + (\nabla\mathbf{v})^{T}\right),
+\boldsymbol{\varepsilon}(\mathbf{v})=\frac{1}{2}\left(\nabla\mathbf{v} + (\nabla\mathbf{v})^{T}\right),
 \]</div>
 <p>由于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是对称张量，因此 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma} : \nabla \mathbf{v} = \boldsymbol{\sigma} : (\nabla \mathbf{v})^T\)</span>，故</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\sigma} : \nabla \mathbf{v} = \boldsymbol{\sigma} : \boldsymbol{\epsilon}(\mathbf{v}),
+\boldsymbol{\sigma} : \nabla \mathbf{v} = \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}),
 \]</div>
 <p>代入到方程中，得到</p>
 <div class="math notranslate nohighlight">
 \[
 -
-\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\epsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 \]</div>
-<p>再将本构方程 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\epsilon}(\mathbf{u})\)</span> 代入上述方程，最终得到弱形式</p>
+<p>再将本构方程 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon}(\mathbf{u})\)</span> 代入上述方程，最终得到弱形式</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\Omega} \boldsymbol{\epsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\epsilon}(\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 \]</div>
 <p>且 <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{u}\)</span></p>
-<p>力学解释：</p>
+<section id="voigt">
+<h3><span class="section-number">2.3.1.1. </span>Voigt 形式<a class="headerlink" href="#voigt" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>注意，这里记号混用</p>
+</aside>
+<p>为了便于有限元计算，通常将第一项写为 Voigt 形式</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) 
+= \mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})  = \begin{bmatrix}
+\lambda + 2\mu &amp; \lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
+\lambda &amp; \lambda + 2\mu &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
+\lambda &amp; \lambda &amp; \lambda + 2\mu &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
+\end{bmatrix}
+\end{split}\]</div>
+<p>以及</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 是应变-位移矩阵</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\boldsymbol{\varepsilon}({\mathbf{u}}) = \mathbf{B}\mathbf{u}\quad \rightarrow\quad
+\begin{bmatrix}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
+\end{bmatrix}
+=\begin{bmatrix}
+\frac{\partial}{\partial x} &amp; 0 &amp; 0 \\
+0 &amp; \frac{\partial}{\partial y} &amp; 0 \\
+0 &amp; 0 &amp; \frac{\partial}{\partial z} \\
+0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
+\frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x} \\
+\frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+u_{x}\\u_{y}\\u_{z}
+\end{bmatrix}
+\end{equation}
+\end{split}\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=\mathbf{v}^{T}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u},
+\]</div>
+<p>代入得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{bmatrix}
+v_{x} &amp; v_{y} &amp; v_{z}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial}{\partial x} &amp; 0 &amp; 0 &amp; 0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
+0 &amp; \frac{\partial}{\partial y} &amp; 0 &amp; \frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x} \\
+0 &amp; 0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+\lambda + 2\mu &amp; \lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
+\lambda &amp; \lambda + 2\mu &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
+\lambda &amp; \lambda &amp; \lambda + 2\mu &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu
+\end{bmatrix}\begin{bmatrix}
+\frac{\partial}{\partial x} &amp; 0 &amp; 0 \\
+0 &amp; \frac{\partial}{\partial y} &amp; 0 \\
+0 &amp; 0 &amp; \frac{\partial}{\partial z} \\
+0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
+\frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x} \\
+\frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+u_{x}\\u_{y}\\u_{z}
+\end{bmatrix}.
+\end{equation}
+\end{split}\]</div>
+</section>
 </section>
 <section id="id3">
 <h2><span class="section-number">2.3.2. </span>离散<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -552,18 +638,17 @@ document.write(`
 </section>
 <section id="id5">
 <h4><span class="section-number">2.3.2.1.2. </span>形函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>三角形面积坐标与网格单元几何形状无关，因此适用于一般单元</p>
-</aside>
-<p>使用面积坐标下的线性形函数 <span class="math notranslate nohighlight">\(N_{i}(x,y) = L_{i},\,(i=1,2,3)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+N_{1} = 1-\xi-\eta,\quad N_{2} = \xi,\quad N_{3} = \eta.
+\]</div>
 </section>
 <section id="id6">
 <h4><span class="section-number">2.3.2.1.3. </span>几何映射<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
 \begin{equation}
-x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
+x = \sum_{i=1}^{3} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i=1}^{3} N_{i}(\xi,\eta)y_{i}.
 \end{equation}
 \]</div>
 </section>
@@ -571,34 +656,25 @@ x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
 <h4><span class="section-number">2.3.2.1.4. </span>场变量插值<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
-u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
+u_{x}=\sum_{i=1}^{3}N_{i}(\xi,\eta)u_{x,i},\quad 
+u_{y}=\sum_{i=1}^{3}N_{i}(\xi,\eta)u_{y,i}
 \]</div>
 </section>
 <section id="jacobian">
 <h4><span class="section-number">2.3.2.1.5. </span>Jacobian 矩阵<a class="headerlink" href="#jacobian" title="Link to this heading">#</a></h4>
-<p>因为</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial N_{i}}{\partial L_{j}} = \delta_{ij},
-\]</div>
-<p>因此</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(L_{1}+L_{2}+L_{3}=1\)</span></p>
-</aside>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \mathbf{J} =
 \begin{bmatrix}
-\frac{\partial x}{\partial L_1} &amp; \frac{\partial x}{\partial L_2} \\
-\frac{\partial y}{\partial L_1} &amp; \frac{\partial y}{\partial L_2}
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta}
 \end{bmatrix}
 =
 \sum_{i=1}^{3}
 \begin{bmatrix}
-\frac{\partial N_i}{\partial L_1} x_i &amp; \frac{\partial N_i}{\partial L_1} y_i \\
-\frac{\partial N_i}{\partial L_2} x_i &amp; \frac{\partial N_i}{\partial L_2} y_i
+\frac{\partial N_i}{\partial \xi} x_i &amp; \frac{\partial N_i}{\partial \xi} y_i \\
+\frac{\partial N_i}{\partial \eta} x_i &amp; \frac{\partial N_i}{\partial \eta} y_i
 \end{bmatrix}
 =
 \begin{bmatrix}
@@ -685,7 +761,10 @@ x_3 - x_1 &amp; y_3 - y_1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 变分</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 变分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voigt">2.3.1.1. Voigt 形式</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 离散</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.3.2.1. 三角形三节点 Lagrange 元</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1.1. 单元几何</a></li>

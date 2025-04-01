@@ -8,15 +8,17 @@
 
 ```{margin}
 应力作用方向与应变方向之间的差异性
+
+在之后的内容中，统一使用 $\sigma$ 表示切应力
 ```
 
 $$
 \begin{equation}
 \begin{aligned}
-&\epsilon_x = \frac{1}{E} \left[ \sigma_x - \nu (\sigma_y + \sigma_z) \right],\\
-&\epsilon_y = \frac{1}{E} \left[ \sigma_y - \nu (\sigma_z + \sigma_x) \right],\\
-&\epsilon_z = \frac{1}{E} \left[ \sigma_z - \nu (\sigma_x + \sigma_y) \right],\\
-&\gamma_{yz} = \frac{1}{G} \tau_{yz}, \quad \gamma_{zx} = \frac{1}{G} \tau_{zx}, \quad \gamma_{xy} = \frac{1}{G} \tau_{xy},
+&\varepsilon_{xx} = \frac{1}{E} \left[ \sigma_{xx} - \nu (\sigma_{yy} + \sigma_{zz}) \right],\\
+&\varepsilon_{yy} = \frac{1}{E} \left[ \sigma_{yy} - \nu (\sigma_{zz} + \sigma_{xx}) \right],\\
+&\varepsilon_{zz} = \frac{1}{E} \left[ \sigma_{zz} - \nu (\sigma_{xx} + \sigma_{yy}) \right],\\
+&\gamma_{yz} = \frac{1}{G} \sigma_{yz}, \quad \gamma_{zx} = \frac{1}{G} \sigma_{zx}, \quad \gamma_{xy} = \frac{1}{G} \sigma_{xy},
 \end{aligned}
 \end{equation}
 $$ (sec5-eq:strain-stress-1)
@@ -40,10 +42,10 @@ $$ (sec5-eq:strain-stress-2)
 应力与应变的关系可以写为
 
 $$
-\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\epsilon},
+\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
 $$
 
-其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\epsilon}$ 是应变张量，$\mathbf{D}$ 是四阶本构张量
+其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{D}$ 是四阶本构张量
 
 $$
 D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})
@@ -52,26 +54,26 @@ $$
 其中，$\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}$ 是第一拉梅常数，$\mu=G=\frac{E}{2(1+\nu)}$ 是第二拉梅常数，于是
 
 $$
-\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\epsilon}_{kl}
+\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\varepsilon}_{kl}
 $$
 
-也可以写为
+也可以写为 Voigt 形式
 
 $$
-\boldsymbol{\sigma}=\mathbf{D}\boldsymbol{\epsilon},
+\boldsymbol{\sigma}=\mathbf{D}\boldsymbol{\varepsilon},
 $$
 
-其中，$\boldsymbol{\sigma}$ 是应力向量，$\boldsymbol{\epsilon}$ 是应变向量，$\mathbf{D}$ 是本构矩阵
+其中，$\boldsymbol{\sigma}$ 是应力向量，$\boldsymbol{\varepsilon}$ 是应变向量，$\mathbf{D}$ 是本构矩阵
 
 $$
 \begin{equation}
 \boldsymbol{\sigma}=
 \begin{bmatrix}
-\sigma_{x}\\\sigma_{y}\\\sigma_{z}\\\tau_{xy}\\\tau_{xz}\\\tau_{yz}
+\sigma_{xx}\\\sigma_{yy}\\\sigma_{zz}\\\sigma_{xy}\\\sigma_{xz}\\\sigma_{yz}
 \end{bmatrix},\quad
-\boldsymbol{\epsilon}=
+\boldsymbol{\varepsilon}=
 \begin{bmatrix}
-\epsilon_{x}\\\epsilon_{y}\\\epsilon_{z}\\\gamma_{xy}\\\gamma_{xz}\\\gamma_{yz}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
 \end{bmatrix},\quad
 \mathbf{D} =
 \begin{bmatrix}

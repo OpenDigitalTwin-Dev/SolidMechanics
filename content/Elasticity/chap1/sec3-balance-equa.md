@@ -56,8 +56,8 @@ $$ (sec3-eq:Shear_stress)
 考虑 $x$ 轴方向的平衡方程 $\Sigma F_{x}=0$：
 
 $$
-\left( \sigma_x + \frac{\partial \sigma_x}{\partial x} dx \right) \cdot dy
--\sigma_x \cdot dy
+\left( \sigma_{xx} + \frac{\partial \sigma_{xx}}{\partial x} dx \right) \cdot dy
+-\sigma_{xx} \cdot dy
 +
 \left( \tau_{yx} + \frac{\partial \tau_{yx}}{\partial y} dy \right) \cdot dx
 -\tau_{yx} \cdot dx
@@ -67,15 +67,15 @@ $$
 整理得到
 
 $$
-\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0.
+\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0.
 $$
 
 类似地，可得到 $y$ 方向上的平衡方程。于是，二维问题中的**平衡方程**为
 
 $$
 \begin{cases}
-\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
-\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
+\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
+\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
 \end{cases}
 $$ (sec3-eq:balance)
 
@@ -114,8 +114,8 @@ name: sec3-fig:stress-tensor
 
 $$
 \begin{cases}
-p_x \, \mathrm{d}s - \sigma_x \, l\mathrm{d}s -  \tau_{yx} \, m  \mathrm{d}s + f_x \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0, \\
-p_y \, \mathrm{d}s - \sigma_y \, m  \mathrm{d}s -  \tau_{xy} \, l  \mathrm{d}s + f_y \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0.
+p_x \, \mathrm{d}s - \sigma_{xx} \, l\mathrm{d}s -  \tau_{yx} \, m  \mathrm{d}s + f_x \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0, \\
+p_y \, \mathrm{d}s - \sigma_{yy} \, m  \mathrm{d}s -  \tau_{xy} \, l  \mathrm{d}s + f_y \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0.
 \end{cases}
 $$
 
@@ -123,8 +123,8 @@ $$
 
 $$
 \begin{cases}
-p_{x} = \sigma_x \, l +  \tau_{yx} \, m, \\
-p_{y} = \sigma_y \, m  +  \tau_{xy} \, l.
+p_{x} = \sigma_{xx} \, l +  \tau_{yx} \, m, \\
+p_{y} = \sigma_{yy} \, m  +  \tau_{xy} \, l.
 \end{cases}
 $$
 
@@ -141,8 +141,8 @@ $$
 p_{x}\\
 p_{y}
 \end{bmatrix}= \begin{bmatrix}
-\sigma_{x} & \tau_{yx} \\
-\tau_{xy} & \sigma_{y}
+\sigma_{xx} & \tau_{yx} \\
+\tau_{xy} & \sigma_{yy}
 \end{bmatrix}
 \begin{bmatrix}
 l \\
@@ -158,8 +158,8 @@ $$ (sec3-eq:stress-tensor-1)
 
 $$
 \boldsymbol{\sigma}=\begin{bmatrix}
-\sigma_{x} & \tau_{yx} \\
-\tau_{xy} & \sigma_{y}
+\sigma_{xx} & \tau_{yx} \\
+\tau_{xy} & \sigma_{yy}
 \end{bmatrix}
 $$
 
@@ -169,8 +169,8 @@ $\overline{AB}$ 上的正应力 $\sigma_{n}$ 和切应力 $\tau_{n}$ 分别为
 
 $$
 \begin{align*}
-\sigma_{n} &= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{x} + m^{2}\sigma_{y}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
-\tau_{n} &= lp_{y}-mp_{x}=lm(\sigma_y - \sigma_x)+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
+\sigma_{n} &= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{xx} + m^{2}\sigma_{yy}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
+\tau_{n} &= lp_{y}-mp_{x}=lm(\sigma_{yy} - \sigma_{xx})+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
 \end{align*}
 $$ (sec3-eq:stress-tensor-3)
 

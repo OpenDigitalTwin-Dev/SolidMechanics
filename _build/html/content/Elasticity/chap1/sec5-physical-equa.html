@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -416,15 +416,16 @@ document.write(`
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>应力作用方向与应变方向之间的差异性</p>
+<p>在之后的内容中，统一使用 <span class="math notranslate nohighlight">\(\sigma\)</span> 表示切应力</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec5-eq-strain-stress-1">
 <span class="eqno">(8.1)<a class="headerlink" href="#equation-sec5-eq-strain-stress-1" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\epsilon_x = \frac{1}{E} \left[ \sigma_x - \nu (\sigma_y + \sigma_z) \right],\\
-&amp;\epsilon_y = \frac{1}{E} \left[ \sigma_y - \nu (\sigma_z + \sigma_x) \right],\\
-&amp;\epsilon_z = \frac{1}{E} \left[ \sigma_z - \nu (\sigma_x + \sigma_y) \right],\\
-&amp;\gamma_{yz} = \frac{1}{G} \tau_{yz}, \quad \gamma_{zx} = \frac{1}{G} \tau_{zx}, \quad \gamma_{xy} = \frac{1}{G} \tau_{xy},
+&amp;\varepsilon_{xx} = \frac{1}{E} \left[ \sigma_{xx} - \nu (\sigma_{yy} + \sigma_{zz}) \right],\\
+&amp;\varepsilon_{yy} = \frac{1}{E} \left[ \sigma_{yy} - \nu (\sigma_{zz} + \sigma_{xx}) \right],\\
+&amp;\varepsilon_{zz} = \frac{1}{E} \left[ \sigma_{zz} - \nu (\sigma_{xx} + \sigma_{yy}) \right],\\
+&amp;\gamma_{yz} = \frac{1}{G} \sigma_{yz}, \quad \gamma_{zx} = \frac{1}{G} \sigma_{zx}, \quad \gamma_{xy} = \frac{1}{G} \sigma_{xy},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -446,9 +447,9 @@ G = \frac{E}{2(1+\nu)}.
 <p>应力与应变的关系可以写为</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\epsilon},
+\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是四阶本构张量</p>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是四阶本构张量</p>
 <div class="math notranslate nohighlight">
 \[
 D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})
@@ -456,24 +457,24 @@ D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\
 <p>其中，<span class="math notranslate nohighlight">\(\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}\)</span> 是第一拉梅常数，<span class="math notranslate nohighlight">\(\mu=G=\frac{E}{2(1+\nu)}\)</span> 是第二拉梅常数，于是</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\epsilon}_{kl}
+\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\varepsilon}_{kl}
 \]</div>
-<p>也可以写为</p>
+<p>也可以写为 Voigt 形式</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\sigma}=\mathbf{D}\boldsymbol{\epsilon},
+\boldsymbol{\sigma}=\mathbf{D}\boldsymbol{\varepsilon},
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力向量，<span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> 是应变向量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是本构矩阵</p>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力向量，<span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 是应变向量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是本构矩阵</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \boldsymbol{\sigma}=
 \begin{bmatrix}
-\sigma_{x}\\\sigma_{y}\\\sigma_{z}\\\tau_{xy}\\\tau_{xz}\\\tau_{yz}
+\sigma_{xx}\\\sigma_{yy}\\\sigma_{zz}\\\sigma_{xy}\\\sigma_{xz}\\\sigma_{yz}
 \end{bmatrix},\quad
-\boldsymbol{\epsilon}=
+\boldsymbol{\varepsilon}=
 \begin{bmatrix}
-\epsilon_{x}\\\epsilon_{y}\\\epsilon_{z}\\\gamma_{xy}\\\gamma_{xz}\\\gamma_{yz}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
 \end{bmatrix},\quad
 \mathbf{D} =
 \begin{bmatrix}

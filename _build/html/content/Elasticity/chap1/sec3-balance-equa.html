@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -477,8 +477,8 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 <p>考虑 <span class="math notranslate nohighlight">\(x\)</span> 轴方向的平衡方程 <span class="math notranslate nohighlight">\(\Sigma F_{x}=0\)</span>：</p>
 <div class="math notranslate nohighlight">
 \[
-\left( \sigma_x + \frac{\partial \sigma_x}{\partial x} dx \right) \cdot dy
--\sigma_x \cdot dy
+\left( \sigma_{xx} + \frac{\partial \sigma_{xx}}{\partial x} dx \right) \cdot dy
+-\sigma_{xx} \cdot dy
 +
 \left( \tau_{yx} + \frac{\partial \tau_{yx}}{\partial y} dy \right) \cdot dx
 -\tau_{yx} \cdot dx
@@ -487,14 +487,14 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 <p>整理得到</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0.
+\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0.
 \]</div>
 <p>类似地，可得到 <span class="math notranslate nohighlight">\(y\)</span> 方向上的平衡方程。于是，二维问题中的<strong>平衡方程</strong>为</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-balance">
 <span class="eqno">(6.2)<a class="headerlink" href="#equation-sec3-eq-balance" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{cases}
-\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
-\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
+\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
+\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
 \end{cases}
 \end{split}\]</div>
 <p>可以写为</p>
@@ -528,16 +528,16 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{cases}
-p_x \, \mathrm{d}s - \sigma_x \, l\mathrm{d}s -  \tau_{yx} \, m  \mathrm{d}s + f_x \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0, \\
-p_y \, \mathrm{d}s - \sigma_y \, m  \mathrm{d}s -  \tau_{xy} \, l  \mathrm{d}s + f_y \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0.
+p_x \, \mathrm{d}s - \sigma_{xx} \, l\mathrm{d}s -  \tau_{yx} \, m  \mathrm{d}s + f_x \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0, \\
+p_y \, \mathrm{d}s - \sigma_{yy} \, m  \mathrm{d}s -  \tau_{xy} \, l  \mathrm{d}s + f_y \frac{l\mathrm{d}s \, m\mathrm{d}s}{2} = 0.
 \end{cases}
 \end{split}\]</div>
 <p>消去微元量，整理得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{cases}
-p_{x} = \sigma_x \, l +  \tau_{yx} \, m, \\
-p_{y} = \sigma_y \, m  +  \tau_{xy} \, l.
+p_{x} = \sigma_{xx} \, l +  \tau_{yx} \, m, \\
+p_{y} = \sigma_{yy} \, m  +  \tau_{xy} \, l.
 \end{cases}
 \end{split}\]</div>
 <p>这表明，只需知道过点 <span class="math notranslate nohighlight">\(P\)</span> 的平行于 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴的截面上的应力，就能够计算出任意取向截面上的应力</p>
@@ -552,8 +552,8 @@ p_{y} = \sigma_y \, m  +  \tau_{xy} \, l.
 p_{x}\\
 p_{y}
 \end{bmatrix}= \begin{bmatrix}
-\sigma_{x} &amp; \tau_{yx} \\
-\tau_{xy} &amp; \sigma_{y}
+\sigma_{xx} &amp; \tau_{yx} \\
+\tau_{xy} &amp; \sigma_{yy}
 \end{bmatrix}
 \begin{bmatrix}
 l \\
@@ -568,8 +568,8 @@ m
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{\sigma}=\begin{bmatrix}
-\sigma_{x} &amp; \tau_{yx} \\
-\tau_{xy} &amp; \sigma_{y}
+\sigma_{xx} &amp; \tau_{yx} \\
+\tau_{xy} &amp; \sigma_{yy}
 \end{bmatrix}
 \end{split}\]</div>
 <p>被称为<strong>应力张量</strong></p>
@@ -577,8 +577,8 @@ m
 <div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-3">
 <span class="eqno">(6.4)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-3" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{align*}
-\sigma_{n} &amp;= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{x} + m^{2}\sigma_{y}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
-\tau_{n} &amp;= lp_{y}-mp_{x}=lm(\sigma_y - \sigma_x)+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
+\sigma_{n} &amp;= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{xx} + m^{2}\sigma_{yy}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
+\tau_{n} &amp;= lp_{y}-mp_{x}=lm(\sigma_{yy} - \sigma_{xx})+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
 \end{align*}
 \end{split}\]</div>
 <section id="id5">

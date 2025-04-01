@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -440,12 +440,12 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 <p>于是，<span class="math notranslate nohighlight">\(\overline{PA}\)</span> 的线应变为</p>
 <div class="math notranslate nohighlight">
 \[
-\epsilon_x = \frac{\left( u + \frac{\partial u}{\partial x} \, \mathrm{d}x \right) - u}{\mathrm{d}x} = \frac{\partial u}{\partial x},
+\varepsilon_{xx} = \frac{\left( u + \frac{\partial u}{\partial x} \, \mathrm{d}x \right) - u}{\mathrm{d}x} = \frac{\partial u}{\partial x},
 \]</div>
 <p>类似地，<span class="math notranslate nohighlight">\(\overline{PB}\)</span> 的线应变为</p>
 <div class="math notranslate nohighlight">
 \[
-\epsilon_y = \frac{\partial v}{\partial y}.
+\varepsilon_{yy} = \frac{\partial v}{\partial y}.
 \]</div>
 <p>对于 <span class="math notranslate nohighlight">\(\overline{PA}\)</span> 的转角 <span class="math notranslate nohighlight">\(\alpha\)</span> 有</p>
 <div class="math notranslate nohighlight">
@@ -471,8 +471,8 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 <span class="eqno">(7.1)<a class="headerlink" href="#equation-sec4-eq-geometry" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
-&amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
+&amp;\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
+&amp;\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
 &amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}.
 \end{aligned}
 \end{equation}
@@ -480,31 +480,47 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 <p>可以写为</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\epsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
+\boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
 \]</div>
 <p>其中</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(\epsilon_{xy} = \frac{\gamma_{xy}}{2}\)</span> 被称为张量剪切应变</p>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{xy} = \frac{\gamma_{xy}}{2}\)</span> 被称为张量剪切应变</p>
 </aside>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
-\boldsymbol{\epsilon}=
+\boldsymbol{\varepsilon}=
 \begin{bmatrix}
-\epsilon_{x}  &amp;  \epsilon_{xy} \\
-\epsilon_{yx}  &amp;  \epsilon_{y}
+\varepsilon_{xx}  &amp;  \varepsilon_{xy} \\
+\varepsilon_{yx}  &amp;  \varepsilon_{yy}
 \end{bmatrix}
 \end{equation}
 \end{split}\]</div>
-<p>是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u} = [u\,v]^{T}\)</span> 是位移向量</p>
+<p>是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u} = [u\,v]^{T}\)</span> 是位移向量。也可以写为 Voigt 形式</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{bmatrix}
+\varepsilon_{xx} \\ \varepsilon_{yy} \\ 2\varepsilon_{xy} 
+\end{bmatrix}
+=\begin{bmatrix}
+\frac{\partial }{\partial x} &amp; 0 \\
+0 &amp; \frac{\partial }{\partial y} \\
+\frac{\partial }{\partial y} &amp; \frac{\partial }{\partial x}
+\end{bmatrix}
+\begin{bmatrix}
+u \\ v 
+\end{bmatrix}.
+\end{equation}
+\end{split}\]</div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">刚体运动</p>
-<p>当位移分量 <span class="math notranslate nohighlight">\(u,v\)</span> 完全确定时，应变分量 <span class="math notranslate nohighlight">\(\epsilon_x, \epsilon_y, \gamma_{xy}\)</span> 也完全确定。反之，应变分量完全确定时，位移分量不能完全确定。
+<p>当位移分量 <span class="math notranslate nohighlight">\(u,v\)</span> 完全确定时，应变分量 <span class="math notranslate nohighlight">\(\varepsilon_{xx}, \varepsilon_{yy}, \gamma_{xy}\)</span> 也完全确定。反之，应变分量完全确定时，位移分量不能完全确定。
 假设</p>
 <div class="math notranslate nohighlight">
 \[
-\epsilon_x = \epsilon_y = \gamma_{xy} = 0,
+\varepsilon_{xx} = \varepsilon_{yy} = \gamma_{xy} = 0,
 \]</div>
 <p>则</p>
 <div class="math notranslate nohighlight">

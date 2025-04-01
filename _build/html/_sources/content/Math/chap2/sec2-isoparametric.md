@@ -127,7 +127,7 @@ $$
 其中
 
 $$
-\left|\mathbf{J}\right| = \left[
+\mathbf{J} = \left[
 \begin{matrix}
 \frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} & \cdots \\
 \frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} & \cdots  \\

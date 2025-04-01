@@ -12,9 +12,9 @@
 $$
 \begin{equation}
 \begin{aligned}
-\sigma_x &= \frac{E}{1 - \nu^2} \left( \varepsilon_x + \nu \varepsilon_y \right), \\
-\sigma_y &= \frac{E}{1 - \nu^2} \left( \varepsilon_y + \nu \varepsilon_x \right), \\
-\tau_{xy} &= \frac{E}{2(1 + \nu)} \gamma_{xy},
+\sigma_{xx} &= \frac{E}{1 - \nu^2} \left( \varepsilon_{xx} + \nu \varepsilon_{yy} \right), \\
+\sigma_{yy} &= \frac{E}{1 - \nu^2} \left( \varepsilon_{yy} + \nu \varepsilon_{xx} \right), \\
+\sigma_{xy} &= \frac{E}{2(1 + \nu)} \gamma_{xy},
 \end{aligned}
 \end{equation}
 $$
@@ -24,9 +24,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\sigma_x &= \frac{E}{1 - \nu^2} \left( \frac{\partial u}{\partial x} + \nu \frac{\partial v}{\partial y} \right), \\
-\sigma_y &= \frac{E}{1 - \nu^2} \left( \frac{\partial v}{\partial y} + \nu \frac{\partial u}{\partial x} \right), \\
-\tau_{xy} &= \frac{E}{2(1 + \nu)} \left( \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y} \right),
+\sigma_{xx} &= \frac{E}{1 - \nu^2} \left( \frac{\partial u}{\partial x} + \nu \frac{\partial v}{\partial y} \right), \\
+\sigma_{yy} &= \frac{E}{1 - \nu^2} \left( \frac{\partial v}{\partial y} + \nu \frac{\partial u}{\partial x} \right), \\
+\sigma_{xy} &= \frac{E}{2(1 + \nu)} \left( \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y} \right),
 \end{aligned}
 \end{equation}
 $$ (sec8-eq:stress-displ)
@@ -66,12 +66,12 @@ $$ (sec8-eq:solution-displ)
 ```
 
 $$
-\frac{\partial^2 \varepsilon_x}{\partial y^2} + \frac{\partial^2 \varepsilon_y}{\partial x^2}
+\frac{\partial^2 \varepsilon_{xx}}{\partial y^2} + \frac{\partial^2 \varepsilon_{yy}}{\partial x^2}
 = \frac{\partial^3 u}{\partial x \partial y^2} + \frac{\partial^3 v}{\partial y \partial x^2}
 = \frac{\partial^2}{\partial x \partial y} \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right)= \frac{\partial^2 \gamma_{xy}}{\partial x \partial y},
 $$ (sec8-eq:compatibility)
 
-相容方程表明，连续体的应变分量 $\epsilon_x, \epsilon_y, \gamma_{xy}$ 不是相互独立的
+相容方程表明，连续体的应变分量 $\varepsilon_x, \varepsilon_y, \gamma_{xy}$ 不是相互独立的
 
 ## 应力法
 
@@ -82,10 +82,10 @@ $$ (sec8-eq:compatibility)
 ```
 
 $$
-\frac{\partial^2}{\partial y^2} (\sigma_x - \nu \sigma_y) + \frac{\partial^2}{\partial x^2} (\sigma_y - \nu \sigma_x) = 2(1 + \nu) \frac{\partial^2 \tau_{xy}}{\partial x \partial y}.
+\frac{\partial^2}{\partial y^2} (\sigma_{xx} - \nu \sigma_{yy}) + \frac{\partial^2}{\partial x^2} (\sigma_{yy} - \nu \sigma_{xx}) = 2(1 + \nu) \frac{\partial^2 \sigma_{xy}}{\partial x \partial y}.
 $$ (sec8-eq:stress-1)
 
-联立平衡方程 {eq}`sec3-eq:balance`，共三个方程和三个求解变量：$\sigma_{x},\sigma_{y},\tau_{xy}$
+联立平衡方程 {eq}`sec3-eq:balance`，共三个方程和三个求解变量：$\sigma_{xx},\sigma_{yy},\sigma_{xy}$
 
 代入平衡方程可得
 
@@ -96,9 +96,9 @@ $$ (sec8-eq:stress-1)
 $$
 \begin{equation}
 \begin{aligned}
-2\frac{\partial^2 \tau_{xy}}{\partial x \partial y} &= \frac{\partial}{\partial y}\left(\frac{\partial \tau_{xy}}{\partial x}\right) + \frac{\partial}{\partial x}\left(\frac{\partial \tau_{yx}}{\partial y}\right)\\
-&=  -\frac{\partial}{\partial y}\left(\frac{\partial \sigma_{y}}{\partial y} + f_y\right) - \frac{\partial}{\partial x}\left(\frac{\partial \sigma_{x}}{\partial x} + f_y\right)\\
-&=-\frac{\partial^2 \sigma_x}{\partial x^2} - \frac{\partial^2 \sigma_y}{\partial y^2} - \frac{\partial f_x}{\partial x} - \frac{\partial f_y}{\partial y},
+2\frac{\partial^2 \sigma_{xy}}{\partial x \partial y} &= \frac{\partial}{\partial y}\left(\frac{\partial \sigma_{xy}}{\partial x}\right) + \frac{\partial}{\partial x}\left(\frac{\partial \sigma_{yx}}{\partial y}\right)\\
+&=  -\frac{\partial}{\partial y}\left(\frac{\partial \sigma_{yy}}{\partial y} + f_y\right) - \frac{\partial}{\partial x}\left(\frac{\partial \sigma_{xx}}{\partial x} + f_y\right)\\
+&=-\frac{\partial^2 \sigma_{xx}}{\partial x^2} - \frac{\partial^2 \sigma_{yy}}{\partial y^2} - \frac{\partial f_x}{\partial x} - \frac{\partial f_y}{\partial y},
 \end{aligned}
 \end{equation}
 $$
@@ -110,7 +110,7 @@ $$
 ```
 
 $$
-\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_x + \sigma_y) = - (1 + \nu) \left( \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} \right).
+\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_{xx} + \sigma_{yy}) = - (1 + \nu) \left( \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} \right).
 $$ (sec8-eq:solution-stress-1)
 
 在应力法中，应力作为基本未知量，通过本构方程 {eq}`sec5-eq:strain-stress-1` 表示应变，并结合几何方程 {eq}`sec4-eq:geometry` 间接表示位移；然而，几何方程是一个微分方程组，求解过程较为复杂，这使得通过应力表示位移变得困难。因此，应力法通常仅适用于**边界条件全部为应力边界条件**的问题
@@ -120,15 +120,15 @@ $$ (sec8-eq:solution-stress-1)
 在许多情况下，体积力是常量，例如重力或在恒定加速度下的惯性力。此时，按应力求解得到的方程组如下
 
 ```{margin}
-$\sigma_x + \sigma_y$ 是调和函数
+$\sigma_{xx} + \sigma_{yy}$ 是调和函数
 ```
 
 $$
 \begin{equation}
 \begin{aligned}
-&\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
-&\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0,\\
-&\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_x + \sigma_y) = 0.
+&\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
+&\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{xy}}{\partial x} + f_y = 0,\\
+&\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_{xx} + \sigma_{yy}) = 0.
 \end{aligned}
 \end{equation}
 $$ (sec8-eq:solution-stress-2)
@@ -155,7 +155,7 @@ $$ (sec8-eq:solution-stress-2)
 首先考虑平衡方程的求解，非齐次微分方程组的解由任意一个特解与齐次方程的通解相加组成，特解可以取为
 
 $$
-\sigma_x = -f_x \, x, \quad \sigma_y = -f_y \, y, \quad \tau_{xy} = 0.
+\sigma_{xx} = -f_x \, x, \quad \sigma_{yy} = -f_y \, y, \quad \sigma_{xy} = 0.
 $$
 
 对于其齐次形式
@@ -163,8 +163,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} = 0, \\
-&\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} = 0,
+&\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} = 0, \\
+&\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{xy}}{\partial x} = 0,
 \end{aligned}
 \end{equation}
 $$
@@ -174,8 +174,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\frac{\partial \sigma_x}{\partial x} = \frac{\partial }{\partial y} (-\tau_{yx}),\\
-\frac{\partial \sigma_y}{\partial y} = \frac{\partial }{\partial x} (-\tau_{xy}),
+\frac{\partial \sigma_{xx}}{\partial x} = \frac{\partial }{\partial y} (-\sigma_{yx}),\\
+\frac{\partial \sigma_{yy}}{\partial y} = \frac{\partial }{\partial x} (-\sigma_{xy}),
 \end{aligned}
 \end{equation}
 $$
@@ -185,8 +185,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\sigma_x = \frac{\partial A}{\partial y},\quad  -\tau_{yx} = \frac{\partial A}{\partial x},\\
-\sigma_y = \frac{\partial B}{\partial x},\quad  -\tau_{xy} = \frac{\partial B}{\partial y},\\
+\sigma_{xx} = \frac{\partial A}{\partial y},\quad  -\sigma_{yx} = \frac{\partial A}{\partial x},\\
+\sigma_{yy} = \frac{\partial B}{\partial x},\quad  -\sigma_{xy} = \frac{\partial B}{\partial y},\\
 \end{aligned}
 \end{equation}
 $$
@@ -200,12 +200,12 @@ $$
 因此
 
 $$
-\sigma_x = \frac{\partial^2 \Phi}{\partial y^2}, \quad 
-\sigma_y = \frac{\partial^2 \Phi}{\partial x^2}, \quad 
-\tau_{xy} = -\frac{\partial^2 \Phi}{\partial x \partial y},
+\sigma_{xx} = \frac{\partial^2 \Phi}{\partial y^2}, \quad 
+\sigma_{yy} = \frac{\partial^2 \Phi}{\partial x^2}, \quad 
+\sigma_{xy} = -\frac{\partial^2 \Phi}{\partial x \partial y},
 $$
 
-其中 $\Phi$ 称为平面问题的**应力函数**，又称**艾里应力函数**，通过 $\Phi$ 可以表示出 $\sigma_x,\sigma_y,\tau_{xy}$。将上式代入到方程 {eq}`sec8-eq:solution-stress-2` 的第三式中，整理得到
+其中 $\Phi$ 称为平面问题的**应力函数**，又称**艾里应力函数**，通过 $\Phi$ 可以表示出 $\sigma_{xx},\sigma_{yy},\sigma_{xy}$。将上式代入到方程 {eq}`sec8-eq:solution-stress-2` 的第三式中，整理得到
 
 $$
 \frac{\partial^4 \Phi}{\partial x^4} 

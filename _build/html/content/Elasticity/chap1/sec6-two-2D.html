@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -445,28 +445,28 @@ document.write(`
 <p>薄板仅在边缘的 <span class="math notranslate nohighlight">\(x\)</span> 轴截面和 <span class="math notranslate nohighlight">\(y\)</span> 轴截面上受到不随厚度变化的外力，而在边缘的 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上无外力作用。由于薄板足够薄，因此在薄板内的任意一点都满足</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{z}=0,\quad \tau_{zx} = 0,\quad \tau_{zy} = 0.
+\sigma_{zz}=0,\quad \sigma_{zx} = 0,\quad \sigma_{zy} = 0.
 \]</div>
 <p>此外，由切应力互等定理，有</p>
 <div class="math notranslate nohighlight">
 \[
-\tau_{xz} = 0,\quad \tau_{yz} = 0.
+\sigma_{xz} = 0,\quad \sigma_{yz} = 0.
 \]</div>
 <p>因此，<span class="math notranslate nohighlight">\(\gamma_{zx} = \gamma_{zy} = 0\)</span></p>
-<p>由于薄板很薄，且作用力不随厚度变化，因此可以认为应力分量 <span class="math notranslate nohighlight">\(\sigma_{x},\sigma_{y}, \tau_{xy}\)</span> 和应变分量 <span class="math notranslate nohighlight">\(\epsilon_{x},\epsilon_{y}, \gamma_{xy}\)</span> 是关于 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数，不随 <span class="math notranslate nohighlight">\(z\)</span> 变化</p>
+<p>由于薄板很薄，且作用力不随厚度变化，因此可以认为应力分量 <span class="math notranslate nohighlight">\(\sigma_{xx},\sigma_{yy}, \sigma_{xy}\)</span> 和应变分量 <span class="math notranslate nohighlight">\(\varepsilon_{xx},\varepsilon_{yy}, \gamma_{xy}\)</span> 是关于 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数，不随 <span class="math notranslate nohighlight">\(z\)</span> 变化</p>
 <p>这类问题被称为<strong>平面应力问题</strong>，
 此时，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(8.1)</a> 可简化为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-physical">
 <span class="eqno">(9.1)<a class="headerlink" href="#equation-sec6-eq-2d-stress-physical" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \nu \sigma_y ),\\
-&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x ),\\
-&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \tau_{xy}.
+&amp;\varepsilon_{xx} = \frac{1}{E} ( \sigma_{xx} - \nu \sigma_{yy} ),\\
+&amp;\varepsilon_{yy} = \frac{1}{E} (\sigma_{yy} - \nu \sigma_{xx} ),\\
+&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \sigma_{xy}.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(\epsilon_z\)</span> 可通过 <span class="math notranslate nohighlight">\(\epsilon_z=-\frac{\nu}{E} (\sigma_x + \sigma_y)\)</span> 求得</p>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{zz}\)</span> 可通过 <span class="math notranslate nohighlight">\(\varepsilon_{zz}=-\frac{\nu}{E} (\sigma_{xx} + \sigma_{yy})\)</span> 求得</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>物质的宏观形变源于微观分子结构及分子间作用力的耦合效应。因此，即使某方向无外力作用，内部应力传递仍可能导致该方向形变。</p>
@@ -480,21 +480,21 @@ document.write(`
 <span class="eqno">(9.2)<a class="headerlink" href="#equation-sec6-eq-2d-stress-eq" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
-&amp;\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0,\\
-&amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
-&amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
+&amp;\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
+&amp;\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{xy}}{\partial x} + f_y = 0,\\
+&amp;\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
+&amp;\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
 &amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&amp;\epsilon_x = \frac{1}{E} ( \sigma_x - \nu \sigma_y ),\\
-&amp;\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x ),\\
-&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \tau_{xy},
+&amp;\varepsilon_{xx} = \frac{1}{E} ( \sigma_{xx} - \nu \sigma_{yy} ),\\
+&amp;\varepsilon_{yy} = \frac{1}{E} (\sigma_{yy} - \nu \sigma_{xx} ),\\
+&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \sigma_{xy},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
 <p>求解变量为</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{x}, \, \sigma_{y}, \, \tau_{xy}, \, \epsilon_{x}, \, \epsilon_{y}, \, \gamma_{xy}, \, u, \, v
+\sigma_{xx}, \, \sigma_{yy}, \, \sigma_{xy}, \, \varepsilon_{xx}, \, \varepsilon_{yy}, \, \gamma_{xy}, \, u, \, v
 \]</div>
 </section>
 <section id="id3">
@@ -502,7 +502,7 @@ document.write(`
 <p>假设有<strong>无限长的等截面柱形体</strong>，柱面上受有平行于 <span class="math notranslate nohighlight">\(z\)</span> 轴截面且不随长度变化的力（面力、体力）或约束</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>柱体两端通常受到约束，使得长度方向的变形受到限制，即 <span class="math notranslate nohighlight">\(\epsilon_z = 0\)</span></p>
+<p>柱体两端通常受到约束，使得长度方向的变形受到限制，即 <span class="math notranslate nohighlight">\(\varepsilon_{zz} = 0\)</span></p>
 </aside>
 <figure class="align-default" id="sec5-fig-2d-strain">
 <a class="reference internal image-reference" href="../../../_images/2D-strain.png"><img alt="../../../_images/2D-strain.png" src="../../../_images/2D-strain.png" style="width: 400px;" />
@@ -515,7 +515,7 @@ document.write(`
 此外，由于对称性，位移仅沿 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 方向发生，且 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上各点的切应力均为 0，因此</p>
 <div class="math notranslate nohighlight">
 \[
-\epsilon_{z} = 0,\quad \tau_{zx} = 0,\quad \tau_{zy}=0.
+\varepsilon_{zz} = 0,\quad \sigma_{zx} = 0,\quad \sigma_{zy}=0.
 \]</div>
 <p>由胡克定律（见<a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(8.1)</a>），有</p>
 <div class="math notranslate nohighlight">
@@ -524,16 +524,16 @@ document.write(`
 \]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(\sigma_{z}\)</span> 一般不为 0，以抵消 <span class="math notranslate nohighlight">\(z\)</span> 方向上可能产生的应变</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{zz}\)</span> 一般不为 0，以抵消 <span class="math notranslate nohighlight">\(z\)</span> 方向上可能产生的应变</p>
 </aside>
-<p>代入 <span class="math notranslate nohighlight">\(\sigma_{z}=\nu(\sigma_x + \sigma_y)\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{z}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(8.1)</a> 可简化为</p>
+<p>代入 <span class="math notranslate nohighlight">\(\sigma_{zz}=\nu(\sigma_{xx} + \sigma_{yy})\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{zz}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(8.1)</a> 可简化为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-physical">
 <span class="eqno">(9.3)<a class="headerlink" href="#equation-sec6-eq-2d-strain-physical" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_x - \frac{\nu}{1 - \nu} \sigma_y \right), \\
-&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_y - \frac{\nu}{1 - \nu} \sigma_x \right), \\
-&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \tau_{xy}.
+&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_{xx} - \frac{\nu}{1 - \nu} \sigma_{yy} \right), \\
+&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_{yy} - \frac{\nu}{1 - \nu} \sigma_{xx} \right), \\
+&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \sigma_{xy}.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -546,21 +546,21 @@ document.write(`
 <span class="eqno">(9.4)<a class="headerlink" href="#equation-sec6-eq-2d-strain-eq" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\frac{\partial \sigma_x}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
-&amp;\frac{\partial \sigma_y}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0,\\
-&amp;\epsilon_x = \frac{\partial u}{\partial x}, \\
-&amp;\epsilon_y = \frac{\partial v}{\partial y}, \\
+&amp;\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
+&amp;\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{xy}}{\partial x} + f_y = 0,\\
+&amp;\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
+&amp;\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
 &amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_x - \frac{\nu}{1 - \nu} \sigma_y \right), \\
-&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_y - \frac{\nu}{1 - \nu} \sigma_x \right), \\
-&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \tau_{xy},
+&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_{xx} - \frac{\nu}{1 - \nu} \sigma_{yy} \right), \\
+&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_{yy} - \frac{\nu}{1 - \nu} \sigma_{xx} \right), \\
+&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \sigma_{xy},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
 <p>求解变量为</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{x}, \, \sigma_{y}, \, \tau_{xy}, \, \epsilon_{x}, \, \epsilon_{y}, \, \gamma_{xy}, \, u, \, v
+\sigma_{xx}, \, \sigma_{yy}, \, \sigma_{xy}, \, \varepsilon_{xx}, \, \varepsilon_{yy}, \, \gamma_{xy}, \, u, \, v
 \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

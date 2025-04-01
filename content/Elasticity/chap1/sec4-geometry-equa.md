@@ -34,13 +34,13 @@ $$
 于是，$\overline{PA}$ 的线应变为
 
 $$
-\epsilon_x = \frac{\left( u + \frac{\partial u}{\partial x} \, \mathrm{d}x \right) - u}{\mathrm{d}x} = \frac{\partial u}{\partial x},
+\varepsilon_{xx} = \frac{\left( u + \frac{\partial u}{\partial x} \, \mathrm{d}x \right) - u}{\mathrm{d}x} = \frac{\partial u}{\partial x},
 $$
 
 类似地，$\overline{PB}$ 的线应变为
 
 $$
-\epsilon_y = \frac{\partial v}{\partial y}.
+\varepsilon_{yy} = \frac{\partial v}{\partial y}.
 $$
 
 对于 $\overline{PA}$ 的转角 $\alpha$ 有
@@ -70,8 +70,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\epsilon_x = \frac{\partial u}{\partial x}, \\
-&\epsilon_y = \frac{\partial v}{\partial y}, \\
+&\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
+&\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
 &\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}.
 \end{aligned}
 \end{equation}
@@ -80,35 +80,52 @@ $$ (sec4-eq:geometry)
 可以写为
 
 $$
-\boldsymbol{\epsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
+\boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
 $$
 
 其中
 
 ```{margin}
-$\epsilon_{xy} = \frac{\gamma_{xy}}{2}$ 被称为张量剪切应变
+$\varepsilon_{xy} = \frac{\gamma_{xy}}{2}$ 被称为张量剪切应变
 ```
 
 $$
 \begin{equation}
-\boldsymbol{\epsilon}=
+\boldsymbol{\varepsilon}=
 \begin{bmatrix}
-\epsilon_{x}  &  \epsilon_{xy} \\
-\epsilon_{yx}  &  \epsilon_{y}
+\varepsilon_{xx}  &  \varepsilon_{xy} \\
+\varepsilon_{yx}  &  \varepsilon_{yy}
 \end{bmatrix}
 \end{equation}
 $$
 
-是应变张量，$\mathbf{u} = [u\,v]^{T}$ 是位移向量
+是应变张量，$\mathbf{u} = [u\,v]^{T}$ 是位移向量。也可以写为 Voigt 形式
+
+$$
+\begin{equation}
+\begin{bmatrix}
+\varepsilon_{xx} \\ \varepsilon_{yy} \\ 2\varepsilon_{xy} 
+\end{bmatrix}
+=\begin{bmatrix}
+\frac{\partial }{\partial x} & 0 \\
+0 & \frac{\partial }{\partial y} \\
+\frac{\partial }{\partial y} & \frac{\partial }{\partial x}
+\end{bmatrix}
+\begin{bmatrix}
+u \\ v 
+\end{bmatrix}.
+\end{equation}
+$$
+
 
 ```{admonition} 刚体运动
 :class: tip, dropdown
 
-当位移分量 $u,v$ 完全确定时，应变分量 $\epsilon_x, \epsilon_y, \gamma_{xy}$ 也完全确定。反之，应变分量完全确定时，位移分量不能完全确定。
+当位移分量 $u,v$ 完全确定时，应变分量 $\varepsilon_{xx}, \varepsilon_{yy}, \gamma_{xy}$ 也完全确定。反之，应变分量完全确定时，位移分量不能完全确定。
 假设
 
 $$
-\epsilon_x = \epsilon_y = \gamma_{xy} = 0,
+\varepsilon_{xx} = \varepsilon_{yy} = \gamma_{xy} = 0,
 $$
 
 则
