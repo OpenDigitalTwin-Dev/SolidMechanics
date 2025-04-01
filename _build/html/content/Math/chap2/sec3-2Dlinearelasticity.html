@@ -410,17 +410,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 离散</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.3.2.1. 三角形三节点 Lagrange 元</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1.1. 单元几何</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2.1.2. 形函数</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.1.3. 几何映射</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.1.4. 场变量插值</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.1.5. Jacobian 矩阵</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.1.6. 积分计算</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.2. 四边形四节点 Lagrange 元</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.2.1. 积分计算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1. 基本定义</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2.1.1. 几何映射</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.1.2. 场变量插值</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.1.3. Jacobian 矩阵</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.1.4. 积分运算</a></li>
 </ul>
 </li>
 </ul>
@@ -549,7 +543,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) 
-= \mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})  = \begin{bmatrix}
+\rightarrow\mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})= \begin{bmatrix}
 \lambda + 2\mu &amp; \lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
 \lambda &amp; \lambda + 2\mu &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
 \lambda &amp; \lambda &amp; \lambda + 2\mu &amp; 0 &amp; 0 &amp; 0 \\
@@ -588,110 +582,76 @@ u_{x}\\u_{y}\\u_{z}
 <p>于是</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=\mathbf{v}^{T}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u},
+\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=(\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u}),
 \]</div>
-<p>代入得到</p>
+<p>于是积分运算可以写为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{equation}
-\begin{bmatrix}
-v_{x} &amp; v_{y} &amp; v_{z}
-\end{bmatrix}
-\begin{bmatrix}
-\frac{\partial}{\partial x} &amp; 0 &amp; 0 &amp; 0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
-0 &amp; \frac{\partial}{\partial y} &amp; 0 &amp; \frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x} \\
-0 &amp; 0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0
-\end{bmatrix}
-\begin{bmatrix}
-\lambda + 2\mu &amp; \lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
-\lambda &amp; \lambda + 2\mu &amp; \lambda &amp; 0 &amp; 0 &amp; 0 \\
-\lambda &amp; \lambda &amp; \lambda + 2\mu &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \mu
-\end{bmatrix}\begin{bmatrix}
-\frac{\partial}{\partial x} &amp; 0 &amp; 0 \\
-0 &amp; \frac{\partial}{\partial y} &amp; 0 \\
-0 &amp; 0 &amp; \frac{\partial}{\partial z} \\
-0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
-\frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x} \\
-\frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0
-\end{bmatrix}
-\begin{bmatrix}
-u_{x}\\u_{y}\\u_{z}
-\end{bmatrix}.
-\end{equation}
+\begin{align}
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega &amp;= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}E_{\text{物理}} \\
+&amp;= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} (\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u})\, \mathrm{d}E_{\text{物理}} \\
+&amp;= \sum_{E_{\text{参考}}}\int_{E_{\text{参考}}} (\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}.
+\end{align}
 \end{split}\]</div>
 </section>
 </section>
 <section id="id3">
 <h2><span class="section-number">2.3.2. </span>离散<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>以 2 维线弹性问题为例，介绍使用三角形三节点 Lagrange 元和四边形四节点 Lagrange 元的求解过程</p>
-<section id="lagrange">
-<h3><span class="section-number">2.3.2.1. </span>三角形三节点 Lagrange 元<a class="headerlink" href="#lagrange" title="Link to this heading">#</a></h3>
 <section id="id4">
-<h4><span class="section-number">2.3.2.1.1. </span>单元几何<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>将计算域 <span class="math notranslate nohighlight">\(\Omega\)</span> 划分为 <span class="math notranslate nohighlight">\(N_{h}\)</span> 个三角形单元，每个单元上有3个节点，按逆时针顺序编号为 1,2,3，节点坐标记为 <span class="math notranslate nohighlight">\((x_{i},y_{i}),i=1,2,3\)</span></p></li>
-<li><p>每个节点有 2 个自由度 <span class="math notranslate nohighlight">\(u_{x},u_{y}\)</span>，因此每个单元上自由度数为 6</p></li>
-</ul>
-</section>
+<h3><span class="section-number">2.3.2.1. </span>基本定义<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>设形函数为 <span class="math notranslate nohighlight">\(N_{i}\)</span></p>
 <section id="id5">
-<h4><span class="section-number">2.3.2.1.2. </span>形函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight">
-\[
-N_{1} = 1-\xi-\eta,\quad N_{2} = \xi,\quad N_{3} = \eta.
-\]</div>
-</section>
-<section id="id6">
-<h4><span class="section-number">2.3.2.1.3. </span>几何映射<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.3.2.1.1. </span>几何映射<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
 \begin{equation}
-x = \sum_{i=1}^{3} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i=1}^{3} N_{i}(\xi,\eta)y_{i}.
+x = \sum_{i} N_{i}x_{i},\quad y = \sum_{i} N_{i}y_{i},\quad z = \sum_{i} N_{i}z_{i}.
 \end{equation}
 \]</div>
 </section>
-<section id="id7">
-<h4><span class="section-number">2.3.2.1.4. </span>场变量插值<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<section id="id6">
+<h4><span class="section-number">2.3.2.1.2. </span>场变量插值<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
-\[
-u_{x}=\sum_{i=1}^{3}N_{i}(\xi,\eta)u_{x,i},\quad 
-u_{y}=\sum_{i=1}^{3}N_{i}(\xi,\eta)u_{y,i}
-\]</div>
+\[\begin{split}
+\begin{equation}
+\mathbf{u} 
+= 
+\begin{bmatrix}
+u_{x} \\ u_{y} \\ u_{z}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sum_{i}N_{i}(\xi,\eta)u_{x,i} \\
+\sum_{i}N_{i}(\xi,\eta)u_{y,i} \\
+\sum_{i}N_{i}(\xi,\eta)u_{z,i}
+\end{bmatrix}.
+\end{equation}
+\end{split}\]</div>
 </section>
 <section id="jacobian">
-<h4><span class="section-number">2.3.2.1.5. </span>Jacobian 矩阵<a class="headerlink" href="#jacobian" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.3.2.1.3. </span>Jacobian 矩阵<a class="headerlink" href="#jacobian" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \mathbf{J} =
 \begin{bmatrix}
-\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta}
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} &amp; \frac{\partial z}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta} &amp; \frac{\partial z}{\partial \eta} \\
+\frac{\partial x}{\partial \zeta} &amp; \frac{\partial y}{\partial \zeta} &amp; \frac{\partial z}{\partial \zeta}
 \end{bmatrix}
 =
-\sum_{i=1}^{3}
+\sum_{i}
 \begin{bmatrix}
-\frac{\partial N_i}{\partial \xi} x_i &amp; \frac{\partial N_i}{\partial \xi} y_i \\
-\frac{\partial N_i}{\partial \eta} x_i &amp; \frac{\partial N_i}{\partial \eta} y_i
-\end{bmatrix}
-=
-\begin{bmatrix}
-x_2 - x_1 &amp; y_2 - y_1 \\
-x_3 - x_1 &amp; y_3 - y_1
+\frac{\partial N_i}{\partial \xi} x_i &amp; \frac{\partial N_i}{\partial \xi} y_i &amp; \frac{\partial N_i}{\partial \xi} z_i \\
+\frac{\partial N_i}{\partial \eta} x_i &amp; \frac{\partial N_i}{\partial \eta} y_i &amp; \frac{\partial N_i}{\partial \eta} z_i \\
+\frac{\partial N_i}{\partial \zeta} x_i &amp; \frac{\partial N_i}{\partial \zeta} y_i &amp; \frac{\partial N_i}{\partial \zeta} z_i
 \end{bmatrix}.
 \end{equation}
 \end{split}\]</div>
 </section>
-<section id="id8">
-<h4><span class="section-number">2.3.2.1.6. </span>积分计算<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
-</section>
-</section>
-<section id="id9">
-<h3><span class="section-number">2.3.2.2. </span>四边形四节点 Lagrange 元<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<section id="id10">
-<h4><span class="section-number">2.3.2.2.1. </span>积分计算<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<section id="id7">
+<h4><span class="section-number">2.3.2.1.4. </span>积分运算<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>于是</p>
 </section>
 </section>
 </section>
@@ -766,17 +726,11 @@ x_3 - x_1 &amp; y_3 - y_1
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 离散</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.3.2.1. 三角形三节点 Lagrange 元</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1.1. 单元几何</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2.1.2. 形函数</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.1.3. 几何映射</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.1.4. 场变量插值</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.1.5. Jacobian 矩阵</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.1.6. 积分计算</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.2. 四边形四节点 Lagrange 元</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.2.1. 积分计算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1. 基本定义</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2.1.1. 几何映射</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.1.2. 场变量插值</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.1.3. Jacobian 矩阵</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.1.4. 积分运算</a></li>
 </ul>
 </li>
 </ul>

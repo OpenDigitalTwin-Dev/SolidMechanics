@@ -128,7 +128,7 @@ $$
 
 $$
 \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) 
-= \mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})  = \begin{bmatrix}
+\rightarrow\mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})= \begin{bmatrix}
 \lambda + 2\mu & \lambda & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda + 2\mu & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda & \lambda + 2\mu & 0 & 0 & 0 \\
@@ -166,76 +166,53 @@ u_{x}\\u_{y}\\u_{z}
 \end{equation}
 $$
 
-
 于是 
 
 $$
-\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=\mathbf{v}^{T}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u},
+\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=(\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u}),
 $$
 
-代入得到
+
+于是积分运算可以写为
 
 $$
-\begin{equation}
-\begin{bmatrix}
-v_{x} & v_{y} & v_{z}
-\end{bmatrix}
-\begin{bmatrix}
-\frac{\partial}{\partial x} & 0 & 0 & 0 & \frac{\partial}{\partial z} & \frac{\partial}{\partial y} \\
-0 & \frac{\partial}{\partial y} & 0 & \frac{\partial}{\partial z} & 0 & \frac{\partial}{\partial x} \\
-0 & 0 & \frac{\partial}{\partial z} & \frac{\partial}{\partial y} & \frac{\partial}{\partial x} & 0
-\end{bmatrix}
-\begin{bmatrix}
-\lambda + 2\mu & \lambda & \lambda & 0 & 0 & 0 \\
-\lambda & \lambda + 2\mu & \lambda & 0 & 0 & 0 \\
-\lambda & \lambda & \lambda + 2\mu & 0 & 0 & 0 \\
-0 & 0 & 0 & \mu & 0 & 0 \\
-0 & 0 & 0 & 0 & \mu & 0 \\
-0 & 0 & 0 & 0 & 0 & \mu
-\end{bmatrix}\begin{bmatrix}
-\frac{\partial}{\partial x} & 0 & 0 \\
-0 & \frac{\partial}{\partial y} & 0 \\
-0 & 0 & \frac{\partial}{\partial z} \\
-0 & \frac{\partial}{\partial z} & \frac{\partial}{\partial y} \\
-\frac{\partial}{\partial z} & 0 & \frac{\partial}{\partial x} \\
-\frac{\partial}{\partial y} & \frac{\partial}{\partial x} & 0
-\end{bmatrix}
-\begin{bmatrix}
-u_{x}\\u_{y}\\u_{z}
-\end{bmatrix}.
-\end{equation}
+\begin{align}
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega &= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}E_{\text{物理}} \\
+&= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} (\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u})\, \mathrm{d}E_{\text{物理}} \\
+&= \sum_{E_{\text{参考}}}\int_{E_{\text{参考}}} (\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}.
+\end{align}
 $$
 
 ## 离散
 
-以 2 维线弹性问题为例，介绍使用三角形三节点 Lagrange 元和四边形四节点 Lagrange 元的求解过程
+### 基本定义
 
-### 三角形三节点 Lagrange 元
-
-#### 单元几何
-
-- 将计算域 $\Omega$ 划分为 $N_{h}$ 个三角形单元，每个单元上有3个节点，按逆时针顺序编号为 1,2,3，节点坐标记为 $(x_{i},y_{i}),i=1,2,3$
-- 每个节点有 2 个自由度 $u_{x},u_{y}$，因此每个单元上自由度数为 6
-
-#### 形函数
-
-$$
-N_{1} = 1-\xi-\eta,\quad N_{2} = \xi,\quad N_{3} = \eta.
-$$
+设形函数为 $N_{i}$
 
 #### 几何映射
 
 $$
 \begin{equation}
-x = \sum_{i=1}^{3} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i=1}^{3} N_{i}(\xi,\eta)y_{i}.
+x = \sum_{i} N_{i}x_{i},\quad y = \sum_{i} N_{i}y_{i},\quad z = \sum_{i} N_{i}z_{i}.
 \end{equation}
 $$
 
 #### 场变量插值
 
 $$
-u_{x}=\sum_{i=1}^{3}N_{i}(\xi,\eta)u_{x,i},\quad 
-u_{y}=\sum_{i=1}^{3}N_{i}(\xi,\eta)u_{y,i}
+\begin{equation}
+\mathbf{u} 
+= 
+\begin{bmatrix}
+u_{x} \\ u_{y} \\ u_{z}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sum_{i}N_{i}(\xi,\eta)u_{x,i} \\
+\sum_{i}N_{i}(\xi,\eta)u_{y,i} \\
+\sum_{i}N_{i}(\xi,\eta)u_{z,i}
+\end{bmatrix}.
+\end{equation}
 $$
 
 #### Jacobian 矩阵
@@ -244,25 +221,20 @@ $$
 \begin{equation}
 \mathbf{J} =
 \begin{bmatrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta}
+\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} & \frac{\partial z}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} & \frac{\partial z}{\partial \eta} \\
+\frac{\partial x}{\partial \zeta} & \frac{\partial y}{\partial \zeta} & \frac{\partial z}{\partial \zeta}
 \end{bmatrix}
 =
-\sum_{i=1}^{3}
+\sum_{i}
 \begin{bmatrix}
-\frac{\partial N_i}{\partial \xi} x_i & \frac{\partial N_i}{\partial \xi} y_i \\
-\frac{\partial N_i}{\partial \eta} x_i & \frac{\partial N_i}{\partial \eta} y_i
-\end{bmatrix}
-=
-\begin{bmatrix}
-x_2 - x_1 & y_2 - y_1 \\
-x_3 - x_1 & y_3 - y_1
+\frac{\partial N_i}{\partial \xi} x_i & \frac{\partial N_i}{\partial \xi} y_i & \frac{\partial N_i}{\partial \xi} z_i \\
+\frac{\partial N_i}{\partial \eta} x_i & \frac{\partial N_i}{\partial \eta} y_i & \frac{\partial N_i}{\partial \eta} z_i \\
+\frac{\partial N_i}{\partial \zeta} x_i & \frac{\partial N_i}{\partial \zeta} y_i & \frac{\partial N_i}{\partial \zeta} z_i
 \end{bmatrix}.
 \end{equation}
 $$
 
-#### 积分计算
+#### 积分运算
 
-### 四边形四节点 Lagrange 元
-
-#### 积分计算
+于是
