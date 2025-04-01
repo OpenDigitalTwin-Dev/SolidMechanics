@@ -164,12 +164,16 @@ $$
 
 因此
 
+```{margin}
+$L_{1}+L_{2}+L_{3}=1$
+```
+
 $$
 \begin{equation}
 \mathbf{J} =
 \begin{bmatrix}
-\frac{\partial x}{\partial L_1} & \frac{\partial y}{\partial L_1} \\
-\frac{\partial x}{\partial L_2} & \frac{\partial y}{\partial L_2}
+\frac{\partial x}{\partial L_1} & \frac{\partial x}{\partial L_2} \\
+\frac{\partial y}{\partial L_1} & \frac{\partial y}{\partial L_2}
 \end{bmatrix}
 =
 \sum_{i=1}^{3}
