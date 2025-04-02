@@ -450,7 +450,7 @@ x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
 <p>通过坐标变换，物理单元上的积分通过参考单元计算</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{E_\text{物理}}f(x,y)\,\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\,\right|\mathrm{d}\xi\mathrm{d}\eta,
+\int_{E_\text{物理}}f(x,y)\,\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\,\right|\ \mathrm{d}\xi\mathrm{d}\eta,
 \]</div>
 <p>其中 Jacobian 矩阵</p>
 <div class="math notranslate nohighlight">
@@ -513,19 +513,19 @@ S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right|  = 
 \begin{aligned}
 \mathcal{D'} &amp;= \int_{\mathcal{D'}}\mathrm{d}x\mathrm{d}y =
 \lim_{n\rightarrow\infty}\sum_{n}\mathrm{d}\mathcal{D'}\\
-&amp;=\lim_{n\rightarrow\infty}\sum_{n}\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D} = \int_{\mathcal{D}}\left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta.
+&amp;=\lim_{n\rightarrow\infty}\sum_{n}\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D} = \int_{\mathcal{D}}\left|\det(\mathbf{J})\right|\ \mathrm{d}\xi\mathrm{d}\eta.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
 <p>类似地</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}x\mathrm{d}y = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta.
+\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}x\mathrm{d}y = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}\xi\mathrm{d}\eta.
 \]</div>
 <p>对于 <span class="math notranslate nohighlight">\(n\)</span> 维的情形</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\mathcal{D'}}f(x,y,\cdots)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta,\cdots)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D}
+\int_{\mathcal{D'}}f(x,y,\cdots)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta,\cdots)\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}\mathcal{D}
 \]</div>
 <p>其中</p>
 <div class="math notranslate nohighlight">

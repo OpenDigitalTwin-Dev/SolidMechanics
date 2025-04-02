@@ -121,7 +121,7 @@ $$
 ### Voigt 形式
 
 ```{margin}
-注意，这里记号混用
+注意，为了方便，这里记号混用
 ```
 
 为了便于有限元计算，通常将第一项写为 Voigt 形式
@@ -137,18 +137,18 @@ $$
 0 & 0 & 0 & 0 & 0 & \mu
 \end{bmatrix}\begin{bmatrix}
 \varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
-\end{bmatrix}
+\end{bmatrix},
 $$
 
 以及
 
 ```{margin}
-$\mathbf{B}$ 是应变-位移矩阵
+$\mathbf{B}$ 是应变-位移算子矩阵
 ```
 
 $$
 \begin{equation}
-\boldsymbol{\varepsilon}({\mathbf{u}}) = \mathbf{B}\mathbf{u}\quad \rightarrow\quad
+\boldsymbol{\varepsilon}({\mathbf{u}}) = \mathcal{B}\mathbf{u}\quad \rightarrow\quad
 \begin{bmatrix}
 \varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
 \end{bmatrix}
@@ -162,14 +162,14 @@ $$
 \end{bmatrix}
 \begin{bmatrix}
 u_{x}\\u_{y}\\u_{z}
-\end{bmatrix}
+\end{bmatrix},
 \end{equation}
 $$
 
 于是 
 
 $$
-\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=(\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u}),
+\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=(\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}),
 $$
 
 
@@ -177,27 +177,112 @@ $$
 
 $$
 \begin{align}
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega &= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}E_{\text{物理}} \\
-&= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} (\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u})\, \mathrm{d}E_{\text{物理}} \\
-&= \sum_{E_{\text{参考}}}\int_{E_{\text{参考}}} (\mathbf{B}\mathbf{v})^{T}\mathbf{D}(\mathbf{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}.
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
+&= \int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega \\
+&= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E_{\text{物理}} \\
+&= \sum_{E_{\text{参考}}}\int_{E_{\text{参考}}} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}.
 \end{align}
 $$
 
-## 离散
+## 离散 
 
-### 基本定义
+### 基函数
 
-设形函数为 $N_{i}$
+设有限元解空间 $\mathcal{U}_{h}$ 的基函数为
 
-#### 几何映射
+$$
+\boldsymbol{\phi}_{1},\boldsymbol{\phi}_{2},\cdots,\boldsymbol{\phi}_{N},
+$$
+
+$\boldsymbol{\phi}_{i} = \left[\phi_{x,i},\phi_{y,i},\phi_{z,i}\right]$，其中，$\phi_{x,i},\phi_{y,i},\phi_{z,i}$ 表示位移在 $x,y,z$ 方向的插值基函数，通常 $\phi_{x,i}=\phi_{y,i}=\phi_{z,i}=:\phi_{i}$，于是位移分布函数为
+
+$$
+\mathbf{u} = \sum_{i=1}^{N}\mathbf{u}_{i}\phi_{i},
+$$
+
+其中，$\mathbf{u}_{i} = \left[u_{x,i},u_{y,i},u_{z,i}\right]^{T}$. 测试函数空间 $\mathcal{V}_{h} = \mathcal{U}_{h}$，在节点 $i$ 上，测试函数选为
+
+$$
+\begin{bmatrix}
+\phi_{i} \\ 0 \\ 0
+\end{bmatrix},\quad 
+\begin{bmatrix}
+ 0  \\ \phi_{i} \\ 0
+\end{bmatrix},\quad
+\begin{bmatrix}
+ 0 \\ 0 \\ \phi_{i} 
+\end{bmatrix}，
+$$
+
+分别记为 $\mathbf{v}_{x,i},\mathbf{v}_{y,i},\mathbf{v}_{z,i}$
+
+共计 $3N$ 个位移自由度 
+
+$$
+u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
+$$
+
+和 $3N$ 个求解方程
 
 $$
 \begin{equation}
-x = \sum_{i} N_{i}x_{i},\quad y = \sum_{i} N_{i}y_{i},\quad z = \sum_{i} N_{i}z_{i}.
+\int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+\end{equation}
+$$ (chap2-sec3-eq:discrete-eqs)
+
+### 形函数
+
+设参考单元上的形函数为
+
+$$
+N_{1},N_{2},\cdots
+$$
+
+### 几何映射
+
+在单元 $E$ 上（以下为局部编号）
+
+$$
+\begin{equation}
+x = \sum_{i} N_{i}(\xi,\eta,\zeta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta,\zeta)y_{i},\quad z = \sum_{i} N_{i}(\xi,\eta,\zeta)z_{i}.
 \end{equation}
 $$
 
-#### 场变量插值
+### Jacobian 矩阵
+
+在单元 $E$ 上（以下为局部编号）
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{J} =
+\begin{bmatrix}
+\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} & \frac{\partial z}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} & \frac{\partial z}{\partial \eta} \\
+\frac{\partial x}{\partial \zeta} & \frac{\partial y}{\partial \zeta} & \frac{\partial z}{\partial \zeta}
+\end{bmatrix}
+&=
+\sum_{i}
+\begin{bmatrix}
+\frac{\partial N_i}{\partial \xi} x_i & \frac{\partial N_i}{\partial \xi} y_i & \frac{\partial N_i}{\partial \xi} z_i \\
+\frac{\partial N_i}{\partial \eta} x_i & \frac{\partial N_i}{\partial \eta} y_i & \frac{\partial N_i}{\partial \eta} z_i \\
+\frac{\partial N_i}{\partial \zeta} x_i & \frac{\partial N_i}{\partial \zeta} y_i & \frac{\partial N_i}{\partial \zeta} z_i
+\end{bmatrix}\\
+&=\begin{bmatrix}
+\frac{\partial N_{1}}{\xi} & \frac{\partial {N_2}}{\xi} & \cdots \\ \frac{\partial N_{1}}{\eta} & \frac{\partial N_{2}}{\eta} & \cdots \\ \frac{\partial N_{1}}{\zeta} & \frac{\partial N_{2}}{\zeta} & \cdots
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} & y_{1} & z_{1} \\
+x_{2} & y_{2} & z_{2} \\
+\vdots & \vdots & \vdots
+\end{bmatrix}.
+\end{aligned}
+\end{equation}
+$$
+
+### 场变量插值
+
+在单元 $E$ 上（以下为局部编号）
 
 $$
 \begin{equation}
@@ -208,33 +293,124 @@ u_{x} \\ u_{y} \\ u_{z}
 \end{bmatrix}
 =
 \begin{bmatrix}
-\sum_{i}N_{i}(\xi,\eta)u_{x,i} \\
-\sum_{i}N_{i}(\xi,\eta)u_{y,i} \\
-\sum_{i}N_{i}(\xi,\eta)u_{z,i}
-\end{bmatrix}.
-\end{equation}
-$$
-
-#### Jacobian 矩阵
-
-$$
-\begin{equation}
-\mathbf{J} =
-\begin{bmatrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} & \frac{\partial z}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} & \frac{\partial z}{\partial \eta} \\
-\frac{\partial x}{\partial \zeta} & \frac{\partial y}{\partial \zeta} & \frac{\partial z}{\partial \zeta}
+\sum_{i}N_{i}(\xi,\eta,\zeta)u_{x,i} \\
+\sum_{i}N_{i}(\xi,\eta,\zeta)u_{y,i} \\
+\sum_{i}N_{i}(\xi,\eta,\zeta)u_{z,i}
 \end{bmatrix}
 =
-\sum_{i}
-\begin{bmatrix}
-\frac{\partial N_i}{\partial \xi} x_i & \frac{\partial N_i}{\partial \xi} y_i & \frac{\partial N_i}{\partial \xi} z_i \\
-\frac{\partial N_i}{\partial \eta} x_i & \frac{\partial N_i}{\partial \eta} y_i & \frac{\partial N_i}{\partial \eta} z_i \\
-\frac{\partial N_i}{\partial \zeta} x_i & \frac{\partial N_i}{\partial \zeta} y_i & \frac{\partial N_i}{\partial \zeta} z_i
-\end{bmatrix}.
+\sum_{i}N_{i}\mathbf{u}_{i}.
 \end{equation}
 $$
 
-#### 积分运算
+### 单元刚度矩阵
+
+在有限元方法中，积分运算被划分至每个物理单元，并通过坐标映射将物理单元上的积分转化为参考单元上的积分。单元积分定义了单元内自由度之间的关系，其中通过公式
+
+$$
+\int_{E_{\text{参考}}} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}
+$$
+
+得到的关系可表示为矩阵形式，该矩阵称为**单元刚度矩阵**
+
+在单元 $E$ 上（以下为局部编号），测试函数 $\mathbf{v}$ 为
+
+```{margin}
+坐标为 $x,y,z$
+```
+
+$$
+\begin{bmatrix}
+\phi_{1}|_E \\ 0 \\ 0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ \phi_{1}|_E \\  0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ 0 \\ \phi_{1}|_E 
+\end{bmatrix},\,
+\begin{bmatrix}
+\phi_{2}|_E \\ 0 \\ 0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ \phi_{2}|_E \\  0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ 0 \\ \phi_{2}|_E 
+\end{bmatrix},\,\cdots
+$$
+
+在参考单元上，分别对应
+
+```{margin}
+坐标为 $\xi,\eta,\zeta$，通过插值映射到
+```
+
+$$
+\begin{bmatrix}
+N_{1} \\ 0 \\ 0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ N_{1} \\  0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ 0 \\ N_{1} 
+\end{bmatrix},\,
+\begin{bmatrix}
+N_{2} \\ 0 \\ 0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ N_{2} \\  0
+\end{bmatrix},\,
+\begin{bmatrix}
+0 \\ 0 \\ N_{2} 
+\end{bmatrix},\,\cdots
+$$
+
+依次记为 $\mathbf{v}_{x,1},\mathbf{v}_{y,1},\mathbf{v}_{z,1},\mathbf{v}_{x,2},\mathbf{v}_{y,2},\mathbf{v}_{z,2},\cdots$，于是在单元 $E$ 上，得到如下关系式
+
+$$
+\int_{E_{\text{参考}}} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}},\quad *=x,y,z;\ i=1,2,\cdots
+$$
+
+由于
+
+$$
+\mathcal{B}\mathbf{u}
+= 
+\sum_{i}\mathcal{B}N_{i}\mathbf{u}_{i}
+=\sum_{i}\mathbf{B}_{i}\mathbf{u}_{i},
+$$
+
+其中
+
+$$
+\mathbf{B}_{i} := \mathcal{B}N_{i} = \begin{bmatrix}
+\frac{\partial N_{i}}{\partial x} & 0 & 0 \\
+0 & \frac{\partial N_{i}}{\partial y} & 0 \\
+0 & 0 & \frac{\partial N_{i}}{\partial z} \\
+0 & \frac{\partial N_{i}}{\partial z} & \frac{\partial N_{i}}{\partial y} \\
+\frac{\partial N_{i}}{\partial z} & 0 & \frac{\partial N_{i}}{\partial x} \\
+\frac{\partial N_{i}}{\partial y} & \frac{\partial N_{i}}{\partial x} & 0
+\end{bmatrix},
+$$
 
 于是
+
+$$
+\mathcal{B}\mathbf{u} = 
+\begin{bmatrix}
+\mathbf{B}_{1} & \mathbf{B}_{2} & \cdots
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{u}_{1} \\ \mathbf{u}_{2} \\ \vdots 
+\end{bmatrix}=\begin{bmatrix}
+\mathbf{B}_{1} & \mathbf{B}_{2} & \cdots
+\end{bmatrix}
+\begin{bmatrix}
+u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots
+\end{bmatrix}
+$$
+
+另一方面，
+
+

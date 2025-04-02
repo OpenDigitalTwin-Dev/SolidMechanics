@@ -35,7 +35,7 @@ $$ (sec2-eq:coordinate-transformation)
 通过坐标变换，物理单元上的积分通过参考单元计算
 
 $$
-\int_{E_\text{物理}}f(x,y)\,\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\,\right|\mathrm{d}\xi\mathrm{d}\eta,
+\int_{E_\text{物理}}f(x,y)\,\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\,\right|\ \mathrm{d}\xi\mathrm{d}\eta,
 $$
 
 其中 Jacobian 矩阵
@@ -107,7 +107,7 @@ $$
 \begin{aligned}
 \mathcal{D'} &= \int_{\mathcal{D'}}\mathrm{d}x\mathrm{d}y =
 \lim_{n\rightarrow\infty}\sum_{n}\mathrm{d}\mathcal{D'}\\
-&=\lim_{n\rightarrow\infty}\sum_{n}\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D} = \int_{\mathcal{D}}\left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta.
+&=\lim_{n\rightarrow\infty}\sum_{n}\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D} = \int_{\mathcal{D}}\left|\det(\mathbf{J})\right|\ \mathrm{d}\xi\mathrm{d}\eta.
 \end{aligned}
 \end{equation}
 $$
@@ -115,13 +115,13 @@ $$
 类似地
 
 $$
-\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}x\mathrm{d}y = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\xi\mathrm{d}\eta.
+\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}x\mathrm{d}y = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}\xi\mathrm{d}\eta.
 $$
 
 对于 $n$ 维的情形
 
 $$
-\int_{\mathcal{D'}}f(x,y,\cdots)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta,\cdots)\cdot\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D}
+\int_{\mathcal{D'}}f(x,y,\cdots)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta,\cdots)\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}\mathcal{D}
 $$
 
 其中
