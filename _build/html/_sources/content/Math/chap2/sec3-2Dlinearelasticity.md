@@ -525,9 +525,8 @@ $$
 
 $$
 \int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}
-\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}E
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ \mathrm{d}E
 =\mathbf{u}_{E}\int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E,
 $$
 
