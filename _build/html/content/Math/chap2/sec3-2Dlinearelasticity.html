@@ -417,6 +417,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.8. 数值积分</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.9. 全局矩阵</a></li>
 </ul>
 </li>
 </ul>
@@ -747,8 +749,9 @@ u_{x,n} &amp; u_{y,n} &amp; u_{z,n}
 \end{equation}
 \end{split}\]</div>
 <p>对于形函数</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-chap2-sec3-shape-der">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-chap2-sec3-shape-der" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
 \begin{bmatrix}
 \frac{\partial N_{1}}{\partial x} &amp; \frac{\partial {N_2}}{\partial x} &amp; \cdots &amp; \frac{\partial {N_n}}{\partial x} \\ 
 \frac{\partial N_{1}}{\partial y} &amp; \frac{\partial N_{2}}{\partial y} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial y}\\ 
@@ -761,13 +764,14 @@ u_{x,n} &amp; u_{y,n} &amp; u_{z,n}
  \frac{\partial N_{1}}{\partial \eta} &amp; \frac{\partial N_{2}}{\partial \eta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \eta} \\ 
  \frac{\partial N_{1}}{\partial \zeta} &amp; \frac{\partial N_{2}}{\partial \zeta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \zeta}
 \end{bmatrix}.
+\end{equation}
 \end{split}\]</div>
 </section>
 <section id="id9">
 <h3><span class="section-number">2.3.2.7. </span>单元刚度矩阵<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>在有限元方法中，积分运算被划分至每个物理单元</p>
 <div class="math notranslate nohighlight">
-\[ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E
+\[ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E,
 \]</div>
 <p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号），测试函数 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 为</p>
 <aside class="margin sidebar">
@@ -823,7 +827,7 @@ N_{2} \\ 0 \\ 0
 \end{split}\]</div>
 <p>依次记为 <span class="math notranslate nohighlight">\(\mathbf{v}_{x,1},\mathbf{v}_{y,1},\mathbf{v}_{z,1},\mathbf{v}_{x,2},\mathbf{v}_{y,2},\mathbf{v}_{z,2},\cdots\)</span>，于是在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上，得到如下关系式</p>
 <div class="math notranslate nohighlight" id="equation-chap2-sec3-eq-element-stiffness">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-chap2-sec3-eq-element-stiffness" title="Link to this equation">#</a></span>\[
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-chap2-sec3-eq-element-stiffness" title="Link to this equation">#</a></span>\[
 \begin{equation}
 \int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}E,\quad *=x,y,z;\ i=1:n.
 \end{equation}
@@ -864,7 +868,7 @@ N_{2} \\ 0 \\ 0
 u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
 \end{bmatrix} = \mathbf{B}\mathbf{u}_{E},
 \end{split}\]</div>
-<p>代入 <span class="math notranslate nohighlight">\(v_{*,i}\)</span>，将积分式 <a class="reference internal" href="#equation-chap2-sec3-eq-element-stiffness">(2.4)</a> 写为矩阵形式</p>
+<p>代入 <span class="math notranslate nohighlight">\(v_{*,i}\)</span>，将积分式 <a class="reference internal" href="#equation-chap2-sec3-eq-element-stiffness">(2.5)</a> 写为矩阵形式</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -913,7 +917,7 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 \begin{bmatrix}
 \mathbf{B}_{1} &amp; \cdots &amp; \mathbf{B}_{n}
 \end{bmatrix}^{T}
-= \mathbf{B}^{T}
+= \mathbf{B}^{T},
 \end{align*}
 \end{split}\]</div>
 <p>于是积分式变为</p>
@@ -921,9 +925,30 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 \[
 \int_{E}
 \mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ \mathrm{d}E
-=\mathbf{u}_{E}\int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E,
+=\int_{E}
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}_{E}=\mathbf{K}_{E}\cdot\mathbf{u}_{E}.
 \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{K}_{E}\)</span> 是单元刚度矩阵</p>
+<p>通过坐标映射，将 <span class="math notranslate nohighlight">\(\mathbf{K}_{E}\)</span> 转换到参考单元计算</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{K}_{E} 
+=\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
+=\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 中的导数应依据公式 <a class="reference internal" href="#equation-chap2-sec3-shape-der">(2.4)</a> 转换为自然坐标下的导数进行计算</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">2.3.2.8. </span>数值积分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>单元刚度矩阵 <span class="math notranslate nohighlight">\(\mathbf{K}_{E}\)</span> 通常采用数值积分方法计算</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{K}_{E}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+\]</div>
+<p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>,积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span></p>
+</section>
+<section id="id11">
+<h3><span class="section-number">2.3.2.9. </span>全局矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -1004,6 +1029,8 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.8. 数值积分</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.9. 全局矩阵</a></li>
 </ul>
 </li>
 </ul>

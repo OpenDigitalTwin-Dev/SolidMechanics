@@ -344,6 +344,7 @@ $$
 对于形函数
 
 $$
+\begin{equation}
 \begin{bmatrix}
 \frac{\partial N_{1}}{\partial x} & \frac{\partial {N_2}}{\partial x} & \cdots & \frac{\partial {N_n}}{\partial x} \\ 
 \frac{\partial N_{1}}{\partial y} & \frac{\partial N_{2}}{\partial y} & \cdots & \frac{\partial N_{n}}{\partial y}\\ 
@@ -356,13 +357,14 @@ $$
  \frac{\partial N_{1}}{\partial \eta} & \frac{\partial N_{2}}{\partial \eta} & \cdots & \frac{\partial N_{n}}{\partial \eta} \\ 
  \frac{\partial N_{1}}{\partial \zeta} & \frac{\partial N_{2}}{\partial \zeta} & \cdots & \frac{\partial N_{n}}{\partial \zeta}
 \end{bmatrix}.
-$$
+\end{equation}
+$$ (chap2-sec3:shape-der)
 
 ### 单元刚度矩阵
 
 在有限元方法中，积分运算被划分至每个物理单元
 
-$$ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E
+$$ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E,
 $$
 
 在物理单元 $E$ 上（以下为局部编号），测试函数 $\mathbf{v}$ 为
@@ -517,7 +519,7 @@ $$
 \begin{bmatrix}
 \mathbf{B}_{1} & \cdots & \mathbf{B}_{n}
 \end{bmatrix}^{T}
-= \mathbf{B}^{T}
+= \mathbf{B}^{T},
 \end{align*}
 $$
 
@@ -526,7 +528,31 @@ $$
 $$
 \int_{E}
 \mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ \mathrm{d}E
-=\mathbf{u}_{E}\int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E,
+=\int_{E}
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}_{E}=\mathbf{K}_{E}\cdot\mathbf{u}_{E}.
 $$
+
+其中 $\mathbf{K}_{E}$ 是单元刚度矩阵
+
+通过坐标映射，将 $\mathbf{K}_{E}$ 转换到参考单元计算
+
+$$
+\mathbf{K}_{E} 
+=\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
+=\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
+$$
+
+其中 $\mathbf{B}$ 中的导数应依据公式 {eq}`chap2-sec3:shape-der` 转换为自然坐标下的导数进行计算
+
+### 数值积分
+
+单元刚度矩阵 $\mathbf{K}_{E}$ 通常采用数值积分方法计算
+
+$$
+\mathbf{K}_{E}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+$$
+
+其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$,积分权重是 $w_{q}$
+
+### 全局矩阵
 
