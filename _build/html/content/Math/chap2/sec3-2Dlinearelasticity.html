@@ -415,7 +415,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.3. 几何映射</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.4. Jacobian 矩阵</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 单元刚度矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a></li>
 </ul>
 </li>
 </ul>
@@ -585,14 +586,12 @@ u_{x}\\u_{y}\\u_{z}
 \]</div>
 <p>于是积分运算可以写为</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
 \begin{align}
 \int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
-&amp;= \int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega \\
-&amp;= \sum_{E_{\text{物理}}}\int_{E_{\text{物理}}} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E_{\text{物理}} \\
-&amp;= \sum_{E_{\text{参考}}}\int_{E_{\text{参考}}} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}.
+&amp;= \int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega.
 \end{align}
-\end{split}\]</div>
+\]</div>
 </section>
 </section>
 <section id="id3">
@@ -641,22 +640,22 @@ u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
 <p>设参考单元上的形函数为</p>
 <div class="math notranslate nohighlight">
 \[
-N_{1},N_{2},\cdots
+N_{1},N_{2},\cdots,N_{n}.
 \]</div>
 </section>
 <section id="id6">
 <h3><span class="section-number">2.3.2.3. </span>几何映射<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p>在单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
+<p>在物理单元 <span class="math notranslate nohighlight">\(E_{\text{}}\)</span> 上（以下为局部编号）</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{equation}
-x = \sum_{i} N_{i}(\xi,\eta,\zeta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta,\zeta)y_{i},\quad z = \sum_{i} N_{i}(\xi,\eta,\zeta)z_{i}.
+x = \sum_{i=1}^{n} N_{i}(\xi,\eta,\zeta)x_{i},\quad y = \sum_{i=1}^{n} N_{i}(\xi,\eta,\zeta)y_{i},\quad z = \sum_{i=1}^{n} N_{i}(\xi,\eta,\zeta)z_{i}.
 \end{equation}
 \]</div>
 </section>
 <section id="jacobian">
 <h3><span class="section-number">2.3.2.4. </span>Jacobian 矩阵<a class="headerlink" href="#jacobian" title="Link to this heading">#</a></h3>
-<p>在单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
+<p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -668,19 +667,22 @@ x = \sum_{i} N_{i}(\xi,\eta,\zeta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta,\zeta)
 \frac{\partial x}{\partial \zeta} &amp; \frac{\partial y}{\partial \zeta} &amp; \frac{\partial z}{\partial \zeta}
 \end{bmatrix}
 &amp;=
-\sum_{i}
+\sum_{i=1}^{n}
 \begin{bmatrix}
 \frac{\partial N_i}{\partial \xi} x_i &amp; \frac{\partial N_i}{\partial \xi} y_i &amp; \frac{\partial N_i}{\partial \xi} z_i \\
 \frac{\partial N_i}{\partial \eta} x_i &amp; \frac{\partial N_i}{\partial \eta} y_i &amp; \frac{\partial N_i}{\partial \eta} z_i \\
 \frac{\partial N_i}{\partial \zeta} x_i &amp; \frac{\partial N_i}{\partial \zeta} y_i &amp; \frac{\partial N_i}{\partial \zeta} z_i
 \end{bmatrix}\\
 &amp;=\begin{bmatrix}
-\frac{\partial N_{1}}{\xi} &amp; \frac{\partial {N_2}}{\xi} &amp; \cdots \\ \frac{\partial N_{1}}{\eta} &amp; \frac{\partial N_{2}}{\eta} &amp; \cdots \\ \frac{\partial N_{1}}{\zeta} &amp; \frac{\partial N_{2}}{\zeta} &amp; \cdots
+\frac{\partial N_{1}}{\partial \xi} &amp; \frac{\partial N_{2}}{\partial \xi} &amp; \cdots &amp; \frac{\partial {N_n}}{\partial \xi} \\
+ \frac{\partial N_{1}}{\partial \eta} &amp; \frac{\partial N_{2}}{\partial \eta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \eta} \\ 
+ \frac{\partial N_{1}}{\partial \zeta} &amp;  \frac{\partial N_{2}}{\partial \zeta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \zeta}
 \end{bmatrix}
 \begin{bmatrix}
-x_{1} &amp; y_{1} &amp; z_{1} \\
-x_{2} &amp; y_{2} &amp; z_{2} \\
-\vdots &amp; \vdots &amp; \vdots
+x_{1} &amp; y_{1} &amp; z_{1}     \\
+x_{2} &amp; y_{2} &amp; z_{2}     \\
+\vdots &amp; \vdots &amp; \vdots  \\
+x_{n} &amp; y_{n} &amp; z_{n}
 \end{bmatrix}.
 \end{aligned}
 \end{equation}
@@ -688,7 +690,7 @@ x_{2} &amp; y_{2} &amp; z_{2} \\
 </section>
 <section id="id7">
 <h3><span class="section-number">2.3.2.5. </span>场变量插值<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<p>在单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
+<p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -699,24 +701,75 @@ u_{x} \\ u_{y} \\ u_{z}
 \end{bmatrix}
 =
 \begin{bmatrix}
-\sum_{i}N_{i}(\xi,\eta,\zeta)u_{x,i} \\
-\sum_{i}N_{i}(\xi,\eta,\zeta)u_{y,i} \\
-\sum_{i}N_{i}(\xi,\eta,\zeta)u_{z,i}
+\sum_{i=1}^{n}N_{i}(\xi,\eta,\zeta)u_{x,i} \\
+\sum_{i=1}^{n}N_{i}(\xi,\eta,\zeta)u_{y,i} \\
+\sum_{i=1}^{n}N_{i}(\xi,\eta,\zeta)u_{z,i}
 \end{bmatrix}
 =
-\sum_{i}N_{i}\mathbf{u}_{i}.
+\sum_{i=1}^{n}N_{i}\mathbf{u}_{i}.
 \end{equation}
 \end{split}\]</div>
 </section>
 <section id="id8">
-<h3><span class="section-number">2.3.2.6. </span>单元刚度矩阵<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>在有限元方法中，积分运算被划分至每个物理单元，并通过坐标映射将物理单元上的积分转化为参考单元上的积分。单元积分定义了单元内自由度之间的关系，其中通过公式</p>
+<h3><span class="section-number">2.3.2.6. </span>导数计算<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>对于场分布函数</p>
 <div class="math notranslate nohighlight">
-\[
-\int_{E_{\text{参考}}} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}}
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\begin{bmatrix}
+\frac{\partial u_{x}}{\partial x} &amp; \frac{\partial u_{y}}{\partial x} &amp; \frac{\partial u_{z}}{\partial x} \\ 
+\frac{\partial u_{x}}{\partial y} &amp; \frac{\partial u_{y}}{\partial y} &amp; \frac{\partial u_{z}}{\partial y} \\ 
+\frac{\partial u_{x}}{\partial z} &amp; \frac{\partial u_{y}}{\partial z} &amp; \frac{\partial u_{z}}{\partial z}
+\end{bmatrix} &amp;= \begin{bmatrix}
+\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} &amp; \frac{\partial z}{\partial \xi} \\
+\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta} &amp; \frac{\partial z}{\partial \eta} \\
+\frac{\partial x}{\partial \zeta} &amp; \frac{\partial y}{\partial \zeta} &amp; \frac{\partial z}{\partial \zeta}
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\frac{\partial u_{x}}{\partial \xi} &amp; \frac{\partial u_{y}}{\partial \xi} &amp; \frac{\partial u_{z}}{\partial \xi} \\ 
+\frac{\partial u_{x}}{\partial \eta} &amp; \frac{\partial u_{y}}{\partial \eta} &amp; \frac{\partial u_{z}}{\partial \eta} \\ 
+\frac{\partial u_{x}}{\partial \zeta} &amp; \frac{\partial u_{y}}{\partial \zeta} &amp; \frac{\partial u_{z}}{\partial \zeta}
+\end{bmatrix}\\
+&amp;=\mathbf{J}^{-1}
+\begin{bmatrix}
+\frac{\partial N_{1}}{\partial \xi} &amp; \frac{\partial {N_2}}{\partial \xi} &amp; \cdots &amp; \frac{\partial {N_n}}{\partial \xi} \\ 
+\frac{\partial N_{1}}{\partial \eta} &amp; \frac{\partial N_{2}}{\partial \eta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \eta} \\ 
+\frac{\partial N_{1}}{\partial \zeta} &amp; \frac{\partial N_{2}}{\partial \zeta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \zeta}
+\end{bmatrix}
+\begin{bmatrix}
+u_{x,1} &amp; u_{y,1} &amp; u_{z,1} \\
+u_{x,2} &amp; u_{y,2} &amp; u_{z,2} \\
+\vdots &amp; \vdots &amp; \vdots    \\
+u_{x,n} &amp; u_{y,n} &amp; u_{z,n}
+\end{bmatrix}.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>对于形函数</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\frac{\partial N_{1}}{\partial x} &amp; \frac{\partial {N_2}}{\partial x} &amp; \cdots &amp; \frac{\partial {N_n}}{\partial x} \\ 
+\frac{\partial N_{1}}{\partial y} &amp; \frac{\partial N_{2}}{\partial y} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial y}\\ 
+\frac{\partial N_{1}}{\partial z} &amp; \frac{\partial N_{2}}{\partial z} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial z}
+\end{bmatrix} 
+= 
+\mathbf{J}^{-1}
+\begin{bmatrix}
+\frac{\partial N_{1}}{\partial \xi} &amp; \frac{\partial {N_2}}{\partial \xi} &amp; \cdots &amp; \frac{\partial {N_n}}{\partial \xi} \\
+ \frac{\partial N_{1}}{\partial \eta} &amp; \frac{\partial N_{2}}{\partial \eta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \eta} \\ 
+ \frac{\partial N_{1}}{\partial \zeta} &amp; \frac{\partial N_{2}}{\partial \zeta} &amp; \cdots &amp; \frac{\partial N_{n}}{\partial \zeta}
+\end{bmatrix}.
+\end{split}\]</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.3.2.7. </span>单元刚度矩阵<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>在有限元方法中，积分运算被划分至每个物理单元</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E
 \]</div>
-<p>得到的关系可表示为矩阵形式，该矩阵称为<strong>单元刚度矩阵</strong></p>
-<p>在单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号），测试函数 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 为</p>
+<p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号），测试函数 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 为</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>坐标为 <span class="math notranslate nohighlight">\(x,y,z\)</span></p>
@@ -742,7 +795,7 @@ u_{x} \\ u_{y} \\ u_{z}
 0 \\ 0 \\ \phi_{2}|_E 
 \end{bmatrix},\,\cdots
 \end{split}\]</div>
-<p>在参考单元上，分别对应</p>
+<p>分别对应参考单元上的形函数</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>坐标为 <span class="math notranslate nohighlight">\(\xi,\eta,\zeta\)</span>，通过插值映射到</p>
@@ -768,18 +821,20 @@ N_{2} \\ 0 \\ 0
 0 \\ 0 \\ N_{2} 
 \end{bmatrix},\,\cdots
 \end{split}\]</div>
-<p>依次记为 <span class="math notranslate nohighlight">\(\mathbf{v}_{x,1},\mathbf{v}_{y,1},\mathbf{v}_{z,1},\mathbf{v}_{x,2},\mathbf{v}_{y,2},\mathbf{v}_{z,2},\cdots\)</span>，于是在单元 <span class="math notranslate nohighlight">\(E\)</span> 上，得到如下关系式</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{E_{\text{参考}}} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\cdot\left|\det(\mathbf{J})\right| \, \mathrm{d}E_{\text{参考}},\quad *=x,y,z;\ i=1,2,\cdots
+<p>依次记为 <span class="math notranslate nohighlight">\(\mathbf{v}_{x,1},\mathbf{v}_{y,1},\mathbf{v}_{z,1},\mathbf{v}_{x,2},\mathbf{v}_{y,2},\mathbf{v}_{z,2},\cdots\)</span>，于是在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上，得到如下关系式</p>
+<div class="math notranslate nohighlight" id="equation-chap2-sec3-eq-element-stiffness">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-chap2-sec3-eq-element-stiffness" title="Link to this equation">#</a></span>\[
+\begin{equation}
+\int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}E,\quad *=x,y,z;\ i=1:n.
+\end{equation}
 \]</div>
+<p>上述关系式给出了单元内自由度 <span class="math notranslate nohighlight">\(\mathbf{u}_{i}\)</span> 之间的关系，其可以表示为矩阵形式，该矩阵称为<strong>单元刚度矩阵</strong></p>
 <p>由于</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{B}\mathbf{u}
-= 
-\sum_{i}\mathcal{B}N_{i}\mathbf{u}_{i}
-=\sum_{i}\mathbf{B}_{i}\mathbf{u}_{i},
+=\sum_{i=1}^{n}\mathcal{B}N_{i}\mathbf{u}_{i}
+=\sum_{i=1}^{n}\mathbf{B}_{i}\mathbf{u}_{i},
 \]</div>
 <p>其中</p>
 <div class="math notranslate nohighlight">
@@ -798,18 +853,78 @@ N_{2} \\ 0 \\ 0
 \[\begin{split}
 \mathcal{B}\mathbf{u} = 
 \begin{bmatrix}
-\mathbf{B}_{1} &amp; \mathbf{B}_{2} &amp; \cdots
+\mathbf{B}_{1} &amp; \mathbf{B}_{2} &amp; \cdots &amp; \mathbf{B}_{n}
 \end{bmatrix}
 \begin{bmatrix}
-\mathbf{u}_{1} \\ \mathbf{u}_{2} \\ \vdots 
+\mathbf{u}_{1} \\ \mathbf{u}_{2} \\ \vdots \\ \mathbf{u}_{n}
 \end{bmatrix}=\begin{bmatrix}
-\mathbf{B}_{1} &amp; \mathbf{B}_{2} &amp; \cdots
+\mathbf{B}_{1} &amp; \mathbf{B}_{2} &amp; \cdots &amp; \mathbf{B}_{n}
 \end{bmatrix}
 \begin{bmatrix}
-u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots
-\end{bmatrix}
+u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
+\end{bmatrix} = \mathbf{B}\mathbf{u}_{E},
 \end{split}\]</div>
-<p>另一方面，</p>
+<p>代入 <span class="math notranslate nohighlight">\(v_{*,i}\)</span>，将积分式 <a class="reference internal" href="#equation-chap2-sec3-eq-element-stiffness">(2.4)</a> 写为矩阵形式</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\int_{E}
+\begin{bmatrix}
+(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+\vdots \\
+(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}
+\end{bmatrix}\ 
+\mathrm{d}E
+= \int_{E}
+\begin{bmatrix}
+(\mathcal{B}\mathbf{v}_{x,1})^{T} \\
+(\mathcal{B}\mathbf{v}_{y,1})^{T} \\
+(\mathcal{B}\mathbf{v}_{z,1})^{T} \\
+\vdots \\
+(\mathcal{B}\mathbf{v}_{x,n})^{T} \\
+(\mathcal{B}\mathbf{v}_{y,n})^{T} \\
+(\mathcal{B}\mathbf{v}_{z,n})^{T} \\
+\end{bmatrix}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ 
+\mathrm{d}E,
+\end{align*}
+\end{split}\]</div>
+<p>因为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\begin{bmatrix}
+(\mathcal{B}\mathbf{v}_{x,1})^{T} \\
+(\mathcal{B}\mathbf{v}_{y,1})^{T} \\
+(\mathcal{B}\mathbf{v}_{z,1})^{T} \\
+\vdots \\
+(\mathcal{B}\mathbf{v}_{x,n})^{T} \\
+(\mathcal{B}\mathbf{v}_{y,n})^{T} \\
+(\mathcal{B}\mathbf{v}_{z,n})^{T}
+\end{bmatrix} 
+&amp;= 
+\begin{bmatrix}
+\mathcal{B}\mathbf{v}_{x,1} &amp; \mathcal{B}\mathbf{v}_{y,1} &amp; \mathcal{B}\mathbf{v}_{z,1} &amp; \cdots &amp; \mathcal{B}\mathbf{v}_{x,n} &amp; \mathcal{B}\mathbf{v}_{y,n} &amp; \mathcal{B}\mathbf{v}_{z,n}
+\end{bmatrix}^{T}\\
+&amp;=
+\begin{bmatrix}
+\mathbf{B}_{1} &amp; \cdots &amp; \mathbf{B}_{n}
+\end{bmatrix}^{T}
+= \mathbf{B}^{T}
+\end{align*}
+\end{split}\]</div>
+<p>于是积分式变为</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{E}
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}
+\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}E
+=\mathbf{u}_{E}\int_{E}
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
+\]</div>
 </section>
 </section>
 </section>
@@ -888,7 +1003,8 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.3. 几何映射</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.4. Jacobian 矩阵</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 单元刚度矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a></li>
 </ul>
 </li>
 </ul>

@@ -174,7 +174,7 @@ $$
 =\mathbf{J}\begin{bmatrix}
 \frac{\partial u}{\partial x} \\
 \frac{\partial u}{\partial y}
-\end{bmatrix}
+\end{bmatrix},
 \end{aligned}
 \end{equation}
 $$
@@ -193,7 +193,13 @@ $$
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} \\
 \frac{\partial u}{\partial \eta}
-\end{bmatrix}.
+\end{bmatrix} 
+= \mathbf{J}^{-1}\sum_{i}u_{i}
+\begin{bmatrix}
+\frac{\partial N_{i}}{\partial \xi} \\
+\frac{\partial N_{i}}{\partial \eta}
+\end{bmatrix} 
+.
 \end{aligned}
 \end{equation}
 $$
