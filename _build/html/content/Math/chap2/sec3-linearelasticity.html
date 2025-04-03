@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -714,7 +714,7 @@ u_{x} \\ u_{y} \\ u_{z}
 </section>
 <section id="id8">
 <h3><span class="section-number">2.3.2.6. </span>导数计算<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>对于场分布函数</p>
+<p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号），对于场分布函数</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -866,7 +866,7 @@ N_{2} \\ 0 \\ 0
 \end{bmatrix}
 \begin{bmatrix}
 u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
-\end{bmatrix} = \mathbf{B}\mathbf{u}_{E},
+\end{bmatrix} = \mathbf{B}\mathbf{u}^{e},
 \end{split}\]</div>
 <p>代入 <span class="math notranslate nohighlight">\(v_{*,i}\)</span>，将积分式 <a class="reference internal" href="#equation-chap2-sec3-eq-element-stiffness">(2.5)</a> 写为矩阵形式</p>
 <div class="math notranslate nohighlight">
@@ -874,13 +874,13 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 \begin{align*}
 &amp;\int_{E}
 \begin{bmatrix}
-(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
 \vdots \\
-(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}
+(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e}
 \end{bmatrix}\ 
 \mathrm{d}E
 = \int_{E}
@@ -892,7 +892,7 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 (\mathcal{B}\mathbf{v}_{x,n})^{T} \\
 (\mathcal{B}\mathbf{v}_{y,n})^{T} \\
 (\mathcal{B}\mathbf{v}_{z,n})^{T} \\
-\end{bmatrix}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ 
+\end{bmatrix}\mathbf{D}\mathbf{B}\mathbf{u}^{e}\ 
 \mathrm{d}E,
 \end{align*}
 \end{split}\]</div>
@@ -924,15 +924,15 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 <div class="math notranslate nohighlight">
 \[
 \int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ \mathrm{d}E
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e}\ \mathrm{d}E
 =\int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}_{E}=\mathbf{K}_{E}\cdot\mathbf{u}_{E}.
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}^{e}=\mathbf{K}^{e}\cdot\mathbf{u}^{e}.
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\mathbf{K}_{E}\)</span> 是单元刚度矩阵</p>
-<p>通过坐标映射，将 <span class="math notranslate nohighlight">\(\mathbf{K}_{E}\)</span> 转换到参考单元计算</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{K}^{e}\)</span> 是单元刚度矩阵</p>
+<p>通过坐标映射，将 <span class="math notranslate nohighlight">\(\mathbf{K}^{e}\)</span> 转换到参考单元计算</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{K}_{E} 
+\mathbf{K}^{e} 
 =\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
 =\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
 \]</div>
@@ -940,15 +940,35 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 </section>
 <section id="id10">
 <h3><span class="section-number">2.3.2.8. </span>数值积分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p>单元刚度矩阵 <span class="math notranslate nohighlight">\(\mathbf{K}_{E}\)</span> 通常采用数值积分方法计算</p>
+<p>单元刚度矩阵 <span class="math notranslate nohighlight">\(\mathbf{K}^{e}\)</span> 通常采用数值积分方法计算</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{K}_{E}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+\mathbf{K}^{e}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
 \]</div>
-<p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>,积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span></p>
+<p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span></p>
 </section>
 <section id="id11">
 <h3><span class="section-number">2.3.2.9. </span>全局矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>单元刚度矩阵描述了单元内自由度之间的关系，这些自由度按照特定顺序进行局部编号</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|ccc}
+&amp; u_{x,1}^{e} &amp; u_{y,2}^{e} &amp; u_{z,3}^{e} &amp; u_{x,2}^{e} &amp; u_{y,2}^{e} &amp; u_{z,2}^{e} &amp; \cdots \\ 
+\hline
+u_{x,1}^{e} &amp; K_{11}^{e} &amp; K_{12}^{e} &amp; K_{13}^{e} &amp; K_{14}^{e} &amp; K_{15}^{e} &amp; K_{16}^{e} &amp; \cdots \\
+u_{y,1}^{e} &amp; K_{21}^{e} &amp; K_{22}^{e} &amp; K_{23}^{e} &amp; K_{24}^{e} &amp; K_{25}^{e} &amp; K_{26}^{e} &amp; \cdots \\
+u_{z,1}^{e} &amp; K_{31}^{e} &amp; K_{32}^{e} &amp; K_{33}^{e} &amp; K_{34}^{e} &amp; K_{35}^{e} &amp; K_{16}^{e} &amp; \cdots \\
+u_{x,2}^{e} &amp; K_{41}^{e} &amp; K_{42}^{e} &amp; K_{43}^{e} &amp; K_{44}^{e} &amp; K_{45}^{e} &amp; K_{46}^{e} &amp; \cdots \\
+u_{y,2}^{e} &amp; K_{51}^{e} &amp; K_{52}^{e} &amp; K_{53}^{e} &amp; K_{54}^{e} &amp; K_{55}^{e} &amp; K_{56}^{e} &amp; \cdots \\
+u_{z,2}^{e} &amp; K_{61}^{e} &amp; K_{62}^{e} &amp; K_{63}^{e} &amp; K_{64}^{e} &amp; K_{65}^{e} &amp; K_{66}^{e} &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
+\end{array}
+\end{split}\]</div>
+<p>通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 <span class="math notranslate nohighlight">\(K\)</span>，单元 <span class="math notranslate nohighlight">\(E\)</span> 内编号为 <span class="math notranslate nohighlight">\(i\)</span> 的自由度对应的全局编号为 <span class="math notranslate nohighlight">\(g(E,i)\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[
+K(g(E,i),g(E,j)) = \sum_{E} K^{e}(i,j)
+\]</div>
 </section>
 </section>
 </section>

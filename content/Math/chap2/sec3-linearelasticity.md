@@ -305,8 +305,7 @@ u_{x} \\ u_{y} \\ u_{z}
 $$
 
 ### 导数计算
-
-对于场分布函数
+在物理单元 $E$ 上（以下为局部编号），对于场分布函数
 
 $$
 \begin{equation}
@@ -466,7 +465,7 @@ $$
 \end{bmatrix}
 \begin{bmatrix}
 u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
-\end{bmatrix} = \mathbf{B}\mathbf{u}_{E},
+\end{bmatrix} = \mathbf{B}\mathbf{u}^{e},
 $$
 
 代入 $v_{*,i}$，将积分式 {eq}`chap2-sec3-eq:element-stiffness` 写为矩阵形式
@@ -475,13 +474,13 @@ $$
 \begin{align*}
 &\int_{E}
 \begin{bmatrix}
-(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
 \vdots \\
-(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E} \\
-(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}
+(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e}
 \end{bmatrix}\ 
 \mathrm{d}E
 = \int_{E}
@@ -493,7 +492,7 @@ $$
 (\mathcal{B}\mathbf{v}_{x,n})^{T} \\
 (\mathcal{B}\mathbf{v}_{y,n})^{T} \\
 (\mathcal{B}\mathbf{v}_{z,n})^{T} \\
-\end{bmatrix}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ 
+\end{bmatrix}\mathbf{D}\mathbf{B}\mathbf{u}^{e}\ 
 \mathrm{d}E,
 \end{align*}
 $$
@@ -527,17 +526,17 @@ $$
 
 $$
 \int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}_{E}\ \mathrm{d}E
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e}\ \mathrm{d}E
 =\int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}_{E}=\mathbf{K}_{E}\cdot\mathbf{u}_{E}.
+\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}^{e}=\mathbf{K}^{e}\cdot\mathbf{u}^{e}.
 $$
 
-其中 $\mathbf{K}_{E}$ 是单元刚度矩阵
+其中 $\mathbf{K}^{e}$ 是单元刚度矩阵
 
-通过坐标映射，将 $\mathbf{K}_{E}$ 转换到参考单元计算
+通过坐标映射，将 $\mathbf{K}^{e}$ 转换到参考单元计算
 
 $$
-\mathbf{K}_{E} 
+\mathbf{K}^{e} 
 =\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
 =\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
 $$
@@ -546,13 +545,34 @@ $$
 
 ### 数值积分
 
-单元刚度矩阵 $\mathbf{K}_{E}$ 通常采用数值积分方法计算
+单元刚度矩阵 $\mathbf{K}^{e}$ 通常采用数值积分方法计算
 
 $$
-\mathbf{K}_{E}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+\mathbf{K}^{e}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
 $$
 
-其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$,积分权重是 $w_{q}$
+其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$
 
 ### 全局矩阵
 
+单元刚度矩阵描述了单元内自由度之间的关系，这些自由度按照特定顺序进行局部编号
+
+$$
+\begin{array}{c|ccc}
+& u_{x,1}^{e} & u_{y,2}^{e} & u_{z,3}^{e} & u_{x,2}^{e} & u_{y,2}^{e} & u_{z,2}^{e} & \cdots \\ 
+\hline
+u_{x,1}^{e} & K_{11}^{e} & K_{12}^{e} & K_{13}^{e} & K_{14}^{e} & K_{15}^{e} & K_{16}^{e} & \cdots \\
+u_{y,1}^{e} & K_{21}^{e} & K_{22}^{e} & K_{23}^{e} & K_{24}^{e} & K_{25}^{e} & K_{26}^{e} & \cdots \\
+u_{z,1}^{e} & K_{31}^{e} & K_{32}^{e} & K_{33}^{e} & K_{34}^{e} & K_{35}^{e} & K_{16}^{e} & \cdots \\
+u_{x,2}^{e} & K_{41}^{e} & K_{42}^{e} & K_{43}^{e} & K_{44}^{e} & K_{45}^{e} & K_{46}^{e} & \cdots \\
+u_{y,2}^{e} & K_{51}^{e} & K_{52}^{e} & K_{53}^{e} & K_{54}^{e} & K_{55}^{e} & K_{56}^{e} & \cdots \\
+u_{z,2}^{e} & K_{61}^{e} & K_{62}^{e} & K_{63}^{e} & K_{64}^{e} & K_{65}^{e} & K_{66}^{e} & \cdots \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+\end{array}
+$$
+
+通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 $K$，单元 $E$ 内编号为 $i$ 的自由度对应的全局编号为 $g(E,i)$，则
+
+$$
+K(g(E,i),g(E,j)) = \sum_{E} K^{e}(i,j)
+$$
