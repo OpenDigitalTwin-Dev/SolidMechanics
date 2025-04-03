@@ -657,7 +657,7 @@ $$
 \mathrm{d}E = \int_{E_{\text{参考}}}
 \mathbf{N}
 \mathbf{f}\left|\det(\mathbf{J})\right|\ 
-\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|
+\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
 $$
 
 其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$，$\mathbf{f}$ 需使用 $\xi,\eta,\zeta$ 坐标表示
@@ -673,6 +673,30 @@ $$
 在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理
 
 #### Dirichlet 边界条件
+
+Dirichlet 边界条件直接指定了边界节点的自由度值，因此只需对全局刚度矩阵和右端项进行相应的修正
+
+$$
+\begin{array}{c|ccc}
+& \cdots & \cdots & u_{x,k} & \cdots & \cdots\\ 
+\hline
+\vdots &  &  & 0 &  &  &  \\
+\vdots &  &  & 0 &  &  &  \\
+u_{x,k} & 0 & 0 & 1 & 0 & 0 &  \\
+\vdots &  &  & 0 &  &  &  \\
+\vdots  &  &  & 0 &  &  &  \\
+\end{array},\quad\quad\quad\quad
+\begin{bmatrix}
+\\
+\vdots\\
+\vdots\\
+u_{D}\\
+\vdots\\
+\vdots\\
+\end{bmatrix}
+$$
+
+其中 $u_{D}$ 是边界节点自由度 $u_{x,k}$ 的值
 
 #### Neumann 边界条件
 

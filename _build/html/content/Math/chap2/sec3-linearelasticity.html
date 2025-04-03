@@ -1056,7 +1056,7 @@ N_{n} &amp; &amp;  \\
 \mathrm{d}E = \int_{E_{\text{参考}}}
 \mathbf{N}
 \mathbf{f}\left|\det(\mathbf{J})\right|\ 
-\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|
+\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
 \]</div>
 <p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span>，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 需使用 <span class="math notranslate nohighlight">\(\xi,\eta,\zeta\)</span> 坐标表示</p>
 <p>类似地，单元右端项到全局右端项的映射关系如下</p>
@@ -1070,6 +1070,28 @@ N_{n} &amp; &amp;  \\
 <p>在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理</p>
 <section id="dirichlet">
 <h4><span class="section-number">2.3.2.10.1. </span>Dirichlet 边界条件<a class="headerlink" href="#dirichlet" title="Link to this heading">#</a></h4>
+<p>Dirichlet 边界条件直接指定了边界节点的自由度值，因此只需对全局刚度矩阵和右端项进行相应的修正</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|ccc}
+&amp; \cdots &amp; \cdots &amp; u_{x,k} &amp; \cdots &amp; \cdots\\ 
+\hline
+\vdots &amp;  &amp;  &amp; 0 &amp;  &amp;  &amp;  \\
+\vdots &amp;  &amp;  &amp; 0 &amp;  &amp;  &amp;  \\
+u_{x,k} &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp;  \\
+\vdots &amp;  &amp;  &amp; 0 &amp;  &amp;  &amp;  \\
+\vdots  &amp;  &amp;  &amp; 0 &amp;  &amp;  &amp;  \\
+\end{array},\quad\quad\quad\quad
+\begin{bmatrix}
+\\
+\vdots\\
+\vdots\\
+u_{D}\\
+\vdots\\
+\vdots\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(u_{D}\)</span> 是边界节点自由度 <span class="math notranslate nohighlight">\(u_{x,k}\)</span> 的值</p>
 </section>
 <section id="neumann">
 <h4><span class="section-number">2.3.2.10.2. </span>Neumann 边界条件<a class="headerlink" href="#neumann" title="Link to this heading">#</a></h4>
