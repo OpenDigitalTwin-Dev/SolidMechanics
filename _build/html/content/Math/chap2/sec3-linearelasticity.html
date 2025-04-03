@@ -646,11 +646,14 @@ u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
 \]</div>
 <p>和 <span class="math notranslate nohighlight">\(3N\)</span> 个求解方程</p>
 <div class="math notranslate nohighlight" id="equation-chap2-sec3-eq-discrete-eqs">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-chap2-sec3-eq-discrete-eqs" title="Link to this equation">#</a></span>\[
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-chap2-sec3-eq-discrete-eqs" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
-\int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+\begin{aligned}
+&amp;\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
+=&amp; \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v*,i} \in \, \mathcal{V} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+\end{aligned}
 \end{equation}
-\]</div>
+\end{split}\]</div>
 </section>
 <section id="id5">
 <h3><span class="section-number">2.3.2.2. </span>形函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
