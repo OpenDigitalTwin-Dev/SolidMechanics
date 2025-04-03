@@ -650,7 +650,7 @@ u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
 \begin{equation}
 \begin{aligned}
 &amp;\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
-=&amp; \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v*,i} \in \, \mathcal{V} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+=&amp; \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -985,7 +985,7 @@ u_{z,2}^{e} &amp; K_{61}^{e} &amp; K_{62}^{e} &amp; K_{63}^{e} &amp; K_{64}^{e} 
 <p>通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>，单元 <span class="math notranslate nohighlight">\(E\)</span> 内编号为 <span class="math notranslate nohighlight">\(i\)</span> 的自由度对应的全局编号为 <span class="math notranslate nohighlight">\(g(E,i)\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{K}(g(E,i),g(E,j)) = \sum_{E} \mathbf{K}^{e}(i,j).
+\mathbf{K}(g(E,i),g(E,j)) \ +\!\!= \ \mathbf{K}^{e}(i,j).
 \]</div>
 </section>
 <section id="id12">
@@ -1045,7 +1045,7 @@ N_{n} &amp; &amp;  \\
 \mathbf{f}\ 
 \mathrm{d}E 
 = \int_{E}
-\mathbf{N}
+\mathbf{N}^{T}
 \mathbf{f}\ 
 \mathrm{d}E,
 \end{split}\]</div>
@@ -1054,18 +1054,19 @@ N_{n} &amp; &amp;  \\
 \[
 \mathbf{F}^{e}=
 \int_{E}
-\mathbf{N}
+\mathbf{N}^{T}
 \mathbf{f}\ 
 \mathrm{d}E = \int_{E_{\text{参考}}}
-\mathbf{N}
+\mathbf{N}^{T}
 \mathbf{f}\left|\det(\mathbf{J})\right|\ 
-\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
+\mathrm{d}E_{\text{参考}} 
+\approx \sum_{q}\mathbf{N}^{T}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
 \]</div>
 <p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span>，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 需使用 <span class="math notranslate nohighlight">\(\xi,\eta,\zeta\)</span> 坐标表示</p>
 <p>类似地，单元右端项到全局右端项的映射关系如下</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{F}(g(E,i)) = \sum_{E} \mathbf{F}^{e}(i).
+\mathbf{F}(g(E,i))\ +\!\!= \ \mathbf{F}^{e}(i).
 \]</div>
 </section>
 <section id="id13">
@@ -1092,15 +1093,44 @@ u_{x,k} &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp;  \\
 u_{D}\\
 \vdots\\
 \vdots\\
-\end{bmatrix}
+\end{bmatrix},
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(u_{D}\)</span> 是边界节点自由度 <span class="math notranslate nohighlight">\(u_{x,k}\)</span> 的值</p>
 </section>
 <section id="neumann">
 <h4><span class="section-number">2.3.2.10.2. </span>Neumann 边界条件<a class="headerlink" href="#neumann" title="Link to this heading">#</a></h4>
+<p>边界积分通常通过划分至对应的边界单元表面进行计算</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}S = \sum_{\Gamma_{N}^{E}}\int_{\Gamma_{N}^{E}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{N}^{E},\quad *=x,y,z;\ i=1:N.
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\Gamma_{N}^{E}\)</span> 表示处于边界 <span class="math notranslate nohighlight">\(\Gamma_{N}\)</span> 上的单元 <span class="math notranslate nohighlight">\(E\)</span> 的表面。与体积力积分计算类似，可以得到</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{F}_{\Gamma_{N}^{E}}= \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
+=,
+\]</div>
+<p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span>，<span class="math notranslate nohighlight">\(\tilde{\mathbf{p}}\)</span> 需使用 <span class="math notranslate nohighlight">\(\xi,\eta\)</span> 坐标表示</p>
+<p>单元右端项到全局右端项的映射关系如下</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{F}(g(E,i)) \ +\!\!= \ \mathbf{F}_{\Gamma_{N}^{E}}(i).
+\]</div>
 </section>
 <section id="robin">
 <h4><span class="section-number">2.3.2.10.3. </span>Robin 边界条件<a class="headerlink" href="#robin" title="Link to this heading">#</a></h4>
+<p>Robin 边界条件通常有两项需要处理</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S
+\quad \text{和} \quad
+\int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+\]</div>
+<p>第二项的处理与 Neumann 边界条件类似。对于第一项</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S = \sum_{\Gamma_{R}^{E}}\int_{\Gamma_{R}^{E}} \alpha \mathbf{u} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{R}^{E},\quad *=x,y,z;\ i=1:N.
+\]</div>
 </section>
 </section>
 </section>

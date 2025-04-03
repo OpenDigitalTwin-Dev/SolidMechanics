@@ -232,7 +232,7 @@ $$
 \begin{equation}
 \begin{aligned}
 &\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
-=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v*,i} \in \, \mathcal{V} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 $$ (chap2-sec3-eq:discrete-eqs)
@@ -583,7 +583,7 @@ $$
 通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 $\mathbf{K}$，单元 $E$ 内编号为 $i$ 的自由度对应的全局编号为 $g(E,i)$，则
 
 $$
-\mathbf{K}(g(E,i),g(E,j)) = \sum_{E} \mathbf{K}^{e}(i,j).
+\mathbf{K}(g(E,i),g(E,j)) \ +\!\!= \ \mathbf{K}^{e}(i,j).
 $$
 
 ### 右端项
@@ -645,7 +645,7 @@ N_{n} & &  \\
 \mathbf{f}\ 
 \mathrm{d}E 
 = \int_{E}
-\mathbf{N}
+\mathbf{N}^{T}
 \mathbf{f}\ 
 \mathrm{d}E,
 $$
@@ -655,12 +655,13 @@ $$
 $$
 \mathbf{F}^{e}=
 \int_{E}
-\mathbf{N}
+\mathbf{N}^{T}
 \mathbf{f}\ 
 \mathrm{d}E = \int_{E_{\text{参考}}}
-\mathbf{N}
+\mathbf{N}^{T}
 \mathbf{f}\left|\det(\mathbf{J})\right|\ 
-\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
+\mathrm{d}E_{\text{参考}} 
+\approx \sum_{q}\mathbf{N}^{T}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
 $$
 
 其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$，$\mathbf{f}$ 需使用 $\xi,\eta,\zeta$ 坐标表示
@@ -668,7 +669,7 @@ $$
 类似地，单元右端项到全局右端项的映射关系如下
 
 $$
-\mathbf{F}(g(E,i)) = \sum_{E} \mathbf{F}^{e}(i).
+\mathbf{F}(g(E,i))\ +\!\!= \ \mathbf{F}^{e}(i).
 $$
 
 ### 边界条件
@@ -696,11 +697,47 @@ u_{x,k} & 0 & 0 & 1 & 0 & 0 &  \\
 u_{D}\\
 \vdots\\
 \vdots\\
-\end{bmatrix}
+\end{bmatrix},
 $$
 
 其中 $u_{D}$ 是边界节点自由度 $u_{x,k}$ 的值
 
 #### Neumann 边界条件
 
+边界积分通常通过划分至对应的边界单元表面进行计算
+
+$$
+\int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}S = \sum_{\Gamma_{N}^{E}}\int_{\Gamma_{N}^{E}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{N}^{E},\quad *=x,y,z;\ i=1:N.
+$$
+
+其中，$\Gamma_{N}^{E}$ 表示处于边界 $\Gamma_{N}$ 上的单元 $E$ 的表面。与体积力积分计算类似，可以得到
+
+$$
+\mathbf{F}_{\Gamma_{N}^{E}}= \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
+=,
+$$
+
+其中，积分点是 $\left\{(\xi_{q},\eta_{q})\right\}$，积分权重是 $w_{q}$，$\tilde{\mathbf{p}}$ 需使用 $\xi,\eta$ 坐标表示
+
+单元右端项到全局右端项的映射关系如下
+
+$$
+\mathbf{F}(g(E,i)) \ +\!\!= \ \mathbf{F}_{\Gamma_{N}^{E}}(i).
+$$
+
 #### Robin 边界条件
+
+Robin 边界条件通常有两项需要处理
+
+$$
+\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S
+\quad \text{和} \quad
+\int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+$$
+
+第二项的处理与 Neumann 边界条件类似。对于第一项
+
+$$
+\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S = \sum_{\Gamma_{R}^{E}}\int_{\Gamma_{R}^{E}} \alpha \mathbf{u} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{R}^{E},\quad *=x,y,z;\ i=1:N.
+$$
+
