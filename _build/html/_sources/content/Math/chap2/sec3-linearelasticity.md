@@ -113,7 +113,8 @@ $$
 再将本构方程 $\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon}(\mathbf{u})$ 代入上述方程，最终得到弱形式
 
 $$
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
+= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 且 $\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{u}$
@@ -393,10 +394,10 @@ $$
 \end{bmatrix},\,\cdots
 $$
 
-分别对应参考单元上的形函数
+使用参考单元上的形函数插值
 
 ```{margin}
-坐标为 $\xi,\eta,\zeta$，通过插值映射到
+坐标为 $\xi,\eta,\zeta$，通过插值映射到物理单元
 ```
 
 $$
@@ -543,12 +544,12 @@ $$
 
 其中 $\mathbf{B}$ 中的导数应依据公式 {eq}`chap2-sec3:shape-der` 转换为自然坐标下的导数进行计算
 
-### 数值积分
+#### 数值积分
 
 单元刚度矩阵 $\mathbf{K}^{e}$ 通常采用数值积分方法计算
 
 $$
-\mathbf{K}^{e}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+\mathbf{K}^{e}\approx\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
 $$
 
 其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$
@@ -571,8 +572,97 @@ u_{z,2}^{e} & K_{61}^{e} & K_{62}^{e} & K_{63}^{e} & K_{64}^{e} & K_{65}^{e} & K
 \end{array}
 $$
 
-通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 $K$，单元 $E$ 内编号为 $i$ 的自由度对应的全局编号为 $g(E,i)$，则
+通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 $\mathbf{K}$，单元 $E$ 内编号为 $i$ 的自由度对应的全局编号为 $g(E,i)$，则
 
 $$
-K(g(E,i),g(E,j)) = \sum_{E} K^{e}(i,j)
+\mathbf{K}(g(E,i),g(E,j)) = \sum_{E} \mathbf{K}^{e}(i,j).
 $$
+
+### 右端项
+
+右端项的计算方式与刚度矩阵类似，首先将积分划分到各个物理单元内，然后通过坐标映射将物理单元上的积分转化为参考单元上的积分运算
+
+$$
+\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega = \sum_{E}\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}E,\quad *=x,y,z;\ i=1:N.
+$$
+
+在物理单元 $E$ 上（以下为局部编号），得到的关系式如下
+
+$$
+\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}E,\quad *=x,y,z;\ i=1:n.
+$$
+写为矩阵形式
+
+$$
+\begin{align*}
+&\int_{E}
+\begin{bmatrix}
+(\mathbf{v}_{x,1})^{T}\mathbf{f} \\
+(\mathbf{v}_{y,1})^{T}\mathbf{f} \\
+(\mathbf{v}_{z,1})^{T}\mathbf{f} \\
+\vdots \\
+(\mathbf{v}_{x,n})^{T}\mathbf{f} \\
+(\mathbf{v}_{y,n})^{T}\mathbf{f} \\
+(\mathbf{v}_{z,n})^{T}\mathbf{f}
+\end{bmatrix}\ 
+\mathrm{d}E
+= \int_{E}
+\begin{bmatrix}
+(\mathbf{v}_{x,1})^{T} \\
+(\mathbf{v}_{y,1})^{T} \\
+(\mathbf{v}_{z,1})^{T} \\
+\vdots \\
+(\mathbf{v}_{x,n})^{T} \\
+(\mathbf{v}_{y,n})^{T} \\
+(\mathbf{v}_{z,n})^{T}
+\end{bmatrix}
+\mathbf{f}\ 
+\mathrm{d}E,
+\end{align*}
+$$
+
+代入 $\mathbf{v}_{*,i}$ 对应的形函数插值得到
+
+$$
+\int_{E}
+\begin{bmatrix}
+N_{1} & &  \\
+& N_{1} &  \\
+& & N_{1}   \\
+& \vdots & \\
+N_{n} & &  \\
+& N_{n} &  \\
+& & N_{n}   \\
+\end{bmatrix}
+\mathbf{f}\ 
+\mathrm{d}E 
+= \int_{E}
+\mathbf{N}
+\mathbf{f}\ 
+\mathrm{d}E,
+$$
+
+将积分变换到参考单元上进行，并采用数值积分技术，于是
+
+$$
+\mathbf{F}^{e}=
+\int_{E}
+\mathbf{N}
+\mathbf{f}\ 
+\mathrm{d}E = \int_{E_{\text{参考}}}
+\mathbf{N}
+\mathbf{f}\left|\det(\mathbf{J})\right|\ 
+\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|
+$$
+
+其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$，$\mathbf{f}$ 需使用 $\xi,\eta,\zeta$ 坐标表示
+
+类似地，单元右端项到全局右端项的映射关系如下
+
+$$
+\mathbf{F}(g(E,i)) = \sum_{E} \mathbf{F}^{e}(i).
+$$
+
+### 边界条件
+
+在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理

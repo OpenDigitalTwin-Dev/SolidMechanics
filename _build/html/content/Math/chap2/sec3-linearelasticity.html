@@ -416,9 +416,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.4. Jacobian 矩阵</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.8. 数值积分</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.9. 全局矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.7.1. 数值积分</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.8. 全局矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.2.9. 右端项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a></li>
 </ul>
 </li>
 </ul>
@@ -532,7 +536,8 @@ document.write(`
 <p>再将本构方程 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon}(\mathbf{u})\)</span> 代入上述方程，最终得到弱形式</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
+= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 \]</div>
 <p>且 <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{u}\)</span></p>
 <section id="voigt">
@@ -799,10 +804,10 @@ u_{x,n} &amp; u_{y,n} &amp; u_{z,n}
 0 \\ 0 \\ \phi_{2}|_E 
 \end{bmatrix},\,\cdots
 \end{split}\]</div>
-<p>分别对应参考单元上的形函数</p>
+<p>使用参考单元上的形函数插值</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>坐标为 <span class="math notranslate nohighlight">\(\xi,\eta,\zeta\)</span>，通过插值映射到</p>
+<p>坐标为 <span class="math notranslate nohighlight">\(\xi,\eta,\zeta\)</span>，通过插值映射到物理单元</p>
 </aside>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -937,18 +942,18 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 =\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 中的导数应依据公式 <a class="reference internal" href="#equation-chap2-sec3-shape-der">(2.4)</a> 转换为自然坐标下的导数进行计算</p>
-</section>
 <section id="id10">
-<h3><span class="section-number">2.3.2.8. </span>数值积分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">2.3.2.7.1. </span>数值积分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>单元刚度矩阵 <span class="math notranslate nohighlight">\(\mathbf{K}^{e}\)</span> 通常采用数值积分方法计算</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{K}^{e}=\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+\mathbf{K}^{e}\approx\sum_{q}B_{q}^{T}DB_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
 \]</div>
 <p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span></p>
 </section>
+</section>
 <section id="id11">
-<h3><span class="section-number">2.3.2.9. </span>全局矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2.8. </span>全局矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>单元刚度矩阵描述了单元内自由度之间的关系，这些自由度按照特定顺序进行局部编号</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -964,11 +969,95 @@ u_{z,2}^{e} &amp; K_{61}^{e} &amp; K_{62}^{e} &amp; K_{63}^{e} &amp; K_{64}^{e} 
 \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
 \end{array}
 \end{split}\]</div>
-<p>通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 <span class="math notranslate nohighlight">\(K\)</span>，单元 <span class="math notranslate nohighlight">\(E\)</span> 内编号为 <span class="math notranslate nohighlight">\(i\)</span> 的自由度对应的全局编号为 <span class="math notranslate nohighlight">\(g(E,i)\)</span>，则</p>
+<p>通过单元刚度矩阵可以建立起所有自由度之间的关系。设全局刚度矩阵为 <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>，单元 <span class="math notranslate nohighlight">\(E\)</span> 内编号为 <span class="math notranslate nohighlight">\(i\)</span> 的自由度对应的全局编号为 <span class="math notranslate nohighlight">\(g(E,i)\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
-K(g(E,i),g(E,j)) = \sum_{E} K^{e}(i,j)
+\mathbf{K}(g(E,i),g(E,j)) = \sum_{E} \mathbf{K}^{e}(i,j).
 \]</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">2.3.2.9. </span>右端项<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>右端项的计算方式与刚度矩阵类似，首先将积分划分到各个物理单元内，然后通过坐标映射将物理单元上的积分转化为参考单元上的积分运算</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega = \sum_{E}\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}E,\quad *=x,y,z;\ i=1:N.
+\]</div>
+<p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号），得到的关系式如下</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}E,\quad *=x,y,z;\ i=1:n.
+\]</div>
+<p>写为矩阵形式</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\int_{E}
+\begin{bmatrix}
+(\mathbf{v}_{x,1})^{T}\mathbf{f} \\
+(\mathbf{v}_{y,1})^{T}\mathbf{f} \\
+(\mathbf{v}_{z,1})^{T}\mathbf{f} \\
+\vdots \\
+(\mathbf{v}_{x,n})^{T}\mathbf{f} \\
+(\mathbf{v}_{y,n})^{T}\mathbf{f} \\
+(\mathbf{v}_{z,n})^{T}\mathbf{f}
+\end{bmatrix}\ 
+\mathrm{d}E
+= \int_{E}
+\begin{bmatrix}
+(\mathbf{v}_{x,1})^{T} \\
+(\mathbf{v}_{y,1})^{T} \\
+(\mathbf{v}_{z,1})^{T} \\
+\vdots \\
+(\mathbf{v}_{x,n})^{T} \\
+(\mathbf{v}_{y,n})^{T} \\
+(\mathbf{v}_{z,n})^{T}
+\end{bmatrix}
+\mathbf{f}\ 
+\mathrm{d}E,
+\end{align*}
+\end{split}\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(\mathbf{v}_{*,i}\)</span> 对应的形函数插值得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\int_{E}
+\begin{bmatrix}
+N_{1} &amp; &amp;  \\
+&amp; N_{1} &amp;  \\
+&amp; &amp; N_{1}   \\
+&amp; \vdots &amp; \\
+N_{n} &amp; &amp;  \\
+&amp; N_{n} &amp;  \\
+&amp; &amp; N_{n}   \\
+\end{bmatrix}
+\mathbf{f}\ 
+\mathrm{d}E 
+= \int_{E}
+\mathbf{N}
+\mathbf{f}\ 
+\mathrm{d}E,
+\end{split}\]</div>
+<p>将积分变换到参考单元上进行，并采用数值积分技术，于是</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{F}^{e}=
+\int_{E}
+\mathbf{N}
+\mathbf{f}\ 
+\mathrm{d}E = \int_{E_{\text{参考}}}
+\mathbf{N}
+\mathbf{f}\left|\det(\mathbf{J})\right|\ 
+\mathrm{d}E_{\text{参考}} \approx \sum_{q}\mathbf{N}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|
+\]</div>
+<p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span>，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 需使用 <span class="math notranslate nohighlight">\(\xi,\eta,\zeta\)</span> 坐标表示</p>
+<p>类似地，单元右端项到全局右端项的映射关系如下</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{F}(g(E,i)) = \sum_{E} \mathbf{F}^{e}(i).
+\]</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">2.3.2.10. </span>边界条件<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理</p>
 </section>
 </section>
 </section>
@@ -1048,9 +1137,13 @@ K(g(E,i),g(E,j)) = \sum_{E} K^{e}(i,j)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.4. Jacobian 矩阵</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.8. 数值积分</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.9. 全局矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.7.1. 数值积分</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.8. 全局矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.2.9. 右端项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a></li>
 </ul>
 </li>
 </ul>
