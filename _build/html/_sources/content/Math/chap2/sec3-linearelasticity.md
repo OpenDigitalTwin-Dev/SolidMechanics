@@ -14,13 +14,18 @@ $$
 
 其中，$\boldsymbol{\sigma}$ 是应力张量，$\mathbf{f}$ 是体积力向量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{u}$ 是位移向量，$\mathbf{D}$ 是四阶本构张量
 
-计算区域为 $\Omega$，边界 $\partial\Omega=\Gamma_{u}\cup\Gamma_{p}$，边界条件为
+计算区域为 $\Omega$，边界 $\partial\Omega=\Gamma_{D}\cup\Gamma_{N}\cup\Gamma_{R}$，边界条件为
+
+```{margin}
+$\mathbf{n}$ 是边界外法向量，$\alpha$ 是系数，$\mathbf{f}_{R}$ 是边界上的外部载荷
+```
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{u} = \tilde{\mathbf{u}},\quad \text{on}\,\, \Gamma_{u},\\
-\boldsymbol{\sigma}\mathbf{n} = \tilde{\mathbf{p}},\quad \text{on}\,\, \Gamma_{p}.
+\mathbf{u} &= \tilde{\mathbf{u}},\quad &\text{on}\,\, \Gamma_{D},\\
+\boldsymbol{\sigma}\mathbf{n} &= \tilde{\mathbf{p}},\quad &\text{on}\,\, \Gamma_{N},\\
+\boldsymbol{\sigma}\mathbf{n} + \alpha\mathbf{u} &= \mathbf{f}_{R},\quad &\text{on}\,\, \Gamma_{R}.
 \end{aligned}
 \end{equation}
 $$
@@ -38,7 +43,7 @@ $$
 使用位移法求解，选择测试函数 $\mathbf{v}\in\mathcal{V}$，其中
 
 $$
-\mathcal{V}=\left\{\left.\mathbf{v}\in \left[H^{1}(\Omega)\right]^d \,\,\right|\,\, \mathbf{v}=\mathbf{0} \,\, \text{on}\,\, \Gamma_{u} \right\},
+\mathcal{V}=\left\{\left.\mathbf{v}\in \left[H^{1}(\Omega)\right]^d \,\,\right|\,\, \mathbf{v}=\mathbf{0} \,\, \text{on}\,\, \Gamma_{D} \right\},
 $$
 
 $H^{1}(\Omega)$ 是一阶 Sobolev 空间，$d$ 是空间维数。将方程转为积分形式
@@ -75,14 +80,14 @@ $$
 代入边界条件
 
 $$
-\int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S = \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S，
+\int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S = \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S
 $$
 
 于是
 
 $$
 -
-\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V}.
+\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V}.
 $$
 
 定义对称算子
@@ -107,17 +112,17 @@ $$
 
 $$
 -
-\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 再将本构方程 $\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon}(\mathbf{u})$ 代入上述方程，最终得到弱形式
 
 $$
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
-= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
+= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
-且 $\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{u}$
+且 $\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}$
 
 ### Voigt 形式
 
@@ -225,7 +230,7 @@ $$
 
 $$
 \begin{equation}
-\int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+\int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
 \end{equation}
 $$ (chap2-sec3-eq:discrete-eqs)
 
@@ -666,3 +671,9 @@ $$
 ### 边界条件
 
 在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理
+
+#### Dirichlet 边界条件
+
+#### Neumann 边界条件
+
+#### Robin 边界条件

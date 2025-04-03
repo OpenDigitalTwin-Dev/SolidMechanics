@@ -422,7 +422,12 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.8. 全局矩阵</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.2.9. 右端项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet">2.3.2.10.1. Dirichlet 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann">2.3.2.10.2. Neumann 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">2.3.2.10.3. Robin 边界条件</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -450,13 +455,18 @@ document.write(`
 \end{equation}
 \end{split}\]</div>
 <p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 是体积力向量，<span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 是位移向量，<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 是四阶本构张量</p>
-<p>计算区域为 <span class="math notranslate nohighlight">\(\Omega\)</span>，边界 <span class="math notranslate nohighlight">\(\partial\Omega=\Gamma_{u}\cup\Gamma_{p}\)</span>，边界条件为</p>
+<p>计算区域为 <span class="math notranslate nohighlight">\(\Omega\)</span>，边界 <span class="math notranslate nohighlight">\(\partial\Omega=\Gamma_{D}\cup\Gamma_{N}\cup\Gamma_{R}\)</span>，边界条件为</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 是边界外法向量，<span class="math notranslate nohighlight">\(\alpha\)</span> 是系数，<span class="math notranslate nohighlight">\(\mathbf{f}_{R}\)</span> 是边界上的外部载荷</p>
+</aside>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-\mathbf{u} = \tilde{\mathbf{u}},\quad \text{on}\,\, \Gamma_{u},\\
-\boldsymbol{\sigma}\mathbf{n} = \tilde{\mathbf{p}},\quad \text{on}\,\, \Gamma_{p}.
+\mathbf{u} &amp;= \tilde{\mathbf{u}},\quad &amp;\text{on}\,\, \Gamma_{D},\\
+\boldsymbol{\sigma}\mathbf{n} &amp;= \tilde{\mathbf{p}},\quad &amp;\text{on}\,\, \Gamma_{N},\\
+\boldsymbol{\sigma}\mathbf{n} + \alpha\mathbf{u} &amp;= \mathbf{f}_{R},\quad &amp;\text{on}\,\, \Gamma_{R}.
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -472,7 +482,7 @@ document.write(`
 <p>使用位移法求解，选择测试函数 <span class="math notranslate nohighlight">\(\mathbf{v}\in\mathcal{V}\)</span>，其中</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{V}=\left\{\left.\mathbf{v}\in \left[H^{1}(\Omega)\right]^d \,\,\right|\,\, \mathbf{v}=\mathbf{0} \,\, \text{on}\,\, \Gamma_{u} \right\},
+\mathcal{V}=\left\{\left.\mathbf{v}\in \left[H^{1}(\Omega)\right]^d \,\,\right|\,\, \mathbf{v}=\mathbf{0} \,\, \text{on}\,\, \Gamma_{D} \right\},
 \]</div>
 <p><span class="math notranslate nohighlight">\(H^{1}(\Omega)\)</span> 是一阶 Sobolev 空间，<span class="math notranslate nohighlight">\(d\)</span> 是空间维数。将方程转为积分形式</p>
 <div class="math notranslate nohighlight">
@@ -504,13 +514,13 @@ document.write(`
 <p>代入边界条件</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S = \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S，
+\int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S = \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S
 \]</div>
 <p>于是</p>
 <div class="math notranslate nohighlight">
 \[
 -
-\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V}.
+\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V}.
 \]</div>
 <p>定义对称算子</p>
 <div class="math notranslate nohighlight">
@@ -531,15 +541,15 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[
 -
-\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 \]</div>
 <p>再将本构方程 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon}(\mathbf{u})\)</span> 代入上述方程，最终得到弱形式</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
-= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
+= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 \]</div>
-<p>且 <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{u}\)</span></p>
+<p>且 <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}\)</span></p>
 <section id="voigt">
 <h3><span class="section-number">2.3.1.1. </span>Voigt 形式<a class="headerlink" href="#voigt" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
@@ -638,7 +648,7 @@ u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
 <div class="math notranslate nohighlight" id="equation-chap2-sec3-eq-discrete-eqs">
 <span class="eqno">(2.3)<a class="headerlink" href="#equation-chap2-sec3-eq-discrete-eqs" title="Link to this equation">#</a></span>\[
 \begin{equation}
-\int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{p}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
+\int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
 \end{equation}
 \]</div>
 </section>
@@ -1058,6 +1068,15 @@ N_{n} &amp; &amp;  \\
 <section id="id13">
 <h3><span class="section-number">2.3.2.10. </span>边界条件<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理</p>
+<section id="dirichlet">
+<h4><span class="section-number">2.3.2.10.1. </span>Dirichlet 边界条件<a class="headerlink" href="#dirichlet" title="Link to this heading">#</a></h4>
+</section>
+<section id="neumann">
+<h4><span class="section-number">2.3.2.10.2. </span>Neumann 边界条件<a class="headerlink" href="#neumann" title="Link to this heading">#</a></h4>
+</section>
+<section id="robin">
+<h4><span class="section-number">2.3.2.10.3. </span>Robin 边界条件<a class="headerlink" href="#robin" title="Link to this heading">#</a></h4>
+</section>
 </section>
 </section>
 </section>
@@ -1143,7 +1162,12 @@ N_{n} &amp; &amp;  \\
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.8. 全局矩阵</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.2.9. 右端项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet">2.3.2.10.1. Dirichlet 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann">2.3.2.10.2. Neumann 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">2.3.2.10.3. Robin 边界条件</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
