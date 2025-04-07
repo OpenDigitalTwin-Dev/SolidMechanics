@@ -710,11 +710,15 @@ $$
 \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}S = \sum_{\Gamma_{N}^{E}}\int_{\Gamma_{N}^{E}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{N}^{E},\quad *=x,y,z;\ i=1:N.
 $$
 
-其中，$\Gamma_{N}^{E}$ 表示处于边界 $\Gamma_{N}$ 上的单元 $E$ 的表面。与体积力积分计算类似，可以得到
+其中，$\Gamma_{N}^{E}$ 表示单元 $E$ 与边界 $\Gamma_{N}$ 的交集面。类似地，可以将物理单元上的面积分转换为参考单元上的面积分，但需要事先确定物理单元上的边界面与参考单元上哪个面相对应（例如六面体单元的 $\xi=1$ 面或 $\eta=-1$ 面），此时，积分通过坐标变换转换到参考面上计算
+
+```{margin}
+$\partial E_{\text{参考}}$ 表示 $\Gamma_{N}^{E}$ 对应的参考单元的某一面
+```
 
 $$
-\mathbf{F}_{\Gamma_{N}^{E}}= \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
-=,
+\mathbf{F}_{\Gamma_{N}^{E}} = \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
+=\int_{\partial E_{\text{参考}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S = \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|,
 $$
 
 其中，积分点是 $\left\{(\xi_{q},\eta_{q})\right\}$，积分权重是 $w_{q}$，$\tilde{\mathbf{p}}$ 需使用 $\xi,\eta$ 坐标表示
@@ -741,3 +745,44 @@ $$
 \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S = \sum_{\Gamma_{R}^{E}}\int_{\Gamma_{R}^{E}} \alpha \mathbf{u} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{R}^{E},\quad *=x,y,z;\ i=1:N.
 $$
 
+因为
+
+$$
+\mathbf{u} = \sum_{i=1}^{n}N_{i}\mathbf{u}_{i} = 
+\begin{bmatrix}
+N_{1} & & &  & N_{n} \\
+& N_{1} & & \cdots & & N_{n} \\
+& & N_{1} & & & & N_{n}
+\end{bmatrix}\begin{bmatrix}
+u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
+\end{bmatrix},
+$$
+
+对于单元 $E$ ，积分写为矩阵形式
+
+```{margin}
+$\partial E_{\text{参考}}$ 表示 $\Gamma_{R}^{E}$ 对应的参考单元的某一面
+```
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{F}_{\Gamma_{R}^{E}} 
+&= 
+\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N}\mathbf{u}^{e} \ \mathrm{d}\Gamma_{R}^{E}\\
+&= 
+\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N} \ \mathrm{d}\Gamma_{R}^{E} \cdot \mathbf{u}^{e}\\
+&=\int_{\partial E_{\text{参考}}} \alpha\mathbf{N}^{T}\mathbf{N}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \ \mathbf{u}^{e} \\
+&= \sum_{q}\alpha\mathbf{N}^{T}_{q}\mathbf{N}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|\mathbf{u}^{e}\\
+&=\mathbf{K}_{r}^{e}\cdot \mathbf{u}^{e}
+\end{aligned}
+\end{equation}
+$$
+
+其中，积分点是 $\left\{(\xi_{q},\eta_{q})\right\}$，积分权重是 $w_{q}$
+
+单元右端项到全局右端项的映射关系如下
+
+$$
+\mathbf{F}(g(E,i)) \ +\!\!= \ \mathbf{F}_{\Gamma_{R}^{E}}(i).
+$$

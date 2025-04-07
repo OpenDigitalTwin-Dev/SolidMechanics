@@ -1104,11 +1104,15 @@ u_{D}\\
 \[
 \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}S = \sum_{\Gamma_{N}^{E}}\int_{\Gamma_{N}^{E}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{N}^{E},\quad *=x,y,z;\ i=1:N.
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\Gamma_{N}^{E}\)</span> 表示处于边界 <span class="math notranslate nohighlight">\(\Gamma_{N}\)</span> 上的单元 <span class="math notranslate nohighlight">\(E\)</span> 的表面。与体积力积分计算类似，可以得到</p>
+<p>其中，<span class="math notranslate nohighlight">\(\Gamma_{N}^{E}\)</span> 表示单元 <span class="math notranslate nohighlight">\(E\)</span> 与边界 <span class="math notranslate nohighlight">\(\Gamma_{N}\)</span> 的交集面。类似地，可以将物理单元上的面积分转换为参考单元上的面积分，但需要事先确定物理单元上的边界面与参考单元上哪个面相对应（例如六面体单元的 <span class="math notranslate nohighlight">\(\xi=1\)</span> 面或 <span class="math notranslate nohighlight">\(\eta=-1\)</span> 面），此时，积分通过坐标变换转换到参考面上计算</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\partial E_{\text{参考}}\)</span> 表示 <span class="math notranslate nohighlight">\(\Gamma_{N}^{E}\)</span> 对应的参考单元的某一面</p>
+</aside>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{F}_{\Gamma_{N}^{E}}= \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
-=,
+\mathbf{F}_{\Gamma_{N}^{E}} = \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
+=\int_{\partial E_{\text{参考}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S = \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|,
 \]</div>
 <p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span>，<span class="math notranslate nohighlight">\(\tilde{\mathbf{p}}\)</span> 需使用 <span class="math notranslate nohighlight">\(\xi,\eta\)</span> 坐标表示</p>
 <p>单元右端项到全局右端项的映射关系如下</p>
@@ -1130,6 +1134,44 @@ u_{D}\\
 <div class="math notranslate nohighlight">
 \[
 \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S = \sum_{\Gamma_{R}^{E}}\int_{\Gamma_{R}^{E}} \alpha \mathbf{u} \cdot \mathbf{v}_{*,i} \ \mathrm{d}\Gamma_{R}^{E},\quad *=x,y,z;\ i=1:N.
+\]</div>
+<p>因为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{u} = \sum_{i=1}^{n}N_{i}\mathbf{u}_{i} = 
+\begin{bmatrix}
+N_{1} &amp; &amp; &amp;  &amp; N_{n} \\
+&amp; N_{1} &amp; &amp; \cdots &amp; &amp; N_{n} \\
+&amp; &amp; N_{1} &amp; &amp; &amp; &amp; N_{n}
+\end{bmatrix}\begin{bmatrix}
+u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
+\end{bmatrix},
+\end{split}\]</div>
+<p>对于单元 <span class="math notranslate nohighlight">\(E\)</span> ，积分写为矩阵形式</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\partial E_{\text{参考}}\)</span> 表示 <span class="math notranslate nohighlight">\(\Gamma_{R}^{E}\)</span> 对应的参考单元的某一面</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\mathbf{F}_{\Gamma_{R}^{E}} 
+&amp;= 
+\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N}\mathbf{u}^{e} \ \mathrm{d}\Gamma_{R}^{E}\\
+&amp;= 
+\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N} \ \mathrm{d}\Gamma_{R}^{E} \cdot \mathbf{u}^{e}\\
+&amp;=\int_{\partial E_{\text{参考}}} \alpha\mathbf{N}^{T}\mathbf{N}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \ \mathbf{u}^{e} \\
+&amp;= \sum_{q}\alpha\mathbf{N}^{T}_{q}\mathbf{N}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|\mathbf{u}^{e}\\
+&amp;=\mathbf{K}_{r}^{e}\cdot \mathbf{u}^{e}
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span></p>
+<p>单元右端项到全局右端项的映射关系如下</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{F}(g(E,i)) \ +\!\!= \ \mathbf{F}_{\Gamma_{R}^{E}}(i).
 \]</div>
 </section>
 </section>
@@ -1239,7 +1281,7 @@ u_{D}\\
   <div class="footer-item">
     
 <p class="component-author">
-By 李仕哲
+By 李仕哲  lishizhe@lsec.cc.ac.cn
 </p>
 
   </div>
