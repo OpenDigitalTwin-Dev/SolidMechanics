@@ -32,3 +32,8 @@ parts:
     - file: content/Elasticity/chap1/sec7-boundary
     - file: content/Elasticity/chap1/sec8-two-2D-solution
     - file: content/Elasticity/chap1/sec9-numerical-simple
+  - caption: 塑性力学
+    numbered: True
+    chapters:
+    - file: content/Plasticity/chap1/intro
+    - file: content/Plasticity/chap1/sec1-uniaxial

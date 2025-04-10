@@ -48,17 +48,17 @@ Explore this note &rarr;
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: content/Elasticity/chap1/intro.html
+:link: content/Plasticity/chap1/intro.html
 
 **塑性力学**
 
-```{image} https://python.quantecon.org/_static/qe-logo-large.png
-:height: 100
+```{image} images/Cover/plasticity.png
+:height: 130
 ```
 
 +++
 <div style="text-align: center;">
-In preparing... ↻
+Explore this note &rarr;
 </div>
 :::
 
