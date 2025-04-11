@@ -184,7 +184,7 @@ $$
 \dot{\Phi} = \text{sign}(\sigma) \cdot \dot{\sigma} - H \cdot \dot{\bar{\varepsilon}}^p = 0,
 $$
 
-其中 $H=\frac{\partial \sigma_{y}}{\partial \bar{\varepsilon}^p}$ 为**硬化模量**，是描述材料塑性流动难易程度的重要指标，当
+其中 $H=\frac{\partial \sigma_{y}}{\partial \bar{\varepsilon}^p}$ 为**硬化模量**，反映材料进入塑性变形阶段后‌进一步发生塑性变形的难易程度‌，当
 
 - $H>0$：材料表现出硬化特性，即在屈服后其承载能力增强，更难变形
 
@@ -220,7 +220,7 @@ $$
 \end{equation}
 $$ (sec1-eq:plasticity-multiplier)
 
-#### 弹塑性切线模量
+### 弹塑性切线模量
 
 将式 {eq}`sec1-eq:plasticity-multiplier` 代入到应力率表达式 {eq}`sec1-eq:stress-rate`中，得到
 
@@ -244,7 +244,7 @@ $$
 E_{ep}=\frac{\dot{\sigma}}{\dot{\varepsilon}} = \frac{\partial \sigma}{\partial \varepsilon},
 $$
 
-因此，$E_{ep}$ 是应力-应变曲线的切线斜率，反映了材料在塑性阶段的刚度
+因此，$E_{ep}$ 是应力-应变曲线的切线斜率，反映了材料在塑性阶段的刚度，表示材料在已发生塑性变形‌时对变形的瞬时抵抗能力
 
 此外，可以用 $E_{ep}$ 表示硬化模量 $H$
 

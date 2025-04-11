@@ -416,10 +416,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.2.3. 屈服函数</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.2.4. 塑性流动规则</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.2.5. 硬化法则</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.2.6. 塑性乘子</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">14.2.6.1. 弹塑性切线模量</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.2.6. 塑性乘子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">14.2.7. 弹塑性切线模量</a></li>
 </ul>
 </li>
 </ul>
@@ -600,7 +598,7 @@ document.write(`
 \[
 \dot{\Phi} = \text{sign}(\sigma) \cdot \dot{\sigma} - H \cdot \dot{\bar{\varepsilon}}^p = 0,
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(H=\frac{\partial \sigma_{y}}{\partial \bar{\varepsilon}^p}\)</span> 为<strong>硬化模量</strong>，是描述材料塑性流动难易程度的重要指标，当</p>
+<p>其中 <span class="math notranslate nohighlight">\(H=\frac{\partial \sigma_{y}}{\partial \bar{\varepsilon}^p}\)</span> 为<strong>硬化模量</strong>，反映材料进入塑性变形阶段后‌进一步发生塑性变形的难易程度‌，当</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H&gt;0\)</span>：材料表现出硬化特性，即在屈服后其承载能力增强，更难变形</p></li>
 <li><p><span class="math notranslate nohighlight">\(H=0\)</span>：材料表现为理想塑性，即屈服后承载能力保持不变</p></li>
@@ -630,8 +628,9 @@ E(\dot{\varepsilon} \cdot \text{sign}(\sigma) - \dot{\gamma}) - H\dot{\gamma} = 
 \dot{\gamma} = \frac{E}{H + E} \cdot \text{sign}(\sigma) \cdot \dot{\varepsilon} = \frac{E}{H + E} |\dot{\varepsilon}|.
 \end{equation}
 \]</div>
+</section>
 <section id="id10">
-<h4><span class="section-number">14.2.6.1. </span>弹塑性切线模量<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">14.2.7. </span>弹塑性切线模量<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>将式 <a class="reference internal" href="#equation-sec1-eq-plasticity-multiplier">(14.2)</a> 代入到应力率表达式 <a class="reference internal" href="#equation-sec1-eq-stress-rate">(14.1)</a>中，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec1-eq-eep01">
 <span class="eqno">(14.3)<a class="headerlink" href="#equation-sec1-eq-eep01" title="Link to this equation">#</a></span>\[
@@ -650,13 +649,12 @@ E_{ep}=\frac{EH}{E+H}
 \[
 E_{ep}=\frac{\dot{\sigma}}{\dot{\varepsilon}} = \frac{\partial \sigma}{\partial \varepsilon},
 \]</div>
-<p>因此，<span class="math notranslate nohighlight">\(E_{ep}\)</span> 是应力-应变曲线的切线斜率，反映了材料在塑性阶段的刚度</p>
+<p>因此，<span class="math notranslate nohighlight">\(E_{ep}\)</span> 是应力-应变曲线的切线斜率，反映了材料在塑性阶段的刚度，表示材料在已发生塑性变形‌时对变形的瞬时抵抗能力</p>
 <p>此外，可以用 <span class="math notranslate nohighlight">\(E_{ep}\)</span> 表示硬化模量 <span class="math notranslate nohighlight">\(H\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 H = \frac{E^{ep}}{1 - E^{ep}/E}.
 \]</div>
-</section>
 </section>
 </section>
 </section>
@@ -723,10 +721,8 @@ H = \frac{E^{ep}}{1 - E^{ep}/E}.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.2.3. 屈服函数</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.2.4. 塑性流动规则</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.2.5. 硬化法则</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.2.6. 塑性乘子</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">14.2.6.1. 弹塑性切线模量</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.2.6. 塑性乘子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">14.2.7. 弹塑性切线模量</a></li>
 </ul>
 </li>
 </ul>
