@@ -774,7 +774,7 @@ $$
 \int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N} \ \mathrm{d}\Gamma_{R}^{E} \cdot \mathbf{u}^{e}\\
 &=\int_{\partial E_{\text{参考}}} \alpha\mathbf{N}^{T}\mathbf{N}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \ \mathbf{u}^{e} \\
 &= \sum_{q}\alpha\mathbf{N}^{T}_{q}\mathbf{N}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|\mathbf{u}^{e}\\
-&=\mathbf{K}_{r}^{e}\cdot \mathbf{u}^{e}
+&=\mathbf{K}_{r}^{e}\cdot \mathbf{u}^{e},
 \end{aligned}
 \end{equation}
 $$
