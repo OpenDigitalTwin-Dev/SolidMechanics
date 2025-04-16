@@ -428,9 +428,14 @@ document.write(`
 <span class="gray-text">
 屈服准则用于确定导致材料永久变形所需的临界应力
 </span>
-<p>记 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为应力张量，<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 是主应力，其大小等于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值。记 <span class="math notranslate nohighlight">\(Y\)</span> 为单轴情形下的屈服应力</p>
+<p>记 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为应力张量，<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 是主应力，其大小等于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值</p>
 <section id="mises">
 <h2><span class="section-number">15.1. </span>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h2>
+<p>Von Mises屈服准则，也称最大等效应力准则</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\text{mises}} = \sqrt{\frac{1}{2} \left[ (\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right]},
+\]</div>
 </section>
 <section id="tresca">
 <h2><span class="section-number">15.2. </span>Tresca 屈服准则<a class="headerlink" href="#tresca" title="Link to this heading">#</a></h2>

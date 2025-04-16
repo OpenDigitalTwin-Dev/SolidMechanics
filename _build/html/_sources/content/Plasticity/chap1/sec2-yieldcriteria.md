@@ -6,8 +6,14 @@
 
 
 
-记 $\boldsymbol{\sigma}$ 为应力张量，$\sigma_{1},\sigma_{2},\sigma_{3}$ 是主应力，其大小等于 $\boldsymbol{\sigma}$ 的特征值。记 $Y$ 为单轴情形下的屈服应力
+记 $\boldsymbol{\sigma}$ 为应力张量，$\sigma_{1},\sigma_{2},\sigma_{3}$ 是主应力，其大小等于 $\boldsymbol{\sigma}$ 的特征值
 
 ## Mises 屈服准则
+
+Von Mises屈服准则，也称最大等效应力准则
+
+$$
+\sigma_{\text{mises}} = \sqrt{\frac{1}{2} \left[ (\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right]},
+$$
 
 ## Tresca 屈服准则
