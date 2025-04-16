@@ -37,3 +37,4 @@ parts:
     chapters:
     - file: content/Plasticity/chap1/intro
     - file: content/Plasticity/chap1/sec1-uniaxial
+    - file: content/Plasticity/chap1/sec2-yieldcriteria
