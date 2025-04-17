@@ -10,7 +10,7 @@
 
 ## Mises 屈服准则
 
-Von Mises屈服准则，也称最大等效应力准则
+Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的塑性力学分析
 
 $$
 \sigma_{\text{mises}} = \sqrt{\frac{1}{2} \left[ (\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right]},

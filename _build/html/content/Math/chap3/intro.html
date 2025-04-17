@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. 有限元计算 &#8212; 固体力学笔记</title>
+    <title>3. 张量分析 &#8212; 固体力学笔记</title>
   
   
   
@@ -58,13 +58,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap3/intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.1. 形函数" href="sec1-shapefunction.html" />
-    <link rel="prev" title="1.4. Gaussian 公式" href="../chap1/sec4-gaussian.html" />
+    <link rel="next" title="4. 简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="prev" title="2.3. 线弹性问题" href="../chap2/sec3-linearelasticity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,13 +189,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">2.1. 形函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-isoparametric.html">2.2. 等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-linearelasticity.html">2.3. 线弹性问题</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-linearelasticity.html">2.3. 线弹性问题</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap3/intro.html">3. 张量分析</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 张量分析</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -288,7 +286,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Math/chap2/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Math/chap3/intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,7 +316,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Math/chap2/intro.md" target="_blank"
+      <li><a href="../../../_sources/content/Math/chap3/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -400,7 +398,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>有限元计算</h1>
+    <h1>张量分析</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -415,66 +413,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2. </span>有限元计算<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>在有限元方法中，偏微分方程通过变分法与分片多项式进行离散，最终被转化为线性方程组的形式。例如，对于<a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html"><span class="std std-doc">一维线弹性问题</span></a>，其形式为</p>
-<div class="math notranslate nohighlight">
-\[
-\left(\phi_{j}\sum_{i=0}^{n}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{n}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x,\quad j=0:n.
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\left\{\phi_{i}\right\}_{i=1}^{n}\)</span> 是分片多项式函数空间的基函数，<span class="math notranslate nohighlight">\(\left\{c_{i}\right\}_{i=1}^{n}\)</span> 是待定求解的系数，通过求解线性方程组得到，于是有限元近似解为</p>
-<div class="math notranslate nohighlight">
-\[
-u_{h} = \sum_{i=1}^{n}c_{i}\phi_{i} = \sum_{i=1}^{n}u_{i}\phi_{i}.
-\]</div>
-<p>由于 <span class="math notranslate nohighlight">\(\phi_{i}\)</span> 是基于单元的分片多项式，因此不论是刚度矩阵的计算</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x,
-\]</div>
-<p>还是场变量分布计算</p>
-<div class="math notranslate nohighlight">
-\[
-u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\phi_{i}(x,y),
-\]</div>
-<p>都可以转换为单元上的计算</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \sum_{E}\int_{E}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}E = \sum_{E}\int_{E}\frac{\partial \left.\phi_{i}\right|_{E}}{\partial x}\frac{\partial \left.\phi_{j}\right|_{E}}{\partial x}\,\mathrm{d}E
-\]</div>
-<p>和</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>其中 <span class="math notranslate nohighlight">\(E_{(x,y)}\)</span> 是点 <span class="math notranslate nohighlight">\((x,y)\)</span> 的所属单元，如果 <span class="math notranslate nohighlight">\((x,y)\)</span> 在单元边界，则由于 <span class="math notranslate nohighlight">\(u_{h}\)</span> 的连续性，可以任取一相邻单元进行计算</p>
-</aside>
-<div class="math notranslate nohighlight">
-\[
-u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\left.\phi_{i}(x,y)\right|_{E_{(x,y)}}
-\]</div>
-<p>因此，关键在于得到</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
-\left.\phi_{i}\right|_{E}
-\end{equation}
-\]</div>
-<p>另一方面，由于 <span class="math notranslate nohighlight">\(\phi_{i}\)</span> 具有局部支性（即仅在与节点相邻的单元上取值非零），因此，对于 <span class="math notranslate nohighlight">\(\phi_{i}\)</span>，只需关注那些使得 <span class="math notranslate nohighlight">\(\phi_{i}\)</span> 非零的单元（相邻单元）中的表达式，在这些单元中，<span class="math notranslate nohighlight">\(\phi_{i}\)</span> 具有以下性质</p>
-<ul class="simple">
-<li><p>多项式：<span class="math notranslate nohighlight">\(\left.\phi_{i}\right|_{E}\)</span> 是多项式</p></li>
-<li><p>插值性：在自身节点取值为 1, 其余节点取值为 0</p></li>
-<li><p>连续性：在相邻单元边界处满足 <span class="math notranslate nohighlight">\(C^{0}\)</span> 连续</p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(\left.\phi_{i}\right|_{E}\)</span> 与单元 <span class="math notranslate nohighlight">\(E\)</span> 的几何形状密切相关，这给 <span class="math notranslate nohighlight">\(\left.\phi_{i}\right|_{E}\)</span> 的构造带来了高度的复杂性</p>
-<p>为简化计算，通常基于参考单元（如二维标准三角形/矩形单元，三维标准四面体/六面体单元）构造基函数（形函数），再通过坐标变换将一般单元（物理单元）上的计算映射回参考单元</p>
-<figure class="align-default" id="sec5-fig-element-switch">
-<a class="reference internal image-reference" href="../../../_images/std-element.png"><img alt="../../../_images/std-element.png" src="../../../_images/std-element.png" style="width: 600px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">从一般单元映射到参考单元</span><a class="headerlink" href="#sec5-fig-element-switch" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>这样，通过解耦基函数构造与单元几何形态，有效规避了复杂单元几何对基函数构造的影响，确保不同几何形态单元基函数表达的统一性</p>
-<div class="toctree-wrapper compound">
-</div>
+<h1><span class="section-number">3. </span>张量分析<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<span class="gray-text">
+张量分析是描述连续介质力学行为不可或缺的数学工具
+</span>
+<p>固体材料的应力、应变及其演化过程本质上是多维、非均匀的物理场，需用借助张量（如柯西应力张量、应变张量）来表征其空间分布特性。张量运算的坐标不变性确保了物理定律在任意参考系下的普适性，例如通过张量形式的本构方程将应力与应变关联，或利用协调方程描述位移场与应变场的几何约束。此外，张量的张量率（如客观应力率）和协变导数可精确刻画有限变形、各向异性材料响应及非线性动力学问题，为理论建模与工程计算提供了严格的数学框架</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -490,7 +433,7 @@ u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\left.\phi_{i}(x,y)\right|_{E_{(x,y)}}
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Math/chap2"
+            path: "./content/Math/chap3"
         },
         predefinedOutput: true
     }
@@ -508,20 +451,20 @@ u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\left.\phi_{i}(x,y)\right|_{E_{(x,y)}}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chap1/sec4-gaussian.html"
+       href="../chap2/sec3-linearelasticity.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.4. </span>Gaussian 公式</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>线弹性问题</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec1-shapefunction.html"
+       href="../../Elasticity/chap1/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>形函数</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>简介</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

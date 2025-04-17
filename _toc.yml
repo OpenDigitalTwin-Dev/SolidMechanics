@@ -19,6 +19,7 @@ parts:
         - file: content/Math/chap2/sec1-shapefunction
         - file: content/Math/chap2/sec2-isoparametric
         - file: content/Math/chap2/sec3-linearelasticity
+      - file: content/Math/chap3/intro
   - caption: 弹性力学
     numbered: True
     chapters:
