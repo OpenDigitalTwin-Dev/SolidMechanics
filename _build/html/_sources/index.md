@@ -9,12 +9,12 @@ hide-nav: true
 ::::{card-carousel} 3
 
 :::{card}
-:margin: 3
+:margin: 2
 :class-body: text-center
 :class-header: bg-light text-center
 :link: content/Math/chap1/intro.html
 
-**数学基础**
+**数值计算**
 
 ```{image} images/Cover/math2.png
 :height: 120
@@ -27,7 +27,7 @@ Explore this note &rarr;
 :::
 
 :::{card}
-:margin: 3
+:margin: 2
 :class-body: text-center
 :class-header: bg-light text-center
 :link: content/Elasticity/chap1/intro.html
@@ -45,7 +45,7 @@ Explore this note &rarr;
 :::
 
 :::{card}
-:margin: 3
+:margin: 2
 :class-body: text-center
 :class-header: bg-light text-center
 :link: content/Plasticity/chap1/intro.html
@@ -61,6 +61,30 @@ Explore this note &rarr;
 Explore this note &rarr;
 </div>
 :::
+
+::::
+
+
+::::{card-carousel} 3
+
+:::{card}
+:margin: 2
+:class-body: text-center
+:class-header: bg-light text-center
+:link: content/Tensor/chap1/intro.html
+
+**连续介质力学<br>与张量分析**
+
+```{image} images/Cover/math2.png
+:height: 120
+```
+
++++
+<div style="text-align: center;">
+Explore this note &rarr;
+</div>
+:::
+
 
 ::::
 

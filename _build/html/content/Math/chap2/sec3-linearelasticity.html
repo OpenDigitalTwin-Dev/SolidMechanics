@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.3. 线弹性问题 &#8212; 固体力学笔记</title>
+    <title>线弹性问题 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/sec3-linearelasticity';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3. 张量分析" href="../chap3/intro.html" />
-    <link rel="prev" title="2.2. 等参变换" href="sec2-isoparametric.html" />
+    <link rel="next" title="张量分析" href="../../Tensor/chap1/intro.html" />
+    <link rel="prev" title="等参变换" href="sec2-isoparametric.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,41 +182,47 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">1. 数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">1.2. 辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">1.3. 代数精度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">2.1. 形函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-isoparametric.html">2.2. 等参变换</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. 线弹性问题</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-isoparametric.html">等参变换</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">线弹性问题</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap3/intro.html">3. 张量分析</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">连续介质力学与张量分析</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">张量分析</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-basicdef.html">基本定义</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">4. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">5. 应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">6. 弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">7. 平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">8. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">9. 本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">10. 两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">11. 边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">12. 位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">13. 数值方法简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">14. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">15. 单轴拉伸实验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">16. 屈服准则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">屈服准则</a></li>
 </ul>
 
     </div>
@@ -412,27 +418,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 变分</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voigt">2.3.1.1. Voigt 形式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">变分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voigt">Voigt 形式</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 离散</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1. 基函数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2.2. 形函数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.3. 几何映射</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.4. Jacobian 矩阵</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.7.1. 数值积分</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">离散</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">基函数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">形函数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">几何映射</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">Jacobian 矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">场变量插值</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">导数计算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">单元刚度矩阵</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">数值积分</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.8. 全局矩阵</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.2.9. 右端项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet">2.3.2.10.1. Dirichlet 边界条件</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann">2.3.2.10.2. Neumann 边界条件</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">2.3.2.10.3. Robin 边界条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">全局矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">右端项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">边界条件</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet">Dirichlet 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann">Neumann 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">Robin 边界条件</a></li>
 </ul>
 </li>
 </ul>
@@ -449,7 +455,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2.3. </span>线弹性问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>线弹性问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>线弹性问题的控制方程为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -485,7 +491,7 @@ document.write(`
 </ul>
 <p>在有限元方法中，Dirichlet 边界条件通过选取齐次的测试函数空间，并直接强加边界节点值来处理；而 Neumann 边界条件和 Robin 边界条件则通过分部积分自然引入到弱形式中，从而在求解过程中自动满足</p>
 <section id="id2">
-<h2><span class="section-number">2.3.1. </span>变分<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>变分<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>使用位移法求解，选择测试函数 <span class="math notranslate nohighlight">\(\mathbf{v}\in\mathcal{V}\)</span>，其中</p>
 <div class="math notranslate nohighlight">
 \[
@@ -558,7 +564,7 @@ document.write(`
 \]</div>
 <p>且 <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}\)</span></p>
 <section id="voigt">
-<h3><span class="section-number">2.3.1.1. </span>Voigt 形式<a class="headerlink" href="#voigt" title="Link to this heading">#</a></h3>
+<h3>Voigt 形式<a class="headerlink" href="#voigt" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>注意，为了方便，这里记号混用</p>
@@ -619,9 +625,9 @@ u_{x}\\u_{y}\\u_{z}
 </section>
 </section>
 <section id="id3">
-<h2><span class="section-number">2.3.2. </span>离散<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>离散<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3><span class="section-number">2.3.2.1. </span>基函数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>基函数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>设有限元解空间 <span class="math notranslate nohighlight">\(\mathcal{U}_{h}\)</span> 的基函数为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -653,7 +659,7 @@ u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
 \]</div>
 <p>和 <span class="math notranslate nohighlight">\(3N\)</span> 个求解方程</p>
 <div class="math notranslate nohighlight" id="equation-chap2-sec3-eq-discrete-eqs">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-chap2-sec3-eq-discrete-eqs" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(3)<a class="headerlink" href="#equation-chap2-sec3-eq-discrete-eqs" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
@@ -663,7 +669,7 @@ u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
 \end{split}\]</div>
 </section>
 <section id="id5">
-<h3><span class="section-number">2.3.2.2. </span>形函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>形函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>设参考单元上的形函数为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -671,7 +677,7 @@ N_{1},N_{2},\cdots,N_{n}.
 \]</div>
 </section>
 <section id="id6">
-<h3><span class="section-number">2.3.2.3. </span>几何映射<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3>几何映射<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>在物理单元 <span class="math notranslate nohighlight">\(E_{\text{}}\)</span> 上（以下为局部编号）</p>
 <div class="math notranslate nohighlight">
 \[
@@ -681,7 +687,7 @@ x = \sum_{i=1}^{n} N_{i}(\xi,\eta,\zeta)x_{i},\quad y = \sum_{i=1}^{n} N_{i}(\xi
 \]</div>
 </section>
 <section id="jacobian">
-<h3><span class="section-number">2.3.2.4. </span>Jacobian 矩阵<a class="headerlink" href="#jacobian" title="Link to this heading">#</a></h3>
+<h3>Jacobian 矩阵<a class="headerlink" href="#jacobian" title="Link to this heading">#</a></h3>
 <p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -716,7 +722,7 @@ x_{n} &amp; y_{n} &amp; z_{n}
 \end{split}\]</div>
 </section>
 <section id="id7">
-<h3><span class="section-number">2.3.2.5. </span>场变量插值<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3>场变量插值<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号）</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -738,7 +744,7 @@ u_{x} \\ u_{y} \\ u_{z}
 \end{split}\]</div>
 </section>
 <section id="id8">
-<h3><span class="section-number">2.3.2.6. </span>导数计算<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>导数计算<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上（以下为局部编号），对于场分布函数</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -775,7 +781,7 @@ u_{x,n} &amp; u_{y,n} &amp; u_{z,n}
 \end{split}\]</div>
 <p>对于形函数</p>
 <div class="math notranslate nohighlight" id="equation-chap2-sec3-shape-der">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-chap2-sec3-shape-der" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(4)<a class="headerlink" href="#equation-chap2-sec3-shape-der" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{bmatrix}
 \frac{\partial N_{1}}{\partial x} &amp; \frac{\partial {N_2}}{\partial x} &amp; \cdots &amp; \frac{\partial {N_n}}{\partial x} \\ 
@@ -793,7 +799,7 @@ u_{x,n} &amp; u_{y,n} &amp; u_{z,n}
 \end{split}\]</div>
 </section>
 <section id="id9">
-<h3><span class="section-number">2.3.2.7. </span>单元刚度矩阵<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>单元刚度矩阵<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>在有限元方法中，积分运算被划分至每个物理单元</p>
 <div class="math notranslate nohighlight">
 \[ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E,
@@ -852,7 +858,7 @@ N_{2} \\ 0 \\ 0
 \end{split}\]</div>
 <p>依次记为 <span class="math notranslate nohighlight">\(\mathbf{v}_{x,1},\mathbf{v}_{y,1},\mathbf{v}_{z,1},\mathbf{v}_{x,2},\mathbf{v}_{y,2},\mathbf{v}_{z,2},\cdots\)</span>，于是在物理单元 <span class="math notranslate nohighlight">\(E\)</span> 上，得到如下关系式</p>
 <div class="math notranslate nohighlight" id="equation-chap2-sec3-eq-element-stiffness">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-chap2-sec3-eq-element-stiffness" title="Link to this equation">#</a></span>\[
+<span class="eqno">(5)<a class="headerlink" href="#equation-chap2-sec3-eq-element-stiffness" title="Link to this equation">#</a></span>\[
 \begin{equation}
 \int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}E,\quad *=x,y,z;\ i=1:n.
 \end{equation}
@@ -893,7 +899,7 @@ N_{2} \\ 0 \\ 0
 u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
 \end{bmatrix} = \mathbf{B}\mathbf{u}^{e},
 \end{split}\]</div>
-<p>代入 <span class="math notranslate nohighlight">\(v_{*,i}\)</span>，将积分式 <a class="reference internal" href="#equation-chap2-sec3-eq-element-stiffness">(2.5)</a> 写为矩阵形式</p>
+<p>代入 <span class="math notranslate nohighlight">\(v_{*,i}\)</span>，将积分式 <a class="reference internal" href="#equation-chap2-sec3-eq-element-stiffness">(5)</a> 写为矩阵形式</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -961,9 +967,9 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 =\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
 =\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 中的导数应依据公式 <a class="reference internal" href="#equation-chap2-sec3-shape-der">(2.4)</a> 转换为自然坐标下的导数进行计算</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 中的导数应依据公式 <a class="reference internal" href="#equation-chap2-sec3-shape-der">(4)</a> 转换为自然坐标下的导数进行计算</p>
 <section id="id10">
-<h4><span class="section-number">2.3.2.7.1. </span>数值积分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<h4>数值积分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>单元刚度矩阵 <span class="math notranslate nohighlight">\(\mathbf{K}^{e}\)</span> 通常采用数值积分方法计算</p>
 <div class="math notranslate nohighlight">
 \[
@@ -973,7 +979,7 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 </section>
 </section>
 <section id="id11">
-<h3><span class="section-number">2.3.2.8. </span>全局矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<h3>全局矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>单元刚度矩阵描述了单元内自由度之间的关系，这些自由度按照特定顺序进行局部编号</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -996,7 +1002,7 @@ u_{z,2}^{e} &amp; K_{61}^{e} &amp; K_{62}^{e} &amp; K_{63}^{e} &amp; K_{64}^{e} 
 \]</div>
 </section>
 <section id="id12">
-<h3><span class="section-number">2.3.2.9. </span>右端项<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h3>右端项<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>右端项的计算方式与刚度矩阵类似，首先将积分划分到各个物理单元内，然后通过坐标映射将物理单元上的积分转化为参考单元上的积分运算</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1077,10 +1083,10 @@ N_{n} &amp; &amp;  \\
 \]</div>
 </section>
 <section id="id13">
-<h3><span class="section-number">2.3.2.10. </span>边界条件<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<h3>边界条件<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>在有限元计算中，边界条件通常在组装完成全局刚度矩阵和右端项后进行附加处理</p>
 <section id="dirichlet">
-<h4><span class="section-number">2.3.2.10.1. </span>Dirichlet 边界条件<a class="headerlink" href="#dirichlet" title="Link to this heading">#</a></h4>
+<h4>Dirichlet 边界条件<a class="headerlink" href="#dirichlet" title="Link to this heading">#</a></h4>
 <p>Dirichlet 边界条件直接指定了边界节点的自由度值，因此只需对全局刚度矩阵和右端项进行相应的修正</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1105,7 +1111,7 @@ u_{D}\\
 <p>其中 <span class="math notranslate nohighlight">\(u_{D}\)</span> 是边界节点自由度 <span class="math notranslate nohighlight">\(u_{x,k}\)</span> 的值</p>
 </section>
 <section id="neumann">
-<h4><span class="section-number">2.3.2.10.2. </span>Neumann 边界条件<a class="headerlink" href="#neumann" title="Link to this heading">#</a></h4>
+<h4>Neumann 边界条件<a class="headerlink" href="#neumann" title="Link to this heading">#</a></h4>
 <p>边界积分通常通过划分至对应的边界单元表面进行计算</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1129,7 +1135,7 @@ u_{D}\\
 \]</div>
 </section>
 <section id="robin">
-<h4><span class="section-number">2.3.2.10.3. </span>Robin 边界条件<a class="headerlink" href="#robin" title="Link to this heading">#</a></h4>
+<h4>Robin 边界条件<a class="headerlink" href="#robin" title="Link to this heading">#</a></h4>
 <p>Robin 边界条件通常有两项需要处理</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1221,15 +1227,15 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>等参变换</p>
+        <p class="prev-next-title">等参变换</p>
       </div>
     </a>
     <a class="right-next"
-       href="../chap3/intro.html"
+       href="../../Tensor/chap1/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>张量分析</p>
+        <p class="prev-next-title">张量分析</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1249,27 +1255,27 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 变分</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voigt">2.3.1.1. Voigt 形式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">变分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voigt">Voigt 形式</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 离散</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.2.1. 基函数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2.2. 形函数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.2.3. 几何映射</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">2.3.2.4. Jacobian 矩阵</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.2.5. 场变量插值</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.3.2.6. 导数计算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.3.2.7. 单元刚度矩阵</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3.2.7.1. 数值积分</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">离散</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">基函数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">形函数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">几何映射</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">Jacobian 矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">场变量插值</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">导数计算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">单元刚度矩阵</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">数值积分</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2.8. 全局矩阵</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.2.9. 右端项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2.10. 边界条件</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet">2.3.2.10.1. Dirichlet 边界条件</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann">2.3.2.10.2. Neumann 边界条件</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">2.3.2.10.3. Robin 边界条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">全局矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">右端项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">边界条件</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet">Dirichlet 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann">Neumann 边界条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">Robin 边界条件</a></li>
 </ul>
 </li>
 </ul>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.2. 等参变换 &#8212; 固体力学笔记</title>
+    <title>等参变换 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/sec2-isoparametric';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.3. 线弹性问题" href="sec3-linearelasticity.html" />
-    <link rel="prev" title="2.1. 形函数" href="sec1-shapefunction.html" />
+    <link rel="next" title="线弹性问题" href="sec3-linearelasticity.html" />
+    <link rel="prev" title="形函数" href="sec1-shapefunction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,41 +182,47 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">1. 数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">1.2. 辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">1.3. 代数精度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">2.1. 形函数</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. 等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-linearelasticity.html">2.3. 线弹性问题</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">形函数</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-linearelasticity.html">线弹性问题</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap3/intro.html">3. 张量分析</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">连续介质力学与张量分析</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">张量分析</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-basicdef.html">基本定义</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">4. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">5. 应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">6. 弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">7. 平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">8. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">9. 本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">10. 两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">11. 边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">12. 位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">13. 数值方法简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">14. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">15. 单轴拉伸实验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">16. 屈服准则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">屈服准则</a></li>
 </ul>
 
     </div>
@@ -412,9 +418,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 几何映射</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 场变量插值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. 等参变换与非等参变换</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何映射</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">场变量插值</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">等参变换与非等参变换</a></li>
 </ul>
             </nav>
         </div>
@@ -427,7 +433,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2.2. </span>等参变换<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>等参变换<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="intro.html"><span class="std std-doc">前文</span></a>提到，物理单元上的计算关键在于单元 <span class="math notranslate nohighlight">\(E\)</span> 上的积分运算和场变量分布运算。然而，由于 <span class="math notranslate nohighlight">\(\left.\phi\right|_{E}\)</span> 与单元 <span class="math notranslate nohighlight">\(E\)</span> 的几何形状密切相关，其构造过程复杂且难以统一处理。为了解决这一问题，引入了参考单元和形函数，将物理单元上的计算变换到参考单元上进行</p>
 <p>在有限元方法中，物理单元与参考单元通过<strong>参数化映射</strong>实现积分运算</p>
 <div class="math notranslate nohighlight">
@@ -441,14 +447,14 @@ u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\left.\phi_{i}(x,y)\right|_{E_{(x,y)}}
 \]</div>
 <p>的规范化处理</p>
 <section id="id2">
-<h2><span class="section-number">2.2.1. </span>几何映射<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>几何映射<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>几何映射通过形函数将物理单元坐标 <span class="math notranslate nohighlight">\((x,y)\)</span> 映射到参考单元坐标 <span class="math notranslate nohighlight">\((\xi, \eta)\)</span>：</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\((x_{i},y_{i})\)</span> 是物理单元节点的坐标</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-coordinate-transformation">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-sec2-eq-coordinate-transformation" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1)<a class="headerlink" href="#equation-sec2-eq-coordinate-transformation" title="Link to this equation">#</a></span>\[
 \begin{equation}
 x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
 \end{equation}
@@ -484,7 +490,7 @@ T:(\xi,\eta) \rightarrow (x(\xi,\eta),y(\xi,\eta))
 <a class="reference internal image-reference" href="../../../_images/IntegralTransform.png"><img alt="../../../_images/IntegralTransform.png" src="../../../_images/IntegralTransform.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.13 </span><span class="caption-text">二维情形下面积变换公式</span><a class="headerlink" href="#sec5-fig-integraltransform" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">二维情形下面积变换公式</span><a class="headerlink" href="#sec5-fig-integraltransform" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>于是，忽略高阶项，<span class="math notranslate nohighlight">\(A',B',C'\)</span> 的坐标位置为</p>
@@ -548,14 +554,14 @@ S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right|  = 
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">2.2.2. </span>场变量插值<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>场变量插值<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>在完成几何映射后，通过形函数在参考单元上对场变量插值</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\(u_{i}\)</span> 是物理单元节点的物理量取值</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-field-variable-interpolation">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-sec2-eq-field-variable-interpolation" title="Link to this equation">#</a></span>\[
+<span class="eqno">(2)<a class="headerlink" href="#equation-sec2-eq-field-variable-interpolation" title="Link to this equation">#</a></span>\[
 u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 \]</div>
 <p>场变量插值的核心目的是建立节点值与连续场之间的数学关联，从而支持物理量（如应变、应力）的梯度计算</p>
@@ -616,7 +622,7 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">2.2.3. </span>等参变换与非等参变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>等参变换与非等参变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>根据几何映射和场变量插值中所使用形函数阶次的差异，可分为等参变换和非等参变换</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -684,7 +690,7 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>形函数</p>
+        <p class="prev-next-title">形函数</p>
       </div>
     </a>
     <a class="right-next"
@@ -692,7 +698,7 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.3. </span>线弹性问题</p>
+        <p class="prev-next-title">线弹性问题</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -712,9 +718,9 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 几何映射</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 场变量插值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. 等参变换与非等参变换</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何映射</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">场变量插值</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">等参变换与非等参变换</a></li>
 </ul>
   </nav></div>
 

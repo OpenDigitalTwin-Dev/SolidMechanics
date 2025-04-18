@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>几何方程 &#8212; 固体力学笔记</title>
+    <title>张量分析 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -58,13 +58,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/sec4-geometry-equa';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap1/intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="本构方程" href="sec5-physical-equa.html" />
-    <link rel="prev" title="平衡方程" href="sec3-balance-equa.html" />
+    <link rel="next" title="基本定义" href="sec1-basicdef.html" />
+    <link rel="prev" title="线弹性问题" href="../../Math/chap2/sec3-linearelasticity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,24 +197,24 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">连续介质力学与张量分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">张量分析</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-basicdef.html">基本定义</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">张量分析</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec1-basicdef.html">基本定义</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">平衡方程</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec9-numerical-simple.html">数值方法简介</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -294,7 +292,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Elasticity/chap1/sec4-geometry-equa.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap1/intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +322,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Elasticity/chap1/sec4-geometry-equa.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap1/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,7 +404,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>几何方程</h1>
+    <h1>张量分析</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,148 +419,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>几何方程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>张量分析<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-几何方程揭示了应变与位移之间的内在联系。应变的本质源于不同点之间相对位置的变化。因此，通过分析不同方向上两条线段端点的相对位置变化，可以推导出应变与位移的关系方程
+张量分析是描述连续介质力学行为不可或缺的数学工具
 </span>
-<p>考虑弹性体内任一点 <span class="math notranslate nohighlight">\(P\)</span>，沿 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴的正方向取两个微小线段<span class="math notranslate nohighlight">\(\overline{PA} = \mathrm{d}x \)</span> 和 <span class="math notranslate nohighlight">\(\overline{PA} = \mathrm{d}y\)</span>，假定弹性体受力后 <span class="math notranslate nohighlight">\(P,A,B\)</span> 三点分别移动到了 <span class="math notranslate nohighlight">\(P^`,A^`,B^`\)</span></p>
-<figure class="align-default" id="sec4-fig-displ-strain">
-<a class="reference internal image-reference" href="../../../_images/displ_strain.png"><img alt="../../../_images/displ_strain.png" src="../../../_images/displ_strain.png" style="width: 800px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">位移和应变关系示意图</span><a class="headerlink" href="#sec4-fig-displ-strain" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-u(P)&amp;=u(x_{P},y_{P}),\\
-u(A)&amp;=u(x_{A},y_{A})=u(x_{P}+\mathrm{d}x,y_{P}) \approx u(x_{P},y_{P}) + \frac{\partial u}{\partial x}(x_P,y_P)\cdot\mathrm{d}x,\\
-u(B)&amp;=u(x_{B},y_{B})=u(x_{P},y_{P}+\mathrm{d}y) \approx u(x_{P},y_{P}) + \frac{\partial u}{\partial y}(x_P,y_P)\cdot\mathrm{d}y,\\
-v(P)&amp;=v(x_{P},y_{P}),\\
-v(A)&amp;=v(x_{A},y_{A})=v(x_{P}+\mathrm{d}x,y_{P}) \approx v(x_{P},y_{P}) + \frac{\partial v}{\partial x}(x_P,y_P)\cdot\mathrm{d}x,\\
-v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \frac{\partial v}{\partial y}(x_P,y_P)\cdot\mathrm{d}y.\\
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>建立方程时，采用了<strong>小变形</strong>假设，因此以弹性体变形前的尺寸作为微分体的几何尺寸，简化了力学分析</p>
-</aside>
-<p>于是，<span class="math notranslate nohighlight">\(\overline{PA}\)</span> 的线应变为</p>
-<div class="math notranslate nohighlight">
-\[
-\varepsilon_{xx} = \frac{\left( u + \frac{\partial u}{\partial x} \, \mathrm{d}x \right) - u}{\mathrm{d}x} = \frac{\partial u}{\partial x},
-\]</div>
-<p>类似地，<span class="math notranslate nohighlight">\(\overline{PB}\)</span> 的线应变为</p>
-<div class="math notranslate nohighlight">
-\[
-\varepsilon_{yy} = \frac{\partial v}{\partial y}.
-\]</div>
-<p>对于 <span class="math notranslate nohighlight">\(\overline{PA}\)</span> 的转角 <span class="math notranslate nohighlight">\(\alpha\)</span> 有</p>
-<div class="math notranslate nohighlight">
-\[
-\alpha = \frac{\left( v + \frac{\partial v}{\partial x} \, \mathrm{d}x \right) - v}{\mathrm{d}x} = \frac{\partial v}{\partial x},
-\]</div>
-<p>类似地，<span class="math notranslate nohighlight">\(\overline{PB}\)</span> 的转角</p>
-<div class="math notranslate nohighlight">
-\[
-\beta = \frac{\partial u}{\partial y},
-\]</div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(\gamma_{xy}\)</span> 被称为工程剪切应变</p>
-</aside>
-<p>于是切应变 <span class="math notranslate nohighlight">\(\gamma_{xy}\)</span> 为</p>
-<div class="math notranslate nohighlight">
-\[
-\gamma_{xy} = \alpha + \beta = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}.
-\]</div>
-<p>将几何方程整理如下</p>
-<div class="math notranslate nohighlight" id="equation-sec4-eq-geometry">
-<span class="eqno">(10)<a class="headerlink" href="#equation-sec4-eq-geometry" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{equation}
-\begin{aligned}
-&amp;\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
-&amp;\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
-&amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>可以写为</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
-\]</div>
-<p>其中</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(\varepsilon_{xy} = \frac{\gamma_{xy}}{2}\)</span> 被称为张量剪切应变</p>
-</aside>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\boldsymbol{\varepsilon}=
-\begin{bmatrix}
-\varepsilon_{xx}  &amp;  \varepsilon_{xy} \\
-\varepsilon_{yx}  &amp;  \varepsilon_{yy}
-\end{bmatrix}
-\end{equation}
-\end{split}\]</div>
-<p>是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u} = [u\,v]^{T}\)</span> 是位移向量。也可以写为 Voigt 形式</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{bmatrix}
-\varepsilon_{xx} \\ \varepsilon_{yy} \\ 2\varepsilon_{xy} 
-\end{bmatrix}
-=\begin{bmatrix}
-\frac{\partial }{\partial x} &amp; 0 \\
-0 &amp; \frac{\partial }{\partial y} \\
-\frac{\partial }{\partial y} &amp; \frac{\partial }{\partial x}
-\end{bmatrix}
-\begin{bmatrix}
-u \\ v 
-\end{bmatrix}.
-\end{equation}
-\end{split}\]</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">刚体运动</p>
-<p>当位移分量 <span class="math notranslate nohighlight">\(u,v\)</span> 完全确定时，应变分量 <span class="math notranslate nohighlight">\(\varepsilon_{xx}, \varepsilon_{yy}, \gamma_{xy}\)</span> 也完全确定。反之，应变分量完全确定时，位移分量不能完全确定。
-假设</p>
-<div class="math notranslate nohighlight">
-\[
-\varepsilon_{xx} = \varepsilon_{yy} = \gamma_{xy} = 0,
-\]</div>
-<p>则</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial u}{\partial x} = 0, \quad
-\frac{\partial v}{\partial y} = 0, \quad
-\gamma_{xy} = 0,
-\]</div>
-<p>可得</p>
-<div class="math notranslate nohighlight">
-\[
-u = u_{0} - wy,\quad
-v = v_{0} + wx.
-\]</div>
-<p><span class="math notranslate nohighlight">\(u_{0}\)</span> 和 <span class="math notranslate nohighlight">\(v_{0}\)</span> 分别表示物体沿 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴方向的<strong>刚体平移</strong>，而 <span class="math notranslate nohighlight">\(w\)</span> 则为物体绕 <span class="math notranslate nohighlight">\(z\)</span> 轴的<strong>刚体转动</strong>。当只有 <span class="math notranslate nohighlight">\(w\)</span> 不为 0 时，对于坐标内任一点 <span class="math notranslate nohighlight">\(P\)</span>，其位移分量为 <span class="math notranslate nohighlight">\(u=-wy, v = wx\)</span>，满足</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-u &amp; v
-\end{bmatrix}
-\begin{bmatrix}
-x \\ y
-\end{bmatrix} = 0,
-\end{split}\]</div>
-<p>因此，点 <span class="math notranslate nohighlight">\(P\)</span> 的位移方向为以原点 <span class="math notranslate nohighlight">\(O\)</span> 为圆心，<span class="math notranslate nohighlight">\(\overline{OP}\)</span> 为半径的圆在 <span class="math notranslate nohighlight">\(P\)</span> 点的切向。由于位移是微小的（<span class="math notranslate nohighlight">\(w\)</span>非常小），因此运动表现为刚体转动，位移为</p>
-<div class="math notranslate nohighlight">
-\[
-\sqrt{u^2+v^2}=w\sqrt{x^2+y^2}.
-\]</div>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -579,7 +440,7 @@ x \\ y
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Elasticity/chap1"
+            path: "./content/Tensor/chap1"
         },
         predefinedOutput: true
     }
@@ -597,20 +458,20 @@ x \\ y
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec3-balance-equa.html"
+       href="../../Math/chap2/sec3-linearelasticity.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">平衡方程</p>
+        <p class="prev-next-title">线弹性问题</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec5-physical-equa.html"
+       href="sec1-basicdef.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">本构方程</p>
+        <p class="prev-next-title">基本定义</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

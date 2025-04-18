@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.4. Gaussian 公式 &#8212; 固体力学笔记</title>
+    <title>Gaussian 公式 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/sec4-gaussian';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2. 有限元计算" href="../chap2/intro.html" />
-    <link rel="prev" title="1.3. 代数精度" href="sec3-algebraic-prec.html" />
+    <link rel="next" title="有限元计算" href="../chap2/intro.html" />
+    <link rel="prev" title="代数精度" href="sec3-algebraic-prec.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,41 +182,47 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">1. 数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-trapezoidal.html">1.1. 梯形公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-simpson.html">1.2. 辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-algebraic-prec.html">1.3. 代数精度</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.4. Gaussian 公式</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">2. 有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-shapefunction.html">2.1. 形函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-isoparametric.html">2.2. 等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-linearelasticity.html">2.3. 线弹性问题</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-shapefunction.html">形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-isoparametric.html">等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-linearelasticity.html">线弹性问题</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap3/intro.html">3. 张量分析</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">连续介质力学与张量分析</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">张量分析</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-basicdef.html">基本定义</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">4. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">5. 应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">6. 弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">7. 平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">8. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">9. 本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">10. 两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">11. 边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">12. 位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">13. 数值方法简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">14. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">15. 单轴拉伸实验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">16. 屈服准则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">屈服准则</a></li>
 </ul>
 
     </div>
@@ -412,33 +418,33 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.4.1. 正交多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre">1.4.1.1. Legendre 多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.4.1.1.1. 定义方式</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.4.1.1.2. 正交性</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4.1.1.3. 积分权重</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4.1.1.4. 示例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">正交多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre">Legendre 多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">定义方式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正交性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">积分权重</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">示例</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev">1.4.1.2. 第一类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.4.1.2.1. 定义方式</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.4.1.2.2. 正交性</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.4.1.2.3. 积分权重</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.4.1.2.4. 示例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev">第一类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">定义方式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">正交性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">积分权重</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">示例</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.4.1.3. 第二类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">1.4.1.3.1. 定义方式</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">1.4.1.3.2. 正交性</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1.4.1.3.3. 积分权重</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.4.1.3.4. 示例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">第二类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">定义方式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">正交性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">积分权重</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">示例</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.4.2. 代数精度</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leq-2n-1">1.4.2.1. 精确成立（ <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> ）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n">1.4.2.2. 非精确成立（ <span class="math notranslate nohighlight">\(= 2n\)</span> ）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">代数精度</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leq-2n-1">精确成立（ <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> ）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n">非精确成立（ <span class="math notranslate nohighlight">\(= 2n\)</span> ）</a></li>
 </ul>
 </li>
 </ul>
@@ -453,18 +459,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian">
-<h1><span class="section-number">1.4. </span>Gaussian 公式<a class="headerlink" href="#gaussian" title="Link to this heading">#</a></h1>
+<h1>Gaussian 公式<a class="headerlink" href="#gaussian" title="Link to this heading">#</a></h1>
 <p>在前文提到的矩形公式、梯形公式和辛普森公式中，积分节点均匀分布在被积区间内，通过优化权重来逼近积分值。而在高斯求积公式中，<strong>积分节点被视为自由度，通过同时优化节点位置和权重</strong>，实现更高的逼近精度</p>
 <p>高斯积分公式的核心思想是利用<strong>正交多项式</strong>的根作为积分节点，并计算对应的权重，从而实现最高代数精度</p>
 <section id="id1">
-<h2><span class="section-number">1.4.1. </span>正交多项式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>正交多项式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <span class="gray-text">
 正交多项式，在物理学、数值分析、积分计算和量子力学中有广泛的应用
 </span>
 <section id="legendre">
-<h3><span class="section-number">1.4.1.1. </span>Legendre 多项式<a class="headerlink" href="#legendre" title="Link to this heading">#</a></h3>
+<h3>Legendre 多项式<a class="headerlink" href="#legendre" title="Link to this heading">#</a></h3>
 <section id="id2">
-<h4><span class="section-number">1.4.1.1.1. </span>定义方式<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<h4>定义方式<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Legendre 多项式通常有两类定义方法，考虑区间 <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 <ul class="simple">
 <li><p>Rodrigues 公式：
@@ -486,7 +492,7 @@ P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n} \left( (x^2 - 1)^n \right)
 <p>Legendre 多项式的根分布在区间 <span class="math notranslate nohighlight">\((-1,1)\)</span> 内且互异</p>
 </section>
 <section id="id3">
-<h4><span class="section-number">1.4.1.1.2. </span>正交性<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<h4>正交性<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>Legendre 多项式 <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> 满足</p>
 <div class="math notranslate nohighlight">
 \[
@@ -496,7 +502,7 @@ P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n} \left( (x^2 - 1)^n \right)
 \]</div>
 </section>
 <section id="id4">
-<h4><span class="section-number">1.4.1.1.3. </span>积分权重<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<h4>积分权重<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>权重 <span class="math notranslate nohighlight">\(w_{i}\)</span> 需满足对任意次数 <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> 的多项式 <span class="math notranslate nohighlight">\(f(x)\)</span>，积分精确成立。利用多项式插值理论，权重可通过积分  Lagrange 基函数 <span class="math notranslate nohighlight">\(L_{i}(x)\)</span> 得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -511,7 +517,7 @@ w_i = \frac{2}{(1 - x_i^2)[P_n'(x_i)]^2}.
 \]</div>
 </section>
 <section id="id5">
-<h4><span class="section-number">1.4.1.1.4. </span>示例<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<h4>示例<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(P_{2}(x)=\frac{1}{2}(3x^2-1)\)</span>，积分节点为 <span class="math notranslate nohighlight">\(x_{1,2}=\pm\frac{1}{\sqrt{3}}\)</span>，积分权重为 <span class="math notranslate nohighlight">\(w_1 = w_2 = 1\)</span>，对应的积分公式为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -520,9 +526,9 @@ w_i = \frac{2}{(1 - x_i^2)[P_n'(x_i)]^2}.
 </section>
 </section>
 <section id="chebyshev">
-<h3><span class="section-number">1.4.1.2. </span>第一类 Chebyshev 多项式<a class="headerlink" href="#chebyshev" title="Link to this heading">#</a></h3>
+<h3>第一类 Chebyshev 多项式<a class="headerlink" href="#chebyshev" title="Link to this heading">#</a></h3>
 <section id="id6">
-<h4><span class="section-number">1.4.1.2.1. </span>定义方式<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<h4>定义方式<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>三角函数：</p></li>
 </ul>
@@ -549,7 +555,7 @@ x_{i}=\cos(\frac{2i-1}{2n}\pi),\, i=1,2,...,n
 \]</div>
 </section>
 <section id="id7">
-<h4><span class="section-number">1.4.1.2.2. </span>正交性<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<h4>正交性<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>第一类 Chebyshev 多项式在权函数 <span class="math notranslate nohighlight">\(w(x) = \frac{1}{\sqrt{1 - x^2}}\)</span> 下正交</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -562,14 +568,14 @@ x_{i}=\cos(\frac{2i-1}{2n}\pi),\, i=1,2,...,n
 \end{split}\]</div>
 </section>
 <section id="id8">
-<h4><span class="section-number">1.4.1.2.3. </span>积分权重<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<h4>积分权重<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
 w_{i} = \frac{\pi}{n}
 \]</div>
 </section>
 <section id="id9">
-<h4><span class="section-number">1.4.1.2.4. </span>示例<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<h4>示例<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(T_{2}(x) = 2x^2-1\)</span>，积分节点为 <span class="math notranslate nohighlight">\(x_{1,2} = \pm\frac{\sqrt{2}}{2}\)</span>，积分权重为 <span class="math notranslate nohighlight">\(w_{1}=w_{2}=\frac{\pi}{2}\)</span>，于是积分公式为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -583,9 +589,9 @@ w_{i} = \frac{\pi}{n}
 </section>
 </section>
 <section id="id10">
-<h3><span class="section-number">1.4.1.3. </span>第二类 Chebyshev 多项式<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h3>第二类 Chebyshev 多项式<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <section id="id11">
-<h4><span class="section-number">1.4.1.3.1. </span>定义方式<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
+<h4>定义方式<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>三角函数：</p></li>
 </ul>
@@ -612,7 +618,7 @@ x_{i}=\cos(\frac{i}{n+1}\pi),\, i=1,2,...,n
 \]</div>
 </section>
 <section id="id12">
-<h4><span class="section-number">1.4.1.3.2. </span>正交性<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<h4>正交性<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p>第二类 Chebyshev 多项式在权函数 <span class="math notranslate nohighlight">\(w(x) = \sqrt{1-x^2}\)</span> 下正交</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -624,14 +630,14 @@ x_{i}=\cos(\frac{i}{n+1}\pi),\, i=1,2,...,n
 \end{split}\]</div>
 </section>
 <section id="id13">
-<h4><span class="section-number">1.4.1.3.3. </span>积分权重<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<h4>积分权重<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
 w_{i} = \frac{\pi}{n+1}\sin^2(\frac{i}{n+1}\pi)
 \]</div>
 </section>
 <section id="id14">
-<h4><span class="section-number">1.4.1.3.4. </span>示例<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<h4>示例<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(U_{2}(x) = 4x^2 - 1\)</span>，积分节点为 <span class="math notranslate nohighlight">\(x_{1,2}=\pm\frac{1}{2}\)</span>，积分权重为 <span class="math notranslate nohighlight">\(w_{1,2}=\frac{\pi}{4}\)</span>，于是</p>
 <div class="math notranslate nohighlight">
 \[
@@ -646,9 +652,9 @@ w_{i} = \frac{\pi}{n+1}\sin^2(\frac{i}{n+1}\pi)
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">1.4.2. </span>代数精度<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<h2>代数精度<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
 <section id="leq-2n-1">
-<h3><span class="section-number">1.4.2.1. </span>精确成立（ <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> ）<a class="headerlink" href="#leq-2n-1" title="Link to this heading">#</a></h3>
+<h3>精确成立（ <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> ）<a class="headerlink" href="#leq-2n-1" title="Link to this heading">#</a></h3>
 <p>设 <span class="math notranslate nohighlight">\(f(x)\)</span> 是次数 <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> 的多项式，根据多项式除法余数定理，将 <span class="math notranslate nohighlight">\(f(x)\)</span> 分解为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -703,7 +709,7 @@ f(x) = Q(x)\cdot P_{n}(x)+R(x),
 <p>对于次数 <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> 的多项式精确成立</p>
 </section>
 <section id="n">
-<h3><span class="section-number">1.4.2.2. </span>非精确成立（ <span class="math notranslate nohighlight">\(= 2n\)</span> ）<a class="headerlink" href="#n" title="Link to this heading">#</a></h3>
+<h3>非精确成立（ <span class="math notranslate nohighlight">\(= 2n\)</span> ）<a class="headerlink" href="#n" title="Link to this heading">#</a></h3>
 <p>取 <span class="math notranslate nohighlight">\(f(x) = P_{n}^2(x)\)</span> ，其中 <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> 是 <span class="math notranslate nohighlight">\(n\)</span> 次正交多项式，于是</p>
 <div class="math notranslate nohighlight">
 \[
@@ -756,7 +762,7 @@ f(x) = Q(x)\cdot P_{n}(x)+R(x),
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>代数精度</p>
+        <p class="prev-next-title">代数精度</p>
       </div>
     </a>
     <a class="right-next"
@@ -764,7 +770,7 @@ f(x) = Q(x)\cdot P_{n}(x)+R(x),
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>有限元计算</p>
+        <p class="prev-next-title">有限元计算</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -784,33 +790,33 @@ f(x) = Q(x)\cdot P_{n}(x)+R(x),
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.4.1. 正交多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre">1.4.1.1. Legendre 多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.4.1.1.1. 定义方式</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.4.1.1.2. 正交性</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4.1.1.3. 积分权重</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4.1.1.4. 示例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">正交多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre">Legendre 多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">定义方式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正交性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">积分权重</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">示例</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev">1.4.1.2. 第一类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.4.1.2.1. 定义方式</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.4.1.2.2. 正交性</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.4.1.2.3. 积分权重</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.4.1.2.4. 示例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev">第一类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">定义方式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">正交性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">积分权重</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">示例</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.4.1.3. 第二类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">1.4.1.3.1. 定义方式</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">1.4.1.3.2. 正交性</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1.4.1.3.3. 积分权重</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.4.1.3.4. 示例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">第二类 Chebyshev 多项式</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">定义方式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">正交性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">积分权重</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">示例</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.4.2. 代数精度</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leq-2n-1">1.4.2.1. 精确成立（ <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> ）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n">1.4.2.2. 非精确成立（ <span class="math notranslate nohighlight">\(= 2n\)</span> ）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">代数精度</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leq-2n-1">精确成立（ <span class="math notranslate nohighlight">\(\leq 2n-1\)</span> ）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n">非精确成立（ <span class="math notranslate nohighlight">\(= 2n\)</span> ）</a></li>
 </ul>
 </li>
 </ul>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.1. 形函数 &#8212; 固体力学笔记</title>
+    <title>形函数 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/sec1-shapefunction';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2.2. 等参变换" href="sec2-isoparametric.html" />
-    <link rel="prev" title="2. 有限元计算" href="intro.html" />
+    <link rel="next" title="等参变换" href="sec2-isoparametric.html" />
+    <link rel="prev" title="有限元计算" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,41 +182,47 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学基础</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">1. 数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">1.1. 梯形公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">1.2. 辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">1.3. 代数精度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">1.4. Gaussian 公式</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">2. 有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. 形函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-isoparametric.html">2.2. 等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-linearelasticity.html">2.3. 线弹性问题</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-isoparametric.html">等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-linearelasticity.html">线弹性问题</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap3/intro.html">3. 张量分析</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">连续介质力学与张量分析</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">张量分析</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-basicdef.html">基本定义</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">4. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">5. 应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">6. 弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">7. 平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">8. 几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">9. 本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">10. 两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">11. 边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">12. 位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">13. 数值方法简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">14. 简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">15. 单轴拉伸实验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">16. 屈服准则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-yieldcriteria.html">屈服准则</a></li>
 </ul>
 
     </div>
@@ -412,23 +418,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1.1. 三角形单元</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.1.1.1. 三节点 Lagrange 元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.1.2. 六节点 Lagrange 元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">三角形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">三节点 Lagrange 元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">六节点 Lagrange 元</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.2. 四边形单元</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.2.1. 四节点 Lagrange 元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.2.2. 九节点 Lagrange 单元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serendipity">2.1.2.3. 八节点 Serendipity 单元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">四边形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">四节点 Lagrange 元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">九节点 Lagrange 单元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serendipity">八节点 Serendipity 单元</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.3. 面积坐标</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.3.1. 线性单元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.3.2. 二次单元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">面积坐标</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">线性单元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">二次单元</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1.4. 形函数图例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">形函数图例</a></li>
 </ul>
             </nav>
         </div>
@@ -441,7 +447,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2.1. </span>形函数<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>形函数<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><strong>形函数</strong>是定义在参考单元上的<strong>多项式插值函数</strong>，其主要作用包括</p>
 <ul class="simple">
 <li><p>实现参考单元到物理单元的映射</p></li>
@@ -454,9 +460,9 @@ document.write(`
 <li><p>连续性：在相邻单元边界处满足 <span class="math notranslate nohighlight">\(C^{0}\)</span> 连续</p></li>
 </ul>
 <section id="id2">
-<h2><span class="section-number">2.1.1. </span>三角形单元<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>三角形单元<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="lagrange">
-<h3><span class="section-number">2.1.1.1. </span>三节点 Lagrange 元<a class="headerlink" href="#lagrange" title="Link to this heading">#</a></h3>
+<h3>三节点 Lagrange 元<a class="headerlink" href="#lagrange" title="Link to this heading">#</a></h3>
 <p>考虑二维空间中具有如下形式的函数：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -467,12 +473,12 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/triangle-element-linear.png"><img alt="../../../_images/triangle-element-linear.png" src="../../../_images/triangle-element-linear.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">三角形单元上的线性形函数</span><a class="headerlink" href="#sec5-fig-triangle-element-linear" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">三角形单元上的线性形函数</span><a class="headerlink" href="#sec5-fig-triangle-element-linear" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id3">
-<h3><span class="section-number">2.1.1.2. </span>六节点 Lagrange 元<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>六节点 Lagrange 元<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>考虑二维空间中具有如下形式的函数：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -483,15 +489,15 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/triangle-element-quadratic.png"><img alt="../../../_images/triangle-element-quadratic.png" src="../../../_images/triangle-element-quadratic.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">三角形单元上的二次形函数</span><a class="headerlink" href="#sec5-fig-triangle-element-quadratic" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">三角形单元上的二次形函数</span><a class="headerlink" href="#sec5-fig-triangle-element-quadratic" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="id4">
-<h2><span class="section-number">2.1.2. </span>四边形单元<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>四边形单元<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <section id="id5">
-<h3><span class="section-number">2.1.2.1. </span>四节点 Lagrange 元<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>四节点 Lagrange 元<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>考虑二维空间中具有如下形式的函数：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -501,12 +507,12 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/rectangular-element-bilinear.png"><img alt="../../../_images/rectangular-element-bilinear.png" src="../../../_images/rectangular-element-bilinear.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">四边形单元上的双线性形函数</span><a class="headerlink" href="#sec5-fig-rectangular-element-bilinear" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">四边形单元上的双线性形函数</span><a class="headerlink" href="#sec5-fig-rectangular-element-bilinear" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id6">
-<h3><span class="section-number">2.1.2.2. </span>九节点 Lagrange 单元<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3>九节点 Lagrange 单元<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>考虑二维空间中具有如下形式的函数：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -517,12 +523,12 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/rectangular-element-9-node.png"><img alt="../../../_images/rectangular-element-9-node.png" src="../../../_images/rectangular-element-9-node.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">四边形单元上的 9 节点二次形函数</span><a class="headerlink" href="#sec5-fig-rectangular-element-9-node" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">四边形单元上的 9 节点二次形函数</span><a class="headerlink" href="#sec5-fig-rectangular-element-9-node" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="serendipity">
-<h3><span class="section-number">2.1.2.3. </span>八节点 Serendipity 单元<a class="headerlink" href="#serendipity" title="Link to this heading">#</a></h3>
+<h3>八节点 Serendipity 单元<a class="headerlink" href="#serendipity" title="Link to this heading">#</a></h3>
 <p>考虑二维空间中具有如下形式的函数：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -533,19 +539,19 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/rectangular-element-8-node.png"><img alt="../../../_images/rectangular-element-8-node.png" src="../../../_images/rectangular-element-8-node.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">四边形单元上的 8 节点二次形函数</span><a class="headerlink" href="#sec5-fig-rectangular-element-8-node" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">四边形单元上的 8 节点二次形函数</span><a class="headerlink" href="#sec5-fig-rectangular-element-8-node" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">2.1.3. </span>面积坐标<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2>面积坐标<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>在有限元方法中，对于三角形或四面体等单纯形单元，通常采用面积坐标系（或称体积坐标系）来构造形函数。这种方法基于单纯形单元的几何特性，具有显著的几何优势。其核心思想是通过空间点与单纯形顶点相关联的子单纯形（如边、面或体）的归一化面积或体积比例来定义形函数的分量</p>
 <figure class="align-default" id="sec5-fig-element-switch">
 <a class="reference internal image-reference" href="../../../_images/area-coordinate.png"><img alt="../../../_images/area-coordinate.png" src="../../../_images/area-coordinate.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">面积坐标系</span><a class="headerlink" href="#sec5-fig-element-switch" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">面积坐标系</span><a class="headerlink" href="#sec5-fig-element-switch" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>面积坐标为</p>
@@ -561,24 +567,24 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
 \end{split}\]</div>
 <p>在使用面积坐标（或体积坐标）构造形函数时，形函数的定义独立于三角形或四面体的具体几何形状，因此能够避免显式的参考单元到物理单元的映射</p>
 <section id="id8">
-<h3><span class="section-number">2.1.3.1. </span>线性单元<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>线性单元<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>线性单元的形函数与面积坐标直接对应</p>
 <figure class="align-default" id="sec5-fig-area-triangle-element-linear">
 <a class="reference internal image-reference" href="../../../_images/area-triangle-element-linear.png"><img alt="../../../_images/area-triangle-element-linear.png" src="../../../_images/area-triangle-element-linear.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">面积坐标下三角形单元上的二次形函数</span><a class="headerlink" href="#sec5-fig-area-triangle-element-linear" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">面积坐标下三角形单元上的二次形函数</span><a class="headerlink" href="#sec5-fig-area-triangle-element-linear" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id9">
-<h3><span class="section-number">2.1.3.2. </span>二次单元<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>二次单元<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>线性单元的形函数与面积坐标直接对应</p>
 <figure class="align-default" id="sec5-fig-area-triangle-element-quadratic">
 <a class="reference internal image-reference" href="../../../_images/area-triangle-element-quadratic.png"><img alt="../../../_images/area-triangle-element-quadratic.png" src="../../../_images/area-triangle-element-quadratic.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.9 </span><span class="caption-text">面积坐标下三角形单元上的二次形函数</span><a class="headerlink" href="#sec5-fig-area-triangle-element-quadratic" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">面积坐标下三角形单元上的二次形函数</span><a class="headerlink" href="#sec5-fig-area-triangle-element-quadratic" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="tip admonition note">
@@ -589,14 +595,14 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">2.1.4. </span>形函数图例<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2>形函数图例<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12 docutils">
 <figure class="align-default" id="id11">
 <img alt="../../../_images/1D-shapefunctions.png" src="../../../_images/1D-shapefunctions.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.10 </span><span class="caption-text">一维线性形函数和二次形函数</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">一维线性形函数和二次形函数</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -604,7 +610,7 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
 <figure class="align-default" id="id12">
 <img alt="../../../_images/2D-triangle-shapefunctions.png" src="../../../_images/2D-triangle-shapefunctions.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.11 </span><span class="caption-text">二维三角形线性形函数和二次形函数</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">二维三角形线性形函数和二次形函数</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -612,7 +618,7 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
 <figure class="align-default" id="id13">
 <img alt="../../../_images/2D-rectangular-shapefunctions.png" src="../../../_images/2D-rectangular-shapefunctions.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.12 </span><span class="caption-text">二维四边形线性形函数和二次形函数</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">二维四边形线性形函数和二次形函数</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -800,7 +806,7 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>有限元计算</p>
+        <p class="prev-next-title">有限元计算</p>
       </div>
     </a>
     <a class="right-next"
@@ -808,7 +814,7 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>等参变换</p>
+        <p class="prev-next-title">等参变换</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -828,23 +834,23 @@ L_{3}&amp;=\frac{S_{\Delta{PP_{1}P_{2}}}}{S_{\Delta{P_{1}P_{2}P_{3}}}}.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1.1. 三角形单元</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">2.1.1.1. 三节点 Lagrange 元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.1.2. 六节点 Lagrange 元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">三角形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange">三节点 Lagrange 元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">六节点 Lagrange 元</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.2. 四边形单元</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.2.1. 四节点 Lagrange 元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.2.2. 九节点 Lagrange 单元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serendipity">2.1.2.3. 八节点 Serendipity 单元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">四边形单元</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">四节点 Lagrange 元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">九节点 Lagrange 单元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serendipity">八节点 Serendipity 单元</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.3. 面积坐标</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.3.1. 线性单元</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.3.2. 二次单元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">面积坐标</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">线性单元</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">二次单元</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1.4. 形函数图例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">形函数图例</a></li>
 </ul>
   </nav></div>
 
