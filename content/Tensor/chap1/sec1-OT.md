@@ -78,6 +78,92 @@ $$
 - 特征值 $|\lambda| = 1$：$\mathbf{u}^{T}\mathbf{u} = \mathbf{u}^{\dagger}Q^{\dagger}Q\mathbf{u}=|\lambda|^2\mathbf{u}^{T}\mathbf{u}$
 - $Q^{-1} = Q^{T}$
 
+## 正交变换与相似变换
+
+### 相似变换
+
+相似变换是同一线性变换在不同基下的矩阵表示之间的转换关系。给定线性变换 
+
+$$
+\mathcal{T}: V\rightarrow V,
+$$
+
+设其在基 $\{\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}\}$ 的矩阵表示为 $A$，在基 $\{\mathbf{w}_{1},\mathbf{w}_{2},\cdots,\mathbf{w}_{n}\}$ 下的矩阵表示为 $B$，且两组基之间的转换矩阵为 $P$，即
+
+$$
+\begin{bmatrix}
+\mathbf{w}_{1}&\mathbf{w}_{2}&\cdots&\mathbf{w}_{n}
+\end{bmatrix}=
+\begin{bmatrix}
+\mathbf{v}_{1}&\mathbf{v}_{2}&\cdots&\mathbf{v}_{n}
+\end{bmatrix}P,
+$$
+
+于是，向量 $\mathbf{x}$ 在基 $\{\mathbf{v}_{i}\}$ 下的坐标 $\mathbf{x}^{v}=[x^{v}_{1},x^{v}_{2},\cdots,x^{v}_{n}]^{T}$ 与在基 $\{\mathbf{w}_{i}\}$ 下的坐标 $\mathbf{x}^{w}=[x^{w}_{1},x^{w}_{2},\cdots,x^{w}_{n}]^{T}$ 满足
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{x} 
+&= \begin{bmatrix}
+\mathbf{v}_{1}&\mathbf{v}_{2}&\cdots&\mathbf{v}_{n}
+\end{bmatrix}
+\begin{bmatrix}
+x^{v}_{1}\\x^{v}_{2}\\\vdots\\x^{v}_{n}\end{bmatrix}
+=\begin{bmatrix}
+\mathbf{w}_{1}&\mathbf{w}_{2}&\cdots&\mathbf{w}_{n}
+\end{bmatrix}
+\begin{bmatrix}
+x^{w}_{1}\\x^{w}_{2}\\\vdots\\x^{w}_{n}\end{bmatrix}\\
+&= \begin{bmatrix}
+\mathbf{v}_{1}&\mathbf{v}_{2}&\cdots&\mathbf{v}_{n}
+\end{bmatrix}P
+\begin{bmatrix}
+x^{w}_{1}\\x^{w}_{2}\\\vdots\\x^{w}_{n}\end{bmatrix},
+\end{aligned}
+\end{equation}
+$$
+
+即
+
+$$
+\mathbf{x}^{v}=P\ \mathbf{x}^{w},
+$$
+
+因此
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathcal{T}(\mathbf{x}) &= \begin{bmatrix}
+\mathbf{v}_{1}&\mathbf{v}_{2}&\cdots&\mathbf{v}_{n}
+\end{bmatrix}A\ \mathbf{x}^{v}\\
+&=\begin{bmatrix}
+\mathbf{w}_{1}&\mathbf{w}_{2}&\cdots&\mathbf{w}_{n}
+\end{bmatrix}P^{-1}AP\ \mathbf{x}^{w},
+\end{aligned}
+\end{equation}
+$$
+
+又因为
+
+$$
+\mathcal{T}(\mathbf{x}) = \begin{bmatrix}
+\mathbf{w}_{1}&\mathbf{w}_{2}&\cdots&\mathbf{w}_{n}
+\end{bmatrix}B\ \mathbf{x}^{w},
+$$
+
+故
+
+$$
+B = P^{-1}AP
+$$
+
+称矩阵 $A$ 和矩阵 $B$ 是相似的
+
+#### 相似变换的性质
+
+### 正交变换
 
 
 

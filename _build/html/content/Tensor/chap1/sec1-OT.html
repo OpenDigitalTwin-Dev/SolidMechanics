@@ -420,6 +420,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">基本定义</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正交变换的性质</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">正交变换与相似变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">相似变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相似变换的性质</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">正交变换</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -498,6 +506,89 @@ Q^{T}Q = I \Rightarrow (\mathcal{Q}\mathbf{u},\mathcal{Q}\mathbf{v}) =\mathbf{u}
 <li><p><span class="math notranslate nohighlight">\(Q^{-1} = Q^{T}\)</span></p></li>
 </ul>
 </section>
+<section id="id4">
+<h2>正交变换与相似变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>相似变换<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>相似变换是同一线性变换在不同基下的矩阵表示之间的转换关系。给定线性变换</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{T}: V\rightarrow V,
+\]</div>
+<p>设其在基 <span class="math notranslate nohighlight">\(\{\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}\}\)</span> 的矩阵表示为 <span class="math notranslate nohighlight">\(A\)</span>，在基 <span class="math notranslate nohighlight">\(\{\mathbf{w}_{1},\mathbf{w}_{2},\cdots,\mathbf{w}_{n}\}\)</span> 下的矩阵表示为 <span class="math notranslate nohighlight">\(B\)</span>，且两组基之间的转换矩阵为 <span class="math notranslate nohighlight">\(P\)</span>，即</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}
+\mathbf{w}_{1}&amp;\mathbf{w}_{2}&amp;\cdots&amp;\mathbf{w}_{n}
+\end{bmatrix}=
+\begin{bmatrix}
+\mathbf{v}_{1}&amp;\mathbf{v}_{2}&amp;\cdots&amp;\mathbf{v}_{n}
+\end{bmatrix}P,
+\]</div>
+<p>于是，向量 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 在基 <span class="math notranslate nohighlight">\(\{\mathbf{v}_{i}\}\)</span> 下的坐标 <span class="math notranslate nohighlight">\(\mathbf{x}^{v}=[x^{v}_{1},x^{v}_{2},\cdots,x^{v}_{n}]^{T}\)</span> 与在基 <span class="math notranslate nohighlight">\(\{\mathbf{w}_{i}\}\)</span> 下的坐标 <span class="math notranslate nohighlight">\(\mathbf{x}^{w}=[x^{w}_{1},x^{w}_{2},\cdots,x^{w}_{n}]^{T}\)</span> 满足</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\mathbf{x} 
+&amp;= \begin{bmatrix}
+\mathbf{v}_{1}&amp;\mathbf{v}_{2}&amp;\cdots&amp;\mathbf{v}_{n}
+\end{bmatrix}
+\begin{bmatrix}
+x^{v}_{1}\\x^{v}_{2}\\\vdots\\x^{v}_{n}\end{bmatrix}
+=\begin{bmatrix}
+\mathbf{w}_{1}&amp;\mathbf{w}_{2}&amp;\cdots&amp;\mathbf{w}_{n}
+\end{bmatrix}
+\begin{bmatrix}
+x^{w}_{1}\\x^{w}_{2}\\\vdots\\x^{w}_{n}\end{bmatrix}\\
+&amp;= \begin{bmatrix}
+\mathbf{v}_{1}&amp;\mathbf{v}_{2}&amp;\cdots&amp;\mathbf{v}_{n}
+\end{bmatrix}P
+\begin{bmatrix}
+x^{w}_{1}\\x^{w}_{2}\\\vdots\\x^{w}_{n}\end{bmatrix},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>即</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{v}=P\ \mathbf{x}^{w},
+\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\mathcal{T}(\mathbf{x}) &amp;= \begin{bmatrix}
+\mathbf{v}_{1}&amp;\mathbf{v}_{2}&amp;\cdots&amp;\mathbf{v}_{n}
+\end{bmatrix}A\ \mathbf{x}^{v}\\
+&amp;=\begin{bmatrix}
+\mathbf{w}_{1}&amp;\mathbf{w}_{2}&amp;\cdots&amp;\mathbf{w}_{n}
+\end{bmatrix}P^{-1}AP\ \mathbf{x}^{w},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>又因为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{T}(\mathbf{x}) = \begin{bmatrix}
+\mathbf{w}_{1}&amp;\mathbf{w}_{2}&amp;\cdots&amp;\mathbf{w}_{n}
+\end{bmatrix}B\ \mathbf{x}^{w},
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[
+B = P^{-1}AP
+\]</div>
+<p>称矩阵 <span class="math notranslate nohighlight">\(A\)</span> 和矩阵 <span class="math notranslate nohighlight">\(B\)</span> 是相似的</p>
+<section id="id6">
+<h4>相似变换的性质<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="id7">
+<h3>正交变换<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -566,6 +657,14 @@ Q^{T}Q = I \Rightarrow (\mathcal{Q}\mathbf{u},\mathcal{Q}\mathbf{v}) =\mathbf{u}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">基本定义</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正交变换的性质</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">正交变换与相似变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">相似变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相似变换的性质</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">正交变换</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
