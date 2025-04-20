@@ -18,11 +18,11 @@ parts:
         - file: content/Math/chap2/sec1-shapefunction
         - file: content/Math/chap2/sec2-isoparametric
         - file: content/Math/chap2/sec3-linearelasticity
-  - caption: 连续介质力学与张量分析
+  - caption: 张量分析
     chapters:
       - file: content/Tensor/chap1/intro
-        sections:
-        - file: content/Tensor/chap1/sec1-basicdef
+      - file: content/Tensor/chap1/sec1-OT
+      - file: content/Tensor/chap1/sec2-invarient
   - caption: 弹性力学
     chapters:
       - file: content/Elasticity/chap1/intro

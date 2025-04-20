@@ -73,7 +73,7 @@ Explore this note &rarr;
 :class-header: bg-light text-center
 :link: content/Tensor/chap1/intro.html
 
-**连续介质力学<br>与张量分析**
+**张量分析**
 
 ```{image} images/Cover/math2.png
 :height: 120
