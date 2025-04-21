@@ -9,10 +9,15 @@
 对于二阶张量 $\mathbf{T}$，主不变量由张量的特征方程定义
 
 $$
-\det(\mathbf{T} - \lambda \mathbf{I}) = \lambda^{3} - I_{1}\lambda^{2}+I_{2}\lambda - I_{3} = 0,
+\begin{equation}
+\begin{aligned}
+0=\det(\lambda \mathbf{I} - \mathbf{T}) &= (\lambda-\lambda_{1})(\lambda-\lambda_{2})(\lambda-\lambda_{3}) \\
+&= \lambda^{3} - I_{1}\lambda^{2}+I_{2}\lambda - I_{3},
+\end{aligned}
+\end{equation}
 $$
 
-其中，$\lambda$ 是张量的特征值，$I_{1},I_{2},I_{3}$ 是三个主不变量
+其中，$\lambda_{1},\lambda_{2},\lambda_{3}$ 是张量的特征值，$I_{1},I_{2},I_{3}$ 是三个主不变量
 
 - 第一主不变量：
 

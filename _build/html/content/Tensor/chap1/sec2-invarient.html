@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -439,10 +439,15 @@ document.write(`
 <h2>主不变量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>对于二阶张量 <span class="math notranslate nohighlight">\(\mathbf{T}\)</span>，主不变量由张量的特征方程定义</p>
 <div class="math notranslate nohighlight">
-\[
-\det(\mathbf{T} - \lambda \mathbf{I}) = \lambda^{3} - I_{1}\lambda^{2}+I_{2}\lambda - I_{3} = 0,
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\lambda\)</span> 是张量的特征值，<span class="math notranslate nohighlight">\(I_{1},I_{2},I_{3}\)</span> 是三个主不变量</p>
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+0=\det(\lambda \mathbf{I} - \mathbf{T}) &amp;= (\lambda-\lambda_{1})(\lambda-\lambda_{2})(\lambda-\lambda_{3}) \\
+&amp;= \lambda^{3} - I_{1}\lambda^{2}+I_{2}\lambda - I_{3},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\lambda_{3}\)</span> 是张量的特征值，<span class="math notranslate nohighlight">\(I_{1},I_{2},I_{3}\)</span> 是三个主不变量</p>
 <ul class="simple">
 <li><p>第一主不变量：</p></li>
 </ul>

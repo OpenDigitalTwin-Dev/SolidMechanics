@@ -420,12 +420,41 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">基本定义</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正交变换的性质</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">正交变换与相似变换</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">相似变换</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相似变换的性质</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">相似变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">基本定义</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相似变换的性质</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">保特征值</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#text-tr-a">保迹 <span class="math notranslate nohighlight">\(\text{tr}(A)\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#det-a-prod-i-1-n-lambda-i">保行列式 <span class="math notranslate nohighlight">\(\det(A) = \prod_{i=1}^{n} \lambda_i\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">正交变换</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">合同变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">基本定义</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">合同变换的性质</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">保对称性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sylvester">Sylvester 惯性定理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">正交变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">正交变换的几何意义</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">二维空间</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">三维空间</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">旋转变换</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">反射变换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">实对称矩阵的对角化</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值为实数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">不同特征根的特征向量正交</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">正交对角化</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -504,13 +533,18 @@ Q^{T}Q = I \Rightarrow (\mathcal{Q}\mathbf{u},\mathcal{Q}\mathbf{v}) =\mathbf{u}
 <li><p><span class="math notranslate nohighlight">\(\det(Q)=\pm1\)</span>：<span class="math notranslate nohighlight">\(\det(Q)=1\)</span> 时为旋转变换；<span class="math notranslate nohighlight">\(\det(Q)=-1\)</span> 时为反射变换</p></li>
 <li><p>特征值 <span class="math notranslate nohighlight">\(|\lambda| = 1\)</span>：<span class="math notranslate nohighlight">\(\mathbf{u}^{T}\mathbf{u} = \mathbf{u}^{\dagger}Q^{\dagger}Q\mathbf{u}=|\lambda|^2\mathbf{u}^{T}\mathbf{u}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Q^{-1} = Q^{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> 的行/列向量，形成一组标准正交基：<span class="math notranslate nohighlight">\(Q^{T}Q = I\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q_{1}, Q_{2}\)</span> 为正交矩阵，则 <span class="math notranslate nohighlight">\(Q_{1}Q_{2}\)</span> 也是正交矩阵：<span class="math notranslate nohighlight">\((Q_{1}Q_{2})^{T}Q_{1}Q_{2} = Q_{2}^{T}Q_{1}^{T}Q_{1}Q_{2} = I\)</span></p></li>
 </ul>
 </section>
 <section id="id4">
-<h2>正交变换与相似变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>相似变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<span class="gray-text">
+相似变换是同一线性变换在不同基下的矩阵表示之间的转换关系
+</span>
 <section id="id5">
-<h3>相似变换<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>相似变换是同一线性变换在不同基下的矩阵表示之间的转换关系。给定线性变换</p>
+<h3>基本定义<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>给定线性变换</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{T}: V\rightarrow V,
@@ -578,15 +612,382 @@ x^{w}_{1}\\x^{w}_{2}\\\vdots\\x^{w}_{n}\end{bmatrix},
 <p>故</p>
 <div class="math notranslate nohighlight">
 \[
-B = P^{-1}AP
+B = P^{-1}AP,
 \]</div>
 <p>称矩阵 <span class="math notranslate nohighlight">\(A\)</span> 和矩阵 <span class="math notranslate nohighlight">\(B\)</span> 是相似的</p>
+</section>
 <section id="id6">
-<h4>相似变换的性质<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
-</section>
-</section>
+<h3>相似变换的性质<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <section id="id7">
-<h3>正交变换<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h4>保特征值<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p><strong>代数重数</strong>：代数重数是矩阵特征多项式的根的重数</p>
+<div class="math notranslate nohighlight">
+\[
+\det(\lambda I - B) = \det(\lambda I - P^{-1}AP) = \det(P^{-1}(\lambda I - A)P) = \det(\lambda I - A),
+\]</div>
+<p>故特征根及其重数保持不变</p>
+<p><strong>几何重数</strong>：几何重数是特征值对应特征空间的维数，即 <span class="math notranslate nohighlight">\(\dim(\ker(\lambda I-A))\)</span></p>
+<p>这是自然的，因为线性变换 <span class="math notranslate nohighlight">\(\ker(\lambda I-A)\)</span> 和 <span class="math notranslate nohighlight">\(\ker(\lambda I-B)\)</span> 通过 可逆变换 <span class="math notranslate nohighlight">\(P\)</span> 和 <span class="math notranslate nohighlight">\(P^{-1}\)</span> 一一对应</p>
+</section>
+<section id="text-tr-a">
+<h4>保迹 <span class="math notranslate nohighlight">\(\text{tr}(A)\)</span><a class="headerlink" href="#text-tr-a" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{tr}(AB)&amp;= \sum_{i=1}^{n}\sum_{k=1}^{n}a_{ik}b_{ki} \\
+&amp;= \sum_{k=1}^{n}\sum_{i=1}^{n}b_{ki}a_{ik}\\
+&amp;=\text{tr}(BA)
+\end{split}\]</div>
+</aside>
+<div class="math notranslate nohighlight">
+\[
+\text{tr}(B) = \text{tr}(P^{-1}AP) = \text{tr}(APP^{-1}) = \text{tr}(A).
+\]</div>
+</section>
+<section id="det-a-prod-i-1-n-lambda-i">
+<h4>保行列式 <span class="math notranslate nohighlight">\(\det(A) = \prod_{i=1}^{n} \lambda_i\)</span><a class="headerlink" href="#det-a-prod-i-1-n-lambda-i" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\det(AB)&amp;=\det(E_{1}E_{2}\cdots E_{k}B)\\
+&amp;=\det(E_{1})\det(E_{2})\cdots \det(E_{k})\det(B)\\
+&amp;=\det(E_{1}E_{2}\cdots E_{k})\det(B)\\
+&amp;=\det(A)\det(B)
+\end{split}\]</div>
+</aside>
+<div class="math notranslate nohighlight">
+\[
+\det(B) = \det(P^{-1}AP) = \det(P^{-1}) \det(A) \det(P) = \det(A),
+\]</div>
+<p>或</p>
+<div class="math notranslate nohighlight">
+\[
+\det(A) = \det(A - \lambda I)|_{\lambda=0}=\prod_{i=1}^{n}(\lambda_{i}-\lambda)|_{\lambda=0}=\prod_{i=1}^{n}\lambda_{i}.
+\]</div>
+</section>
+</section>
+</section>
+<section id="id8">
+<h2>合同变换<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h3>基本定义<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>对实对称矩阵 <span class="math notranslate nohighlight">\(A\)</span>，其二次型为</p>
+<div class="math notranslate nohighlight">
+\[
+f(\mathbf{x}) = \mathbf{x}^{T}A\mathbf{x},
+\]</div>
+<p>设存在变量替换 <span class="math notranslate nohighlight">\(\mathbf{x} = P\mathbf{y}\)</span>（不同基下的坐标表示，见相似变换），则</p>
+<div class="math notranslate nohighlight">
+\[
+f(\mathbf{x}) = f(P\mathbf{y}) = \mathbf{y}^{T}P^{T}AP\mathbf{y} = \mathbf{y}^{T}B\mathbf{y},
+\]</div>
+<p>则称 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(B\)</span> 为合同矩阵，这种变换称为‌<strong>合同变换</strong>。合同变换的重要目标是将二次型化为标准形（对角矩阵形式）</p>
+<div class="math notranslate nohighlight">
+\[
+f(\mathbf{y})=\lambda_{1}y_{1}^2+\lambda_{2}y_{2}^2+\cdots+\lambda_{n}y_{n}^2.
+\]</div>
+</section>
+<section id="id10">
+<h3>合同变换的性质<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h4>保对称性<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+B^{T} = P^{T}A^{T}P = P^{T}AP = B.
+\]</div>
+</section>
+<section id="sylvester">
+<h4>Sylvester 惯性定理<a class="headerlink" href="#sylvester" title="Link to this heading">#</a></h4>
+<p>对于任意实二次型 <span class="math notranslate nohighlight">\( f(x) = x^T A x \)</span> （<span class="math notranslate nohighlight">\( A \)</span> 为实对称矩阵），通过合同变换可唯一化简为以下标准形：</p>
+<div class="math notranslate nohighlight">
+\[
+f(y) = y_1^2 + \cdots + y_p^2 - y_{p+1}^2 - \cdots - y_{p+q}^2 \quad (p+q \leq n),
+\]</div>
+<p>其中正惯性指数 <span class="math notranslate nohighlight">\( p \)</span>、负惯性指数 <span class="math notranslate nohighlight">\( q \)</span>、零惯性指数 <span class="math notranslate nohighlight">\( r = n - p - q \)</span> 唯一确定，仅依赖于原二次型矩阵 <span class="math notranslate nohighlight">\( A \)</span> 的性质</p>
+<p>根据 Sylvester 惯性定理，可得到以下结论：</p>
+<ul class="simple">
+<li><p>合同变换下，矩阵的正定性、半正定性保持不变‌</p></li>
+<li><p>二次曲面（如椭球面、双曲面）的类型由正负惯性指数唯一确定‌</p></li>
+<li><p>惯性指数与特征值的符号直接相关，合同变换不改变符号分布‌</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id12">
+<h2>正交变换<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>由于正交矩阵满足 <span class="math notranslate nohighlight">\(Q^{T} = Q^{-1}\)</span>，因此正交变换</p>
+<div class="math notranslate nohighlight">
+\[
+B = Q^{T}AQ = Q^{-1}AQ,
+\]</div>
+<p>既是相似变换，也是合同变换（一般应用于对称矩阵）</p>
+<section id="id13">
+<h3>正交变换的几何意义<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>由于正交变换保持向量的长度和向量间的夹角不变，这使得正交变换可以被视为刚体运动中的<strong>旋转</strong>和<strong>反射</strong></p>
+<section id="id14">
+<h4>二维空间<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<p>在二维空间中，正交矩阵具有两种形式</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R = \begin{bmatrix}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta  &amp; \cos\theta \\
+\end{bmatrix},\qquad
+M = \begin{bmatrix}
+\cos\theta &amp; \sin\theta \\
+\sin\theta  &amp; -\cos\theta \\
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span> 表示旋转变换，旋转角度为 <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M\)</span> 表示反射变换，对称面为 <span class="math notranslate nohighlight">\(y = \tan\frac{\theta}{2}x\)</span></p></li>
+</ul>
+</section>
+<section id="id15">
+<h4>三维空间<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<section id="id16">
+<h5>旋转变换<a class="headerlink" href="#id16" title="Link to this heading">#</a></h5>
+<p><strong>标准旋转矩阵：</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_x = \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; \cos \theta &amp; -\sin \theta \\
+0 &amp; \sin \theta &amp; \cos \theta
+\end{bmatrix},\quad
+R_y = \begin{bmatrix}
+\cos \theta &amp; 0 &amp; \sin \theta \\
+0 &amp; 1 &amp; 0 \\
+-\sin \theta &amp; 0 &amp; \cos \theta
+\end{bmatrix},\quad
+R_z = \begin{bmatrix}
+\cos \theta &amp; -\sin \theta &amp; 0 \\
+\sin \theta &amp; \cos \theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}.
+\end{split}\]</div>
+<p><strong>Rodrigues 旋转矩阵：</strong></p>
+<p>设旋转轴为单位向量为 <span class="math notranslate nohighlight">\(\mathbf{u}=[u_{x},u_{y},u_{z}]\)</span>，旋转角为 <span class="math notranslate nohighlight">\(\theta\)</span>，则旋转矩阵为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+R(\mathbf{u}, \theta) &amp;= \cos \theta \cdot I + (1 - \cos \theta) \cdot \mathbf{uu}^T + \sin \theta \cdot [\mathbf{u}]_{\times}\\
+&amp;=\begin{bmatrix}
+\cos \theta + u_x^2 (1 - \cos \theta) &amp; u_x u_y (1 - \cos \theta) - u_z \sin \theta &amp; u_x u_z (1 - \cos \theta) + u_y \sin \theta \\
+u_y u_x (1 - \cos \theta) + u_z \sin \theta &amp; \cos \theta + u_y^2 (1 - \cos \theta) &amp; u_y u_z (1 - \cos \theta) - u_x \sin \theta \\
+u_z u_x (1 - \cos \theta) - u_y \sin \theta &amp; u_z u_y (1 - \cos \theta) + u_x \sin \theta &amp; \cos \theta + u_z^2 (1 - \cos \theta)
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>对于旋转轴不经过原点的情况，则需要通过<strong>平移-旋转-逆平移</strong>的复合变换实现</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Rodrigues 公式证明</p>
+<p>将任意向量 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 进行分解</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v} = \mathbf{v}_{\scriptscriptstyle/\!/} + \mathbf{v}_{\perp},
+\]</div>
+<p>其中</p>
+<ul class="simple">
+<li><p>平行于轴的分量：<span class="math notranslate nohighlight">\(\mathbf{v}_{\scriptscriptstyle/\!/}=\mathbf{u}\ (\mathbf{v}\cdot\mathbf{u})=\mathbf{u}\ (\mathbf{u}^{T}\mathbf{v}) = (\mathbf{u}\mathbf{u}^{T})\mathbf{v}\)</span></p></li>
+<li><p>垂直于轴的分量：<span class="math notranslate nohighlight">\(\mathbf{v}_{\perp}=\mathbf{v} - \mathbf{v}_{\scriptscriptstyle/\!/} = (I - \mathbf{u}\mathbf{u}^{T})\mathbf{v}\)</span></p></li>
+</ul>
+<p>绕 <span class="math notranslate nohighlight">\(u\)</span> 旋转时（旋转是线性变换）</p>
+<ul class="simple">
+<li><p>平行分量保持不变：<span class="math notranslate nohighlight">\(\mathbf{v}_{\scriptscriptstyle/\!/}^{'} = \mathbf{v}_{\scriptscriptstyle/\!/}\)</span></p></li>
+<li><p>垂直分量绕 <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 旋转 <span class="math notranslate nohighlight">\(\theta\)</span>：<span class="math notranslate nohighlight">\(\mathbf{v}_{\perp}^{'}=\cos\theta\cdot\mathbf{v}_{\perp} + \sin\theta\cdot(\mathbf{u}\times\mathbf{v}_{\perp})\)</span></p></li>
+</ul>
+<p>关于垂直分量：</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{v}_{\perp}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{u}\times\mathbf{v}_{\perp}\)</span> 是垂直于 <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 的平面上的一组正交基，且满足</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}_{\perp}^{'}\cdot\mathbf{v}_{\perp}=\cos\theta,
+\]</div>
+<p>和</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{v}_{\perp}^{'}\cdot\mathbf{v}_{\perp}^{'}=\cos^{2}\theta\cdot\mathbf{v}_{\perp}\cdot\mathbf{v}_{\perp} + \sin^{2}\theta\cdot(\mathbf{u}\times\mathbf{v}_{\perp})\cdot(\mathbf{u}\times\mathbf{v}_{\perp})=\mathbf{v}_{\perp}\cdot\mathbf{v}_{\perp}.\]</div>
+<p>于是，总旋转后的向量为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}^{'}=\mathbf{v}_{\scriptscriptstyle/\!/}^{'}+\mathbf{v}_{\perp}^{'}=(\mathbf{u}\mathbf{u}^{T})\mathbf{v}+\cos\theta(I - \mathbf{u}\mathbf{u}^{T})\mathbf{v}+\sin\theta\cdot(\mathbf{u}\times\mathbf{v}),
+\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{u}\times\mathbf{v}=\begin{bmatrix}
+0 &amp; -u_z &amp; u_y \\
+u_z &amp; 0 &amp; -u_x \\
+-u_y &amp; u_x &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+v_{x}\\v_{y}\\v_{z}
+\end{bmatrix} = [\mathbf{u}]_{\times},
+\end{split}\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}^{'}=[\cos\theta\cdot I+(1-\cos\theta)\cdot\mathbf{u}\mathbf{u}^{T}+\sin\theta\cdot[\mathbf{u}]_{\times}]\mathbf{v},
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[
+R(\mathbf{u}, \theta) = \cos \theta \cdot I + (1 - \cos \theta) \cdot \mathbf{uu}^T + \sin \theta \cdot [\mathbf{u}]_{\times}.
+\]</div>
+</div>
+</section>
+<section id="id17">
+<h5>反射变换<a class="headerlink" href="#id17" title="Link to this heading">#</a></h5>
+<p><strong>标准反射矩阵</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+M_{xy}=\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{bmatrix},\quad
+M_{yz}=\begin{bmatrix}
+-1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix},\quad
+M_{xz}=\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}.
+\end{split}\]</div>
+<p><strong>一般反射矩阵</strong></p>
+<p>关于单位法向量 <span class="math notranslate nohighlight">\(\mathbf{n}=[n_{x}\ n_{y}\ n_{z}]^{T}\)</span> 定义的（过原点的）平面的反射矩阵为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+M=I-2\mathbf{n}\mathbf{n}^{T} = \begin{bmatrix}
+1 - 2n_{x}^2 &amp; -2n_{x}n_{y} &amp; -2n_{x}n_{z} \\
+-2n_{x}n_{y} &amp; 1-2n_{y}^2 &amp; -2n_{y}n_{z} \\
+-2n_{x}n_{z} &amp; 2n_{y}n_{z} &amp; 1-2n_{z}^2\\
+\end{bmatrix},
+\end{split}\]</div>
+<p>对于平面不经过原点的情况，则需要通过<strong>平移-反射-逆平移</strong>的复合变换实现</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">反射公式证明</p>
+<p>将任意向量 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 进行分解</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v} = \mathbf{v}_{\scriptscriptstyle/\!/} + \mathbf{v}_{\perp},
+\]</div>
+<p>其中</p>
+<ul class="simple">
+<li><p>平行于平面的分量：<span class="math notranslate nohighlight">\(\mathbf{v}_{\scriptscriptstyle/\!/}\)</span></p></li>
+<li><p>垂直于平面的分量：<span class="math notranslate nohighlight">\(\mathbf{v}_{\perp}=\mathbf{n}\ (\mathbf{v}\cdot\ \mathbf{n})=(\mathbf{n}\mathbf{n}^{T})\mathbf{v}\)</span></p></li>
+</ul>
+<p>反射操作不改变 <span class="math notranslate nohighlight">\(\mathbf{v}_{\scriptscriptstyle/\!/}\)</span>，并将 <span class="math notranslate nohighlight">\(\mathbf{v}_{\perp}\)</span> 反向，故反射后的向量为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}^{'}=\mathbf{v}_{\scriptscriptstyle/\!/}-\mathbf{v}_{\perp}=\mathbf{v}-2\mathbf{n}\mathbf{n}^{T}\mathbf{v} = (I-2\mathbf{n}\mathbf{n}^{T})\mathbf{v},
+\]</div>
+<p>因此，反射矩阵为</p>
+<div class="math notranslate nohighlight">
+\[
+M = I-2\mathbf{n}\mathbf{n}^{T}.
+\]</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id18">
+<h3>实对称矩阵的对角化<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>对于实对称矩阵 <span class="math notranslate nohighlight">\(A\)</span>，存在正交矩阵 <span class="math notranslate nohighlight">\(Q\)</span> 和对角矩阵 <span class="math notranslate nohighlight">\(\Lambda\)</span>，使得</p>
+<div class="math notranslate nohighlight">
+\[
+Q^{-1}AQ = Q^{T}AQ = \Lambda.
+\]</div>
+<section id="a">
+<h4>矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值为实数<a class="headerlink" href="#a" title="Link to this heading">#</a></h4>
+<p>设 <span class="math notranslate nohighlight">\(\lambda\in\mathbb{C}\)</span> 为矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值，<span class="math notranslate nohighlight">\(\mathbf{v}\in\mathbb{C}^{n}\)</span> 为对应的特征向量，则</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{v} = \lambda\mathbf{v} \Rightarrow \mathbf{v}^{\dagger}A\mathbf{v}=\lambda\mathbf{v}^{\dagger}\mathbf{v},
+\]</div>
+<p>另一方面</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{v} = \lambda\mathbf{v} \Rightarrow \mathbf{v}^{\dagger}A^{\dagger}=\bar{\lambda}\mathbf{v}^{\dagger} \Rightarrow \mathbf{v}^{\dagger}A=\bar{\lambda}\mathbf{v}^{\dagger} \Rightarrow \mathbf{v}^{\dagger}A\mathbf{v}=\bar{\lambda}\mathbf{v}^{\dagger}\mathbf{v},
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\mathbf{v}^{\dagger}\mathbf{v}&gt;0\)</span>，故 <span class="math notranslate nohighlight">\(\lambda = \bar{\lambda}\)</span>，得到 <span class="math notranslate nohighlight">\(\lambda\in\mathbb{R}\)</span></p>
+<p>设 <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{a} + i\mathbf{b}\)</span>，其中，<span class="math notranslate nohighlight">\(\mathbf{a},\mathbf{b}\in\mathbb{R}^{n}，\)</span>则</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{v} = \lambda\mathbf{v} \Rightarrow A(\mathbf{a} + i\mathbf{b}) = A\mathbf{a} + iA\mathbf{b} = \lambda\mathbf{a} + i\lambda\mathbf{b},
+\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{a} = \lambda\mathbf{a},\quad A\mathbf{b} = \lambda\mathbf{b},
+\]</div>
+<p>这表明特征值 <span class="math notranslate nohighlight">\(\lambda\)</span> 存在对应的实特征向量</p>
+</section>
+<section id="id19">
+<h4>不同特征根的特征向量正交<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<p>设特征值 <span class="math notranslate nohighlight">\(\lambda_{1}\neq\lambda_{2}\)</span> 对应的特征向量分别为 <span class="math notranslate nohighlight">\(\mathbf{v}_{1}\in\mathbb{R}^{n}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{v}_{2}\in\mathbb{R}^{n}\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{1}\mathbf{v}_{1}^{T}\mathbf{v}_{2}=(\lambda_{1}\mathbf{v}_{1})^{T}\mathbf{v}_{2}=(A\mathbf{v}_{1})^{T}\mathbf{v}_{2}=\mathbf{v}_{1}^{T}A\mathbf{v}_{2}=\lambda_{2}\mathbf{v}_{1}^{T}\mathbf{v}_{2},
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\lambda_{1} \neq \lambda_{2}\)</span>，因此 <span class="math notranslate nohighlight">\(\mathbf{v}_{1}^{T}\mathbf{v}_{2} = 0\)</span>,</p>
+</section>
+<section id="id20">
+<h4>正交对角化<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<p>假设对于 <span class="math notranslate nohighlight">\(n-1\)</span> 阶实对称矩阵，结论成立，则对于 <span class="math notranslate nohighlight">\(n\)</span> 阶实对称矩阵 <span class="math notranslate nohighlight">\(A\)</span>，取其某一单位特征向量 <span class="math notranslate nohighlight">\(\mathbf{v}_{1}\)</span>，构造正交矩阵 <span class="math notranslate nohighlight">\(V = [\mathbf{v}_{1}\ V_{n-1}]\in\mathbb{R}^{n\times n}\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+V^{T}AV &amp;= \begin{bmatrix}\mathbf{v}_{1}^{T} \\ V_{n-1}^{T}\end{bmatrix}A\ [\mathbf{v}_{1}\ V_{n-1}]\\
+&amp;=\begin{bmatrix}
+\mathbf{v}_{1}^{T}A\mathbf{v}_{1} &amp; \mathbf{v}_{1}^{T}AV_{n-1} \\
+V_{n-1}^{T} A\ \mathbf{v}_{1} &amp; V_{n-1}^{T} A\ V_{n-1}
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+\lambda_{1} &amp; \mathbf{0} \\
+\mathbf{0} &amp; V_{n-1}^{T} A\ V_{n-1}
+\end{bmatrix},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>由于矩阵 <span class="math notranslate nohighlight">\(V_{n-1}^{T} A\ V_{n-1}\)</span> 是 <span class="math notranslate nohighlight">\(n-1\)</span> 阶实对称矩阵，因此存在正交矩阵 <span class="math notranslate nohighlight">\(M\in\mathbb{R}^{(n-1)\times (n-1)}\)</span> 将其对角化</p>
+<div class="math notranslate nohighlight">
+\[
+M^{T}(V_{n-1}^{T} A\ V_{n-1})M = \Lambda_{n-1},
+\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(V\begin{bmatrix}
+I &amp; \\ &amp; M
+\end{bmatrix})^{T}A\ (V\begin{bmatrix}
+I &amp; \\ &amp; M
+\end{bmatrix}) = \begin{bmatrix}
+\lambda_{1} &amp; \\ &amp; \Lambda_{n-1}
+\end{bmatrix},
+\end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\((V\begin{bmatrix}
+I &amp; \\ &amp; M
+\end{bmatrix})\in\mathbb{R}^{n\times n}\)</span> 是正交矩阵</p>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+Q^{-1}AQ = \Lambda \Rightarrow AQ = Q\Lambda,
+\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(Q=[\mathbf{q}_{1}\ \mathbf{q}_{2}\ \cdots \mathbf{q}_{n}]\)</span>，和 <span class="math notranslate nohighlight">\(\Lambda = \text{diag}(\lambda_{1},\lambda_{2},\cdots,\lambda_{n})\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}A\mathbf{q}_{1}&amp; A\mathbf{q}_{2}&amp; \cdots &amp; A\mathbf{q}_{n}\end{bmatrix} = \begin{bmatrix}\lambda_{1}\mathbf{q}_{1}&amp; \lambda_{1}\mathbf{q}_{2}&amp; \cdots&amp; \lambda_{1}\mathbf{q}_{n}\end{bmatrix},
+\]</div>
+<p>因此 <span class="math notranslate nohighlight">\(Q\)</span> 的列向量是矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征向量，<span class="math notranslate nohighlight">\(\Lambda\)</span> 的对角元素是对应的特征值</p>
+</section>
 </section>
 </section>
 </section>
@@ -657,12 +1058,41 @@ B = P^{-1}AP
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">基本定义</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正交变换的性质</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">正交变换与相似变换</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">相似变换</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相似变换的性质</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">相似变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">基本定义</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">相似变换的性质</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">保特征值</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#text-tr-a">保迹 <span class="math notranslate nohighlight">\(\text{tr}(A)\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#det-a-prod-i-1-n-lambda-i">保行列式 <span class="math notranslate nohighlight">\(\det(A) = \prod_{i=1}^{n} \lambda_i\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">正交变换</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">合同变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">基本定义</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">合同变换的性质</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">保对称性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sylvester">Sylvester 惯性定理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">正交变换</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">正交变换的几何意义</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">二维空间</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">三维空间</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">旋转变换</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">反射变换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">实对称矩阵的对角化</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值为实数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">不同特征根的特征向量正交</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">正交对角化</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
