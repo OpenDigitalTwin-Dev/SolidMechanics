@@ -418,7 +418,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">主不变量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">应力张量不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">主不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">第一主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">第二主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">第三主不变量</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">偏不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">应力张量分解</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">第二偏不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">第三偏不变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">应变张量不变量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">应变率张量不变量</a></li>
 </ul>
             </nav>
         </div>
@@ -433,42 +449,85 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>张量不变量<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-张量不变量是张量在坐标变换下保持不变的标量量。这些不变量反映了张量的内在几何或物理特性，与观察的坐标系无关
+张量不变量是张量在坐标变换（基变换）下保持不变的标量量。这些不变量反映了张量的内在几何或物理特性，与观察的坐标系无关
 </span>
 <section id="id2">
-<h2>主不变量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>对于二阶张量 <span class="math notranslate nohighlight">\(\mathbf{T}\)</span>，主不变量由张量的特征方程定义</p>
+<h2>应力张量不变量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>主不变量<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>对于 Cauchy 应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span>，其不变量由张量的特征方程定义</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-0=\det(\lambda \mathbf{I} - \mathbf{T}) &amp;= (\lambda-\lambda_{1})(\lambda-\lambda_{2})(\lambda-\lambda_{3}) \\
+0=\det(\lambda \mathbf{I} - \boldsymbol{\sigma}) &amp;= (\lambda-\lambda_{1})(\lambda-\lambda_{2})(\lambda-\lambda_{3}) \\
 &amp;= \lambda^{3} - I_{1}\lambda^{2}+I_{2}\lambda - I_{3},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\lambda_{3}\)</span> 是张量的特征值，<span class="math notranslate nohighlight">\(I_{1},I_{2},I_{3}\)</span> 是三个主不变量</p>
-<ul class="simple">
-<li><p>第一主不变量：</p></li>
-</ul>
+<p>其中，<span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\lambda_{3}\)</span> 是张量的特征值，其值等于三个主应力 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 的大小，通过主应力，可以定义三个主不变量</p>
+<section id="id4">
+<h4>第一主不变量<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
-I_{1} = \lambda_{1}+\lambda_{2}+\lambda_{3} = \text{tr}(\mathbf{T}) := \sum_{i}T_{ii},
+I_{1} = \sigma_{1}+\sigma_{2}+\sigma_{3} = \text{tr}(\boldsymbol{\sigma}) := \sum_{i}\boldsymbol{\sigma}_{ii},
 \]</div>
-<ul class="simple">
-<li><p>第二不变量：</p></li>
-</ul>
+<p>第一主不变量 <span class="math notranslate nohighlight">\(I_{1}\)</span> 与<strong>平均应力</strong>（静水压力）<span class="math notranslate nohighlight">\(\sigma_{m}\)</span> 相关</p>
 <div class="math notranslate nohighlight">
 \[
-I_{2} = \lambda_{1}\lambda_{2}+\lambda_{2}\lambda_{3}+\lambda_{3}\lambda_{1} = \frac{1}{2}\left(\text{tr}(\mathbf{T}\right)^2 - \text{tr}(\mathbf{T}^2)),
+\sigma_{m} = \frac{1}{3}(\sigma_{1} + \sigma_{2} + \sigma_{3})=\frac{1}{3}I_{1},
 \]</div>
-<ul class="simple">
-<li><p>第三不变量：</p></li>
-</ul>
+<p>平均应力反映了材料在各个方向上的平均应力状态，主导材料的<strong>体积变化</strong>（如压缩或膨胀）</p>
+</section>
+<section id="id5">
+<h4>第二主不变量<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
-I_{3} = \lambda_{1}\lambda_{2}\lambda_{3} = \det(\mathbf{T}),
+I_{2} = \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1} = \frac{1}{2}\left(\text{tr}(\boldsymbol{\sigma}\right)^2 - \text{tr}(\boldsymbol{\sigma}^2)),
 \]</div>
+<p>第二主不变量 <span class="math notranslate nohighlight">\(I_{2}\)</span> 通常用于分析材料的<strong>剪切变形和破坏</strong>。这一不变量在塑性理论中具有重要意义，因为它与<strong>剪切应力</strong>和材料的<strong>屈服条件</strong>有关。例如，Von Mises屈服准则基于第二主不变量来描述材料在复杂应力状态下的屈服状态</p>
+</section>
+<section id="id6">
+<h4>第三主不变量<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+I_{3} = \sigma_{1}\sigma_{2}\sigma_{3} = \det(\boldsymbol{\sigma}),
+\]</div>
+<p>第三主不变量 <span class="math notranslate nohighlight">\(I_{3}\)</span> 反映主应力组合的对称性</p>
+</section>
+</section>
+<section id="id7">
+<h3>偏不变量<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h4>应力张量分解<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>将应力张量分解为<strong>球形张量</strong>（体积应力，体积变化）和<strong>偏斜张量</strong>（剪切部分，形状变化）的和</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma} = \frac{1}{3}I_{1}\mathbf{I}+\mathbf{S},
+\]</div>
+<p>偏张量 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 的不变量 <span class="math notranslate nohighlight">\(J_{2},J_{3}\)</span> 主导塑性变形</p>
+</section>
+<section id="id9">
+<h4>第二偏不变量<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+J_{2} = \frac{1}{2}\mathbf{S}:\mathbf{S},
+\]</div>
+</section>
+<section id="id10">
+<h4>第三偏不变量<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+J_{3} = \det(\mathbf{S}),
+\]</div>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>应变张量不变量<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+</section>
+<section id="id12">
+<h2>应变率张量不变量<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -536,7 +595,23 @@ I_{3} = \lambda_{1}\lambda_{2}\lambda_{3} = \det(\mathbf{T}),
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">主不变量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">应力张量不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">主不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">第一主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">第二主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">第三主不变量</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">偏不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">应力张量分解</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">第二偏不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">第三偏不变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">应变张量不变量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">应变率张量不变量</a></li>
 </ul>
   </nav></div>
 
