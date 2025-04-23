@@ -417,6 +417,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">屈服面</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mises">Mises 屈服准则</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tresca">Tresca 屈服准则</a></li>
 </ul>
@@ -435,17 +436,79 @@ document.write(`
 <span class="gray-text">
 屈服准则用于确定导致材料永久变形所需的临界应力
 </span>
-<p>记 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为应力张量，<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 是主应力，其大小等于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的特征值</p>
-<section id="mises">
-<h2>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h2>
-<p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的塑性力学分析</p>
+<section id="id2">
+<h2>屈服面<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在经典速率无关塑性理论中，<strong>屈服面</strong>是核心概念。它定义了塑性变形阈值处的多轴应力状态，是‌区分弹性变形与塑性变形的临界边界</p>
+<ul class="simple">
+<li><p>当应力状态位于屈服面‌内部‌时，材料仅发生‌弹性变形</p></li>
+<li><p>当应力状态‌达到或超越‌屈服面时，材料进入‌塑性变形</p></li>
+</ul>
+<p>由于材料的应变硬化，屈服面随着塑性变形的进展而演变</p>
+<p>屈服面可以表现为六维应力空间中的超曲面</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{\text{mises}} = \sqrt{\frac{1}{2} \left[ (\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right]},
+f(\sigma_{ij},H) = 0,
 \]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> 是应力张量的分量，<span class="math notranslate nohighlight">\(H\)</span> 是硬化参数，描述材料因塑性变形导致的硬化行为</p>
+<p>对于各向同性的材料，塑性变形的开始不依赖于主应力的方向，仅取决于它们的大小，因此屈服面可以通过<a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html"><span class="std std-doc">应力不变量</span></a>表示</p>
+<div class="math notranslate nohighlight">
+\[
+f(I_{1},I_{2},I_{3}) = 0,
+\]</div>
+<p>对于中等压力下的非多孔金属，屈服不会受到静水压力（平均应力）的影响，因此屈服曲面可以表示为<a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html"><span class="std std-doc">偏应力不变量</span></a>的函数</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(J_{1} = 0\)</span></p>
+</aside>
+<div class="math notranslate nohighlight">
+\[
+f(J_{2},J_{3}) = 0,
+\]</div>
+</section>
+<section id="mises">
+<h2>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h2>
+<p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据</p>
+<div class="math notranslate nohighlight">
+\[
+k^{2}=J_{2},
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(k\)</span> 是<strong>纯剪切变形</strong>下的屈服应力</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">单轴拉伸</p>
+<p>设<strong>单轴拉伸</strong>下的屈服应力为 <span class="math notranslate nohighlight">\(Y\)</span>，此时</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{1}=Y,\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
+\]</div>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
+J_{2} = \frac{Y^2}{3},
+\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[
+k^2=\frac{Y^{2}}{3}\quad \Longrightarrow\quad k=\frac{Y}{\sqrt{3}},
+\]</div>
+<p>这表明，纯剪切屈服应力 <span class="math notranslate nohighlight">\(k\)</span> 与单轴拉伸屈服应力 <span class="math notranslate nohighlight">\(Y\)</span> 的比值为 <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{3}}\)</span></p>
+<p>对于各向同性金属材料，这与实验结果高度一致</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Von Mises 准则的物理解释</p>
+<p><strong>弹性应变能</strong></p>
+<p>单位体积的弹性应变能表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>
+<div class="math notranslate nohighlight">
+\[
+W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}=\frac{1}{2}
+\]</div>
+</div>
 </section>
 <section id="tresca">
 <h2>Tresca 屈服准则<a class="headerlink" href="#tresca" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\},
+\]</div>
 </section>
 </section>
 
@@ -504,6 +567,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">屈服面</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mises">Mises 屈服准则</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tresca">Tresca 屈服准则</a></li>
 </ul>

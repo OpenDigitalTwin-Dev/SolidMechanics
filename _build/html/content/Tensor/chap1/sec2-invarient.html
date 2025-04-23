@@ -434,8 +434,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">应变张量不变量</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">应变率张量不变量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">应变张量不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">主不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">第一主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">第二主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">第三主不变量</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">偏不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">第一偏不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">第二偏不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">第三偏不变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">应变率张量不变量</a></li>
 </ul>
             </nav>
         </div>
@@ -456,7 +470,7 @@ document.write(`
 <h2>应力张量不变量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
 <h3>主不变量<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>对于 Cauchy 应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span>（对称张量），其不变量由张量的特征方程定义</p>
+<p>对于应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span>（对称张量），其不变量由张量的特征方程定义</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -469,8 +483,8 @@ document.write(`
 <p>其中，<span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\lambda_{3}\)</span> 是张量的特征值，其值等于三个主应力 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 的大小，通过主应力，可以定义三个主不变量</p>
 <section id="id4">
 <h4>第一主不变量<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-1st-priinvar">
-<span class="eqno">(6)<a class="headerlink" href="#equation-sec2-eq-1st-priinvar" title="Link to this equation">#</a></span>\[
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-1st-priinvar">
+<span class="eqno">(6)<a class="headerlink" href="#equation-sec2-eq-stress-1st-priinvar" title="Link to this equation">#</a></span>\[
 I_{1} = \sigma_{1}+\sigma_{2}+\sigma_{3} = \text{tr}(\boldsymbol{\sigma}) := \sigma_{ii},
 \]</div>
 <p>第一主不变量 <span class="math notranslate nohighlight">\(I_{1}\)</span> 与<strong>平均应力</strong>（静水压力）<span class="math notranslate nohighlight">\(\sigma_{m}\)</span> 相关</p>
@@ -482,13 +496,14 @@ I_{1} = \sigma_{1}+\sigma_{2}+\sigma_{3} = \text{tr}(\boldsymbol{\sigma}) := \si
 </section>
 <section id="id5">
 <h4>第二主不变量<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-2nd-priinvar">
-<span class="eqno">(7)<a class="headerlink" href="#equation-sec2-eq-2nd-priinvar" title="Link to this equation">#</a></span>\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-priinvar">
+<span class="eqno">(7)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-priinvar" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 I_{2} &amp;= \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1} \\
 &amp;=\frac{1}{2}((\sigma_{1}+\sigma_{2}+\sigma_{3})^2 - (\sigma_{1}^2+\sigma_{2}^2+\sigma_{3}^2)) \\
 &amp;= \frac{1}{2}\left(\text{tr}(\boldsymbol{\sigma}\right)^2 - \text{tr}(\boldsymbol{\sigma}^2))\\
+&amp;=\frac{1}{2}(\sigma_{ii}\sigma_{jj} - \sigma_{ij}\sigma_{ij}) \\
 &amp;=\frac{1}{2}((\sigma_{11}+\sigma_{22}+\sigma_{33})^2 - (\sigma_{11}^{2}+\sigma_{22}^{2}+\sigma_{33}^{2}+2(\sigma_{12}\sigma_{21} +\sigma_{23}\sigma_{32}+\sigma_{31}\sigma_{13})))\\
 &amp;=\sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{33}\sigma_{11} - \sigma_{12}^{2} -\sigma_{23}^{2}-\sigma_{31}^{2},
 \end{aligned}
@@ -498,8 +513,8 @@ I_{2} &amp;= \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1} \\
 </section>
 <section id="id6">
 <h4>第三主不变量<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-3rd-priinvar">
-<span class="eqno">(8)<a class="headerlink" href="#equation-sec2-eq-3rd-priinvar" title="Link to this equation">#</a></span>\[
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-3rd-priinvar">
+<span class="eqno">(8)<a class="headerlink" href="#equation-sec2-eq-stress-3rd-priinvar" title="Link to this equation">#</a></span>\[
 I_{3} = \sigma_{1}\sigma_{2}\sigma_{3} = \det(\boldsymbol{\sigma}),
 \]</div>
 <p>第三主不变量 <span class="math notranslate nohighlight">\(I_{3}\)</span> 反映了主应力的组合关系。在损伤力学和断裂力学中，<span class="math notranslate nohighlight">\(I_{3}\)</span> 的正负在主应力同号时可以用来区分拉伸主导状态（全部主应力为正）与压缩主导状态（全部主应力为负）</p>
@@ -509,13 +524,12 @@ I_{3} = \sigma_{1}\sigma_{2}\sigma_{3} = \det(\boldsymbol{\sigma}),
 <h3>偏不变量<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <section id="id8">
 <h4>应力张量分解<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
-<p>将应力张量分解为<strong>球形张量</strong>（体积应力<span class="math notranslate nohighlight">\(\rightarrow\)</span>体积变化）和<strong>偏斜张量</strong>（剪切部分<span class="math notranslate nohighlight">\(\rightarrow\)</span>形状变化）的和</p>
+<p>将应力张量分解为<strong>球形张量</strong>（体积应力<span class="math notranslate nohighlight">\(\rightarrow\)</span>体积变化）和<strong>偏斜张量</strong>（剪切应力<span class="math notranslate nohighlight">\(\rightarrow\)</span>形状变化）的和</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\sigma} = \frac{I_{1}}{3}\mathbf{I}+\mathbf{S},
+\boldsymbol{\sigma} = \frac{I_{1}}{3}\mathbf{I}+\mathbf{s},
 \]</div>
-<p>偏应力张量 <span class="math notranslate nohighlight">\(\mathbf{S} = \boldsymbol{\sigma}-\frac{I_{1}}{3}\mathbf{I}\)</span>，是从总应力张量中去除体积应力（即平均正应力）后的部分，反映了材料内部的纯剪切作用。其第二不变量 <span class="math notranslate nohighlight">\(J_2\)</span> 在金属材料的塑性变形中起主导作用，<span class="math notranslate nohighlight">\(J_3\)</span> 在某些屈服准则中也可能有影响</p>
-<p><span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 的特征根</p>
+<p>偏应力张量 <span class="math notranslate nohighlight">\(\mathbf{s} = \boldsymbol{\sigma}-\frac{I_{1}}{3}\mathbf{I}\)</span>，是从总应力张量中去除体积应力（即平均正应力）后的部分，反映了材料内部的纯剪切作用。<span class="math notranslate nohighlight">\(\mathbf{s}\)</span> 的特征根</p>
 <div class="math notranslate nohighlight">
 \[
 s_{i}=\sigma_{i}-\frac{I_{1}}{3}
@@ -528,17 +542,17 @@ s_{1}+s_{2}+s_{3} = 0.
 </section>
 <section id="id9">
 <h4>第一偏不变量<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-1st-parinvar">
-<span class="eqno">(9)<a class="headerlink" href="#equation-sec2-eq-1st-parinvar" title="Link to this equation">#</a></span>\[
-J_{1} = \text{tr}(\mathbf{S})\equiv0,
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-1st-parinvar">
+<span class="eqno">(9)<a class="headerlink" href="#equation-sec2-eq-stress-1st-parinvar" title="Link to this equation">#</a></span>\[
+J_{1} = \text{tr}(\mathbf{s})\equiv0,
 \]</div>
 <p>表明偏应力张量仅描述剪切变形，与体积变形无关</p>
 </section>
 <section id="id10">
 <h4>第二偏不变量<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-2nd-parinvar-0">
-<span class="eqno">(10)<a class="headerlink" href="#equation-sec2-eq-2nd-parinvar-0" title="Link to this equation">#</a></span>\[
-J_{2} = \frac{1}{2}\mathbf{S}:\mathbf{S} = \frac{1}{2}s_{ij}s_{ij},
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-0">
+<span class="eqno">(10)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-0" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{2}\mathbf{s}:\mathbf{s} = \frac{1}{2}s_{ij}s_{ij},
 \]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -555,37 +569,37 @@ J_{2} = \frac{1}{2}\mathbf{S}:\mathbf{S} = \frac{1}{2}s_{ij}s_{ij},
 <ol class="arabic simple">
 <li><p>‌主偏应力平方和形式</p></li>
 </ol>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-2nd-parinvar-1">
-<span class="eqno">(11)<a class="headerlink" href="#equation-sec2-eq-2nd-parinvar-1" title="Link to this equation">#</a></span>\[
-J_{2} = \frac{1}{2}(s_{1}^{2} + s_{2}^{2} + s_{3}^{2})
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-1">
+<span class="eqno">(11)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-1" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{2}(s_{1}^{2} + s_{2}^{2} + s_{3}^{2}),
 \]</div>
-<p>因为 <span class="math notranslate nohighlight">\(s_{1}^{2},s_{2}^{2},s_{3}^{2}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{S}^{2}\)</span> 的特征值，故 <span class="math notranslate nohighlight">\(\text{tr}(\mathbf{S}^{2}) = s_{1}^2 + s_{2}^2 + s_{3}^2\)</span>，由于 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 是对称张量，因此</p>
+<p>因为 <span class="math notranslate nohighlight">\(s_{1}^{2},s_{2}^{2},s_{3}^{2}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{s}^{2}\)</span> 的特征值，故 <span class="math notranslate nohighlight">\(\text{tr}(\mathbf{s}^{2}) = s_{1}^2 + s_{2}^2 + s_{3}^2\)</span>，由于 <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> 是对称张量，因此</p>
 <div class="math notranslate nohighlight">
 \[
-s_{ij}s_{ij} = \text{tr}({\mathbf{S}^{2}}) = s_{1}^2 + s_{2}^2 + s_{3}^2.
+s_{ij}s_{ij} = \text{tr}({\mathbf{s}^{2}}) = s_{1}^2 + s_{2}^2 + s_{3}^2.
 \]</div>
 <ol class="arabic simple" start="2">
 <li><p>主应力差形式</p></li>
 </ol>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-2nd-parinvar-2">
-<span class="eqno">(12)<a class="headerlink" href="#equation-sec2-eq-2nd-parinvar-2" title="Link to this equation">#</a></span>\[
-J_{2} = \frac{1}{6}((\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + (\sigma_{3}-\sigma_{1})^{2})
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-2">
+<span class="eqno">(12)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-2" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{6}((\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + (\sigma_{3}-\sigma_{1})^{2}),
 \]</div>
-<p>代入 <span class="math notranslate nohighlight">\(s_{i} = \sigma_{i} - \frac{I_{1}}{3}\)</span> 到式 <a class="reference internal" href="#equation-sec2-eq-2nd-parinvar-1">(11)</a>，整理得到式 <a class="reference internal" href="#equation-sec2-eq-2nd-parinvar-2">(12)</a></p>
+<p>代入 <span class="math notranslate nohighlight">\(s_{i} = \sigma_{i} - \frac{I_{1}}{3}\)</span> 到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-1">(11)</a>，整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-2">(12)</a></p>
 <ol class="arabic simple" start="3">
 <li><p>‌应力不变量组合形式</p></li>
 </ol>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-2nd-parinvar-3">
-<span class="eqno">(13)<a class="headerlink" href="#equation-sec2-eq-2nd-parinvar-3" title="Link to this equation">#</a></span>\[
-J_{2} = \frac{I_{1}^{2}}{3} - I_{2}
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-3">
+<span class="eqno">(13)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-3" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{I_{1}^{2}}{3} - I_{2},
 \]</div>
-<p>代入 <span class="math notranslate nohighlight">\(I_{1} = \sigma_{1} + \sigma_{2} + \sigma_{3}\)</span> 和 <span class="math notranslate nohighlight">\(I_{2}=\sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}\)</span> 到式 <a class="reference internal" href="#equation-sec2-eq-2nd-parinvar-2">(12)</a>，整理得到式 <a class="reference internal" href="#equation-sec2-eq-2nd-parinvar-3">(13)</a></p>
+<p>代入 <span class="math notranslate nohighlight">\(I_{1} = \sigma_{1} + \sigma_{2} + \sigma_{3}\)</span> 和 <span class="math notranslate nohighlight">\(I_{2}=\sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}\)</span> 到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-2">(12)</a>，整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-3">(13)</a></p>
 <ol class="arabic simple" start="4">
 <li><p>‌一般应力分量形式</p></li>
 </ol>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-2nd-parinvar-4">
-<span class="eqno">(14)<a class="headerlink" href="#equation-sec2-eq-2nd-parinvar-4" title="Link to this equation">#</a></span>\[
-J_{2} = \frac{1}{6} \left[ (\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 + 6(\sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2) \right]
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-4">
+<span class="eqno">(14)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-4" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{6} \left[ (\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 + 6(\sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2) \right],
 \]</div>
 <p>代入</p>
 <div class="math notranslate nohighlight">
@@ -596,23 +610,90 @@ I_{1} = \sigma_{11}+\sigma_{22}+\sigma_{33}\]</div>
 \[
 I_{2}=\sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{33}\sigma_{11} - \sigma_{12}^{2} -\sigma_{23}^{2}-\sigma_{31}^{2}
 \]</div>
-<p>到式 <a class="reference internal" href="#equation-sec2-eq-2nd-parinvar-3">(13)</a> 整理得到式 <a class="reference internal" href="#equation-sec2-eq-2nd-parinvar-4">(14)</a></p>
+<p>到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-3">(13)</a> 整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-4">(14)</a></p>
 </div>
 </section>
 <section id="id11">
 <h4>第三偏不变量<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
-J_{3} = \det(\mathbf{S}),
+J_{3} = s_{1}s_{2}s_{3}=\det(\mathbf{s}),
 \]</div>
+<p><span class="math notranslate nohighlight">\(J_{3}\)</span> 在屈服准则、破坏模式分析及本构模型中有重要应用</p>
 </section>
 </section>
 </section>
 <section id="id12">
 <h2>应变张量不变量<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-</section>
+<p>对于应变张量 <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span>（对称张量），<span class="math notranslate nohighlight">\(\varepsilon_{1},\varepsilon_{2},\varepsilon_{3}\)</span> 是三个主应变，其大小等于 <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 的特征值</p>
 <section id="id13">
-<h2>应变率张量不变量<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<h3>主不变量<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h4>第一主不变量<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-1st-priinvar">
+<span class="eqno">(15)<a class="headerlink" href="#equation-sec2-eq-strain-1st-priinvar" title="Link to this equation">#</a></span>\[
+I_{1} = \varepsilon_{1}+\varepsilon_{2}+\varepsilon_{3} = \text{tr}(\boldsymbol{\sigma}) := \varepsilon_{ii},
+\]</div>
+</section>
+<section id="id15">
+<h4>第二主不变量<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-2nd-priinvar">
+<span class="eqno">(16)<a class="headerlink" href="#equation-sec2-eq-strain-2nd-priinvar" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\begin{aligned}
+I_{2} &amp;= \varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\varepsilon_{3}\varepsilon_{1} \\
+&amp;=\frac{1}{2}((\varepsilon_{1}+\varepsilon_{2}+\varepsilon_{3})^2 - (\varepsilon_{1}^2+\varepsilon_{2}^2+\varepsilon_{3}^2)) \\
+&amp;= \frac{1}{2}\left(\text{tr}(\boldsymbol{\varepsilon}\right)^2 - \text{tr}(\boldsymbol{\varepsilon}^2))\\
+&amp;=\frac{1}{2}(\varepsilon_{ii}\varepsilon_{jj} - \varepsilon_{ij}\varepsilon_{ij}) \\
+&amp;=\frac{1}{2}((\varepsilon_{11}+\varepsilon_{22}+\varepsilon_{33})^2 - (\varepsilon_{11}^{2}+\varepsilon_{22}^{2}+\varepsilon_{33}^{2}+2(\varepsilon_{12}\varepsilon_{21} +\varepsilon_{23}\varepsilon_{32}+\varepsilon_{31}\varepsilon_{13})))\\
+&amp;=\varepsilon_{11}\varepsilon_{22}+\varepsilon_{22}\varepsilon_{33}+\varepsilon_{33}\varepsilon_{11} - \varepsilon_{12}^{2} -\varepsilon_{23}^{2}-\varepsilon_{31}^{2},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+</section>
+<section id="id16">
+<h4>第三主不变量<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-3rd-priinvar">
+<span class="eqno">(17)<a class="headerlink" href="#equation-sec2-eq-strain-3rd-priinvar" title="Link to this equation">#</a></span>\[
+I_{3} = \varepsilon_{1}\varepsilon_{2}\varepsilon_{3} = \det(\boldsymbol{\varepsilon}),
+\]</div>
+</section>
+</section>
+<section id="id17">
+<h3>偏不变量<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>将应变张量分解为<strong>球形张量</strong>（体积应变<span class="math notranslate nohighlight">\(\rightarrow\)</span>体积变化）和<strong>偏斜张量</strong>（剪切应变<span class="math notranslate nohighlight">\(\rightarrow\)</span>形状变化）的和</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\varepsilon} = \frac{I_{1}}{3}\mathbf{I}+\mathbf{e},
+\]</div>
+<p>偏应变张量 <span class="math notranslate nohighlight">\(\mathbf{e} = \boldsymbol{\varepsilon}-\frac{I_{1}}{3}\mathbf{I}\)</span>，是从总应变张量中去除体积应变后的部分，反映了材料内部的纯剪切变形。<span class="math notranslate nohighlight">\(\mathbf{e}\)</span> 的特征根</p>
+<div class="math notranslate nohighlight">
+\[
+e_{i}=\sigma_{i}-\frac{I_{1}}{3}
+\]</div>
+<p>称为<strong>主偏应变</strong>，满足</p>
+<div class="math notranslate nohighlight">
+\[
+e_{1}+e_{2}+e_{3} = 0.
+\]</div>
+<section id="id18">
+<h4>第一偏不变量<a class="headerlink" href="#id18" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-1st-parinvar">
+<span class="eqno">(18)<a class="headerlink" href="#equation-sec2-eq-strain-1st-parinvar" title="Link to this equation">#</a></span>\[
+J_{1} = \text{tr}(\mathbf{e})\equiv0,
+\]</div>
+<p>表明偏应变张量仅描述剪切变形，与体积变形无关</p>
+</section>
+<section id="id19">
+<h4>第二偏不变量<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+</section>
+<section id="id20">
+<h4>第三偏不变量<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="id21">
+<h2>应变率张量不变量<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -696,8 +777,22 @@ J_{3} = \det(\mathbf{S}),
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">应变张量不变量</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">应变率张量不变量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">应变张量不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">主不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">第一主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">第二主不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">第三主不变量</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">偏不变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">第一偏不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">第二偏不变量</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">第三偏不变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">应变率张量不变量</a></li>
 </ul>
   </nav></div>
 
