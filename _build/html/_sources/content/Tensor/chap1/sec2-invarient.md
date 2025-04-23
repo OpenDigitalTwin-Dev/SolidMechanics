@@ -171,6 +171,10 @@ $J_{3}$ 在屈服准则、破坏模式分析及本构模型中有重要应用
 
 ## 应变张量不变量
 
+<span class="gray-text">
+完全类似于应力张量不变量
+</span>
+
 对于应变张量 $\boldsymbol{\varepsilon}$（对称张量），$\varepsilon_{1},\varepsilon_{2},\varepsilon_{3}$ 是三个主应变，其大小等于 $\boldsymbol{\varepsilon}$ 的特征值
 
 ### 主不变量
