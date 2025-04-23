@@ -85,7 +85,12 @@ $$
 单位体积的弹性应变能表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量
 
 $$
-W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}=\frac{1}{2}
+\begin{equation}
+\begin{aligned}
+W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}&=\frac{1}{2}(s_{ij}+\frac{1}{3}\delta_{ij}\sigma_{kk})(e_{ij}+\frac{1}{3}\delta_{ij}\varepsilon_{kk})\\
+&=\frac{1}{2}s_{ij}e_{ij}+\frac{1}{6}\sigma_{ii}e_{jj},
+\end{aligned}
+\end{equation}
 $$
 
 :::

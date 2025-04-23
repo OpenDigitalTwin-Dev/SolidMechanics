@@ -85,7 +85,38 @@ $$
 单位体积的弹性应变能表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量
 
 $$
-W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}=\frac{1}{2}
+\begin{equation}
+\begin{aligned}
+W &= \frac{1}{2}\sigma_{ij}\varepsilon_{ij}=\frac{1}{2}(s_{ij}+\frac{1}{3}\delta_{ij}\sigma_{kk})(e_{ij}+\frac{1}{3}\delta_{ij}\varepsilon_{kk})\\
+&=\frac{1}{2}[s_{ij}e_{ij}+\frac{1}{3}\delta_{ij}s_{ij}\varepsilon_{kk}+\frac{1}{3}\delta_{ij}e_{ij}\sigma_{kk}+\frac{1}{9}\delta_{ij}\delta_{ij}\sigma_{kk}\varepsilon_{ll}]
+\end{aligned}
+\end{equation}
+$$
+
+因为
+
+$$
+\begin{equation}
+\begin{aligned}
+\delta_{ij}s_{ij}\varepsilon_{kk}&=s_{ii}\varepsilon_{kk} = 0,\\
+\delta_{ij}e_{ij}\varepsilon_{kk}&=e_{ii}\varepsilon_{kk} = 0,
+\end{aligned}
+\end{equation}
+$$
+
+而
+
+$$
+\delta_{ij}\delta_{ij}\sigma_{kk}\varepsilon_{ll}=3\sigma_{kk}\varepsilon_{ll},
+$$
+
+因此
+
+$$
+W = \frac{1}{2}s_{ij}e_{ij} + \frac{1}{6}\sigma_{ii}\varepsilon_{jj}.
+
+
+
 $$
 
 :::

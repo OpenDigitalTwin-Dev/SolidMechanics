@@ -172,7 +172,7 @@ $J_{3}$ 在屈服准则、破坏模式分析及本构模型中有重要应用
 ## 应变张量不变量
 
 <span class="gray-text">
-完全类似于应力张量不变量
+与应力张量不变量形式完全一致
 </span>
 
 对于应变张量 $\boldsymbol{\varepsilon}$（对称张量），$\varepsilon_{1},\varepsilon_{2},\varepsilon_{3}$ 是三个主应变，其大小等于 $\boldsymbol{\varepsilon}$ 的特征值
@@ -182,7 +182,7 @@ $J_{3}$ 在屈服准则、破坏模式分析及本构模型中有重要应用
 #### 第一主不变量
 
 $$
-I_{1} = \varepsilon_{1}+\varepsilon_{2}+\varepsilon_{3} = \text{tr}(\boldsymbol{\sigma}) := \varepsilon_{ii},
+I_{1} = \varepsilon_{1}+\varepsilon_{2}+\varepsilon_{3} = \text{tr}(\boldsymbol{\varepsilon}) := \varepsilon_{ii},
 $$ (sec2-eq:strain-1st-priinvar)
 
 #### 第二主不变量
@@ -217,7 +217,7 @@ $$
 偏应变张量 $\mathbf{e} = \boldsymbol{\varepsilon}-\frac{I_{1}}{3}\mathbf{I}$，是从总应变张量中去除体积应变后的部分，反映了材料内部的纯剪切变形。$\mathbf{e}$ 的特征根 
 
 $$
-e_{i}=\sigma_{i}-\frac{I_{1}}{3}
+e_{i}=\varepsilon_{i}-\frac{I_{1}}{3}
 $$
 
 称为**主偏应变**，满足
@@ -236,6 +236,49 @@ $$ (sec2-eq:strain-1st-parinvar)
 
 #### 第二偏不变量
 
+$$
+J_{2} = \frac{1}{2}\mathbf{e}:\mathbf{e} = \frac{1}{2}e_{ij}e_{ij},
+$$ (sec2-eq:strain-2nd-parinvar-0)
+
+
+
+:::{admonition} 等价形式
+:class: tip, dropdown
+
+1. ‌主偏应力平方和形式
+
+$$
+J_{2} = \frac{1}{2}(e_{1}^{2} + e_{2}^{2} + e_{3}^{2}),
+$$ (sec2-eq:strain-2nd-parinvar-1)
+
+
+2. 主应力差形式
+
+$$
+J_{2} = \frac{1}{6}((\varepsilon_{1}-\varepsilon_{2})^{2} + (\varepsilon_{2}-\varepsilon_{3})^{2} + (\varepsilon_{3}-\varepsilon_{1})^{2}),
+$$ (sec2-eq:strain-2nd-parinvar-2)
+
+3. ‌应力不变量组合形式
+
+$$
+J_{2} = \frac{I_{1}^{2}}{3} - I_{2},
+$$ (sec2-eq:stress-2nd-parinvar-3)
+
+4. ‌一般应力分量形式
+
+$$
+J_{2} = \frac{1}{6} \left[ (\varepsilon_{11} - \varepsilon_{22})^2 + (\varepsilon_{22} - \varepsilon_{33})^2 + (\varepsilon_{33} - \varepsilon_{11})^2 + 6(\varepsilon_{12}^2 + \varepsilon_{23}^2 + \varepsilon_{31}^2) \right],
+$$ (sec2-eq:stress-2nd-parinvar-4)
+
+
+:::
+
+
 #### 第三偏不变量
+
+$$
+J_{3} = e_{1}e_{2}e_{3}=\det(\mathbf{e}),
+$$
+
 
 ## 应变率张量不变量

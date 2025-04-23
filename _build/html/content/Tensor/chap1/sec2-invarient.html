@@ -590,15 +590,15 @@ J_{2} = \frac{1}{6}((\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + 
 <li><p>‌应力不变量组合形式</p></li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-3">
-<span class="eqno">(13)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-3" title="Link to this equation">#</a></span>\[
 J_{2} = \frac{I_{1}^{2}}{3} - I_{2},
 \]</div>
-<p>代入 <span class="math notranslate nohighlight">\(I_{1} = \sigma_{1} + \sigma_{2} + \sigma_{3}\)</span> 和 <span class="math notranslate nohighlight">\(I_{2}=\sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}\)</span> 到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-2">(12)</a>，整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-3">(13)</a></p>
+<p>代入 <span class="math notranslate nohighlight">\(I_{1} = \sigma_{1} + \sigma_{2} + \sigma_{3}\)</span> 和 <span class="math notranslate nohighlight">\(I_{2}=\sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}\)</span> 到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-2">(12)</a>，整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-3">(22)</a></p>
 <ol class="arabic simple" start="4">
 <li><p>‌一般应力分量形式</p></li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-4">
-<span class="eqno">(14)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-4" title="Link to this equation">#</a></span>\[
+<span class="eqno">(23)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-4" title="Link to this equation">#</a></span>\[
 J_{2} = \frac{1}{6} \left[ (\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 + 6(\sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2) \right],
 \]</div>
 <p>代入</p>
@@ -610,7 +610,7 @@ I_{1} = \sigma_{11}+\sigma_{22}+\sigma_{33}\]</div>
 \[
 I_{2}=\sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{33}\sigma_{11} - \sigma_{12}^{2} -\sigma_{23}^{2}-\sigma_{31}^{2}
 \]</div>
-<p>到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-3">(13)</a> 整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-4">(14)</a></p>
+<p>到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-3">(22)</a> 整理得到式 <a class="reference internal" href="#equation-sec2-eq-stress-2nd-parinvar-4">(23)</a></p>
 </div>
 </section>
 <section id="id11">
@@ -626,7 +626,7 @@ J_{3} = s_{1}s_{2}s_{3}=\det(\mathbf{s}),
 <section id="id12">
 <h2>应变张量不变量<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <span class="gray-text">
-完全类似于应力张量不变量
+与应力张量不变量形式完全一致
 </span>
 <p>对于应变张量 <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span>（对称张量），<span class="math notranslate nohighlight">\(\varepsilon_{1},\varepsilon_{2},\varepsilon_{3}\)</span> 是三个主应变，其大小等于 <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 的特征值</p>
 <section id="id13">
@@ -635,7 +635,7 @@ J_{3} = s_{1}s_{2}s_{3}=\det(\mathbf{s}),
 <h4>第一主不变量<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-strain-1st-priinvar">
 <span class="eqno">(15)<a class="headerlink" href="#equation-sec2-eq-strain-1st-priinvar" title="Link to this equation">#</a></span>\[
-I_{1} = \varepsilon_{1}+\varepsilon_{2}+\varepsilon_{3} = \text{tr}(\boldsymbol{\sigma}) := \varepsilon_{ii},
+I_{1} = \varepsilon_{1}+\varepsilon_{2}+\varepsilon_{3} = \text{tr}(\boldsymbol{\varepsilon}) := \varepsilon_{ii},
 \]</div>
 </section>
 <section id="id15">
@@ -672,7 +672,7 @@ I_{3} = \varepsilon_{1}\varepsilon_{2}\varepsilon_{3} = \det(\boldsymbol{\vareps
 <p>偏应变张量 <span class="math notranslate nohighlight">\(\mathbf{e} = \boldsymbol{\varepsilon}-\frac{I_{1}}{3}\mathbf{I}\)</span>，是从总应变张量中去除体积应变后的部分，反映了材料内部的纯剪切变形。<span class="math notranslate nohighlight">\(\mathbf{e}\)</span> 的特征根</p>
 <div class="math notranslate nohighlight">
 \[
-e_{i}=\sigma_{i}-\frac{I_{1}}{3}
+e_{i}=\varepsilon_{i}-\frac{I_{1}}{3}
 \]</div>
 <p>称为<strong>主偏应变</strong>，满足</p>
 <div class="math notranslate nohighlight">
@@ -689,9 +689,48 @@ J_{1} = \text{tr}(\mathbf{e})\equiv0,
 </section>
 <section id="id19">
 <h4>第二偏不变量<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-2nd-parinvar-0">
+<span class="eqno">(19)<a class="headerlink" href="#equation-sec2-eq-strain-2nd-parinvar-0" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{2}\mathbf{e}:\mathbf{e} = \frac{1}{2}e_{ij}e_{ij},
+\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">等价形式</p>
+<ol class="arabic simple">
+<li><p>‌主偏应力平方和形式</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-2nd-parinvar-1">
+<span class="eqno">(20)<a class="headerlink" href="#equation-sec2-eq-strain-2nd-parinvar-1" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{2}(e_{1}^{2} + e_{2}^{2} + e_{3}^{2}),
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>主应力差形式</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-strain-2nd-parinvar-2">
+<span class="eqno">(21)<a class="headerlink" href="#equation-sec2-eq-strain-2nd-parinvar-2" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{6}((\varepsilon_{1}-\varepsilon_{2})^{2} + (\varepsilon_{2}-\varepsilon_{3})^{2} + (\varepsilon_{3}-\varepsilon_{1})^{2}),
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>‌应力不变量组合形式</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-3">
+<span class="eqno">(22)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-3" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{I_{1}^{2}}{3} - I_{2},
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>‌一般应力分量形式</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-stress-2nd-parinvar-4">
+<span class="eqno">(23)<a class="headerlink" href="#equation-sec2-eq-stress-2nd-parinvar-4" title="Link to this equation">#</a></span>\[
+J_{2} = \frac{1}{6} \left[ (\varepsilon_{11} - \varepsilon_{22})^2 + (\varepsilon_{22} - \varepsilon_{33})^2 + (\varepsilon_{33} - \varepsilon_{11})^2 + 6(\varepsilon_{12}^2 + \varepsilon_{23}^2 + \varepsilon_{31}^2) \right],
+\]</div>
+</div>
 </section>
 <section id="id20">
 <h4>第三偏不变量<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+J_{3} = e_{1}e_{2}e_{3}=\det(\mathbf{e}),
+\]</div>
 </section>
 </section>
 </section>

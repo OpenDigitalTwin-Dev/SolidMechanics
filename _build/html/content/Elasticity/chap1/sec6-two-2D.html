@@ -468,9 +468,9 @@ document.write(`
 <p>因此，<span class="math notranslate nohighlight">\(\gamma_{zx} = \gamma_{zy} = 0\)</span></p>
 <p>由于薄板很薄，且作用力不随厚度变化，因此可以认为应力分量 <span class="math notranslate nohighlight">\(\sigma_{xx},\sigma_{yy}, \sigma_{xy}\)</span> 和应变分量 <span class="math notranslate nohighlight">\(\varepsilon_{xx},\varepsilon_{yy}, \gamma_{xy}\)</span> 是关于 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数，不随 <span class="math notranslate nohighlight">\(z\)</span> 变化</p>
 <p>这类问题被称为<strong>平面应力问题</strong>，
-此时，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(24)</a> 可简化为</p>
+此时，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(29)</a> 可简化为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-physical">
-<span class="eqno">(26)<a class="headerlink" href="#equation-sec6-eq-2d-stress-physical" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(31)<a class="headerlink" href="#equation-sec6-eq-2d-stress-physical" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\varepsilon_{xx} = \frac{1}{E} ( \sigma_{xx} - \nu \sigma_{yy} ),\\
@@ -490,7 +490,7 @@ document.write(`
 <p>平衡方程+几何方程+本构方程</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-eq">
-<span class="eqno">(27)<a class="headerlink" href="#equation-sec6-eq-2d-stress-eq" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(32)<a class="headerlink" href="#equation-sec6-eq-2d-stress-eq" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
@@ -530,7 +530,7 @@ document.write(`
 \[
 \varepsilon_{zz} = 0,\quad \sigma_{zx} = 0,\quad \sigma_{zy}=0.
 \]</div>
-<p>由胡克定律（见<a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(24)</a>），有</p>
+<p>由胡克定律（见<a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(29)</a>），有</p>
 <div class="math notranslate nohighlight">
 \[
 \gamma_{zx} = 0,\quad \gamma_{zy} = 0.
@@ -539,9 +539,9 @@ document.write(`
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\(\sigma_{zz}\)</span> 一般不为 0，以抵消 <span class="math notranslate nohighlight">\(z\)</span> 方向上可能产生的应变</p>
 </aside>
-<p>代入 <span class="math notranslate nohighlight">\(\sigma_{zz}=\nu(\sigma_{xx} + \sigma_{yy})\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{zz}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(24)</a> 可简化为</p>
+<p>代入 <span class="math notranslate nohighlight">\(\sigma_{zz}=\nu(\sigma_{xx} + \sigma_{yy})\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{zz}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(29)</a> 可简化为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-physical">
-<span class="eqno">(28)<a class="headerlink" href="#equation-sec6-eq-2d-strain-physical" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(33)<a class="headerlink" href="#equation-sec6-eq-2d-strain-physical" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_{xx} - \frac{\nu}{1 - \nu} \sigma_{yy} \right), \\
@@ -556,7 +556,7 @@ document.write(`
 <p>平衡方程+几何方程+本构方程</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-eq">
-<span class="eqno">(29)<a class="headerlink" href="#equation-sec6-eq-2d-strain-eq" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(34)<a class="headerlink" href="#equation-sec6-eq-2d-strain-eq" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
@@ -577,7 +577,7 @@ document.write(`
 \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>在平面应力问题的方程 <a class="reference internal" href="#equation-sec6-eq-2d-stress-physical">(26)</a> 中，如果将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\nu\)</span> 分别替换为</p>
+<p>在平面应力问题的方程 <a class="reference internal" href="#equation-sec6-eq-2d-stress-physical">(31)</a> 中，如果将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\nu\)</span> 分别替换为</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{E}{1-\nu^2},\quad \frac{\nu}{1-\nu}
