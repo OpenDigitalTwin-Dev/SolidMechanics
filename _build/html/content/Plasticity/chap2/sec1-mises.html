@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>屈服准则 &#8212; 固体力学笔记</title>
+    <title>Mises 屈服准则 &#8212; 固体力学笔记</title>
   
   
   
@@ -61,10 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap1/sec2-yieldcriteria';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec1-mises';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="prev" title="单轴拉伸实验" href="sec1-uniaxial.html" />
+    <link rel="next" title="Tresca 屈服准则" href="sec2-tresca.html" />
+    <link rel="prev" title="屈服准则" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -219,9 +220,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">屈服准则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-tresca.html">Tresca 屈服准则</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -293,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap1/sec2-yieldcriteria.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec1-mises.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -323,7 +328,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Plasticity/chap1/sec2-yieldcriteria.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap2/sec1-mises.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -407,7 +412,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>屈服准则</h1>
+    <h1>Mises 屈服准则</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -417,9 +422,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">屈服面</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mises">Mises 屈服准则</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tresca">Tresca 屈服准则</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">弹性应变能</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">八面体剪切应力</a></li>
 </ul>
             </nav>
         </div>
@@ -431,50 +435,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>屈服准则<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<span class="gray-text">
-屈服准则用于确定导致材料永久变形所需的临界应力
-</span>
-<section id="id2">
-<h2>屈服面<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在经典速率无关塑性理论中，<strong>屈服面</strong>是核心概念。它定义了塑性变形阈值处的多轴应力状态，是‌区分弹性变形与塑性变形的临界边界</p>
-<ul class="simple">
-<li><p>当应力状态位于屈服面‌内部‌时，材料仅发生‌弹性变形</p></li>
-<li><p>当应力状态‌达到或超越‌屈服面时，材料进入‌塑性变形</p></li>
-</ul>
-<p>由于材料的应变硬化，屈服面随着塑性变形的进展而演变</p>
-<p>屈服面可以表现为六维应力空间中的超曲面</p>
-<div class="math notranslate nohighlight">
-\[
-f(\sigma_{ij},H) = 0,
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> 是应力张量的分量，<span class="math notranslate nohighlight">\(H\)</span> 是硬化参数，描述材料因塑性变形导致的硬化行为</p>
-<p>对于各向同性的材料，塑性变形的开始不依赖于主应力的方向，仅取决于它们的大小，因此屈服面可以通过<a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html"><span class="std std-doc">应力不变量</span></a>表示</p>
-<div class="math notranslate nohighlight">
-\[
-f(I_{1},I_{2},I_{3}) = 0,
-\]</div>
-<p>对于中等压力下的非多孔金属，屈服不会受到静水压力（平均应力）的影响，因此屈服曲面可以表示为<a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html"><span class="std std-doc">偏应力不变量</span></a>的函数</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(J_{1} = 0\)</span></p>
-</aside>
-<div class="math notranslate nohighlight">
-\[
-f(J_{2},J_{3}) = 0,
-\]</div>
-</section>
-<section id="mises">
-<h2>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="mises">
+<h1>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h1>
 <p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据</p>
 <div class="math notranslate nohighlight">
 \[
-k^{2}=J_{2},
+\sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]},
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(k\)</span> 是<strong>纯剪切变形</strong>下的屈服应力</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">单轴拉伸</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{\text{mises}}\)</span> 也被称为等效应力</p>
+<p>设<strong>纯剪切变形</strong>下的屈服应力为 <span class="math notranslate nohighlight">\(k\)</span>，此时</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{1}=k,\quad\sigma_{2} = 0,\quad \sigma_{3} = -k,
+\]</div>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
+J_{2} = k^{2}\quad \Longrightarrow\quad k = \sqrt{J_{2}}.
+\]</div>
 <p>设<strong>单轴拉伸</strong>下的屈服应力为 <span class="math notranslate nohighlight">\(Y\)</span>，此时</p>
 <div class="math notranslate nohighlight">
 \[
@@ -483,37 +461,147 @@ k^{2}=J_{2},
 <p>得到</p>
 <div class="math notranslate nohighlight">
 \[
-J_{2} = \frac{Y^2}{3},
+J_{2} = \frac{Y^2}{3} \quad \Longrightarrow\quad Y=\sqrt{3J_{2}},
 \]</div>
 <p>因此</p>
 <div class="math notranslate nohighlight">
 \[
-k^2=\frac{Y^{2}}{3}\quad \Longrightarrow\quad k=\frac{Y}{\sqrt{3}},
+Y = \sqrt{3}k,
 \]</div>
-<p>这表明，纯剪切屈服应力 <span class="math notranslate nohighlight">\(k\)</span> 与单轴拉伸屈服应力 <span class="math notranslate nohighlight">\(Y\)</span> 的比值为 <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{3}}\)</span></p>
-<p>对于各向同性金属材料，这与实验结果高度一致</p>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Von Mises 准则的物理解释</p>
-<p><strong>弹性应变能</strong></p>
-<p>单位体积的弹性应变能表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>
+<p>这表明，单轴拉伸屈服应力 <span class="math notranslate nohighlight">\(Y\)</span> 与纯剪切屈服应力 <span class="math notranslate nohighlight">\(k\)</span> 的比值为 <span class="math notranslate nohighlight">\(\sqrt{3}\)</span>，对于各向同性金属材料，这与实验结果高度一致</p>
+<section id="id1">
+<h2>弹性应变能<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>单位体积的弹性应变能（弹性应变能密度）表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>
+<div class="math notranslate nohighlight" id="equation-sec1-eq-energy-elastic-strain-01">
+<span class="eqno">(67)<a class="headerlink" href="#equation-sec1-eq-energy-elastic-strain-01" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{equation}
+\begin{aligned}
+W &amp;= \frac{1}{2}\sigma_{ij}\varepsilon_{ij}=\frac{1}{2}(s_{ij}+\frac{1}{3}\delta_{ij}\sigma_{kk})(e_{ij}+\frac{1}{3}\delta_{ij}\varepsilon_{kk})\\
+&amp;=\frac{1}{2}[s_{ij}e_{ij}+\frac{1}{3}\delta_{ij}s_{ij}\varepsilon_{kk}+\frac{1}{3}\delta_{ij}e_{ij}\sigma_{kk}+\frac{1}{9}\delta_{ij}\delta_{ij}\sigma_{kk}\varepsilon_{ll}],
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>因为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}&amp;=\frac{1}{2}(s_{ij}+\frac{1}{3}\delta_{ij}\sigma_{kk})(e_{ij}+\frac{1}{3}\delta_{ij}\varepsilon_{kk})\\
-&amp;=\frac{1}{2}s_{ij}e_{ij}+\frac{1}{6}\sigma_{ii}e_{jj},
+\delta_{ij}s_{ij}\varepsilon_{kk}&amp;=s_{ii}\varepsilon_{kk} = 0,\\
+\delta_{ij}e_{ij}\varepsilon_{kk}&amp;=e_{ii}\varepsilon_{kk} = 0,
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-</div>
-</section>
-<section id="tresca">
-<h2>Tresca 屈服准则<a class="headerlink" href="#tresca" title="Link to this heading">#</a></h2>
+<p>而</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\},
+\delta_{ij}\delta_{ij}\sigma_{kk}\varepsilon_{ll}=3\sigma_{kk}\varepsilon_{ll},
 \]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight" id="equation-sec1-eq-energy-elastic-strain-02">
+<span class="eqno">(68)<a class="headerlink" href="#equation-sec1-eq-energy-elastic-strain-02" title="Link to this equation">#</a></span>\[
+W = \frac{1}{6}\sigma_{ii}\varepsilon_{jj} + \frac{1}{2}s_{ij}e_{ij} = W_{\text{vol}} + W',
+\]</div>
+<p>通过分解应力和应变的球量与偏量，<strong>弹性应变能 <span class="math notranslate nohighlight">\(W\)</span> 被分解为球量相关的体积变形（膨胀或压缩）和偏张量相关的剪切部分（畸变能）</strong></p>
+<p>根据广义胡克定律</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{ij}=\lambda\delta_{ij}\varepsilon_{kk}+2\mu\varepsilon_{ij},
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\lambda\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 为拉梅常数，代入应变分解 <span class="math notranslate nohighlight">\(\varepsilon_{ij} = \frac{1}{3}\delta_{ij}\varepsilon_{kk}+e_{ij}\)</span> 到上式</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\sigma_{ij}&amp;=\lambda\delta_{ij}\varepsilon_{kk}+2\mu(\frac{1}{3}\delta_{ij}\varepsilon_{kk}+e_{ij})\\
+&amp;=(\lambda+\frac{2}{3}\mu)\delta_{ij}\varepsilon_{kk}+2\mu e_{ij},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>对比应力分解 <span class="math notranslate nohighlight">\(\sigma_{ij}=\frac{1}{3}\delta_{ij}\sigma_{kk}+s_{ij}\)</span>，当 <span class="math notranslate nohighlight">\(i\neq j\)</span> 时，有</p>
+<div class="math notranslate nohighlight">
+\[
+s_{ij} = 2\mu e_{ij},
+\]</div>
+<p>当 <span class="math notranslate nohighlight">\(i=j\)</span> 时</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{ii}=(\lambda+\frac{2}{3}\mu)\varepsilon_{kk}+2\mu e_{ii} = \frac{1}{3}\sigma_{kk} + s_{ii},
+\]</div>
+<p>上式对 <span class="math notranslate nohighlight">\(i\)</span> 求和，并记 <span class="math notranslate nohighlight">\(\sigma_{\text{vol}}=\sigma_{kk}\)</span> 和 <span class="math notranslate nohighlight">\(\varepsilon_{\text{vol}}=\varepsilon_{kk}\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[
+3(\lambda+\frac{2}{3}\mu)\varepsilon_{\text{vol}} = \frac{3}{3}\sigma_{\text{vol}}  \Longrightarrow (\lambda+\frac{2}{3}\mu)\varepsilon_{\text{vol}} = \frac{1}{3}\sigma_{\text{vol}},
+\]</div>
+<p>定义<strong>体积模量</strong></p>
+<div class="math notranslate nohighlight">
+\[
+K = \lambda+\frac{2}{3}\mu \Longrightarrow K\varepsilon_{\text{vol}} = \frac{1}{3}\sigma_{\text{vol}}.
+\]</div>
+<p>另一方面，这也得到 <span class="math notranslate nohighlight">\(s_{ij}=2\mu e_{ij}\)</span> 对 <span class="math notranslate nohighlight">\(i=j\)</span> 也成立，因此</p>
+<div class="math notranslate nohighlight">
+\[
+s_{ij} = 2\mu e_{ij}
+\]</div>
+<p>因此畸变能为</p>
+<div class="math notranslate nohighlight">
+\[
+W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2},
+\]</div>
+<p>因此，Von Mises 准则可以被解释为：当畸变能 <span class="math notranslate nohighlight">\(W'\)</span> 达到临界值 <span class="math notranslate nohighlight">\(\frac{1}{2\mu}J_{2}\)</span> 时，材料开始屈服</p>
+</section>
+<section id="id2">
+<h2>八面体剪切应力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>八面体平面是一个与三个主应力方向成等角的平面，这种对称性使得它成为分析材料在复杂应力状态下剪切应力的一个平均代表</p>
+<span class="gray-text">
+每个主应力轴有两个选取方向，因此一共能产生八个平面，形成八面体，故称为八面体平面
+</span>
+<p>八面体平面法向量为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{n} = \pm\frac{\sqrt{3}}{3}(\mathbf{n}_{1}+\mathbf{n}_{2}+\mathbf{n}_{3}),
+\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf{n}_{i}\)</span> 表示主应力 <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> 的方向的单位向量，即特征值 <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> 对应的单位特征向量，显然有 <span class="math notranslate nohighlight">\(\mathbf{n}\cdot \mathbf{n}_{i} = \pm\frac{\sqrt{3}}{3}\)</span></p>
+<p>根据应力张量矩阵的谱分解</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\boldsymbol{\sigma}
+&amp;=\begin{bmatrix}
+\mathbf{n}_{1} &amp; \mathbf{n}_{2} &amp; \mathbf{n}_{3}
+\end{bmatrix}
+\begin{bmatrix}
+\sigma_{1} &amp; &amp; \\ &amp; \sigma_{2} &amp; \\ &amp; &amp; \sigma_{3}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{n}_{1}^{T} \\ \mathbf{n}_{2}^{T} \\ \mathbf{n}_{3}^{T}
+\end{bmatrix}\\
+&amp;=\sigma_{1}\mathbf{n}_{1}\mathbf{n}_{1}^{T} + \sigma_{2}\mathbf{n}_{2}\mathbf{n}_{2}^{T} + \sigma_{3}\mathbf{n}_{3}\mathbf{n}_{3}^{T},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>于是八面体平面上的应力为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{t}_{\mathbf{n}} = \boldsymbol{\sigma}\mathbf{n} = \pm\frac{\sqrt{3}}{3}(\sigma_{1}\mathbf{n}_{1} + \sigma_{2}\mathbf{n}_{2} + \sigma_{3}\mathbf{n}_{3}),
+\]</div>
+<p>正应力为</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\mathbf{n}} = \mathbf{t}_{\mathbf{n}}\cdot\mathbf{n} = \frac{1}{3}(\sigma_{1} + \sigma_{2} + \sigma_{3}),
+\]</div>
+<p>切应力为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\tau_{\mathbf{n}} &amp;= \sqrt{|\mathbf{t}_{\mathbf{n}}|^{2} - \sigma_{\mathbf{n}}^{2}}\\
+&amp;= \frac{1}{3}\sqrt{(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + (\sigma_{3}-\sigma_{1})^{2}}\\
+&amp;= \sqrt{\frac{2}{3}J_{2}},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>因此，Von Mises 准则可以被解释为：当材料中所有可能平面上的平均剪应力达到临界值时，材料开始屈服</p>
 </section>
 </section>
 
@@ -530,7 +618,7 @@ W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}&amp;=\frac{1}{2}(s_{ij}+\frac{1}{3}\d
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Plasticity/chap1"
+            path: "./content/Plasticity/chap2"
         },
         predefinedOutput: true
     }
@@ -548,13 +636,22 @@ W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}&amp;=\frac{1}{2}(s_{ij}+\frac{1}{3}\d
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec1-uniaxial.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">单轴拉伸实验</p>
+        <p class="prev-next-title">屈服准则</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="sec2-tresca.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tresca 屈服准则</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -572,9 +669,8 @@ W = \frac{1}{2}\sigma_{ij}\varepsilon_{ij}&amp;=\frac{1}{2}(s_{ij}+\frac{1}{3}\d
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">屈服面</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mises">Mises 屈服准则</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tresca">Tresca 屈服准则</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">弹性应变能</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">八面体剪切应力</a></li>
 </ul>
   </nav></div>
 

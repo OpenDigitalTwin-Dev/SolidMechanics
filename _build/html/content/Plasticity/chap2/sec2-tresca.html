@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>两类平面问题 &#8212; 固体力学笔记</title>
+    <title>Tresca 屈服准则 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -61,11 +61,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/sec6-two-2D';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec2-tresca';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="边界条件" href="sec7-boundary.html" />
-    <link rel="prev" title="本构方程" href="sec5-physical-equa.html" />
+    <link rel="prev" title="Mises 屈服准则" href="sec1-mises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,24 +205,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">本构方程</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec9-numerical-simple.html">数值方法简介</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-mises.html">Mises 屈服准则</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tresca 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -297,7 +297,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Elasticity/chap1/sec6-two-2D.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec2-tresca.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -327,7 +327,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Elasticity/chap1/sec6-two-2D.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap2/sec2-tresca.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,7 +411,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>两类平面问题</h1>
+    <h1>Tresca 屈服准则</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,8 +421,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">平面应力问题</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平面应变问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">最大剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mohrcoulomb">Mohr–Coulomb 屈服准则</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#druckerprager">Drucker–Prager 屈服准则</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">各向同性屈服准则</a></li>
 </ul>
             </nav>
         </div>
@@ -434,159 +437,108 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>两类平面问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<span class="gray-text">
-弹性体作为空间物体，其实际问题通常为空间问题。然而，当弹性体具有特殊形状，且受特定外力与约束时，可将空间问题简化为平面问题，从而降低计算复杂度，同时满足工程精度要求
-</span>
-<p>接下来将讨论两类问题：</p>
-<ol class="arabic simple">
-<li><p><strong>平面应力问题</strong>：足够薄，厚度方向的应力可以忽略，研究平面内的力学行为</p></li>
-<li><p><strong>平面应变问题</strong>：足够长，长度方向的变形可以忽略，研究截面内的变形行为</p></li>
-</ol>
-<section id="id2">
-<h2>平面应力问题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>下图展示了<strong>等厚薄板</strong>的受力情况，其中厚度远小于板的长度与宽度</p>
-<figure class="align-default" id="sec5-fig-2d-stress">
-<a class="reference internal image-reference" href="../../../_images/2D-stress.png"><img alt="../../../_images/2D-stress.png" src="../../../_images/2D-stress.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">等厚薄板的受力情况</span><a class="headerlink" href="#sec5-fig-2d-stress" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>微观结构分析：厚度方向的应力难以积累</p>
-</aside>
-<p>薄板仅在边缘的 <span class="math notranslate nohighlight">\(x\)</span> 轴截面和 <span class="math notranslate nohighlight">\(y\)</span> 轴截面上受到不随厚度变化的外力，而在边缘的 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上无外力作用。由于薄板足够薄，因此在薄板内的任意一点都满足</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tresca">
+<h1>Tresca 屈服准则<a class="headerlink" href="#tresca" title="Link to this heading">#</a></h1>
+<p>Tresca 屈服准则，也称最大剪切应力准则：当最大剪切应力达到临界值时，材料开始发生塑性变形</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{zz}=0,\quad \sigma_{zx} = 0,\quad \sigma_{zy} = 0.
+\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\},
 \]</div>
-<p>此外，由切应力互等定理，有</p>
+<section id="id1">
+<h2>最大剪切应力<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>设法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 的平面上的应力为 <span class="math notranslate nohighlight">\(\mathbf{t}_{\mathbf{n}}\)</span>，正应力为 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span>，切应力为 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{xz} = 0,\quad \sigma_{yz} = 0.
+\tau_{\mathbf{n}}^{2} = |\mathbf{t}_{\mathbf{n}}|^{2} - \sigma_{\mathbf{n}}^{2} = \mathbf{n}^{T}\boldsymbol{\sigma}^{2}\mathbf{n} - (\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n})^{2},
 \]</div>
-<p>因此，<span class="math notranslate nohighlight">\(\gamma_{zx} = \gamma_{zy} = 0\)</span></p>
-<p>由于薄板很薄，且作用力不随厚度变化，因此可以认为应力分量 <span class="math notranslate nohighlight">\(\sigma_{xx},\sigma_{yy}, \sigma_{xy}\)</span> 和应变分量 <span class="math notranslate nohighlight">\(\varepsilon_{xx},\varepsilon_{yy}, \gamma_{xy}\)</span> 是关于 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数，不随 <span class="math notranslate nohighlight">\(z\)</span> 变化</p>
-<p>这类问题被称为<strong>平面应力问题</strong>，
-此时，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(29)</a> 可简化为</p>
-<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-physical">
-<span class="eqno">(31)<a class="headerlink" href="#equation-sec6-eq-2d-stress-physical" title="Link to this equation">#</a></span>\[\begin{split}
+<p>将 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 沿 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的单位特征向量 <span class="math notranslate nohighlight">\(\mathbf{n}_{1},\mathbf{n}_{2},\mathbf{n}_{3}\)</span> （对应的特征值分别为 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）分解</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{n} = l\mathbf{n}_{1}+m\mathbf{n}_{2}+k\mathbf{n}_{3},
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(l^2+m^2+k^2=1\)</span>， 于是</p>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-tau-1">
+<span class="eqno">(69)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
+\tau_{\mathbf{n}}^2 = l^{2}\sigma_{1}^{2}+m^{2}\sigma_{2}^{2}+k^{2}\sigma_{3}^{2}-(l^{2}\sigma_{1}+m^{2}\sigma_{2}+k^{2}\sigma_{3})^2,
+\]</div>
+<p>于是需在约束 <span class="math notranslate nohighlight">\(l^2+m^2+k^2=1\)</span> 下最大化 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}^2\)</span>，引入拉格朗日乘子 <span class="math notranslate nohighlight">\(\lambda\)</span>，构造目标函数</p>
+<div class="math notranslate nohighlight">
+\[
+L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
+\]</div>
+<p>函数 <span class="math notranslate nohighlight">\(L\)</span> 对 <span class="math notranslate nohighlight">\(l,m,k\)</span> 的导数为</p>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-l-der">
+<span class="eqno">(70)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\varepsilon_{xx} = \frac{1}{E} ( \sigma_{xx} - \nu \sigma_{yy} ),\\
-&amp;\varepsilon_{yy} = \frac{1}{E} (\sigma_{yy} - \nu \sigma_{xx} ),\\
-&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \sigma_{xy}.
+&amp;(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)l &amp;= 0 \\
+&amp;(\sigma_{2}^2-2\sigma_{\mathbf{n}}\sigma_{2} - \lambda)m &amp;= 0 \\
+&amp;(\sigma_{3}^2-2\sigma_{\mathbf{n}}\sigma_{3} - \lambda)k &amp;= 0
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(\varepsilon_{zz}\)</span> 可通过 <span class="math notranslate nohighlight">\(\varepsilon_{zz}=-\frac{\nu}{E} (\sigma_{xx} + \sigma_{yy})\)</span> 求得</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>物质的宏观形变源于微观分子结构及分子间作用力的耦合效应。因此，即使某方向无外力作用，内部应力传递仍可能导致该方向形变。</p>
-</div>
-<p>在<strong>平面应力问题</strong>中，所求解的方程组是</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>平衡方程+几何方程+本构方程</p>
-</aside>
-<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-stress-eq">
-<span class="eqno">(32)<a class="headerlink" href="#equation-sec6-eq-2d-stress-eq" title="Link to this equation">#</a></span>\[\begin{split}
+<p>不失一般性</p>
+<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(m=k=0\)</span>，此时 <span class="math notranslate nohighlight">\(l=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
+<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(l\neq0,m\neq0,k=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{\mathbf{n}}^2 = l^2\sigma_{1}^2+m^2\sigma_{2}^2 - (l^2\sigma_{1}+m^2\sigma_{2})^2,
+\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(m^2 = 1 - l^2\)</span>，并记 <span class="math notranslate nohighlight">\(\ell = l^2\)</span>，于是</p>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-tau-2">
+<span class="eqno">(71)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
-&amp;\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{xy}}{\partial x} + f_y = 0,\\
-&amp;\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
-&amp;\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
-&amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&amp;\varepsilon_{xx} = \frac{1}{E} ( \sigma_{xx} - \nu \sigma_{yy} ),\\
-&amp;\varepsilon_{yy} = \frac{1}{E} (\sigma_{yy} - \nu \sigma_{xx} ),\\
-&amp;\gamma_{xy} = \frac{2(1+\nu)}{E} \sigma_{xy},
+\tau_{\mathbf{n}}^2 &amp;= \ell\sigma_{1}^2+(1 - \ell)\sigma_{2}^2 - (\ell\sigma_{1}+(1 - \ell)\sigma_{2})^2\\
+&amp;=-(\sigma_{1}-\sigma_{2})^2\ell^2-(\sigma_{1}^2-\sigma_{2}^2 - 2(\sigma_{1}-\sigma_{2})\sigma_{2})\ell\\
+&amp;=-(\sigma_{1}-\sigma_{2})^2(\ell^2 - \ell),
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>求解变量为</p>
+<p>因此，当 <span class="math notranslate nohighlight">\(\ell = l^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(m^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a>，得到</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{xx}, \, \sigma_{yy}, \, \sigma_{xy}, \, \varepsilon_{xx}, \, \varepsilon_{yy}, \, \gamma_{xy}, \, u, \, v
+\tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
 \]</div>
+<p><strong>3.</strong> 若 <span class="math notranslate nohighlight">\(l\neq0,m\neq0,k\neq0\)</span>，则此时 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 都是二次方程 <span class="math notranslate nohighlight">\(\sigma^2-2\sigma_{\mathbf{n}}\sigma - \lambda = 0\)</span> 的根</p>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}=\sigma_{3}\)</span>，此时 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma} = Q^{T}(\sigma_{1}I)Q = \sigma_{1}I \quad\Longrightarrow\quad \tau_{\mathbf{n}}\equiv0
+\]</div>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}\neq\sigma_{3}\)</span>，此时</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-tau-3">
+<span class="eqno">(72)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
+\tau_{\mathbf{n}}^2 = (l^{2}+m^{2})\sigma_{1}^{2}+k^{2}\sigma_{3}^{2}-((l^{2}+m^{2})\sigma_{1}+k^{2}\sigma_{3})^2,
+\]</div>
+<p>记 <span class="math notranslate nohighlight">\(l^2+m^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(k^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(72)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(71)</a> 有完全一样的形式，由此可知极值为</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
+\]</div>
+<p>此时 <span class="math notranslate nohighlight">\(l^2+m^2=k^2=\frac{1}{2}\)</span></p>
+<p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(70)</a> 的对称性，得到</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{\mathbf{n}} \tau_{\mathbf{n}} = \frac{1}{2}\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1| \right\}.
+\]</div>
+<p>在与主应面呈 <span class="math notranslate nohighlight">\(45\)</span> 度夹角的平面处达到</p>
 </section>
-<section id="id3">
-<h2>平面应变问题<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>假设有<strong>无限长的等截面柱形体</strong>，柱面上受有平行于 <span class="math notranslate nohighlight">\(z\)</span> 轴截面且不随长度变化的力（面力、体力）或约束</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>柱体两端通常受到约束，使得长度方向的变形受到限制，即 <span class="math notranslate nohighlight">\(\varepsilon_{zz} = 0\)</span></p>
-</aside>
-<figure class="align-default" id="sec5-fig-2d-strain">
-<a class="reference internal image-reference" href="../../../_images/2D-strain.png"><img alt="../../../_images/2D-strain.png" src="../../../_images/2D-strain.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">等截面柱形体的受力情况</span><a class="headerlink" href="#sec5-fig-2d-strain" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>假设柱体无限长，则任意 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上的应力、应变和位移分量均不随 <span class="math notranslate nohighlight">\(z\)</span> 方向变化，仅为 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 的函数。
-此外，由于对称性，位移仅沿 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 方向发生，且 <span class="math notranslate nohighlight">\(z\)</span> 轴截面上各点的切应力均为 0，因此</p>
-<div class="math notranslate nohighlight">
-\[
-\varepsilon_{zz} = 0,\quad \sigma_{zx} = 0,\quad \sigma_{zy}=0.
-\]</div>
-<p>由胡克定律（见<a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(29)</a>），有</p>
-<div class="math notranslate nohighlight">
-\[
-\gamma_{zx} = 0,\quad \gamma_{zy} = 0.
-\]</div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(\sigma_{zz}\)</span> 一般不为 0，以抵消 <span class="math notranslate nohighlight">\(z\)</span> 方向上可能产生的应变</p>
-</aside>
-<p>代入 <span class="math notranslate nohighlight">\(\sigma_{zz}=\nu(\sigma_{xx} + \sigma_{yy})\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma_{zz}\)</span>，方程 <a class="reference internal" href="sec5-physical-equa.html#equation-sec5-eq-strain-stress-1">(29)</a> 可简化为</p>
-<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-physical">
-<span class="eqno">(33)<a class="headerlink" href="#equation-sec6-eq-2d-strain-physical" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{equation}
-\begin{aligned}
-&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_{xx} - \frac{\nu}{1 - \nu} \sigma_{yy} \right), \\
-&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_{yy} - \frac{\nu}{1 - \nu} \sigma_{xx} \right), \\
-&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \sigma_{xy}.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>在<strong>平面应变问题</strong>中，所求解的方程组是</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>平衡方程+几何方程+本构方程</p>
-</aside>
-<div class="math notranslate nohighlight" id="equation-sec6-eq-2d-strain-eq">
-<span class="eqno">(34)<a class="headerlink" href="#equation-sec6-eq-2d-strain-eq" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{equation}
-\begin{aligned}
-&amp;\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{yx}}{\partial y} + f_x = 0, \\
-&amp;\frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{xy}}{\partial x} + f_y = 0,\\
-&amp;\varepsilon_{xx} = \frac{\partial u}{\partial x}, \\
-&amp;\varepsilon_{yy} = \frac{\partial v}{\partial y}, \\
-&amp;\gamma_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y},\\
-&amp;\varepsilon_x = \frac{1 - \nu^2}{E} \left( \sigma_{xx} - \frac{\nu}{1 - \nu} \sigma_{yy} \right), \\
-&amp;\varepsilon_y = \frac{1 - \nu^2}{E} \left( \sigma_{yy} - \frac{\nu}{1 - \nu} \sigma_{xx} \right), \\
-&amp;\gamma_{xy} = \frac{2(1 + \nu)}{E} \sigma_{xy},
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>求解变量为</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{xx}, \, \sigma_{yy}, \, \sigma_{xy}, \, \varepsilon_{xx}, \, \varepsilon_{yy}, \, \gamma_{xy}, \, u, \, v
-\]</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>在平面应力问题的方程 <a class="reference internal" href="#equation-sec6-eq-2d-stress-physical">(31)</a> 中，如果将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\nu\)</span> 分别替换为</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{E}{1-\nu^2},\quad \frac{\nu}{1-\nu}
-\]</div>
-<p>就能够得到平面应变问题。如果已经得到平面应力问题的（解析）解，只需将 <span class="math notranslate nohighlight">\(E\)</span> 和 <span class="math notranslate nohighlight">\(\nu\)</span> 作同样的转换，就可以得到相应的平面应变问题的解</p>
-</div>
+<section id="mohrcoulomb">
+<h2>Mohr–Coulomb 屈服准则<a class="headerlink" href="#mohrcoulomb" title="Link to this heading">#</a></h2>
+</section>
+<section id="druckerprager">
+<h2>Drucker–Prager 屈服准则<a class="headerlink" href="#druckerprager" title="Link to this heading">#</a></h2>
+</section>
+<section id="gurson">
+<h2>Gurson 屈服准则（多孔金属）<a class="headerlink" href="#gurson" title="Link to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2>各向同性屈服准则<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -603,7 +555,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Elasticity/chap1"
+            path: "./content/Plasticity/chap2"
         },
         predefinedOutput: true
     }
@@ -621,22 +573,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec5-physical-equa.html"
+       href="sec1-mises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">本构方程</p>
+        <p class="prev-next-title">Mises 屈服准则</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="sec7-boundary.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">边界条件</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -654,8 +597,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">平面应力问题</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平面应变问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">最大剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mohrcoulomb">Mohr–Coulomb 屈服准则</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#druckerprager">Drucker–Prager 屈服准则</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">各向同性屈服准则</a></li>
 </ul>
   </nav></div>
 

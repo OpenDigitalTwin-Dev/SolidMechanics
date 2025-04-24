@@ -235,5 +235,5 @@ $$
 此时对应截面的法向量与主应力面之间的夹角为 $ 45^\circ $，此时正应力为 $\sigma_{n} = \frac{1}{2} (\sigma_1 + \sigma_2)$
 
 ```{note}
-对于三维情形，最大切应力为 $\tau_{n} = \frac{1}{2} (\sigma_1 - \sigma_3)$
+对于三维情形，参阅[最大剪切应力](../../Plasticity/chap2/sec2-tresca.md) 
 ```
