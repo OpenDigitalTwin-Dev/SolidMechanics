@@ -442,7 +442,17 @@ document.write(`
 <p>Tresca 屈服准则，也称最大剪切应力准则：当最大剪切应力达到临界值时，材料开始发生塑性变形</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\},
+\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y},
+\]</div>
+<p>类似于在 <a class="reference internal" href="sec1-mises.html"><span class="std std-doc">Mises 屈服准则</span></a>中，容易证明</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{y} = \frac{\sigma_{y}}{2}.
+\]</div>
+<p><span class="math notranslate nohighlight">\(\sigma_{\text{tresca}}\)</span> 也可以写为</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\text{tresca}} = \sigma_{\text{max}} - \sigma_{\text{min}}.
 \]</div>
 <section id="id1">
 <h2>最大剪切应力<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -500,6 +510,12 @@ L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
 \]</div>
+<p>截面法向量为</p>
+<div class="math notranslate nohighlight">
+\[
+(\pm\frac{\sqrt{2}}{2})\mathbf{n_{1}}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{2},
+\]</div>
+<p>与 <span class="math notranslate nohighlight">\(\sigma_{1}\)</span> 截面和 <span class="math notranslate nohighlight">\(\sigma_{2}\)</span> 截面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
 <p><strong>3.</strong> 若 <span class="math notranslate nohighlight">\(l\neq0,m\neq0,k\neq0\)</span>，则此时 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 都是二次方程 <span class="math notranslate nohighlight">\(\sigma^2-2\sigma_{\mathbf{n}}\sigma - \lambda = 0\)</span> 的根</p>
 <ul class="simple">
 <li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}=\sigma_{3}\)</span>，此时 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为</p></li>
@@ -520,13 +536,18 @@ L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
 \]</div>
-<p>此时 <span class="math notranslate nohighlight">\(l^2+m^2=k^2=\frac{1}{2}\)</span></p>
+<p>此时 <span class="math notranslate nohighlight">\(l^2+m^2=k^2=\frac{1}{2}\)</span>，截面法向量为</p>
+<div class="math notranslate nohighlight">
+\[
+l\ \mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-l^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
+\]</div>
+<p>与 <span class="math notranslate nohighlight">\(\sigma_{3}\)</span> 平面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
 <p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(70)</a> 的对称性，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \max_{\mathbf{n}} \tau_{\mathbf{n}} = \frac{1}{2}\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1| \right\}.
 \]</div>
-<p>在与主应面呈 <span class="math notranslate nohighlight">\(45\)</span> 度夹角的平面处达到</p>
+<p>在截面与主应力面呈 <span class="math notranslate nohighlight">\(45\)</span> 度夹角的平面处达到</p>
 </section>
 <section id="mohrcoulomb">
 <h2>Mohr–Coulomb 屈服准则<a class="headerlink" href="#mohrcoulomb" title="Link to this heading">#</a></h2>

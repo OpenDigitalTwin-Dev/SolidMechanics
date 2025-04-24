@@ -3,45 +3,40 @@
 Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据
 
 $$
-\sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]},
+\sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]}\geq\sigma_{y},
 $$
 
-$\sigma_{\text{mises}}$ 也被称为等效应力
-
-
-设**纯剪切变形**下的屈服应力为 $k$，此时
+$\sigma_{\text{mises}}$ 也被称为等效应力，$\sigma_{y}$ 是**单轴拉伸**下的屈服强度，于是在屈服面上
 
 $$
-\sigma_{1}=k,\quad\sigma_{2} = 0,\quad \sigma_{3} = -k,
+\sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
 $$
 
 得到
 
 $$
-J_{2} = k^{2}\quad \Longrightarrow\quad k = \sqrt{J_{2}}.
+J_{2} = \frac{\sigma_{y}^2}{3} \quad \Longrightarrow\quad \sqrt{3J_{2}}=\sigma_{y}.
 $$
 
-
-设**单轴拉伸**下的屈服应力为 $Y$，此时
+设**纯剪切变形**下的屈服强度为 $\tau_{y}$，于是在屈服面上
 
 $$
-\sigma_{1}=Y,\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
+\sigma_{1}=\tau_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = -\tau_{y},
 $$
 
 得到
 
 $$
-J_{2} = \frac{Y^2}{3} \quad \Longrightarrow\quad Y=\sqrt{3J_{2}},
+J_{2} = \tau_{y}^{2}\quad \Longrightarrow\quad \sqrt{J_{2}}=\tau_{y},
 $$
 
 因此
 
 $$
-Y = \sqrt{3}k,
+\sigma_{y} = \sqrt{3}\tau_{y},
 $$
 
-这表明，单轴拉伸屈服应力 $Y$ 与纯剪切屈服应力 $k$ 的比值为 $\sqrt{3}$，对于各向同性金属材料，这与实验结果高度一致
-
+这表明，单轴拉伸屈服强度 $\sigma_{y}$ 与纯剪切屈服强度 $\tau_{y}$ 的比值为 $\sqrt{3}$，这提供了拉伸屈服强度 $\sigma_{y}$ 和纯剪切屈服强度 $\tau_{y}$ 的换算关系
 
 ## 弹性应变能
 
@@ -131,10 +126,10 @@ $$
 因此畸变能为
 
 $$
-W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2},
+W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=\frac{\sigma_{y}^2}{6\mu}=\frac{\tau_{y}^2}{2\mu},
 $$
 
-因此，Von Mises 准则可以被解释为：当畸变能 $W'$ 达到临界值 $\frac{1}{2\mu}J_{2}$ 时，材料开始屈服
+因此，Von Mises 准则可以被解释为：当畸变能 $W'$ 达到临界值 $\frac{\sigma_{y}^2}{6\mu}$ 或 $\frac{\tau_{y}^2}{2\mu}$ 时，材料开始屈服
 
 
 
@@ -194,10 +189,11 @@ $$
 \begin{aligned}
 \tau_{\mathbf{n}} &= \sqrt{|\mathbf{t}_{\mathbf{n}}|^{2} - \sigma_{\mathbf{n}}^{2}}\\
 &= \frac{1}{3}\sqrt{(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + (\sigma_{3}-\sigma_{1})^{2}}\\
-&= \sqrt{\frac{2}{3}J_{2}},
+&= \sqrt{\frac{2}{3}J_{2}}
+= \frac{\sqrt{2}}{3}\sigma_{y} = \frac{\sqrt{2}}{\sqrt{3}}\tau_{y},
 \end{aligned}
 \end{equation}
 $$
 
-因此，Von Mises 准则可以被解释为：当材料中所有可能平面上的平均剪应力达到临界值时，材料开始屈服
+因此，Von Mises 准则可以被解释为：当材料中所有可能平面上的平均剪应力达到临界值 $\frac{\sqrt{2}}{3}\sigma_{y}$ 或 $\frac{\sqrt{2}}{\sqrt{3}}\tau_{y}$ 时，材料开始屈服
 

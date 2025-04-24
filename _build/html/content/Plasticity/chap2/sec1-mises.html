@@ -440,35 +440,34 @@ document.write(`
 <p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]},
+\sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]}\geq\sigma_{y},
 \]</div>
-<p><span class="math notranslate nohighlight">\(\sigma_{\text{mises}}\)</span> 也被称为等效应力</p>
-<p>设<strong>纯剪切变形</strong>下的屈服应力为 <span class="math notranslate nohighlight">\(k\)</span>，此时</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{\text{mises}}\)</span> 也被称为等效应力，<span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 是<strong>单轴拉伸</strong>下的屈服强度，于是在屈服面上</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{1}=k,\quad\sigma_{2} = 0,\quad \sigma_{3} = -k,
-\]</div>
-<p>得到</p>
-<div class="math notranslate nohighlight">
-\[
-J_{2} = k^{2}\quad \Longrightarrow\quad k = \sqrt{J_{2}}.
-\]</div>
-<p>设<strong>单轴拉伸</strong>下的屈服应力为 <span class="math notranslate nohighlight">\(Y\)</span>，此时</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}=Y,\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
+\sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
 \]</div>
 <p>得到</p>
 <div class="math notranslate nohighlight">
 \[
-J_{2} = \frac{Y^2}{3} \quad \Longrightarrow\quad Y=\sqrt{3J_{2}},
+J_{2} = \frac{\sigma_{y}^2}{3} \quad \Longrightarrow\quad \sqrt{3J_{2}}=\sigma_{y}.
+\]</div>
+<p>设<strong>纯剪切变形</strong>下的屈服强度为 <span class="math notranslate nohighlight">\(\tau_{y}\)</span>，于是在屈服面上</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{1}=\tau_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = -\tau_{y},
+\]</div>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
+J_{2} = \tau_{y}^{2}\quad \Longrightarrow\quad \sqrt{J_{2}}=\tau_{y},
 \]</div>
 <p>因此</p>
 <div class="math notranslate nohighlight">
 \[
-Y = \sqrt{3}k,
+\sigma_{y} = \sqrt{3}\tau_{y},
 \]</div>
-<p>这表明，单轴拉伸屈服应力 <span class="math notranslate nohighlight">\(Y\)</span> 与纯剪切屈服应力 <span class="math notranslate nohighlight">\(k\)</span> 的比值为 <span class="math notranslate nohighlight">\(\sqrt{3}\)</span>，对于各向同性金属材料，这与实验结果高度一致</p>
+<p>这表明，单轴拉伸屈服强度 <span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 与纯剪切屈服强度 <span class="math notranslate nohighlight">\(\tau_{y}\)</span> 的比值为 <span class="math notranslate nohighlight">\(\sqrt{3}\)</span>，这提供了拉伸屈服强度 <span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 和纯剪切屈服强度 <span class="math notranslate nohighlight">\(\tau_{y}\)</span> 的换算关系</p>
 <section id="id1">
 <h2>弹性应变能<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>单位体积的弹性应变能（弹性应变能密度）表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>
@@ -545,9 +544,9 @@ s_{ij} = 2\mu e_{ij}
 <p>因此畸变能为</p>
 <div class="math notranslate nohighlight">
 \[
-W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2},
+W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=\frac{\sigma_{y}^2}{6\mu}=\frac{\tau_{y}^2}{2\mu},
 \]</div>
-<p>因此，Von Mises 准则可以被解释为：当畸变能 <span class="math notranslate nohighlight">\(W'\)</span> 达到临界值 <span class="math notranslate nohighlight">\(\frac{1}{2\mu}J_{2}\)</span> 时，材料开始屈服</p>
+<p>因此，Von Mises 准则可以被解释为：当畸变能 <span class="math notranslate nohighlight">\(W'\)</span> 达到临界值 <span class="math notranslate nohighlight">\(\frac{\sigma_{y}^2}{6\mu}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\tau_{y}^2}{2\mu}\)</span> 时，材料开始屈服</p>
 </section>
 <section id="id2">
 <h2>八面体剪切应力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -597,11 +596,12 @@ W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2},
 \begin{aligned}
 \tau_{\mathbf{n}} &amp;= \sqrt{|\mathbf{t}_{\mathbf{n}}|^{2} - \sigma_{\mathbf{n}}^{2}}\\
 &amp;= \frac{1}{3}\sqrt{(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + (\sigma_{3}-\sigma_{1})^{2}}\\
-&amp;= \sqrt{\frac{2}{3}J_{2}},
+&amp;= \sqrt{\frac{2}{3}J_{2}}
+= \frac{\sqrt{2}}{3}\sigma_{y} = \frac{\sqrt{2}}{\sqrt{3}}\tau_{y},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>因此，Von Mises 准则可以被解释为：当材料中所有可能平面上的平均剪应力达到临界值时，材料开始屈服</p>
+<p>因此，Von Mises 准则可以被解释为：当材料中所有可能平面上的平均剪应力达到临界值 <span class="math notranslate nohighlight">\(\frac{\sqrt{2}}{3}\sigma_{y}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\sqrt{2}}{\sqrt{3}}\tau_{y}\)</span> 时，材料开始屈服</p>
 </section>
 </section>
 

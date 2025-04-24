@@ -3,7 +3,19 @@
 Tresca 屈服准则，也称最大剪切应力准则：当最大剪切应力达到临界值时，材料开始发生塑性变形
 
 $$
-\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\},
+\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y},
+$$
+
+类似于在 [Mises 屈服准则](./sec1-mises.md)中，容易证明
+
+$$
+\tau_{y} = \frac{\sigma_{y}}{2}.
+$$
+
+$\sigma_{\text{tresca}}$ 也可以写为
+
+$$
+\sigma_{\text{tresca}} = \sigma_{\text{max}} - \sigma_{\text{min}}.
 $$
 
 ## 最大剪切应力
@@ -73,6 +85,14 @@ $$
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
 $$
 
+截面法向量为 
+
+$$
+(\pm\frac{\sqrt{2}}{2})\mathbf{n_{1}}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{2},
+$$
+
+与 $\sigma_{1}$ 截面和 $\sigma_{2}$ 截面夹角为 $45$ 度
+
 **3.** 若 $l\neq0,m\neq0,k\neq0$，则此时 $\sigma_{1},\sigma_{2},\sigma_{3}$ 都是二次方程 $\sigma^2-2\sigma_{\mathbf{n}}\sigma - \lambda = 0$ 的根
 
 - 若 $\sigma_{1}=\sigma_{2}=\sigma_{3}$，此时 $\boldsymbol{\sigma}$ 为
@@ -93,7 +113,13 @@ $$
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
 $$
 
-此时 $l^2+m^2=k^2=\frac{1}{2}$
+此时 $l^2+m^2=k^2=\frac{1}{2}$，截面法向量为 
+
+$$
+l\ \mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-l^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
+$$
+
+与 $\sigma_{3}$ 平面夹角为 $45$ 度
 
 综上，考虑到方程 {eq}`sec2-eq:L-der` 的对称性，得到 
 
@@ -101,7 +127,7 @@ $$
 \max_{\mathbf{n}} \tau_{\mathbf{n}} = \frac{1}{2}\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1| \right\}.
 $$
 
-在与主应面呈 $45$ 度夹角的平面处达到
+在截面与主应力面呈 $45$ 度夹角的平面处达到
 
 ## Mohr–Coulomb 屈服准则
 
