@@ -18,6 +18,8 @@ $$
 \sigma_{\text{tresca}} = \sigma_{\text{max}} - \sigma_{\text{min}}.
 $$
 
+根据 Tresca 屈服准则，位于中间的主应力对屈服没有任何影响
+
 ## 最大剪切应力
 
 
@@ -128,11 +130,3 @@ $$
 $$
 
 在截面与主应力面呈 $45$ 度夹角的平面处达到
-
-## Mohr–Coulomb 屈服准则
-
-## Drucker–Prager 屈服准则
-
-## Gurson 屈服准则（多孔金属）
-
-## 各向同性屈服准则

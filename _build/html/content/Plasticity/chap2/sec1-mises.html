@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -225,6 +225,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec2-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -468,6 +469,12 @@ J_{2} = \tau_{y}^{2}\quad \Longrightarrow\quad \sqrt{J_{2}}=\tau_{y},
 \sigma_{y} = \sqrt{3}\tau_{y},
 \]</div>
 <p>这表明，单轴拉伸屈服强度 <span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 与纯剪切屈服强度 <span class="math notranslate nohighlight">\(\tau_{y}\)</span> 的比值为 <span class="math notranslate nohighlight">\(\sqrt{3}\)</span>，这提供了拉伸屈服强度 <span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 和纯剪切屈服强度 <span class="math notranslate nohighlight">\(\tau_{y}\)</span> 的换算关系</p>
+<p>Mises 屈服准则与实验数据的吻合度比 <a class="reference internal" href="sec2-tresca.html"><span class="std std-doc">Tresca 屈服准则</span></a> 要好，为了增强对实验数据的拟合能力，可以使用以下推广版本</p>
+<div class="math notranslate nohighlight">
+\[
+\left( 1 - c \left(\frac{J_3^2}{J_2^3}\right)^\alpha \right) J_2 = \tau_{y}^2=\frac{\sigma_{y}^{2}}{3},
+\]</div>
+<p>通常，<span class="math notranslate nohighlight">\(\alpha\)</span> 选为 <span class="math notranslate nohighlight">\(1\)</span>，<span class="math notranslate nohighlight">\(c\)</span> 是某个恰当的参数。然而，由于后续硬化行为的复杂性，使用上式可能需要很高的成本，相比之下，收益极其有限</p>
 <section id="id1">
 <h2>弹性应变能<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>单位体积的弹性应变能（弹性应变能密度）表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>

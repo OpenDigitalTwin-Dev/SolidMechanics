@@ -43,3 +43,4 @@ parts:
         sections:
         - file: content/Plasticity/chap2/sec1-mises
         - file: content/Plasticity/chap2/sec2-tresca
+        - file: content/Plasticity/chap2/sec3-mohr-coulomb

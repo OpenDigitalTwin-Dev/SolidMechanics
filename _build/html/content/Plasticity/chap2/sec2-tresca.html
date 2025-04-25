@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -64,6 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec2-tresca';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Mohr–Coulomb 屈服准则" href="sec3-mohr-coulomb.html" />
     <link rel="prev" title="Mises 屈服准则" href="sec1-mises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -224,6 +225,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sec1-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -422,10 +424,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">最大剪切应力</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mohrcoulomb">Mohr–Coulomb 屈服准则</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#druckerprager">Drucker–Prager 屈服准则</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">各向同性屈服准则</a></li>
 </ul>
             </nav>
         </div>
@@ -454,6 +452,7 @@ document.write(`
 \[
 \sigma_{\text{tresca}} = \sigma_{\text{max}} - \sigma_{\text{min}}.
 \]</div>
+<p>根据 Tresca 屈服准则，位于中间的主应力对屈服没有任何影响</p>
 <section id="id1">
 <h2>最大剪切应力<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>设法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 的平面上的应力为 <span class="math notranslate nohighlight">\(\mathbf{t}_{\mathbf{n}}\)</span>，正应力为 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span>，切应力为 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span>，则</p>
@@ -549,18 +548,6 @@ l\ \mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-l^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{
 \]</div>
 <p>在截面与主应力面呈 <span class="math notranslate nohighlight">\(45\)</span> 度夹角的平面处达到</p>
 </section>
-<section id="mohrcoulomb">
-<h2>Mohr–Coulomb 屈服准则<a class="headerlink" href="#mohrcoulomb" title="Link to this heading">#</a></h2>
-</section>
-<section id="druckerprager">
-<h2>Drucker–Prager 屈服准则<a class="headerlink" href="#druckerprager" title="Link to this heading">#</a></h2>
-</section>
-<section id="gurson">
-<h2>Gurson 屈服准则（多孔金属）<a class="headerlink" href="#gurson" title="Link to this heading">#</a></h2>
-</section>
-<section id="id2">
-<h2>各向同性屈服准则<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -602,6 +589,15 @@ l\ \mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-l^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{
         <p class="prev-next-title">Mises 屈服准则</p>
       </div>
     </a>
+    <a class="right-next"
+       href="sec3-mohr-coulomb.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mohr–Coulomb 屈服准则</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -619,10 +615,6 @@ l\ \mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-l^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">最大剪切应力</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mohrcoulomb">Mohr–Coulomb 屈服准则</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#druckerprager">Drucker–Prager 屈服准则</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">各向同性屈服准则</a></li>
 </ul>
   </nav></div>
 
