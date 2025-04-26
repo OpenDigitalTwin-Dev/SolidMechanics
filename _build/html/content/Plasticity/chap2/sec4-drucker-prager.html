@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>梯形公式 &#8212; 固体力学笔记</title>
+    <title>Drucker–Prager 屈服准则 &#8212; 固体力学笔记</title>
   
   
   
@@ -59,13 +59,10 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/sec1-trapezoidal';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec4-drucker-prager';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="辛普森公式" href="sec2-simpson.html" />
-    <link rel="prev" title="数值积分" href="intro.html" />
+    <link rel="prev" title="Mohr–Coulomb 屈服准则" href="sec3-mohr-coulomb.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,18 +181,18 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">梯形公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-simpson.html">辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-algebraic-prec.html">代数精度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec4-gaussian.html">Gaussian 公式</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec4-gaussian.html">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-shapefunction.html">形函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-isoparametric.html">等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-linearelasticity.html">线弹性问题</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-linearelasticity.html">线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -219,14 +216,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-mises.html">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-tresca.html">Tresca 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Drucker–Prager 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -300,7 +297,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Math/chap1/sec1-trapezoidal.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec4-drucker-prager.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +327,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Math/chap1/sec1-trapezoidal.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap2/sec4-drucker-prager.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -414,7 +411,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>梯形公式</h1>
+    <h1>Drucker–Prager 屈服准则</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,8 +421,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">矩形公式</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">梯形公式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">各向同性屈服准则</a></li>
 </ul>
             </nav>
         </div>
@@ -437,134 +434,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>梯形公式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>假设积分区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 被均匀地划分为 <span class="math notranslate nohighlight">\(n\)</span> 段，每段的长度为 <span class="math notranslate nohighlight">\(h=\frac{b-a}{n}\)</span>，划分节点依次为 <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span>，于是 <span class="math notranslate nohighlight">\(x_{i} = a + i\cdot h,\, i=0,2,\cdots,n\)</span></p>
-<section id="id2">
-<h2>矩形公式<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>矩形公式利用 <strong>0</strong> 次多项式对 <span class="math notranslate nohighlight">\(f(x)\)</span> 插值，通过小区间的左端点、右端点或中点处的函数值作为矩形的高，以宽度 <span class="math notranslate nohighlight">\(h\)</span> 的矩形面积来近似积分值</p>
-<ul>
-<li><p><strong>左端点公式</strong>：</p>
-<div class="math notranslate nohighlight">
-\[
-        \int_a^b f(x) \, \mathrm{d}x \approx h\sum_{i=0}^{n-1} f(x_{i})
-    \]</div>
-</li>
-<li><p><strong>右端点公式</strong>：</p>
-<div class="math notranslate nohighlight">
-\[
-        \int_a^b f(x) \, \mathrm{d}x \approx h\sum_{i=0}^{n-1} f(x_{i+1})
-    \]</div>
-</li>
-<li><p><strong>中点公式</strong>：</p>
-<div class="math notranslate nohighlight">
-\[
-        \int_a^b f(x) \, \mathrm{d}x \approx h\sum_{i=0}^{n-1} f(x_{i} + \frac{h}{2})
-    \]</div>
-</li>
-</ul>
-<p>左、右端点公式的误差为 <span class="math notranslate nohighlight">\(O(h)\)</span>，中点公式的误差为 <span class="math notranslate nohighlight">\(O(h^{2})\)</span></p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">证明</p>
-<p>考虑单个区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上的积分误差，对于左端点法</p>
-<div class="math notranslate nohighlight">
-\[
-    E_{\text{左}} = I - I_{\text{左}} = \int_{x_{i}}^{x_{i}+h}f(x)\, \mathrm{d}x - hf(x_{i}),
-\]</div>
-<p>将 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_{i}\)</span> 处泰勒展开</p>
-<div class="math notranslate nohighlight">
-\[
-    f(x) = f(x_i) + f'(x_i)(x - x_i) + \frac{f''(x_i)}{2}(x - x_i)^2 + O(h^3)
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[
-    I = \int_{x_{i}}^{x_{i}+h}f(x_i) + f'(x_i)(x - x_i) + \frac{f''(x_i)}{2}(x - x_i)^2 + O(h^3)\, \mathrm{d}x,
-\]</div>
-<p>逐项积分</p>
-<div class="math notranslate nohighlight">
-\[
-    I = h f(x_i) + \frac{f'(x_i)}{2} h^2 + \frac{f''(x_i)}{6} h^3 + O(h^4),
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[
-    E_{\text{左}} = \frac{f'(x_i)}{2} h^2 + \frac{f''(x_i)}{6} h^3 + O(h^4),
-\]</div>
-<p>因此在区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上，主误差项是 <span class="math notranslate nohighlight">\(O(h^2)\)</span>，因此总误差为</p>
-<div class="math notranslate nohighlight">
-\[
-    \text{总误差}\approx n\cdot O(h^2) = \frac{b-a}{h}\cdot O(h^2) = O(h).
-\]</div>
-<p>右端点法的证明类似</p>
-<p>对于中点法，将 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}} = x_{i} + \frac{h}{2}\)</span> 处泰勒展开</p>
-<div class="math notranslate nohighlight">
-\[
-f(x) = f(x_{i+\frac{1}{2}}) + f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{2} (x - x_{i+\frac{1}{2}})^2 + O(h^3),
-\]</div>
-<p>代入积分公式</p>
-<div class="math notranslate nohighlight">
-\[
-    I=\int_{x_{i}}^{x_{i}+h} f(x_{i+\frac{1}{2}}) + \textcolor{red}{f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}})} + \frac{f''(x_{i+\frac{1}{2}})}{2} (x - x_{i+\frac{1}{2}})^2 + O(h^3) \,\mathrm{d}x,
-\]</div>
-<p>逐项积分，其中<strong>红色项积分为 0</strong>，因此</p>
-<div class="math notranslate nohighlight">
-\[
-    I=hf(x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{24}h^3 +O(h^4).
-\]</div>
-<p>于是在区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上，主误差项是 <span class="math notranslate nohighlight">\(O(h^3)\)</span>，因此总误差为 <span class="math notranslate nohighlight">\(O(h^2)\)</span></p>
-<p>在每个小区间上，中点公式虽然也只采用 0 阶多项式逼近函数 <span class="math notranslate nohighlight">\(f(x)\)</span> （精度为 <span class="math notranslate nohighlight">\(O(h)\)</span>），但由于误差项中</p>
-<div class="math notranslate nohighlight">
-\[f'(x_{i+\frac{1}{2}}) (x - x_{i+\frac{1}{2}})\]</div>
-<p>在区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上关于 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}}\)</span> 中心对称，因此积分为零,使得积分逼近精度提高了一阶（精度为 <span class="math notranslate nohighlight">\(O(h^2)\)</span>）</p>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="druckerprager">
+<h1>Drucker–Prager 屈服准则<a class="headerlink" href="#druckerprager" title="Link to this heading">#</a></h1>
+<section id="gurson">
+<h2>Gurson 屈服准则（多孔金属）<a class="headerlink" href="#gurson" title="Link to this heading">#</a></h2>
 </section>
-<section id="id3">
-<h2>梯形公式<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>梯形公式利用 <strong>1</strong> 次多项式对 <span class="math notranslate nohighlight">\(f(x)\)</span> 插值，通过小区间的左端点和右端点的函数值，构成梯形的面积，对积分进行近似计算</p>
-<div class="math notranslate nohighlight">
-\[
-    \int_a^b f(x) \, \mathrm{d}x \approx \frac{h}{2}\sum_{i=0}^{n-1} [f(x_{i}) + f(x_{i+1})]
-\]</div>
-<p>其误差为 <span class="math notranslate nohighlight">\(O(h^2)\)</span></p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">证明</p>
-<p>虑单个区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i} + h]\)</span> 上的积分误差，将 <span class="math notranslate nohighlight">\(f(x_i)\)</span> 和 <span class="math notranslate nohighlight">\(f(x_{i+1})\)</span> 在 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}} = x_{i} + \frac{h}{2}\)</span> 处泰勒展开</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-f(x_i) &amp;= f(x_{i+\frac{1}{2}}) - f'(x_{i+\frac{1}{2}}) \frac{h}{2} + \frac{f''(x_{i+\frac{1}{2}})}{2} \left(\frac{h}{2}\right)^2 - \frac{f'''(\xi_1)}{6} \left(\frac{h}{2}\right)^3, \\
-f(x_{i+1}) &amp;= f(x_{i+\frac{1}{2}}) + f'(x_{i+\frac{1}{2}}) \frac{h}{2} + \frac{f''(x_{i+\frac{1}{2}})}{2} \left(\frac{h}{2}\right)^2 + \frac{f'''(\xi_2)}{6} \left(\frac{h}{2}\right)^3.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[
-f(x_{i})+f(x_{i+1})=2f(x_{i+\frac{1}{2}})+\frac{f''(x_{i+\frac{1}{2}})}{4}h^2 + O(h^3),
-\]</div>
-<p>将 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_{i+\frac{1}{2}}\)</span> 处展开并代入积分</p>
-<div class="math notranslate nohighlight">
-\[
-    I=hf(x_{i+\frac{1}{2}}) + \frac{f''(x_{i+\frac{1}{2}})}{24}h^3 +O(h^4).
-\]</div>
-<p>于是区间 <span class="math notranslate nohighlight">\([x_{i}, x_{i}+h]\)</span> 上的局部误差是</p>
-<div class="math notranslate nohighlight">
-\[
-I - \frac{h}{2}[f(x_{i})+f(x_{i+1})] = -\frac{f''(x_{i+\frac{1}{2}})}{12}h^3 + O(h^4),
-\]</div>
-<p>于是总误差</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-E_{\text{总}}&amp;=-\frac{h^3}{12}\sum_{i=0}^{n}f''(x_{i+\frac{1}{2}}) + n \cdot O(h^4)\\
-&amp;=-\frac{(b-a)}{12}h^2f''(\xi).
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-</div>
+<section id="id1">
+<h2>各向同性屈服准则<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -581,7 +457,7 @@ E_{\text{总}}&amp;=-\frac{h^3}{12}\sum_{i=0}^{n}f''(x_{i+\frac{1}{2}}) + n \cdo
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Math/chap1"
+            path: "./content/Plasticity/chap2"
         },
         predefinedOutput: true
     }
@@ -599,22 +475,13 @@ E_{\text{总}}&amp;=-\frac{h^3}{12}\sum_{i=0}^{n}f''(x_{i+\frac{1}{2}}) + n \cdo
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="sec3-mohr-coulomb.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">数值积分</p>
+        <p class="prev-next-title">Mohr–Coulomb 屈服准则</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="sec2-simpson.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">辛普森公式</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -632,8 +499,8 @@ E_{\text{总}}&amp;=-\frac{h^3}{12}\sum_{i=0}^{n}f''(x_{i+\frac{1}{2}}) + n \cdo
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">矩形公式</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">梯形公式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">各向同性屈服准则</a></li>
 </ul>
   </nav></div>
 

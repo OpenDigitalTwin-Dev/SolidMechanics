@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -226,6 +226,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec2-tresca.html">Tresca 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -438,7 +439,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mises">
 <h1>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h1>
-<p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据</p>
+<span class="gray-text">
+Mises 屈服准则被称为畸变能密度理论，是最常用的屈服准则之一，属于各向同性屈服准则
+</span>
+<p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据。Von Mises 屈服准则认为当某点的应力偏量的第二不变量 <span class="math notranslate nohighlight">\(J_{2}\)</span> 达到某一定值时，材料该点进入塑形状态</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]}\geq\sigma_{y},
@@ -554,6 +558,7 @@ s_{ij} = 2\mu e_{ij}
 W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=\frac{\sigma_{y}^2}{6\mu}=\frac{\tau_{y}^2}{2\mu},
 \]</div>
 <p>因此，Von Mises 准则可以被解释为：当畸变能 <span class="math notranslate nohighlight">\(W'\)</span> 达到临界值 <span class="math notranslate nohighlight">\(\frac{\sigma_{y}^2}{6\mu}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\tau_{y}^2}{2\mu}\)</span> 时，材料开始屈服</p>
+<p>因此，Von Mises 准则也被称为<strong>畸变能密度理论</strong></p>
 </section>
 <section id="id2">
 <h2>八面体剪切应力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>

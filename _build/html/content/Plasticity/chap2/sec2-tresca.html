@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -226,6 +226,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sec1-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tresca 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -437,7 +438,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tresca">
 <h1>Tresca 屈服准则<a class="headerlink" href="#tresca" title="Link to this heading">#</a></h1>
-<p>Tresca 屈服准则，也称最大剪切应力准则：当最大剪切应力达到临界值时，材料开始发生塑性变形</p>
+<span class="gray-text">
+Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则之一，属于各向同性屈服准则
+</span>
+<p>Tresca 屈服准则，也称最大剪切应力准则：当某点的最大剪切应力达到临界值时，材料改点开始发生塑性变形</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y},
@@ -463,37 +467,37 @@ document.write(`
 <p>将 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 沿 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的单位特征向量 <span class="math notranslate nohighlight">\(\mathbf{n}_{1},\mathbf{n}_{2},\mathbf{n}_{3}\)</span> （对应的特征值分别为 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）分解</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{n} = l\mathbf{n}_{1}+m\mathbf{n}_{2}+k\mathbf{n}_{3},
+\mathbf{n} = n_{1}\mathbf{n}_{1}+n_{2}\mathbf{n}_{3}+n_{2}\mathbf{n}_{3},
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(l^2+m^2+k^2=1\)</span>， 于是</p>
+<p>其中 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span>， 于是</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-1">
 <span class="eqno">(69)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
-\tau_{\mathbf{n}}^2 = l^{2}\sigma_{1}^{2}+m^{2}\sigma_{2}^{2}+k^{2}\sigma_{3}^{2}-(l^{2}\sigma_{1}+m^{2}\sigma_{2}+k^{2}\sigma_{3})^2,
+\tau_{\mathbf{n}}^2 = n_{1}^{2}\sigma_{1}^{2}+n_{2}^{2}\sigma_{2}^{2}+n_{3}^{2}\sigma_{3}^{2}-(n_{1}^{2}\sigma_{1}+n_{2}^{2}\sigma_{2}+n_{3}^{2}\sigma_{3})^2,
 \]</div>
-<p>于是需在约束 <span class="math notranslate nohighlight">\(l^2+m^2+k^2=1\)</span> 下最大化 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}^2\)</span>，引入拉格朗日乘子 <span class="math notranslate nohighlight">\(\lambda\)</span>，构造目标函数</p>
+<p>于是需在约束 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span> 下最大化 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}^2\)</span>，引入拉格朗日乘子 <span class="math notranslate nohighlight">\(\lambda\)</span>，构造目标函数</p>
 <div class="math notranslate nohighlight">
 \[
-L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
+L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \]</div>
-<p>函数 <span class="math notranslate nohighlight">\(L\)</span> 对 <span class="math notranslate nohighlight">\(l,m,k\)</span> 的导数为</p>
+<p>函数 <span class="math notranslate nohighlight">\(L\)</span> 对 <span class="math notranslate nohighlight">\(n_{1},n_{2},n_{3}\)</span> 的导数为</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-l-der">
 <span class="eqno">(70)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
-&amp;(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)l &amp;= 0 \\
-&amp;(\sigma_{2}^2-2\sigma_{\mathbf{n}}\sigma_{2} - \lambda)m &amp;= 0 \\
-&amp;(\sigma_{3}^2-2\sigma_{\mathbf{n}}\sigma_{3} - \lambda)k &amp;= 0
+&amp;(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)n_{1} &amp;= 0 \\
+&amp;(\sigma_{2}^2-2\sigma_{\mathbf{n}}\sigma_{2} - \lambda)n_{2} &amp;= 0 \\
+&amp;(\sigma_{3}^2-2\sigma_{\mathbf{n}}\sigma_{3} - \lambda)n_{3} &amp;= 0
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
 <p>不失一般性</p>
-<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(m=k=0\)</span>，此时 <span class="math notranslate nohighlight">\(l=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
-<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(l\neq0,m\neq0,k=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到</p>
+<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(n_{2}=n_{3}=0\)</span>，此时 <span class="math notranslate nohighlight">\(n_{1}=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
+<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到</p>
 <div class="math notranslate nohighlight">
 \[
-\tau_{\mathbf{n}}^2 = l^2\sigma_{1}^2+m^2\sigma_{2}^2 - (l^2\sigma_{1}+m^2\sigma_{2})^2,
+\tau_{\mathbf{n}}^2 = n_{1}^2\sigma_{1}^2+n_{2}^2\sigma_{2}^2 - (n_{1}^2\sigma_{1}+n_{2}^2\sigma_{2})^2,
 \]</div>
-<p>代入 <span class="math notranslate nohighlight">\(m^2 = 1 - l^2\)</span>，并记 <span class="math notranslate nohighlight">\(\ell = l^2\)</span>，于是</p>
+<p>代入 <span class="math notranslate nohighlight">\(n_{2}^2 = 1 - n_{1}^2\)</span>，并记 <span class="math notranslate nohighlight">\(\ell = n_{1}^2\)</span>，于是</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-2">
 <span class="eqno">(71)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
@@ -504,7 +508,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>因此，当 <span class="math notranslate nohighlight">\(\ell = l^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(m^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a>，得到</p>
+<p>因此，当 <span class="math notranslate nohighlight">\(\ell = n_{1}^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(n_{2}^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a>，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
@@ -515,7 +519,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
 (\pm\frac{\sqrt{2}}{2})\mathbf{n_{1}}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{2},
 \]</div>
 <p>与 <span class="math notranslate nohighlight">\(\sigma_{1}\)</span> 截面和 <span class="math notranslate nohighlight">\(\sigma_{2}\)</span> 截面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
-<p><strong>3.</strong> 若 <span class="math notranslate nohighlight">\(l\neq0,m\neq0,k\neq0\)</span>，则此时 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 都是二次方程 <span class="math notranslate nohighlight">\(\sigma^2-2\sigma_{\mathbf{n}}\sigma - \lambda = 0\)</span> 的根</p>
+<p><strong>3.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}\neq0\)</span>，则此时 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 都是二次方程 <span class="math notranslate nohighlight">\(\sigma^2-2\sigma_{\mathbf{n}}\sigma - \lambda = 0\)</span> 的根</p>
 <ul class="simple">
 <li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}=\sigma_{3}\)</span>，此时 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为</p></li>
 </ul>
@@ -528,17 +532,17 @@ L = \tau_{\mathbf{n}}^2 - \lambda(l^2+m^2+k^2-1)
 </ul>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-3">
 <span class="eqno">(72)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
-\tau_{\mathbf{n}}^2 = (l^{2}+m^{2})\sigma_{1}^{2}+k^{2}\sigma_{3}^{2}-((l^{2}+m^{2})\sigma_{1}+k^{2}\sigma_{3})^2,
+\tau_{\mathbf{n}}^2 = (n_{1}^{2}+n_{2}^{2})\sigma_{1}^{2}+n_{3}^{2}\sigma_{3}^{2}-((n_{1}^{2}+n_{2}^{2})\sigma_{1}+n_{3}^{2}\sigma_{3})^2,
 \]</div>
-<p>记 <span class="math notranslate nohighlight">\(l^2+m^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(k^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(72)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(71)</a> 有完全一样的形式，由此可知极值为</p>
+<p>记 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(n_{3}^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(72)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(71)</a> 有完全一样的形式，由此可知极值为</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
 \]</div>
-<p>此时 <span class="math notranslate nohighlight">\(l^2+m^2=k^2=\frac{1}{2}\)</span>，截面法向量为</p>
+<p>此时 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2=n_{3}^2=\frac{1}{2}\)</span>，截面法向量为</p>
 <div class="math notranslate nohighlight">
 \[
-l\ \mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-l^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
+n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
 \]</div>
 <p>与 <span class="math notranslate nohighlight">\(\sigma_{3}\)</span> 平面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
 <p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(70)</a> 的对称性，得到</p>

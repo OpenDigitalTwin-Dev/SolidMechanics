@@ -27,6 +27,7 @@ bibtex_bibfiles:
 sphinx:
   config:
     bibtex_reference_style: author_year
+    numfig: true
   extra_extensions:
     - sphinx_proof
 
