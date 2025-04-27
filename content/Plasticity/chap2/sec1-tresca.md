@@ -37,7 +37,7 @@ $$
 因此
 
 $$
-\tau_{y} = \frac{\sigma_{y}}{2}.
+\sigma_{y} = 2\tau_{y}.
 $$
 
 $\sigma_{\text{tresca}}$ 也可以写为
