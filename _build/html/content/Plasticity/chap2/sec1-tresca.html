@@ -61,11 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec2-tresca';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec1-tresca';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Mohr–Coulomb 屈服准则" href="sec3-mohr-coulomb.html" />
-    <link rel="prev" title="Mises 屈服准则" href="sec1-mises.html" />
+    <link rel="next" title="Mises 屈服准则" href="sec2-mises.html" />
+    <link rel="prev" title="屈服准则" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,8 +223,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
 </ul>
@@ -300,7 +300,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec2-tresca.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec1-tresca.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +330,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Plasticity/chap2/sec2-tresca.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap2/sec1-tresca.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -424,7 +424,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">最大剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">最大剪切应力</a></li>
 </ul>
             </nav>
         </div>
@@ -446,7 +447,27 @@ Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则�
 \[
 \sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y},
 \]</div>
-<p>类似于在 <a class="reference internal" href="sec1-mises.html"><span class="std std-doc">Mises 屈服准则</span></a>中，容易证明</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 是<strong>单轴拉伸</strong>下的屈服强度，于是在屈服面上</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
+\]</div>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\text{tresca}} = \sigma_{y}.
+\]</div>
+<p>设<strong>纯剪切变形</strong>下的屈服强度为 <span class="math notranslate nohighlight">\(\tau_{y}\)</span>，于是在屈服面上</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{1}=\tau_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = -\tau_{y},
+\]</div>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\text{tresca}} = 2\tau_{y}.
+\]</div>
+<p>因此</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{y} = \frac{\sigma_{y}}{2}.
@@ -458,7 +479,10 @@ Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则�
 \]</div>
 <p>根据 Tresca 屈服准则，位于中间的主应力对屈服没有任何影响</p>
 <section id="id1">
-<h2>最大剪切应力<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>几何意义<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2>最大剪切应力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>设法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 的平面上的应力为 <span class="math notranslate nohighlight">\(\mathbf{t}_{\mathbf{n}}\)</span>，正应力为 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span>，切应力为 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
@@ -471,7 +495,7 @@ Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则�
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span>， 于是</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-1">
-<span class="eqno">(69)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(67)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
 \tau_{\mathbf{n}}^2 = n_{1}^{2}\sigma_{1}^{2}+n_{2}^{2}\sigma_{2}^{2}+n_{3}^{2}\sigma_{3}^{2}-(n_{1}^{2}\sigma_{1}+n_{2}^{2}\sigma_{2}+n_{3}^{2}\sigma_{3})^2,
 \]</div>
 <p>于是需在约束 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span> 下最大化 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}^2\)</span>，引入拉格朗日乘子 <span class="math notranslate nohighlight">\(\lambda\)</span>，构造目标函数</p>
@@ -481,7 +505,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \]</div>
 <p>函数 <span class="math notranslate nohighlight">\(L\)</span> 对 <span class="math notranslate nohighlight">\(n_{1},n_{2},n_{3}\)</span> 的导数为</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-l-der">
-<span class="eqno">(70)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(68)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)n_{1} &amp;= 0 \\
@@ -491,15 +515,15 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \end{equation}
 \end{split}\]</div>
 <p>不失一般性</p>
-<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(n_{2}=n_{3}=0\)</span>，此时 <span class="math notranslate nohighlight">\(n_{1}=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
-<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a> 中，得到</p>
+<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(n_{2}=n_{3}=0\)</span>，此时 <span class="math notranslate nohighlight">\(n_{1}=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(67)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
+<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(67)</a> 中，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}}^2 = n_{1}^2\sigma_{1}^2+n_{2}^2\sigma_{2}^2 - (n_{1}^2\sigma_{1}+n_{2}^2\sigma_{2})^2,
 \]</div>
 <p>代入 <span class="math notranslate nohighlight">\(n_{2}^2 = 1 - n_{1}^2\)</span>，并记 <span class="math notranslate nohighlight">\(\ell = n_{1}^2\)</span>，于是</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-2">
-<span class="eqno">(71)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(69)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \tau_{\mathbf{n}}^2 &amp;= \ell\sigma_{1}^2+(1 - \ell)\sigma_{2}^2 - (\ell\sigma_{1}+(1 - \ell)\sigma_{2})^2\\
@@ -508,7 +532,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>因此，当 <span class="math notranslate nohighlight">\(\ell = n_{1}^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(n_{2}^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(69)</a>，得到</p>
+<p>因此，当 <span class="math notranslate nohighlight">\(\ell = n_{1}^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(n_{2}^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(67)</a>，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
@@ -531,10 +555,10 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 <li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}\neq\sigma_{3}\)</span>，此时</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-3">
-<span class="eqno">(72)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(70)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
 \tau_{\mathbf{n}}^2 = (n_{1}^{2}+n_{2}^{2})\sigma_{1}^{2}+n_{3}^{2}\sigma_{3}^{2}-((n_{1}^{2}+n_{2}^{2})\sigma_{1}+n_{3}^{2}\sigma_{3})^2,
 \]</div>
-<p>记 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(n_{3}^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(72)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(71)</a> 有完全一样的形式，由此可知极值为</p>
+<p>记 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(n_{3}^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(70)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(69)</a> 有完全一样的形式，由此可知极值为</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
@@ -545,7 +569,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
 \]</div>
 <p>与 <span class="math notranslate nohighlight">\(\sigma_{3}\)</span> 平面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
-<p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(70)</a> 的对称性，得到</p>
+<p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(68)</a> 的对称性，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \max_{\mathbf{n}} \tau_{\mathbf{n}} = \frac{1}{2}\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1| \right\}.
@@ -585,20 +609,20 @@ n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec1-mises.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Mises 屈服准则</p>
+        <p class="prev-next-title">屈服准则</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec3-mohr-coulomb.html"
+       href="sec2-mises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mohr–Coulomb 屈服准则</p>
+        <p class="prev-next-title">Mises 屈服准则</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -618,7 +642,8 @@ n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqr
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">最大剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">最大剪切应力</a></li>
 </ul>
   </nav></div>
 

@@ -10,7 +10,31 @@ $$
 \sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y},
 $$
 
-类似于在 [Mises 屈服准则](./sec1-mises.md)中，容易证明
+$\sigma_{y}$ 是**单轴拉伸**下的屈服强度，于是在屈服面上
+
+$$
+\sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
+$$
+
+得到
+
+$$
+\sigma_{\text{tresca}} = \sigma_{y}.
+$$
+
+设**纯剪切变形**下的屈服强度为 $\tau_{y}$，于是在屈服面上
+
+$$
+\sigma_{1}=\tau_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = -\tau_{y},
+$$
+
+得到
+
+$$
+\sigma_{\text{tresca}} = 2\tau_{y}.
+$$
+
+因此
 
 $$
 \tau_{y} = \frac{\sigma_{y}}{2}.
@@ -23,6 +47,9 @@ $$
 $$
 
 根据 Tresca 屈服准则，位于中间的主应力对屈服没有任何影响
+
+## 几何意义
+
 
 ## 最大剪切应力
 

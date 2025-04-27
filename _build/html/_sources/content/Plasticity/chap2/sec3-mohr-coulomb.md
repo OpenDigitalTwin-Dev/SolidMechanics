@@ -121,6 +121,9 @@ $$
 (\sigma_{\max} - \sigma_{\min}) + (\sigma_{\max} + \sigma_{\min})\sin\phi=2c\cos\phi,
 $$
 
+
+### 几何意义
+
 ### 不变量形式
 
 $$
