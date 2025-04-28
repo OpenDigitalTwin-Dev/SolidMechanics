@@ -1072,9 +1072,9 @@ AV = U\Sigma,
 <h2>极分解<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>复数域中分解为酉矩阵与 Hermite 正定阵</p>
+<p>复数域中分解为酉矩阵与 Hermite 半正定阵</p>
 </aside>
-<p>实矩阵的极分解将任意可逆矩阵分解为正交矩阵与正定对称阵的乘积</p>
+<p>任意实矩阵 <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span> 可以分解为正交矩阵与对称半正定阵的乘积</p>
 <div class="math notranslate nohighlight">
 \[
 A = RU = VR,
@@ -1082,11 +1082,12 @@ A = RU = VR,
 <p>其中</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(R\)</span> 是正交矩阵，表示刚体旋转或反射</p></li>
-<li><p><span class="math notranslate nohighlight">\(U,V\)</span> 是对称正定阵，表示拉伸或缩放</p></li>
+<li><p><span class="math notranslate nohighlight">\(U,V\)</span> 是对称半正定阵，表示拉伸或缩放</p></li>
 </ul>
+<p>当 <span class="math notranslate nohighlight">\(A\)</span> 是可逆时，分解是唯一的，且 <span class="math notranslate nohighlight">\(U,V\)</span> 是对称半正定阵</p>
 <section id="id25">
 <h3>存在性<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
-<p>由于 <span class="math notranslate nohighlight">\(A\)</span> 可逆，因此根据矩阵的奇异值，存在正交矩阵 <span class="math notranslate nohighlight">\(Q,P\)</span> 和正对角阵 <span class="math notranslate nohighlight">\(\Sigma\)</span>（奇异值 <span class="math notranslate nohighlight">\(&gt;0\)</span>） 使得</p>
+<p>根据矩阵的奇异值分解，存在正交矩阵 <span class="math notranslate nohighlight">\(Q,P\)</span> 和正对角阵 <span class="math notranslate nohighlight">\(\Sigma\)</span>（奇异值 <span class="math notranslate nohighlight">\(\geq0\)</span>） 使得</p>
 <div class="math notranslate nohighlight">
 \[
 A = Q\Sigma P^{T},
@@ -1096,14 +1097,39 @@ A = Q\Sigma P^{T},
 \[
 R = QP^{T},\quad U = P\Sigma P^{T},\quad V = Q\Sigma Q^{T}.
 \]</div>
+<p>于是 <span class="math notranslate nohighlight">\(R\)</span> 是正交矩阵，<span class="math notranslate nohighlight">\(U,V\)</span> 是对称半正定阵</p>
+<p>当 <span class="math notranslate nohighlight">\(A\)</span> 可逆时，<span class="math notranslate nohighlight">\(\Sigma\)</span> 的对角元素（<span class="math notranslate nohighlight">\(A\)</span> 的奇异值）均为正，因此 <span class="math notranslate nohighlight">\(U,V\)</span> 是对称正定阵</p>
 </section>
 <section id="id26">
 <h3>唯一性<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
-<p>若存在正交矩阵 <span class="math notranslate nohighlight">\(R_{1},R_{2}\)</span> 和对称正定阵 <span class="math notranslate nohighlight">\(U_{1},U_{2}\)</span> 满，则</p>
+<p>当 <span class="math notranslate nohighlight">\(A\)</span> 可逆，若存在正交矩阵 <span class="math notranslate nohighlight">\(R_{1},R_{2}\)</span> 和对称正定阵 <span class="math notranslate nohighlight">\(U_{1},U_{2}\)</span> 满足</p>
 <div class="math notranslate nohighlight">
 \[
-R_{1}U_{1} = R_{2}U_{2}
+A = R_{1}U_{1} = R_{2}U_{2},
 \]</div>
+<p>则</p>
+<div class="math notranslate nohighlight">
+\[
+A^{T}A = U_{1}^{2} = U_{2}^{2},
+\]</div>
+<p>接下来证明 <span class="math notranslate nohighlight">\(U_{1} = U_{2}\)</span>，由于 <span class="math notranslate nohighlight">\(U_{1}^{2} = U_{2}^{2}\)</span> 且均为对称正定阵（特征值 <span class="math notranslate nohighlight">\(&gt;0\)</span>），因此 <span class="math notranslate nohighlight">\(U_{1}\)</span> 和 <span class="math notranslate nohighlight">\(U_{2}\)</span> 拥有相同的特征值，设分别存在正交矩阵 <span class="math notranslate nohighlight">\(P\)</span> 和 <span class="math notranslate nohighlight">\(Q\)</span> 使得</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+U_{1} = P^{T}\Lambda P,\quad U_{2} = Q^{T}\Lambda Q,
+\end{equation}
+\]</div>
+<p>由 <span class="math notranslate nohighlight">\(U_{1}^{2} = U_{2}^{2} \)</span>，得</p>
+<div class="math notranslate nohighlight">
+\[
+P^{T}\Lambda^{2}P = Q^{T}\Lambda^{2} Q\quad \Longrightarrow\quad QP^{T}\Lambda^{2} = \Lambda^{2}QP^{T}
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\Lambda^2\)</span> 与 <span class="math notranslate nohighlight">\(\Lambda\)</span> 具有一致的矩阵结构，因此必然有 <span class="math notranslate nohighlight">\(QP^{T}\Lambda = \Lambda QP^{T}\)</span>，于是</p>
+<div class="math notranslate nohighlight">
+\[
+U_{1}=P^{T}\Lambda P = Q^{T}(QP^{T}\Lambda)P = Q^{T}\Lambda QP^{T}P = Q^{T}\Lambda Q = U_{2}.
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(U_{1},U_{2}\)</span> 可逆，因此 <span class="math notranslate nohighlight">\(R_{1}=R_{2}\)</span></p>
 </section>
 </section>
 <div class="toctree-wrapper compound">

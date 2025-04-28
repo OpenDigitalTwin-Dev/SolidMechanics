@@ -439,7 +439,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">均匀拉伸和压缩</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">剪切变形</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">简单剪切</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">纯剪切</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">对称剪切</a></li>
 </ul>
 </li>
 </ul>
@@ -521,7 +521,7 @@ u(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">二维简单剪切示意图</span><a class="headerlink" href="#sec1-fig-simple-shear" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>三维情形下，以 <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> 面的剪切移动为例</p>
+<p>三维情形下，对于平行 <span class="math notranslate nohighlight">\(xOy\)</span> 面，剪切角为 <span class="math notranslate nohighlight">\(\theta_{xy}\)</span> 的剪切移动为例</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan\theta_{xy}\cdot X_{2}\\X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&amp;\tan\theta_{xy}&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
@@ -542,7 +542,30 @@ u(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
 <p>在简单剪切变形过程中，物体的对称面会持续发生旋转</p>
 </section>
 <section id="id8">
-<h3>纯剪切<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>对称剪切<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>对称剪切变形是指物体在无旋转的条件下，沿两个互相垂直方向发生等大反向的剪切位移，使直角变为斜角，例如</p>
+<figure class="align-default" id="sec1-fig-sym-shear">
+<a class="reference internal image-reference" href="../../../_images/sym-shear.png"><img alt="../../../_images/sym-shear.png" src="../../../_images/sym-shear.png" style="width: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">二维对称剪切示意图</span><a class="headerlink" href="#sec1-fig-sym-shear" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>三维情形下，假设在 <span class="math notranslate nohighlight">\(xOy\)</span> 平面内，沿 <span class="math notranslate nohighlight">\(x\)</span> 方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向分别发生等量、反向的剪切，剪切角为 <span class="math notranslate nohighlight">\(\theta_{xy}\)</span>，其变换为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan(\theta_{xy}/2)\cdot X_{2}\\\tan(\theta_{xy}/2)\cdot X_{1} + X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&amp;\tan(\theta_{xy}/2)&amp;0\\\tan(\theta_{xy}/2)&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
+\end{split}\]</div>
+<p>当 <span class="math notranslate nohighlight">\(\theta_{xy}\)</span> 很小时（小变形假定），可近似认为体积不变</p>
+<p>对于更一般的情形，变换矩阵为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+1 &amp; \tan(\theta_{xy}/2) &amp; \tan(\theta_{xz}/2) \\
+\tan(\theta_{xy}/2) &amp; 1 &amp; \tan(\theta_{yz}/2) \\
+\tan(\theta_{xz}/2) &amp; \tan(\theta_{yz}/2) &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
 </section>
 </section>
 </section>
@@ -619,7 +642,7 @@ u(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">均匀拉伸和压缩</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">剪切变形</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">简单剪切</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">纯剪切</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">对称剪切</a></li>
 </ul>
 </li>
 </ul>

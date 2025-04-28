@@ -76,8 +76,7 @@ name: sec1-fig:simple-shear
 二维简单剪切示意图
 ```
 
-三维情形下，以 $x$-$y$ 面的剪切移动为例
-
+三维情形下，对于平行 $xOy$ 面，剪切角为 $\theta_{xy}$ 的剪切移动为例
 
 $$
 \begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan\theta_{xy}\cdot X_{2}\\X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&\tan\theta_{xy}&0\\0&1&0\\0&0&1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
@@ -100,5 +99,32 @@ $$
 
 在简单剪切变形过程中，物体的对称面会持续发生旋转
 
-### 纯剪切
+### 对称剪切
 
+对称剪切变形是指物体在无旋转的条件下，沿两个互相垂直方向发生等大反向的剪切位移，使直角变为斜角，例如
+
+```{figure} ../../../images/Tensor/chap1/sym-shear.png
+---
+width: 250px
+name: sec1-fig:sym-shear
+---
+二维对称剪切示意图
+```
+
+三维情形下，假设在 $xOy$ 平面内，沿 $x$ 方向和 $y$ 方向分别发生等量、反向的剪切，剪切角为 $\theta_{xy}$，其变换为
+
+$$
+\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan(\theta_{xy}/2)\cdot X_{2}\\\tan(\theta_{xy}/2)\cdot X_{1} + X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&\tan(\theta_{xy}/2)&0\\\tan(\theta_{xy}/2)&1&0\\0&0&1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
+$$
+
+当 $\theta_{xy}$ 很小时（小变形假定），可近似认为体积不变
+
+对于更一般的情形，变换矩阵为
+
+$$
+\begin{bmatrix}
+1 & \tan(\theta_{xy}/2) & \tan(\theta_{xz}/2) \\
+\tan(\theta_{xy}/2) & 1 & \tan(\theta_{yz}/2) \\
+\tan(\theta_{xz}/2) & \tan(\theta_{yz}/2) & 1
+\end{bmatrix}
+$$
