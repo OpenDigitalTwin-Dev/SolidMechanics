@@ -16,7 +16,7 @@ $$
 见 [Mises 屈服准则](./sec2-mises.md) 中的推导，和 [Mohr–Coulomb 屈服准则](./sec3-mohr-coulomb.md) 中的变量解释
 ```
 
-其中，$\tau_{\text{oct}} = \left( \frac{2}{3} J_2 \right)^{1/2},\ \tau_f = -\tan\phi\cdot \sigma_{\text{oct}} = -\tan\phi \cdot \frac{1}{3} I_1$，$k$ 是材料参数。代入上式，整理得到
+其中，$\tau_{\text{oct}} = \left( \frac{2}{3} J_2 \right)^{1/2},\ \tau_f = -\tan\phi\cdot \sigma_{\text{oct}} = -\tan\phi \cdot \frac{1}{3} I_1$，$k$ 是材料参数，与粘聚力相关。代入上式整理得到
 
 $$
 \sqrt{J_{2}} + \tan\phi \cdot \frac{\sqrt{6}}{6} I_1 - k = 0.
@@ -26,6 +26,12 @@ Drucker–Prager 屈服准则的一般形式写为
 
 $$
 \sqrt{J_{2}} + \alpha I_1 - k = 0.
+$$
+
+
+
+$$
+k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi),}
 $$
 
 

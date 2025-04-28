@@ -473,7 +473,7 @@ $$
 
 :::
 
-### 实对称矩阵的对角化
+### 实对称矩阵的对角化（谱分解）
 
 对于实对称矩阵 $A$，存在正交矩阵 $Q$ 和对角矩阵 $\Lambda$，使得
 
@@ -577,4 +577,133 @@ $$
 $$
 
 因此 $Q$ 的列向量是矩阵 $A$ 的特征向量，$\Lambda$ 的对角元素是对应的特征值
+
+#### 非唯一性
+
+特征值的排序和特征向量的选取会影响 $Q$ 和 $\Lambda$ 的取值，因此分解并不唯一
+
+## 奇异值分解
+
+```{margin}
+复数域中正交矩阵为酉矩阵
+```
+
+对于任意实矩阵 $A\in\mathbb{R}^{m\times n}$，存在正交矩阵 $U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}$和非负对角矩阵 $\Sigma\in\mathbb{R}^{m\times n}$，使得
+
+$$
+A = U\Sigma V^{T}\quad \Longleftrightarrow \quad AV = U\Sigma.
+$$
+
+奇异值分解将矩阵分解为了旋转-拉缩-旋转的叠加模式
+
+### 存在性
+
+```{margin}
+半正定矩阵的特征值非负
+```
+
+由于 $A^{T}A$ 是半正定对称阵，根据谱分解定理，存在正交矩阵 $V$ 和非负对角阵 $\Lambda$， 使得
+
+$$
+A^{T}A = V^{T}\Lambda V,
+$$
+
+其中
+
+$$
+V = [\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}],\quad \Lambda = \text{diag}(\lambda_{1},\lambda_{2},\cdots,\lambda_{n}),
+$$
+
+且 $\lambda_{1}\geq\lambda_{2}\geq\cdots\geq\lambda_{n}$，设前 $r(\leq\min(m,n))$ 个为非零值。记 $\sigma_{i} = \sqrt{\lambda_{i}},i=1:r$，定义向量
+
+$$
+\mathbf{u}_{i} = \frac{1}{\sigma_{i}}A\mathbf{v}_{i},\quad i=1:r,
+$$
+
+有
+
+$$
+\mathbf{u}_{i}^{T}\mathbf{u}_{j} = \frac{1}{\sigma_{i}\sigma_{j}}\mathbf{v}_{i}^{T}A^{T}A\mathbf{v}_{j} = \delta_{ij},\quad 1\leq i,j \leq r,
+$$
+
+将 $\{\mathbf{u}_{i}\}$ 扩展为 $\mathbb{R}^{m}$ 下的标准正交基，形成正交矩阵
+
+$$
+U = \begin{bmatrix}\mathbf{u}_{1},\mathbf{u}_{2},\cdots,\mathbf{u}_{m}\end{bmatrix},
+$$
+
+由于 $(AV)^{T}(AV) = \Lambda$，对于 $i>r$，此时 $\lambda_{i} = 0$，因此 $A\mathbf{v} = \mathbf{0}$，
+
+$$
+AV = U\Sigma,
+$$
+
+其中，$\Sigma\in\mathbb{R}^{m\times n}$，其中，对角元素称为矩阵 $A$ 的奇异值（非零元素为 $\sigma_{i}$）
+
+## 极分解
+
+```{margin}
+复数域中分解为酉矩阵与 Hermite 正定阵
+```
+
+任意可逆实矩阵可以分解为正交矩阵与正定对称阵的乘积
+
+$$
+A = RU = VR,
+$$
+
+其中
+
+- $R$ 是正交矩阵，表示刚体旋转或反射
+- $U,V$ 是对称正定阵，表示拉伸或缩放
+
+### 存在性
+
+由于 $A$ 可逆，因此根据矩阵的奇异值，存在正交矩阵 $Q,P$ 和正对角阵 $\Sigma$（奇异值 $>0$） 使得
+
+$$
+A = Q\Sigma P^{T},
+$$
+
+于是，令
+
+$$
+R = QP^{T},\quad U = P\Sigma P^{T},\quad V = Q\Sigma Q^{T}.
+$$
+
+
+### 唯一性
+
+若存在正交矩阵 $R_{1},R_{2}$ 和对称正定阵 $U_{1},U_{2}$ 满足
+
+$$
+A = R_{1}U_{1} = R_{2}U_{2},
+$$
+
+则
+
+$$
+A^{T}A = U_{1}^{2} = U_{2}^{2},
+$$
+
+由于 $A^{T}A$ 对称正定，因此存在正交矩阵 $Q$ 将其对角化，故
+
+
+$$
+Q^{T}U_{1}^{2}Q = (Q^{T}U_{1}Q)(Q^{T}U_{1}Q)
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

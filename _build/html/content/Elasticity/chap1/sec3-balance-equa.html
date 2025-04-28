@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -201,9 +201,16 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/intro.html">基本定义</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-invarient.html">张量不变量</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="current nav bd-sidenav">
@@ -470,7 +477,7 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 <a class="reference internal image-reference" href="../../../_images/balance-equa.png"><img alt="../../../_images/balance-equa.png" src="../../../_images/balance-equa.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">矩形微分体应力分布示意图</span><a class="headerlink" href="#sec3-fig-balance-equa" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">矩形微分体应力分布示意图</span><a class="headerlink" href="#sec3-fig-balance-equa" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id2">
@@ -536,7 +543,7 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 <a class="reference internal image-reference" href="../../../_images/stress-tensor.png"><img alt="../../../_images/stress-tensor.png" src="../../../_images/stress-tensor.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">任一点的应力状态</span><a class="headerlink" href="#sec3-fig-stress-tensor" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">任一点的应力状态</span><a class="headerlink" href="#sec3-fig-stress-tensor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>设 <span class="math notranslate nohighlight">\(\overline{AB}\)</span> 上全应力为 <span class="math notranslate nohighlight">\(\mathbf{p}\)</span>，沿 <span class="math notranslate nohighlight">\(x\)</span> 轴方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的应力分量分别为 <span class="math notranslate nohighlight">\(p_{x}\)</span> 和 <span class="math notranslate nohighlight">\(p_{y}\)</span>，分别建立沿 <span class="math notranslate nohighlight">\(x\)</span> 轴方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的平衡方程</p>

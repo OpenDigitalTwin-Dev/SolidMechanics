@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -199,9 +199,16 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/intro.html">基本定义</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-invarient.html">张量不变量</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -399,7 +406,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -415,6 +424,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">变形分解</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -435,6 +452,23 @@ document.write(`
 <li><p><strong>硬化规律</strong>：用于描述材料屈服应力随塑性应变演化</p></li>
 </ul>
 <p>所有表现出弹性变形、塑性流动和硬化行为的材料均可纳入塑性理论框架。不同材料的独特响应可以通过选用特定的屈服准则和硬化规律来进行描述</p>
+<section id="id2">
+<h2>变形分解<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="intro-fig-plasticity">
+<a class="reference internal image-reference" href="../../../_images/plasticity-1.png"><img alt="../../../_images/plasticity-1.png" src="../../../_images/plasticity-1.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">变形可以分解为体积变形（绿线）和形状变形（红线）两部分</span><a class="headerlink" href="#intro-fig-plasticity" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>材料的变形可以分解为体积变形和形状变形两部分</p>
+<ul class="simple">
+<li><p>体积变形反映材料整体体积的变化</p></li>
+<li><p>形状变形则描述材料外形或结构的改变，而不涉及体积的变化</p></li>
+</ul>
+<p>对于大多数金属材料，在塑性变形过程中，内部的滑移和孪生等机制是导致形状永久改变的主要原因，此时原子间距离基本保持不变，体积几乎没有变化。</p>
+<p>因此金属的塑性流动通常被认为是<strong>等体积流动</strong>（isochoric flow），即在塑性变形过程中体积保持不变，只有形状发生不可逆的改变</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -491,6 +525,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">变形分解</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

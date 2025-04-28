@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -61,11 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap1/sec1-OT';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap2/sec1-OT';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="张量不变量" href="sec2-invarient.html" />
-    <link rel="prev" title="基本定义" href="intro.html" />
+    <link rel="prev" title="格林应变张量" href="../chap1/sec2-greenstrain.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,9 +201,16 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">基本定义</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">正交变换</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-greenstrain.html">格林应变张量</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">正交变换</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec2-invarient.html">张量不变量</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -300,7 +307,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap1/sec1-OT.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap2/sec1-OT.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +337,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Tensor/chap1/sec1-OT.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap2/sec1-OT.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -455,12 +462,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">实对称矩阵的对角化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">实对称矩阵的对角化（谱分解）</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值为实数</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">不同特征根的特征向量正交</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">正交对角化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">非唯一性</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">奇异值分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">存在性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">极分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">存在性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">唯一性</a></li>
 </ul>
 </li>
 </ul>
@@ -904,7 +921,7 @@ M = I-2\mathbf{n}\mathbf{n}^{T}.
 </section>
 </section>
 <section id="id18">
-<h3>实对称矩阵的对角化<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<h3>实对称矩阵的对角化（谱分解）<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>对于实对称矩阵 <span class="math notranslate nohighlight">\(A\)</span>，存在正交矩阵 <span class="math notranslate nohighlight">\(Q\)</span> 和对角矩阵 <span class="math notranslate nohighlight">\(\Lambda\)</span>，使得</p>
 <div class="math notranslate nohighlight">
 \[
@@ -994,8 +1011,103 @@ Q^{-1}AQ = \Lambda \Rightarrow AQ = Q\Lambda,
 \]</div>
 <p>因此 <span class="math notranslate nohighlight">\(Q\)</span> 的列向量是矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征向量，<span class="math notranslate nohighlight">\(\Lambda\)</span> 的对角元素是对应的特征值</p>
 </section>
+<section id="id21">
+<h4>非唯一性<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<p>特征值的排序和特征向量的选取会影响 <span class="math notranslate nohighlight">\(Q\)</span> 和 <span class="math notranslate nohighlight">\(\Lambda\)</span> 的取值，因此分解并不唯一</p>
 </section>
 </section>
+</section>
+<section id="id22">
+<h2>奇异值分解<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>复数域中正交矩阵为酉矩阵</p>
+</aside>
+<p>对于任意实矩阵 <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{m\times n}\)</span>，存在正交矩阵 <span class="math notranslate nohighlight">\(U\in\mathbb{R}^{m\times m},V\in\mathbb{R}^{n\times n}\)</span>和非负对角矩阵 <span class="math notranslate nohighlight">\(\Sigma\in\mathbb{R}^{m\times n}\)</span>，使得</p>
+<div class="math notranslate nohighlight">
+\[
+A = U\Sigma V^{T}\quad \Longleftrightarrow \quad AV = U\Sigma.
+\]</div>
+<p>奇异值分解将矩阵分解为了旋转-拉缩-旋转的叠加模式</p>
+<section id="id23">
+<h3>存在性<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>半正定矩阵的特征值非负</p>
+</aside>
+<p>由于 <span class="math notranslate nohighlight">\(A^{T}A\)</span> 是半正定对称阵，根据谱分解定理，存在正交矩阵 <span class="math notranslate nohighlight">\(V\)</span> 和非负对角阵 <span class="math notranslate nohighlight">\(\Lambda\)</span>， 使得</p>
+<div class="math notranslate nohighlight">
+\[
+A^{T}A = V^{T}\Lambda V,
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[
+V = [\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}],\quad \Lambda = \text{diag}(\lambda_{1},\lambda_{2},\cdots,\lambda_{n}),
+\]</div>
+<p>且 <span class="math notranslate nohighlight">\(\lambda_{1}\geq\lambda_{2}\geq\cdots\geq\lambda_{n}\)</span>，设前 <span class="math notranslate nohighlight">\(r(\leq\min(m,n))\)</span> 个为非零值。记 <span class="math notranslate nohighlight">\(\sigma_{i} = \sqrt{\lambda_{i}},i=1:r\)</span>，定义向量</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u}_{i} = \frac{1}{\sigma_{i}}A\mathbf{v}_{i},\quad i=1:r,
+\]</div>
+<p>有</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u}_{i}^{T}\mathbf{u}_{j} = \frac{1}{\sigma_{i}\sigma_{j}}\mathbf{v}_{i}^{T}A^{T}A\mathbf{v}_{j} = \delta_{ij},\quad 1\leq i,j \leq r,
+\]</div>
+<p>将 <span class="math notranslate nohighlight">\(\{\mathbf{u}_{i}\}\)</span> 扩展为 <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span> 下的标准正交基，形成正交矩阵</p>
+<div class="math notranslate nohighlight">
+\[
+U = \begin{bmatrix}\mathbf{u}_{1},\mathbf{u}_{2},\cdots,\mathbf{u}_{m}\end{bmatrix},
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\((AV)^{T}(AV) = \Lambda\)</span>，对于 <span class="math notranslate nohighlight">\(i&gt;r\)</span>，此时 <span class="math notranslate nohighlight">\(\lambda_{i} = 0\)</span>，因此 <span class="math notranslate nohighlight">\(A\mathbf{v} = \mathbf{0}\)</span>，</p>
+<div class="math notranslate nohighlight">
+\[
+AV = U\Sigma,
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\Sigma\in\mathbb{R}^{m\times n}\)</span>，其中，对角元素称为矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的奇异值（非零元素为 <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>）</p>
+</section>
+</section>
+<section id="id24">
+<h2>极分解<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>复数域中分解为酉矩阵与 Hermite 正定阵</p>
+</aside>
+<p>实矩阵的极分解将任意可逆矩阵分解为正交矩阵与正定对称阵的乘积</p>
+<div class="math notranslate nohighlight">
+\[
+A = RU = VR,
+\]</div>
+<p>其中</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span> 是正交矩阵，表示刚体旋转或反射</p></li>
+<li><p><span class="math notranslate nohighlight">\(U,V\)</span> 是对称正定阵，表示拉伸或缩放</p></li>
+</ul>
+<section id="id25">
+<h3>存在性<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<p>由于 <span class="math notranslate nohighlight">\(A\)</span> 可逆，因此根据矩阵的奇异值，存在正交矩阵 <span class="math notranslate nohighlight">\(Q,P\)</span> 和正对角阵 <span class="math notranslate nohighlight">\(\Sigma\)</span>（奇异值 <span class="math notranslate nohighlight">\(&gt;0\)</span>） 使得</p>
+<div class="math notranslate nohighlight">
+\[
+A = Q\Sigma P^{T},
+\]</div>
+<p>于是，令</p>
+<div class="math notranslate nohighlight">
+\[
+R = QP^{T},\quad U = P\Sigma P^{T},\quad V = Q\Sigma Q^{T}.
+\]</div>
+</section>
+<section id="id26">
+<h3>唯一性<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<p>若存在正交矩阵 <span class="math notranslate nohighlight">\(R_{1},R_{2}\)</span> 和对称正定阵 <span class="math notranslate nohighlight">\(U_{1},U_{2}\)</span> 满，则</p>
+<div class="math notranslate nohighlight">
+\[
+R_{1}U_{1} = R_{2}U_{2}
+\]</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1011,7 +1123,7 @@ Q^{-1}AQ = \Lambda \Rightarrow AQ = Q\Lambda,
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Tensor/chap1"
+            path: "./content/Tensor/chap2"
         },
         predefinedOutput: true
     }
@@ -1029,12 +1141,12 @@ Q^{-1}AQ = \Lambda \Rightarrow AQ = Q\Lambda,
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="../chap1/sec2-greenstrain.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">基本定义</p>
+        <p class="prev-next-title">格林应变张量</p>
       </div>
     </a>
     <a class="right-next"
@@ -1093,12 +1205,22 @@ Q^{-1}AQ = \Lambda \Rightarrow AQ = Q\Lambda,
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">实对称矩阵的对角化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">实对称矩阵的对角化（谱分解）</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值为实数</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">不同特征根的特征向量正交</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">正交对角化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">非唯一性</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">奇异值分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">存在性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">极分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">存在性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">唯一性</a></li>
 </ul>
 </li>
 </ul>

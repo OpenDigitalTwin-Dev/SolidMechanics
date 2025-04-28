@@ -20,9 +20,14 @@ parts:
         - file: content/Math/chap2/sec3-linearelasticity
   - caption: 张量分析
     chapters:
+      - file: content/Tensor/intro
       - file: content/Tensor/chap1/intro
-      - file: content/Tensor/chap1/sec1-OT
-      - file: content/Tensor/chap1/sec2-invarient
+        sections:
+        - file: content/Tensor/chap1/sec1-strain-displacement
+        - file: content/Tensor/chap1/sec2-greenstrain
+      - file: content/Tensor/chap2/sec1-OT
+        sections:  
+        - file: content/Tensor/chap2/sec2-invarient
   - caption: 弹性力学
     chapters:
       - file: content/Elasticity/chap1/intro

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tresca 屈服准则 &#8212; 固体力学笔记</title>
+    <title>格林应变张量 &#8212; 固体力学笔记</title>
   
   
   
@@ -59,13 +59,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec1-tresca';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap1/sec2-greenstrain';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Mises 屈服准则" href="sec2-mises.html" />
-    <link rel="prev" title="屈服准则" href="intro.html" />
+    <link rel="next" title="正交变换" href="../chap2/sec1-OT.html" />
+    <link rel="prev" title="应变与位移" href="sec1-strain-displacement.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,15 +198,15 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应变张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
 </ul>
@@ -226,14 +224,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tresca 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-mises.html">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -307,7 +305,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec1-tresca.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap1/sec2-greenstrain.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +335,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Plasticity/chap2/sec1-tresca.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap1/sec2-greenstrain.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,9 +406,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -421,24 +417,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tresca 屈服准则</h1>
+    <h1>格林应变张量</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">最大剪切应力</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -448,163 +431,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tresca">
-<h1>Tresca 屈服准则<a class="headerlink" href="#tresca" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>格林应变张量<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则之一，属于各向同性屈服准则
+格林应变张量（Green-Lagrange strain tensor）能够准确反映材料在大变形过程中的几何非线性特征，因此被广泛应用于非线性弹性力学、结构力学以及材料科学等领域
 </span>
-<p>Tresca 屈服准则，也称最大剪切应力准则：当某点的最大剪切应力达到临界值时，材料改点开始发生塑性变形</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{\text{tresca}} = \max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y},
-\]</div>
-<p><span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 是<strong>单轴拉伸</strong>下的屈服强度，于是在屈服面上</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
-\]</div>
-<p>得到</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{\text{tresca}} = \sigma_{y}.
-\]</div>
-<p>设<strong>纯剪切变形</strong>下的屈服强度为 <span class="math notranslate nohighlight">\(\tau_{y}\)</span>，于是在屈服面上</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}=\tau_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = -\tau_{y},
-\]</div>
-<p>得到</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{\text{tresca}} = 2\tau_{y}.
-\]</div>
-<p>因此</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{y} = 2\tau_{y}.
-\]</div>
-<p><span class="math notranslate nohighlight">\(\sigma_{\text{tresca}}\)</span> 也可以写为</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{\text{tresca}} = \sigma_{\text{max}} - \sigma_{\text{min}}.
-\]</div>
-<p>根据 Tresca 屈服准则，位于中间的主应力对屈服没有任何影响</p>
-<section id="id1">
-<h2>几何意义<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="pi">
-<h3><span class="math notranslate nohighlight">\(\pi\)</span> 平面<a class="headerlink" href="#pi" title="Link to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(\pi\)</span> 平面是主应力空间中（<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）过原点且法线为等倾线（方向向量为<span class="math notranslate nohighlight">\((\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})\)</span>）的平面，其方程为</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}+\sigma_{2}+\sigma_{3} = 1,
-\]</div>
-<p>在该平面上，平均应力（静水压力）为 <span class="math notranslate nohighlight">\(0\)</span>，仅包含偏应力分量，因此 <span class="math notranslate nohighlight">\(\pi\)</span> 平面也称为<strong>偏应力平面</strong>或<strong>等静压力平面</strong>。<span class="math notranslate nohighlight">\(\pi\)</span> 平面常用于研究材料屈服行为中与形状改变相关的力学响应</p>
-</section>
-<section id="id2">
-<h3>几何意义<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>根据 Tresca 屈服准则</p>
-<div class="math notranslate nohighlight">
-\[
-\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y}
-\]</div>
-<p>在主应力空间中（<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>），上式对应</p>
-</section>
-</section>
-<section id="id3">
-<h2>最大剪切应力<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>设法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 的平面上的应力为 <span class="math notranslate nohighlight">\(\mathbf{t}_{\mathbf{n}}\)</span>，正应力为 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span>，切应力为 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span>，则</p>
-<div class="math notranslate nohighlight">
-\[
-\tau_{\mathbf{n}}^{2} = |\mathbf{t}_{\mathbf{n}}|^{2} - \sigma_{\mathbf{n}}^{2} = \mathbf{n}^{T}\boldsymbol{\sigma}^{2}\mathbf{n} - (\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n})^{2},
-\]</div>
-<p>将 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 沿 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 的单位特征向量 <span class="math notranslate nohighlight">\(\mathbf{n}_{1},\mathbf{n}_{2},\mathbf{n}_{3}\)</span> （对应的特征值分别为 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）分解</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{n} = n_{1}\mathbf{n}_{1}+n_{2}\mathbf{n}_{3}+n_{2}\mathbf{n}_{3},
-\]</div>
-<p>其中 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span>， 于是</p>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-tau-1">
-<span class="eqno">(67)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
-\tau_{\mathbf{n}}^2 = n_{1}^{2}\sigma_{1}^{2}+n_{2}^{2}\sigma_{2}^{2}+n_{3}^{2}\sigma_{3}^{2}-(n_{1}^{2}\sigma_{1}+n_{2}^{2}\sigma_{2}+n_{3}^{2}\sigma_{3})^2,
-\]</div>
-<p>于是需在约束 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span> 下最大化 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}^2\)</span>，引入拉格朗日乘子 <span class="math notranslate nohighlight">\(\lambda\)</span>，构造目标函数</p>
-<div class="math notranslate nohighlight">
-\[
-L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
-\]</div>
-<p>函数 <span class="math notranslate nohighlight">\(L\)</span> 对 <span class="math notranslate nohighlight">\(n_{1},n_{2},n_{3}\)</span> 的导数为</p>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-l-der">
-<span class="eqno">(68)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{equation}
-\begin{aligned}
-&amp;(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)n_{1} &amp;= 0 \\
-&amp;(\sigma_{2}^2-2\sigma_{\mathbf{n}}\sigma_{2} - \lambda)n_{2} &amp;= 0 \\
-&amp;(\sigma_{3}^2-2\sigma_{\mathbf{n}}\sigma_{3} - \lambda)n_{3} &amp;= 0
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>不失一般性</p>
-<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(n_{2}=n_{3}=0\)</span>，此时 <span class="math notranslate nohighlight">\(n_{1}=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(67)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
-<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(67)</a> 中，得到</p>
-<div class="math notranslate nohighlight">
-\[
-\tau_{\mathbf{n}}^2 = n_{1}^2\sigma_{1}^2+n_{2}^2\sigma_{2}^2 - (n_{1}^2\sigma_{1}+n_{2}^2\sigma_{2})^2,
-\]</div>
-<p>代入 <span class="math notranslate nohighlight">\(n_{2}^2 = 1 - n_{1}^2\)</span>，并记 <span class="math notranslate nohighlight">\(\ell = n_{1}^2\)</span>，于是</p>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-tau-2">
-<span class="eqno">(69)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\tau_{\mathbf{n}}^2 &amp;= \ell\sigma_{1}^2+(1 - \ell)\sigma_{2}^2 - (\ell\sigma_{1}+(1 - \ell)\sigma_{2})^2\\
-&amp;=-(\sigma_{1}-\sigma_{2})^2\ell^2-(\sigma_{1}^2-\sigma_{2}^2 - 2(\sigma_{1}-\sigma_{2})\sigma_{2})\ell\\
-&amp;=-(\sigma_{1}-\sigma_{2})^2(\ell^2 - \ell),
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>因此，当 <span class="math notranslate nohighlight">\(\ell = n_{1}^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(n_{2}^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(67)</a>，得到</p>
-<div class="math notranslate nohighlight">
-\[
-\tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
-\]</div>
-<p>截面法向量为</p>
-<div class="math notranslate nohighlight">
-\[
-(\pm\frac{\sqrt{2}}{2})\mathbf{n_{1}}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{2},
-\]</div>
-<p>与 <span class="math notranslate nohighlight">\(\sigma_{1}\)</span> 截面和 <span class="math notranslate nohighlight">\(\sigma_{2}\)</span> 截面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
-<p><strong>3.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}\neq0\)</span>，则此时 <span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span> 都是二次方程 <span class="math notranslate nohighlight">\(\sigma^2-2\sigma_{\mathbf{n}}\sigma - \lambda = 0\)</span> 的根</p>
-<ul class="simple">
-<li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}=\sigma_{3}\)</span>，此时 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 为</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{\sigma} = Q^{T}(\sigma_{1}I)Q = \sigma_{1}I \quad\Longrightarrow\quad \tau_{\mathbf{n}}\equiv0
-\]</div>
-<ul class="simple">
-<li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}\neq\sigma_{3}\)</span>，此时</p></li>
-</ul>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-tau-3">
-<span class="eqno">(70)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
-\tau_{\mathbf{n}}^2 = (n_{1}^{2}+n_{2}^{2})\sigma_{1}^{2}+n_{3}^{2}\sigma_{3}^{2}-((n_{1}^{2}+n_{2}^{2})\sigma_{1}+n_{3}^{2}\sigma_{3})^2,
-\]</div>
-<p>记 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(n_{3}^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(70)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(69)</a> 有完全一样的形式，由此可知极值为</p>
-<div class="math notranslate nohighlight">
-\[
-\tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
-\]</div>
-<p>此时 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2=n_{3}^2=\frac{1}{2}\)</span>，截面法向量为</p>
-<div class="math notranslate nohighlight">
-\[
-n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
-\]</div>
-<p>与 <span class="math notranslate nohighlight">\(\sigma_{3}\)</span> 平面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
-<p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(68)</a> 的对称性，得到</p>
-<div class="math notranslate nohighlight">
-\[
-\max_{\mathbf{n}} \tau_{\mathbf{n}} = \frac{1}{2}\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1| \right\}.
-\]</div>
-<p>在截面与主应力面呈 <span class="math notranslate nohighlight">\(45\)</span> 度夹角的平面处达到</p>
-</section>
+<p>格林应变张量是连续介质力学中用于描述有限（大）变形的非线性应变张量，属于以初始构型为参考的拉格朗日描述</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -620,7 +452,7 @@ n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqr
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Plasticity/chap2"
+            path: "./content/Tensor/chap1"
         },
         predefinedOutput: true
     }
@@ -638,20 +470,20 @@ n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="sec1-strain-displacement.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">屈服准则</p>
+        <p class="prev-next-title">应变与位移</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec2-mises.html"
+       href="../chap2/sec1-OT.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mises 屈服准则</p>
+        <p class="prev-next-title">正交变换</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -661,26 +493,6 @@ n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqr
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">最大剪切应力</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
