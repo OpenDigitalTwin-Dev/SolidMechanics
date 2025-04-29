@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -454,6 +454,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">Robin 边界条件</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">求解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">位移求解</a></li>
 </ul>
 </li>
 </ul>
@@ -1136,10 +1140,15 @@ u_{D}\\
 <p><span class="math notranslate nohighlight">\(\partial E_{\text{参考}}\)</span> 表示 <span class="math notranslate nohighlight">\(\Gamma_{N}^{E}\)</span> 对应的参考单元的某一面</p>
 </aside>
 <div class="math notranslate nohighlight">
-\[
-\mathbf{F}_{\Gamma_{N}^{E}} = \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
-=\int_{\partial E_{\text{参考}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S = \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|,
-\]</div>
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\mathbf{F}_{\Gamma_{N}^{E}} &amp;= \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
+=\int_{\partial E_{\text{参考}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \\
+&amp;= \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|,
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
 <p>其中，积分点是 <span class="math notranslate nohighlight">\(\left\{(\xi_{q},\eta_{q})\right\}\)</span>，积分权重是 <span class="math notranslate nohighlight">\(w_{q}\)</span>，<span class="math notranslate nohighlight">\(\tilde{\mathbf{p}}\)</span> 需使用 <span class="math notranslate nohighlight">\(\xi,\eta\)</span> 坐标表示</p>
 <p>单元右端项到全局右端项的映射关系如下</p>
 <div class="math notranslate nohighlight">
@@ -1200,6 +1209,19 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 \mathbf{F}(g(E,i)) \ +\!\!= \ \mathbf{F}_{\Gamma_{R}^{E}}(i).
 \]</div>
 </section>
+</section>
+</section>
+<section id="id14">
+<h2>求解<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<section id="id15">
+<h3>位移求解<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>通常，<a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html"><span class="std std-doc">选择位移作为求解变量</span></a>。经过离散化后，可以得到有限元节点上以位移自由度为未知量的线性方程组：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{K}\mathbf{u} = \mathbf{F}.
+\]</div>
+<p>通过求解线性方程组（直接法或迭代法），可以得到有限元节点上的位移解</p>
+<p><strong>接着，通过场变量插值，可以得到任意单元内任意点的位移值，特别是积分点上的位移值，进而通过几何方程和本构方程求得积分点上的应变和应力（对于非线性问题，这些结果还可以用于更新刚度矩阵；对于线性问题，刚度矩阵只需组装一次，因此没有必要）。而有限元节点上的应力应变值则通常通过积分点上的应力应变进行插值得到，以满足可视化的需求</strong></p>
 </section>
 </section>
 </section>
@@ -1291,6 +1313,10 @@ u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robin">Robin 边界条件</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">求解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">位移求解</a></li>
 </ul>
 </li>
 </ul>

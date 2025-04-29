@@ -59,6 +59,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap1/sec2-greenstrain';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -406,7 +408,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -422,6 +426,28 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">单轴应变度量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">工程应变</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">真实应变</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">格林应变</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">格林应变张量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">定义</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">性质</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">对称性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">客观性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -436,7 +462,145 @@ document.write(`
 <span class="gray-text">
 格林应变张量（Green-Lagrange strain tensor）能够准确反映材料在大变形过程中的几何非线性特征，因此被广泛应用于非线性弹性力学、结构力学以及材料科学等领域
 </span>
-<p>格林应变张量是连续介质力学中用于描述有限（大）变形的非线性应变张量，属于以初始构型为参考的拉格朗日描述</p>
+<section id="id2">
+<h2>单轴应变度量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>假设一根初始长度为 <span class="math notranslate nohighlight">\(L_{0}\)</span> 的杆均匀伸长或缩短至长度 <span class="math notranslate nohighlight">\(L\)</span>，对于这种变形，存在多种不同的应变度量方式</p>
+<section id="id3">
+<h3>工程应变<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>工程应变（又称名义应变）是基于物体<strong>原始尺寸</strong>的<strong>小变形</strong>线性近似</p>
+<div class="math notranslate nohighlight">
+\[
+\varepsilon_{eng} = \frac{L-L_{0}}{L_{0}}.
+\]</div>
+<ul class="simple">
+<li><p>计算简便</p></li>
+<li><p>忽略了变形过程中几何形状的实时变化</p></li>
+<li><p>忽略了几何非线性，无法准确描述大变形中的非线性效应，仅适用于小变形（通常应变 &lt; 5%，弹性阶段）</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>真实应变<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>真实应变（自然应变）基于<strong>瞬时尺寸</strong>的<strong>累积变形</strong>，每一步应变增量均相对于当前长度计算，适用于连续变形过程，采用对数形式描述<strong>大变形</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\varepsilon_{true} = \int_{L_{0}}^{L}\frac{\mathrm{d}L}{L} = \ln\frac{L}{L_{0}}.
+\]</div>
+<ul class="simple">
+<li><p>具有可加性（同向变形），多个应变阶段的真实应变可直接相加</p></li>
+<li><p>考虑了变形路径的影响，更符合物理实际</p></li>
+<li><p>部分考虑了几何非线性</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>格林应变<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>有限应变理论（区分于小变形理论）是用于描述和分析材料或结构在发生较大、不可忽略几何非线性变形时的力学行为的理论体系</p>
+</aside>
+<p>格林应变（Green-Lagrange应变）属于<strong>有限应变理论</strong>，基于变形前后长度的平方变化，是二阶张量形式，其一维形式如下</p>
+<div class="math notranslate nohighlight">
+\[
+\varepsilon_{Green} = \frac{1}{2}((\frac{L}{L_{0}})^2-1).
+\]</div>
+<ul class="simple">
+<li><p>包含位移梯度的线性项和二次项，完全考虑了几何非线性，适用于连续介质力学和有限元分析中的大变形问题</p></li>
+<li><p>保持客观性（在刚体运动下不变），适合本构模型</p></li>
+<li><p>格林应变在小变形极限下会退化为工程应变（线性应变张量）</p></li>
+</ul>
+</section>
+</section>
+<section id="id6">
+<h2>格林应变张量<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>格林应变张量是连续介质力学中描述<strong>有限变形</strong>（即<strong>大变形</strong>）的重要工具之一。它在非线性弹性、超弹性材料本构模型以及有限元分析等领域具有重要地位。格林应变张量采用以初始构型为参考的拉格朗日描述，因此又被称为格林-拉格朗日应变张量</p>
+<section id="id7">
+<h3>定义<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>格林应变张量基于变形前后长度的平方变化，通过对比变形前后任意两点间距离的差异来定义应变。参考构型中两点 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{X}+\mathrm{d}\mathbf{X}\)</span> 的距离平方为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{d}S^2 = \mathrm{d}\mathbf{X}\cdot\mathrm{d}\mathbf{X},
+\]</div>
+<p>变形后变为 <span class="math notranslate nohighlight">\(\mathbf{x}(\mathbf{X})\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{x}(\mathbf{X}+\mathrm{d}\mathbf{X})\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\mathrm{d}s^2 &amp;= \left|\mathbf{x}(\mathbf{X}+\mathrm{d}\mathbf{X}) - \mathbf{x}(\mathbf{X})\right|^2 \\
+&amp;\approx (\frac{\partial \mathbf{x}}{\partial \mathbf{X}}\mathrm{d}\mathbf{X})\cdot(\frac{\partial \mathbf{x}}{\partial \mathbf{X}}\mathrm{d}\mathbf{X}) \\
+&amp;= \mathrm{d}\mathbf{X}^{T}F^{T}F\mathrm{d}\mathbf{X}
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{d}s^2 - \mathrm{d}S^2 = \mathrm{d}\mathbf{X}^{T}(F^{T}F-I)\mathrm{d}\mathbf{X} = 2\ \mathrm{d}\mathbf{X}^{T}E\mathrm{d}\mathbf{X},
+\]</div>
+<p>定义格林应变张量为</p>
+<div class="math notranslate nohighlight">
+\[
+E = \frac{1}{2}(F^{T}F-I),
+\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(F = \frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+E &amp;= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I)^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I) - I)\\
+&amp; = \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T} + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}}) + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}})),
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+E_{ij} = \frac{1}{2}(\frac{\partial u_{i}}{\partial X_{j}} +\frac{\partial u_{j}}{\partial X_{i}} +  \frac{\partial u_{k}}{\partial X_{i}}\frac{\partial u_{k}}{\partial X_{j}}),
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial u_{i}}{\partial X_{j}} +\frac{\partial u_{j}}{\partial X_{i}}\)</span>：对应线性应变部分（与小变形理论中一致）</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial u_{k}}{\partial X_{i}}\frac{\partial u_{k}}{\partial X_{j}}\)</span>：非线性项，由有限应变引起，在小变形下可忽略</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>性质<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h4>对称性<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+E^{T} = E.
+\]</div>
+</section>
+<section id="id10">
+<h4>客观性<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<p>格林应变张量的客观性指其在刚体运动（平移、旋转）下保持不变，即仅反映材料的真实变形</p>
+<p>假设物体在变形的过程中同时叠加了刚体运动</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}' = Q\mathbf{x}+\mathbf{c},
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(Q\)</span> 是常正交矩阵，<span class="math notranslate nohighlight">\(\mathbf{c}\)</span> 是常向量，于是</p>
+<div class="math notranslate nohighlight">
+\[
+F' = \frac{\partial \mathbf{x}'}{\partial \mathbf{X}} = Q\frac{\partial \mathbf{x}}{\partial \mathbf{X}} = QF,
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+E' = \frac{1}{2}((F')^{T}F' - I) =  \frac{1}{2}(F^{T}Q^{T}QF - I) = \frac{1}{2}(F^{T}F - I) = E.
+\]</div>
+<p>这也可以通过矩阵的<a class="reference internal" href="../chap2/sec1-OT.html"><span class="std std-doc">极分解</span></a>得出，任意矩阵都可以分解为正交矩阵（表示刚体运动）<span class="math notranslate nohighlight">\(R\)</span> 和对称半正定矩阵（表示形状变化）<span class="math notranslate nohighlight">\(U\)</span> 的乘积</p>
+<div class="math notranslate nohighlight">
+\[
+F = RU,
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+E = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
+\]</div>
+<p>这意味着在 <span class="math notranslate nohighlight">\(E\)</span> 中，刚体运动被消除了</p>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -493,6 +657,35 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">单轴应变度量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">工程应变</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">真实应变</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">格林应变</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">格林应变张量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">定义</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">性质</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">对称性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">客观性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -717,8 +717,13 @@ $\partial E_{\text{参考}}$ 表示 $\Gamma_{N}^{E}$ 对应的参考单元的某
 ```
 
 $$
-\mathbf{F}_{\Gamma_{N}^{E}} = \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
-=\int_{\partial E_{\text{参考}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S = \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|,
+\begin{equation}
+\begin{aligned}
+\mathbf{F}_{\Gamma_{N}^{E}} &= \int_{\Gamma_{N}^{E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}\Gamma_{N}^{E}
+=\int_{\partial E_{\text{参考}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \\
+&= \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|,
+\end{aligned}
+\end{equation}
 $$
 
 其中，积分点是 $\left\{(\xi_{q},\eta_{q})\right\}$，积分权重是 $w_{q}$，$\tilde{\mathbf{p}}$ 需使用 $\xi,\eta$ 坐标表示
@@ -786,3 +791,17 @@ $$
 $$
 \mathbf{F}(g(E,i)) \ +\!\!= \ \mathbf{F}_{\Gamma_{R}^{E}}(i).
 $$
+
+## 求解
+
+### 位移求解
+
+通常，[选择位移作为求解变量](../../Elasticity/chap1/sec8-two-2D-solution.md)。经过离散化后，可以得到有限元节点上以位移自由度为未知量的线性方程组：
+
+$$
+\mathbf{K}\mathbf{u} = \mathbf{F}.
+$$
+
+通过求解线性方程组（直接法或迭代法），可以得到有限元节点上的位移解
+
+**接着，通过场变量插值，可以得到任意单元内任意点的位移值，特别是积分点上的位移值，进而通过几何方程和本构方程求得积分点上的应变和应力（对于非线性问题，这些结果还可以用于更新刚度矩阵；对于线性问题，刚度矩阵只需组装一次，因此没有必要）。而有限元节点上的应力应变值则通常通过积分点上的应力应变进行插值得到，以满足可视化的需求**

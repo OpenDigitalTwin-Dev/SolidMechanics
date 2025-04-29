@@ -508,7 +508,7 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 \[
 \boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
 \]</div>
-<p>其中</p>
+<p>其中，<span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> 是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u} = [u\,v]^{T}\)</span> 是位移向量，即</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><span class="math notranslate nohighlight">\(\varepsilon_{xy} = \frac{\gamma_{xy}}{2}\)</span> 被称为张量剪切应变</p>
@@ -520,10 +520,17 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 \begin{bmatrix}
 \varepsilon_{xx}  &amp;  \varepsilon_{xy} \\
 \varepsilon_{yx}  &amp;  \varepsilon_{yy}
-\end{bmatrix}
+\end{bmatrix} = \frac{1}{2}(\begin{bmatrix}
+\frac{\partial u}{\partial x}  &amp;  \frac{\partial u}{\partial y} \\
+\frac{\partial v}{\partial x}  &amp;  \frac{\partial v}{\partial y}
+\end{bmatrix} + 
+\begin{bmatrix}
+\frac{\partial u}{\partial x}  &amp;  \frac{\partial v}{\partial x} \\
+\frac{\partial u}{\partial y}  &amp;  \frac{\partial v}{\partial y}
+\end{bmatrix}),
 \end{equation}
 \end{split}\]</div>
-<p>是应变张量，<span class="math notranslate nohighlight">\(\mathbf{u} = [u\,v]^{T}\)</span> 是位移向量。也可以写为 Voigt 形式</p>
+<p>也可以写为 Voigt 形式</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}

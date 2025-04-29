@@ -6,10 +6,10 @@
 
 当外力或环境条件发生变化时，物体内部的质点会产生不同程度的移动，这种相对位移导致了物体的几何形状和尺寸发生变化。通过对质点间相对位移的分析，可以定量描述材料的应变状态，并进一步研究其力学性能和变形规律
 
-位移函数 $u:\Omega_{0}\rightarrow \mathbb{R}^{3}$ 可以表示为
+位移函数 $\mathbf{u}:\Omega_{0}\rightarrow \mathbb{R}^{3}$ 可以表示为
 
 $$
-u(\mathbf{X}) = \mathbf{x} - \mathbf{X},
+\mathbf{u}(\mathbf{X}) = \mathbf{x} - \mathbf{X},
 $$
 
 其中，$\mathbf{X}=[X_{1},X_{2},X_{3}]^{T}$ 为物体内部任意一点的初始位置，$\mathbf{x}=[x_{1},x_{2},x_{3}]^{T}$ 为该点在受力作用下移动到的新位置
@@ -29,7 +29,7 @@ $$
 其中，$\mathbf{c} = [c_{1},c_{2},c_{3}]^{T}$，此时物体发生平移
 
 $$
-u(\mathbf{X}) = \mathbf{c}.
+\mathbf{u}(\mathbf{X}) = \mathbf{c}.
 $$
 
 ### 旋转
@@ -43,7 +43,7 @@ $$
 其中，$Q\in\mathbb{M}^{3}$ 是[正交矩阵](../chap2/sec1-OT.md)，则物体发生旋转，此时
 
 $$
-u(\mathbf{X}) = (Q-I)\mathbf{X}.
+\mathbf{u}(\mathbf{X}) = (Q-I)\mathbf{X}.
 $$
 
 ## 均匀拉伸和压缩
@@ -57,7 +57,7 @@ $$
 其中，$k_{i}>0$，当 $k_{i}>1$ 时，为拉伸变形；当 $k_{i}<1$ 时，为压缩变形。此时
 
 $$
-u(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
+\mathbf{u}(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
 $$
 
 ## 剪切变形
@@ -82,7 +82,13 @@ $$
 \begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan\theta_{xy}\cdot X_{2}\\X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&\tan\theta_{xy}&0\\0&1&0\\0&0&1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
 $$
 
-注意到，变换矩阵的行列式等于 $1$，因此简单剪切变形并不会导致物体体积发生变化
+注意到，变换矩阵的行列式等于 $1$，因此简单剪切变形并不会导致物体体积发生变化，此时
+
+$$
+\mathbf{u}(\mathbf{X}) = \begin{bmatrix}0&\tan\theta_{xy}&0\\0&0&0\\0&0&0\end{bmatrix}\mathbf{X}.
+$$
+
+
 
 可以考虑多个简单剪切的叠加
 
@@ -117,6 +123,12 @@ $$
 \begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan(\theta_{xy}/2)\cdot X_{2}\\\tan(\theta_{xy}/2)\cdot X_{1} + X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&\tan(\theta_{xy}/2)&0\\\tan(\theta_{xy}/2)&1&0\\0&0&1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
 $$
 
+此时
+
+$$
+\mathbf{u}(\mathbf{X}) = \begin{bmatrix}0&\tan(\theta_{xy}/2)&0\\\tan(\theta_{xy}/2)&0&0\\0&0&0\end{bmatrix}\mathbf{X}.
+$$
+
 当 $\theta_{xy}$ 很小时（小变形假定），可近似认为体积不变
 
 对于更一般的情形，变换矩阵为
@@ -127,4 +139,47 @@ $$
 \tan(\theta_{xy}/2) & 1 & \tan(\theta_{yz}/2) \\
 \tan(\theta_{xz}/2) & \tan(\theta_{yz}/2) & 1
 \end{bmatrix}
+$$
+
+## 变形梯度
+
+通过考虑材料内部任何一条曲线在受力后的形变来分析材料的形变特征，假设初始曲线为 
+
+$$
+\mathbf{X}(\xi) = [X_{1}(\xi),X_{2}(\xi),X_{3}(\xi)]^{T}
+$$
+
+受力后变为 
+
+$$
+\mathbf{x}(\xi) = [x_{1}(\xi),x_{2}(\xi),x_{3}(\xi)]^{T}
+$$
+
+因此，曲线上任意一点的切向量（无穷小后的逼近线段）变化满足
+
+$$
+\frac{\partial \mathbf{x}}{\partial \xi} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \xi} =  \begin{bmatrix}
+\frac{\partial x_1}{\partial X_1} & \frac{\partial x_1}{\partial X_2} & \frac{\partial x_1}{\partial X_3} \\
+\frac{\partial x_2}{\partial X_1} & \frac{\partial x_2}{\partial X_2} & \frac{\partial x_2}{\partial X_3} \\
+\frac{\partial x_3}{\partial X_1} & \frac{\partial x_3}{\partial X_2} & \frac{\partial x_3}{\partial X_3}
+\end{bmatrix}\frac{\partial \mathbf{X}}{\partial \xi},
+$$
+
+定义变形梯度矩阵为
+
+$$
+F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} = 
+\begin{bmatrix}
+\frac{\partial x_1}{\partial X_1} & \frac{\partial x_1}{\partial X_2} & \frac{\partial x_1}{\partial X_3} \\
+\frac{\partial x_2}{\partial X_1} & \frac{\partial x_2}{\partial X_2} & \frac{\partial x_2}{\partial X_3} \\
+\frac{\partial x_3}{\partial X_1} & \frac{\partial x_3}{\partial X_2} & \frac{\partial x_3}{\partial X_3}
+\end{bmatrix},
+$$
+
+$F$ 包含了由于变形所产生的长度、角度和体积变化的所有必要的局部信息。例如，[$\det(F^{T}) = \det(F)$ 反映了局部体积变化](../../Math/chap2/sec2-isoparametric.md)
+
+于是
+
+$$
+\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
 $$
