@@ -610,10 +610,26 @@ F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} =
 \end{bmatrix},
 \end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(F\)</span> 包含了由于变形所产生的长度、角度和体积变化的所有必要的局部信息。例如，<a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\det(F^{T}) = \det(F)\)</span> 反映了局部体积变化</span></a></p>
+<p>此时</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\nabla\mathbf{u} = 
+\begin{bmatrix}
+\frac{\partial u_1}{\partial X_1} &amp; \frac{\partial u_1}{\partial X_2} &amp; \frac{\partial u_1}{\partial X_3} \\
+\frac{\partial u_2}{\partial X_1} &amp; \frac{\partial u_2}{\partial X_2} &amp; \frac{\partial u_2}{\partial X_3} \\
+\frac{\partial u_3}{\partial X_1} &amp; \frac{\partial u_3}{\partial X_2} &amp; \frac{\partial u_3}{\partial X_3}
+\end{bmatrix}=
+\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
+\end{split}\]</div>
 <p>于是</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
+\mathrm{d}\mathbf{u} = (F-I)\mathrm{d}\mathbf{X},
+\]</div>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{d}\mathbf{x} = \mathrm{d}\mathbf{X} + \mathrm{d}\mathbf{u} = \mathrm{d}\mathbf{X} + \nabla\mathbf{u}\ \mathrm{d}\mathbf{X},
 \]</div>
 </section>
 </section>

@@ -178,8 +178,26 @@ $$
 
 $F$ 包含了由于变形所产生的长度、角度和体积变化的所有必要的局部信息。例如，[$\det(F^{T}) = \det(F)$ 反映了局部体积变化](../../Math/chap2/sec2-isoparametric.md)
 
+此时
+
+$$
+\nabla\mathbf{u} = 
+\begin{bmatrix}
+\frac{\partial u_1}{\partial X_1} & \frac{\partial u_1}{\partial X_2} & \frac{\partial u_1}{\partial X_3} \\
+\frac{\partial u_2}{\partial X_1} & \frac{\partial u_2}{\partial X_2} & \frac{\partial u_2}{\partial X_3} \\
+\frac{\partial u_3}{\partial X_1} & \frac{\partial u_3}{\partial X_2} & \frac{\partial u_3}{\partial X_3}
+\end{bmatrix}=
+\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
+$$
+
 于是
 
 $$
-\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
+\mathrm{d}\mathbf{u} = (F-I)\mathrm{d}\mathbf{X},
+$$
+
+得到
+
+$$
+\mathrm{d}\mathbf{x} = \mathrm{d}\mathbf{X} + \mathrm{d}\mathbf{u} = \mathrm{d}\mathbf{X} + \nabla\mathbf{u}\ \mathrm{d}\mathbf{X},
 $$

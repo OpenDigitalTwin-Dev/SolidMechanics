@@ -211,7 +211,7 @@ $$
 \int_{a}^{b}w(x)f(x)\, \mathrm{d}x=\int_{a}^{b}w(x)Q(x)P_n(x)\, \mathrm{d}x + \int_{a}^{b}w(x)R(x)\, \mathrm{d}x.
 $$
 
-由于 $P_{n}(x)$ 与所有次数 $<n$ 的多项式正交（正交性定义），因此
+由于 $P_{n}(x)$ 与所有次数 $<n$ 的多项式正交（一般多项式可以表示为正交多项式的线性组合），因此
 
 $$
 \int_{a}^{b}w(x)Q(x)P_n(x)\, \mathrm{d}x = 0,
