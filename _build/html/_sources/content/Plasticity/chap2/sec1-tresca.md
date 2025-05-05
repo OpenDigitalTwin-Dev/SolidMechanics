@@ -74,8 +74,13 @@ $$
 
 在主应力空间中（$\sigma_{1},\sigma_{2},\sigma_{3}$），上式对应
 
-## 最大剪切应力
+## 不变量形式
 
+$$
+4J_2^3 - 27J_3^2 - 36k^2 J_2^2 + 96k^4 J_2 - 64\tau_{y}^6 = 0.
+$$
+
+## 最大剪切应力
 
 设法向量为 $\mathbf{n}$ 的平面上的应力为 $\mathbf{t}_{\mathbf{n}}$，正应力为 $\sigma_{n}$，切应力为 $\tau_{\mathbf{n}}$，则
 
@@ -106,9 +111,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)n_{1} &= 0 \\
-&(\sigma_{2}^2-2\sigma_{\mathbf{n}}\sigma_{2} - \lambda)n_{2} &= 0 \\
-&(\sigma_{3}^2-2\sigma_{\mathbf{n}}\sigma_{3} - \lambda)n_{3} &= 0
+&(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)n_{1}= 0 \\
+&(\sigma_{2}^2-2\sigma_{\mathbf{n}}\sigma_{2} - \lambda)n_{2}= 0 \\
+&(\sigma_{3}^2-2\sigma_{\mathbf{n}}\sigma_{3} - \lambda)n_{3}= 0
 \end{aligned}
 \end{equation}
 $$ (sec2-eq:L-der)
