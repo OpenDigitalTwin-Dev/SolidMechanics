@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -64,6 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec4-drucker-prager';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Gurson 屈服准则" href="sec5-gurson.html" />
     <link rel="prev" title="Mohr–Coulomb 屈服准则" href="sec3-mohr-coulomb.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -204,6 +205,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec3-velocity-gradient.html">速度梯度</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -233,6 +235,8 @@
 <li class="toctree-l2"><a class="reference internal" href="sec2-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -431,8 +435,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">各向同性屈服准则</a></li>
 </ul>
             </nav>
         </div>
@@ -471,16 +473,17 @@ Drucker–Prager 屈服准则主要用于岩土类材料研究，属于各向同
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi),}
+k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi)}.
 \]</div>
 <section id="id1">
 <h2>几何意义<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-</section>
-<section id="gurson">
-<h2>Gurson 屈服准则（多孔金属）<a class="headerlink" href="#gurson" title="Link to this heading">#</a></h2>
-</section>
-<section id="id2">
-<h2>各向同性屈服准则<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="sec4-fig-mc-dp">
+<a class="reference internal image-reference" href="../../../_images/mc-dp.png"><img alt="../../../_images/mc-dp.png" src="../../../_images/mc-dp.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Mohr–Coulomb 屈服准则和 Drucker–Prager 屈服准则</span><a class="headerlink" href="#sec4-fig-mc-dp" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -523,6 +526,15 @@ k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi),}
         <p class="prev-next-title">Mohr–Coulomb 屈服准则</p>
       </div>
     </a>
+    <a class="right-next"
+       href="sec5-gurson.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gurson 屈服准则</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -540,8 +552,6 @@ k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi),}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gurson">Gurson 屈服准则（多孔金属）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">各向同性屈服准则</a></li>
 </ul>
   </nav></div>
 

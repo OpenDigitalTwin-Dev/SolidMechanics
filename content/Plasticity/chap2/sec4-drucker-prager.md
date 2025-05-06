@@ -31,12 +31,17 @@ $$
 
 
 $$
-k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi),}
+k = \frac{6c\cos\phi}{\sqrt{3}(3-\sin\phi)}.
 $$
 
 
 ## 几何意义
 
-## Gurson 屈服准则（多孔金属）
+```{figure} ../../../images/Plasticity/chap2/mc-dp.png
+---
+width: 500px
+name: sec4-fig:mc-dp
+---
+Mohr–Coulomb 屈服准则和 Drucker–Prager 屈服准则
+```
 
-## 各向同性屈服准则

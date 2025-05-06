@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -205,6 +205,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec3-velocity-gradient.html">速度梯度</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,6 +235,8 @@
 <li class="toctree-l2"><a class="reference internal" href="sec2-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -431,13 +434,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">不变量形式</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">最大剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">不变量形式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">最大剪切应力</a></li>
 </ul>
             </nav>
         </div>
@@ -491,39 +489,14 @@ Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则�
 \]</div>
 <p>根据 Tresca 屈服准则，位于中间的主应力对屈服没有任何影响</p>
 <section id="id1">
-<h2>几何意义<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="pi">
-<h3><span class="math notranslate nohighlight">\(\pi\)</span> 平面<a class="headerlink" href="#pi" title="Link to this heading">#</a></h3>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>等倾线也称静水压力轴</p>
-</aside>
-<p><span class="math notranslate nohighlight">\(\pi\)</span> 平面是主应力空间中（<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）过原点且法线为等倾线（与主应力方向夹角相同，故方向向量为<span class="math notranslate nohighlight">\((\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})\)</span>）的平面，其方程为</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}+\sigma_{2}+\sigma_{3} = 0,
-\]</div>
-<p>在该平面上，平均应力（静水压力）为 <span class="math notranslate nohighlight">\(0\)</span>，仅包含偏应力分量，因此 <span class="math notranslate nohighlight">\(\pi\)</span> 平面也称为<strong>偏应力平面</strong>或<strong>等静压力平面</strong>。<span class="math notranslate nohighlight">\(\pi\)</span> 平面常用于研究材料屈服行为中与形状改变相关的力学响应</p>
-</section>
-<section id="id2">
-<h3>几何意义<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>根据 Tresca 屈服准则</p>
-<div class="math notranslate nohighlight">
-\[
-\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_1 - \sigma_3|, |\sigma_2 - \sigma_3| \right\}\geq\sigma_{y}
-\]</div>
-<p>在主应力空间中（<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>），上式对应</p>
-</section>
-</section>
-<section id="id3">
-<h2>不变量形式<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>不变量形式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 4J_2^3 - 27J_3^2 - 36k^2 J_2^2 + 96k^4 J_2 - 64\tau_{y}^6 = 0.
 \]</div>
 </section>
-<section id="id4">
-<h2>最大剪切应力<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h2>最大剪切应力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>设法向量为 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 的平面上的应力为 <span class="math notranslate nohighlight">\(\mathbf{t}_{\mathbf{n}}\)</span>，正应力为 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span>，切应力为 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
@@ -683,13 +656,8 @@ n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqr
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">不变量形式</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">最大剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">不变量形式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">最大剪切应力</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>等参变换 &#8212; 固体力学笔记</title>
+    <title>Gurson 屈服准则 &#8212; 固体力学笔记</title>
   
   
   
@@ -61,11 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap2/sec2-isoparametric';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec5-gurson';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="线弹性问题" href="sec3-linearelasticity.html" />
-    <link rel="prev" title="形函数" href="sec1-shapefunction.html" />
+    <link rel="next" title="各向异性屈服准则" href="sec6-anisotropic.html" />
+    <link rel="prev" title="Drucker–Prager 屈服准则" href="sec4-drucker-prager.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,18 +184,18 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec1-trapezoidal.html">梯形公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-simpson.html">辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec3-algebraic-prec.html">代数精度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec4-gaussian.html">Gaussian 公式</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec4-gaussian.html">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">有限元计算</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-shapefunction.html">形函数</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-linearelasticity.html">线弹性问题</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-linearelasticity.html">线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
@@ -227,16 +227,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -310,7 +310,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Math/chap2/sec2-isoparametric.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec5-gurson.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -340,7 +340,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Math/chap2/sec2-isoparametric.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap2/sec5-gurson.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,9 +411,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -424,21 +422,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>等参变换</h1>
+    <h1>Gurson 屈服准则</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何映射</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">场变量插值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">等参变换与非等参变换</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -448,226 +436,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>等参变换<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><a class="reference internal" href="intro.html"><span class="std std-doc">前文</span></a>提到，物理单元上的计算关键在于单元 <span class="math notranslate nohighlight">\(E\)</span> 上的积分运算和场变量分布运算。然而，由于 <span class="math notranslate nohighlight">\(\left.\phi\right|_{E}\)</span> 与单元 <span class="math notranslate nohighlight">\(E\)</span> 的几何形状密切相关，其构造过程复杂且难以统一处理。为了解决这一问题，引入了参考单元和形函数，将物理单元上的计算变换到参考单元上进行</p>
-<p>在有限元方法中，物理单元与参考单元通过<strong>参数化映射</strong>实现积分运算</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{E}\frac{\partial \left.\phi_{i}\right|_{E}}{\partial x}\frac{\partial \left.\phi_{j}\right|_{E}}{\partial x}\,\mathrm{d}E
-\]</div>
-<p>与场变量分布运算</p>
-<div class="math notranslate nohighlight">
-\[
-u_{h}(x,y) = \sum_{i=1}^{n}u_{i}\left.\phi_{i}(x,y)\right|_{E_{(x,y)}}
-\]</div>
-<p>的规范化处理</p>
-<section id="id2">
-<h2>几何映射<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>几何映射通过形函数将物理单元坐标 <span class="math notranslate nohighlight">\((x,y)\)</span> 映射到参考单元坐标 <span class="math notranslate nohighlight">\((\xi, \eta)\)</span>：</p>
+  <section id="gurson">
+<h1>Gurson 屈服准则<a class="headerlink" href="#gurson" title="Link to this heading">#</a></h1>
+<span class="gray-text">
+Gurson屈服准则是描述多孔金属材料塑性行为的重要模型，其核心在于将微观孔隙的演化与宏观力学性能劣化相耦合，旨在更为准确地描述和预测含空洞金属材料的屈服特性及损伤演化过程
+</span>
+<p>传统的金属屈服准则（如von Mises准则）通常假定材料为<strong>致密体</strong>，未考虑材料内部可能存在的微观空洞，然而，在实际工程应用中，尤其是在拉伸或复杂加载条件下，金属材料内部往往会出现并演化出微观空洞。这些空洞的产生、扩展与聚集过程，对材料的屈服行为、塑性变形能力以及最终的断裂机制均产生显著影响</p>
+<p>基于球形空腔周围球对称变形的刚-理想塑性分析，Gurson（1977）提出了一种用于多孔金属的屈服准则</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\((x_{i},y_{i})\)</span> 是物理单元节点的坐标</p>
+<p><span class="math notranslate nohighlight">\(\cosh(x) = \frac{e^{x} + e^{-x}}{2}\)</span> 是双曲余弦函数</p>
 </aside>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-coordinate-transformation">
-<span class="eqno">(1)<a class="headerlink" href="#equation-sec2-eq-coordinate-transformation" title="Link to this equation">#</a></span>\[
-\begin{equation}
-x = \sum_{i} N_{i}(\xi,\eta)x_{i},\quad y = \sum_{i} N_{i}(\xi,\eta)y_{i}.
-\end{equation}
-\]</div>
-<p>几何映射的核心目的是将不规则物理单元的积分运算转化为参考单元上的规则域积分</p>
-<p>通过坐标变换，物理单元上的积分通过参考单元计算</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{E_\text{物理}}f(x,y)\,\mathrm{d}x\mathrm{d}y=\int_{E_\text{参考}}f(\xi,\eta)\cdot\left|\det \mathbf{J}\,\right|\ \mathrm{d}\xi\mathrm{d}\eta,
+J_2 + \frac{2}{3} \upsilon \sigma_{y}^2 \cosh\left(\frac{I_1}{2\sigma_{y}}\right) - (1 + \upsilon^2)\frac{\sigma_{y}^2}{3} = 0,
 \]</div>
-<p>其中 Jacobian 矩阵</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\mathbf{J} = \left[
-\begin{matrix}
-\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta} 
-\end{matrix}
-\right].
-\end{equation}
-\end{split}\]</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">积分变换公式</p>
-<p>在二维情形下，考虑坐标变换 <span class="math notranslate nohighlight">\(T\)</span></p>
+<ul class="simple">
+<li><p><strong>球形空腔周围的球对称变形</strong>：内部存在一个球形空腔（即微观空洞），研究在外力作用下，这个空腔周围材料发生的球对称（各方向均匀）塑性变形</p></li>
+<li><p><strong>刚-理想塑性分析</strong>：假设材料在屈服前完全刚性（不发生变形），一旦达到屈服应力，则以常数应力进行塑性流动（即不再增加应力，但可以无限制地变形），不考虑弹性阶段</p></li>
+<li><p><span class="math notranslate nohighlight">\(\upsilon\)</span>：孔隙率（孔隙体积-总体积之比）</p></li>
+</ul>
+<p>为了使模型与关于延性空洞生长的实验数据更加吻合，Tvergaard（1982）在 Gurson 屈服准则的结构中引入了两个额外的材料参数 <span class="math notranslate nohighlight">\(q_{1}\)</span> 和 <span class="math notranslate nohighlight">\(q_{2}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-T:(\xi,\eta) \rightarrow (x(\xi,\eta),y(\xi,\eta))
+J_2 + \frac{2}{3} \upsilon \sigma_{y}^2 q_{1} \cosh\left(\frac{q_{2}I_1}{2\sigma_{y}}\right) - (1 + q_{1}^{2}\upsilon^2)\frac{\sigma_{y}^2}{3} = 0,
 \]</div>
-<p>该变换将区域 <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> 映射为区域 <span class="math notranslate nohighlight">\(\mathcal{D}'\)</span>。
-如图所示，设点 <span class="math notranslate nohighlight">\(P\)</span> 被映射到了 <span class="math notranslate nohighlight">\(P'\)</span></p>
-<figure class="align-default" id="sec5-fig-integraltransform">
-<a class="reference internal image-reference" href="../../../_images/IntegralTransform.png"><img alt="../../../_images/IntegralTransform.png" src="../../../_images/IntegralTransform.png" style="width: 800px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">二维情形下面积变换公式</span><a class="headerlink" href="#sec5-fig-integraltransform" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>于是，忽略高阶项，<span class="math notranslate nohighlight">\(A',B',C'\)</span> 的坐标位置为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-x_{A'}&amp;=x(\xi+\mathrm{d}\xi,\eta)\approx x +\frac{\partial x}{\partial \xi}\mathrm{d}\xi,\\
-y_{A'}&amp;=y(\xi+\mathrm{d}\xi,\eta)\approx y +\frac{\partial y}{\partial \xi}\mathrm{d}\xi,\\
-x_{B'}&amp;=x(\xi,\eta+\mathrm{d}\eta)\approx x +\frac{\partial x}{\partial \eta}\mathrm{d}\eta,\\
-y_{B'}&amp;=y(\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \eta}\mathrm{d}\eta,\\
-x_{C'}&amp;=x(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx x +\frac{\partial x}{\partial \xi}\mathrm{d}\xi + \frac{\partial x}{\partial \eta}\mathrm{d}\eta,\\
-y_{C'}&amp;=y(\xi+\mathrm{d}\xi,\eta+\mathrm{d}\eta)\approx y +\frac{\partial y}{\partial \xi}\mathrm{d}\xi + \frac{\partial y}{\partial \eta}\mathrm{d}\eta.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>因此四边形 <span class="math notranslate nohighlight">\(P'A'C'B'\)</span> 是平行四边形，其面积为</p>
+<p>Tvergaard 和 Needleman (1984) 及 Mear and Hutchinson (1985) 对模型进行了进一步的改进</p>
+<p>当 <span class="math notranslate nohighlight">\(\upsilon = 0\)</span> 时，上面两式退化为</p>
 <div class="math notranslate nohighlight">
 \[
-\begin{equation}
-S_{P'A'C'B'} = \left|\overrightarrow{P'A'}\times\overrightarrow{P'B'}\right|  = \left|\det(\mathbf{J})\right|\,\mathrm{d}\xi\mathrm{d}\eta,
-\end{equation}
+J_{2} = \frac{\sigma_{y}^{2}}{3},
 \]</div>
-<p>因此</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{S_{P'A'C'B'}}{S_{PACB}} = \left|\det(\mathbf{J})\right|.
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\mathcal{D'} &amp;= \int_{\mathcal{D'}}\mathrm{d}x\mathrm{d}y =
-\lim_{n\rightarrow\infty}\sum_{n}\mathrm{d}\mathcal{D'}\\
-&amp;=\lim_{n\rightarrow\infty}\sum_{n}\left|\det(\mathbf{J})\right|\mathrm{d}\mathcal{D} = \int_{\mathcal{D}}\left|\det(\mathbf{J})\right|\ \mathrm{d}\xi\mathrm{d}\eta.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>类似地</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{\mathcal{D'}}f(x,y)\ \mathrm{d}x\mathrm{d}y = \int_{\mathcal{D'}}f(\xi,\eta)\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}\xi\mathrm{d}\eta.
-\]</div>
-<p>对于 <span class="math notranslate nohighlight">\(n\)</span> 维的情形</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{\mathcal{D'}}f(x,y,\cdots)\ \mathrm{d}\mathcal{D'} = \int_{\mathcal{D'}}f(\xi,\eta,\cdots)\cdot\left|\det(\mathbf{J})\right|\ \mathrm{d}\mathcal{D}
-\]</div>
-<p>其中</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{J} = \left[
-\begin{matrix}
-\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} &amp; \cdots \\
-\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta} &amp; \cdots  \\
-\vdots &amp; \vdots &amp; \ddots
-\end{matrix}
-\right].
-\end{split}\]</div>
-</div>
-</section>
-<section id="id3">
-<h2>场变量插值<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>在完成几何映射后，通过形函数在参考单元上对场变量插值</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(u_{i}\)</span> 是物理单元节点的物理量取值</p>
-</aside>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-field-variable-interpolation">
-<span class="eqno">(2)<a class="headerlink" href="#equation-sec2-eq-field-variable-interpolation" title="Link to this equation">#</a></span>\[
-u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
-\]</div>
-<p>场变量插值的核心目的是建立节点值与连续场之间的数学关联，从而支持物理量（如应变、应力）的梯度计算</p>
-<p>根据链式法则</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\begin{bmatrix}
-\frac{\partial u}{\partial \xi} \\
-\frac{\partial u}{\partial \eta}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\frac{\partial x}{\partial \xi} &amp; \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} &amp; \frac{\partial y}{\partial \eta}
-\end{bmatrix}
-\begin{bmatrix}
-\frac{\partial u}{\partial x} \\
-\frac{\partial u}{\partial y}
-\end{bmatrix}
-=\mathbf{J}\begin{bmatrix}
-\frac{\partial u}{\partial x} \\
-\frac{\partial u}{\partial y}
-\end{bmatrix},
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>因此</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\begin{bmatrix}
-\frac{\partial u}{\partial x} \\
-\frac{\partial u}{\partial y}
-\end{bmatrix}
-=
-\mathbf{J}^{-1}
-\begin{bmatrix}
-\frac{\partial u}{\partial \xi} \\
-\frac{\partial u}{\partial \eta}
-\end{bmatrix} 
-= \mathbf{J}^{-1}\sum_{i}u_{i}
-\begin{bmatrix}
-\frac{\partial N_{i}}{\partial \xi} \\
-\frac{\partial N_{i}}{\partial \eta}
-\end{bmatrix} 
-.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>通过几何映射与场变量插值，无需显式求解 <span class="math notranslate nohighlight">\(\left.\phi\right|_{E}\)</span> 的表达式，即可在单元 <span class="math notranslate nohighlight">\(E\)</span> 上完成积分运算和场变量梯度的计算，从而实现对一般物理单元的规范化统一处理</p>
-<p>如果几何映射是一一映射，则单元 <span class="math notranslate nohighlight">\(E\)</span> 上的基函数可以写为 <span class="math notranslate nohighlight">\(N_{i}(\xi(x,y),\eta(x,y))\)</span></p>
-<p>通常，几何映射需保持一一对应，否则可能引发积分误差、场变量插值非唯一性、Jacobian 矩阵奇异等问题，进而导致数值不稳定和求解失败。因此，网格生成需满足一定的要求</p>
-</div>
-</section>
-<section id="id4">
-<h2>等参变换与非等参变换<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>根据几何映射和场变量插值中所使用形函数阶次的差异，可分为等参变换和非等参变换</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p><strong>方法名称</strong></p></th>
-<th class="head text-center"><p><strong>等参变换</strong></p></th>
-<th class="head text-center"><p><strong>非等参变换度</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><strong>形函数一致性</strong></p></td>
-<td class="text-center"><p>几何映射与场变量插值使用相同阶数形函数</p></td>
-<td class="text-center"><p>几何映射与场变量插值使用不同阶数形函数</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><strong>计算精度</strong></p></td>
-<td class="text-center"><p>高（几何映射与场变量插值精度匹配）</p></td>
-<td class="text-center"><p>几何映射精度可能低于场变量插值精度</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><strong>适用场景</strong></p></td>
-<td class="text-center"><p>曲边单元、高阶场分析（如二次单元）</p></td>
-<td class="text-center"><p>简单几何+高阶场（如线性网格+二次温度场）</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><strong>计算复杂度</strong></p></td>
-<td class="text-center"><p>较高（需处理高阶雅可比矩阵）</p></td>
-<td class="text-center"><p>较低（几何映射简单）</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
+<p>即 <a class="reference internal" href="sec2-mises.html"><span class="std std-doc">Mises 屈服准则</span></a></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -683,7 +483,7 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Math/chap2"
+            path: "./content/Plasticity/chap2"
         },
         predefinedOutput: true
     }
@@ -701,20 +501,20 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec1-shapefunction.html"
+       href="sec4-drucker-prager.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">形函数</p>
+        <p class="prev-next-title">Drucker–Prager 屈服准则</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec3-linearelasticity.html"
+       href="sec6-anisotropic.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">线弹性问题</p>
+        <p class="prev-next-title">各向异性屈服准则</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -724,23 +524,6 @@ u(x,y)=\sum_{i}N_{i}(\xi,\eta)u_{i}.
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何映射</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">场变量插值</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">等参变换与非等参变换</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

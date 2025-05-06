@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -205,6 +205,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec3-velocity-gradient.html">速度梯度</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,6 +235,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -473,7 +476,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian">
 <h1>Gaussian 公式<a class="headerlink" href="#gaussian" title="Link to this heading">#</a></h1>
-<p>在前文提到的矩形公式、梯形公式和辛普森公式中，积分节点均匀分布在被积区间内，通过优化权重来逼近积分值。而在高斯求积公式中，<strong>积分节点被视为自由度，通过同时优化节点位置和权重</strong>，实现更高的逼近精度</p>
+<span class="gray-text">
+低阶数值积分方法本质上是用低阶多项式在各小区间内对被积函数进行分片插值，从而近似积分；而高斯积分则通过精心选择节点和权重，实现了对更高次数多项式的精确积分，在实际应用中淡化了插值多项式的具体构造过程。实际应用中，高斯积分既可在全区间使用，也可像其他方法一样分段应用（即复合高斯积分）
+</span>
+<p>在高斯求积公式中，<strong>积分节点被视为自由度，通过同时优化节点位置和权重</strong>，实现更高的逼近精度</p>
 <p>高斯积分公式的核心思想是利用<strong>正交多项式</strong>的根作为积分节点，并计算对应的权重，从而实现最高代数精度</p>
 <section id="id1">
 <h2>正交多项式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>

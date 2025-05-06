@@ -25,6 +25,7 @@ parts:
         sections:
         - file: content/Tensor/chap1/sec1-strain-displacement
         - file: content/Tensor/chap1/sec2-greenstrain
+        - file: content/Tensor/chap1/sec3-velocity-gradient
       - file: content/Tensor/chap2/sec1-OT
         sections:  
         - file: content/Tensor/chap2/sec2-invarient
@@ -50,3 +51,5 @@ parts:
         - file: content/Plasticity/chap2/sec2-mises   
         - file: content/Plasticity/chap2/sec3-mohr-coulomb
         - file: content/Plasticity/chap2/sec4-drucker-prager
+        - file: content/Plasticity/chap2/sec5-gurson
+        - file: content/Plasticity/chap2/sec6-anisotropic

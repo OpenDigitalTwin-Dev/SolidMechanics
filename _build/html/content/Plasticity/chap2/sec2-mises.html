@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -205,6 +205,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec1-strain-displacement.html">应变与位移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec3-velocity-gradient.html">速度梯度</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,6 +235,8 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Mises 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
 </ul>
@@ -431,9 +434,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">弹性应变能</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">八面体剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">弹性应变能</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">八面体剪切应力</a></li>
 </ul>
             </nav>
         </div>
@@ -489,9 +496,32 @@ J_{2} = \tau_{y}^{2}\quad \Longrightarrow\quad \sqrt{J_{2}}=\tau_{y},
 <p>通常，<span class="math notranslate nohighlight">\(\alpha\)</span> 选为 <span class="math notranslate nohighlight">\(1\)</span>，<span class="math notranslate nohighlight">\(c\)</span> 是某个恰当的参数。然而，由于后续硬化行为的复杂性，使用上式可能需要很高的成本，相比之下，收益极其有限</p>
 <section id="id1">
 <h2>几何意义<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="pi">
+<h3><span class="math notranslate nohighlight">\(\pi\)</span> 平面<a class="headerlink" href="#pi" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>等倾线也称静水压力轴</p>
+</aside>
+<p><span class="math notranslate nohighlight">\(\pi\)</span> 平面是主应力空间中（<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）过原点且法线为等倾线（与主应力方向夹角相同，故方向向量为<span class="math notranslate nohighlight">\((\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})\)</span>）的平面，其方程为</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{1}+\sigma_{2}+\sigma_{3} = 0,
+\]</div>
+<p>在该平面上，平均应力（静水压力）为 <span class="math notranslate nohighlight">\(0\)</span>，仅包含偏应力分量，因此 <span class="math notranslate nohighlight">\(\pi\)</span> 平面也称为<strong>偏应力平面</strong>或<strong>等静压力平面</strong>。<span class="math notranslate nohighlight">\(\pi\)</span> 平面常用于研究材料屈服行为中与形状改变相关的力学响应</p>
 </section>
 <section id="id2">
-<h2>弹性应变能<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3>几何意义<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="sec2-fig-tresca-mises">
+<a class="reference internal image-reference" href="../../../_images/tresca-mises.png"><img alt="../../../_images/tresca-mises.png" src="../../../_images/tresca-mises.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Tresca 屈服准则和 Mises 屈服准则</span><a class="headerlink" href="#sec2-fig-tresca-mises" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id3">
+<h2>弹性应变能<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>单位体积的弹性应变能（弹性应变能密度）表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>
 <div class="math notranslate nohighlight" id="equation-sec1-eq-energy-elastic-strain-01">
 <span class="eqno">(71)<a class="headerlink" href="#equation-sec1-eq-energy-elastic-strain-01" title="Link to this equation">#</a></span>\[\begin{split}
@@ -571,8 +601,8 @@ W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=
 <p>因此，Von Mises 准则可以被解释为：当畸变能 <span class="math notranslate nohighlight">\(W'\)</span> 达到临界值 <span class="math notranslate nohighlight">\(\frac{\sigma_{y}^2}{6\mu}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\tau_{y}^2}{2\mu}\)</span> 时，材料开始屈服</p>
 <p>因此，Von Mises 准则也被称为<strong>畸变能密度理论</strong></p>
 </section>
-<section id="id3">
-<h2>八面体剪切应力<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>八面体剪切应力<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>八面体平面是一个与三个主应力方向成等角的平面，这种对称性使得它成为分析材料在复杂应力状态下剪切应力的一个平均代表</p>
 <span class="gray-text">
 每个主应力轴有两个选取方向，因此一共能产生八个平面，形成八面体，故称为八面体平面
@@ -692,9 +722,13 @@ W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">弹性应变能</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">八面体剪切应力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">弹性应变能</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">八面体剪切应力</a></li>
 </ul>
   </nav></div>
 
