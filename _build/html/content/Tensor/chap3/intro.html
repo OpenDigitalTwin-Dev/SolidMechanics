@@ -59,10 +59,12 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap3/intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Jaumann 率" href="jaumann.html" />
+    <link rel="next" title="Jaumann 应力率" href="jaumann.html" />
     <link rel="prev" title="速度梯度" href="../chap2/sec3-velocity-gradient.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,7 +213,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">客观应力率</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="jaumann.html">Jaumann 率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -444,7 +446,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>客观应力率<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>客观应力率是指在材料变形过程中，能够排除刚体旋转影响、与参考系无关的应力变化速率。它确保了应力演化的物理意义在不同观察者下保持一致。常见的客观应力率有Jaumann应力率、Truesdell应力率和Green-Naghdi应力率，广泛应用于连续介质力学和本构关系中，以准确描述材料在大变形或复杂运动下的应力变化</p>
+<p>当存在刚体旋转时，<span class="math notranslate nohighlight">\(\dot{\boldsymbol{\sigma}}\)</span> 无法区分真实的应力变化与由旋转引起的表观变化，这会导致本构方程丧失客观性</p>
+<p>客观应力率是指在材料变形过程中，能够排除刚体旋转影响、与参考系无关的应力变化速率，它确保了应力演化的物理意义在不同观察者下保持一致。常见的客观应力率包括 Jaumann 应力率、Truesdell 应力率和 Green-Naghdi 应力率。这些应力率在连续介质力学和本构关系中得到了广泛应用，能够准确描述材料在大变形或复杂运动条件下的应力变化</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -493,7 +496,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Jaumann 率</p>
+        <p class="prev-next-title">Jaumann 应力率</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
