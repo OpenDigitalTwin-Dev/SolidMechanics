@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>速度梯度 &#8212; 固体力学笔记</title>
+    <title>各向同性硬化模型 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -59,13 +59,10 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap1/sec3-velocity-gradient';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap3/isotropichardening';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="正交变换" href="../chap2/sec1-OT.html" />
-    <link rel="prev" title="格林应变张量" href="sec2-greenstrain.html" />
+    <link rel="prev" title="硬化模型" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,16 +197,20 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应变张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-greenstrain.html">格林应变张量</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">速度梯度</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec3-velocity-gradient.html">速度梯度</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/jaumann.html">Jaumann 率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -227,16 +228,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">硬化模型</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">各向同性硬化模型</a></li>
 </ul>
 </details></li>
 </ul>
@@ -310,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap1/sec3-velocity-gradient.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap3/isotropichardening.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -340,7 +345,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Tensor/chap1/sec3-velocity-gradient.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap3/isotropichardening.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,9 +416,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -424,23 +427,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>速度梯度</h1>
+    <h1>各向同性硬化模型</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">局部体积变化速率</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -451,196 +442,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>速度梯度<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>各向同性硬化模型<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-速度梯度描述了材料内部速度场的空间变化，反映了各部分之间的相对运动，是研究材料变形和流动的基础
+各向同性硬化模型假设屈服函数是应力的各向同性函数，即在整个塑性变形过程中，屈服面以其中心为原点，保持形状不变地向外均匀膨胀，反映了材料在各个方向上的屈服行为一致
 </span>
-<p>速度向量表示为</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{v} = \dot{\mathbf{u}} = \dot{\mathbf{x}} = \frac{\partial \mathbf{x}}{\partial t} \in \mathbb{R}^{3},
-\]</div>
-<p>速度梯度场定义为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \begin{bmatrix}
-\frac{\partial v_{1}}{\partial x_{1}} &amp; \frac{\partial v_{1}}{\partial x_{2}} &amp; \frac{\partial v_{1}}{\partial x_{3}} \\
-\frac{\partial v_{2}}{\partial x_{1}} &amp; \frac{\partial v_{2}}{\partial x_{2}} &amp; \frac{\partial v_{2}}{\partial x_{3}} \\
-\frac{\partial v_{3}}{\partial x_{1}} &amp; \frac{\partial v_{3}}{\partial x_{2}} &amp; \frac{\partial v_{3}}{\partial x_{3}}
-\end{bmatrix},
-\end{split}\]</div>
-<p>显然有</p>
-<div class="math notranslate nohighlight">
-\[
-\text{tr}(\nabla\mathbf{v}) = \nabla\cdot\mathbf{v}.
-\]</div>
-<p>根据定义，速度梯度场还可以表示为</p>
-<div class="math notranslate nohighlight">
-\[
-L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\partial \mathbf{v}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \frac{\partial^2 \mathbf{u}}{\partial \mathbf{X}\partial t}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \dot{F}F^{-1}.
-\]</div>
-<section id="id2">
-<h2>速度梯度场分解<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>将速度梯度分解为对称部分和反对称部分</p>
-<div class="math notranslate nohighlight">
-\[
-L = D + W,
-\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(D = \frac{1}{2}(L+L^{T})\)</span>：应变率张量，描述材料的拉伸、压缩和剪切等变形速率</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-D_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} + \frac{\partial v_{j}}{\partial x_{i}}\right)
-\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(W = \frac{1}{2}(L-L^{T})\)</span>：旋转率张量，描述材料的刚体旋转速率</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
-\]</div>
-<section id="id3">
-<h3>刚体旋转<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>对于刚体旋转变换，有</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{x} = Q\mathbf{X},
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(Q\)</span> 是正交矩阵，于是</p>
-<div class="math notranslate nohighlight">
-\[
-L = \dot{Q}Q^{T},
-\]</div>
-<p>此时</p>
-<div class="math notranslate nohighlight">
-\[
-D = \frac{1}{2}\left(\dot{Q}Q^{T} + Q\dot{Q}^{T}\right) = \frac{1}{2}\dot{I} = 0,
-\]</div>
-<p>故</p>
-<div class="math notranslate nohighlight">
-\[
-W = L = \frac{1}{2}\left(\dot{Q}Q^{T} - Q\dot{Q}^{T}\right).
-\]</div>
-</section>
-<section id="id4">
-<h3>局部体积变化速率<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>记 <span class="math notranslate nohighlight">\(J= \det(F)\)</span>，则</p>
-<div class="math notranslate nohighlight">
-\[
-\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v})
-\]</div>
-<p>该公式表明，<strong>单位体积的变化速率 <span class="math notranslate nohighlight">\(\dot{J}\)</span>，等于体积本身 <span class="math notranslate nohighlight">\(J\)</span> 乘以速度场的散度（速度梯度场张量的迹）</strong></p>
-<p>对于等容行为，有</p>
-<div class="math notranslate nohighlight">
-\[
-J = 1 \Rightarrow \dot{J} = 1 \Rightarrow \text{tr}(\nabla\mathbf{v}) = \nabla\cdot\mathbf{v} = 0.
-\]</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">证明一</p>
-<div class="math notranslate nohighlight">
-\[
-J = \det(F) = \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}},
-\]</div>
-<p>对 <span class="math notranslate nohighlight">\(t\)</span> 求导</p>
-<div class="math notranslate nohighlight">
-\[
-\dot{J} =  \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\left(\frac{\partial \dot{x}_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}} + \frac{\partial x_{1}}{\partial X_{i}}\frac{\partial \dot{x}_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}} + \frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial \dot{x}_{3}}{\partial X_{k}}\right),
-\]</div>
-<p>代入</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial \dot{x}_{k}}{\partial X_{l}} = \sum_{i=1}^{3}\frac{\partial \dot{x}_{k}}{\partial x_{i}}\frac{\partial x_{i}}{\partial X_{l}},
-\]</div>
-<p>由于</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
-\frac{\partial x_a}{\partial X_i}
-\frac{\partial x_a}{\partial X_j}
-\frac{\partial x_b}{\partial X_k}
-=
-\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
-\frac{\partial x_b}{\partial X_i}
-\frac{\partial x_b}{\partial X_j}
-\frac{\partial x_a}{\partial X_k}
-=
-\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
-\frac{\partial x_a}{\partial X_i}
-\frac{\partial x_b}{\partial X_j}
-\frac{\partial x_a}{\partial X_k}
-=0,
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[
-\dot{J} = \sum_{i,j,k=1}^{3} \varepsilon_{ijk} \left(
-\frac{\partial \dot{x}_1}{\partial x_1} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
-+
-\frac{\partial \dot{x}_2}{\partial x_2} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
-+
-\frac{\partial \dot{x}_3}{\partial x_3} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
-\right),
-\]</div>
-<p>故</p>
-<div class="math notranslate nohighlight">
-\[
-\dot{J} = J\ \left(\frac{\partial \dot{x}_1}{\partial x_1} + \frac{\partial \dot{x}_2}{\partial x_2} + \frac{\partial \dot{x}_3}{\partial x_3}\right) = J\ \text{tr}(L).
-\]</div>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">证明二</p>
-<p>设 <span class="math notranslate nohighlight">\(a,b,c\in\mathbb{R}^{3}\)</span> 是三个线性无关的向量，则</p>
-<div class="math notranslate nohighlight">
-\[
-J = \det(F) = \frac{Fa\cdot(Fb\times Fc)}{a\cdot(b\times c)}
-=
-\frac{\det\left(\begin{bmatrix}
-Fa&amp;Fb&amp;Fc
-\end{bmatrix}\right)}{
-\det\left(\begin{bmatrix}
-a&amp;b&amp;c
-\end{bmatrix}\right)
-},
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\dot{J} &amp;= \frac{\dot{F}a \cdot (Fb \times Fc) + Fa \cdot (\dot{F}b \times Fc) + Fa \cdot (Fb \times \dot{F}c)}{a \cdot (b \times c)}\\
-&amp;=\frac{\dot{F}F^{-1}Fa \cdot (Fb \times Fc) + Fa \cdot (\dot{F}F^{-1}Fb \times Fc) + Fa \cdot (Fb \times \dot{F}F^{-1}Fc)}{a \cdot (b \times c)}\\
-&amp;=\frac{\dot{F}F^{-1}Fa \cdot (Fb \times Fc) + Fa \cdot (\dot{F}F^{-1}Fb \times Fc) + Fa \cdot (Fb \times \dot{F}F^{-1}Fc)}{Fa \cdot (Fb \times Fc)}\frac{Fa \cdot (Fb \times Fc)}{a \cdot (b \times c)}\\
-&amp;=J\ \text{tr}(\dot{F}F^{-1})\\
-&amp;= J\ \text{tr}(L)
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p><strong>注：</strong></p>
-<div class="math notranslate nohighlight">
-\[
-\frac{Aa \cdot (b \times c) + a \cdot (Ab \times c) + a \cdot (b \times Ac)}{a \cdot (b \times c)} = \text{tr}(A)
-\]</div>
-<p>证明：</p>
-<p>由于</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-Aa \cdot (b \times c) &amp;= \det(\begin{bmatrix}Aa &amp; b &amp; c\end{bmatrix}),\\
-a \cdot (Ab \times c) &amp;= \det(\begin{bmatrix}a &amp; Ab &amp; c\end{bmatrix}),\\
-a \cdot (b \times Ac) &amp;= \det(\begin{bmatrix}a &amp; b &amp; Ac\end{bmatrix}),
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>故分母为</p>
-<div class="math notranslate nohighlight">
-\[
-\det(\begin{bmatrix}Aa &amp; b &amp; c\end{bmatrix}) + \det(\begin{bmatrix}a &amp; Ab &amp; c\end{bmatrix}) + \det(\begin{bmatrix}a &amp; b &amp; Ac\end{bmatrix})
-\]</div>
-</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -656,7 +461,7 @@ a \cdot (b \times Ac) &amp;= \det(\begin{bmatrix}a &amp; b &amp; Ac\end{bmatrix}
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Tensor/chap1"
+            path: "./content/Plasticity/chap3"
         },
         predefinedOutput: true
     }
@@ -674,22 +479,13 @@ a \cdot (b \times Ac) &amp;= \det(\begin{bmatrix}a &amp; b &amp; Ac\end{bmatrix}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec2-greenstrain.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">格林应变张量</p>
+        <p class="prev-next-title">硬化模型</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../chap2/sec1-OT.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">正交变换</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -697,25 +493,6 @@ a \cdot (b \times Ac) &amp;= \det(\begin{bmatrix}a &amp; b &amp; Ac\end{bmatrix}
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">局部体积变化速率</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

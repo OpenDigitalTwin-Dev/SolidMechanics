@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Mises 屈服准则 &#8212; 固体力学笔记</title>
+    <title>速度梯度 &#8212; 固体力学笔记</title>
   
   
   
@@ -61,11 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap2/sec2-mises';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap2/sec3-velocity-gradient';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Mohr–Coulomb 屈服准则" href="sec3-mohr-coulomb.html" />
-    <link rel="prev" title="Tresca 屈服准则" href="sec1-tresca.html" />
+    <link rel="next" title="客观应力率" href="../chap3/intro.html" />
+    <link rel="prev" title="格林应变张量" href="sec2-greenstrain.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,20 +200,20 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec3-velocity-gradient.html">速度梯度</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应变张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">速度梯度</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/jaumann.html">Jaumann 率</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/jaumann.html">Jaumann 率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -231,20 +231,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">屈服准则</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-tresca.html">Tresca 屈服准则</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec5-gurson.html">Gurson 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec6-anisotropic.html">各向异性屈服准则</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/intro.html">硬化模型</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap3/isotropichardening.html">各向同性硬化模型</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap3/intro.html">硬化模型</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap3/isotropichardening.html">各向同性硬化模型</a></li>
 </ul>
 </details></li>
 </ul>
@@ -318,7 +318,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap2/sec2-mises.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap2/sec3-velocity-gradient.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -348,7 +348,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Plasticity/chap2/sec2-mises.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap2/sec3-velocity-gradient.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Mises 屈服准则</h1>
+    <h1>速度梯度</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,13 +442,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">局部体积变化速率</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">弹性应变能</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">八面体剪切应力</a></li>
 </ul>
             </nav>
         </div>
@@ -460,209 +458,238 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mises">
-<h1>Mises 屈服准则<a class="headerlink" href="#mises" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>速度梯度<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-Mises 屈服准则被称为畸变能密度理论，是最常用的屈服准则之一，属于各向同性屈服准则
+速度梯度描述了材料内部速度场的空间变化，反映了各部分之间的相对运动，是研究材料变形和流动的基础
 </span>
-<p>Von Mises 屈服准则，也称最大等效应力准则，广泛应用于金属材料的屈服判据。Von Mises 屈服准则认为当某点的应力偏量的第二不变量 <span class="math notranslate nohighlight">\(J_{2}\)</span> 达到某一定值时，材料该点进入塑形状态</p>
+<p>速度向量表示为</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]}\geq\sigma_{y},
+\mathbf{v} = \dot{\mathbf{u}} = \dot{\mathbf{x}} = \frac{\partial \mathbf{x}}{\partial t} \in \mathbb{R}^{3},
 \]</div>
-<p><span class="math notranslate nohighlight">\(\sigma_{\text{mises}}\)</span> 也被称为等效应力，<span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 是<strong>单轴拉伸</strong>下的屈服强度，于是在屈服面上</p>
+<p>速度梯度场定义为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \begin{bmatrix}
+\frac{\partial v_{1}}{\partial x_{1}} &amp; \frac{\partial v_{1}}{\partial x_{2}} &amp; \frac{\partial v_{1}}{\partial x_{3}} \\
+\frac{\partial v_{2}}{\partial x_{1}} &amp; \frac{\partial v_{2}}{\partial x_{2}} &amp; \frac{\partial v_{2}}{\partial x_{3}} \\
+\frac{\partial v_{3}}{\partial x_{1}} &amp; \frac{\partial v_{3}}{\partial x_{2}} &amp; \frac{\partial v_{3}}{\partial x_{3}}
+\end{bmatrix},
+\end{split}\]</div>
+<p>显然有</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,
+\text{tr}(\nabla\mathbf{v}) = \nabla\cdot\mathbf{v}.
 \]</div>
-<p>得到</p>
+<p>根据定义，速度梯度场还可以表示为</p>
 <div class="math notranslate nohighlight">
 \[
-J_{2} = \frac{\sigma_{y}^2}{3} \quad \Longrightarrow\quad \sqrt{3J_{2}}=\sigma_{y}.
+L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\partial \mathbf{v}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \frac{\partial^2 \mathbf{u}}{\partial \mathbf{X}\partial t}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \dot{F}F^{-1}.
 \]</div>
-<p>设<strong>纯剪切变形</strong>下的屈服强度为 <span class="math notranslate nohighlight">\(\tau_{y}\)</span>，于是在屈服面上</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}=\tau_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = -\tau_{y},
-\]</div>
-<p>得到</p>
-<div class="math notranslate nohighlight">
-\[
-J_{2} = \tau_{y}^{2}\quad \Longrightarrow\quad \sqrt{J_{2}}=\tau_{y},
-\]</div>
-<p>因此</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{y} = \sqrt{3}\tau_{y},
-\]</div>
-<p>这表明，单轴拉伸屈服强度 <span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 与纯剪切屈服强度 <span class="math notranslate nohighlight">\(\tau_{y}\)</span> 的比值为 <span class="math notranslate nohighlight">\(\sqrt{3}\)</span>，这提供了拉伸屈服强度 <span class="math notranslate nohighlight">\(\sigma_{y}\)</span> 和纯剪切屈服强度 <span class="math notranslate nohighlight">\(\tau_{y}\)</span> 的换算关系</p>
-<p>Mises 屈服准则与实验数据的吻合度比 <a class="reference internal" href="#sec2-tresca.md"><span class="xref myst">Tresca 屈服准则</span></a> 要好，为了增强对实验数据的拟合能力，可以使用以下推广版本</p>
-<div class="math notranslate nohighlight">
-\[
-\left( 1 - c \left(\frac{J_3^2}{J_2^3}\right)^\alpha \right) J_2 = \tau_{y}^2=\frac{\sigma_{y}^{2}}{3},
-\]</div>
-<p>通常，<span class="math notranslate nohighlight">\(\alpha\)</span> 选为 <span class="math notranslate nohighlight">\(1\)</span>，<span class="math notranslate nohighlight">\(c\)</span> 是某个恰当的参数。然而，由于后续硬化行为的复杂性，使用上式可能需要很高的成本，相比之下，收益极其有限</p>
-<section id="id1">
-<h2>几何意义<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="pi">
-<h3><span class="math notranslate nohighlight">\(\pi\)</span> 平面<a class="headerlink" href="#pi" title="Link to this heading">#</a></h3>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>等倾线也称静水压力轴</p>
-</aside>
-<p><span class="math notranslate nohighlight">\(\pi\)</span> 平面是主应力空间中（<span class="math notranslate nohighlight">\(\sigma_{1},\sigma_{2},\sigma_{3}\)</span>）过原点且法线为等倾线（与主应力方向夹角相同，故方向向量为<span class="math notranslate nohighlight">\((\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})\)</span>）的平面，其方程为</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{1}+\sigma_{2}+\sigma_{3} = 0,
-\]</div>
-<p>在该平面上，平均应力（静水压力）为 <span class="math notranslate nohighlight">\(0\)</span>，仅包含偏应力分量，因此 <span class="math notranslate nohighlight">\(\pi\)</span> 平面也称为<strong>偏应力平面</strong>或<strong>等静压力平面</strong>。<span class="math notranslate nohighlight">\(\pi\)</span> 平面常用于研究材料屈服行为中与形状改变相关的力学响应</p>
-</section>
 <section id="id2">
-<h3>几何意义<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<figure class="align-default" id="sec2-fig-tresca-mises">
-<a class="reference internal image-reference" href="../../../_images/tresca-mises.png"><img alt="../../../_images/tresca-mises.png" src="../../../_images/tresca-mises.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Tresca 屈服准则和 Mises 屈服准则</span><a class="headerlink" href="#sec2-fig-tresca-mises" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
+<h2>速度梯度场分解<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>将速度梯度分解为对称部分和反对称部分</p>
+<div class="math notranslate nohighlight">
+\[
+L = D + W,
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D = \frac{1}{2}(L+L^{T})\)</span>：应变率张量，描述材料的拉伸、压缩和剪切等变形速率</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+D_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} + \frac{\partial v_{j}}{\partial x_{i}}\right)
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(W = \frac{1}{2}(L-L^{T})\)</span>：旋转率张量，描述材料的刚体旋转速率</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
+\]</div>
 <section id="id3">
-<h2>弹性应变能<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>单位体积的弹性应变能（弹性应变能密度）表示材料在弹性变形过程中，单位体积内因应力作用而储存的能量</p>
-<div class="math notranslate nohighlight" id="equation-sec1-eq-energy-elastic-strain-01">
-<span class="eqno">(71)<a class="headerlink" href="#equation-sec1-eq-energy-elastic-strain-01" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{equation}
-\begin{aligned}
-W &amp;= \frac{1}{2}\sigma_{ij}\varepsilon_{ij}=\frac{1}{2}(s_{ij}+\frac{1}{3}\delta_{ij}\sigma_{kk})(e_{ij}+\frac{1}{3}\delta_{ij}\varepsilon_{kk})\\
-&amp;=\frac{1}{2}[s_{ij}e_{ij}+\frac{1}{3}\delta_{ij}s_{ij}\varepsilon_{kk}+\frac{1}{3}\delta_{ij}e_{ij}\sigma_{kk}+\frac{1}{9}\delta_{ij}\delta_{ij}\sigma_{kk}\varepsilon_{ll}],
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>因为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\delta_{ij}s_{ij}\varepsilon_{kk}&amp;=s_{ii}\varepsilon_{kk} = 0,\\
-\delta_{ij}e_{ij}\varepsilon_{kk}&amp;=e_{ii}\varepsilon_{kk} = 0,
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>而</p>
+<h3>刚体旋转<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>对于刚体旋转变换，有</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_{ij}\delta_{ij}\sigma_{kk}\varepsilon_{ll}=3\sigma_{kk}\varepsilon_{ll},
+\mathbf{x} = Q\mathbf{X},
 \]</div>
-<p>因此</p>
-<div class="math notranslate nohighlight" id="equation-sec1-eq-energy-elastic-strain-02">
-<span class="eqno">(72)<a class="headerlink" href="#equation-sec1-eq-energy-elastic-strain-02" title="Link to this equation">#</a></span>\[
-W = \frac{1}{6}\sigma_{ii}\varepsilon_{jj} + \frac{1}{2}s_{ij}e_{ij} = W_{\text{vol}} + W',
-\]</div>
-<p>通过分解应力和应变的球量与偏量，<strong>弹性应变能 <span class="math notranslate nohighlight">\(W\)</span> 被分解为球量相关的体积变形（膨胀或压缩）和偏张量相关的剪切部分（畸变能）</strong></p>
-<p>根据广义胡克定律</p>
+<p>其中，<span class="math notranslate nohighlight">\(Q\)</span> 是正交矩阵，于是</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{ij}=\lambda\delta_{ij}\varepsilon_{kk}+2\mu\varepsilon_{ij},
+L = \dot{Q}Q^{T},
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\lambda\)</span> 和 <span class="math notranslate nohighlight">\(\mu\)</span> 为拉梅常数，代入应变分解 <span class="math notranslate nohighlight">\(\varepsilon_{ij} = \frac{1}{3}\delta_{ij}\varepsilon_{kk}+e_{ij}\)</span> 到上式</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-\sigma_{ij}&amp;=\lambda\delta_{ij}\varepsilon_{kk}+2\mu(\frac{1}{3}\delta_{ij}\varepsilon_{kk}+e_{ij})\\
-&amp;=(\lambda+\frac{2}{3}\mu)\delta_{ij}\varepsilon_{kk}+2\mu e_{ij},
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>对比应力分解 <span class="math notranslate nohighlight">\(\sigma_{ij}=\frac{1}{3}\delta_{ij}\sigma_{kk}+s_{ij}\)</span>，当 <span class="math notranslate nohighlight">\(i\neq j\)</span> 时，有</p>
+<p>此时</p>
 <div class="math notranslate nohighlight">
 \[
-s_{ij} = 2\mu e_{ij},
+D = \frac{1}{2}\left(\dot{Q}Q^{T} + Q\dot{Q}^{T}\right) = \frac{1}{2}\dot{I} = 0,
 \]</div>
-<p>当 <span class="math notranslate nohighlight">\(i=j\)</span> 时</p>
+<p>故</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma_{ii}=(\lambda+\frac{2}{3}\mu)\varepsilon_{kk}+2\mu e_{ii} = \frac{1}{3}\sigma_{kk} + s_{ii},
+W = L = \frac{1}{2}\left(\dot{Q}Q^{T} - Q\dot{Q}^{T}\right).
 \]</div>
-<p>上式对 <span class="math notranslate nohighlight">\(i\)</span> 求和，并记 <span class="math notranslate nohighlight">\(\sigma_{\text{vol}}=\sigma_{kk}\)</span> 和 <span class="math notranslate nohighlight">\(\varepsilon_{\text{vol}}=\varepsilon_{kk}\)</span>，得到</p>
-<div class="math notranslate nohighlight">
-\[
-3(\lambda+\frac{2}{3}\mu)\varepsilon_{\text{vol}} = \frac{3}{3}\sigma_{\text{vol}}  \Longrightarrow (\lambda+\frac{2}{3}\mu)\varepsilon_{\text{vol}} = \frac{1}{3}\sigma_{\text{vol}},
-\]</div>
-<p>定义<strong>体积模量</strong></p>
-<div class="math notranslate nohighlight">
-\[
-K = \lambda+\frac{2}{3}\mu \Longrightarrow K\varepsilon_{\text{vol}} = \frac{1}{3}\sigma_{\text{vol}}.
-\]</div>
-<p>另一方面，这也得到 <span class="math notranslate nohighlight">\(s_{ij}=2\mu e_{ij}\)</span> 对 <span class="math notranslate nohighlight">\(i=j\)</span> 也成立，因此</p>
-<div class="math notranslate nohighlight">
-\[
-s_{ij} = 2\mu e_{ij}
-\]</div>
-<p>因此畸变能为</p>
-<div class="math notranslate nohighlight">
-\[
-W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=\frac{\sigma_{y}^2}{6\mu}=\frac{\tau_{y}^2}{2\mu},
-\]</div>
-<p>因此，Von Mises 准则可以被解释为：当畸变能 <span class="math notranslate nohighlight">\(W'\)</span> 达到临界值 <span class="math notranslate nohighlight">\(\frac{\sigma_{y}^2}{6\mu}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\tau_{y}^2}{2\mu}\)</span> 时，材料开始屈服</p>
-<p>因此，Von Mises 准则也被称为<strong>畸变能密度理论</strong></p>
 </section>
 <section id="id4">
-<h2>八面体剪切应力<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>八面体平面是一个与三个主应力方向成等角的平面，这种对称性使得它成为分析材料在复杂应力状态下剪切应力的一个平均代表</p>
-<span class="gray-text">
-每个主应力轴有两个选取方向，因此一共能产生八个平面，形成八面体，故称为八面体平面
-</span>
-<p>八面体平面法向量为</p>
+<h3>局部体积变化速率<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>记 <span class="math notranslate nohighlight">\(J= \det(F)\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{n} = \pm\frac{\sqrt{3}}{3}(\mathbf{n}_{1}+\mathbf{n}_{2}+\mathbf{n}_{3}),
+\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v})
 \]</div>
-<p><span class="math notranslate nohighlight">\(\mathbf{n}_{i}\)</span> 表示主应力 <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> 的方向的单位向量，即特征值 <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> 对应的单位特征向量，显然有 <span class="math notranslate nohighlight">\(\mathbf{n}\cdot \mathbf{n}_{i} = \pm\frac{\sqrt{3}}{3}\)</span></p>
-<p>根据应力张量矩阵的谱分解</p>
+<p>该公式表明，<strong>单位体积的变化速率 <span class="math notranslate nohighlight">\(\dot{J}\)</span>，等于体积本身 <span class="math notranslate nohighlight">\(J\)</span> 乘以速度场的散度（速度梯度场张量的迹）</strong></p>
+<p>对于等容行为，有</p>
+<div class="math notranslate nohighlight">
+\[
+J = 1 \Rightarrow \dot{J} = 1 \Rightarrow \text{tr}(\nabla\mathbf{v}) = \nabla\cdot\mathbf{v} = 0.
+\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">证明一</p>
+<div class="math notranslate nohighlight">
+\[
+J = \det(F) = \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}},
+\]</div>
+<p>对 <span class="math notranslate nohighlight">\(t\)</span> 求导</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{J} =  \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\left(\frac{\partial \dot{x}_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}} + \frac{\partial x_{1}}{\partial X_{i}}\frac{\partial \dot{x}_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}} + \frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial \dot{x}_{3}}{\partial X_{k}}\right),
+\]</div>
+<p>代入</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \dot{x}_{k}}{\partial X_{l}} = \sum_{i=1}^{3}\frac{\partial \dot{x}_{k}}{\partial x_{i}}\frac{\partial x_{i}}{\partial X_{l}},
+\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
+\frac{\partial x_a}{\partial X_i}
+\frac{\partial x_a}{\partial X_j}
+\frac{\partial x_b}{\partial X_k}
+=
+\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
+\frac{\partial x_b}{\partial X_i}
+\frac{\partial x_b}{\partial X_j}
+\frac{\partial x_a}{\partial X_k}
+=
+\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
+\frac{\partial x_a}{\partial X_i}
+\frac{\partial x_b}{\partial X_j}
+\frac{\partial x_a}{\partial X_k}
+=0,
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{J} = \sum_{i,j,k=1}^{3} \varepsilon_{ijk} \left(
+\frac{\partial \dot{x}_1}{\partial x_1} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
++
+\frac{\partial \dot{x}_2}{\partial x_2} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
++
+\frac{\partial \dot{x}_3}{\partial x_3} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
+\right),
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{J} = J\ \left(\frac{\partial \dot{x}_1}{\partial x_1} + \frac{\partial \dot{x}_2}{\partial x_2} + \frac{\partial \dot{x}_3}{\partial x_3}\right) = J\ \text{tr}(L).
+\]</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">证明二</p>
+<p>设 <span class="math notranslate nohighlight">\(\mathbf{a},\mathbf{b},\mathbf{c}\in\mathbb{R}^{3}\)</span> 是三个线性无关的向量，则</p>
+<div class="math notranslate nohighlight">
+\[
+J = \det(F) = \frac{F\mathbf{a}\cdot(F\mathbf{b}\times F\mathbf{c})}{\mathbf{a}\cdot(\mathbf{b}\times \mathbf{c})}
+=
+\frac{\det\left(\begin{bmatrix}
+F\mathbf{a}&amp;F\mathbf{b}&amp;F\mathbf{c}
+\end{bmatrix}\right)}{
+\det\left(\begin{bmatrix}
+\mathbf{a}&amp;\mathbf{b}&amp;\mathbf{c}
+\end{bmatrix}\right)
+},
+\]</div>
+<p>于是</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}
-&amp;=\begin{bmatrix}
-\mathbf{n}_{1} &amp; \mathbf{n}_{2} &amp; \mathbf{n}_{3}
-\end{bmatrix}
-\begin{bmatrix}
-\sigma_{1} &amp; &amp; \\ &amp; \sigma_{2} &amp; \\ &amp; &amp; \sigma_{3}
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{n}_{1}^{T} \\ \mathbf{n}_{2}^{T} \\ \mathbf{n}_{3}^{T}
-\end{bmatrix}\\
-&amp;=\sigma_{1}\mathbf{n}_{1}\mathbf{n}_{1}^{T} + \sigma_{2}\mathbf{n}_{2}\mathbf{n}_{2}^{T} + \sigma_{3}\mathbf{n}_{3}\mathbf{n}_{3}^{T},
+\dot{J} &amp;= \frac{\dot{F}\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
+&amp;=\frac{\dot{F}F^{-1}F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}F^{-1}F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}F^{-1}F\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
+&amp;=\frac{\dot{F}F^{-1}F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}F^{-1}F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}F^{-1}F\mathbf{c})}{F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c})}\frac{F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c})}{a \cdot (\mathbf{b} \times \mathbf{c})}\\
+&amp;=J\ \text{tr}(\dot{F}F^{-1})\\
+&amp;= J\ \text{tr}(L).
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>于是八面体平面上的应力为</p>
+<p><strong>注：</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{t}_{\mathbf{n}} = \boldsymbol{\sigma}\mathbf{n} = \pm\frac{\sqrt{3}}{3}(\sigma_{1}\mathbf{n}_{1} + \sigma_{2}\mathbf{n}_{2} + \sigma_{3}\mathbf{n}_{3}),
+\frac{M\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}) + \mathbf{a} \cdot (M\mathbf{b} \times \mathbf{c}) + \mathbf{a} \cdot (\mathbf{b} \times M\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})} = \text{tr}(M)
 \]</div>
-<p>正应力为</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_{\mathbf{n}} = \mathbf{t}_{\mathbf{n}}\cdot\mathbf{n} = \frac{1}{3}(\sigma_{1} + \sigma_{2} + \sigma_{3}),
-\]</div>
-<p>切应力为</p>
+<p>证明：</p>
+<p>由于</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-\tau_{\mathbf{n}} &amp;= \sqrt{|\mathbf{t}_{\mathbf{n}}|^{2} - \sigma_{\mathbf{n}}^{2}}\\
-&amp;= \frac{1}{3}\sqrt{(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2} + (\sigma_{3}-\sigma_{1})^{2}}\\
-&amp;= \sqrt{\frac{2}{3}J_{2}}
-= \frac{\sqrt{2}}{3}\sigma_{y} = \frac{\sqrt{2}}{\sqrt{3}}\tau_{y},
+M\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}) &amp;= \det(\begin{bmatrix}M\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}),\\
+\mathbf{a} \cdot (M\mathbf{b} \times \mathbf{c}) &amp;= \det(\begin{bmatrix}a &amp; M\mathbf{b} &amp; \mathbf{c}\end{bmatrix}),\\
+\mathbf{a} \cdot (\mathbf{b} \times M\mathbf{c}) &amp;= \det(\begin{bmatrix}a &amp; \mathbf{b} &amp; M\mathbf{c}\end{bmatrix}),
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>因此，Von Mises 准则可以被解释为：当材料中所有可能平面上的平均剪应力达到临界值 <span class="math notranslate nohighlight">\(\frac{\sqrt{2}}{3}\sigma_{y}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\sqrt{2}}{\sqrt{3}}\tau_{y}\)</span> 时，材料开始屈服</p>
+<p>记 <span class="math notranslate nohighlight">\(M = \begin{bmatrix}\mathbf{m}_{1} &amp; \mathbf{m}_{2} &amp; \mathbf{m}_{3}\end{bmatrix}\)</span>，于是</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\det(\begin{bmatrix}M\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) &amp; =a_{1}\det(\begin{bmatrix}\mathbf{m}_{1} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) + a_{2}\det(\begin{bmatrix}\mathbf{m}_{2} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) + a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}),\\
+\det(\begin{bmatrix}\mathbf{a} &amp; M\mathbf{b} &amp; \mathbf{c}\end{bmatrix}) &amp; =b_{1}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{1} &amp; \mathbf{c}\end{bmatrix}) + b_{2}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{2} &amp; \mathbf{c}\end{bmatrix}) + b_{3}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{3} &amp; \mathbf{c}\end{bmatrix}),\\
+\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; M\mathbf{c}\end{bmatrix}) &amp; =c_{1}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{1}\end{bmatrix}) + c_{2}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{2}\end{bmatrix}) + c_{3}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{3}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>其中，根据克拉默法则，式</p>
+<div class="math notranslate nohighlight">
+\[
+\det(\begin{bmatrix}\mathbf{m}_{1} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}), \quad \det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{1} &amp; \mathbf{c}\end{bmatrix}), \quad  \det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{1}\end{bmatrix})
+\]</div>
+<p>是线性方程组</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}\mathbf{x} = \det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) \cdot \mathbf{m}_{1}
+\]</div>
+<p>的解，即</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\begin{aligned}
+&amp;\det(\begin{bmatrix}\mathbf{m}_{1} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix})\cdot\mathbf{a} + \det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{1} &amp; \mathbf{c}\end{bmatrix})\cdot \mathbf{b} + \det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{1}\end{bmatrix})\cdot\mathbf{c}
+=\mathbf{m}_{1} \cdot \det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+\]</div>
+<p>于是，根据向量第一项的等式，得到</p>
+<div class="math notranslate nohighlight">
+\[
+a_{1}\det(\begin{bmatrix}\mathbf{m}_{1} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) + b_{1}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{1} &amp; \mathbf{c}\end{bmatrix}) + c_{1}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{1}\end{bmatrix}) = m_{11}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}).
+\]</div>
+<p>类似地，对于第二列和第三列，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+a_{2}\det(\begin{bmatrix}\mathbf{m}_{2} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) + b_{2}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{2} &amp; \mathbf{c}\end{bmatrix}) + c_{2}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{2}\end{bmatrix}) = m_{22}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}),\\
+a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}) + b_{3}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{m}_{3} &amp; \mathbf{c}\end{bmatrix}) + c_{3}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{m}_{3}\end{bmatrix}) = m_{33}\det(\begin{bmatrix}\mathbf{a} &amp; \mathbf{b} &amp; \mathbf{c}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>代入即可</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -679,7 +706,7 @@ W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Plasticity/chap2"
+            path: "./content/Tensor/chap2"
         },
         predefinedOutput: true
     }
@@ -697,20 +724,20 @@ W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec1-tresca.html"
+       href="sec2-greenstrain.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tresca 屈服准则</p>
+        <p class="prev-next-title">格林应变张量</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec3-mohr-coulomb.html"
+       href="../chap3/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mohr–Coulomb 屈服准则</p>
+        <p class="prev-next-title">客观应力率</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -730,13 +757,11 @@ W' = \frac{1}{2}s_{ij}e_{ij} = \frac{1}{4\mu}s_{ij}s_{ij} = \frac{1}{2\mu}J_{2}=
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">几何意义</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pi"><span class="math notranslate nohighlight">\(\pi\)</span> 平面</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">局部体积变化速率</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">弹性应变能</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">八面体剪切应力</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>应变与位移 &#8212; 固体力学笔记</title>
+    <title>硬化模型 &#8212; 固体力学笔记</title>
   
   
   
@@ -59,13 +59,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap1/sec1-strain-displacement';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap3/intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="格林应变张量" href="sec2-greenstrain.html" />
-    <link rel="prev" title="应变张量" href="intro.html" />
+    <link rel="next" title="各向同性硬化模型" href="isotropichardening.html" />
+    <link rel="prev" title="各向异性屈服准则" href="../chap2/sec6-anisotropic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,16 +198,20 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应变张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-greenstrain.html">格林应变张量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-velocity-gradient.html">速度梯度</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec3-velocity-gradient.html">速度梯度</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/jaumann.html">Jaumann 率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -227,16 +229,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/sec1-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">硬化模型</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="isotropichardening.html">各向同性硬化模型</a></li>
 </ul>
 </details></li>
 </ul>
@@ -310,7 +316,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap1/sec1-strain-displacement.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap3/intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -340,7 +346,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Tensor/chap1/sec1-strain-displacement.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap3/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,9 +417,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -424,30 +428,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>应变与位移</h1>
+    <h1>硬化模型</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体运动</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平移</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">旋转</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">均匀拉伸和压缩</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">剪切变形</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">简单剪切</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">对称剪切</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">变形梯度</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -458,183 +443,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>应变与位移<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<span class="gray-text">
-物体的变形源于其内部各质点之间的相对位移
-</span>
-<p>当外力或环境条件发生变化时，物体内部的质点会产生不同程度的移动，这种相对位移导致了物体的几何形状和尺寸发生变化。通过对质点间相对位移的分析，可以定量描述材料的应变状态，并进一步研究其力学性能和变形规律</p>
-<p>位移函数 <span class="math notranslate nohighlight">\(\mathbf{u}:\Omega_{0}\rightarrow \mathbb{R}^{3}\)</span> 可以表示为</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{u}(\mathbf{X}) = \mathbf{x} - \mathbf{X},
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\mathbf{X}=[X_{1},X_{2},X_{3}]^{T}\)</span> 为物体内部任意一点的初始位置，<span class="math notranslate nohighlight">\(\mathbf{x}=[x_{1},x_{2},x_{3}]^{T}\)</span> 为该点在受力作用下移动到的新位置</p>
-<section id="id2">
-<h2>刚体运动<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在刚体运动中，物体内部任意两点之间的距离始终保持不变，因此物体只发生整体的平移或旋转，而不会产生形变</p>
-<section id="id3">
-<h3>平移<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>若</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{x} = \mathbf{X} + \mathbf{c},
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\mathbf{c} = [c_{1},c_{2},c_{3}]^{T}\)</span>，此时物体发生平移</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{u}(\mathbf{X}) = \mathbf{c}.
-\]</div>
-</section>
-<section id="id4">
-<h3>旋转<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>若</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{x} = Q\mathbf{X},
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(Q\in\mathbb{M}^{3}\)</span> 是<a class="reference internal" href="../chap2/sec1-OT.html"><span class="std std-doc">正交矩阵</span></a>，则物体发生旋转，此时</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{u}(\mathbf{X}) = (Q-I)\mathbf{X}.
-\]</div>
-</section>
-</section>
-<section id="id5">
-<h2>均匀拉伸和压缩<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>在均匀拉伸或压缩运动中，物体在外力作用下沿某一方向均匀地变长或变短，表现为物体内部各质点的位置坐标按比例发生变化</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}k_{1}X_{1}\\k_{2}X_{2}\\k_{3}X_{3}\end{bmatrix} =\begin{bmatrix}k_{1}&amp;&amp;\\&amp;k_{2}&amp;\\&amp;&amp;k_{3}\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
-\end{split}\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(k_{i}&gt;0\)</span>，当 <span class="math notranslate nohighlight">\(k_{i}&gt;1\)</span> 时，为拉伸变形；当 <span class="math notranslate nohighlight">\(k_{i}&lt;1\)</span> 时，为压缩变形。此时</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{u}(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
-\]</div>
-</section>
-<section id="id6">
-<h2>剪切变形<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>在剪切变形中，物体内部的某一层相对于另一层发生平行移动，导致物体的形状发生改变，但体积基本保持不变</p>
-<section id="id7">
-<h3>简单剪切<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<p>简单剪切是材料层间沿固定方向发生相对滑动，而垂直于这些平面的方向保持长度不变的变形模式，例如</p>
-<figure class="align-default" id="sec1-fig-simple-shear">
-<a class="reference internal image-reference" href="../../../_images/simple-shear.png"><img alt="../../../_images/simple-shear.png" src="../../../_images/simple-shear.png" style="width: 200px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">二维简单剪切示意图</span><a class="headerlink" href="#sec1-fig-simple-shear" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>三维情形下，对于平行 <span class="math notranslate nohighlight">\(xOy\)</span> 面，剪切角为 <span class="math notranslate nohighlight">\(\theta_{xy}\)</span> 的剪切移动为例</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan\theta_{xy}\cdot X_{2}\\X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&amp;\tan\theta_{xy}&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
-\end{split}\]</div>
-<p>注意到，变换矩阵的行列式等于 <span class="math notranslate nohighlight">\(1\)</span>，因此简单剪切变形并不会导致物体体积发生变化，此时</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{u}(\mathbf{X}) = \begin{bmatrix}0&amp;\tan\theta_{xy}&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;0\end{bmatrix}\mathbf{X}.
-\end{split}\]</div>
-<p>可以考虑多个简单剪切的叠加</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-&amp;\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;\tan\theta_{yz}\\0&amp;0&amp;1\end{bmatrix}
-\begin{bmatrix}1&amp;0&amp;\tan\theta_{xz}\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}
-\begin{bmatrix}1&amp;\tan\theta_{xy}&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\\
-=&amp;\begin{bmatrix}1&amp;\tan\theta_{xy}&amp;\tan\theta_{xz}\\0&amp;1&amp;\tan\theta_{yz}\\0&amp;0&amp;1\end{bmatrix}
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>在简单剪切变形过程中，物体的对称面会持续发生旋转</p>
-</section>
-<section id="id8">
-<h3>对称剪切<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>对称剪切变形是指物体在无旋转的条件下，沿两个互相垂直方向发生等大反向的剪切位移，使直角变为斜角，例如</p>
-<figure class="align-default" id="sec1-fig-sym-shear">
-<a class="reference internal image-reference" href="../../../_images/sym-shear.png"><img alt="../../../_images/sym-shear.png" src="../../../_images/sym-shear.png" style="width: 250px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">二维对称剪切示意图</span><a class="headerlink" href="#sec1-fig-sym-shear" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>三维情形下，假设在 <span class="math notranslate nohighlight">\(xOy\)</span> 平面内，沿 <span class="math notranslate nohighlight">\(x\)</span> 方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向分别发生等量、反向的剪切，剪切角为 <span class="math notranslate nohighlight">\(\theta_{xy}\)</span>，其变换为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix} = \begin{bmatrix}X_{1} + \tan(\theta_{xy}/2)\cdot X_{2}\\\tan(\theta_{xy}/2)\cdot X_{1} + X_{2}\\X_{3}\end{bmatrix} =\begin{bmatrix}1&amp;\tan(\theta_{xy}/2)&amp;0\\\tan(\theta_{xy}/2)&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}X_{1}\\X_{2}\\X_{3}\end{bmatrix},
-\end{split}\]</div>
-<p>此时</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{u}(\mathbf{X}) = \begin{bmatrix}0&amp;\tan(\theta_{xy}/2)&amp;0\\\tan(\theta_{xy}/2)&amp;0&amp;0\\0&amp;0&amp;0\end{bmatrix}\mathbf{X}.
-\end{split}\]</div>
-<p>当 <span class="math notranslate nohighlight">\(\theta_{xy}\)</span> 很小时（小变形假定），可近似认为体积不变</p>
-<p>对于更一般的情形，变换矩阵为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-1 &amp; \tan(\theta_{xy}/2) &amp; \tan(\theta_{xz}/2) \\
-\tan(\theta_{xy}/2) &amp; 1 &amp; \tan(\theta_{yz}/2) \\
-\tan(\theta_{xz}/2) &amp; \tan(\theta_{yz}/2) &amp; 1
-\end{bmatrix}
-\end{split}\]</div>
-</section>
-</section>
-<section id="id9">
-<h2>变形梯度<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>通过考虑材料内部任何一条曲线在受力后的形变来分析材料的形变特征，假设初始曲线为</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{X}(\xi) = [X_{1}(\xi),X_{2}(\xi),X_{3}(\xi)]^{T}
-\]</div>
-<p>受力后变为</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{x}(\xi) = [x_{1}(\xi),x_{2}(\xi),x_{3}(\xi)]^{T}
-\]</div>
-<p>因此，曲线上任意一点的切向量（无穷小后的逼近线段）变化满足</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\frac{\partial \mathbf{x}}{\partial \xi} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \xi} =  \begin{bmatrix}
-\frac{\partial x_1}{\partial X_1} &amp; \frac{\partial x_1}{\partial X_2} &amp; \frac{\partial x_1}{\partial X_3} \\
-\frac{\partial x_2}{\partial X_1} &amp; \frac{\partial x_2}{\partial X_2} &amp; \frac{\partial x_2}{\partial X_3} \\
-\frac{\partial x_3}{\partial X_1} &amp; \frac{\partial x_3}{\partial X_2} &amp; \frac{\partial x_3}{\partial X_3}
-\end{bmatrix}\frac{\partial \mathbf{X}}{\partial \xi},
-\end{split}\]</div>
-<p>定义变形梯度矩阵为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} = 
-\begin{bmatrix}
-\frac{\partial x_1}{\partial X_1} &amp; \frac{\partial x_1}{\partial X_2} &amp; \frac{\partial x_1}{\partial X_3} \\
-\frac{\partial x_2}{\partial X_1} &amp; \frac{\partial x_2}{\partial X_2} &amp; \frac{\partial x_2}{\partial X_3} \\
-\frac{\partial x_3}{\partial X_1} &amp; \frac{\partial x_3}{\partial X_2} &amp; \frac{\partial x_3}{\partial X_3}
-\end{bmatrix},
-\end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(F\)</span> 包含了由于变形所产生的长度、角度和体积变化的所有必要的局部信息。例如，<a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\det(F^{T}) = \det(F)\)</span> 反映了局部体积变化</span></a></p>
-<p>此时</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\nabla\mathbf{u} = 
-\begin{bmatrix}
-\frac{\partial u_1}{\partial X_1} &amp; \frac{\partial u_1}{\partial X_2} &amp; \frac{\partial u_1}{\partial X_3} \\
-\frac{\partial u_2}{\partial X_1} &amp; \frac{\partial u_2}{\partial X_2} &amp; \frac{\partial u_2}{\partial X_3} \\
-\frac{\partial u_3}{\partial X_1} &amp; \frac{\partial u_3}{\partial X_2} &amp; \frac{\partial u_3}{\partial X_3}
-\end{bmatrix}=
-\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
-\end{split}\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[
-\mathrm{d}\mathbf{u} = (F-I)\mathrm{d}\mathbf{X},
-\]</div>
-<p>得到</p>
-<div class="math notranslate nohighlight">
-\[
-\mathrm{d}\mathbf{x} = \mathrm{d}\mathbf{X} + \mathrm{d}\mathbf{u} = \mathrm{d}\mathbf{X} + \nabla\mathbf{u}\ \mathrm{d}\mathbf{X},
-\]</div>
-</section>
+<h1>硬化模型<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -650,7 +461,7 @@ F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} =
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Tensor/chap1"
+            path: "./content/Plasticity/chap3"
         },
         predefinedOutput: true
     }
@@ -668,20 +479,20 @@ F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} =
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="../chap2/sec6-anisotropic.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">应变张量</p>
+        <p class="prev-next-title">各向异性屈服准则</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec2-greenstrain.html"
+       href="isotropichardening.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">格林应变张量</p>
+        <p class="prev-next-title">各向同性硬化模型</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -691,32 +502,6 @@ F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} =
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体运动</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">平移</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">旋转</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">均匀拉伸和压缩</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">剪切变形</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">简单剪切</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">对称剪切</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">变形梯度</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

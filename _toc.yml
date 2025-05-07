@@ -21,14 +21,17 @@ parts:
   - caption: 张量分析
     chapters:
       - file: content/Tensor/intro
-      - file: content/Tensor/chap1/intro
-        sections:
-        - file: content/Tensor/chap1/sec1-strain-displacement
-        - file: content/Tensor/chap1/sec2-greenstrain
-        - file: content/Tensor/chap1/sec3-velocity-gradient
-      - file: content/Tensor/chap2/sec1-OT
+      - file: content/Tensor/chap1/sec1-OT
         sections:  
-        - file: content/Tensor/chap2/sec2-invarient
+        - file: content/Tensor/chap1/sec2-invarient
+      - file: content/Tensor/chap2/intro
+        sections:
+        - file: content/Tensor/chap2/sec1-strain-displacement
+        - file: content/Tensor/chap2/sec2-greenstrain
+        - file: content/Tensor/chap2/sec3-velocity-gradient
+      - file: content/Tensor/chap3/intro
+        sections: 
+        - file: content/Tensor/chap3/jaumann
   - caption: 弹性力学
     chapters:
       - file: content/Elasticity/chap1/intro
@@ -53,3 +56,6 @@ parts:
         - file: content/Plasticity/chap2/sec4-drucker-prager
         - file: content/Plasticity/chap2/sec5-gurson
         - file: content/Plasticity/chap2/sec6-anisotropic
+      - file: content/Plasticity/chap3/intro
+        sections:
+        - file: content/Plasticity/chap3/isotropichardening
