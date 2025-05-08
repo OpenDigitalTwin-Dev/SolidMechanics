@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap2/sec2-greenstrain';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="速度梯度" href="sec3-velocity-gradient.html" />
+    <link rel="next" title="速度梯度" href="../chap3/sec1-velocity-gradient.html" />
     <link rel="prev" title="应变与位移" href="sec1-strain-displacement.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -209,11 +209,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应变张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sec1-strain-displacement.html">应变与位移</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">格林应变张量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-velocity-gradient.html">速度梯度</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap3/jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -586,7 +586,7 @@ E^{T} = E.
 <section id="id10">
 <h4>客观性<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>格林应变张量的客观性指其在刚体运动（平移、旋转）下保持不变，即仅反映材料的真实变形</p>
-<p>假设物体在变形的过程中同时叠加了刚体运动</p>
+<p>将整个过程分解为纯变形和刚体运动（<span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 为纯变形后的位置）</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}' = Q\mathbf{x}+\mathbf{c},
@@ -657,7 +657,7 @@ E = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
       </div>
     </a>
     <a class="right-next"
-       href="sec3-velocity-gradient.html"
+       href="../chap3/sec1-velocity-gradient.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

@@ -28,10 +28,10 @@ parts:
         sections:
         - file: content/Tensor/chap2/sec1-strain-displacement
         - file: content/Tensor/chap2/sec2-greenstrain
-        - file: content/Tensor/chap2/sec3-velocity-gradient
-      - file: content/Tensor/chap3/intro
+      - file: content/Tensor/chap3/sec1-velocity-gradient
+      - file: content/Tensor/chap4/intro
         sections: 
-        - file: content/Tensor/chap3/jaumann
+        - file: content/Tensor/chap4/sec1-jaumann
   - caption: 弹性力学
     chapters:
       - file: content/Elasticity/chap1/intro

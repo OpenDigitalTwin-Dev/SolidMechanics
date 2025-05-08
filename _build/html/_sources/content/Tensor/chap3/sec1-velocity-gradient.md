@@ -7,7 +7,7 @@
 速度向量表示为
 
 $$
-\mathbf{v} = \dot{\mathbf{u}} = \dot{\mathbf{x}} = \frac{\partial \mathbf{x}}{\partial t} \in \mathbb{R}^{3},
+\mathbf{v} = \dot{\mathbf{u}}(t) = \dot{\mathbf{x}}(t) = \frac{\partial \mathbf{x}}{\partial t} \in \mathbb{R}^{3},
 $$
 
 速度梯度场定义为
@@ -75,7 +75,7 @@ $$
 故
 
 $$
-W = L = \frac{1}{2}\left(\dot{Q}Q^{T} - Q\dot{Q}^{T}\right).
+W = L = \frac{1}{2}\left(\dot{Q}Q^{T} - Q\dot{Q}^{T}\right) = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
 $$
 
 ### 局部体积变化速率
