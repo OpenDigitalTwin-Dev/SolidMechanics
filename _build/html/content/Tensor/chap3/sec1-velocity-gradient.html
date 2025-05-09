@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>速度梯度 &#8212; 固体力学笔记</title>
+    <title>速度梯度场 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -211,7 +211,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">速度梯度</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">速度梯度场</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>速度梯度</h1>
+    <h1>速度梯度场</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,8 +443,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">局部体积变化速率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">极分解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">局部体积变化速率</a></li>
 </ul>
 </li>
 </ul>
@@ -459,9 +460,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>速度梯度<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>速度梯度场<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <span class="gray-text">
-速度梯度描述了材料内部速度场的空间变化，反映了各部分之间的相对运动，是研究材料变形和流动的基础
+速度梯度场描述了材料内部速度场的空间变化，反映了各部分之间的相对运动，是研究材料变形和流动的基础
 </span>
 <p>速度向量表示为</p>
 <div class="math notranslate nohighlight">
@@ -509,30 +510,57 @@ D_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} + \frac{\partial
 W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
 \]</div>
 <section id="id3">
-<h3>刚体旋转<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>极分解<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>对 <span class="math notranslate nohighlight">\(F\)</span> 进行极分解</p>
+<div class="math notranslate nohighlight">
+\[
+F = QU,
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(Q\)</span> 是正交矩阵（旋转变换矩阵），<span class="math notranslate nohighlight">\(U\)</span> 是对称正定矩阵，于是</p>
+<div class="math notranslate nohighlight">
+\[
+L = (\dot{Q}U+Q\dot{U})U^{-1}Q^{T} = \dot{Q}Q^{T} + Q\dot{U}U^{-1}Q^{T}
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\dot{Q}Q^{T} + Q\dot{Q}^{T} = 0\)</span>，故</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+D = \frac{1}{2}(L+L^{T})&amp;=\frac{1}{2}(Q\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U}Q^{T})\\
+&amp;=\frac{1}{2}Q(\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U})Q^{T},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>以及</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\begin{aligned}
+W = L - D = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
+\end{aligned}
+\end{equation}
+\]</div>
+</section>
+<section id="id4">
+<h3>刚体旋转<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>对于刚体旋转变换，有</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{x} = Q\mathbf{X},
-\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(Q\)</span> 是正交矩阵，于是</p>
-<div class="math notranslate nohighlight">
-\[
-L = \dot{Q}Q^{T},
+U = I,
 \]</div>
 <p>此时</p>
 <div class="math notranslate nohighlight">
 \[
-D = \frac{1}{2}\left(\dot{Q}Q^{T} + Q\dot{Q}^{T}\right) = \frac{1}{2}\dot{I} = 0,
+D = 0,
 \]</div>
-<p>故</p>
+<p>以及</p>
 <div class="math notranslate nohighlight">
 \[
-W = L = \frac{1}{2}\left(\dot{Q}Q^{T} - Q\dot{Q}^{T}\right) = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
+W = L = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
 \]</div>
 </section>
-<section id="id4">
-<h3>局部体积变化速率<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>局部体积变化速率<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>记 <span class="math notranslate nohighlight">\(J= \det(F)\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
@@ -758,8 +786,9 @@ a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} &amp; \mathbf{b} &amp; \mathbf{c}\end{bm
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">局部体积变化速率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">极分解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">局部体积变化速率</a></li>
 </ul>
 </li>
 </ul>

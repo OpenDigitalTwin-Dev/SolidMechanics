@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -505,7 +505,7 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 \]</div>
 <p>于是得到<strong>切应力互等方程</strong></p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-shear-stress">
-<span class="eqno">(25)<a class="headerlink" href="#equation-sec3-eq-shear-stress" title="Link to this equation">#</a></span>\[
+<span class="eqno">(27)<a class="headerlink" href="#equation-sec3-eq-shear-stress" title="Link to this equation">#</a></span>\[
 \tau_{xy}=\tau_{yx}.
 \]</div>
 </section>
@@ -528,7 +528,7 @@ f(x+\mathrm{d}x) = f(x) + f'(x)\,\mathrm{d}x + \frac{f''(x)}{2!}\,\mathrm{d}x^2 
 \]</div>
 <p>类似地，可得到 <span class="math notranslate nohighlight">\(y\)</span> 方向上的平衡方程。于是，二维问题中的<strong>平衡方程</strong>为</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-balance">
-<span class="eqno">(26)<a class="headerlink" href="#equation-sec3-eq-balance" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(28)<a class="headerlink" href="#equation-sec3-eq-balance" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{cases}
 \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + f_x = 0, \\
 \frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \tau_{xy}}{\partial x} + f_y = 0.
@@ -584,7 +584,7 @@ p_{y} = \sigma_{yy} \, m  +  \tau_{xy} \, l.
 </div>
 <p>将上式写为矩阵形式</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-1">
-<span class="eqno">(27)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-1" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(29)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-1" title="Link to this equation">#</a></span>\[\begin{split}
 \mathbf{p} = \begin{bmatrix}
 p_{x}\\
 p_{y}
@@ -612,7 +612,7 @@ m
 <p>被称为<strong>应力张量</strong></p>
 <p><span class="math notranslate nohighlight">\(\overline{AB}\)</span> 上的正应力 <span class="math notranslate nohighlight">\(\sigma_{n}\)</span> 和切应力 <span class="math notranslate nohighlight">\(\tau_{n}\)</span> 分别为</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-stress-tensor-3">
-<span class="eqno">(28)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-3" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(30)<a class="headerlink" href="#equation-sec3-eq-stress-tensor-3" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \sigma_{n} &amp;= \mathbf{p}\cdot\mathbf{n}=l^{2}\sigma_{xx} + m^{2}\sigma_{yy}+2lm\tau_{xy}=\mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n},\\
 \tau_{n} &amp;= lp_{y}-mp_{x}=lm(\sigma_{yy} - \sigma_{xx})+(l^2-m^2)\tau_{xy}=(\mathbf{n}^\perp)^{T}\boldsymbol{\sigma}\mathbf{n}.
@@ -655,7 +655,7 @@ m
 <p class="sidebar-title"></p>
 <p>主应力面上切应力为零，这一特性可用于简化应力分析过程</p>
 </aside>
-<p>将 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴分别选定为两个主应力方向，此时，根据切应力计算公式 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-3">(28)</a>，有</p>
+<p>将 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴分别选定为两个主应力方向，此时，根据切应力计算公式 <a class="reference internal" href="#equation-sec3-eq-stress-tensor-3">(30)</a>，有</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{n} = lm(\sigma_{2} - \sigma_{1}),

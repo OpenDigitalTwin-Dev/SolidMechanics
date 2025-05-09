@@ -1,7 +1,7 @@
-# 速度梯度
+# 速度梯度场
 
 <span class="gray-text">
-速度梯度描述了材料内部速度场的空间变化，反映了各部分之间的相对运动，是研究材料变形和流动的基础
+速度梯度场描述了材料内部速度场的空间变化，反映了各部分之间的相对运动，是研究材料变形和流动的基础
 </span>
 
 速度向量表示为
@@ -52,30 +52,59 @@ $$
 W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
 $$
 
+### 极分解
+
+对 $F$ 进行极分解
+
+$$
+F = QU,
+$$
+
+其中，$Q$ 是正交矩阵（旋转变换矩阵），$U$ 是对称正定矩阵，于是
+
+$$
+L = (\dot{Q}U+Q\dot{U})U^{-1}Q^{T} = \dot{Q}Q^{T} + Q\dot{U}U^{-1}Q^{T}
+$$
+
+由于 $\dot{Q}Q^{T} + Q\dot{Q}^{T} = 0$，故
+
+$$
+\begin{equation}
+\begin{aligned}
+D = \frac{1}{2}(L+L^{T})&=\frac{1}{2}(Q\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U}Q^{T})\\
+&=\frac{1}{2}Q(\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U})Q^{T},
+\end{aligned}
+\end{equation}
+$$
+
+以及
+
+$$
+\begin{equation}
+\begin{aligned}
+W = L - D = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
+\end{aligned}
+\end{equation}
+$$
+
 ### 刚体旋转
 
 对于刚体旋转变换，有
 
 $$
-\mathbf{x} = Q\mathbf{X},
-$$
-
-其中，$Q$ 是正交矩阵，于是
-
-$$
-L = \dot{Q}Q^{T},
+U = I,
 $$
 
 此时
 
 $$
-D = \frac{1}{2}\left(\dot{Q}Q^{T} + Q\dot{Q}^{T}\right) = \frac{1}{2}\dot{I} = 0,
+D = 0,
 $$
 
-故
+以及
 
 $$
-W = L = \frac{1}{2}\left(\dot{Q}Q^{T} - Q\dot{Q}^{T}\right) = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
+W = L = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
 $$
 
 ### 局部体积变化速率
