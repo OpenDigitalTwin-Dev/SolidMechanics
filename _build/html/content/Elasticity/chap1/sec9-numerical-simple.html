@@ -211,7 +211,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
@@ -497,10 +500,10 @@ document.write(`
 <p>考虑一根长度为 <span class="math notranslate nohighlight">\(L\)</span> 的一维均匀弹性杆，受力后在长度方向上的位移 <span class="math notranslate nohighlight">\(u(x)\)</span> 满足以下控制方程：</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>该方程可通过平面应力问题，按位移求解方程 <a class="reference internal" href="sec8-two-2D-solution.html#equation-sec8-eq-solution-displ">(39)</a> 退化成一维问题得到；简便起见，令弹性模量 <span class="math notranslate nohighlight">\(E=1\)</span></p>
+<p>该方程可通过平面应力问题，按位移求解方程 <a class="reference internal" href="sec8-two-2D-solution.html#equation-sec8-eq-solution-displ">(40)</a> 退化成一维问题得到；简便起见，令弹性模量 <span class="math notranslate nohighlight">\(E=1\)</span></p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-example">
-<span class="eqno">(44)<a class="headerlink" href="#equation-sec9-eq-example" title="Link to this equation">#</a></span>\[
+<span class="eqno">(45)<a class="headerlink" href="#equation-sec9-eq-example" title="Link to this equation">#</a></span>\[
 \frac{\partial^2 u}{\partial x^2} + f= 0,\quad 0\leq x \leq L
 \]</div>
 <p>其中</p>
@@ -512,7 +515,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(f\)</span> 为分布载荷（体积力），不考虑重力</p></li>
 <li><p>左端固定：<span class="math notranslate nohighlight">\(u(0)=0\)</span>，右端固定位移：<span class="math notranslate nohighlight">\(u(L)=u_{L}\)</span></p></li>
 </ol>
-<p>如果 <span class="math notranslate nohighlight">\(f\)</span> 恒等于常数 <span class="math notranslate nohighlight">\(-C\)</span>，则方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 是容易求得的，它具有形式</p>
+<p>如果 <span class="math notranslate nohighlight">\(f\)</span> 恒等于常数 <span class="math notranslate nohighlight">\(-C\)</span>，则方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 是容易求得的，它具有形式</p>
 <div class="math notranslate nohighlight">
 \[
 u(x) = Cx^2 + c_{1}x + c_{0}
@@ -536,12 +539,12 @@ c_{0} = 0,\quad c_{1} = \frac{u_{L}-cL^2}{L}.
 <p>记 <span class="math notranslate nohighlight">\(u(x_{n}) = u_{n}\)</span>，<span class="math notranslate nohighlight">\(f(x_{n}) = f_{n}\)</span></p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-0">
-<span class="eqno">(45)<a class="headerlink" href="#equation-sec9-eq-fdm-0" title="Link to this equation">#</a></span>\[
+<span class="eqno">(46)<a class="headerlink" href="#equation-sec9-eq-fdm-0" title="Link to this equation">#</a></span>\[
 \left.\frac{\partial u}{\partial x}\right|_{x_{2}} = \frac{u_3-u_1}{h} + o(h)\approx \frac{u_3-u_1}{h}.
 \]</div>
 <p>对于二阶导数，通常采用中心差分近似，即</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-1">
-<span class="eqno">(46)<a class="headerlink" href="#equation-sec9-eq-fdm-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(47)<a class="headerlink" href="#equation-sec9-eq-fdm-1" title="Link to this equation">#</a></span>\[
 \begin{equation}
 \begin{aligned}
 \left.\frac{\partial^2 u}{\partial x^2}\right|_{x_{n}}&amp;\approx
@@ -549,9 +552,9 @@ c_{0} = 0,\quad c_{1} = \frac{u_{L}-cL^2}{L}.
 \end{aligned}
 \end{equation}
 \]</div>
-<p>令方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 在除边界节点外的每一个网格节点 <span class="math notranslate nohighlight">\(x_{n}\)</span> 上满足，则得到关于 <span class="math notranslate nohighlight">\(u_{n}\)</span> 的代数方程组</p>
+<p>令方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 在除边界节点外的每一个网格节点 <span class="math notranslate nohighlight">\(x_{n}\)</span> 上满足，则得到关于 <span class="math notranslate nohighlight">\(u_{n}\)</span> 的代数方程组</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-2">
-<span class="eqno">(47)<a class="headerlink" href="#equation-sec9-eq-fdm-2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(48)<a class="headerlink" href="#equation-sec9-eq-fdm-2" title="Link to this equation">#</a></span>\[\begin{split}
 \frac{u_{n+1} - 2\,u_{n} + u_{n-1}}{h^2} + f_n = 0,\quad n=1,2,3,4\\
 \end{split}\]</div>
 <p>将边界条件</p>
@@ -559,13 +562,13 @@ c_{0} = 0,\quad c_{1} = \frac{u_{L}-cL^2}{L}.
 \[
 u_0 = 0,\quad u_5 = u_L
 \]</div>
-<p>代入到方程 <a class="reference internal" href="#equation-sec9-eq-fdm-2">(47)</a> 中，于是共四个求解方程和四个求解变量，写成矩阵形式为</p>
+<p>代入到方程 <a class="reference internal" href="#equation-sec9-eq-fdm-2">(48)</a> 中，于是共四个求解方程和四个求解变量，写成矩阵形式为</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>这是一个稀疏矩阵（非零元数量稀少），常使用迭代法进行求解</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fdm-3">
-<span class="eqno">(48)<a class="headerlink" href="#equation-sec9-eq-fdm-3" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(49)<a class="headerlink" href="#equation-sec9-eq-fdm-3" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \frac{1}{h^2}\left[
 \begin{matrix}
@@ -584,8 +587,8 @@ u_1 \\ u_2 \\ u_3 \\ u_4
 \end{matrix}\right].
 \end{equation}
 \end{split}\]</div>
-<p>通过求解代数方程组 <a class="reference internal" href="#equation-sec9-eq-fdm-3">(48)</a>，可以得到 <span class="math notranslate nohighlight">\(u\)</span> 在点 <span class="math notranslate nohighlight">\(x_{1},x_{2},x_{3},x_{4}\)</span> 的近似值。<span class="math notranslate nohighlight">\(u\)</span>在其它位置的值通常可以通过已知网格节点的值<strong>插值</strong>得到</p>
-<p>随着 <span class="math notranslate nohighlight">\(h \to 0\)</span>，方程 <a class="reference internal" href="#equation-sec9-eq-fdm-1">(46)</a> 左端与右端的近似精度逐渐提高，线性方程组 <a class="reference internal" href="#equation-sec9-eq-fdm-2">(47)</a> 的解将越来越接近方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 的真解</p>
+<p>通过求解代数方程组 <a class="reference internal" href="#equation-sec9-eq-fdm-3">(49)</a>，可以得到 <span class="math notranslate nohighlight">\(u\)</span> 在点 <span class="math notranslate nohighlight">\(x_{1},x_{2},x_{3},x_{4}\)</span> 的近似值。<span class="math notranslate nohighlight">\(u\)</span>在其它位置的值通常可以通过已知网格节点的值<strong>插值</strong>得到</p>
+<p>随着 <span class="math notranslate nohighlight">\(h \to 0\)</span>，方程 <a class="reference internal" href="#equation-sec9-eq-fdm-1">(47)</a> 左端与右端的近似精度逐渐提高，线性方程组 <a class="reference internal" href="#equation-sec9-eq-fdm-2">(48)</a> 的解将越来越接近方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 的真解</p>
 </section>
 <section id="id4">
 <h2>有限元法<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
@@ -596,20 +599,20 @@ u_1 \\ u_2 \\ u_3 \\ u_4
 <p class="sidebar-title"></p>
 <p>光滑性：函数的高阶导数存在且连续。例如，若 <span class="math notranslate nohighlight">\(f\)</span> 连续，则要求 <span class="math notranslate nohighlight">\(u\)</span> 的二阶导数连续</p>
 </aside>
-<p>方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 被称为问题的<strong>强形式</strong>，因为它要求解函数 <span class="math notranslate nohighlight">\(u\)</span> 在定义域内严格满足给定的微分方程及其边界条件。这意味着 <span class="math notranslate nohighlight">\(u\)</span> 必须具备足够的<strong>光滑性</strong>，以确保微分运算和边界条件的精确成立</p>
+<p>方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 被称为问题的<strong>强形式</strong>，因为它要求解函数 <span class="math notranslate nohighlight">\(u\)</span> 在定义域内严格满足给定的微分方程及其边界条件。这意味着 <span class="math notranslate nohighlight">\(u\)</span> 必须具备足够的<strong>光滑性</strong>，以确保微分运算和边界条件的精确成立</p>
 <p>在实际问题中，材料的不连续性、载荷的突变或几何的奇异点通常会导致<strong>强解</strong>（经典解）不存在或无法满足光滑性要求。通过将微分方程转化为<strong>积分形式</strong>，并通过<strong>分部积分</strong>降低解函数的光滑性要求，能够在<strong>更广泛的函数空间</strong>（如有限元函数空间）中寻求近似解，从而更有效地<strong>逼近</strong>问题的真实解</p>
-<p>首先，选择试验函数 <span class="math notranslate nohighlight">\(v\in \mathcal{V}\)</span>，<span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 是某个选定的函数空间，于是方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 写为</p>
+<p>首先，选择试验函数 <span class="math notranslate nohighlight">\(v\in \mathcal{V}\)</span>，<span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 是某个选定的函数空间，于是方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 写为</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-1">
-<span class="eqno">(49)<a class="headerlink" href="#equation-sec9-eq-fem-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(50)<a class="headerlink" href="#equation-sec9-eq-fem-1" title="Link to this equation">#</a></span>\[
 \int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f\right)\cdot v \, \mathrm{d}x = 0,\quad \forall v\in \mathcal{V}.
 \]</div>
-<p>方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(49)</a> 可以理解为 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f\)</span> 在某个函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 的<strong>投影</strong>为 0。可以预见，函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 越大，就越接近于全空间，方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(49)</a>的解也就越接近于真解</p>
-<p>例如，如果 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 选为全函数空间，则此时方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(49)</a> 与强形式 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 是等价的，因为此时可以选择</p>
+<p>方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(50)</a> 可以理解为 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f\)</span> 在某个函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 的<strong>投影</strong>为 0。可以预见，函数空间 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 越大，就越接近于全空间，方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(50)</a>的解也就越接近于真解</p>
+<p>例如，如果 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 选为全函数空间，则此时方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(50)</a> 与强形式 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 是等价的，因为此时可以选择</p>
 <div class="math notranslate nohighlight">
 \[
 v = \frac{\partial^2 u}{\partial x^2} + f,
 \]</div>
-<p>将其代入到方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(49)</a> 中，由连续性要求得到 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f \equiv 0, x\in [0,L]\)</span>。</p>
+<p>将其代入到方程 <a class="reference internal" href="#equation-sec9-eq-fem-1">(50)</a> 中，由连续性要求得到 <span class="math notranslate nohighlight">\(\frac{\partial^2 u}{\partial x^2} + f \equiv 0, x\in [0,L]\)</span>。</p>
 <p>接下来，需要选定解函数 <span class="math notranslate nohighlight">\(u\)</span> 的逼近空间 <span class="math notranslate nohighlight">\(\mathcal{U}\)</span>，如果</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{U} = \mathcal{V}\)</span>：称为<strong>协调有限元</strong></p></li>
@@ -617,7 +620,7 @@ v = \frac{\partial^2 u}{\partial x^2} + f,
 </ul>
 <p>此时方程变为，求 <span class="math notranslate nohighlight">\(u\in \mathcal{U}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-2">
-<span class="eqno">(50)<a class="headerlink" href="#equation-sec9-eq-fem-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(51)<a class="headerlink" href="#equation-sec9-eq-fem-2" title="Link to this equation">#</a></span>\[
 \int_{0}^{L}\left(\frac{\partial^2 u}{\partial x^2} + f\right)\cdot v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{V}.
 \]</div>
 <p>使用分部积分，得到<strong>弱形式</strong></p>
@@ -626,7 +629,7 @@ v = \frac{\partial^2 u}{\partial x^2} + f,
 <p>通过分部积分公式，降低了对解函数 <span class="math notranslate nohighlight">\(u\)</span> 的光滑性要求，自然引入边界条件，还降低了（高阶导数）对分片多项式次数的要求（通过导数分配机制，构建解与测试函数空间的协同关系）</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-3">
-<span class="eqno">(51)<a class="headerlink" href="#equation-sec9-eq-fem-3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(52)<a class="headerlink" href="#equation-sec9-eq-fem-3" title="Link to this equation">#</a></span>\[
 \left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\, v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{V}.
 \]</div>
 <div class="admonition note">
@@ -640,7 +643,7 @@ v = \frac{\partial^2 u}{\partial x^2} + f,
 <p class="sidebar-title"></p>
 <p>下标 <span class="math notranslate nohighlight">\(h\)</span> 表示与网格相关</p>
 </aside>
-<p>弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-3">(51)</a> 仍然是一个连续问题。为了求解该问题，需要对其进行离散化。因此需要在 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal{U}\)</span> 中选取有限维的函数子空间 <span class="math notranslate nohighlight">\(\mathcal{V}_{h}，\mathcal{U}_{h}\)</span>，这些空间通常由<strong>分片多项式空间</strong>构成</p>
+<p>弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-3">(52)</a> 仍然是一个连续问题。为了求解该问题，需要对其进行离散化。因此需要在 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal{U}\)</span> 中选取有限维的函数子空间 <span class="math notranslate nohighlight">\(\mathcal{V}_{h}，\mathcal{U}_{h}\)</span>，这些空间通常由<strong>分片多项式空间</strong>构成</p>
 <p>在有限元方法中，分片多项式指的是在每个单元上均由多项式表示的函数，通常要求在单元交界处满足一定的连续性条件</p>
 <p>下图给出了一个线性分片多项式空间 <span class="math notranslate nohighlight">\(\mathcal{P}^{1}_h\)</span> 的示例，其中，<span class="math notranslate nohighlight">\(g\in\mathcal{P}^{1}_h\)</span> 在每个网格单元上均为一次多项式</p>
 <figure class="align-default" id="sec9-fig-1d-fem">
@@ -691,9 +694,9 @@ g = \sum_{i=0}^{5}c_{i}\phi_{i},
 </section>
 <section id="id7">
 <h3>刚度矩阵<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<p>此处，选取 <span class="math notranslate nohighlight">\(\mathcal{U}_{h}=\mathcal{V}_{h}=\mathcal{P}^{1}_{h}\)</span>，于是，得到弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-3">(51)</a> 的离散形式：求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
+<p>此处，选取 <span class="math notranslate nohighlight">\(\mathcal{U}_{h}=\mathcal{V}_{h}=\mathcal{P}^{1}_{h}\)</span>，于是，得到弱形式 <a class="reference internal" href="#equation-sec9-eq-fem-3">(52)</a> 的离散形式：求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-4">
-<span class="eqno">(52)<a class="headerlink" href="#equation-sec9-eq-fem-4" title="Link to this equation">#</a></span>\[
+<span class="eqno">(53)<a class="headerlink" href="#equation-sec9-eq-fem-4" title="Link to this equation">#</a></span>\[
 \left.\left(\frac{\partial u}{\partial x}\, v\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f v \, \mathrm{d}x = 0,\quad  \forall v\in \mathcal{P}^{1}_{h}.
 \]</div>
 <aside class="margin sidebar">
@@ -703,7 +706,7 @@ g = \sum_{i=0}^{5}c_{i}\phi_{i},
 </aside>
 <p>由于算子对 <span class="math notranslate nohighlight">\(v\)</span> 是线性的，上述问题等价于求解 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span> 满足</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-5">
-<span class="eqno">(53)<a class="headerlink" href="#equation-sec9-eq-fem-5" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54)<a class="headerlink" href="#equation-sec9-eq-fem-5" title="Link to this equation">#</a></span>\[
 \left.\left(\frac{\partial u}{\partial x}\, \phi_{j}\right)\right|^{x=L}_{x=0}-\int_{0}^{L}\frac{\partial u}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x + \int_{0}^{L}f\phi_{j}\,\mathrm{d}x=0,\quad j=0:5.
 \]</div>
 <p>由于 <span class="math notranslate nohighlight">\(u\in\mathcal{P}^{1}_{h}\)</span>，因此可以表示成</p>
@@ -711,9 +714,9 @@ g = \sum_{i=0}^{5}c_{i}\phi_{i},
 \[
 u = \sum_{i=0}^{5}c_{i}\phi_{i}.
 \]</div>
-<p>将上式代入到 <a class="reference internal" href="#equation-sec9-eq-fem-5">(53)</a>，得到</p>
+<p>将上式代入到 <a class="reference internal" href="#equation-sec9-eq-fem-5">(54)</a>，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-6">
-<span class="eqno">(54)<a class="headerlink" href="#equation-sec9-eq-fem-6" title="Link to this equation">#</a></span>\[
+<span class="eqno">(55)<a class="headerlink" href="#equation-sec9-eq-fem-6" title="Link to this equation">#</a></span>\[
 \left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\phi_{j}\,\mathrm{d}x,\quad j=0:5.
 \]</div>
 <p>这是一个关于 <span class="math notranslate nohighlight">\(c_{i}\)</span> 的线性方程组</p>
@@ -724,14 +727,14 @@ u = \sum_{i=0}^{5}c_{i}\phi_{i}.
 \[
 \left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} = 0,
 \]</div>
-<p>由于 <span class="math notranslate nohighlight">\(u(0) = 0, u(L) = u_L\)</span>，因此 <span class="math notranslate nohighlight">\(c_{0} = 0, c_{5} = u_{L}\)</span>，代入到式 <a class="reference internal" href="#equation-sec9-eq-fem-6">(54)</a> 中的 <span class="math notranslate nohighlight">\(j=1,2,3,4\)</span>，得到</p>
+<p>由于 <span class="math notranslate nohighlight">\(u(0) = 0, u(L) = u_L\)</span>，因此 <span class="math notranslate nohighlight">\(c_{0} = 0, c_{5} = u_{L}\)</span>，代入到式 <a class="reference internal" href="#equation-sec9-eq-fem-6">(55)</a> 中的 <span class="math notranslate nohighlight">\(j=1,2,3,4\)</span>，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-7">
-<span class="eqno">(55)<a class="headerlink" href="#equation-sec9-eq-fem-7" title="Link to this equation">#</a></span>\[
+<span class="eqno">(56)<a class="headerlink" href="#equation-sec9-eq-fem-7" title="Link to this equation">#</a></span>\[
 \sum_{i=1}^{4}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
 \]</div>
 <p>将其写为矩阵形式</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fem-8">
-<span class="eqno">(56)<a class="headerlink" href="#equation-sec9-eq-fem-8" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(57)<a class="headerlink" href="#equation-sec9-eq-fem-8" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \frac{1}{h^2}\left[
 \begin{matrix}
@@ -755,7 +758,7 @@ c_1 \\ c_2 \\ c_3 \\ c_4
 \[
 f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 \]</div>
-<p>通过求解线性方程组 <a class="reference internal" href="#equation-sec9-eq-fem-8">(56)</a>，可以得到 <span class="math notranslate nohighlight">\(c_{i}\)</span>，从而得到方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 在有限元函数空间 <span class="math notranslate nohighlight">\(\mathcal{P}_{h}^1\)</span> 的逼近解 <span class="math notranslate nohighlight">\(u(x)\approx \sum_{i=0}^{5}c_{i}\phi_{i}\)</span></p>
+<p>通过求解线性方程组 <a class="reference internal" href="#equation-sec9-eq-fem-8">(57)</a>，可以得到 <span class="math notranslate nohighlight">\(c_{i}\)</span>，从而得到方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 在有限元函数空间 <span class="math notranslate nohighlight">\(\mathcal{P}_{h}^1\)</span> 的逼近解 <span class="math notranslate nohighlight">\(u(x)\approx \sum_{i=0}^{5}c_{i}\phi_{i}\)</span></p>
 <p>随着 <span class="math notranslate nohighlight">\(h\to0\)</span>，有限元函数空间 <span class="math notranslate nohighlight">\(\mathcal{P}_{h}^1\)</span> 中的函数能够以任意精度逼近任意连续函数，从而保证离散解逐渐逼近问题的真解</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">积分计算与形函数</p>
@@ -787,23 +790,23 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 <section id="id9">
 <h2>有限体积法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>有限体积法是一种通过对控制方程在离散控制体上积分，并利用<strong>守恒性</strong>将偏微分方程转化为离散代数方程的数值方法</p>
-<p>为更清晰地展示该方法的核心思想，将弹性模量 <span class="math notranslate nohighlight">\(E\)</span> 体现在方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 中，令</p>
+<p>为更清晰地展示该方法的核心思想，将弹性模量 <span class="math notranslate nohighlight">\(E\)</span> 体现在方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 中，令</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>注意到 <span class="math notranslate nohighlight">\(\sigma\)</span> 是应力</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fvm-1">
-<span class="eqno">(57)<a class="headerlink" href="#equation-sec9-eq-fvm-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(58)<a class="headerlink" href="#equation-sec9-eq-fvm-1" title="Link to this equation">#</a></span>\[
 \sigma=E\,\frac{\partial u}{\partial x},
 \]</div>
-<p>于是方程 <a class="reference internal" href="#equation-sec9-eq-example">(44)</a> 写为</p>
+<p>于是方程 <a class="reference internal" href="#equation-sec9-eq-example">(45)</a> 写为</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fvm-2">
-<span class="eqno">(58)<a class="headerlink" href="#equation-sec9-eq-fvm-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(59)<a class="headerlink" href="#equation-sec9-eq-fvm-2" title="Link to this equation">#</a></span>\[
 \frac{\partial \sigma}{\partial x}+f=0,\quad 0\leq x \leq L.
 \]</div>
 <p>这就是<strong>动量守恒方程</strong>在静力学条件下退化为<strong>静力平衡方程</strong>的情况，在每一个网格单元（控制体）中，对上式积分</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fvm-3">
-<span class="eqno">(59)<a class="headerlink" href="#equation-sec9-eq-fvm-3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(60)<a class="headerlink" href="#equation-sec9-eq-fvm-3" title="Link to this equation">#</a></span>\[
 \int_{x_{i}}^{x_{i+1}}\frac{\partial \sigma}{\partial x}\,\mathrm{d}x + \int_{x_{i}}^{x_{i+1}}f \,\mathrm{d}x=0,\quad i=0:4.
 \]</div>
 <p>得到守恒方程的积分形式</p>
@@ -811,20 +814,20 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 <p class="admonition-title">守恒方程</p>
 <p>守恒方程通常具备如下积分形式</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-conservation-1">
-<span class="eqno">(60)<a class="headerlink" href="#equation-sec9-eq-conservation-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(61)<a class="headerlink" href="#equation-sec9-eq-conservation-1" title="Link to this equation">#</a></span>\[
 \frac{\mathrm{d}}{\mathrm{d}t} \int_V m \, \mathrm{d}V + \int_{\partial V} \mathbf{F} \cdot \mathbf{n} \, \mathrm{d}S - \int_V Q \, dV = 0.
 \]</div>
 <p>其中，<span class="math notranslate nohighlight">\(t\)</span> 是时间，<span class="math notranslate nohighlight">\(V\)</span> 是控制体，<span class="math notranslate nohighlight">\(\partial V\)</span> 是 <span class="math notranslate nohighlight">\(V\)</span>的边界，<span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 是 <span class="math notranslate nohighlight">\(\partial V\)</span> 的外法向；<span class="math notranslate nohighlight">\(m\)</span> 是守恒量的密度（如能量密度，质量密度），<span class="math notranslate nohighlight">\(\mathbf{F}\)</span> 是通量（如能量通量，质量通量），表示守恒量通过界面的速度，<span class="math notranslate nohighlight">\(Q\)</span> 是源汇项，表示控制体内守恒量生成或消耗的速率</p>
 <p>因此，守恒方程描述的是：</p>
 <p><strong>控制体内守恒量的变化率 = 通过边界的净通量 + 内部生成或消耗量</strong></p>
-<p>对方程 <a class="reference internal" href="#equation-sec9-eq-conservation-1">(60)</a> 使用散度定理，得到</p>
+<p>对方程 <a class="reference internal" href="#equation-sec9-eq-conservation-1">(61)</a> 使用散度定理，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-conservation-2">
-<span class="eqno">(61)<a class="headerlink" href="#equation-sec9-eq-conservation-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(62)<a class="headerlink" href="#equation-sec9-eq-conservation-2" title="Link to this equation">#</a></span>\[
 \frac{\mathrm{d}}{\mathrm{d}t} \int_V m \, \mathrm{d}V + \int_{V} \nabla\cdot \mathbf{F} \, \mathrm{d}V - \int_V Q \, dV = 0.
 \]</div>
 <p>由控制体的任意性，得到守恒方程的微分形式</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-conservation-3">
-<span class="eqno">(62)<a class="headerlink" href="#equation-sec9-eq-conservation-3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(63)<a class="headerlink" href="#equation-sec9-eq-conservation-3" title="Link to this equation">#</a></span>\[
 \frac{\mathrm{d}\,m}{\mathrm{d}t}+ \nabla\cdot \mathbf{F} - Q = 0.
 \]</div>
 <p>当系统处于稳态时，守恒量不再变化，因此</p>
@@ -832,12 +835,12 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 \[
 \frac{\mathrm{d}}{\mathrm{d}t} \int_V m \, \mathrm{d}V = 0,
 \]</div>
-<p>守恒方程 <a class="reference internal" href="#equation-sec9-eq-conservation-1">(60)</a> 变为</p>
+<p>守恒方程 <a class="reference internal" href="#equation-sec9-eq-conservation-1">(61)</a> 变为</p>
 <div class="math notranslate nohighlight">
 \[
 \int_{\partial V} \mathbf{F} \cdot \mathbf{n} \, \mathrm{d}S - \int_V Q \, dV = 0.
 \]</div>
-<p>守恒方程 <a class="reference internal" href="#equation-sec9-eq-conservation-3">(62)</a> 变为</p>
+<p>守恒方程 <a class="reference internal" href="#equation-sec9-eq-conservation-3">(63)</a> 变为</p>
 <div class="math notranslate nohighlight">
 \[
 \nabla\cdot \mathbf{F} - Q = 0.
@@ -847,12 +850,12 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 <p class="admonition-title">动量守恒方程</p>
 <p>动量守恒方程的微分形式通常表示为</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-conservation-momentum-1">
-<span class="eqno">(63)<a class="headerlink" href="#equation-sec9-eq-conservation-momentum-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(64)<a class="headerlink" href="#equation-sec9-eq-conservation-momentum-1" title="Link to this equation">#</a></span>\[
 \frac{\partial (\rho \mathbf{v})}{\partial t} + \nabla \cdot (\rho \mathbf{v} \otimes \mathbf{v}) = \nabla \cdot \boldsymbol{\sigma} + \mathbf{f},
 \]</div>
 <p>其中，<span class="math notranslate nohighlight">\(t\)</span> 是时间，<span class="math notranslate nohighlight">\(\rho\)</span> 是密度，<span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 是速度向量，<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 是应力张量，<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> 是体积力，<span class="math notranslate nohighlight">\(\otimes\)</span> 是张量外积。该方程描述的是</p>
 <p><strong>动量变化率=对流通量（动量随物体运动的输运）+表面力引起的动量通量（应力张量的贡献）+体积力贡献</strong></p>
-<p>动量守恒方程可以退化为固体力学中的静力平衡方程，当固体处于静态条件下，速度 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 为零，方程 <a class="reference internal" href="#equation-sec9-eq-conservation-momentum-1">(63)</a> 变为</p>
+<p>动量守恒方程可以退化为固体力学中的静力平衡方程，当固体处于静态条件下，速度 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 为零，方程 <a class="reference internal" href="#equation-sec9-eq-conservation-momentum-1">(64)</a> 变为</p>
 <div class="math notranslate nohighlight">
 \[
 \nabla \cdot \boldsymbol{\sigma} + \mathbf{f} = 0.
@@ -864,7 +867,7 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 </aside>
 <p>对第一项应用散度定理，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fvm-4">
-<span class="eqno">(64)<a class="headerlink" href="#equation-sec9-eq-fvm-4" title="Link to this equation">#</a></span>\[
+<span class="eqno">(65)<a class="headerlink" href="#equation-sec9-eq-fvm-4" title="Link to this equation">#</a></span>\[
 \sigma_{i+1}-\sigma_{i} + \int_{x_{i}}^{x_{i+1}}f\,\mathrm{d}x = 0,\quad i=0:4.
 \]</div>
 <p><span class="math notranslate nohighlight">\(\sigma_{i}\)</span> 是单元界面处的应力，可使用<strong>两点通量格式</strong>对其近似</p>
@@ -873,13 +876,13 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 <p>高维情况下还需考虑界面面积的加权</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fvm-5">
-<span class="eqno">(65)<a class="headerlink" href="#equation-sec9-eq-fvm-5" title="Link to this equation">#</a></span>\[
+<span class="eqno">(66)<a class="headerlink" href="#equation-sec9-eq-fvm-5" title="Link to this equation">#</a></span>\[
 \sigma_{i} = \left.\left(E\,\frac{\partial u}{\partial x}\right)\right|_{x=x_{i}}=\frac{2E_{i-\frac{1}{2}}E_{i+\frac{1}{2}}}{E_{i-\frac{1}{2}}+E_{i+\frac{1}{2}}}\cdot \frac{u_{i+\frac{1}{2}}-u_{i-\frac{1}{2}}}{h},\quad i=0:4.
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(u_{i+\frac{1}{2}}\)</span> 表示网格单元 <span class="math notranslate nohighlight">\([x_{i},x_{i+1}]\)</span> 内的 <span class="math notranslate nohighlight">\(u(x)\)</span> 的平均水平</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<p>注意到，两点通量格式 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(65)</a> 和有限差分格式 <a class="reference internal" href="#equation-sec9-eq-fdm-0">(45)</a> 在形式上虽然接近，但本质上存在重要的差别</p>
+<p>注意到，两点通量格式 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(66)</a> 和有限差分格式 <a class="reference internal" href="#equation-sec9-eq-fdm-0">(46)</a> 在形式上虽然接近，但本质上存在重要的差别</p>
 <ol class="arabic simple">
 <li><p><strong>理论基础的差异</strong>：有限差分方法是通过对<strong>导数</strong>进行数值近似来求解偏微分方程，其核心关注点是导数值的准确性；而通量格式（有限体积方法）是通过对<strong>通量</strong>进行近似来保证<strong>守恒性</strong>，重点在于物理量的局部守恒</p></li>
 <li><p><strong>考虑信息的不同</strong>：有限差分方法在构造格式时通常只依赖<strong>几何信息</strong>，例如网格节点的分布和单元尺寸；而有限体积方法除了几何信息外，还需要考虑<strong>物理信息</strong>，例如材料的弹性模量 <span class="math notranslate nohighlight">\(E \)</span> 或其他物理参数，以确保通量的准确计算。</p></li>
@@ -890,9 +893,9 @@ f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 <section id="id10">
 <h3>边界条件<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>可以在网格的左右两端分别引入一个虚拟单元，单元尺寸为 <span class="math notranslate nohighlight">\(h\)</span>，端点位置分别为 <span class="math notranslate nohighlight">\(x_{-1}\)</span> 和 <span class="math notranslate nohighlight">\(x_{6}\)</span>。根据边界条件，可得 <span class="math notranslate nohighlight">\(u_{-\frac{1}{2}} = 0\)</span>，<span class="math notranslate nohighlight">\(u_{5+\frac{1}{2}} = u_{L}\)</span></p>
-<p>为简化问题，将 <span class="math notranslate nohighlight">\(E\equiv1\)</span> 代回到方程 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(65)</a> 中。根据方程 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(65)</a> 和边界条件，建立关于 <span class="math notranslate nohighlight">\(u_{i+\frac{1}{2}}\)</span> 的线性方程组</p>
+<p>为简化问题，将 <span class="math notranslate nohighlight">\(E\equiv1\)</span> 代回到方程 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(66)</a> 中。根据方程 <a class="reference internal" href="#equation-sec9-eq-fvm-5">(66)</a> 和边界条件，建立关于 <span class="math notranslate nohighlight">\(u_{i+\frac{1}{2}}\)</span> 的线性方程组</p>
 <div class="math notranslate nohighlight" id="equation-sec9-eq-fvm-6">
-<span class="eqno">(66)<a class="headerlink" href="#equation-sec9-eq-fvm-6" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(67)<a class="headerlink" href="#equation-sec9-eq-fvm-6" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \frac{1}{h^2}\left[
 \begin{matrix}
@@ -917,11 +920,11 @@ u_{0+\frac{1}{2}} \\ u_{1+\frac{1}{2}} \\ u_{2+\frac{1}{2}} \\ u_{3+\frac{1}{2}}
 \[
 f_{i+\frac{1}{2}} = \frac{1}{h}\int_{x_{i}}^{x_{i+1}}f\,\mathrm{d}x.
 \]</div>
-<p>通过求解线性方程组 <a class="reference internal" href="#equation-sec9-eq-fvm-6">(66)</a>，可以求解 <span class="math notranslate nohighlight">\(u(x)\)</span> 在每个网格单元内的近似解</p>
-<p>随着 <span class="math notranslate nohighlight">\(h\to0\)</span>，每个网格单元的尺寸逐渐减小，此时 <span class="math notranslate nohighlight">\(u_{i+\frac{1}{2}}\)</span> 越能准确代表单元 <span class="math notranslate nohighlight">\([x_{i},x_{i+1}]\)</span> 内部的平均水平。此外，通量公式的计算精度也随之提高，因此方程 <a class="reference internal" href="#equation-sec9-eq-fvm-6">(66)</a> 的解将逐渐逼近问题的真实解</p>
+<p>通过求解线性方程组 <a class="reference internal" href="#equation-sec9-eq-fvm-6">(67)</a>，可以求解 <span class="math notranslate nohighlight">\(u(x)\)</span> 在每个网格单元内的近似解</p>
+<p>随着 <span class="math notranslate nohighlight">\(h\to0\)</span>，每个网格单元的尺寸逐渐减小，此时 <span class="math notranslate nohighlight">\(u_{i+\frac{1}{2}}\)</span> 越能准确代表单元 <span class="math notranslate nohighlight">\([x_{i},x_{i+1}]\)</span> 内部的平均水平。此外，通量公式的计算精度也随之提高，因此方程 <a class="reference internal" href="#equation-sec9-eq-fvm-6">(67)</a> 的解将逐渐逼近问题的真实解</p>
 <div class="dropdown admonition seealso">
 <p class="admonition-title">See also</p>
-<p>注意到，式 <a class="reference internal" href="#equation-sec9-eq-fdm-3">(48)</a>，式 <a class="reference internal" href="#equation-sec9-eq-fem-8">(56)</a> 与式 <a class="reference internal" href="#equation-sec9-eq-fvm-6">(66)</a> 得到了相同形式的离散矩阵。这表明，这三种数值方法在解决简单问题时具有一定的共性</p>
+<p>注意到，式 <a class="reference internal" href="#equation-sec9-eq-fdm-3">(49)</a>，式 <a class="reference internal" href="#equation-sec9-eq-fem-8">(57)</a> 与式 <a class="reference internal" href="#equation-sec9-eq-fvm-6">(67)</a> 得到了相同形式的离散矩阵。这表明，这三种数值方法在解决简单问题时具有一定的共性</p>
 </div>
 </section>
 </section>

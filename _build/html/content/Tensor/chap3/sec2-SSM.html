@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>辛普森公式 &#8212; 固体力学笔记</title>
+    <title>反对称矩阵 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -61,11 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Math/chap1/sec2-simpson';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap3/sec2-SSM';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="代数精度" href="sec3-algebraic-prec.html" />
-    <link rel="prev" title="梯形公式" href="sec1-trapezoidal.html" />
+    <link rel="next" title="客观应力率" href="../chap4/intro.html" />
+    <link rel="prev" title="速度梯度场" href="sec1-velocity-gradient.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,39 +184,39 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">数值计算</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">数值积分</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sec1-trapezoidal.html">梯形公式</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">辛普森公式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec3-algebraic-prec.html">代数精度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec4-gaussian.html">Gaussian 公式</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap1/intro.html">数值积分</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec1-trapezoidal.html">梯形公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec2-simpson.html">辛普森公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec3-algebraic-prec.html">代数精度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap1/sec4-gaussian.html">Gaussian 公式</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-shapefunction.html">形函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-isoparametric.html">等参变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-linearelasticity.html">线弹性问题</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Math/chap2/intro.html">有限元计算</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec1-shapefunction.html">形函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec2-isoparametric.html">等参变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Math/chap2/sec3-linearelasticity.html">线弹性问题</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sec1-velocity-gradient.html">速度梯度场</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">反对称矩阵</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -321,7 +321,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Math/chap1/sec2-simpson.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap3/sec2-SSM.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +351,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Math/chap1/sec2-simpson.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap3/sec2-SSM.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -422,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -433,11 +435,26 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>辛普森公式</h1>
+    <h1>反对称矩阵</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">指数形式</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">无穷小旋转</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -448,101 +465,119 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>辛普森公式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>假设积分区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 被均匀地划分为<strong>偶数</strong>段 <span class="math notranslate nohighlight">\(n\)</span>，每段的长度为 <span class="math notranslate nohighlight">\(h=\frac{b-a}{n}\)</span>，划分节点依次为 <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span>，于是 <span class="math notranslate nohighlight">\(x_{i} = a + i\cdot h,\, i=0,2,\cdots,n\)</span></p>
-<p>辛普森公式在每个小区间 <span class="math notranslate nohighlight">\([x_{i-1}, x_{i+1}]\)</span> 上采用二次多项式对 <span class="math notranslate nohighlight">\(f(x)\)</span> 插值，通过插值多项式的面积来近似积分值。使用拉格朗日插值多项式</p>
+<h1>反对称矩阵<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<span class="gray-text">
+反对称矩阵是描述刚体旋转的核心数学工具
+</span>
+<p>反对称矩阵定义为</p>
 <div class="math notranslate nohighlight">
 \[
-P(x) = f(x_{i-1})L_{i-1}(x) + f(x_{i})L_{i}(x) + f(x_{i+1})L_{i+1}(x)
+A^{T} = -A,
 \]</div>
-<p>构造插值多项式，其中 <span class="math notranslate nohighlight">\(L_{i-1}(x), L_{i}(x), L_{i+1}(x)\)</span> 是节点 <span class="math notranslate nohighlight">\(x_{i-1}, x_{i}, x_{i+1}\)</span> 处的基函数</p>
+<p>对于三维空间中的任意反对称矩阵 <span class="math notranslate nohighlight">\(A\)</span>，均可表示为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+0 &amp; -a_{3} &amp; a_{2} \\
+a_{3} &amp; 0 &amp;  -a_{1} \\
+-a_{2} &amp; a_{1} &amp; 0
+\end{bmatrix} ,
+\end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\mathbf{a} = [a_1,\, a_2,\, a_3]^{\mathrm{T}} \in \mathbb{R}^3\)</span> 是唯一确定该矩阵的三维向量，故将 <span class="math notranslate nohighlight">\(A\)</span> 记为</p>
+<div class="math notranslate nohighlight">
+\[
+A = \left[\mathbf{a}\right]_{\times}.
+\]</div>
+<p>三维反对称矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值满足</p>
+<div class="math notranslate nohighlight">
+\[
+\det(A - \lambda I) = -\lambda \left(\lambda^2 + a_1^2 + a_2^2 + a_3^2\right),
+\]</div>
+<p>故特征值为</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1 = 0, \quad \lambda_2 = +i\sqrt{a_1^2 + a_2^2 + a_3^2}, \quad \lambda_3 = -i\sqrt{a_1^2 + a_2^2 + a_3^2}.
+\]</div>
+<p>因此，<span class="math notranslate nohighlight">\(A\)</span> 的秩为 <span class="math notranslate nohighlight">\(2\)</span> 或 <span class="math notranslate nohighlight">\(0\)</span></p>
+<section id="id2">
+<h2>几何意义<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>对于任意的向量 <span class="math notranslate nohighlight">\(\mathbf{r}\in\mathbb{R}^{3}\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{r} = \left[\mathbf{a}\right]_{\times} \mathbf{r}= \mathbf{a}\times\mathbf{r},
+\]</div>
+<p>这表明，三维反对称矩阵 <span class="math notranslate nohighlight">\(A\)</span> 对向量 <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> 的线性变换，等价于向量 <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> 与 <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> 的叉乘运算</p>
+<section id="id3">
+<h3>刚体旋转<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>根据 <a class="reference internal" href="../chap1/sec1-OT.html"><span class="std std-doc">Rodrigues 公式</span></a>，旋转轴为单位向量 <span class="math notranslate nohighlight">\(\mathbf{u}=[u_{x},u_{y},u_{z}]\)</span>，旋转角为 <span class="math notranslate nohighlight">\(\theta\)</span> 的旋转变换矩阵为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-L_{i-1}(x)&amp;=\frac{(x - x_{i})(x - x_{i+1})}{(x_{i-1} - x_{i})(x_{i-1} - x_{i+1})},\\
-L_{i}(x)&amp;=\frac{(x - x_{i-1})(x - x_{i+1})}{(x_{i} - x_{i-1})(x_{i} - x_{i+1})},\\
-L_{i+1}(x)&amp;=\frac{(x - x_{i-1})(x - x_{i})}{(x_{i+1} - x_{i-1})(x_{i+1} - x_{i})}.
+R(\mathbf{u}, \theta) &amp;= \cos \theta \cdot I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1 - \cos \theta) \cdot \mathbf{uu}^T\\
+&amp;=I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1 - \cos \theta) \cdot(\mathbf{uu}^T - I)
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>于是，在区间 <span class="math notranslate nohighlight">\([x_{i-1}, x_{i+1}]\)</span> 上的积分为</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 是单位向量，故满足</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{x_{i-1}}^{x_{i+1}}P(x)\,\mathrm{d}x = \frac{h}{3}\left[f(x_{i-1}) + 4f(x_{i})+f(x_{i+1})\right].
+\mathbf{uu}^T - I  = [\mathbf{u}]_{\times}^{2},
 \]</div>
-<p>插值多项式 <span class="math notranslate nohighlight">\(P(x)\)</span> 的误差公式为</p>
+<p>因此，Rodrigues 公式可以写为</p>
 <div class="math notranslate nohighlight">
 \[
-\begin{equation}
-e(x) = \frac{f'''(\xi)}{3!}(x-x_{i-1})(x-x_{i})(x-x_{i+1}),\quad \xi\in(x_{i-1},x_{i+1}).
-\end{equation}
+R(\mathbf{u}, \theta) =I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1-\cos\theta)[\mathbf{u}]_{\times}^{2}.
 \]</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">证明</p>
-<p>定义辅助函数</p>
+<section id="id4">
+<h4>指数形式<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>对于一般三维反对称矩阵 <span class="math notranslate nohighlight">\(A = \left[\mathbf{a}\right]_{\times}\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf{a} = \|\mathbf{a}\|\mathbf{u}=\theta\mathbf{u}\)</span>，于是</p>
 <div class="math notranslate nohighlight">
 \[
-g(t) = f(t) - P(t) - K\cdot (t-x_{i-1})(t - x_{i})(t-x_{i+1}).
+A = \left[\mathbf{a}\right]_{\times} = \theta\left[\mathbf{u}\right]_{\times},
 \]</div>
-<p>对于任意一点 <span class="math notranslate nohighlight">\(x\in[x_{i-1},x_{i+1}]\)</span>，令 <span class="math notranslate nohighlight">\(g(x) = 0\)</span>，其中 <span class="math notranslate nohighlight">\(x\neq x_{i-1},x_{i},x_{i+1}\)</span>，于是 <span class="math notranslate nohighlight">\(g(t)\)</span> 至少有 4 个零点（ <span class="math notranslate nohighlight">\(x,x_{i-1},x_{i},x_{i+1}\)</span> ）。反复运用罗尔定理，必然存在 <span class="math notranslate nohighlight">\(\xi\in[x_{i-1},x_{i+1}]\)</span>，使得</p>
+<p>根据李代数理论，绕轴 <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> 旋转 <span class="math notranslate nohighlight">\(\theta\)</span> 度的矩阵可以表示为</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>根据旋转矩阵的正交性，可看出 <span class="math notranslate nohighlight">\(A\)</span> 必须是反对称矩阵</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-sec2-eq-rodrigues">
+<span class="eqno">(24)<a class="headerlink" href="#equation-sec2-eq-rodrigues" title="Link to this equation">#</a></span>\[
+R(A) = R(\mathbf{u},\theta) = e^{\theta\left[\mathbf{u}\right]_{\times}}=I+\frac{\theta\left[\mathbf{u}\right]_{\times}}{1!}+\frac{\theta^2\left[\mathbf{u}\right]_{\times}^2}{2!}+\frac{\theta^3\left[\mathbf{u}\right]_{\times}^3}{3!}+\cdots,
+\]</div>
+<p>通过计算容易证明</p>
 <div class="math notranslate nohighlight">
 \[
-g'''(\xi)=0,
+[\mathbf{u}]_{\times}^{3} = -[\mathbf{u}]_{\times},\quad [\mathbf{u}]_{\times}^{4} = -[\mathbf{u}]^{2}_{\times},\quad [\mathbf{u}]_{\times}^{5} = [\mathbf{u}]_{\times},
 \]</div>
-<p>于是</p>
+<p>再结合 <span class="math notranslate nohighlight">\(\sin\theta\)</span> 和 <span class="math notranslate nohighlight">\(\cos\theta\)</span> 的泰勒展开式，能够推得 Rodrigues 公式</p>
 <div class="math notranslate nohighlight">
 \[
-f'''(\xi) - P'''(\xi) - 6K = 0,
+R(\mathbf{u}, \theta) =I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1-\cos\theta)[\mathbf{u}]_{\times}^{2}.
 \]</div>
-<p>因为 <span class="math notranslate nohighlight">\(P'''(t)\equiv0\)</span>，于是整理得到</p>
+<p>由此可见，旋转矩阵可以完全由 <span class="math notranslate nohighlight">\(A = \left[\mathbf{a}\right]_{\times}\)</span> 确定，因此矩阵 <span class="math notranslate nohighlight">\(A\)</span> 也被称为旋转矩阵的生成元</p>
+</section>
+</section>
+<section id="id5">
+<h3>无穷小旋转<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>当 <span class="math notranslate nohighlight">\(\theta\rightarrow0\)</span>，此时</p>
 <div class="math notranslate nohighlight">
 \[
-K = \frac{f'''(\xi)}{3!}.
+\sin\theta\rightarrow\theta,\quad 1-\cos\theta\rightarrow\frac{1}{2}\theta^2,
 \]</div>
-<p>代入误差公式</p>
+<p>代入并舍弃高阶项，得到</p>
 <div class="math notranslate nohighlight">
 \[
-\begin{equation}
-e(x) = f(x) - P(x) = \frac{f'''(\xi)}{3!}(t-x_{i-1})(t - x_{i})(t-x_{i+1}),\quad \xi\in[x_{i-1},x_{i+1}].
-\end{equation}
+R(\mathbf{u}, \theta)\approx I  + \theta [\mathbf{u}]_{\times} = I + [\mathbf{a}]_{\times},
 \]</div>
-</div>
-<p>积分误差</p>
+<p>上式可以作为旋转角度极小时的旋转矩阵的近似</p>
+<p>若将 <span class="math notranslate nohighlight">\(\theta\)</span> 视为 <span class="math notranslate nohighlight">\(\delta t\)</span> 时间内均匀旋转的角度，则角速度 <span class="math notranslate nohighlight">\(\omega = \theta / \delta t\)</span>，于是</p>
 <div class="math notranslate nohighlight">
 \[
-E = \int_{x_{i-1}}^{x_{i+1}}f(x) - P(x)\, \mathrm{d}x.
+R(\mathbf{u}, \theta)\approx I  + \omega [\mathbf{u}]_{\times}\delta t = I  + [\boldsymbol{\omega}]_{\times}\delta t.
 \]</div>
-<p>令 <span class="math notranslate nohighlight">\(p(x) = (x-x_{i-1})(x-x_{i})(x-x_{i+1})\)</span>，构造辅助函数</p>
-<div class="math notranslate nohighlight">
-\[
-\phi(x)=f(x) - P(x) - kp(x) - \frac{E}{\int_{x_{i-1}}^{x_{i+1}}xp(x)\,\mathrm{d}x}xp(x)\,\mathrm{d}x,
-\]</div>
-<p>于是 <span class="math notranslate nohighlight">\(\phi(x_{i-1})=\phi(x_{i})=\phi(x_{i+1})=0\)</span>.由 <span class="math notranslate nohighlight">\(\int_{x_{i-1}}^{x_{i+1}}p(x)=0\)</span>，导出 <span class="math notranslate nohighlight">\(\int_{x_{i-1}}^{x_{i+1}}\phi(x)=0\)</span>. 此外，<span class="math notranslate nohighlight">\(\int_{x_{i-1}}^{x_{i}}p(x)\neq0\)</span>，因此存在 <span class="math notranslate nohighlight">\(k\)</span> 使得 <span class="math notranslate nohighlight">\(\int_{x_{i-1}}^{x_{i}}\phi(x)=0\)</span>，由</p>
-<div class="math notranslate nohighlight">
-\[
-0=\int_{x_{i-1}}^{x_{i+1}}\phi(x)\,\mathrm{d}x=\int_{x_{i-1}}^{x_{i}}\phi(x)\,\mathrm{d}x + \int_{x_{i}}^{x_{i+1}}\phi(x)\,\mathrm{d}x
-\]</div>
-<p>得到 <span class="math notranslate nohighlight">\(\int_{x_{1}}^{x_{i+1}}\phi(x)=0\)</span>，这表面 <span class="math notranslate nohighlight">\(\phi(x)\)</span> 在区间 <span class="math notranslate nohighlight">\((x_{i-1}, x_{i})\)</span> 和 <span class="math notranslate nohighlight">\((x_{i},x_{i+1})\)</span> 中分别至少存在一个零点，因此 <span class="math notranslate nohighlight">\(\phi(x)\)</span> 在区间 <span class="math notranslate nohighlight">\([x_{i-1},x_{i+1}]\)</span> 中至少存在五个不同的零点。由罗尔定理，存在一点 <span class="math notranslate nohighlight">\(\xi\)</span> 使得</p>
-<div class="math notranslate nohighlight">
-\[
-0 = \phi^{(4)}(\xi) = f^{(4)}(\xi) - \frac{4!E}{\int_{x_{i-1}}^{x_{i+1}}xp(x)\,\mathrm{d}x},
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight">
-\[
-E = \frac{f^{(4)}(\xi)}{4!}\int_{x_{i-1}}^{x_{i+1}}xp(x)\,\mathrm{d}x=-\frac{h^5}{90}f^{(4)}(\xi).
-\]</div>
-<p>在区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 上有</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{a}^{b}f(x)\,\mathrm{d}x \approx \frac{h}{3}(f(x_{0})+4\sum_{i=0}^{\frac{n}{2}-1}f(x_{2i+1})+2\sum_{i=1}^{\frac{n}{2}-1}f(x_{2i})+f(x_{n})),
-\]</div>
-<p>总误差为</p>
-<div class="math notranslate nohighlight">
-\[
-E_{\text{总}} = \sum_{i=1,3,...}^{n}-\frac{h^5}{90}f^{(4)}(\xi)=-\frac{(b-a)h^{4}}{180}f^{(4)}(\eta).
-\]</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -558,7 +593,7 @@ E_{\text{总}} = \sum_{i=1,3,...}^{n}-\frac{h^5}{90}f^{(4)}(\xi)=-\frac{(b-a)h^{
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Math/chap1"
+            path: "./content/Tensor/chap3"
         },
         predefinedOutput: true
     }
@@ -576,20 +611,20 @@ E_{\text{总}} = \sum_{i=1,3,...}^{n}-\frac{h^5}{90}f^{(4)}(\xi)=-\frac{(b-a)h^{
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sec1-trapezoidal.html"
+       href="sec1-velocity-gradient.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">梯形公式</p>
+        <p class="prev-next-title">速度梯度场</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec3-algebraic-prec.html"
+       href="../chap4/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">代数精度</p>
+        <p class="prev-next-title">客观应力率</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -599,6 +634,28 @@ E_{\text{总}} = \sum_{i=1,3,...}^{n}-\frac{h^5}{90}f^{(4)}(\xi)=-\frac{(b-a)h^{
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">几何意义</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">刚体旋转</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">指数形式</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">无穷小旋转</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

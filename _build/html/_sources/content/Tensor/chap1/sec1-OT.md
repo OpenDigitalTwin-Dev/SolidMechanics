@@ -324,12 +324,12 @@ $$
 
 **Rodrigues 旋转矩阵：**
 
-设旋转轴为单位向量为 $\mathbf{u}=[u_{x},u_{y},u_{z}]$，旋转角为 $\theta$，则旋转矩阵为
+设旋转轴为单位向量 $\mathbf{u}=[u_{x},u_{y},u_{z}]$，旋转角为 $\theta$，则旋转矩阵为
 
 $$
 \begin{equation}
 \begin{aligned}
-R(\mathbf{u}, \theta) &= \cos \theta \cdot I + (1 - \cos \theta) \cdot \mathbf{uu}^T + \sin \theta \cdot [\mathbf{u}]_{\times}\\
+R(\mathbf{u}, \theta) &= \cos \theta \cdot I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1 - \cos \theta) \cdot \mathbf{uu}^T\\
 &=\begin{bmatrix}
 \cos \theta + u_x^2 (1 - \cos \theta) & u_x u_y (1 - \cos \theta) - u_z \sin \theta & u_x u_z (1 - \cos \theta) + u_y \sin \theta \\
 u_y u_x (1 - \cos \theta) + u_z \sin \theta & \cos \theta + u_y^2 (1 - \cos \theta) & u_y u_z (1 - \cos \theta) - u_x \sin \theta \\
@@ -390,7 +390,7 @@ u_z & 0 & -u_x \\
 \end{bmatrix}
 \begin{bmatrix}
 v_{x}\\v_{y}\\v_{z}
-\end{bmatrix} = [\mathbf{u}]_{\times},
+\end{bmatrix} = [\mathbf{u}]_{\times}\ \mathbf{v},
 $$
 
 因此

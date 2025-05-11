@@ -211,7 +211,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
@@ -803,12 +806,12 @@ R_z = \begin{bmatrix}
 \end{bmatrix}.
 \end{split}\]</div>
 <p><strong>Rodrigues 旋转矩阵：</strong></p>
-<p>设旋转轴为单位向量为 <span class="math notranslate nohighlight">\(\mathbf{u}=[u_{x},u_{y},u_{z}]\)</span>，旋转角为 <span class="math notranslate nohighlight">\(\theta\)</span>，则旋转矩阵为</p>
+<p>设旋转轴为单位向量 <span class="math notranslate nohighlight">\(\mathbf{u}=[u_{x},u_{y},u_{z}]\)</span>，旋转角为 <span class="math notranslate nohighlight">\(\theta\)</span>，则旋转矩阵为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-R(\mathbf{u}, \theta) &amp;= \cos \theta \cdot I + (1 - \cos \theta) \cdot \mathbf{uu}^T + \sin \theta \cdot [\mathbf{u}]_{\times}\\
+R(\mathbf{u}, \theta) &amp;= \cos \theta \cdot I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1 - \cos \theta) \cdot \mathbf{uu}^T\\
 &amp;=\begin{bmatrix}
 \cos \theta + u_x^2 (1 - \cos \theta) &amp; u_x u_y (1 - \cos \theta) - u_z \sin \theta &amp; u_x u_z (1 - \cos \theta) + u_y \sin \theta \\
 u_y u_x (1 - \cos \theta) + u_z \sin \theta &amp; \cos \theta + u_y^2 (1 - \cos \theta) &amp; u_y u_z (1 - \cos \theta) - u_x \sin \theta \\
@@ -859,7 +862,7 @@ u_z &amp; 0 &amp; -u_x \\
 \end{bmatrix}
 \begin{bmatrix}
 v_{x}\\v_{y}\\v_{z}
-\end{bmatrix} = [\mathbf{u}]_{\times},
+\end{bmatrix} = [\mathbf{u}]_{\times}\ \mathbf{v},
 \end{split}\]</div>
 <p>因此</p>
 <div class="math notranslate nohighlight">

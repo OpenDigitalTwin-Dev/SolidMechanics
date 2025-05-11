@@ -211,7 +211,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
@@ -517,7 +520,7 @@ Tresca 屈服准则被称为最大切应力理论，是最常用的屈服准则�
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span>， 于是</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-1">
-<span class="eqno">(70)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(71)<a class="headerlink" href="#equation-sec2-eq-tau-1" title="Link to this equation">#</a></span>\[
 \tau_{\mathbf{n}}^2 = n_{1}^{2}\sigma_{1}^{2}+n_{2}^{2}\sigma_{2}^{2}+n_{3}^{2}\sigma_{3}^{2}-(n_{1}^{2}\sigma_{1}+n_{2}^{2}\sigma_{2}+n_{3}^{2}\sigma_{3})^2,
 \]</div>
 <p>于是需在约束 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2+n_{3}^2=1\)</span> 下最大化 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}^2\)</span>，引入拉格朗日乘子 <span class="math notranslate nohighlight">\(\lambda\)</span>，构造目标函数</p>
@@ -527,7 +530,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \]</div>
 <p>函数 <span class="math notranslate nohighlight">\(L\)</span> 对 <span class="math notranslate nohighlight">\(n_{1},n_{2},n_{3}\)</span> 的导数为</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-l-der">
-<span class="eqno">(71)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(72)<a class="headerlink" href="#equation-sec2-eq-l-der" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;(\sigma_{1}^2-2\sigma_{\mathbf{n}}\sigma_{1} - \lambda)n_{1}= 0 \\
@@ -537,15 +540,15 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \end{equation}
 \end{split}\]</div>
 <p>不失一般性</p>
-<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(n_{2}=n_{3}=0\)</span>，此时 <span class="math notranslate nohighlight">\(n_{1}=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(70)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
-<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(70)</a> 中，得到</p>
+<p><strong>1.</strong> 若 <span class="math notranslate nohighlight">\(n_{2}=n_{3}=0\)</span>，此时 <span class="math notranslate nohighlight">\(n_{1}=\pm1\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(71)</a> 中，得到 <span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}=0\)</span>，显然不是最大值</p>
+<p><strong>2.</strong> 若 <span class="math notranslate nohighlight">\(n_{1}\neq0,n_{2}\neq0,n_{3}=0\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(71)</a> 中，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}}^2 = n_{1}^2\sigma_{1}^2+n_{2}^2\sigma_{2}^2 - (n_{1}^2\sigma_{1}+n_{2}^2\sigma_{2})^2,
 \]</div>
 <p>代入 <span class="math notranslate nohighlight">\(n_{2}^2 = 1 - n_{1}^2\)</span>，并记 <span class="math notranslate nohighlight">\(\ell = n_{1}^2\)</span>，于是</p>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-2">
-<span class="eqno">(72)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(73)<a class="headerlink" href="#equation-sec2-eq-tau-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \tau_{\mathbf{n}}^2 &amp;= \ell\sigma_{1}^2+(1 - \ell)\sigma_{2}^2 - (\ell\sigma_{1}+(1 - \ell)\sigma_{2})^2\\
@@ -554,7 +557,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>因此，当 <span class="math notranslate nohighlight">\(\ell = n_{1}^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(n_{2}^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(70)</a>，得到</p>
+<p>因此，当 <span class="math notranslate nohighlight">\(\ell = n_{1}^2=\frac{1}{2}\)</span> 时，<span class="math notranslate nohighlight">\(\tau_{\mathbf{n}}\)</span> 取得极值，此时 <span class="math notranslate nohighlight">\(n_{2}^2=\frac{1}{2}\)</span>，代入到式 <a class="reference internal" href="#equation-sec2-eq-tau-1">(71)</a>，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{2}|.
@@ -577,10 +580,10 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 <li><p>若 <span class="math notranslate nohighlight">\(\sigma_{1}=\sigma_{2}\neq\sigma_{3}\)</span>，此时</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-sec2-eq-tau-3">
-<span class="eqno">(73)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(74)<a class="headerlink" href="#equation-sec2-eq-tau-3" title="Link to this equation">#</a></span>\[
 \tau_{\mathbf{n}}^2 = (n_{1}^{2}+n_{2}^{2})\sigma_{1}^{2}+n_{3}^{2}\sigma_{3}^{2}-((n_{1}^{2}+n_{2}^{2})\sigma_{1}+n_{3}^{2}\sigma_{3})^2,
 \]</div>
-<p>记 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(n_{3}^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(73)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(72)</a> 有完全一样的形式，由此可知极值为</p>
+<p>记 <span class="math notranslate nohighlight">\(n_{1}^2+n_{2}^2 = \ell\)</span>，于是 <span class="math notranslate nohighlight">\(n_{3}^2 = 1-\ell\)</span>，此时式 <a class="reference internal" href="#equation-sec2-eq-tau-3">(74)</a> 与式 <a class="reference internal" href="#equation-sec2-eq-tau-2">(73)</a> 有完全一样的形式，由此可知极值为</p>
 <div class="math notranslate nohighlight">
 \[
 \tau_{\mathbf{n}} = \frac{1}{2}|\sigma_{1}-\sigma_{3}|.
@@ -591,7 +594,7 @@ L = \tau_{\mathbf{n}}^2 - \lambda(n_{1}^2+n_{2}^2+n_{3}^2-1)
 n_{1}\mathbf{n_{1}}+(\pm\sqrt{\frac{1}{2}-n_{1}^2})\mathbf{n}_{2}+(\pm\frac{\sqrt{2}}{2})\mathbf{n}_{3},
 \]</div>
 <p>与 <span class="math notranslate nohighlight">\(\sigma_{3}\)</span> 平面夹角为 <span class="math notranslate nohighlight">\(45\)</span> 度</p>
-<p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(71)</a> 的对称性，得到</p>
+<p>综上，考虑到方程 <a class="reference internal" href="#equation-sec2-eq-l-der">(72)</a> 的对称性，得到</p>
 <div class="math notranslate nohighlight">
 \[
 \max_{\mathbf{n}} \tau_{\mathbf{n}} = \frac{1}{2}\max\left\{ |\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1| \right\}.

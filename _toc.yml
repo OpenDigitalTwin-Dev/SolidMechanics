@@ -29,6 +29,8 @@ parts:
         - file: content/Tensor/chap2/sec1-strain-displacement
         - file: content/Tensor/chap2/sec2-greenstrain
       - file: content/Tensor/chap3/sec1-velocity-gradient
+        sections:
+        - file: content/Tensor/chap3/sec2-SSM
       - file: content/Tensor/chap4/intro
         sections: 
         - file: content/Tensor/chap4/sec1-jaumann
