@@ -156,19 +156,19 @@ $$
 \begin{equation}
 \boldsymbol{\varepsilon}({\mathbf{u}}) = \mathcal{B}\mathbf{u}\quad \rightarrow\quad
 \begin{bmatrix}
-\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{yz}\\2\varepsilon_{zx}
 \end{bmatrix}
 =\begin{bmatrix}
 \frac{\partial}{\partial x} & 0 & 0 \\
 0 & \frac{\partial}{\partial y} & 0 \\
 0 & 0 & \frac{\partial}{\partial z} \\
+\frac{\partial}{\partial y} & \frac{\partial}{\partial x} & 0 \\
 0 & \frac{\partial}{\partial z} & \frac{\partial}{\partial y} \\
-\frac{\partial}{\partial z} & 0 & \frac{\partial}{\partial x} \\
-\frac{\partial}{\partial y} & \frac{\partial}{\partial x} & 0
+\frac{\partial}{\partial z} & 0 & \frac{\partial}{\partial x}
 \end{bmatrix}
 \begin{bmatrix}
 u_{x}\\u_{y}\\u_{z}
-\end{bmatrix},
+\end{bmatrix}.
 \end{equation}
 $$
 
@@ -454,9 +454,9 @@ $$
 \frac{\partial N_{i}}{\partial x} & 0 & 0 \\
 0 & \frac{\partial N_{i}}{\partial y} & 0 \\
 0 & 0 & \frac{\partial N_{i}}{\partial z} \\
+\frac{\partial N_{i}}{\partial y} & \frac{\partial N_{i}}{\partial x} & 0 \\
 0 & \frac{\partial N_{i}}{\partial z} & \frac{\partial N_{i}}{\partial y} \\
-\frac{\partial N_{i}}{\partial z} & 0 & \frac{\partial N_{i}}{\partial x} \\
-\frac{\partial N_{i}}{\partial y} & \frac{\partial N_{i}}{\partial x} & 0
+\frac{\partial N_{i}}{\partial z} & 0 & \frac{\partial N_{i}}{\partial x}
 \end{bmatrix},
 $$
 

@@ -124,6 +124,27 @@ u \\ v
 \end{equation}
 $$
 
+对于三维情形，有
+
+$$
+\begin{equation}
+\begin{bmatrix}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{yz}\\2\varepsilon_{zx}
+\end{bmatrix}
+=\begin{bmatrix}
+\frac{\partial}{\partial x} & 0 & 0 \\
+0 & \frac{\partial}{\partial y} & 0 \\
+0 & 0 & \frac{\partial}{\partial z} \\
+\frac{\partial}{\partial y} & \frac{\partial}{\partial x} & 0 \\
+0 & \frac{\partial}{\partial z} & \frac{\partial}{\partial y} \\
+\frac{\partial}{\partial z} & 0 & \frac{\partial}{\partial x}
+\end{bmatrix}
+\begin{bmatrix}
+u_{x}\\u_{y}\\u_{z}
+\end{bmatrix}.
+\end{equation}
+$$
+
 
 ```{admonition} 刚体运动
 :class: tip, dropdown

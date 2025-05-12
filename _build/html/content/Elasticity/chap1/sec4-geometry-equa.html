@@ -457,7 +457,7 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/displ_strain.png"><img alt="../../../_images/displ_strain.png" src="../../../_images/displ_strain.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">位移和应变关系示意图</span><a class="headerlink" href="#sec4-fig-displ-strain" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">位移和应变关系示意图</span><a class="headerlink" href="#sec4-fig-displ-strain" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
@@ -558,6 +558,26 @@ v(B)&amp;=v(x_{B},y_{B})=v(x_{P},y_{P}+\mathrm{d}y) \approx v(x_{P},y_{P}) + \fr
 \end{bmatrix}
 \begin{bmatrix}
 u \\ v 
+\end{bmatrix}.
+\end{equation}
+\end{split}\]</div>
+<p>对于三维情形，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{bmatrix}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{yz}\\2\varepsilon_{zx}
+\end{bmatrix}
+=\begin{bmatrix}
+\frac{\partial}{\partial x} &amp; 0 &amp; 0 \\
+0 &amp; \frac{\partial}{\partial y} &amp; 0 \\
+0 &amp; 0 &amp; \frac{\partial}{\partial z} \\
+\frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0 \\
+0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
+\frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x}
+\end{bmatrix}
+\begin{bmatrix}
+u_{x}\\u_{y}\\u_{z}
 \end{bmatrix}.
 \end{equation}
 \end{split}\]</div>

@@ -446,9 +446,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">极分解</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">刚体旋转</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">局部体积变化速率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">几何解释</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">极分解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">局部体积变化速率</a></li>
 </ul>
 </li>
 </ul>
@@ -493,6 +494,9 @@ L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\
 \]</div>
 <section id="id2">
 <h2>速度梯度场分解<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<span class="gray-text">
+速度梯度场的分解将真实形变与刚体旋转有效区分，为客观描述奠定基础
+</span>
 <p>将速度梯度分解为对称部分和反对称部分</p>
 <div class="math notranslate nohighlight">
 \[
@@ -513,7 +517,51 @@ D_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} + \frac{\partial
 W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
 \]</div>
 <section id="id3">
-<h3>极分解<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>几何解释<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>在 <a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html"><span class="std std-doc">几何方程</span></a> 中可以看到，位移梯度决定了应变，因此速度梯度场决定了物体的变形速率。以微元在 <span class="math notranslate nohighlight">\(xOy\)</span> 平面上的剪切应变为例，考虑两种特殊情况：</p>
+<div class="math notranslate nohighlight">
+\[
+2\varepsilon_{xy} = \frac{\partial u_{x}}{\partial y} + \frac{\partial u_{y}}{\partial x},
+\]</div>
+<p><strong>1.</strong> <span class="math notranslate nohighlight">\(\frac{\partial u_{x}}{\partial y} = \frac{\partial u_{y}}{\partial x}\)</span></p>
+<figure class="align-default" id="sec1-fig-sym-shear">
+<a class="reference internal image-reference" href="../../../_images/sym-shear-1.png"><img alt="../../../_images/sym-shear-1.png" src="../../../_images/sym-shear-1.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">对称剪切</span><a class="headerlink" href="#sec1-fig-sym-shear" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>如图，沿 <span class="math notranslate nohighlight">\(x\)</span> 方向与沿 <span class="math notranslate nohighlight">\(y\)</span> 方向的剪切应变等大反向，表现为<strong>对称剪切变形</strong>。此时，对称轴保持不动，剪切应变完全描述了物体的形变，无冗余信息</p>
+<div class="math notranslate nohighlight">
+\[
+L = D \neq 0,\quad W = 0.
+\]</div>
+<p><strong>2.</strong> <span class="math notranslate nohighlight">\(\frac{\partial u_{x}}{\partial y} = - \frac{\partial u_{y}}{\partial x}\)</span></p>
+<figure class="align-default" id="sec1-fig-rotation">
+<a class="reference internal image-reference" href="../../../_images/rotation.png"><img alt="../../../_images/rotation.png" src="../../../_images/rotation.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">刚体旋转</span><a class="headerlink" href="#sec1-fig-rotation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>如图，沿 <span class="math notranslate nohighlight">\(x\)</span> 方向和 <span class="math notranslate nohighlight">\(y\)</span> 方向的剪切应变等大同向，表现为<strong>刚体旋转</strong>。此时，剪切应变包含了刚体旋转的分量，不能准确反映物体的真实形变</p>
+<div class="math notranslate nohighlight">
+\[
+L = W, D = 0.
+\]</div>
+<p>综上，速度梯度（或位移梯度）场既包含形变（对称部分），也包含刚体旋转（反对称部分）。对于一般的速度（或位移）梯度，可以将其分解为对称剪切变形与刚体旋转的叠加</p>
+<figure class="align-default" id="sec1-fig-general-shear">
+<a class="reference internal image-reference" href="../../../_images/general.png"><img alt="../../../_images/general.png" src="../../../_images/general.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">一般形变的分解</span><a class="headerlink" href="#sec1-fig-general-shear" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>于是，<span class="math notranslate nohighlight">\(D\)</span>（对称部分-对称剪切）描述了微元的真实形变，包括剪切和体积变化；<span class="math notranslate nohighlight">\(W\)</span> （反对称部分-垂直方向的剪切差异）描述了微元的局部刚体旋转</p>
+<p><strong>通过对速度梯度场的分解，可以有效剔除刚体旋转的影响，使应力率等物理量在不同参考系下保持客观性，从而为大变形下本构关系的建立提供理论基础</strong></p>
+</section>
+<section id="id4">
+<h3>极分解<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>对 <span class="math notranslate nohighlight">\(F\)</span> 进行极分解</p>
 <div class="math notranslate nohighlight">
 \[
@@ -544,8 +592,8 @@ W = L - D = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T
 \end{equation}
 \]</div>
 </section>
-<section id="id4">
-<h3>刚体旋转<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>刚体旋转<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>对于刚体旋转变换，有</p>
 <div class="math notranslate nohighlight">
 \[
@@ -562,14 +610,14 @@ D = 0,
 W = L = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
 \]</div>
 </section>
-<section id="id5">
-<h3>局部体积变化速率<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>局部体积变化速率<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>记 <span class="math notranslate nohighlight">\(J= \det(F)\)</span>，则</p>
 <div class="math notranslate nohighlight">
 \[
-\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v})
+\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
 \]</div>
-<p>该公式表明，<strong>单位体积的变化速率 <span class="math notranslate nohighlight">\(\dot{J}\)</span>，等于体积本身 <span class="math notranslate nohighlight">\(J\)</span> 乘以速度场的散度（速度梯度场张量的迹）</strong></p>
+<p>该公式表明，<strong>单位体积的变化速率 <span class="math notranslate nohighlight">\(\dot{J}\)</span>，等于体积本身 <span class="math notranslate nohighlight">\(J\)</span> 乘以速度梯度场张量的迹（速度场的散度）</strong></p>
 <p>对于等容行为，有</p>
 <div class="math notranslate nohighlight">
 \[
@@ -791,9 +839,10 @@ a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} &amp; \mathbf{b} &amp; \mathbf{c}\end{bm
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">极分解</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">刚体旋转</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">局部体积变化速率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">几何解释</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">极分解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">局部体积变化速率</a></li>
 </ul>
 </li>
 </ul>

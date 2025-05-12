@@ -453,6 +453,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">无穷小旋转</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">速度梯度场</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">涡量和角速度</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -488,6 +492,12 @@ a_{3} &amp; 0 &amp;  -a_{1} \\
 \[
 A = \left[\mathbf{a}\right]_{\times}.
 \]</div>
+<p>也可以写为张量形式</p>
+<div class="math notranslate nohighlight">
+\[
+A_{ij}=-\epsilon_{ijk}a_{k},
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\epsilon_{ijk}\)</span> 是 Levi-Civita 符号</p>
 <p>三维反对称矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的特征值满足</p>
 <div class="math notranslate nohighlight">
 \[
@@ -571,11 +581,62 @@ R(\mathbf{u}, \theta) =I  + \sin \theta \cdot [\mathbf{u}]_{\times} + (1-\cos\th
 R(\mathbf{u}, \theta)\approx I  + \theta [\mathbf{u}]_{\times} = I + [\mathbf{a}]_{\times},
 \]</div>
 <p>上式可以作为旋转角度极小时的旋转矩阵的近似</p>
-<p>若将 <span class="math notranslate nohighlight">\(\theta\)</span> 视为 <span class="math notranslate nohighlight">\(\delta t\)</span> 时间内均匀旋转的角度，则角速度 <span class="math notranslate nohighlight">\(\omega = \theta / \delta t\)</span>，于是</p>
+<p>若将 <span class="math notranslate nohighlight">\(\theta\)</span> 视为 <span class="math notranslate nohighlight">\(\delta t\)</span> 时间内均匀旋转的角度，则角速度 <span class="math notranslate nohighlight">\(\omega_{\text{rot}} = \theta / \delta t\)</span>，于是</p>
 <div class="math notranslate nohighlight">
 \[
-R(\mathbf{u}, \theta)\approx I  + \omega [\mathbf{u}]_{\times}\delta t = I  + [\boldsymbol{\omega}]_{\times}\delta t.
+R(\mathbf{u}, \theta)\approx I  + \omega_{\text{rot}} [\mathbf{u}]_{\times}\delta t = I  + [\boldsymbol{\omega}_{\text{rot}}]_{\times}\delta t.
 \]</div>
+</section>
+</section>
+<section id="id6">
+<h2>速度梯度场<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>速度梯度场的的反对称部分为</p>
+<div class="math notranslate nohighlight">
+\[
+W = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla\times\mathbf{v}\right]_{\times},
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\omega} = \nabla\times\mathbf{v}\]</div>
+<p>是涡量，描述了微元的局部旋转趋势，即单位体积内的旋转强度和方向。涡量的方向表示旋转轴（按右手定则），大小表示旋转的强度（旋转的快慢）</p>
+<section id="id7">
+<h3>涡量和角速度<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>设点 <span class="math notranslate nohighlight">\(P(x,y,z)\)</span> 绕点 <span class="math notranslate nohighlight">\(O\)</span> （相对位置矢量为 <span class="math notranslate nohighlight">\(\mathbf{r}\)</span>）的角速度为 <span class="math notranslate nohighlight">\(\boldsymbol{\omega}_{\text{rot}}\)</span>，则点 <span class="math notranslate nohighlight">\(P\)</span> 的速度为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v} = \boldsymbol{\omega}_{\text{rot}}\times\mathbf{r},
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\omega} = \nabla\times\mathbf{v} = \nabla\times(\boldsymbol{\omega}_{\text{rot}}\times\mathbf{r}),
+\]</div>
+<p>根据恒等式</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla \times (\mathbf{a} \times \mathbf{b}) = \mathbf{a}\ (\nabla \cdot \mathbf{b}) - \mathbf{b}\ (\nabla \cdot \mathbf{a}) + (\mathbf{b} \cdot \nabla)\ \mathbf{a} - (\mathbf{a} \cdot \nabla)\ \mathbf{b},
+\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\boldsymbol{\omega}_{\text{rot}}\)</span> 是常向量，且 <span class="math notranslate nohighlight">\(\mathbf{r} = [x,y,z]\)</span>，代入得到</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\omega} = 2\boldsymbol{\omega}_{\text{rot}}.
+\]</div>
+<p>在某一点 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 附近，速度场可以近似为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) = \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
+\]</div>
+<p>其中，</p>
+<div class="math notranslate nohighlight">
+\[
+W = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+W\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
+\]</div>
+<p>因此 <span class="math notranslate nohighlight">\(W\delta\mathbf{r}\)</span> 是局部刚体旋转对该点贡献的瞬时速度</p>
 </section>
 </section>
 </section>
@@ -650,6 +711,10 @@ R(\mathbf{u}, \theta)\approx I  + \omega [\mathbf{u}]_{\times}\delta t = I  + [\
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">无穷小旋转</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">速度梯度场</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">涡量和角速度</a></li>
 </ul>
 </li>
 </ul>

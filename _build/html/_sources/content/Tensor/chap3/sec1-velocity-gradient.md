@@ -34,6 +34,10 @@ $$
 
 ## 速度梯度场分解
 
+<span class="gray-text">
+速度梯度场的分解将真实形变与刚体旋转有效区分，为客观描述奠定基础
+</span>
+
 将速度梯度分解为对称部分和反对称部分
 
 $$
@@ -51,6 +55,61 @@ $$
 $$
 W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
 $$
+
+
+### 几何解释
+
+在 [几何方程](../../Elasticity/chap1/sec4-geometry-equa.md) 中可以看到，位移梯度决定了应变，因此速度梯度场决定了物体的变形速率。以微元在 $xOy$ 平面上的剪切应变为例，考虑两种特殊情况：
+
+$$
+2\varepsilon_{xy} = \frac{\partial u_{x}}{\partial y} + \frac{\partial u_{y}}{\partial x},
+$$
+
+**1.** $\frac{\partial u_{x}}{\partial y} = \frac{\partial u_{y}}{\partial x}$
+
+```{figure} ../../../images/Tensor/chap1/sym-shear-1.png
+---
+width: 300px
+name: sec1-fig:sym-shear
+---
+对称剪切
+```
+
+如图，沿 $x$ 方向与沿 $y$ 方向的剪切应变等大反向，表现为**对称剪切变形**。此时，对称轴保持不动，剪切应变完全描述了物体的形变，无冗余信息
+
+$$
+L = D \neq 0,\quad W = 0.
+$$
+
+**2.** $\frac{\partial u_{x}}{\partial y} = - \frac{\partial u_{y}}{\partial x}$
+
+```{figure} ../../../images/Tensor/chap1/rotation.png
+---
+width: 300px
+name: sec1-fig:rotation
+---
+刚体旋转
+```
+
+如图，沿 $x$ 方向和 $y$ 方向的剪切应变等大同向，表现为**刚体旋转**。此时，剪切应变包含了刚体旋转的分量，不能准确反映物体的真实形变
+
+$$
+L = W, D = 0.
+$$
+
+综上，速度梯度（或位移梯度）场既包含形变（对称部分），也包含刚体旋转（反对称部分）。对于一般的速度（或位移）梯度，可以将其分解为对称剪切变形与刚体旋转的叠加
+
+```{figure} ../../../images/Tensor/chap1/general.png
+---
+width: 600px
+name: sec1-fig:general-shear
+---
+一般形变的分解
+```
+
+于是，$D$（对称部分-对称剪切）描述了微元的真实形变，包括剪切和体积变化；$W$ （反对称部分-垂直方向的剪切差异）描述了微元的局部刚体旋转
+
+**通过对速度梯度场的分解，可以有效剔除刚体旋转的影响，使应力率等物理量在不同参考系下保持客观性，从而为大变形下本构关系的建立提供理论基础**
 
 ### 极分解
 
@@ -112,10 +171,10 @@ $$
 记 $J= \det(F)$，则
 
 $$
-\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v})
+\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
 $$
 
-该公式表明，**单位体积的变化速率 $\dot{J}$，等于体积本身 $J$ 乘以速度场的散度（速度梯度场张量的迹）**
+该公式表明，**单位体积的变化速率 $\dot{J}$，等于体积本身 $J$ 乘以速度梯度场张量的迹（速度场的散度）**
 
 对于等容行为，有
 

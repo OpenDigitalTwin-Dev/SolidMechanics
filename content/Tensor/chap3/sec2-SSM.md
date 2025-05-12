@@ -27,6 +27,14 @@ $$
 A = \left[\mathbf{a}\right]_{\times}.
 $$
 
+也可以写为张量形式
+
+$$
+A_{ij}=-\epsilon_{ijk}a_{k},
+$$
+
+其中，$\epsilon_{ijk}$ 是 Levi-Civita 符号
+
 三维反对称矩阵 $A$ 的特征值满足
 
 $$
@@ -125,10 +133,10 @@ $$
 
 上式可以作为旋转角度极小时的旋转矩阵的近似
 
-若将 $\theta$ 视为 $\delta t$ 时间内均匀旋转的角度，则角速度 $\omega = \theta / \delta t$，于是
+若将 $\theta$ 视为 $\delta t$ 时间内均匀旋转的角度，则角速度 $\omega_{\text{rot}} = \theta / \delta t$，于是
 
 $$
-R(\mathbf{u}, \theta)\approx I  + \omega [\mathbf{u}]_{\times}\delta t = I  + [\boldsymbol{\omega}]_{\times}\delta t.
+R(\mathbf{u}, \theta)\approx I  + \omega_{\text{rot}} [\mathbf{u}]_{\times}\delta t = I  + [\boldsymbol{\omega}_{\text{rot}}]_{\times}\delta t.
 $$
 
 ## 速度梯度场
@@ -138,3 +146,55 @@ $$
 $$
 W = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla\times\mathbf{v}\right]_{\times},
 $$
+
+其中
+
+$$\boldsymbol{\omega} = \nabla\times\mathbf{v}$$
+
+是涡量，描述了微元的局部旋转趋势，即单位体积内的旋转强度和方向。涡量的方向表示旋转轴（按右手定则），大小表示旋转的强度（旋转的快慢）
+
+### 涡量和角速度
+
+设点 $P(x,y,z)$ 绕点 $O$ （相对位置矢量为 $\mathbf{r}$）的角速度为 $\boldsymbol{\omega}_{\text{rot}}$，则点 $P$ 的速度为
+
+$$
+\mathbf{v} = \boldsymbol{\omega}_{\text{rot}}\times\mathbf{r},
+$$
+
+于是
+
+$$
+\boldsymbol{\omega} = \nabla\times\mathbf{v} = \nabla\times(\boldsymbol{\omega}_{\text{rot}}\times\mathbf{r}),
+$$
+
+根据恒等式
+
+$$
+\nabla \times (\mathbf{a} \times \mathbf{b}) = \mathbf{a}\ (\nabla \cdot \mathbf{b}) - \mathbf{b}\ (\nabla \cdot \mathbf{a}) + (\mathbf{b} \cdot \nabla)\ \mathbf{a} - (\mathbf{a} \cdot \nabla)\ \mathbf{b},
+$$
+
+由于 $\boldsymbol{\omega}_{\text{rot}}$ 是常向量，且 $\mathbf{r} = [x,y,z]$，代入得到
+
+$$
+\boldsymbol{\omega} = 2\boldsymbol{\omega}_{\text{rot}}.
+$$
+
+在某一点 $\mathbf{x}$ 附近，速度场可以近似为
+
+$$
+\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) = \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
+$$
+
+其中，
+
+$$
+W = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
+$$
+
+于是
+
+$$
+W\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
+$$
+
+因此 $W\delta\mathbf{r}$ 是局部刚体旋转对该点贡献的瞬时速度

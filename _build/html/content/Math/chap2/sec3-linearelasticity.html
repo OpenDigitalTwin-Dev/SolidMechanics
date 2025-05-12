@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -625,19 +625,19 @@ document.write(`
 \begin{equation}
 \boldsymbol{\varepsilon}({\mathbf{u}}) = \mathcal{B}\mathbf{u}\quad \rightarrow\quad
 \begin{bmatrix}
-\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
+\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{yz}\\2\varepsilon_{zx}
 \end{bmatrix}
 =\begin{bmatrix}
 \frac{\partial}{\partial x} &amp; 0 &amp; 0 \\
 0 &amp; \frac{\partial}{\partial y} &amp; 0 \\
 0 &amp; 0 &amp; \frac{\partial}{\partial z} \\
+\frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0 \\
 0 &amp; \frac{\partial}{\partial z} &amp; \frac{\partial}{\partial y} \\
-\frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x} \\
-\frac{\partial}{\partial y} &amp; \frac{\partial}{\partial x} &amp; 0
+\frac{\partial}{\partial z} &amp; 0 &amp; \frac{\partial}{\partial x}
 \end{bmatrix}
 \begin{bmatrix}
 u_{x}\\u_{y}\\u_{z}
-\end{bmatrix},
+\end{bmatrix}.
 \end{equation}
 \end{split}\]</div>
 <p>于是</p>
@@ -909,9 +909,9 @@ N_{2} \\ 0 \\ 0
 \frac{\partial N_{i}}{\partial x} &amp; 0 &amp; 0 \\
 0 &amp; \frac{\partial N_{i}}{\partial y} &amp; 0 \\
 0 &amp; 0 &amp; \frac{\partial N_{i}}{\partial z} \\
+\frac{\partial N_{i}}{\partial y} &amp; \frac{\partial N_{i}}{\partial x} &amp; 0 \\
 0 &amp; \frac{\partial N_{i}}{\partial z} &amp; \frac{\partial N_{i}}{\partial y} \\
-\frac{\partial N_{i}}{\partial z} &amp; 0 &amp; \frac{\partial N_{i}}{\partial x} \\
-\frac{\partial N_{i}}{\partial y} &amp; \frac{\partial N_{i}}{\partial x} &amp; 0
+\frac{\partial N_{i}}{\partial z} &amp; 0 &amp; \frac{\partial N_{i}}{\partial x}
 \end{bmatrix},
 \end{split}\]</div>
 <p>于是</p>
