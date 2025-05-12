@@ -179,19 +179,19 @@ $$
 \boldsymbol{\omega} = 2\boldsymbol{\omega}_{\text{rot}}.
 $$
 
+于是
+
+$$
+W = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
+$$
+
 在某一点 $\mathbf{x}$ 附近，速度场可以近似为
 
 $$
 \mathbf{v}(\mathbf{x}+\delta\mathbf{r}) = \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
 $$
 
-其中，
-
-$$
-W = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
-$$
-
-于是
+因此
 
 $$
 W\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
