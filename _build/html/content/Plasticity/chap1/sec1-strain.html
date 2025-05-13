@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>应变张量 &#8212; 固体力学笔记</title>
+    <title>形变分解 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -59,13 +59,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap2/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap1/sec1-strain';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="应变与位移" href="sec1-strain-displacement.html" />
-    <link rel="prev" title="张量不变量" href="../chap1/sec2-invarient.html" />
+    <link rel="next" title="单轴拉伸实验" href="sec2-uniaxial.html" />
+    <link rel="prev" title="简介" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,23 +198,23 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-invarient.html">张量不变量</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">应变张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -234,21 +232,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec1-strain.html">形变分解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Plasticity/chap1/sec2-uniaxial.html">单轴拉伸实验</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec2-mises.html">Mises 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">形变分解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec2-uniaxial.html">单轴拉伸实验</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-mises.html">Mises 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec3-mohr-coulomb.html">Mohr–Coulomb 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec4-drucker-prager.html">Drucker–Prager 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec5-gurson.html">Gurson 屈服准则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec6-anisotropic.html">各向异性屈服准则</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Plasticity/chap3/intro.html">硬化模型</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Plasticity/chap3/isotropichardening.html">各向同性硬化模型</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/intro.html">硬化模型</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/isotropichardening.html">各向同性硬化模型</a></li>
 </ul>
 </details></li>
 </ul>
@@ -322,7 +320,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap2/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap1/sec1-strain.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -352,7 +350,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Tensor/chap2/intro.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap1/sec1-strain.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -423,7 +421,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -434,11 +434,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>应变张量</h1>
+    <h1>形变分解</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">体积变形与形状变形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">对称剪切与刚体旋转</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -449,10 +458,44 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>应变张量<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>应变张量是描述材料在受载荷或位移等作用下，<strong>任意一点微元体局部变形状态</strong>的二阶张量。它能够全面反映材料在各个方向上的线性拉伸、压缩以及剪切等变形特征，既量化了<strong>长度</strong>的变化，也准确描述了不同方向之间的<strong>角度</strong>变化。作为固体力学和材料力学中的基本物理量，应变张量为分析材料变形、预测结构安全以及建立应力-应变关系提供了理论基础</p>
-<div class="toctree-wrapper compound">
-</div>
+<h1>形变分解<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<span class="gray-text">
+对形变进行分解有助于理解变形机理，并为本构方程的建立提供重要基础
+</span>
+<section id="id2">
+<h2>体积变形与形状变形<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="sec1-fig-plasticity-1">
+<a class="reference internal image-reference" href="../../../_images/plasticity-1.png"><img alt="../../../_images/plasticity-1.png" src="../../../_images/plasticity-1.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">变形可以分解为体积变形（绿线）和形状变形（红线）两部分</span><a class="headerlink" href="#sec1-fig-plasticity-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>材料的变形可以分解为体积变形和形状变形两部分</p>
+<ul class="simple">
+<li><p><strong>体积变形</strong>：描述材料单元体积的变化，反映材料的膨胀或收缩</p></li>
+<li><p><strong>形状变形</strong>：材料单元形状的变化，不涉及体积改变，反映材料的剪切或扭曲</p></li>
+</ul>
+<p>通过上述分解，有助于理解材料的变形机理，为建立和简化本构方程提供理论依据</p>
+<p>对于大多数金属材料，塑性变形主要依靠滑移和孪生等机制实现。此过程中，同一晶胞内原子的平均间距基本不变，材料的总体积也近似保持恒定</p>
+<p>因此金属的塑性流动通常被认为是<strong>等体积流动</strong>（isochoric flow），即在塑性变形过程中体积保持不变，只有形状发生不可逆的改变</p>
+</section>
+<section id="id3">
+<h2>对称剪切与刚体旋转<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="sec1-fig-plasticity-2">
+<a class="reference internal image-reference" href="../../../_images/plasticity-2.png"><img alt="../../../_images/plasticity-2.png" src="../../../_images/plasticity-2.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">一般变形可以分解为对称剪切和刚体旋转两部分</span><a class="headerlink" href="#sec1-fig-plasticity-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>位移梯度张量可以分解为对称部分（应变张量）和反对称部分（刚体旋转张量）</p>
+<ul class="simple">
+<li><p><strong>对称剪切</strong>：反映材料单元的真实的形变（即对称剪切+体积变化）</p></li>
+<li><p><strong>刚体旋转</strong>：描述了材料的刚体旋转，即材料整体的旋转而非变形</p></li>
+</ul>
+<p>通过上述分解，能够有效区分材料的真实变形和纯刚体旋转，为建立本构方程提供理论基础</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,7 +511,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Tensor/chap2"
+            path: "./content/Plasticity/chap1"
         },
         predefinedOutput: true
     }
@@ -486,20 +529,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chap1/sec2-invarient.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">张量不变量</p>
+        <p class="prev-next-title">简介</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec1-strain-displacement.html"
+       href="sec2-uniaxial.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">应变与位移</p>
+        <p class="prev-next-title">单轴拉伸实验</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -509,6 +552,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">体积变形与形状变形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">对称剪切与刚体旋转</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

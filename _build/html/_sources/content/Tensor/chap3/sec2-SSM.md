@@ -188,7 +188,7 @@ $$
 在某一点 $\mathbf{x}$ 附近，速度场可以近似为
 
 $$
-\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) = \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
+\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) \approx \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
 $$
 
 因此

@@ -61,11 +61,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap1/sec1-uniaxial';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Plasticity/chap1/sec2-uniaxial';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="屈服准则" href="../chap2/intro.html" />
-    <link rel="prev" title="简介" href="intro.html" />
+    <link rel="prev" title="形变分解" href="sec1-strain.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -236,6 +236,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec1-strain.html">形变分解</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">单轴拉伸实验</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">屈服准则</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-tresca.html">Tresca 屈服准则</a></li>
@@ -321,7 +322,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap1/sec1-uniaxial.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Plasticity/chap1/sec2-uniaxial.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +352,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Plasticity/chap1/sec1-uniaxial.md" target="_blank"
+      <li><a href="../../../_sources/content/Plasticity/chap1/sec2-uniaxial.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -494,7 +495,7 @@ document.write(`
 <a class="reference internal image-reference" href="../../../_images/uniaxial.png"><img alt="../../../_images/uniaxial.png" src="../../../_images/uniaxial.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">金属单轴拉伸应力-应变曲线</span><a class="headerlink" href="#sec1-fig-uniaxial" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">金属单轴拉伸应力-应变曲线</span><a class="headerlink" href="#sec1-fig-uniaxial" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -534,13 +535,13 @@ document.write(`
 <p>因此，当材料被卸载后再次加载时，应力应变曲线会沿着同一条路径返回到<strong>原始曲线</strong>上</p>
 </aside>
 <ul class="simple">
-<li><p>假设塑性应变不影响弹性应变，因此卸载和重新加载曲线之间的差异被忽略，且卸载起始点 <span class="math notranslate nohighlight">\(Z_{0}\)</span> 与随后重新加载时的塑性屈服起始点 <span class="math notranslate nohighlight">\(Y_{1}\)</span> 重合</p></li>
+<li><p>假设塑性应变不影响弹性应变，因此卸载和重新加载曲线之间的差异被忽略，卸载起始点 <span class="math notranslate nohighlight">\(Z_{0}\)</span> 与随后重新加载时的塑性屈服起始点 <span class="math notranslate nohighlight">\(Y_{1}\)</span> 重合，且初始加载/卸载/重新加载弹性段斜率一致</p></li>
 </ul>
 <figure class="align-default" id="sec1-fig-uniaxial-model">
 <a class="reference internal image-reference" href="../../../_images/uniaxial-model.png"><img alt="../../../_images/uniaxial-model.png" src="../../../_images/uniaxial-model.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">理想应力-应变曲线</span><a class="headerlink" href="#sec1-fig-uniaxial-model" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">理想应力-应变曲线</span><a class="headerlink" href="#sec1-fig-uniaxial-model" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -713,7 +714,7 @@ H = \frac{E^{ep}}{1 - E^{ep}/E}.
 <a class="reference internal image-reference" href="../../../_images/plasticity.png"><img alt="../../../_images/plasticity.png" src="../../../_images/plasticity.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">退火延性多晶金属试样的典型拉伸/压缩应力-应变曲线</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">退火延性多晶金属试样的典型拉伸/压缩应力-应变曲线</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id13">
@@ -803,12 +804,12 @@ H = \frac{E^{ep}}{1 - E^{ep}/E}.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="sec1-strain.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">简介</p>
+        <p class="prev-next-title">形变分解</p>
       </div>
     </a>
     <a class="right-next"
