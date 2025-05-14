@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>边界条件 &#8212; 固体力学笔记</title>
+    <title>第二类 Piola-Kirchhoff 应力张量 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -61,11 +61,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/sec7-boundary';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap4/sec2-2ndPiolaKrichhoff';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="位移法和应力法" href="sec8-two-2D-solution.html" />
-    <link rel="prev" title="两类平面问题" href="sec6-two-2D.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -201,41 +201,41 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">两类平面问题</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec9-numerical-simple.html">数值方法简介</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -326,7 +326,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Elasticity/chap1/sec7-boundary.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap4/sec2-2ndPiolaKrichhoff.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +356,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Elasticity/chap1/sec7-boundary.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap4/sec2-2ndPiolaKrichhoff.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -440,7 +440,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>边界条件</h1>
+    <h1>第二类 Piola-Kirchhoff 应力张量</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -450,8 +450,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">圣维南原理</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">边界条件应用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">对称性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体旋转</a></li>
 </ul>
             </nav>
         </div>
@@ -463,100 +463,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>边界条件<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>边界条件用于描述物体在外力、位移或其他约束作用下的边界行为，是决定物体受力后变形和应力分布的关键因素。通常，边界条件分为<strong>应力边界条件</strong>，<strong>位移边界条件</strong>和<strong>混合边界条件</strong>。记边界为 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span></p>
-<ul>
-<li><p>应力边界条件：</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="piola-kirchhoff">
+<h1>第二类 Piola-Kirchhoff 应力张量<a class="headerlink" href="#piola-kirchhoff" title="Link to this heading">#</a></h1>
+<span class="gray-text">
+第二类 Piola-Kirchhoff 应力张量是对称张量，广泛应用于非线性力学分析。它同样以参考构形为基础，常用于建立大变形下的应力-应变关系，特别适合于推导和表达材料的本构关系及能量守恒等理论分析
+</span>
+<p>第二类 Piola-Kirchhoff 应力张量（简记为 PK2 应力张量）定义为</p>
 <div class="math notranslate nohighlight">
 \[
-  \begin{equation}
-  \boldsymbol{\sigma}\cdot\mathbf{n}= \mathbf{f}_{b},\quad \text{on}\,\, \mathcal{B}.
-  \end{equation}
-  \]</div>
-</li>
-<li><p>位移边界条件：</p>
-<div class="math notranslate nohighlight">
-\[
-  \mathbf{u} = \mathbf{u}_{b},\quad \text{on}\,\, \mathcal{B}.
-  \]</div>
-</li>
-<li><p>混合边界条件：</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-  \begin{equation}
-  \begin{aligned}
-    \boldsymbol{\sigma}\cdot\mathbf{n} &amp;= \mathbf{f}_{b},\quad &amp;\text{on}\,\, \mathcal{B}_{1},\\
-    \mathbf{u} &amp;= \mathbf{u}_{b},\quad &amp;\text{on}\,\, \mathcal{B}_{2}.
-  \end{aligned}
-  \end{equation}
-  \end{split}\]</div>
-</li>
-</ul>
-<p>在求解弹性力学问题时，应力分量、形变分量和位移分量等不仅需要满足区域内的三套基本方程，还必须符合边界上的边界条件。因此，弹性力学问题属于数学物理方程中的<strong>边值问题</strong></p>
-<section id="id2">
-<h2>圣维南原理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>严格满足边界条件通常会遇到较大的困难，而<strong>圣维南原理</strong>则为简化局部边界上的应力边界条件提供了极大的便利</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>静力等效：两个力系如果具有相同的主矢量（合力）和主矩（相对于某点的力矩），那么这两个力系在静力学上是等效的</p>
-<p>远场：与应力分量的衰减有关，反映出应力的局部性</p>
-</aside>
-<p><strong>圣维南原理</strong>：<strong>静力等效</strong>的力分布仅影响局部区域的应力状态，而对整体结构的远场应力分布几乎没有影响</p>
-<p>圣维南原理表明：在距离载荷作用区域足够远的地方，载荷的具体分布方式对结构的应力和变形影响可以忽略不计，只需关注载荷的合力及合力矩的作用效果</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><span class="math notranslate nohighlight">\(A\)</span> 为截面面积</p>
-</aside>
-<figure class="align-default" id="sec7-fig-sv-principle">
-<a class="reference internal image-reference" href="../../../_images/SV-principle.png"><img alt="../../../_images/SV-principle.png" src="../../../_images/SV-principle.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">在小边界上进行静力等效变换</span><a class="headerlink" href="#sec7-fig-sv-principle" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>对于一端为零的位移边界条件，也可以通过等效的平衡力来进行计算</p>
-</aside>
-<p>在如图所示的构件中，当将右端截面的拉力替换为均匀分布的拉力（集度为 <span class="math notranslate nohighlight">\(\frac{F}{A}\)</span>）时，根据圣维南原理，只有靠近虚线所示区域的应力分布会发生显著变化，而远离该区域的其余部分受到的影响可以忽略不计</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>平衡力系：主矢量和主矩均为零，“局部扰动”</p>
-</aside>
-<div class="tip dropdown admonition">
-<p class="admonition-title">圣维南原理推广</p>
-<p>如果物体某一小部分边界上施加的面力是一个<strong>平衡力系</strong>，那么这种面力的影响仅局限于施力区域附近，在较远处引起的应力可以忽略不计</p>
-<p>这表明，平衡力系的影响具有局部性。两个例子：</p>
-<ul class="simple">
-<li><p>当没有体力作用时，小孔口边界上的平衡力系仅会在小孔口附近引起局部应力分布</p></li>
-<li><p>在结构中，开孔与不开孔的情况相比，两者的应力分布仅在孔口附近区域存在显著差异，而远离孔口的区域几乎没有影响</p></li>
-</ul>
-</div>
-</section>
-<section id="id3">
-<h2>边界条件应用<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>假设在局部边界 <span class="math notranslate nohighlight">\(\Gamma\)</span> 上应力需满足</p>
-<div class="math notranslate nohighlight">
-\[
-(\boldsymbol{\sigma}\cdot \mathbf{n})|_\Gamma = \mathbf{f}
+\mathbf{S}  = F^{-1}\mathbf{P} = JF^{-1}\boldsymbol{\sigma}F^{-T},
 \]</div>
-<p>这实际上是一个处处相等的函数方程。然而，这种方程不仅难以求解，而且在实际问题中往往难以严格满足。通过应用圣维南原理，可以将上述条件用<strong>静力等效条件</strong>替代，即</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>主矢量和主矩方程</p>
-<p><span class="math notranslate nohighlight">\(\mathbf{r}\)</span> 为 <span class="math notranslate nohighlight">\(\Gamma\)</span> 上某点到参考点的位置向量</p>
-</aside>
+<p><a class="reference internal" href="sec1-1stPiolaKirchhoff.html"><span class="std std-doc">PK1 应力</span></a>描述的是<strong>当前力在参考面积上的分布</strong>，表示参考构型下单位面积上所受的当前构型下的力</p>
+<p>PK2 应力描述的是<strong>参考力在参考面积上的分布</strong>，参考构型下单位面积上所受的力，该力用参考构型的基底表示</p>
+<section id="id1">
+<h2>对称性<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>若 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 对称，则 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 也对称</p>
+</section>
+<section id="id2">
+<h2>刚体旋转<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>对于刚体旋转，<span class="math notranslate nohighlight">\(F\)</span> 是旋转变换矩阵</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\begin{aligned}
-&amp;\int_\Gamma \boldsymbol{\sigma}\cdot \mathbf{n}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\, \mathrm{d}\Gamma = \mathbf{F},\\
-&amp;\int_\Gamma (\boldsymbol{\sigma}\cdot \mathbf{n}) \times \mathbf{r}\, \mathrm{d}\Gamma = \int_\Gamma \mathbf{f}\times \mathbf{r}\, \mathrm{d}\Gamma = \mathbf{M}.
-\end{aligned}
-\end{equation}
-\end{split}\]</div>
-<p>上式是一个相对更易求解的积分方程，从而显著简化了问题的求解过程</p>
+\[
+\mathbf{x} = F\mathbf{X},\quad \text{或},\quad \mathbf{X} = F^{-1}\mathbf{x},
+\]</div>
+<p>此时</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S}  = F^{-1}\boldsymbol{\sigma}F^{-T},
+\]</div>
+<p>即 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 是 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 在初始构型下的表示</p>
 </section>
 </section>
 
@@ -573,7 +508,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Elasticity/chap1"
+            path: "./content/Tensor/chap4"
         },
         predefinedOutput: true
     }
@@ -590,24 +525,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="sec6-two-2D.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">两类平面问题</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="sec8-two-2D-solution.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">位移法和应力法</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -624,8 +541,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">圣维南原理</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">边界条件应用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">对称性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体旋转</a></li>
 </ul>
   </nav></div>
 

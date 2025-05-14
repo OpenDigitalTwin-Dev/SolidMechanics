@@ -86,7 +86,7 @@ $$
 定义格林应变张量为
 
 $$
-E = \frac{1}{2}(F^{T}F-I),
+\mathbf{E} = \frac{1}{2}(F^{T}F-I),
 $$
 
 代入 $F = \frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I$，得到
@@ -94,7 +94,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-E &= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I)^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I) - I)\\
+\mathbf{E}  &= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I)^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I) - I)\\
 & = \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T} + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}}) + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}})),
 \end{aligned}
 \end{equation}
@@ -115,7 +115,7 @@ $$
 #### 对称性
 
 $$
-E^{T} = E.
+\mathbf{E} ^{T} = \mathbf{E} .
 $$
 
 #### 客观性
@@ -137,7 +137,7 @@ $$
 于是
 
 $$
-E' = \frac{1}{2}((F')^{T}F' - I) =  \frac{1}{2}(F^{T}Q^{T}QF - I) = \frac{1}{2}(F^{T}F - I) = E.
+\mathbf{E} ' = \frac{1}{2}((F')^{T}F' - I) =  \frac{1}{2}(F^{T}Q^{T}QF - I) = \frac{1}{2}(F^{T}F - I) = \mathbf{E} .
 $$
 
 这也可以通过矩阵的[极分解](../chap1/sec1-OT.md)得出，任意矩阵都可以分解为正交矩阵（表示刚体运动）$R$ 和对称半正定矩阵（表示形状变化）$U$ 的乘积
@@ -149,7 +149,7 @@ $$
 于是
 
 $$
-E = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
+\mathbf{E}  = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
 $$
 
-这意味着在 $E$ 中，刚体运动被消除了
+这意味着在 $\mathbf{E} $ 中，刚体运动被消除了

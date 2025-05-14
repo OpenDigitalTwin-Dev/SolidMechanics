@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>客观应力率 &#8212; 固体力学笔记</title>
+    <title>应力张量 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap4/intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Jaumann 应力率" href="sec1-jaumann.html" />
+    <link rel="next" title="第一类 Piola-Kirchhoff 应力张量" href="sec1-1stPiolaKirchhoff.html" />
     <link rel="prev" title="反对称矩阵" href="../chap3/sec2-SSM.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -215,8 +215,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">客观应力率</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">应力张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -423,9 +427,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -436,20 +438,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>客观应力率</h1>
+    <h1>应力张量</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">应力率</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">客观应力率</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -460,25 +453,8 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>客观应力率<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<section id="id2">
-<h2>应力率<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>应力率指的是材料内部应力随时间的变化率，用来描述在外力或变形作用下，材料内部应力的变化速度</p>
-<div class="math notranslate nohighlight">
-\[
-\dot{\boldsymbol{\sigma}} = \frac{\mathrm{d} \boldsymbol{\sigma}}{\mathrm{d} t}
-\]</div>
-<p>建立本构关系时，必须使用纯变形下的应力率，以保证本构方程只反映材料在真实变形过程中的力学行为。然而，当物体发生刚体旋转时，应力张量的分量会因坐标系的旋转发生正交相似变换，即使此时物体并未发生真实形变，常规应力率 <span class="math notranslate nohighlight">\(\dot{\boldsymbol{\sigma}}\)</span> 仍然不为零</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>平移运动不会影响应力分量，旋转运动则改变了坐标系（投影方式），从而改变了应力分量，因此在应力率不为 0</p>
-</div>
-</section>
-<section id="id3">
-<h2>客观应力率<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>常规应力率无法区分这种由坐标系旋转带来的表观变化与材料真实变形引起的应力变化，容易导致本构方程失去客观性。因此，引入客观应力率，用以剔除刚体运动的影响，使应力率准确反映材料在纯变形状态下的真实应力变化，从而保证本构关系的物理一致性。</p>
-<p>常见的客观应力率包括 Jaumann 应力率、Truesdell 应力率和 Green-Naghdi 应力率。这些应力率在连续介质力学和本构关系中得到了广泛应用，能够准确描述材料在大变形或复杂运动条件下的应力变化</p>
-</section>
+<h1>应力张量<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>应力张量是描述材料在外力或内力作用下，<strong>任意一点微元体内部受力状态的二阶张量</strong>。它全面反映了材料在各个方向上所承受的拉应力、压应力以及剪应力等力的分布情况，不仅量化了不同方向上的力的<strong>大小</strong>，还准确描述了这些力的<strong>作用方向</strong>。作为固体力学和材料力学中的核心物理量，应力张量为分析材料内部力学响应、预测结构破坏以及建立应力-应变关系提供了理论依据。</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -523,11 +499,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="sec1-jaumann.html"
+       href="sec1-1stPiolaKirchhoff.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Jaumann 应力率</p>
+        <p class="prev-next-title">第一类 Piola-Kirchhoff 应力张量</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -537,22 +513,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">应力率</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">客观应力率</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

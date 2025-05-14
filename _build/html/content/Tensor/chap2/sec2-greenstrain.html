@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -215,8 +215,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -556,14 +560,14 @@ document.write(`
 <p>定义格林应变张量为</p>
 <div class="math notranslate nohighlight">
 \[
-E = \frac{1}{2}(F^{T}F-I),
+\mathbf{E} = \frac{1}{2}(F^{T}F-I),
 \]</div>
 <p>代入 <span class="math notranslate nohighlight">\(F = \frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I\)</span>，得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
 \begin{aligned}
-E &amp;= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I)^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I) - I)\\
+\mathbf{E}  &amp;= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I)^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I) - I)\\
 &amp; = \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T} + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}}) + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}})),
 \end{aligned}
 \end{equation}
@@ -584,7 +588,7 @@ E_{ij} = \frac{1}{2}(\frac{\partial u_{i}}{\partial X_{j}} +\frac{\partial u_{j}
 <h4>对称性<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
 \[
-E^{T} = E.
+\mathbf{E} ^{T} = \mathbf{E} .
 \]</div>
 </section>
 <section id="id10">
@@ -603,7 +607,7 @@ F' = \frac{\partial \mathbf{x}'}{\partial \mathbf{X}} = Q\frac{\partial \mathbf{
 <p>于是</p>
 <div class="math notranslate nohighlight">
 \[
-E' = \frac{1}{2}((F')^{T}F' - I) =  \frac{1}{2}(F^{T}Q^{T}QF - I) = \frac{1}{2}(F^{T}F - I) = E.
+\mathbf{E} ' = \frac{1}{2}((F')^{T}F' - I) =  \frac{1}{2}(F^{T}Q^{T}QF - I) = \frac{1}{2}(F^{T}F - I) = \mathbf{E} .
 \]</div>
 <p>这也可以通过矩阵的<a class="reference internal" href="../chap1/sec1-OT.html"><span class="std std-doc">极分解</span></a>得出，任意矩阵都可以分解为正交矩阵（表示刚体运动）<span class="math notranslate nohighlight">\(R\)</span> 和对称半正定矩阵（表示形状变化）<span class="math notranslate nohighlight">\(U\)</span> 的乘积</p>
 <div class="math notranslate nohighlight">
@@ -613,9 +617,9 @@ F = RU,
 <p>于是</p>
 <div class="math notranslate nohighlight">
 \[
-E = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
+\mathbf{E}  = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
 \]</div>
-<p>这意味着在 <span class="math notranslate nohighlight">\(E\)</span> 中，刚体运动被消除了</p>
+<p>这意味着在 <span class="math notranslate nohighlight">\(\mathbf{E} \)</span> 中，刚体运动被消除了</p>
 </section>
 </section>
 </section>

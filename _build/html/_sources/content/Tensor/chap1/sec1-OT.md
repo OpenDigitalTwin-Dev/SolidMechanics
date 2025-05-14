@@ -134,7 +134,7 @@ $$
 即
 
 $$
-\mathbf{x}^{v}=P\ \mathbf{x}^{w},
+\mathbf{x}^{v}=P\ \mathbf{x}^{w},\quad\text{或}\quad \mathbf{x}^{w}=P^{-1}\ \mathbf{x}^{v},
 $$
 
 因此

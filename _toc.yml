@@ -32,8 +32,12 @@ parts:
         sections:
         - file: content/Tensor/chap3/sec2-SSM
       - file: content/Tensor/chap4/intro
+        sections:
+        - file: content/Tensor/chap4/sec1-1stPiolaKirchhoff
+        - file: content/Tensor/chap4/sec2-2ndPiolaKirchhoff
+      - file: content/Tensor/chap5/intro
         sections: 
-        - file: content/Tensor/chap4/sec1-jaumann
+        - file: content/Tensor/chap5/sec1-jaumann
   - caption: 弹性力学
     chapters:
       - file: content/Elasticity/chap1/intro
