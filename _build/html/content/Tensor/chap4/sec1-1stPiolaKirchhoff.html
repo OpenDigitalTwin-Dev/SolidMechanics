@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap4/sec1-1stPiolaKirchhoff';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="客观应力率" href="../chap5/intro.html" />
+    <link rel="next" title="第二类 Piola-Kirchhoff 应力张量" href="sec2-2ndPiolaKirchhoff.html" />
     <link rel="prev" title="应力张量" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -217,6 +217,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应力张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">第一类 Piola-Kirchhoff 应力张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-2ndPiolaKirchhoff.html">第二类 Piola-Kirchhoff 应力张量</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -479,6 +480,8 @@ document.write(`
 \mathbf{n}\ \mathrm{d}a = JF^{-T}\mathbf{N}\ \mathrm{d}A,
 \]</div>
 <p>其中，<span class="math notranslate nohighlight">\(\mathbf{n}\ \mathrm{d}a\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{N}\ \mathrm{d}A\)</span> 分别是当前构型和初始构型的面积向量，<span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{N}\)</span> 为相应的法向量</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">证明</p>
 <p>在参考构型中，取两个微小线元，<span class="math notranslate nohighlight">\(\mathrm{d}\mathbf{X}_{1}\)</span> 和 <span class="math notranslate nohighlight">\(\mathrm{d}\mathbf{X}_{2}\)</span>，于是</p>
 <div class="math notranslate nohighlight">
 \[
@@ -495,8 +498,7 @@ document.write(`
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">证明：<span class="math notranslate nohighlight">\((F\mathbf{b})\times(F\mathbf{c})=\det(F)F^{-T}(\mathbf{b}\times\mathbf{c})\)</span></p>
+<p><strong>证明：</strong> <span class="math notranslate nohighlight">\((F\mathbf{b})\times(F\mathbf{c})=\det(F)F^{-T}(\mathbf{b}\times\mathbf{c})\)</span></p>
 <p>若 <span class="math notranslate nohighlight">\(\mathbf{a},\mathbf{b},\mathbf{c}\)</span> 线性无关且可逆，则</p>
 <div class="math notranslate nohighlight">
 \[
@@ -522,7 +524,7 @@ F\mathbf{a}&amp;F\mathbf{b}&amp;F\mathbf{c}
 <p>其中</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{P}=J\boldsymbol{\sigma}F^{-T}.
+\mathbf{P}=J\boldsymbol{\sigma}F^{-T}
 \]</div>
 <p>定义为第一类 Piola-Kirchhoff 应力张量（也称名义应力张量），简记为 PK1 应力张量</p>
 <p><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html"><span class="std std-doc">Cauchy 应力</span></a>描述的是<strong>当前力在当前面积下的分布</strong>，表示当前构型下单位面积上所受的当前构型下的力</p>
@@ -581,11 +583,11 @@ F\mathbf{a}&amp;F\mathbf{b}&amp;F\mathbf{c}
       </div>
     </a>
     <a class="right-next"
-       href="../chap5/intro.html"
+       href="sec2-2ndPiolaKirchhoff.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">客观应力率</p>
+        <p class="prev-next-title">第二类 Piola-Kirchhoff 应力张量</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

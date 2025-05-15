@@ -14,6 +14,9 @@ $$
 
 其中，$\mathbf{n}\ \mathrm{d}a$ 和 $\mathbf{N}\ \mathrm{d}A$ 分别是当前构型和初始构型的面积向量，$\mathbf{n}$ 和 $\mathbf{N}$ 为相应的法向量
 
+```{admonition} 证明
+:class: tip, dropdown
+
 在参考构型中，取两个微小线元，$\mathrm{d}\mathbf{X}_{1}$ 和 $\mathrm{d}\mathbf{X}_{2}$，于是
 
 $$
@@ -33,8 +36,8 @@ $$
 $$
 
 
-:::{admonition} 证明：$(F\mathbf{b})\times(F\mathbf{c})=\det(F)F^{-T}(\mathbf{b}\times\mathbf{c})$ 
-:class: tip, dropdown
+**证明：** $(F\mathbf{b})\times(F\mathbf{c})=\det(F)F^{-T}(\mathbf{b}\times\mathbf{c})$ 
+
 
 若 $\mathbf{a},\mathbf{b},\mathbf{c}$ 线性无关且可逆，则
 
@@ -51,7 +54,8 @@ $$
 
 分别取 $\mathbf{a} = \mathbf{e}_{1},\mathbf{e}_{2},\mathbf{e}_{3}$ 代入，得到结论
 
-:::
+```
+
 
 ## 第一类 Piola-Kirchhoff 应力张量
 
@@ -64,7 +68,7 @@ $$
 其中
 
 $$
-\mathbf{P}=J\boldsymbol{\sigma}F^{-T}.
+\mathbf{P}=J\boldsymbol{\sigma}F^{-T}
 $$
 
 定义为第一类 Piola-Kirchhoff 应力张量（也称名义应力张量），简记为 PK1 应力张量

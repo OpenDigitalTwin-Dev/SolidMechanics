@@ -144,7 +144,7 @@ $$
 速度梯度场的的反对称部分为
 
 $$
-W = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla\times\mathbf{v}\right]_{\times},
+\mathbf{W} = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla\times\mathbf{v}\right]_{\times},
 $$
 
 其中
@@ -182,19 +182,19 @@ $$
 于是
 
 $$
-W = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
+\mathbf{W} = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
 $$
 
 在某一点 $\mathbf{x}$ 附近，速度场可以近似为
 
 $$
-\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) \approx \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
+\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) \approx \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+\mathbf{D}\delta\mathbf{r}+\mathbf{W}\delta\mathbf{r},
 $$
 
 因此
 
 $$
-W\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
+\mathbf{W}\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
 $$
 
-因此 $W\delta\mathbf{r}$ 是局部刚体旋转对该点贡献的瞬时速度
+因此 $\mathbf{W}\delta\mathbf{r}$ 是局部刚体旋转对该点贡献的瞬时速度

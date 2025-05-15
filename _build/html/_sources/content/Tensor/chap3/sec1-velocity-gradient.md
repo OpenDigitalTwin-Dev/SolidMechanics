@@ -13,7 +13,7 @@ $$
 速度梯度场定义为
 
 $$
-L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \begin{bmatrix}
+\mathbf{L} = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \begin{bmatrix}
 \frac{\partial v_{1}}{\partial x_{1}} & \frac{\partial v_{1}}{\partial x_{2}} & \frac{\partial v_{1}}{\partial x_{3}} \\
 \frac{\partial v_{2}}{\partial x_{1}} & \frac{\partial v_{2}}{\partial x_{2}} & \frac{\partial v_{2}}{\partial x_{3}} \\
 \frac{\partial v_{3}}{\partial x_{1}} & \frac{\partial v_{3}}{\partial x_{2}} & \frac{\partial v_{3}}{\partial x_{3}}
@@ -29,7 +29,7 @@ $$
 根据定义，速度梯度场还可以表示为
 
 $$
-L = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\partial \mathbf{v}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \frac{\partial^2 \mathbf{u}}{\partial \mathbf{X}\partial t}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \dot{F}F^{-1}.
+\mathbf{L} = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\partial \mathbf{v}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \frac{\partial^2 \mathbf{u}}{\partial \mathbf{X}\partial t}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \dot{F}F^{-1}.
 $$
 
 ## 速度梯度场分解
@@ -41,16 +41,16 @@ $$
 将速度梯度分解为对称部分和反对称部分
 
 $$
-L = D + W,
+\mathbf{L} = \mathbf{D} + \mathbf{W},
 $$
 
-- $D = \frac{1}{2}(L+L^{T})$：应变率张量，描述材料的拉伸、压缩和剪切等变形速率
+- $\mathbf{D} = \frac{1}{2}(\mathbf{L}+\mathbf{L}^{T})$：应变率张量，描述材料的拉伸、压缩和剪切等变形速率
 
 $$
 D_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} + \frac{\partial v_{j}}{\partial x_{i}}\right)
 $$
 
-- $W = \frac{1}{2}(L-L^{T})$：旋转率张量，描述材料的刚体旋转速率
+- $\mathbf{W} = \frac{1}{2}(\mathbf{L}-\mathbf{L}^{T})$：旋转率张量，描述材料的刚体旋转速率
 
 $$
 W_{ij} = \frac{1}{2}\left(\frac{\partial v_{i}}{\partial x_{j}} - \frac{\partial v_{j}}{\partial x_{i}}\right)
@@ -78,7 +78,7 @@ name: sec1-fig:sym-shear
 如图，沿 $x$ 方向与沿 $y$ 方向的剪切应变等大反向，表现为**对称剪切变形**。此时，对称轴保持不动，剪切应变完全描述了物体的形变，无冗余信息
 
 $$
-L = D \neq 0,\quad W = 0.
+\mathbf{L} = \mathbf{D} \neq 0,\quad \mathbf{W} = 0.
 $$
 
 **2.** $\frac{\partial u_{x}}{\partial y} = - \frac{\partial u_{y}}{\partial x}$
@@ -94,7 +94,7 @@ name: sec1-fig:rotation
 如图，沿 $x$ 方向和 $y$ 方向的剪切应变等大同向，表现为**刚体旋转**。此时，剪切应变包含了刚体旋转的分量，不能准确反映物体的真实形变
 
 $$
-L = W, D = 0.
+\mathbf{L} = \mathbf{W}, \mathbf{D} = 0.
 $$
 
 综上，速度梯度（或位移梯度）场既包含形变（对称部分），也包含刚体旋转（反对称部分）。对于一般的速度（或位移）梯度，可以将其分解为对称剪切变形与刚体旋转的叠加
@@ -107,7 +107,7 @@ name: sec1-fig:general-shear
 一般形变的分解
 ```
 
-于是，$D$（对称部分-对称剪切）描述了微元的真实形变，包括剪切和体积变化；$W$ （反对称部分-垂直方向的剪切差异）描述了微元的局部刚体旋转
+于是，$\mathbf{D}$（对称部分-对称剪切）描述了微元的真实形变，包括剪切和体积变化；$\mathbf{W}$ （反对称部分-垂直方向的剪切差异）描述了微元的局部刚体旋转
 
 **通过对速度梯度场的分解，可以有效剔除刚体旋转的影响，使应力率等物理量在不同参考系下保持客观性，从而为大变形下本构关系的建立提供理论基础**
 
@@ -122,7 +122,7 @@ $$
 其中，$Q$ 是正交矩阵（旋转变换矩阵），$U$ 是对称正定矩阵，于是
 
 $$
-L = (\dot{Q}U+Q\dot{U})U^{-1}Q^{T} = \dot{Q}Q^{T} + Q\dot{U}U^{-1}Q^{T}
+\mathbf{L} = (\dot{Q}U+Q\dot{U})U^{-1}Q^{T} = \dot{Q}Q^{T} + Q\dot{U}U^{-1}Q^{T}
 $$
 
 由于 $\dot{Q}Q^{T} + Q\dot{Q}^{T} = 0$，故
@@ -130,7 +130,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-D = \frac{1}{2}(L+L^{T})&=\frac{1}{2}(Q\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U}Q^{T})\\
+\mathbf{D} = \frac{1}{2}(\mathbf{L}+\mathbf{L}^{T})&=\frac{1}{2}(Q\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U}Q^{T})\\
 &=\frac{1}{2}Q(\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U})Q^{T},
 \end{aligned}
 \end{equation}
@@ -141,7 +141,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-W = L - D = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
+\mathbf{W} = \mathbf{L} - \mathbf{D} = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
 \end{aligned}
 \end{equation}
 $$
@@ -157,13 +157,13 @@ $$
 此时
 
 $$
-D = 0,
+\mathbf{D} = 0,
 $$
 
 以及
 
 $$
-W = L = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
+\mathbf{W} = \mathbf{L} = \dot{Q}Q^{T} = -Q\dot{Q}^{T}.
 $$
 
 ### 局部体积变化速率
@@ -237,7 +237,7 @@ $$
 故
 
 $$
-\dot{J} = J\ \left(\frac{\partial \dot{x}_1}{\partial x_1} + \frac{\partial \dot{x}_2}{\partial x_2} + \frac{\partial \dot{x}_3}{\partial x_3}\right) = J\ \text{tr}(L).
+\dot{J} = J\ \left(\frac{\partial \dot{x}_1}{\partial x_1} + \frac{\partial \dot{x}_2}{\partial x_2} + \frac{\partial \dot{x}_3}{\partial x_3}\right) = J\ \text{tr}(\mathbf{L}).
 $$
 
 :::
@@ -268,7 +268,7 @@ $$
 &=\frac{\dot{F}F^{-1}F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}F^{-1}F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}F^{-1}F\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
 &=\frac{\dot{F}F^{-1}F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}F^{-1}F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}F^{-1}F\mathbf{c})}{F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c})}\frac{F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c})}{a \cdot (\mathbf{b} \times \mathbf{c})}\\
 &=J\ \text{tr}(\dot{F}F^{-1})\\
-&= J\ \text{tr}(L).
+&= J\ \text{tr}(\mathbf{L}).
 \end{aligned}
 \end{equation}
 $$

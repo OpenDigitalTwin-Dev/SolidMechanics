@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -217,6 +217,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap4/sec2-2ndPiolaKirchhoff.html">第二类 Piola-Kirchhoff 应力张量</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -598,7 +599,7 @@ R(\mathbf{u}, \theta)\approx I  + \omega_{\text{rot}} [\mathbf{u}]_{\times}\delt
 <p>速度梯度场的的反对称部分为</p>
 <div class="math notranslate nohighlight">
 \[
-W = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla\times\mathbf{v}\right]_{\times},
+\mathbf{W} = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla\times\mathbf{v}\right]_{\times},
 \]</div>
 <p>其中</p>
 <div class="math notranslate nohighlight">
@@ -629,19 +630,19 @@ W = \frac{1}{2}(\nabla\mathbf{v}-\nabla\mathbf{v}^{T}) = \frac{1}{2}\left[\nabla
 <p>于是</p>
 <div class="math notranslate nohighlight">
 \[
-W = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
+\mathbf{W} = \frac{1}{2}\left[\boldsymbol{\omega}\right]_{\times} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times},
 \]</div>
 <p>在某一点 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 附近，速度场可以近似为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) \approx \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+D\delta\mathbf{r}+W\delta\mathbf{r},
+\mathbf{v}(\mathbf{x}+\delta\mathbf{r}) \approx \mathbf{v}(\mathbf{x})+\nabla\mathbf{v}\cdot\delta\mathbf{r} = \mathbf{v}(\mathbf{x})+\mathbf{D}\delta\mathbf{r}+\mathbf{W}\delta\mathbf{r},
 \]</div>
 <p>因此</p>
 <div class="math notranslate nohighlight">
 \[
-W\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
+\mathbf{W}\delta\mathbf{r} = \left[\boldsymbol{\omega}_{\text{rot}}\right]_{\times}\delta\mathbf{r} = \boldsymbol{\omega}_{\text{rot}}\times\delta\mathbf{r},
 \]</div>
-<p>因此 <span class="math notranslate nohighlight">\(W\delta\mathbf{r}\)</span> 是局部刚体旋转对该点贡献的瞬时速度</p>
+<p>因此 <span class="math notranslate nohighlight">\(\mathbf{W}\delta\mathbf{r}\)</span> 是局部刚体旋转对该点贡献的瞬时速度</p>
 </section>
 </section>
 </section>
