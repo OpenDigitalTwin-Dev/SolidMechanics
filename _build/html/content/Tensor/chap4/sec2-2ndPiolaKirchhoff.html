@@ -522,8 +522,33 @@ document.write(`
 \[
 \mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\mathbf{D} = \frac{1}{2}(\mathbf{L} + \mathbf{L}^{T})\)</span> 是应变率张量，<span class="math notranslate nohighlight">\(\mathrm{d}V = J\mathrm{d}V_{0}\)</span> 是体积变化</p>
+<p>其中，</p>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I)\]</div>
+<p>是 Green-Lagrange 应变率张量</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{D} = \frac{1}{2}(\mathbf{L} + \mathbf{L}^{T})=\frac{1}{2}(\dot{F}F^{-1} + F^{-T}\dot{F}^{T})\]</div>
+<p>是应变率张量，<span class="math notranslate nohighlight">\(\mathrm{d}V = J\mathrm{d}V_{0}\)</span> 是体积变化</p>
 <p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{\mathbf{E}} = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S}:(F^{T}\mathbf{D}F)\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
+\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+A:(BCD) = (D^{T}AB^{T}):C,
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S}:(F^{T}\mathbf{D}F) = (F^{T}\mathbf{S}F):\mathbf{D}
+\]</div>
 </section>
 </section>
 </section>

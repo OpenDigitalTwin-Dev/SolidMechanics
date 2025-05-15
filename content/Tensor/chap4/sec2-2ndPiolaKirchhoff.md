@@ -64,6 +64,36 @@ $$
 \mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
 $$
 
-其中，$\mathbf{D} = \frac{1}{2}(\mathbf{L} + \mathbf{L}^{T})$ 是应变率张量，$\mathrm{d}V = J\mathrm{d}V_{0}$ 是体积变化
+其中，
+
+$$\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I)$$ 
+
+是 Green-Lagrange 应变率张量
+
+$$\mathbf{D} = \frac{1}{2}(\mathbf{L} + \mathbf{L}^{T})=\frac{1}{2}(\dot{F}F^{-1} + F^{-T}\dot{F}^{T})$$
+
+是应变率张量，$\mathrm{d}V = J\mathrm{d}V_{0}$ 是体积变化
 
 由于
+
+$$
+\dot{\mathbf{E}} = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
+$$
+
+于是
+
+$$
+\mathbf{S}:(F^{T}\mathbf{D}F)\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
+$$
+
+由于
+
+$$
+A:(BCD) = (D^{T}AB^{T}):C,
+$$
+
+故
+
+$$
+\mathbf{S}:(F^{T}\mathbf{D}F) = (F^{T}\mathbf{S}F):\mathbf{D}
+$$
