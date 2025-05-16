@@ -431,7 +431,7 @@ $$
 动量守恒方程的微分形式通常表示为
 
 $$
-\frac{\partial (\rho \mathbf{v})}{\partial t} + \nabla \cdot (\rho \mathbf{v} \otimes \mathbf{v}) = \nabla \cdot \boldsymbol{\sigma} + \mathbf{f},
+\frac{\partial (\rho \mathbf{v})}{\partial t} = - \nabla \cdot (\rho \mathbf{v} \otimes \mathbf{v}) + \nabla \cdot \boldsymbol{\sigma} + \mathbf{f},
 $$ (sec9-eq:conservation-momentum-1)
 
 其中，$t$ 是时间，$\rho$ 是密度，$\mathbf{v}$ 是速度向量，$\boldsymbol{\sigma}$ 是应力张量，$\mathbf{f}$ 是体积力，$\otimes$ 是张量外积。该方程描述的是

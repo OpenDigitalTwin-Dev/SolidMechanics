@@ -213,6 +213,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec3-energy.html">内功和应变能</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应力张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -453,10 +454,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">对称性</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体旋转</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">应变能</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">功率守恒</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">功率守恒</a></li>
 </ul>
             </nav>
         </div>
@@ -499,27 +497,10 @@ document.write(`
 <p>即 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 是 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 在初始构型基底下的表示</p>
 </section>
 <section id="id3">
-<h2>应变能<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>超弹性材料，又称伪弹性材料，是一类在较大应变范围（5%~10%）内能够完全恢复原始形状的材料</p>
-</aside>
-<p>应变能密度函数 <span class="math notranslate nohighlight">\(\Psi\)</span> 是材料在变形过程中单位参考体积储存的能量，仅依赖于变形状态。对于超弹性材料，<span class="math notranslate nohighlight">\(\Psi\)</span> 是 Green-Lagrange 应变张量 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 的函数：</p>
-<div class="math notranslate nohighlight">
-\[
-\Psi = \Psi(\mathbf{E}).
-\]</div>
-<p>其物理意义是：<strong>材料在变形过程中抵抗变形所做的功全部转化为弹性势能</strong></p>
-<p>PK2 应力 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 与 Green-Lagrange 应变 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 共轭：</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{S} = \frac{\partial \Psi}{\partial \mathbf{E}}.
-\]</div>
-<section id="id4">
-<h3>功率守恒<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h2>功率守恒<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>功率守恒要求参考构型与当前构型的应力功率相等：</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-sec2-eq-energy-rate-1">
+<span class="eqno">(25)<a class="headerlink" href="#equation-sec2-eq-energy-rate-1" title="Link to this equation">#</a></span>\[
 \mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
 \]</div>
 <p>其中，</p>
@@ -535,21 +516,32 @@ document.write(`
 \dot{\mathbf{E}} = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
 \]</div>
 <p>于是</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-sec2-eq-energy-rate-2">
+<span class="eqno">(26)<a class="headerlink" href="#equation-sec2-eq-energy-rate-2" title="Link to this equation">#</a></span>\[
 \mathbf{S}:(F^{T}\mathbf{D}F)\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
 \]</div>
 <p>由于</p>
 <div class="math notranslate nohighlight">
 \[
-A:(BCD) = (D^{T}AB^{T}):C,
+\mathbf{S}:(F^{T}\mathbf{D}F) = \text{tr}(\mathbf{S}F^{T}\mathbf{D}F)=\text{tr}(F\mathbf{S}F^{T}\mathbf{D}) = (F\mathbf{S}F^{T}):\mathbf{D},
+\]</div>
+<p>带入到方程 <a class="reference internal" href="#equation-sec2-eq-energy-rate-2">(26)</a> 得到</p>
+<div class="math notranslate nohighlight">
+\[
+(F\mathbf{S}F^{T}):\mathbf{D}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ J\mathrm{d}V_{0},
 \]</div>
 <p>故</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{S}:(F^{T}\mathbf{D}F) = (F^{T}\mathbf{S}F):\mathbf{D}
+J^{-1}F\mathbf{S}F^{T} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \mathbf{S} = JF^{-1}\boldsymbol{\sigma}F^{-T}.
 \]</div>
-</section>
+<p>对于超弹性材料，<span class="math notranslate nohighlight">\(\Psi\)</span> 是 Green-Lagrange 应变张量 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 的函数：</p>
+<p>其物理意义是：<strong>材料在变形过程中抵抗变形所做的功全部转化为弹性势能</strong></p>
+<p>PK2 应力 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 与 Green-Lagrange 应变 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 共轭：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S} = \frac{\partial \Psi}{\partial \mathbf{E}}.
+\]</div>
 </section>
 </section>
 
@@ -619,10 +611,7 @@ A:(BCD) = (D^{T}AB^{T}):C,
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">对称性</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体旋转</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">应变能</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">功率守恒</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">功率守恒</a></li>
 </ul>
   </nav></div>
 

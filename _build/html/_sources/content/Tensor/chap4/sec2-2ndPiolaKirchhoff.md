@@ -36,33 +36,14 @@ $$
 
 即 $\mathbf{S}$ 是 $\boldsymbol{\sigma}$ 在初始构型基底下的表示
 
-## 应变能
 
-```{margin}
-超弹性材料，又称伪弹性材料，是一类在较大应变范围（5%~10%）内能够完全恢复原始形状的材料
-```
-
-应变能密度函数 $\Psi$ 是材料在变形过程中单位参考体积储存的能量，仅依赖于变形状态。对于超弹性材料，$\Psi$ 是 Green-Lagrange 应变张量 $\mathbf{E}$ 的函数：
-
-$$
-\Psi = \Psi(\mathbf{E}).
-$$
-
-其物理意义是：**材料在变形过程中抵抗变形所做的功全部转化为弹性势能**
-
-PK2 应力 $\mathbf{S}$ 与 Green-Lagrange 应变 $\mathbf{E}$ 共轭：
-
-$$
-\mathbf{S} = \frac{\partial \Psi}{\partial \mathbf{E}}.
-$$
-
-### 功率守恒
+## 功率守恒
 
 功率守恒要求参考构型与当前构型的应力功率相等：
 
 $$
 \mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-$$
+$$ (sec2-eq:energy-rate-1)
 
 其中，
 
@@ -84,16 +65,36 @@ $$
 
 $$
 \mathbf{S}:(F^{T}\mathbf{D}F)\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-$$
+$$  (sec2-eq:energy-rate-2)
 
 由于
 
 $$
-A:(BCD) = (D^{T}AB^{T}):C,
+\mathbf{S}:(F^{T}\mathbf{D}F) = \text{tr}(\mathbf{S}F^{T}\mathbf{D}F)=\text{tr}(F\mathbf{S}F^{T}\mathbf{D}) = (F\mathbf{S}F^{T}):\mathbf{D},
+$$
+
+带入到方程 {eq}`sec2-eq:energy-rate-2` 得到
+
+$$
+(F\mathbf{S}F^{T}):\mathbf{D}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ J\mathrm{d}V_{0},
 $$
 
 故
 
+
 $$
-\mathbf{S}:(F^{T}\mathbf{D}F) = (F^{T}\mathbf{S}F):\mathbf{D}
+J^{-1}F\mathbf{S}F^{T} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \mathbf{S} = JF^{-1}\boldsymbol{\sigma}F^{-T}.
+$$
+
+
+对于超弹性材料，$\Psi$ 是 Green-Lagrange 应变张量 $\mathbf{E}$ 的函数：
+
+
+
+其物理意义是：**材料在变形过程中抵抗变形所做的功全部转化为弹性势能**
+
+PK2 应力 $\mathbf{S}$ 与 Green-Lagrange 应变 $\mathbf{E}$ 共轭：
+
+$$
+\mathbf{S} = \frac{\partial \Psi}{\partial \mathbf{E}}.
 $$
