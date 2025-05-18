@@ -213,6 +213,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec3-energy.html">内功和应变能</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -489,12 +490,12 @@ Mohr–Coulomb 屈服准则主要用于岩土类材料研究，属于各向同�
 \]</div>
 <p>其中</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-morh01">
-<span class="eqno">(79)<a class="headerlink" href="#equation-sec3-eq-morh01" title="Link to this equation">#</a></span>\[
+<span class="eqno">(78)<a class="headerlink" href="#equation-sec3-eq-morh01" title="Link to this equation">#</a></span>\[
 1 = n_{1}^{2}+n_{2}^{2}+n_{3}^{2},
 \]</div>
 <p>于是</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-morh02">
-<span class="eqno">(80)<a class="headerlink" href="#equation-sec3-eq-morh02" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(79)<a class="headerlink" href="#equation-sec3-eq-morh02" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \sigma_{\mathbf{n}} &amp;= \mathbf{n}^{T}\boldsymbol{\sigma}\mathbf{n} = n_{1}^{2}\sigma_{1} + n_{2}^{2}\sigma_{2} + n_{3}^{2}\sigma_{3},\\
@@ -502,9 +503,9 @@ Mohr–Coulomb 屈服准则主要用于岩土类材料研究，属于各向同�
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>使用克拉默法则求解线性方程组 <a class="reference internal" href="#equation-sec3-eq-morh01">(79)</a> 和 <a class="reference internal" href="#equation-sec3-eq-morh02">(80)</a>，得到</p>
+<p>使用克拉默法则求解线性方程组 <a class="reference internal" href="#equation-sec3-eq-morh01">(78)</a> 和 <a class="reference internal" href="#equation-sec3-eq-morh02">(79)</a>，得到</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-morh03">
-<span class="eqno">(81)<a class="headerlink" href="#equation-sec3-eq-morh03" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(80)<a class="headerlink" href="#equation-sec3-eq-morh03" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 n_1^2 &amp;= \frac{\tau_{\mathbf{n}}^2 + (\sigma_{\mathbf{n}} - \sigma_2)(\sigma_{\mathbf{n}} - \sigma_3)}{(\sigma_1 - \sigma_2)(\sigma_1 - \sigma_3)} \geq 0,\\
@@ -515,7 +516,7 @@ n_3^2 &amp;= \frac{\tau_{\mathbf{n}}^2 + (\sigma_{\mathbf{n}} - \sigma_1)(\sigma
 \end{split}\]</div>
 <p>由于 <span class="math notranslate nohighlight">\(\sigma_{1}&gt;\sigma_{2}&gt;\sigma_{3}\)</span>，于是将上述方程整理得到</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-morh04">
-<span class="eqno">(82)<a class="headerlink" href="#equation-sec3-eq-morh04" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(81)<a class="headerlink" href="#equation-sec3-eq-morh04" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\tau_{\mathbf{n}}^2 + \left[\sigma_{\mathbf{n}} - \frac{1}{2}(\sigma_2 + \sigma_3)\right]^2 \geq \left(\frac{1}{2}(\sigma_2 - \sigma_3)\right)^2,\\

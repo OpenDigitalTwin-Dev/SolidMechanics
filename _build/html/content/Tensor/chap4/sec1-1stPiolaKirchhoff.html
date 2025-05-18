@@ -213,6 +213,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec3-energy.html">内功和应变能</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">应力张量</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -453,7 +454,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nanson">Nanson 公式</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">第一类 Piola-Kirchhoff 应力张量</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">边界条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">内功率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">边界条件</a></li>
 </ul>
 </li>
 </ul>
@@ -519,11 +521,11 @@ F\mathbf{a}&amp;F\mathbf{b}&amp;F\mathbf{c}
 <p>根据 Nanson 公式，有</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{d}\mathbf{f} = \boldsymbol{\sigma}\mathbf{n}\ \mathrm{d}a = \boldsymbol{\sigma}JF^{-T}\mathbf{N}\ \mathrm{d}A = \mathbf{P}\mathbf{N}\ \mathrm{d}A
+\mathrm{d}\mathbf{f} = \boldsymbol{\sigma}\mathbf{n}\ \mathrm{d}a = \boldsymbol{\sigma}JF^{-T}\mathbf{N}\ \mathrm{d}A = \mathbf{P}\mathbf{N}\ \mathrm{d}A,
 \]</div>
 <p>其中</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-sec1-eq-pk1">
+<span class="eqno">(25)<a class="headerlink" href="#equation-sec1-eq-pk1" title="Link to this equation">#</a></span>\[
 \mathbf{P}=J\boldsymbol{\sigma}F^{-T}
 \]</div>
 <p>定义为第一类 Piola-Kirchhoff 应力张量（也称名义应力张量），简记为 PK1 应力张量</p>
@@ -537,7 +539,30 @@ F\mathbf{a}&amp;F\mathbf{b}&amp;F\mathbf{c}
 \]</div>
 <p>因此，第一类 Piola-Kirchhoff 应力张量可以看作是一维工程应力（初始面积上的力）在三维情况下的自然推广</p>
 <section id="id2">
-<h3>边界条件<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>内功率<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>根据式 <a class="reference internal" href="#equation-sec1-eq-pk1">(25)</a>，有</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}=J^{-1}\mathbf{P}F^{T},
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}:\mathbf{D} = \boldsymbol{\sigma}:\mathbf{L} = J^{-1}\text{tr}(\mathbf{P}F^{T}\mathbf{L}^{T}),
+\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(\mathbf{L} = \dot{F}F^{-1}\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}:\mathbf{D} = J^{-1}\text{tr}(\mathbf{P}F^{T}\mathbf{L}^{T}) = J^{-1}\text{tr}(\mathbf{P}\dot{F}^{T}) = J^{-1}\mathbf{P}:\dot{F},
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V = \int_{V_{0}}\mathbf{P}:\dot{F}\ \mathrm{d}V_{0}.
+\]</div>
+</section>
+<section id="id3">
+<h3>边界条件<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>由于 PK1 应力张量的定义是基于参考构型的面积和当前力，采用 PK1 应力后，可以直接在初始构型上施加和计算边界条件，无需在整个分析过程中追踪当前构型的边界和应力状态，大大简化了大变形问题中的边界条件处理</p>
 </section>
 </section>
@@ -609,7 +634,8 @@ F\mathbf{a}&amp;F\mathbf{b}&amp;F\mathbf{c}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nanson">Nanson 公式</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">第一类 Piola-Kirchhoff 应力张量</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">边界条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">内功率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">边界条件</a></li>
 </ul>
 </li>
 </ul>

@@ -62,21 +62,21 @@ $$
 根据 Nanson 公式，有
 
 $$
-\mathrm{d}\mathbf{f} = \boldsymbol{\sigma}\mathbf{n}\ \mathrm{d}a = \boldsymbol{\sigma}JF^{-T}\mathbf{N}\ \mathrm{d}A = \mathbf{P}\mathbf{N}\ \mathrm{d}A
+\mathrm{d}\mathbf{f} = \boldsymbol{\sigma}\mathbf{n}\ \mathrm{d}a = \boldsymbol{\sigma}JF^{-T}\mathbf{N}\ \mathrm{d}A = \mathbf{P}\mathbf{N}\ \mathrm{d}A,
 $$
 
 其中
 
 $$
 \mathbf{P}=J\boldsymbol{\sigma}F^{-T}
-$$
+$$ (sec1-eq:pk1)
 
 定义为第一类 Piola-Kirchhoff 应力张量（也称名义应力张量），简记为 PK1 应力张量
-
 
 [Cauchy 应力](../../Elasticity/chap1/sec1-stress_strain_displ.md)描述的是**当前力在当前面积下的分布**，表示当前构型下单位面积上所受的当前构型下的力
 
 PK1 应力描述的则是**当前力在参考面积上的分布**，表示参考构型下单位面积上所受的当前构型下的力
+
 
 
 PK1 应力张量一般是非对称张量，因为它涉及到与变形梯度 $F$ 的混合
@@ -88,6 +88,33 @@ $$
 $$
 
 因此，第一类 Piola-Kirchhoff 应力张量可以看作是一维工程应力（初始面积上的力）在三维情况下的自然推广
+
+### 内功率
+
+根据式 {eq}`sec1-eq:pk1`，有
+
+$$
+\boldsymbol{\sigma}=J^{-1}\mathbf{P}F^{T},
+$$
+
+于是
+
+$$
+\boldsymbol{\sigma}:\mathbf{D} = \boldsymbol{\sigma}:\mathbf{L} = J^{-1}\text{tr}(\mathbf{P}F^{T}\mathbf{L}^{T}),
+$$
+
+代入 $\mathbf{L} = \dot{F}F^{-1}$，得到
+
+$$
+\boldsymbol{\sigma}:\mathbf{D} = J^{-1}\text{tr}(\mathbf{P}F^{T}\mathbf{L}^{T}) = J^{-1}\text{tr}(\mathbf{P}\dot{F}^{T}) = J^{-1}\mathbf{P}:\dot{F},
+$$
+
+于是
+
+$$
+P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V = \int_{V_{0}}\mathbf{P}:\dot{F}\ \mathrm{d}V_{0}.
+$$
+
 
 ### 边界条件
 

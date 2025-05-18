@@ -37,64 +37,34 @@ $$
 即 $\mathbf{S}$ 是 $\boldsymbol{\sigma}$ 在初始构型基底下的表示
 
 
-## 功率守恒
-
-功率守恒要求参考构型与当前构型的应力功率相等：
-
-$$
-\mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-$$ (sec2-eq:energy-rate-1)
-
-其中，
-
-$$\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I)$$ 
-
-是 Green-Lagrange 应变率张量
-
-$$\mathbf{D} = \frac{1}{2}(\mathbf{L} + \mathbf{L}^{T})=\frac{1}{2}(\dot{F}F^{-1} + F^{-T}\dot{F}^{T})$$
-
-是应变率张量，$\mathrm{d}V = J\mathrm{d}V_{0}$ 是体积变化
+## 内功率
 
 由于
 
 $$
-\dot{\mathbf{E}} = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
+\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I) = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
+$$
+
+故
+
+$$
+\mathbf{D} = F^{-T}\dot{\mathbf{E}}F,
+$$
+
+由于相似变换保迹，于是
+
+$$
+\begin{equation}
+\begin{aligned}
+\boldsymbol{\sigma}:\mathbf{D} &= \boldsymbol{\sigma}:F^{-T}\dot{\mathbf{E}}F = \text{tr}(\boldsymbol{\sigma}F^{-T}\dot{\mathbf{E}}F) \\
+&= \text{tr}(F^{-1}\boldsymbol{\sigma}F^{-T}\dot{\mathbf{E}}) = F^{-1}\boldsymbol{\sigma}F^{-T}:\dot{\mathbf{E}}\\
+&=J^{-1}\mathbf{S}:\dot{\mathbf{E}},
+\end{aligned}
+\end{equation}
 $$
 
 于是
 
 $$
-\mathbf{S}:(F^{T}\mathbf{D}F)\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-$$  (sec2-eq:energy-rate-2)
-
-由于
-
-$$
-\mathbf{S}:(F^{T}\mathbf{D}F) = \text{tr}(\mathbf{S}F^{T}\mathbf{D}F)=\text{tr}(F\mathbf{S}F^{T}\mathbf{D}) = (F\mathbf{S}F^{T}):\mathbf{D},
-$$
-
-带入到方程 {eq}`sec2-eq:energy-rate-2` 得到
-
-$$
-(F\mathbf{S}F^{T}):\mathbf{D}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ J\mathrm{d}V_{0},
-$$
-
-故
-
-
-$$
-J^{-1}F\mathbf{S}F^{T} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \mathbf{S} = JF^{-1}\boldsymbol{\sigma}F^{-T}.
-$$
-
-
-对于超弹性材料，$\Psi$ 是 Green-Lagrange 应变张量 $\mathbf{E}$ 的函数：
-
-
-
-其物理意义是：**材料在变形过程中抵抗变形所做的功全部转化为弹性势能**
-
-PK2 应力 $\mathbf{S}$ 与 Green-Lagrange 应变 $\mathbf{E}$ 共轭：
-
-$$
-\mathbf{S} = \frac{\partial \Psi}{\partial \mathbf{E}}.
+P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V = \int_{V_{0}}\mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0}.
 $$

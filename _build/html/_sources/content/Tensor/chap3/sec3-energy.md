@@ -36,16 +36,10 @@ $$
 \int_{V}\boldsymbol{\sigma}:\nabla\mathbf{v}\ \mathrm{d}V = \int_{V}\boldsymbol{\sigma}:\mathbf{D} + \boldsymbol{\sigma}:\mathbf{W}\ \mathrm{d}V = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
 $$
 
-故
+由于 $\boldsymbol{\sigma}$ 对称，$\mathbf{W}$ 反对称，故
 
 $$
 P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-$$
-
-对于小应变情形
-
-$$
-P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\dot{\boldsymbol{\varepsilon}}\ \mathrm{d}V.
 $$
 
 内力对材料内部变形所做的总功为**内功**
@@ -53,6 +47,7 @@ $$
 $$
 W_{\text{int}} = \int_{0}^{t}P_{\text{int}}\ \mathrm{d}t.
 $$
+
 
 ## 应变能
 
@@ -77,6 +72,12 @@ $$
 \Psi(\boldsymbol{\varepsilon}) = \int_{0}^{\varepsilon_{ij}}\sigma_{ij}\ \mathrm{d}\varepsilon_{ij},
 $$
 
+有
+
+$$
+\frac{\partial \Psi}{\partial \boldsymbol{\varepsilon}} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \frac{\partial \Psi}{\partial t} = \frac{\partial \Psi}{\partial \boldsymbol{\varepsilon}}:\frac{\partial \boldsymbol{\varepsilon}}{\partial t} = \boldsymbol{\sigma}:\dot{\boldsymbol{\varepsilon}},
+$$
+
 ```{note}
 
 对于线弹性材料，代入 $\sigma_{ij}=C_{ijkl}\varepsilon_{kl}$，得到
@@ -87,14 +88,25 @@ $$
 
 ```
 
-于是
+应变能可以写为
 
 $$
 U(\boldsymbol{\varepsilon}) = \int_{V}\int_{0}^{\varepsilon_{ij}}\sigma_{ij}\ \mathrm{d}\varepsilon_{ij}\ \mathrm{d}V,
 $$
 
+
 应变能率为
 
 $$
-\dot{U}(\boldsymbol{\varepsilon}) = \frac{\mathrm{d}}{\mathrm{d}t}
+\begin{equation}
+\begin{aligned}
+\dot{U}(\boldsymbol{\varepsilon}) = \frac{\mathrm{d}}{\mathrm{d}t}\int_{V}\Psi\ \mathrm{d}V.
+\end{aligned}
+\end{equation}
+$$
+
+若积分体区域 $V$ 不随时间变化，则
+
+$$
+\dot{U}(\boldsymbol{\varepsilon}) = \int_{V}\frac{\mathrm{d}\Psi}{\mathrm{d}t}\ \mathrm{d}V= \int_{V}\frac{\partial \Psi}{\partial \boldsymbol{\varepsilon}}:\frac{\partial \boldsymbol{\varepsilon}}{\partial t}\ \mathrm{d}V = \int_{V}\boldsymbol{\sigma}:\dot{\boldsymbol{\varepsilon}}\ \mathrm{d}V.
 $$

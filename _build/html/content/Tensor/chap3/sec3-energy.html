@@ -498,15 +498,10 @@ P &amp;= \int_{\partial V}\mathbf{v}\cdot(\boldsymbol{\sigma}\ \mathrm{d}\mathbf
 \[
 \int_{V}\boldsymbol{\sigma}:\nabla\mathbf{v}\ \mathrm{d}V = \int_{V}\boldsymbol{\sigma}:\mathbf{D} + \boldsymbol{\sigma}:\mathbf{W}\ \mathrm{d}V = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
 \]</div>
-<p>故</p>
+<p>由于 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 对称，<span class="math notranslate nohighlight">\(\mathbf{W}\)</span> 反对称，故</p>
 <div class="math notranslate nohighlight">
 \[
 P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-\]</div>
-<p>对于小应变情形</p>
-<div class="math notranslate nohighlight">
-\[
-P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\dot{\boldsymbol{\varepsilon}}\ \mathrm{d}V.
 \]</div>
 <p>内力对材料内部变形所做的总功为<strong>内功</strong></p>
 <div class="math notranslate nohighlight">
@@ -532,6 +527,11 @@ U(\boldsymbol{\varepsilon}) = \int_{V}\Psi(\boldsymbol{\varepsilon})\ \mathrm{d}
 \[
 \Psi(\boldsymbol{\varepsilon}) = \int_{0}^{\varepsilon_{ij}}\sigma_{ij}\ \mathrm{d}\varepsilon_{ij},
 \]</div>
+<p>有</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \Psi}{\partial \boldsymbol{\varepsilon}} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \frac{\partial \Psi}{\partial t} = \frac{\partial \Psi}{\partial \boldsymbol{\varepsilon}}:\frac{\partial \boldsymbol{\varepsilon}}{\partial t} = \boldsymbol{\sigma}:\dot{\boldsymbol{\varepsilon}},
+\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>对于线弹性材料，代入 <span class="math notranslate nohighlight">\(\sigma_{ij}=C_{ijkl}\varepsilon_{kl}\)</span>，得到</p>
@@ -540,7 +540,7 @@ U(\boldsymbol{\varepsilon}) = \int_{V}\Psi(\boldsymbol{\varepsilon})\ \mathrm{d}
 \Psi(\boldsymbol{\varepsilon}) = \frac{1}{2}\sigma_{ij}\varepsilon_{ij} = \frac{1}{2}\boldsymbol{\sigma}:\boldsymbol{\varepsilon}.
 \]</div>
 </div>
-<p>于是</p>
+<p>应变能可以写为</p>
 <div class="math notranslate nohighlight">
 \[
 U(\boldsymbol{\varepsilon}) = \int_{V}\int_{0}^{\varepsilon_{ij}}\sigma_{ij}\ \mathrm{d}\varepsilon_{ij}\ \mathrm{d}V,
@@ -548,7 +548,16 @@ U(\boldsymbol{\varepsilon}) = \int_{V}\int_{0}^{\varepsilon_{ij}}\sigma_{ij}\ \m
 <p>应变能率为</p>
 <div class="math notranslate nohighlight">
 \[
-\dot{U}(\boldsymbol{\varepsilon}) = \frac{\mathrm{d}}{\mathrm{d}t}
+\begin{equation}
+\begin{aligned}
+\dot{U}(\boldsymbol{\varepsilon}) = \frac{\mathrm{d}}{\mathrm{d}t}\int_{V}\Psi\ \mathrm{d}V.
+\end{aligned}
+\end{equation}
+\]</div>
+<p>若积分体区域 <span class="math notranslate nohighlight">\(V\)</span> 不随时间变化，则</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{U}(\boldsymbol{\varepsilon}) = \int_{V}\frac{\mathrm{d}\Psi}{\mathrm{d}t}\ \mathrm{d}V= \int_{V}\frac{\partial \Psi}{\partial \boldsymbol{\varepsilon}}:\frac{\partial \boldsymbol{\varepsilon}}{\partial t}\ \mathrm{d}V = \int_{V}\boldsymbol{\sigma}:\dot{\boldsymbol{\varepsilon}}\ \mathrm{d}V.
 \]</div>
 </section>
 </section>

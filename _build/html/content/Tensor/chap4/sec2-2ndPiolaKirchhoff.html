@@ -454,7 +454,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">对称性</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体旋转</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">功率守恒</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">内功率</a></li>
 </ul>
             </nav>
         </div>
@@ -497,50 +497,32 @@ document.write(`
 <p>即 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 是 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 在初始构型基底下的表示</p>
 </section>
 <section id="id3">
-<h2>功率守恒<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>功率守恒要求参考构型与当前构型的应力功率相等：</p>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-energy-rate-1">
-<span class="eqno">(25)<a class="headerlink" href="#equation-sec2-eq-energy-rate-1" title="Link to this equation">#</a></span>\[
-\mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-\]</div>
-<p>其中，</p>
-<div class="math notranslate nohighlight">
-\[\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I)\]</div>
-<p>是 Green-Lagrange 应变率张量</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{D} = \frac{1}{2}(\mathbf{L} + \mathbf{L}^{T})=\frac{1}{2}(\dot{F}F^{-1} + F^{-T}\dot{F}^{T})\]</div>
-<p>是应变率张量，<span class="math notranslate nohighlight">\(\mathrm{d}V = J\mathrm{d}V_{0}\)</span> 是体积变化</p>
+<h2>内功率<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>由于</p>
 <div class="math notranslate nohighlight">
 \[
-\dot{\mathbf{E}} = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
-\]</div>
-<p>于是</p>
-<div class="math notranslate nohighlight" id="equation-sec2-eq-energy-rate-2">
-<span class="eqno">(26)<a class="headerlink" href="#equation-sec2-eq-energy-rate-2" title="Link to this equation">#</a></span>\[
-\mathbf{S}:(F^{T}\mathbf{D}F)\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V,
-\]</div>
-<p>由于</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{S}:(F^{T}\mathbf{D}F) = \text{tr}(\mathbf{S}F^{T}\mathbf{D}F)=\text{tr}(F\mathbf{S}F^{T}\mathbf{D}) = (F\mathbf{S}F^{T}):\mathbf{D},
-\]</div>
-<p>带入到方程 <a class="reference internal" href="#equation-sec2-eq-energy-rate-2">(26)</a> 得到</p>
-<div class="math notranslate nohighlight">
-\[
-(F\mathbf{S}F^{T}):\mathbf{D}\ \mathrm{d}V_{0} = \boldsymbol{\sigma}:\mathbf{D}\ J\mathrm{d}V_{0},
+\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I) = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
 \]</div>
 <p>故</p>
 <div class="math notranslate nohighlight">
 \[
-J^{-1}F\mathbf{S}F^{T} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \mathbf{S} = JF^{-1}\boldsymbol{\sigma}F^{-T}.
+\mathbf{D} = F^{-T}\dot{\mathbf{E}}F,
 \]</div>
-<p>对于超弹性材料，<span class="math notranslate nohighlight">\(\Psi\)</span> 是 Green-Lagrange 应变张量 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 的函数：</p>
-<p>其物理意义是：<strong>材料在变形过程中抵抗变形所做的功全部转化为弹性势能</strong></p>
-<p>PK2 应力 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 与 Green-Lagrange 应变 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 共轭：</p>
+<p>由于相似变换保迹，于是</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\boldsymbol{\sigma}:\mathbf{D} &amp;= \boldsymbol{\sigma}:F^{-T}\dot{\mathbf{E}}F = \text{tr}(\boldsymbol{\sigma}F^{-T}\dot{\mathbf{E}}F) \\
+&amp;= \text{tr}(F^{-1}\boldsymbol{\sigma}F^{-T}\dot{\mathbf{E}}) = F^{-1}\boldsymbol{\sigma}F^{-T}:\dot{\mathbf{E}}\\
+&amp;=J^{-1}\mathbf{S}:\dot{\mathbf{E}},
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>于是</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{S} = \frac{\partial \Psi}{\partial \mathbf{E}}.
+P_{\text{int}} = \int_{V}\boldsymbol{\sigma}:\mathbf{D}\ \mathrm{d}V = \int_{V_{0}}\mathbf{S}:\dot{\mathbf{E}}\ \mathrm{d}V_{0}.
 \]</div>
 </section>
 </section>
@@ -611,7 +593,7 @@ J^{-1}F\mathbf{S}F^{T} = \boldsymbol{\sigma}\quad\Longrightarrow\quad \mathbf{S}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">对称性</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">刚体旋转</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">功率守恒</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">内功率</a></li>
 </ul>
   </nav></div>
 

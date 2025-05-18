@@ -213,6 +213,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec3-energy.html">内功和应变能</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -499,7 +500,7 @@ W = \frac{1}{2}(L - L^{T}).
 </ul>
 <p>在材料本构分析中，通常只关注应力分量本身的真实变化</p>
 <div class="math notranslate nohighlight" id="equation-sec1-eq-jaumann-0">
-<span class="eqno">(27)<a class="headerlink" href="#equation-sec1-eq-jaumann-0" title="Link to this equation">#</a></span>\[
+<span class="eqno">(26)<a class="headerlink" href="#equation-sec1-eq-jaumann-0" title="Link to this equation">#</a></span>\[
 \dot{\sigma_{ij}}\mathbf{e}_{i}\mathbf{e}_{j}^{T} = \dot{\boldsymbol{\sigma}} - \sigma_{ij}\dot{\mathbf{e}}_{i}\mathbf{e}_{j}^{T} - \sigma_{ij}\mathbf{e}_{i}\dot{\mathbf{e}}_{j}^{T},
 \]</div>
 <p>设随体基底与初始基底 <span class="math notranslate nohighlight">\(\{\tilde{\mathbf{e}}_{i}\}_{i=1,2,3}\)</span>（不妨选为标准正交基）满足</p>
@@ -517,7 +518,7 @@ W = \frac{1}{2}(L - L^{T}).
 \[
 \dot{\mathbf{e}}_{i} = \dot{\mathbf{q}}_{i},
 \]</div>
-<p>代入到式 <a class="reference internal" href="#equation-sec1-eq-jaumann-0">(27)</a> 中，得到</p>
+<p>代入到式 <a class="reference internal" href="#equation-sec1-eq-jaumann-0">(26)</a> 中，得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -545,7 +546,7 @@ W = \frac{1}{2}(L - L^{T}).
 \[
 \boldsymbol{\sigma}Q\dot{Q}^{T} = (\dot{Q}Q^{T}\boldsymbol{\sigma})^{T} = (\sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T})^{T} = \sigma_{ij}\mathbf{q}_{j}\dot{\mathbf{q}}_{i}^{T}= \sigma_{ji}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T} = \sigma_{ij}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T},
 \]</div>
-<p>代入上面两式到式 <a class="reference internal" href="#equation-sec1-eq-jaumann-0">(27)</a> 得到</p>
+<p>代入上面两式到式 <a class="reference internal" href="#equation-sec1-eq-jaumann-0">(26)</a> 得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -598,7 +599,7 @@ W = \dot{Q}Q^{T} = -Q\dot{Q}^{T},
 <h2>协变性<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>此处证明</p>
 <div class="math notranslate nohighlight" id="equation-sec1-eq-jaumann-1">
-<span class="eqno">(28)<a class="headerlink" href="#equation-sec1-eq-jaumann-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(27)<a class="headerlink" href="#equation-sec1-eq-jaumann-1" title="Link to this equation">#</a></span>\[
 \overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} L + L^{T} \boldsymbol{\sigma}
 \]</div>
 <p>是协变的，即若存在实时的坐标旋转变换</p>
@@ -634,7 +635,7 @@ L' = \dot{F}'F'^{-1} &amp;= (\dot{Q}F+Q\dot{F})F^{-1}Q^{T}\\
 \]</div>
 <p>于是</p>
 <div class="math notranslate nohighlight" id="equation-sec1-eq-jaumann-2">
-<span class="eqno">(29)<a class="headerlink" href="#equation-sec1-eq-jaumann-2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(28)<a class="headerlink" href="#equation-sec1-eq-jaumann-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \dot{\boldsymbol{\sigma}}' &amp;= \dot{Q}\boldsymbol{\sigma}Q^{T} + Q\dot{\boldsymbol{\sigma}}Q^{T} + Q\boldsymbol{\sigma}\dot{Q^{T}},\\
@@ -658,7 +659,7 @@ Q\dot{Q}^{T}Q\boldsymbol{\sigma}Q^{T}&amp;=-\dot{Q}\boldsymbol{\sigma}Q^{T}
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>代入到式 <a class="reference internal" href="#equation-sec1-eq-jaumann-2">(29)</a> 并三式相加得到</p>
+<p>代入到式 <a class="reference internal" href="#equation-sec1-eq-jaumann-2">(28)</a> 并三式相加得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{equation}
@@ -675,7 +676,7 @@ Q\dot{Q}^{T}Q\boldsymbol{\sigma}Q^{T}&amp;=-\dot{Q}\boldsymbol{\sigma}Q^{T}
 \[
 \mathbf{x}(t) = \mathbf{Q}(t)\mathbf{X},
 \]</div>
-<p>有 <span class="math notranslate nohighlight">\(L=W,L^{T} = -W\)</span>，故式 <a class="reference internal" href="#equation-sec1-eq-jaumann-1">(28)</a> 退化为</p>
+<p>有 <span class="math notranslate nohighlight">\(L=W,L^{T} = -W\)</span>，故式 <a class="reference internal" href="#equation-sec1-eq-jaumann-1">(27)</a> 退化为</p>
 <div class="math notranslate nohighlight">
 \[
 \overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} W - W \boldsymbol{\sigma}.

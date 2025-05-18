@@ -429,7 +429,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -445,6 +447,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">参考构型</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -459,7 +469,16 @@ document.write(`
 <span class="gray-text">
 应力张量描述了材料内部某点各方向上的力分布，是对该点内部力状态的完整表达，没有信息损失。不同的应力度量只是参考系不同，本质上都可通过数学变换与Cauchy应力张量互相转换，信息不会丢失
 </span>
-<p>应力张量是描述材料在外力或内力作用下，<strong>任意一点微元体内部受力状态的二阶张量</strong>。它全面反映了材料在各个方向上所承受的拉应力、压应力以及剪应力等力的分布情况，不仅量化了不同方向上的力的<strong>大小</strong>，还准确描述了这些力的<strong>作用方向</strong>。作为固体力学和材料力学中的核心物理量，应力张量为分析材料内部力学响应、预测结构破坏以及建立应力-应变关系提供了理论依据。</p>
+<p>应力张量是描述材料在外力或内力作用下，<strong>任意一点微元体内部受力状态的二阶张量</strong>。它全面反映了材料在各个方向上所承受的拉应力、压应力以及剪应力等力的分布情况，不仅量化了不同方向上的力的<strong>大小</strong>，还准确描述了这些力的<strong>作用方向</strong>。作为固体力学和材料力学中的核心物理量，应力张量为分析材料内部力学响应、预测结构破坏以及建立应力-应变关系提供了理论依据</p>
+<section id="id2">
+<h2>参考构型<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在物体受力变形的过程中，其空间位置和体积形状会随时间不断变化，因此<a class="reference internal" href="../chap3/sec3-energy.html"><span class="std std-doc">内功率</span></a>的计算中，积分区域 <span class="math notranslate nohighlight">\(V\)</span> 随时间而变化，通常将积分区域从当前构型 <span class="math notranslate nohighlight">\(V\)</span> 转换到参考构型 <span class="math notranslate nohighlight">\(V_{0}\)</span> 上，利用体积微元的变换关系，有</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{V}\boldsymbol{\sigma}(\mathbf{x}):\mathbf{D}(\mathbf{x})\ \mathrm{d}V = \int_{V_{0}}(\boldsymbol{\sigma}(\mathbf{x}(\mathbf{X})):\mathbf{D}(\mathbf{x}(\mathbf{X})))J\mathrm{d}V_{0},
+\]</div>
+<p>此时，还需要将 Cauchy 应力张量 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}(\mathbf{x}(\mathbf{X}))\)</span> 和对称速度梯度 <span class="math notranslate nohighlight">\(\mathbf{D}(\mathbf{x}(\mathbf{X}))\)</span> 分别转换到参考构型下的物理量。这就引入了第一类 Piola-Kirchhoff 应力张量 <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> 以及第二类 Piola-Kirchhoff 应力张量 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>，从而使得内功率等物理量能够方便地在参考构型下表达和计算</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -518,6 +537,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">参考构型</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
