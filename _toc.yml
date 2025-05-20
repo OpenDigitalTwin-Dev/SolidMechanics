@@ -39,6 +39,7 @@ parts:
       - file: content/Tensor/chap5/intro
         sections: 
         - file: content/Tensor/chap5/sec1-jaumann
+        - file: content/Tensor/chap5/sec2-green-naghdi
   - caption: 弹性力学
     chapters:
       - file: content/Elasticity/chap1/intro

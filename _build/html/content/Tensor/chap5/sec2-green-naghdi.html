@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>简介 &#8212; 固体力学笔记</title>
+    <title>Green-Naghdi 应力率 &#8212; 固体力学笔记</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -59,11 +59,13 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Elasticity/chap1/intro';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap5/sec2-green-naghdi';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="应力 应变 位移" href="sec1-stress_strain_displ.html" />
-    <link rel="prev" title="Green-Naghdi 应力率" href="../../Tensor/chap5/sec2-green-naghdi.html" />
+    <link rel="next" title="简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="prev" title="Jaumann 应力率" href="sec1-jaumann.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -198,45 +200,45 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Tensor/intro.html">基本定义</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap1/sec2-invarient.html">张量不变量</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-invarient.html">张量不变量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec1-strain-displacement.html">应变与位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap2/sec2-greenstrain.html">格林应变张量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap2/intro.html">应变张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec1-strain-displacement.html">应变与位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap2/sec2-greenstrain.html">格林应变张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec2-SSM.html">反对称矩阵</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap3/sec3-energy.html">内功和应变能</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap3/sec1-velocity-gradient.html">速度梯度场</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec2-SSM.html">反对称矩阵</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap3/sec3-energy.html">内功和应变能</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap4/sec2-2ndPiolaKirchhoff.html">第二类 Piola-Kirchhoff 应力张量</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chap4/intro.html">应力张量</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chap4/sec1-1stPiolaKirchhoff.html">第一类 Piola-Kirchhoff 应力张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap4/sec2-2ndPiolaKirchhoff.html">第二类 Piola-Kirchhoff 应力张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec2-green-naghdi.html">Green-Naghdi 应力率</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">客观应力率</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Green-Naghdi 应力率</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">弹性力学</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec1-stress_strain_displ.html">应力 应变 位移</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec2-assumptions.html">弹性力学的基本假设</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec3-balance-equa.html">平衡方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec4-geometry-equa.html">几何方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec5-physical-equa.html">本构方程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec6-two-2D.html">两类平面问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec7-boundary.html">边界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec8-two-2D-solution.html">位移法和应力法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec9-numerical-simple.html">数值方法简介</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec1-stress_strain_displ.html">应力 应变 位移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec2-assumptions.html">弹性力学的基本假设</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec3-balance-equa.html">平衡方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec4-geometry-equa.html">几何方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec5-physical-equa.html">本构方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec6-two-2D.html">两类平面问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec7-boundary.html">边界条件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec8-two-2D-solution.html">位移法和应力法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Elasticity/chap1/sec9-numerical-simple.html">数值方法简介</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">塑性力学</span></p>
 <ul class="nav bd-sidenav">
@@ -327,7 +329,7 @@
       
       
       
-      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Elasticity/chap1/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/OpenDigitalTwin-Dev/SolidMechanics/issues/new?title=Issue%20on%20page%20%2Fcontent/Tensor/chap5/sec2-green-naghdi.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +359,7 @@
       
       
       
-      <li><a href="../../../_sources/content/Elasticity/chap1/intro.md" target="_blank"
+      <li><a href="../../../_sources/content/Tensor/chap5/sec2-green-naghdi.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -428,7 +430,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -439,11 +443,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>简介</h1>
+    <h1>Green-Naghdi 应力率</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Green-Naghdi 应力率</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">客观性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">协变性</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -453,31 +469,143 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>简介<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><strong>弹性力学</strong>主要研究弹性物体在外力或温度变化等作用下发生的<strong>应力</strong>、<strong>应变</strong>和<strong>位移</strong>，并分析构件在<strong>弹性阶段</strong>的<strong>刚度</strong>与<strong>强度</strong></p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>屈服强度：材料从弹性变形转为塑性变形时的应力值</p>
-<p>压缩强度：材料在压缩试验中能承受的最大应力值</p>
-<p>抗拉强度：材料在拉伸试验中能承受的最大应力值</p>
-</aside>
-<ul class="simple">
-<li><p><strong>弹性阶段</strong>：指材料在外力作用下发生变形，但当外力撤去后，材料能够完全恢复原状的阶段</p></li>
-<li><p><strong>刚度</strong>：指材料或结构抵抗变形的能力</p></li>
-<li><p><strong>强度</strong>：指材料在承受外力作用时抵抗破坏的能力。通常用材料的屈服强度、抗拉强度或压缩强度等指标来描述，
-反映了材料抵抗破坏的极限能力</p></li>
-</ul>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>杆状构件：长度远大于高度和宽度的构件</p>
-</aside>
-<div class="dropdown admonition seealso">
-<p class="admonition-title">See also</p>
-<p><strong>材料力学</strong>：研究<strong>杆状</strong>构件在拉压、剪切、弯曲和扭转作用下的应力与位移。通过对构件的形变状态或应力分布作出合理假定，
-简化了数学推导，尽管结果为近似值，也具有足够的工程精度</p>
-<p><strong>结构力学</strong>：在材料力学的基础上，研究由多个杆件组成的结构系统在外力作用下的内力分布、变形和稳定性</p>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="green-naghdi">
+<h1>Green-Naghdi 应力率<a class="headerlink" href="#green-naghdi" title="Link to this heading">#</a></h1>
+<span class="gray-text">
+Green-Naghdi 应力率的核心思想是：在随材料点极体旋转的参考系中，描述应力的变化，从而消除刚体旋转对应力率的影响
+</span>
+<p>Green-Naghdi 应力率同样基于共旋导数，区别在于，Jaumann 应力率使用局部瞬时旋转</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{\mathbf{e}}_{i} = \mathbf{W}\mathbf{e}_{i},
+\]</div>
+<p><strong>Green-Naghdi 应力率使用的是材料基于初始状态的的整体旋转</strong></p>
+<section id="id1">
+<h2>Green-Naghdi 应力率<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>设初始基底为 <span class="math notranslate nohighlight">\(\{\tilde{\mathbf{e}}_{i}\}_{i=1,2,3}\)</span>（不妨选为标准正交基），满足</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}\mathbf{e}_{1}&amp;\mathbf{e}_{2}&amp;\mathbf{e}_{3}\end{bmatrix} = \begin{bmatrix}\tilde{\mathbf{e}}_{1}&amp;\tilde{\mathbf{e}}_{2}&amp;\tilde{\mathbf{e}}_{3}\end{bmatrix}Q(t) = Q,
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(Q\)</span> 来源于变形梯度矩阵的极分解 <span class="math notranslate nohighlight">\(F = QU\)</span>，是旋转矩阵</p>
+<p>则</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{e}_{i}  = \mathbf{q}_{i}\quad\Longrightarrow\quad \dot{\mathbf{e}}_{i} = \dot{\mathbf{q}}_{i},
+\]</div>
+<p>代入到式 <a class="reference internal" href="sec1-jaumann.html#equation-sec1-eq-jaumann-0">(26)</a> 中，得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\dot{\sigma}_{ij}\mathbf{q}_{i}\mathbf{q}_{j}^{T} &amp;= \dot{\boldsymbol{\sigma}} - \sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T} - \sigma_{ij}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T}\\
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\begin{aligned}
+\dot{Q}Q^{T} = (\dot{\mathbf{q}}_{k}\tilde{\mathbf{e}}_{k}^{T})(\mathbf{q}_{l}\tilde{\mathbf{e}}_{l}^{T})^{T} = \dot{\mathbf{q}}_{k}\tilde{\mathbf{e}}_{k}^{T}\tilde{\mathbf{e}}_{l}\mathbf{q}_{l} = \dot{\mathbf{q}}_{k}\mathbf{q}_{k}^{T},
+\end{aligned}
+\end{equation}
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{Q}Q^{T}\boldsymbol{\sigma} = (\dot{\mathbf{q}}_{k}\mathbf{q}_{k}^{T})(\sigma_{ij}\mathbf{q}_{i}\mathbf{q}_{j}^{T}) = \sigma_{ij}\dot{\mathbf{q}}_{k}\mathbf{q}_{k}^{T}\mathbf{q}_{i}\mathbf{q}_{j}^{T} = \sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T} ,
+\]</div>
+<p>于是</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma}Q\dot{Q}^{T} = (\dot{Q}Q^{T}\boldsymbol{\sigma})^{T} = (\sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T})^{T} = \sigma_{ij}\mathbf{q}_{j}\dot{\mathbf{q}}_{i}^{T}= \sigma_{ji}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T} = \sigma_{ij}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T},
+\]</div>
+<p>代入上面两式到式 <a class="reference internal" href="sec1-jaumann.html#equation-sec1-eq-jaumann-0">(26)</a> 得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\dot{\sigma}_{ij}\mathbf{q}_{i}\mathbf{q}_{j}^{T} &amp;= \dot{\boldsymbol{\sigma}} - \dot{Q}Q^{T}\boldsymbol{\sigma} - \boldsymbol{\sigma}Q\dot{Q}^{T}\\
+&amp;=\dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma}(\dot{Q}Q^{T}) - (\dot{Q}Q^{T})\boldsymbol{\sigma}.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>记 <span class="math notranslate nohighlight">\(\boldsymbol{\Omega} = \dot{Q}Q^{T}\)</span>，得到 Green-Naghdi 应力率</p>
+<div class="math notranslate nohighlight">
+\[
+\overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} \boldsymbol{\Omega} - \boldsymbol{\Omega} \boldsymbol{\sigma}.
+\]</div>
+<p><strong>Green-Naghdi 应力率通过跟踪材料元的累计旋转 <span class="math notranslate nohighlight">\(\dot{\mathbf{e}}_{i} = \dot{\mathbf{q}}_{i}\)</span>，能够准确反映大旋转过程中的应力变化，适用于以刚体旋转为主的大旋转问题。相比 Jaumann 应力率，它能有效避免因旋转描述不准确而产生的“伪应力”。但在涉及显著剪切、拉伸等复杂大变形时，其物理描述仍有限，且实现复杂、计算量大</strong></p>
+<section id="id2">
+<h3>客观性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>由于在刚体旋转阶段</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{W} = \dot{Q}Q^{T} = -Q\dot{Q}^{T} = \boldsymbol{\Omega},
+\]</div>
+<p>因此，Green-Naghdi 应力率的客观性也同 Jaumann 应力率得到满足</p>
+</section>
+<section id="id3">
+<h3>协变性<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>即，若存在坐标旋转变换</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}'(t) = Q_{r}(t)\mathbf{x}(t),
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight">
+\[
+\overset{\circ}{\boldsymbol{\sigma}'} := \dot{\boldsymbol{\sigma}}' + \boldsymbol{\sigma}' \boldsymbol{\Omega}' - \boldsymbol{\Omega}' \boldsymbol{\sigma}' = Q_{r}\overset{\circ}{\boldsymbol{\sigma}}Q_{r}^{T}.
+\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\begin{aligned}
+\boldsymbol{\Omega}'= \dot{Q}'Q'^{T},
+\end{aligned}
+\end{equation}
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(Q'\)</span> 来自变形梯度矩阵 <span class="math notranslate nohighlight">\(F' = Q'U'\)</span> 的极分解，由于</p>
+<div class="math notranslate nohighlight">
+\[
+F' = Q_{r}F = Q_{r}QU
+\]</div>
+<p>根据极分解的唯一性，有</p>
+<div class="math notranslate nohighlight">
+\[
+Q' = Q_{r}Q,
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\Omega}'=\dot{Q}'Q'^{T}= \dot{Q}_{r}Q_{r}^{T} + Q_{r}\dot{Q}Q^{T}Q_{r}^{T} = \dot{Q}_{r}Q_{r}^{T} + Q_{r}\boldsymbol{\Omega}Q_{r}^{T}.
+\]</div>
+<p>由于</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\dot{\boldsymbol{\sigma}}' &amp;= \dot{Q}_{r}\boldsymbol{\sigma}Q_{r}^T+Q_{r}\dot{\boldsymbol{\sigma}}Q_{r}^T+Q_{r}\boldsymbol{\sigma}\dot{Q}_{r}^T,\\
+\boldsymbol{\sigma}' \boldsymbol{\Omega}' &amp;= Q_{r}\boldsymbol{\sigma}\boldsymbol{\Omega}Q_{r}^{T} + Q_{r}\boldsymbol{\sigma}Q_{r}^{T}\dot{Q}_{r}Q_{r}^{T},\\
+-\boldsymbol{\Omega}'\boldsymbol{\sigma}'&amp;=-Q_{r}\boldsymbol{\Omega}\boldsymbol{\sigma}Q_{r}^{T} - \dot{Q}_{r}\boldsymbol{\sigma}Q_{r}^{T}，
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(\dot{Q}_{r}Q_{r}^{T} = -Q_{r}\dot{Q}_{r}^{T}\)</span> 到 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}' \boldsymbol{\Omega}'\)</span>，三式相加得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{aligned}
+\overset{\circ}{\boldsymbol{\sigma}'} &amp;= \dot{\boldsymbol{\sigma}}' + \boldsymbol{\sigma}' \boldsymbol{\Omega}' -\boldsymbol{\Omega}'\boldsymbol{\sigma}' \\
+&amp;= Q_{r}(\dot{\boldsymbol{\sigma}}+\boldsymbol{\sigma}\boldsymbol{\Omega}-\boldsymbol{\Omega}\boldsymbol{\sigma})Q_{r}^{T} \\
+&amp;= Q_{r}\overset{\circ}{\boldsymbol{\sigma}}Q_{r}^{T}.
+\end{aligned}
+\end{equation}
+\end{split}\]</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -493,7 +621,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/Elasticity/chap1"
+            path: "./content/Tensor/chap5"
         },
         predefinedOutput: true
     }
@@ -511,20 +639,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../Tensor/chap5/sec2-green-naghdi.html"
+       href="sec1-jaumann.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Green-Naghdi 应力率</p>
+        <p class="prev-next-title">Jaumann 应力率</p>
       </div>
     </a>
     <a class="right-next"
-       href="sec1-stress_strain_displ.html"
+       href="../../Elasticity/chap1/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">应力 应变 位移</p>
+        <p class="prev-next-title">简介</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -534,6 +662,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Green-Naghdi 应力率</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">客观性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">协变性</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

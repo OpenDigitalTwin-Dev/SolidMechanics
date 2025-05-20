@@ -131,7 +131,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \mathbf{D} = \frac{1}{2}(\mathbf{L}+\mathbf{L}^{T})&=\frac{1}{2}(Q\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U}Q^{T})\\
-&=\frac{1}{2}Q(\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U})Q^{T},
+&=\frac{1}{2}Q(\dot{U}U^{-1} + U^{-1}\dot{U})Q^{T},
 \end{aligned}
 \end{equation}
 $$
@@ -141,17 +141,17 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{W} = \mathbf{L} - \mathbf{D} = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
+\mathbf{W} = \mathbf{L} - \mathbf{D} = \frac{1}{2}Q(\dot{U}U^{-1} - U^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
 \end{aligned}
 \end{equation}
 $$
 
-### 刚体旋转
+### 刚体旋转阶段
 
-对于刚体旋转变换，有
+$F$ 记录了从初始到当前的全部运动，当某一段运动为刚体旋转时，$U$ 保持不变（不为 0），即
 
 $$
-U = I,
+\dot{U} = 0,
 $$
 
 此时

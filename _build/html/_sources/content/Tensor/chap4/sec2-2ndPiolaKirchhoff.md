@@ -15,6 +15,11 @@ $$
 
 PK2 应力描述的是**参考力在参考面积上的分布**，该参考力并非真实存在的力，而是通过逆变形梯度 $F^{-1}$ 将真实力 $\mathrm{d}\mathbf{f}$ 映射回参考构型的等效力 $\mathrm{d}\mathbf{F}_{\text{ref}}$
 
+也可以用 $\mathbf{S}$ 表示 $\boldsymbol{\sigma}$
+
+$$
+\boldsymbol{\sigma} = JF\mathbf{S}F^{T}.
+$$
 
 ## 对称性
 

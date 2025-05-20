@@ -223,6 +223,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap5/sec2-green-naghdi.html">Green-Naghdi 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -455,7 +456,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">几何解释</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">极分解</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">刚体旋转阶段</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">局部体积变化速率</a></li>
 </ul>
 </li>
@@ -585,7 +586,7 @@ F = QU,
 \begin{equation}
 \begin{aligned}
 \mathbf{D} = \frac{1}{2}(\mathbf{L}+\mathbf{L}^{T})&amp;=\frac{1}{2}(Q\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U}Q^{T})\\
-&amp;=\frac{1}{2}Q(\dot{U}U^{-1}Q^{T} + QU^{-1}\dot{U})Q^{T},
+&amp;=\frac{1}{2}Q(\dot{U}U^{-1} + U^{-1}\dot{U})Q^{T},
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
@@ -594,17 +595,17 @@ F = QU,
 \[
 \begin{equation}
 \begin{aligned}
-\mathbf{W} = \mathbf{L} - \mathbf{D} = \frac{1}{2}Q(\dot{U}U^{-1}Q^{T} - QU^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
+\mathbf{W} = \mathbf{L} - \mathbf{D} = \frac{1}{2}Q(\dot{U}U^{-1} - U^{-1}\dot{U})Q^{T} + \dot{Q}Q^{T}.
 \end{aligned}
 \end{equation}
 \]</div>
 </section>
 <section id="id5">
-<h3>刚体旋转<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>对于刚体旋转变换，有</p>
+<h3>刚体旋转阶段<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(F\)</span> 记录了从初始到当前的全部运动，当某一段运动为刚体旋转时，<span class="math notranslate nohighlight">\(U\)</span> 保持不变（不为 0），即</p>
 <div class="math notranslate nohighlight">
 \[
-U = I,
+\dot{U} = 0,
 \]</div>
 <p>此时</p>
 <div class="math notranslate nohighlight">
@@ -848,7 +849,7 @@ a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} &amp; \mathbf{b} &amp; \mathbf{c}\end{bm
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速度梯度场分解</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">几何解释</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">极分解</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">刚体旋转</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">刚体旋转阶段</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">局部体积变化速率</a></li>
 </ul>
 </li>

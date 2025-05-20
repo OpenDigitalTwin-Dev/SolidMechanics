@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -223,6 +223,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec2-green-naghdi.html">Green-Naghdi 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -466,7 +467,7 @@ document.write(`
 <p>在之后的内容中，统一使用 <span class="math notranslate nohighlight">\(\sigma\)</span> 表示切应力</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-sec5-eq-strain-stress-1">
-<span class="eqno">(34)<a class="headerlink" href="#equation-sec5-eq-strain-stress-1" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(32)<a class="headerlink" href="#equation-sec5-eq-strain-stress-1" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;\varepsilon_{xx} = \frac{1}{E} \left[ \sigma_{xx} - \nu (\sigma_{yy} + \sigma_{zz}) \right],\\
@@ -488,7 +489,7 @@ document.write(`
 </ol>
 <p>它们之间满足</p>
 <div class="math notranslate nohighlight" id="equation-sec5-eq-strain-stress-2">
-<span class="eqno">(35)<a class="headerlink" href="#equation-sec5-eq-strain-stress-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(33)<a class="headerlink" href="#equation-sec5-eq-strain-stress-2" title="Link to this equation">#</a></span>\[
 G = \frac{E}{2(1+\nu)}.
 \]</div>
 <p>应力与应变的关系可以写为</p>

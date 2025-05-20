@@ -4,19 +4,11 @@
 Jaumann 应力率的核心思想是：在随材料局部旋转的共旋坐标系中描述应力的变化，从而消除刚体旋转对应力率的影响
 </span>
 
-Jaumann 应力率通过引入修正项，有效剔除了由刚体旋转引起的虚假应力变化
+## Jaumann 应力率
 
-$$
-\overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} W - W \boldsymbol{\sigma},
-$$
+### 共旋导数
 
-其中，$W$ 是旋转率张量，是速度梯度 $L=\nabla\mathbf{v}$ 的反对称部分
-
-$$
-W = \frac{1}{2}(L - L^{T}).
-$$
-
-## 几何解释
+共旋导数是“去除了参考系旋转影响”的时间导数，反映了物理量在随体坐标系下的真实变化率
 
 应力张量在随体基底 $\{\mathbf{e}_{i}\}_{i=1,2,3}$ 下可以写为
 
@@ -41,80 +33,51 @@ $$
 \dot{\sigma_{ij}}\mathbf{e}_{i}\mathbf{e}_{j}^{T} = \dot{\boldsymbol{\sigma}} - \sigma_{ij}\dot{\mathbf{e}}_{i}\mathbf{e}_{j}^{T} - \sigma_{ij}\mathbf{e}_{i}\dot{\mathbf{e}}_{j}^{T},
 $$ (sec1-eq:Jaumann-0)
 
-设随体基底与初始基底 $\{\tilde{\mathbf{e}}_{i}\}_{i=1,2,3}$（不妨选为标准正交基）满足
+**在 Jaumann 应力率中，使用**
 
 $$
-\begin{bmatrix}\mathbf{e}_{1}&\mathbf{e}_{2}&\mathbf{e}_{3}\end{bmatrix} = \begin{bmatrix}\tilde{\mathbf{e}}_{1}&\tilde{\mathbf{e}}_{2}&\tilde{\mathbf{e}}_{3}\end{bmatrix}Q(t) = Q,
+\dot{\mathbf{e}}_{i} = \mathbf{W}\mathbf{e}_{i},
 $$
 
-则
+因此
 
 $$
-\mathbf{e}_{i}  = \mathbf{q}_{i},
-$$
-
-其中，$\mathbf{q}_{i}$ 是过度矩阵 $Q$ 的第 $i$ 列，于是
-
-$$
-\dot{\mathbf{e}}_{i} = \dot{\mathbf{q}}_{i},
-$$
-
-代入到式 {eq}`sec1-eq:Jaumann-0` 中，得到
-
-$$
-\begin{equation}
-\begin{aligned}
-\dot{\sigma}_{ij}\mathbf{q}_{i}\mathbf{q}_{j}^{T} &= \dot{\boldsymbol{\sigma}} - \sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T} - \sigma_{ij}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T}\\
-\end{aligned}
-\end{equation}
-$$
-
-由于
-
-$$
-\begin{equation}
-\begin{aligned}
-\dot{Q}Q^{T} = (\dot{\mathbf{q}}_{k}\tilde{\mathbf{e}}_{k}^{T})(\mathbf{q}_{l}\tilde{\mathbf{e}}_{l}^{T})^{T} = \dot{\mathbf{q}}_{k}\tilde{\mathbf{e}}_{k}^{T}\tilde{\mathbf{e}}_{l}\mathbf{q}_{l} = \dot{\mathbf{q}}_{k}\mathbf{q}_{k}^{T},
-\end{aligned}
-\end{equation}
+\dot{\sigma_{ij}}\mathbf{e}_{i}\mathbf{e}_{j}^{T} = \dot{\boldsymbol{\sigma}} - \sigma_{ij}\mathbf{W}\mathbf{e}_{i}\mathbf{e}_{j}^{T} + \sigma_{ij}\mathbf{e}_{i}\mathbf{e}_{j}^{T}\mathbf{W},
 $$
 
 故
 
 $$
-\dot{Q}Q^{T}\boldsymbol{\sigma} = (\dot{\mathbf{q}}_{k}\mathbf{q}_{k}^{T})(\sigma_{ij}\mathbf{q}_{i}\mathbf{q}_{j}^{T}) = \sigma_{ij}\dot{\mathbf{q}}_{k}\mathbf{q}_{k}^{T}\mathbf{q}_{i}\mathbf{q}_{j}^{T} = \sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T} ,
+\dot{\sigma_{ij}}\mathbf{e}_{i}\mathbf{e}_{j}^{T} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma}\mathbf{W} - \mathbf{W}\boldsymbol{\sigma}.
 $$
 
-于是
+于是得到 Jaumann 应力率
 
 $$
-\boldsymbol{\sigma}Q\dot{Q}^{T} = (\dot{Q}Q^{T}\boldsymbol{\sigma})^{T} = (\sigma_{ij}\dot{\mathbf{q}}_{i}\mathbf{q}_{j}^{T})^{T} = \sigma_{ij}\mathbf{q}_{j}\dot{\mathbf{q}}_{i}^{T}= \sigma_{ji}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T} = \sigma_{ij}\mathbf{q}_{i}\dot{\mathbf{q}}_{j}^{T},
+\overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} \mathbf{W} - \mathbf{W} \boldsymbol{\sigma}.
 $$
 
-代入上面两式到式 {eq}`sec1-eq:Jaumann-0` 得到
+Jaumann 应力率通过引入旋转修正项，有效剔除了由刚体旋转引起的虚假应力变化，且具有形式简单、计算高效的优点
 
-$$
-\begin{equation}
-\begin{aligned}
-\dot{\sigma}_{ij}\mathbf{q}_{i}\mathbf{q}_{j}^{T} &= \dot{\boldsymbol{\sigma}} - \dot{Q}Q^{T}\boldsymbol{\sigma} - \boldsymbol{\sigma}Q\dot{Q}^{T}\\
-&=\dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma}(\dot{Q}Q^{T}) - (\dot{Q}Q^{T})\boldsymbol{\sigma}.
-\end{aligned}
-\end{equation}
-$$
+**Jaumann 应力率在小变形或小旋转的弹塑性问题中，能够较好地反映材料的实际物理行为，因此被广泛应用于常规工程分析。然而，由于其假设基底的旋转速率为 $\dot{\mathbf{e}}_{i} = \mathbf{W}\mathbf{e}_{i}$，而 $\mathbf{W}$ 在大变形条件下难以准确描述材料元的实际旋转，容易引入非物理的“伪应力”，导致数值结果失真。因此，Jaumann应力率并不适用于大变形的问题**
 
+### 客观性
 
-## 客观性
+<span class="gray-text">
+参考系独立性或刚体旋转不变性
+</span>
 
-假设物体**只进行刚体旋转变换**（$\mathbf{x}_{0}$ 为初始状态）
+设存在**刚体旋转变换**（$\mathbf{x}_{0}$ 为当前状态）
 
 $$
 \mathbf{x}(t) = Q(t)\mathbf{x}_{0},
 $$
 
-其中，$Q(t)$ 是正交矩阵，于是
+其中，$Q(t)$ 表示同一次刚体旋转过程中，在时刻 $t$ 的正交旋转矩阵，因此，在旋转过程中
 
 $$
-\boldsymbol{\sigma} = Q(t)\boldsymbol{\sigma}_{0}Q^{T}(t),
+\boldsymbol{\sigma}(t) = Q(t)\boldsymbol{\sigma}_{0}Q^{T}(t),\quad
+\boldsymbol{\sigma}(0) = \boldsymbol{\sigma}_{0},
 $$
 
 故
@@ -128,84 +91,52 @@ $$
 \end{equation}
 $$
 
-由于在刚体旋转中
+由于在[刚体旋转阶段](../chap3/sec1-velocity-gradient.md)
 
 $$
-W = \dot{Q}Q^{T} = -Q\dot{Q}^{T},
+\mathbf{W} = \dot{Q}Q^{T} = -Q\dot{Q}^{T},
 $$
 
 故
 
 $$
-\dot{\boldsymbol{\sigma}} = W\boldsymbol{\sigma}-\boldsymbol{\sigma}W,
+\dot{\boldsymbol{\sigma}} = \mathbf{W}\boldsymbol{\sigma}-\boldsymbol{\sigma}\mathbf{W},
 $$
 
-于是
+因此，Jaumann 应力率在纯刚体旋转下，满足客观性要求
 
 $$
-\overset{\circ}{\boldsymbol{\sigma}} = 0.
+\overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} \mathbf{W} - \mathbf{W} \boldsymbol{\sigma} = 0.
 $$
 
-## 协变性
+### 协变性
 
-此处证明
+<span class="gray-text">
+随坐标系变换正交相似变换
+</span>
 
-$$
-\overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} L + L^{T} \boldsymbol{\sigma}
-$$ (sec1-eq:Jaumann-1)
-
-是协变的，即若存在实时的坐标旋转变换
+即，若存在坐标旋转变换
 
 $$
-\mathbf{x}'(t) = Q(t)\mathbf{x}(t),
+\mathbf{x}'(t) = Q_{r}(t)\mathbf{x}(t),
 $$
 
 则
 
 $$
-\overset{\circ}{\boldsymbol{\sigma}'} = Q\overset{\circ}{\boldsymbol{\sigma}}Q^{T}.
+\overset{\circ}{\boldsymbol{\sigma}'} := \dot{\boldsymbol{\sigma}}' + \boldsymbol{\sigma}' \mathbf{W}' - \mathbf{W}' \boldsymbol{\sigma}' = Q_{r}\overset{\circ}{\boldsymbol{\sigma}}Q_{r}^{T}.
 $$
 
 由于
 
 $$
-F'=\frac{\partial \mathbf{x}'}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}'}{\partial \mathbf{x}}\frac{\partial \mathbf{x}}{\partial \mathbf{X}} = QF,
-$$
-
-于是
-
-$$
 \begin{equation}
 \begin{aligned}
-L' = \dot{F}'F'^{-1} &= (\dot{Q}F+Q\dot{F})F^{-1}Q^{T}\\
-&=\dot{Q}Q^{T}+Q\dot{F}F^{-1}Q^{T}\\
-&=\dot{Q}Q^{T} + QLQ^{T}
+\mathbf{L}' = \dot{F}'F'^{-1} &= (\dot{Q}_{r}F+Q_{r}\dot{F})F^{-1}Q_{r}^{T}\\
+&=\dot{Q}_{r}Q_{r}^{T}+Q_{r}\dot{F}F^{-1}Q_{r}^{T}\\
+&=\dot{Q}_{r}Q_{r}^{T} + Q_{r}\mathbf{L}Q_{r}^{T},
 \end{aligned}
 \end{equation}
-$$
-
-此外，根据坐标变换有
-
-$$
-\boldsymbol{\sigma}' = Q\boldsymbol{\sigma}Q^{T},
-$$
-
-于是
-
-$$
-\begin{equation}
-\begin{aligned}
-\dot{\boldsymbol{\sigma}}' &= \dot{Q}\boldsymbol{\sigma}Q^{T} + Q\dot{\boldsymbol{\sigma}}Q^{T} + Q\boldsymbol{\sigma}\dot{Q^{T}},\\
-\boldsymbol{\sigma}'L' &=Q\boldsymbol{\sigma}Q^{T}\dot{Q}Q^{T}+Q\boldsymbol{\sigma}LQ^{T},\\
-L'^{T} \boldsymbol{\sigma}' &=Q\dot{Q}^{T}Q\boldsymbol{\sigma}Q^{T}+QL^{T}\boldsymbol{\sigma}Q^{T}.
-\end{aligned}
-\end{equation}
-$$ (sec1-eq:Jaumann-2)
-
-由于 
-
-$$
-\dot{Q}Q^{T} = -Q\dot{Q}^{T}
 $$
 
 故
@@ -213,34 +144,31 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-Q\boldsymbol{\sigma}Q^{T}\dot{Q}Q^{T}&=-Q\boldsymbol{\sigma}\dot{Q}^{T}\\
-Q\dot{Q}^{T}Q\boldsymbol{\sigma}Q^{T}&=-\dot{Q}\boldsymbol{\sigma}Q^{T}
+\mathbf{W}' = \frac{1}{2}(\mathbf{L}' - \mathbf{L}'^{T}) = \dot{Q}_{r}Q_{r}^{T} + Q_{r}\mathbf{W}Q_{r}^{T}.
 \end{aligned}
 \end{equation}
 $$
 
-代入到式 {eq}`sec1-eq:Jaumann-2` 并三式相加得到
+由于
 
 $$
 \begin{equation}
 \begin{aligned}
-\overset{\circ}{\boldsymbol{\sigma}'} &= \dot{\boldsymbol{\sigma}}' + L'^{T} \boldsymbol{\sigma}' + \boldsymbol{\sigma}'L' \\
-&=Q\dot{\boldsymbol{\sigma}}Q^{T} + Q\boldsymbol{\sigma}LQ^{T}-QL\boldsymbol{\sigma}Q^{T}\\
-&=Q(\dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma}L + L^{T}\boldsymbol{\sigma})Q^{T}\\
-&=Q\overset{\circ}{\boldsymbol{\sigma}}Q^{T}.
+\dot{\boldsymbol{\sigma}}' &= \dot{Q}_{r}\boldsymbol{\sigma}Q_{r}^T+Q_{r}\dot{\boldsymbol{\sigma}}Q_{r}^T+Q_{r}\boldsymbol{\sigma}\dot{Q}_{r}^T,\\
+\boldsymbol{\sigma}' \mathbf{W}' &= Q_{r}\boldsymbol{\sigma}\mathbf{W}Q_{r}^{T} + Q_{r}\boldsymbol{\sigma}Q_{r}^{T}\dot{Q}_{r}Q_{r}^{T},\\
+-\mathbf{W}'\boldsymbol{\sigma}'&=-Q_{r}\mathbf{W}\boldsymbol{\sigma}Q_{r}^{T} - \dot{Q}_{r}\boldsymbol{\sigma}Q_{r}^{T}，
 \end{aligned}
 \end{equation}
 $$
 
-对于刚体旋转变换
+代入 $\dot{Q}_{r}Q_{r}^{T} = -Q_{r}\dot{Q}_{r}^{T}$ 到 $\boldsymbol{\sigma}' \mathbf{W}'$，三式相加得到
 
 $$
-\mathbf{x}(t) = \mathbf{Q}(t)\mathbf{X},
-$$
-
-
-有 $L=W,L^{T} = -W$，故式 {eq}`sec1-eq:Jaumann-1` 退化为
-
-$$
-\overset{\circ}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} W - W \boldsymbol{\sigma}.
+\begin{equation}
+\begin{aligned}
+\overset{\circ}{\boldsymbol{\sigma}'} &= \dot{\boldsymbol{\sigma}}' + \boldsymbol{\sigma}' \mathbf{W}' -\mathbf{W}'\boldsymbol{\sigma}' \\
+&= Q_{r}(\dot{\boldsymbol{\sigma}}+\boldsymbol{\sigma}\mathbf{W}-\mathbf{W}\boldsymbol{\sigma})Q_{r}^{T} \\
+&= Q_{r}\overset{\circ}{\boldsymbol{\sigma}}Q_{r}^{T}.
+\end{aligned}
+\end{equation}
 $$

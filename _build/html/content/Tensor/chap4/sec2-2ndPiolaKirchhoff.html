@@ -223,6 +223,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chap5/sec2-green-naghdi.html">Green-Naghdi 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -478,6 +479,11 @@ document.write(`
 \]</div>
 <p><a class="reference internal" href="sec1-1stPiolaKirchhoff.html"><span class="std std-doc">PK1 应力</span></a>描述的是<strong>当前力在参考面积上的分布</strong>，表示参考构型下单位面积上所受的当前构型下的力</p>
 <p>PK2 应力描述的是<strong>参考力在参考面积上的分布</strong>，该参考力并非真实存在的力，而是通过逆变形梯度 <span class="math notranslate nohighlight">\(F^{-1}\)</span> 将真实力 <span class="math notranslate nohighlight">\(\mathrm{d}\mathbf{f}\)</span> 映射回参考构型的等效力 <span class="math notranslate nohighlight">\(\mathrm{d}\mathbf{F}_{\text{ref}}\)</span></p>
+<p>也可以用 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 表示 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\sigma} = JF\mathbf{S}F^{T}.
+\]</div>
 <section id="id1">
 <h2>对称性<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>若 <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> 对称，则 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 也对称</p>
