@@ -224,6 +224,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Tensor/chap5/intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec1-jaumann.html">Jaumann 应力率</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec2-green-naghdi.html">Green-Naghdi 应力率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tensor/chap5/sec3-truesdell.html">Treusdell 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -472,7 +473,7 @@ document.write(`
 </span>
 <p>Hill（1950）提出了各向异性形式的 von Mises 屈服准则，将原有的第二偏应力不变量 <span class="math notranslate nohighlight">\(J_{2}\)</span> 替换为应力分量的一个更为一般的二次型函数</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-anisotropic-1">
-<span class="eqno">(80)<a class="headerlink" href="#equation-sec6-eq-anisotropic-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(82)<a class="headerlink" href="#equation-sec6-eq-anisotropic-1" title="Link to this equation">#</a></span>\[
 \frac{1}{2} A_{ijkl} \sigma_{ij} \sigma_{kl} = \tau_{y}^2,
 \]</div>
 <p>其中，<span class="math notranslate nohighlight">\(A_{ijkl} = A_{jikl} = A_{ijlk} = A_{klij}\)</span> 是各向异性张量。将应力张量分解为静水压力部分和偏应力部分</p>
@@ -480,14 +481,14 @@ document.write(`
 \[
 \sigma_{ij} = s_{ij} + p\delta_{ij},\quad p = \frac{1}{3}\sigma_{kk},
 \]</div>
-<p>于是式 <a class="reference internal" href="#equation-sec6-eq-anisotropic-1">(80)</a> 写为</p>
+<p>于是式 <a class="reference internal" href="#equation-sec6-eq-anisotropic-1">(82)</a> 写为</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{2}A_{ijkl}s_{ij}s_{kl} + p A_{ijkk} s_{ij} + \frac{1}{2}p^2 A_{iijj} = \tau_{y}^2,
 \]</div>
 <p>如果塑性屈服准则与静水压力 <span class="math notranslate nohighlight">\(p\)</span> 无关，则一定有 <span class="math notranslate nohighlight">\(A_{ijkk} = 0\)</span>，因此上式变为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-anisotropic-2">
-<span class="eqno">(81)<a class="headerlink" href="#equation-sec6-eq-anisotropic-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(83)<a class="headerlink" href="#equation-sec6-eq-anisotropic-2" title="Link to this equation">#</a></span>\[
 \frac{1}{2}A_{ijkl}s_{ij}s_{kl} = \tau_{y}^2.
 \]</div>
 <p>当满足</p>
@@ -495,7 +496,7 @@ document.write(`
 \[
 A_{ijkl} = \frac{1}{2} \left( \delta_{ik} \delta_{jl} + \delta_{il} \delta_{jk} \right) - \frac{1}{3} \delta_{ij} \delta_{kl}
 \]</div>
-<p>时，式 <a class="reference internal" href="#equation-sec6-eq-anisotropic-2">(81)</a> 退化为各向同性的 Mises 屈服准则</p>
+<p>时，式 <a class="reference internal" href="#equation-sec6-eq-anisotropic-2">(83)</a> 退化为各向同性的 Mises 屈服准则</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">证明</p>
 <p>对于第一项</p>
@@ -508,7 +509,7 @@ A_{ijkl} = \frac{1}{2} \left( \delta_{ik} \delta_{jl} + \delta_{il} \delta_{jk} 
 \[
 \frac{1}{3} \delta_{ij} \delta_{kl}s_{ij}s_{kl} = \frac{1}{3}s_{ii}s_{kk} = \frac{1}{3}\text{tr}(\mathbf{s})^{2} = 0.
 \]</div>
-<p>故式 <a class="reference internal" href="#equation-sec6-eq-anisotropic-2">(81)</a> 变为</p>
+<p>故式 <a class="reference internal" href="#equation-sec6-eq-anisotropic-2">(83)</a> 变为</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{2}s_{ij}s_{ij} = J_{2} = \tau_{y}^2.
@@ -518,7 +519,7 @@ A_{ijkl} = \frac{1}{2} \left( \delta_{ik} \delta_{jl} + \delta_{il} \delta_{jk} 
 <h2>Hill 正交各向异性屈服准则<a class="headerlink" href="#hill" title="Link to this heading">#</a></h2>
 <p>Hill 正交各向异性屈服准则由 Hill 在 1948 年提出，在材料主轴系下表示为</p>
 <div class="math notranslate nohighlight" id="equation-sec6-eq-hill">
-<span class="eqno">(82)<a class="headerlink" href="#equation-sec6-eq-hill" title="Link to this equation">#</a></span>\[
+<span class="eqno">(84)<a class="headerlink" href="#equation-sec6-eq-hill" title="Link to this equation">#</a></span>\[
 F(\sigma_{22} - \sigma_{33})^2 + G(\sigma_{33} - \sigma_{11})^2 + H(\sigma_{11} - \sigma_{22})^2 + 2L\sigma_{23}^2 + 2M\sigma_{31}^2 + 2N\sigma_{12}^2 = 1
 \]</div>
 <ul class="simple">
@@ -557,7 +558,7 @@ N = F+2H = G+2H,\quad L=M.
 \[
 L=M=N=3F=3G=3H,
 \]</div>
-<p>此时，式 <a class="reference internal" href="#equation-sec6-eq-hill">(82)</a> 退化为各向同性的 Mises 屈服准则</p>
+<p>此时，式 <a class="reference internal" href="#equation-sec6-eq-hill">(84)</a> 退化为各向同性的 Mises 屈服准则</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{6}((\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 + (\sigma_{11} - \sigma_{22})^2) + (\sigma_{23}^2 + \sigma_{31}^2 + \sigma_{12}^2) = J_{2} = \tau_{y}^2.

@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -64,6 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Tensor/chap5/sec3-truesdell';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="简介" href="../../Elasticity/chap1/intro.html" />
+    <link rel="prev" title="Green-Naghdi 应力率" href="sec2-green-naghdi.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +127,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -200,7 +200,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">张量分析</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">基本定义</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chap1/sec1-OT.html">正交变换</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chap1/sec2-invarient.html">张量不变量</a></li>
@@ -221,9 +221,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../chap4/sec2-2ndPiolaKirchhoff.html">第二类 Piola-Kirchhoff 应力张量</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="intro.html">客观应力率</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">客观应力率</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sec1-jaumann.html">Jaumann 应力率</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sec2-green-naghdi.html">Green-Naghdi 应力率</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Treusdell 应力率</a></li>
 </ul>
 </details></li>
 </ul>
@@ -469,7 +470,7 @@ J\boldsymbol{\sigma} = F\mathbf{S}F^{T}
 \]</div>
 <p>上式两端对时间 <span class="math notranslate nohighlight">\(t\)</span> 求导，左端得</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-truesdell-1">
-<span class="eqno">()<a class="headerlink" href="#equation-sec3-eq-truesdell-1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(27)<a class="headerlink" href="#equation-sec3-eq-truesdell-1" title="Link to this equation">#</a></span>\[
 \frac{\mathrm{d}}{\mathrm{d}t}(J\boldsymbol{\sigma}) = \dot{J}\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}},
 \]</div>
 <p>右端得</p>
@@ -484,7 +485,7 @@ J\boldsymbol{\sigma} = F\mathbf{S}F^{T}
 \]</div>
 <p>于是</p>
 <div class="math notranslate nohighlight" id="equation-sec3-eq-truesdell-2">
-<span class="eqno">()<a class="headerlink" href="#equation-sec3-eq-truesdell-2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(28)<a class="headerlink" href="#equation-sec3-eq-truesdell-2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 \frac{\mathrm{d}}{\mathrm{d}t}(F\mathbf{S}F^{T})&amp;=\mathbf{L}F\mathbf{S}F^{T}+F\dot{\mathbf{S}}F^{T}+F\mathbf{S}F^{T}\mathbf{L}^{T}\\
@@ -492,7 +493,7 @@ J\boldsymbol{\sigma} = F\mathbf{S}F^{T}
 \end{aligned}
 \end{equation}
 \end{split}\]</div>
-<p>综合式 <a class="reference internal" href="#equation-sec3-eq-truesdell-1">()</a> 和 <a class="reference internal" href="#equation-sec3-eq-truesdell-2">()</a>，得</p>
+<p>综合式 <a class="reference internal" href="#equation-sec3-eq-truesdell-1">(27)</a> 和 <a class="reference internal" href="#equation-sec3-eq-truesdell-2">(28)</a>，得</p>
 <div class="math notranslate nohighlight">
 \[
 \dot{J}\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}} = J\mathbf{L}\boldsymbol{\sigma}+F\dot{\mathbf{S}}F^{T}+J\boldsymbol{\sigma}\mathbf{L}^{T},
@@ -534,6 +535,24 @@ J\boldsymbol{\sigma} = F\mathbf{S}F^{T}
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="sec2-green-naghdi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Green-Naghdi 应力率</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../Elasticity/chap1/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">简介</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
