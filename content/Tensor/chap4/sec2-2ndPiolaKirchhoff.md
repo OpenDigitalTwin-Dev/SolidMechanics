@@ -18,7 +18,7 @@ PK2 应力描述的是**参考力在参考面积上的分布**，该参考力并
 也可以用 $\mathbf{S}$ 表示 $\boldsymbol{\sigma}$
 
 $$
-\boldsymbol{\sigma} = JF\mathbf{S}F^{T}.
+\boldsymbol{\sigma} = J^{-1}F\mathbf{S}F^{T}.
 $$
 
 ## 对称性

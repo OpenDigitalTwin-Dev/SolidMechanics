@@ -9,7 +9,7 @@ $$
 根据 [PK2 应力](../chap4/sec2-2ndPiolaKirchhoff.md)，有
 
 $$
-J\boldsymbol{\sigma} = F\mathbf{S}F^{T}
+J\boldsymbol{\sigma} = F\mathbf{S}F^{T},
 $$
 
 上式两端对时间 $t$ 求导，左端得
@@ -36,7 +36,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \frac{\mathrm{d}}{\mathrm{d}t}(F\mathbf{S}F^{T})&=\mathbf{L}F\mathbf{S}F^{T}+F\dot{\mathbf{S}}F^{T}+F\mathbf{S}F^{T}\mathbf{L}^{T}\\
-&=J\mathbf{L}\boldsymbol{\sigma}+F\dot{\mathbf{S}}F^{T}+J\boldsymbol{\sigma}\mathbf{L}^{T}
+&=J\mathbf{L}\boldsymbol{\sigma}+F\dot{\mathbf{S}}F^{T}+J\boldsymbol{\sigma}\mathbf{L}^{T},
 \end{aligned}
 \end{equation}
 $$ (sec3-eq:truesdell-2)
