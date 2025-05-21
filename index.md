@@ -71,7 +71,7 @@ Explore this note &rarr;
 :margin: 2
 :class-body: text-center
 :class-header: bg-light text-center
-:link: content/Tensor/chap1/intro.html
+:link: content/Tensor/intro.html
 
 **张量分析**
 

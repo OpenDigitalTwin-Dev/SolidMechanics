@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=05f00ab6" />
   
@@ -498,10 +498,21 @@ J\boldsymbol{\sigma} = F\mathbf{S}F^{T}
 \[
 \dot{J}\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}} = J\mathbf{L}\boldsymbol{\sigma}+F\dot{\mathbf{S}}F^{T}+J\boldsymbol{\sigma}\mathbf{L}^{T},
 \]</div>
-<p>根据<a class="reference internal" href="../chap3/sec1-velocity-gradient.html"><span class="std std-doc">局部体积变化速率</span></a></p>
+<p>代入<a class="reference internal" href="../chap3/sec1-velocity-gradient.html"><span class="std std-doc">局部体积变化速率</span></a></p>
 <div class="math notranslate nohighlight">
 \[
-\dot{J} = J(\nabla\cdot\mathbf{v})
+\dot{J} = J\text{tr}(\mathbf{L}),
+\]</div>
+<p>两边除以 <span class="math notranslate nohighlight">\(J\)</span>，得到</p>
+<div class="math notranslate nohighlight">
+\[
+\text{tr}(\mathbf{L})\boldsymbol{\sigma} + \dot{\boldsymbol{\sigma}} =  \mathbf{L}\boldsymbol{\sigma} + J^{-1}F\dot{\mathbf{S}}F^{T} + \boldsymbol{\sigma}\mathbf{L}^{T}.
+\]</div>
+<p>Truesdell 应力率定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\overset{\circ}{\boldsymbol{\sigma}} = 
+J^{-1}F\dot{\mathbf{S}}F^{T} = \dot{\boldsymbol{\sigma}} - \mathbf{L}\boldsymbol{\sigma} - \boldsymbol{\sigma}\mathbf{L}^{T} + \text{tr}(\mathbf{L})\boldsymbol{\sigma}.
 \]</div>
 </section>
 

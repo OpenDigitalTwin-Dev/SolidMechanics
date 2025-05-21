@@ -47,8 +47,21 @@ $$
 \dot{J}\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}} = J\mathbf{L}\boldsymbol{\sigma}+F\dot{\mathbf{S}}F^{T}+J\boldsymbol{\sigma}\mathbf{L}^{T},
 $$
 
-根据[局部体积变化速率](../chap3/sec1-velocity-gradient.md)
+代入[局部体积变化速率](../chap3/sec1-velocity-gradient.md)
 
 $$
-\dot{J} = J(\nabla\cdot\mathbf{v})
+\dot{J} = J\text{tr}(\mathbf{L}),
+$$
+
+两边除以 $J$，得到
+
+$$
+\text{tr}(\mathbf{L})\boldsymbol{\sigma} + \dot{\boldsymbol{\sigma}} =  \mathbf{L}\boldsymbol{\sigma} + J^{-1}F\dot{\mathbf{S}}F^{T} + \boldsymbol{\sigma}\mathbf{L}^{T}.
+$$
+
+Truesdell 应力率定义为
+
+$$
+\overset{\circ}{\boldsymbol{\sigma}} = 
+J^{-1}F\dot{\mathbf{S}}F^{T} = \dot{\boldsymbol{\sigma}} - \mathbf{L}\boldsymbol{\sigma} - \boldsymbol{\sigma}\mathbf{L}^{T} + \text{tr}(\mathbf{L})\boldsymbol{\sigma}.
 $$
