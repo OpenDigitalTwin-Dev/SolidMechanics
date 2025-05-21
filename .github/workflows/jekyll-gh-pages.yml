@@ -38,7 +38,7 @@ jobs:
       # Build the book
 
       - name: Clean previous builds
-        run: jb clean .
+        run: jupyter-book clean .
 
       - name: Build the book
         run: jupyter-book build .
