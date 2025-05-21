@@ -1,3 +1,2 @@
-_build/.doctrees
-_build/jupyter_execute
-_build/html/.venv
+_build/
+.venv/
