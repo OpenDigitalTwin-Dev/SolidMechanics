@@ -68,4 +68,4 @@ parts:
         - file: content/Plasticity/chap2/sec6-anisotropic
       - file: content/Plasticity/chap3/intro
         sections:
-        - file: content/Plasticity/chap3/isotropichardening
+        - file: content/Plasticity/chap3/sec2-isotropichardening

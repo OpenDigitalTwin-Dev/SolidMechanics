@@ -70,7 +70,7 @@ $$
 由于在刚体旋转阶段
 
 $$
-\mathbf{L} = \mathbf{W} = \dot{Q}Q^{T} = -Q\dot{Q}^{T} = \boldsymbol{\Omega},
+\mathbf{L} = \mathbf{W},
 $$
 
 此时也有 $\text{tr}(\mathbf{L}) = \text{tr}(\mathbf{W}) = 0$，因此，Truesdell 应力率的客观性也同 Jaumann 应力率得到满足

@@ -68,10 +68,10 @@ $$
 
 简单剪切是材料层间沿固定方向发生相对滑动，而垂直于这些平面的方向保持长度不变的变形模式，例如
 
-```{figure} ../../../images/Tensor/chap1/simple-shear.png
+```{figure} ../../../images/Tensor/chap2/simple-shear.png
 ---
 width: 200px
-name: sec1-fig:simple-shear
+name: sec2-fig:simple-shear
 ---
 二维简单剪切示意图
 ```
@@ -109,10 +109,10 @@ $$
 
 对称剪切变形是指物体在无旋转的条件下，沿两个互相垂直方向发生等大反向的剪切位移，使直角变为斜角，例如
 
-```{figure} ../../../images/Tensor/chap1/sym-shear.png
+```{figure} ../../../images/Tensor/chap2/sym-shear.png
 ---
 width: 250px
-name: sec1-fig:sym-shear
+name: sec2-fig:sym-shear
 ---
 二维对称剪切示意图
 ```

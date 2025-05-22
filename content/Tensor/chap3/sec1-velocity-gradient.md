@@ -67,10 +67,10 @@ $$
 
 **1.** $\frac{\partial u_{x}}{\partial y} = \frac{\partial u_{y}}{\partial x}$
 
-```{figure} ../../../images/Tensor/chap1/sym-shear-1.png
+```{figure} ../../../images/Tensor/chap3/sym-shear-1.png
 ---
 width: 300px
-name: sec1-fig:sym-shear
+name: sec3-fig:sym-shear
 ---
 对称剪切
 ```
@@ -83,10 +83,10 @@ $$
 
 **2.** $\frac{\partial u_{x}}{\partial y} = - \frac{\partial u_{y}}{\partial x}$
 
-```{figure} ../../../images/Tensor/chap1/rotation.png
+```{figure} ../../../images/Tensor/chap3/rotation.png
 ---
 width: 300px
-name: sec1-fig:rotation
+name: sec3-fig:rotation
 ---
 刚体旋转
 ```
@@ -99,10 +99,10 @@ $$
 
 综上，速度梯度（或位移梯度）场既包含形变（对称部分），也包含刚体旋转（反对称部分）。对于一般的速度（或位移）梯度，可以将其分解为对称剪切变形与刚体旋转的叠加
 
-```{figure} ../../../images/Tensor/chap1/general.png
+```{figure} ../../../images/Tensor/chap3/general.png
 ---
 width: 600px
-name: sec1-fig:general-shear
+name: sec3-fig:general-shear
 ---
 一般形变的分解
 ```

@@ -84,7 +84,7 @@ $$
 由于在刚体旋转阶段
 
 $$
-\mathbf{W} = \dot{Q}Q^{T} = -Q\dot{Q}^{T} = \boldsymbol{\Omega},
+\boldsymbol{\Omega} = \dot{Q}Q^{T} = -Q\dot{Q}^{T} = \mathbf{W},
 $$
 
 因此，Green-Naghdi 应力率的客观性也同 Jaumann 应力率得到满足
