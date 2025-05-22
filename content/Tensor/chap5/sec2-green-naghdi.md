@@ -132,7 +132,13 @@ $$
 \boldsymbol{\Omega}'=\dot{Q}'Q'^{T}= \dot{Q}_{r}Q_{r}^{T} + Q_{r}\dot{Q}Q^{T}Q_{r}^{T} = \dot{Q}_{r}Q_{r}^{T} + Q_{r}\boldsymbol{\Omega}Q_{r}^{T}.
 $$
 
-由于
+且
+
+$$
+\boldsymbol{\sigma}' = Q_{r}\boldsymbol{\sigma}Q_{r}^T,
+$$
+
+于是
 
 $$
 \begin{equation}

@@ -149,7 +149,13 @@ $$
 \end{equation}
 $$
 
-由于
+且
+
+$$
+\boldsymbol{\sigma}' = Q_{r}\boldsymbol{\sigma}Q_{r}^T,
+$$
+
+于是
 
 $$
 \begin{equation}

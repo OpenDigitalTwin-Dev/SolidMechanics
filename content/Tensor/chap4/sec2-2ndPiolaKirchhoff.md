@@ -25,21 +25,21 @@ $$
 
 若 $\boldsymbol{\sigma}$ 对称，则 $\mathbf{S}$ 也对称
 
-## 刚体旋转
+## 客观性
 
-对于刚体旋转，$F$ 是旋转变换矩阵
+对于刚体旋转，$F' = RF$，$R$ 是旋转变换矩阵，满足 $RR^{T} = I$，且 
 
 $$
-\mathbf{x} = F\mathbf{X},\quad \text{或},\quad \mathbf{X} = F^{-1}\mathbf{x},
+J' = \det(F') = \det(R)\det(F) = \det(F) = J,
 $$
 
 此时
 
 $$
-\mathbf{S}  = F^{-1}\boldsymbol{\sigma}F^{-T} = F^{-1}\boldsymbol{\sigma}F,
+\mathbf{S}'  = J'F'^{-1}\boldsymbol{\sigma}'F'^{-T} = JF^{-1}R^{-1}(R\boldsymbol{\sigma}R^{T})RF^{-T} = \mathbf{S},
 $$
 
-即 $\mathbf{S}$ 是 $\boldsymbol{\sigma}$ 在初始构型基底下的表示
+即 PK2 应力在刚体旋转下保持不变，具有客观性
 
 
 ## 内功率
