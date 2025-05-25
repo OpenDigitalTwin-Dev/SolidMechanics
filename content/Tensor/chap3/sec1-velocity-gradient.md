@@ -171,7 +171,7 @@ $$
 记 $J= \det(F)$，则
 
 $$
-\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
+\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\mathbf{L}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
 $$
 
 该公式表明，**单位体积的变化速率 $\dot{J}$，等于体积本身 $J$ 乘以速度梯度场张量的迹（速度场的散度）**

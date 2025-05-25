@@ -179,3 +179,28 @@ $$
 \end{equation}
 $$
 
+## Kirchhoff 应力的 Jaumann 应力率
+
+对于 [Kirchhoff 应力](../chap4/sec3-Kirchhoff.md)，有
+
+$$
+\overset{\circ}{\boldsymbol{\tau}} = \dot{\boldsymbol{\tau}} + \boldsymbol{\tau} \mathbf{W} - \mathbf{W} \boldsymbol{\tau},
+$$
+
+根据[局部体积变化速率](../chap3/sec1-velocity-gradient.md)公式
+
+$$
+\dot{\boldsymbol{\tau}} = \dot{J}\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}} = J\ \text{tr}(\mathbf{L})\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}}  = J\ \text{tr}(\mathbf{D})\boldsymbol{\sigma} + J\dot{\boldsymbol{\sigma}} ,
+$$
+
+故
+
+$$
+\overset{\circ}{\boldsymbol{\tau}} = J(\dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma}\text{tr}(\mathbf{D}) + \boldsymbol{\sigma} \mathbf{W} - \mathbf{W} \boldsymbol{\sigma}),
+$$
+
+记
+
+$$
+\overset{\nabla}{\boldsymbol{\tau}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma}\text{tr}(\mathbf{D}) + \boldsymbol{\sigma} \mathbf{W} - \mathbf{W} \boldsymbol{\sigma}.
+$$
