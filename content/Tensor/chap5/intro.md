@@ -10,6 +10,7 @@ $$
 
 ```{note}
 :class: tip, dropdown
+
 $$
 \frac{\mathrm{d} \sigma_{ij}}{\mathrm{d} t} = \frac{\partial \sigma_{ij}}{\partial t} + \frac{\partial \sigma_{ij}}{\partial x_{k}}\frac{\partial x_{k}}{\partial t}
 $$
