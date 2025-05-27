@@ -1,7 +1,7 @@
 # 各向同性硬化模型
 
 <span class="gray-text">
-各向同性硬化模型假设屈服函数是应力的各向同性函数，即在整个塑性变形过程中，屈服面以其中心为原点，保持形状不变地向外均匀膨胀，反映了材料在各个方向上的屈服行为一致
+各向同性硬化模型假设屈服函数是应力的各向同性函数，即在整个塑性变形过程中，屈服面以其中心为原点（位置不变），保持形状不变地向外均匀膨胀，反映了材料在各个方向上的屈服行为一致
 </span>
 
 在整个变形过程中，屈服面是应力的各向同性函数，并假设屈服函数的数学形式保持不变，同时通过引入与变形历史相关的标量参数 $K$ 来定义当前屈服面的大小，即
@@ -22,7 +22,7 @@ $$
 \vartheta = \int_0^t \left( 2 \mathbf{D}^p : \mathbf{D}^p \right)^{1/2} dt.
 $$
 
-根据连续塑性变形的一致性条件，应力状态应始终在屈服面上
+根据持续塑性变形的一致性条件，应力状态应始终在屈服面上
 
 $$
 \dot{f} = \frac{\partial f}{\partial \boldsymbol{\sigma}} : \overset{\nabla}{\boldsymbol{\tau}} + \frac{\partial f}{\partial K} \frac{\partial K}{\partial \vartheta} \dot{\vartheta} = 0,
@@ -115,7 +115,7 @@ $$
 根据式 {eq}`(intro-eq:strain-p)`，得到
 
 $$
-\mathbf{D}^{\text{p}} = \frac{1}{H} \left( \frac{\partial f}{\partial \boldsymbol{\sigma}} : \overset{\nabla}{\boldsymbol{\tau}} \right) \frac{\partial f}{\partial \boldsymbol{\sigma}} = \frac{1}{H} \left( \mathbf{s} : \overset{\nabla}{\boldsymbol{\tau}} \right) \mathbf{s}，
+\mathbf{D}^{\text{p}} = \frac{1}{H} \left( \frac{\partial f}{\partial \boldsymbol{\sigma}} : \overset{\nabla}{\boldsymbol{\tau}} \right) \frac{\partial f}{\partial \boldsymbol{\sigma}} = \frac{1}{H} \left( \mathbf{s} : \overset{\nabla}{\boldsymbol{\tau}} \right) \mathbf{s},
 $$
 
 因此，$\text{tr}(\mathbf{D}^{\text{p}}) = 0$，这表明塑性部分的体积应变率为零
@@ -148,7 +148,7 @@ $\mathbf{D}^{\text{p}}$ 可以写为
 $$
 \\
 \mathbf{D}^{\text{p}}=\frac{1}{2h_{\text{t}}^{\text{p}}}\frac{\mathbf{s}\otimes\mathbf{s}}{\mathbf{s}:\mathbf{s}}:\overset{\nabla}{\boldsymbol{\tau}}=\frac{1}{2h_{\text{t}}^{\text{p}}}\frac{\mathbf{s}:\overset{\nabla}{\boldsymbol{\tau}}}{\mathbf{s}:\mathbf{s}}\ \mathbf{s},
-$$
+$$ 
 
 由于
 
@@ -207,7 +207,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \mathbf{s}:\overset{\nabla}{\boldsymbol{\tau}} &= 2\mu(1 - \frac{1}{1 + h_{\text{t}}^{\text{p}}/\mu})\ \mathbf{s}:\mathbf{D}\\
-&=\frac{2h_{\text{t}}^{\text{p}}}{1+h_{\text{t}}^{\text{p}}/\mu}\ \mathbf{s}:\mathbf{D}
+&=\frac{2h_{\text{t}}^{\text{p}}}{1+h_{\text{t}}^{\text{p}}/\mu}\ \mathbf{s}:\mathbf{D}.
 \end{aligned}
 \end{equation}
 $$
@@ -226,6 +226,3 @@ $$
 $$
 \mathbf{s}:\mathbf{D}>0.
 $$
-
-
-123

@@ -71,3 +71,4 @@ parts:
       - file: content/Plasticity/chap4/intro
         sections:
         - file: content/Plasticity/chap4/sec1-isotropichardening
+        - file: content/Plasticity/chap4/sec2-kinematichardening
