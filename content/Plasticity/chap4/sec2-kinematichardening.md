@@ -98,3 +98,11 @@ $$
 $$
 
 若 $\boldsymbol{\alpha}$ 是偏张量，即 $\text{tr}(\boldsymbol{\alpha}) = 0$，则可与[上一节](./sec1-isotropichardening.md)中类似证明
+
+$$
+\begin{equation}
+\begin{aligned}
+(\mathbf{s} - \boldsymbol{\alpha}):\overset{\nabla}{\boldsymbol{\tau}} =\frac{2h_{\text{t}}^{\text{p}}}{1+h_{\text{t}}^{\text{p}}/\mu}\ (\mathbf{s} - \boldsymbol{\alpha}):\mathbf{D}.
+\end{aligned}
+\end{equation}
+$$
