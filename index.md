@@ -86,6 +86,25 @@ Explore this note &rarr;
 :::
 
 
+:::{card}
+:margin: 2
+:class-body: text-center
+:class-header: bg-light text-center
+:link: content/CCX/intro.html
+
+**CCX 笔记**
+
+```{image} images/Cover/CCX.png
+:height: 130
+```
+
++++
+<div style="text-align: center;">
+Explore this note &rarr;
+</div>
+:::
+
+
 ::::
 
 

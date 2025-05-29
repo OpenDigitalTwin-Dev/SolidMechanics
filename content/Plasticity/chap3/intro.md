@@ -40,7 +40,13 @@ $$
 \mathbf{I}^{s}_{ijkl} = \frac{1}{2} (\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}).
 $$
 
-在**关联塑性理论**中，变形速率张量的塑性部分与应力空间中屈服面的外法线方向一致
+## 关联塑性流动理论
+
+<span class="gray-text">
+关联塑性流动理论是指材料的塑性流动方向与屈服面法向一致，即塑性势函数 g 与屈服函数 f 完全相同（g=f）。该理论严格遵循最大塑性功原理，理论体系严密，数学处理简便，因而在金属等体积塑性变形不显著的材料本构建模中得到了广泛应用。然而，对于土壤、岩石等摩擦性材料，关联流动法则往往会显著高估材料的体积膨胀效应，导致其在描述此类材料实际力学行为时存在一定局限性
+</span>
+
+关联塑性流动理论假设塑性应变增量的方向垂直于屈服面
 
 $$
 \mathbf{D}^{\text{p}} = \dot{\gamma} \frac{\partial f}{\partial \boldsymbol{\sigma}}, \qquad \dot{\gamma} > 0,
@@ -119,10 +125,10 @@ $$
 \left[
 \boldsymbol{\Lambda}^{\text{e}} - \frac{1}{h} 
 \left( 
-\boldsymbol{\Lambda}^{\text{e}} : \frac{\partial f}{\partial \sigma} 
+\boldsymbol{\Lambda}^{\text{e}} : \frac{\partial f}{\partial \boldsymbol{\sigma}} 
 \right) 
 \left( 
-\frac{\partial f}{\partial \sigma} : \boldsymbol{\Lambda}^{\text{e}} 
+\frac{\partial f}{\partial \boldsymbol{\sigma}} : \boldsymbol{\Lambda}^{\text{e}} 
 \right)
 \right] : \mathbf{D},
 $$
@@ -139,11 +145,11 @@ $$
 \boldsymbol{\Lambda}^{\text{e}}_{ijkl} = \mu (\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \lambda\, \delta_{ij}\delta_{kl},
 $$
 
-且
+其中
 
 $$
 \begin{equation}
-h = H + \frac{\partial f}{\partial \sigma} : \boldsymbol{\Lambda}^{\text{e}} : \frac{\partial f}{\partial \sigma}.
+h = H + \frac{\partial f}{\partial \boldsymbol{\sigma}} : \boldsymbol{\Lambda}^{\text{e}} : \frac{\partial f}{\partial \boldsymbol{\sigma}}.
 \end{equation}
 $$
 
@@ -176,3 +182,56 @@ $$
 
 
 ```
+
+## 非关联塑性流动理论
+
+<span class="gray-text">
+非关联塑性流动理论是指材料的塑性流动方向与屈服面法向不一致，即塑性势函数 g 与屈服函数 f 不同。这一理论不再严格遵循最大塑性功原理，在数学处理上较为复杂，但能够更灵活地描述摩擦性材料（如土壤、岩石、混凝土等）的剪胀效应和体积变化，更贴近实际工程中的材料变形特性
+</span>
+
+非关联塑性流动理论假设塑性应变增量的方向垂直于塑性势面
+
+$$
+\mathbf{D}^{\text{p}} = \dot{\gamma} \frac{\partial g}{\partial \boldsymbol{\sigma}}, \qquad \dot{\gamma} > 0,
+$$ (intro-eq:ep3)
+
+其中，$g$ 是塑性势函数。根据材料持续处于屈服状态的一致性条件 $\dot{f} = 0$，得到
+
+$$
+\dot{\gamma} = \frac{1}{H} \left( \frac{\partial f}{\partial \boldsymbol{\sigma}} : \overset{\nabla}{\boldsymbol{\tau}} \right),
+$$
+
+因此
+
+$$
+\mathbf{D}^{\text{p}} = \frac{1}{H} \left( \frac{\partial f}{\partial \boldsymbol{\sigma}} : \overset{\nabla}{\boldsymbol{\tau}} \right) \frac{\partial g}{\partial \boldsymbol{\sigma}},
+$$
+
+类似地
+
+$$
+\mathbf{D}=\left(\mathbf{M}^{\text{e}} + \frac{1}{H} \left( \frac{\partial g}{\partial \boldsymbol{\sigma}}\otimes\frac{\partial f}{\partial \boldsymbol{\sigma}} \right)\right): \overset{\nabla}{\boldsymbol{\tau}},
+$$
+
+由于 $g\neq f$，因此应变张量 $\mathbf{D}$ 不具有对称性。其逆形式为
+
+$$
+\overset{\triangledown}{\tau} = 
+\left[
+\boldsymbol{\Lambda}^{\text{e}} - \frac{1}{h} 
+\left( 
+\boldsymbol{\Lambda}^{\text{e}} : \frac{\partial g}{\partial \boldsymbol{\sigma}} 
+\right) 
+\left( 
+\frac{\partial f}{\partial \boldsymbol{\sigma}} : \boldsymbol{\Lambda}^{\text{e}} 
+\right)
+\right] : \mathbf{D},
+$$
+
+其中
+
+$$
+\begin{equation}
+h = H + \frac{\partial f}{\partial \boldsymbol{\sigma}} : \boldsymbol{\Lambda}^{\text{e}} : \frac{\partial g}{\partial \boldsymbol{\sigma}}.
+\end{equation}
+$$

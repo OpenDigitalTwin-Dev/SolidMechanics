@@ -70,7 +70,7 @@ $$
 
 ## Prager 线性运动硬化模型
 
-当 $\mathbf{C} = 0$，$c = 2h_{\text{t}}^{\text{p}}$ 时，式{eq}`sec2-eq:kinematic`退化为 Prager 线性运动硬化模型，根据式{eq}`intro-eq:strain-t` 和{eq}`sec2-eq:yield-1`，对应的弹塑性本构方程为
+取 $\mathbf{C} = 0$，$c = 2h_{\text{t}}^{\text{p}}$，则式{eq}`sec2-eq:kinematic`为 Prager 线性运动硬化模型，根据式{eq}`intro-eq:strain-t` 和{eq}`sec2-eq:yield-1`，对应的弹塑性本构方程为
 
 $$
 \mathbf{D} = \left[ \mathbf{M}^{e} + \frac{1}{2 h_{\text{t}}^{\text{p}}} 
@@ -105,4 +105,24 @@ $$
 (\mathbf{s} - \boldsymbol{\alpha}):\overset{\nabla}{\boldsymbol{\tau}} =\frac{2h_{\text{t}}^{\text{p}}}{1+h_{\text{t}}^{\text{p}}/\mu}\ (\mathbf{s} - \boldsymbol{\alpha}):\mathbf{D}.
 \end{aligned}
 \end{equation}
+$$
+
+## Armstrong-Frederick 非线性运动硬化模型
+
+取 $c = 2h,\mathbf{C} = -c_{0}\boldsymbol{\alpha}$，其中，$h,c_{0}$ 是常材料参数，此时
+
+$$
+\overset{\nabla}{\boldsymbol{\alpha}} = 2h\, \mathbf{D}^{\text{p}} -c_{0}\boldsymbol{\alpha}\, (\mathbf{D}^{\text{p}} : \mathbf{D}^{\text{p}})^{1/2},
+$$
+
+非线性项（此处也称记忆项）的引入，使得反向塑性加载下的硬化模量与实验数据更加吻合。此时
+
+$$
+\mathbf{D}^{\text{p}} = \frac{1}{2h(1-m)}\frac{(\mathbf{s}-\boldsymbol{\alpha}):\overset{\nabla}{\boldsymbol{\tau}}}{(\mathbf{s}-\boldsymbol{\alpha}):(\mathbf{s}-\boldsymbol{\alpha})}\ (\mathbf{s}-\boldsymbol{\alpha}),
+$$
+
+其中
+
+$$
+m = \frac{c_{0}}{2h}\frac{(\mathbf{s}-\boldsymbol{\alpha}):\boldsymbol{\alpha}}{\left[(\mathbf{s}-\boldsymbol{\alpha}):(\mathbf{s}-\boldsymbol{\alpha})\right]^{1/2}}.
 $$

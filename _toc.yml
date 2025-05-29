@@ -72,3 +72,10 @@ parts:
         sections:
         - file: content/Plasticity/chap4/sec1-isotropichardening
         - file: content/Plasticity/chap4/sec2-kinematichardening
+  - caption: CCX 笔记
+    chapters:
+      - file: content/CCX/intro
+      - file: content/CCX/chap1/sec1-goldenrule
+      - file: content/CCX/chap2/intro
+        sections:
+        - file: content/CCX/chap2/sec1-rigid
