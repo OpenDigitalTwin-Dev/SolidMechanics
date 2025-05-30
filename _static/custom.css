@@ -37,3 +37,18 @@ p {
   margin-top: -1rem; /* 添加空行效果 */
   margin-bottom: 1rem; /* 添加空行效果 */
 }
+
+/*blockquote {
+  font-size: 0.8em;
+}*/
+
+blockquote {
+  border-left: 4px solid #dddddd;   /* 细灰色竖线 */
+  color: #757a82;                   /* 字体灰色 */
+  background: none;                 /* 可选：去除背景 */
+  padding: 0.2em 1em;               /* 内边距：上下，左右 */ 
+  margin: 1em 0;                    /* 外边距：上下，左右 */ 
+  font-size: 0.8em;                   /* 可调节字体大小 */
+  font-style: normal;               /* 去斜体 */
+  border-radius: 4px;               /* 可选：圆角 */
+}

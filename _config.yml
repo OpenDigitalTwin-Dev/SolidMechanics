@@ -59,6 +59,8 @@ html:
   use_issues_button: true
   use_repository_button: true
   # mathjax_path: "mathjax/es5/tex-mml-chtml.js"
+  extra_css:
+    - _static/custom.css
 
 url: https://opendigitaltwin-dev.github.io
 baseurl: /SolidMechanics/
