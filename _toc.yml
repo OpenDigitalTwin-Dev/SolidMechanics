@@ -82,3 +82,12 @@ parts:
       - file: content/CCX/chap3/intro
         sections:
         - file: content/CCX/chap3/sec1-hexahedralelement
+      - file: content/CCX/chap4/intro
+        sections:
+        - file: content/CCX/chap4/sec1-hourclass
+      - file: content/CCX/chap5/intro
+        sections:
+        - file: content/CCX/chap5/sec1-timestep
+        - file: content/CCX/chap5/sec2-massscaling
+      - file: content/CCX/chap6/intro
+      
