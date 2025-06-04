@@ -90,4 +90,6 @@ parts:
         - file: content/CCX/chap5/sec1-timestep
         - file: content/CCX/chap5/sec2-massscaling
       - file: content/CCX/chap6/intro
+        sections:
+        - file: content/CCX/chap6/sec1-tubes
       
