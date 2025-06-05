@@ -7,17 +7,17 @@
 width: 600px
 name: sec1-fig:tubes
 ---
-Tubes 算例示意图（由于对称性，只计算一半区域即可）
+Tubes 算例示意图，外管左端中心为原点（由于对称性，只计算一半区域即可）
 ```
 
-其中，原点在外管左端截面中心。外管内表面与内管外表面有一定的接触面积，外管左端固定，内管右端绕 $y$ 轴旋转
+其中，外管内表面与内管外表面有一定的接触面积，外管左端固定，内管右端绕 $y$ 轴旋转
 
 
 ## 前处理文件
 
 ```{dropdown} pre.fbd
 ```cgx
-# 变量直接定义赋值
+# 基本变量定义
 valu R1 50                        // 外管半径 R1  = 50
 valu T1 5                         // 外管厚度 T1  = 5
 valu L1 500                       // 外管长度 L1  = 500
@@ -29,7 +29,7 @@ valu divt 1                       // 管厚方向网格数量 divt   = 1
 valu divrot 18                    // 管沿方向网格数量 divrot = 18
 valu divl 50                      // 管长方向网格数量 divl   = 50
 
-# 变量依赖定义赋值
+# 衍生变量定义
 valu T1neg * T1 -1                // T1neg = T1 * -1
 valu T2neg * T2 -1                // T2neg = T2 * -1
 valu x21 - L1 OVL                 // x21   = L1 - OVL
@@ -37,10 +37,10 @@ valu x22 + x21 L2                 // x22   = x21 + L2
 
 # 实体构造——tube1
 seto tube1                        // tube1 设置开始
-pnt p1 0 0 R1                     // 定义圆 p1，中心为(0,0)，半径为 R1
-swep tube1 new tra 0 0 T1neg divt // 将圆 p1 在厚度方向扩展 T1neg，划分为 divt 份
-swep tube1 new tra L1 0 0 divl    // 将上一步结果在长度方向扩展 L1，划分为 divl 份
-swep tube1 new rot x 180 divrot   // 将上一步结果取 180°（半圆），划分为 divrot 份
+pnt p1 0 0 R1                     // 定义点 p1：(0,0,R1)
+swep tube1 new tra 0 0 T1neg divt // 将点 p1 平移(0,0,T1neg)，同时将路径划分为 divt 份
+swep tube1 new tra L1 0 0 divl    // 将上一步结果平移(L1,0,0)，同时将路径划分为 divl 份
+swep tube1 new rot x 180 divrot   // 将上一步结果绕 x 轴顺时针旋转 180°，同时将路径划分为 divrot 份
 setc                              // tube1 设置结束
 
 # 实体构造——tube2                   // 同理

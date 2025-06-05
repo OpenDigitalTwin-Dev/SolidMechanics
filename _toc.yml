@@ -92,4 +92,5 @@ parts:
       - file: content/CCX/chap6/intro
         sections:
         - file: content/CCX/chap6/sec1-tubes
+        - file: content/CCX/chap6/sec2-wirebending
       
