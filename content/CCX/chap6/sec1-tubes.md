@@ -1,6 +1,6 @@
 # Tubes 算例
 
-Tubes 算例展现了具有伸缩结构的线弹性管在纯弯曲载荷（无剪切力）下的力学响应，如下图所示
+[Tubes 算例](https://github.com/calculix/CalculiX-Examples/tree/master/Drahtbiegen/Biegung)展现了具有伸缩结构的线弹性管在纯弯曲载荷（无剪切力）下的力学响应，如下图所示
 
 ```{figure} ../../../images/CCX/chap6/tubes.gif
 ---
