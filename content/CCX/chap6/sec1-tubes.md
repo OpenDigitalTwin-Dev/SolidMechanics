@@ -1,6 +1,16 @@
 # Tubes 算例
 
+Tubes 算例展现了具有伸缩结构的线弹性管在纯弯曲载荷（无剪切力）下的力学响应，如下图所示
 
+```{figure} ../../../images/CCX/chap6/tubes.gif
+---
+width: 600px
+name: sec1-fig:tubes
+---
+Tubes 算例示意图（由于对称性，只计算一半区域即可）
+```
+
+其中，原点在外管左端截面中心。外管内表面与内管外表面有一定的接触面积，外管左端固定，内管右端绕 $y$ 轴旋转
 
 
 ## 前处理文件
@@ -60,7 +70,7 @@ send fix abq nam                  // 生成 fix 节点集的 abq 格式文件 fi
 enq nodes ysym rec _ 0 _ 0.1      // 笛卡尔坐标筛选，抓取节点集 nodes 中坐标为 (*,0,*) 的节点集 ysym，误差精度为 0.1
 send ysym abq nam                 // 生成 ysym 节点集的 abq 格式文件 ysym.nam
 
-# 边界条件作用面抓取
+# 边界加载作用面抓取
 enq n2 load rec x22 _ _ 0.1       // 笛卡尔坐标筛选，抓取节点集 n2 中坐标为 (x22,*,*) 的节点集 load，误差精度为 0.1
 send abq load                     // 生成 load 节点集的 abq 格式
 comp load do                      // 获取 load 节点集的所有下游单元(down)：线/面/体
@@ -78,7 +88,7 @@ comp dep do                       // 获取 dep 节点集的所有下游单元(d
 send dep abq surf                 // 生成 dep 集中面的 abq 格式文件 dep.sur  
 
 # 计算前可视化
-rot -y                            // 绕 y 轴旋转模型
+rot -y                            // 从 y 轴负方向看模型
 plot f all n                      // 显示所有单元和节点
 frame                             // 显示坐标轴
 rot l 80                          // 绕左侧（l = left）轴旋转 80°
@@ -98,4 +108,140 @@ hcpy png sets                     // 将当前视图截图保存为 sets.png
 
 ## 求解器文件
 
+```{dropdown} solve.inp
+```ccx
+** 包含文件设置
+*include, input=all.msh       // 读入全体网格
+*include, input=ind.sur       // 读入外管内表面
+*include, input=dep.sur       // 读入内管外表面
+*include, input=load.sur      // 读入加载作用面
+*include, input=fix.nam       // 读入固定面节点集
+*include, input=ysym.nam      // 读入对称面节点集
+*nset, nset=control           // 定义节点集 control
+1                             // 包含节点 1
+
+** 约束设置
+*boundary                     // 边界约束
+Nfix,1,3                      // 固定节点集 Nfix 的第 1~3 个自由度
+Nysym,2                       // 固定节点集 Nysym 的第 2 个自由度
+
+** 材料属性设置
+*MATERIAL, NAME=Aluminium     // 定义材料 Aluminium 
+*ELASTIC                      // 定义弹性属性
+70000, 0.34                   // 弹性模量为 70000，泊松比为 0.34 
+*DENSITY                      // 定义密度
+2.7e-9                        // 密度为 2.7e-9
+*solid section, elset=Eall, material=Aluminium  // 将材料 Aluminium 赋予到全体单元上
+
+** 接触设置
+*surface interaction, name=telescope            // 定义表面相互作用 telescope
+*surface behavior, pressure-overclosure=linear  // 压力-重叠关系设为线性
+100000.                                         // 刚度为 100000
+*contact pair, interaction=telescope, type=surface to surface  // 采用telescope相互作用定义两个表面之间的面-面接触
+Sdep,Sind                                       // 作用表面为 Sdep 和 Sind 
+
+** 耦合设置
+*coupling, ref node=1, surface=Sload, constraint name=c1  // 将节点 1（设为参考点）与 Sload 表面耦合，约束命名为 c1
+*kinematic           // 采用运动学耦合
+1                    // 约束自由度起始编号 1 (X)
+3                    // 约束自由度终止编号 3 (Y)
+*boundary            // 边界设置
+control,1,2          // 固定节点集 control 的第 1~2 自由度
+
+** 分析步与载荷设置
+*step, nlgeom        // 定义一个分析步，启用几何非线性
+*static              // 使用静力学分析
+0.1,1,1e-5,0.05      // 初始时间步长 0.1，总步长 1，最小步长 1e-5，最大步长 0.05
+*boundary            // 载荷设置
+control,5,5,0.3      // 对 control 节点集的第 5 自由度(绕 y 轴旋转)施加 0.3 的变化
+
+** 输出设置
+*NODE FILE           // 节点相关信息
+U                    // 节点位移
+*el file             // 单元相关信息
+S                    // 单元应力
+*section print, surface=Sload, name=sp1 // Sload 面相关信息
+SOM                  // section output moments, 截面力矩
+*contact file        // 接触相关信息
+CSTR                 // contact stress, 接触应力
+*END STEP            // 结束分析步
+```
+
 ## 后处理文件
+
+```{dropdown} post.fbd
+```cgx
+wsize 1920 1080                // 窗口大小设置为 1920x1080
+font l 5                       // 左侧字体大小为 5
+
+# 读取文件
+read solve.inp                 // 读取文件 solve.inp
+read solve.frd                 // 读取文件 solve.frd
+
+# 视图设置
+view disp                      // 显示变形结构
+view sh                        // 打开阴影显示
+rot -y                         // 从 y 轴负方向看模型
+
+# 应力排序：S11, S22, S33, S12, S13, S23, Mises 应力
+# 绘制 Mises 应力云图
+ds -2 e 7                      // 选择倒数第 3 个数据集的第 7 个实体
+plot fv all                    // 绘制所有单元的面视图
+frame                          // 显示框架
+# zoom 1.5                     // 放大 1.5 倍
+hcpy png SE                    // 将当前截图保存为 SE.png
+zoom 4                         // 放大 4 倍
+hcpy png SE_zoom               // 将当前截图保存为 SE_zoom.png
+
+# 绘制接触应力云图
+ds -1 e 4                      // 选择倒数第 2 个数据集的第 4 个实体
+plot fv Sdep                   // 绘制面 Sdep 的视图
+view sh off                    // 关闭阴影显示
+hcpy png cpress                // 将当前截图保存为 cpress.png    
+rot u 60                       // 向上旋转 60°
+hcpy png cpress_rot            // 将当前截图保存为 cpress_rot.png
+
+#sys dat2txt.py                // 运行 dat2txt.py 脚本，将dat文件转换为文本格式
+#sys gnuplot moment.plt        // 运行 gnuplot 脚本 moment.plt，用于绘制力矩曲线
+
+# movie                        // 制作 gif 动画
+zoom 0.3                       // 视图缩小 0.3 倍
+rot -y                         // 从 y 轴负方向看模型
+rot u 45                       // 绕上侧（u = up）轴旋转 45°
+rot l -30                      // 绕左侧（l = left）轴旋转 -30°
+view surf                      // 显示所有面
+movi delay 0.3                 // 帧延迟 0.3 s
+movi frames auto               // 自动抓取帧
+ds 3 ah 7                      // 选择第 3 个数据集的第 7 个实体的历史数据
+```
+
+## 计算结果
+
+### 静力学分析求解结果
+
+```
+*static
+0.1,1
+```
+
+::::{grid} 2
+:margin: 0
+
+:::{grid-item}
+```{figure} ../../../images/CCX/chap6/tubes-mises-static.png
+:width: 100%
+:name: tubes-mises-static
+
+静力学分析结果-Mises 应力
+```
+:::
+
+:::{grid-item}
+```{figure} ../../../images/CCX/chap6/tubes-cpress-static.png
+:width: 100%
+:name: tubes-cpress-static
+
+静力学分析结果-接触应力
+```
+:::
+::::

@@ -8,5 +8,9 @@ CalculiX 的求解器支持 ABAQUS 输入格式，因此用户可以结合商业
 
 该软件由德国慕尼黑 MTU Aero Engines 的工程师团队在业余时间开发，公司也支持其公开发布。CalculiX 以其强大的功能、灵活的接口和免费的特性，在学术研究与工程实践中都得到了广泛应用
 
+## Cubit-CalculiX
+
+[Cubit-CalculiX](https://www.maschinenbauer.at/open-source/calculix-component-for-coreform-cubit) 是一个专为 Coreform Cubit（原名 Trelis）开发的插件组件，能让用户在 Cubit 环境下轻松完成 CalculiX 的前处理。该组件让 Coreform Cubit 成为 CalculiX 的高效前处理器，极大简化了模型定义、网格划分和后处理流程。用户可以直接在 Cubit 中完成高质量网格的生成、材料和边界条件的定义，并一键调用 CalculiX 求解，最后自动将结果转换为 Paraview 可视化格式，实现高效的后处理
+
 
 **本笔记用于记录 CCX 的学习过程**
