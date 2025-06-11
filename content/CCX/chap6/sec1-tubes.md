@@ -55,7 +55,7 @@ setc
 node 1 x22 0 0                    // 定义节点，编号 1，坐标(x22, 0, 0)
 elty all he8i                     // 单元类型：所有单元，C3D8I
 mesh all                          // 生成所有网格
-send all abq                      // 生成所有网格的 abq 格式文件 all.msh
+send all abq                      // 导出所有网格的 abq 格式文件 all.msh
 
 # 节点集定义
 seta nodes n all                  // 定义全体实体的节点集为 nodes     
@@ -64,28 +64,28 @@ seta n2 n tube2                   // 定义 tube2 的节点集为 n2
 
 # 固定边界节点集抓取
 enq n1 fix rec 0 _ _ 0.1          // 笛卡尔坐标筛选，抓取节点集 n1 中坐标为 (0,*,*) 的节点集 fix，误差精度为 0.1
-send fix abq nam                  // 生成 fix 节点集的 abq 格式文件 fix.nam
+send fix abq nam                  // 导出 fix 节点集的 abq 格式文件 fix.nam
 
 # 对称面节点集抓取
 enq nodes ysym rec _ 0 _ 0.1      // 笛卡尔坐标筛选，抓取节点集 nodes 中坐标为 (*,0,*) 的节点集 ysym，误差精度为 0.1
-send ysym abq nam                 // 生成 ysym 节点集的 abq 格式文件 ysym.nam
+send ysym abq nam                 // 导出 ysym 节点集的 abq 格式文件 ysym.nam
 
 # 边界加载作用面抓取
 enq n2 load rec x22 _ _ 0.1       // 笛卡尔坐标筛选，抓取节点集 n2 中坐标为 (x22,*,*) 的节点集 load，误差精度为 0.1
-send abq load                     // 生成 load 节点集的 abq 格式
-comp load do                      // 获取 load 节点集的所有下游单元(down)：线/面/体
-send load abq surf                // 生成 load 集中面的 abq 格式文件 load.sur
+send abq load                     // 导出 load 节点集的 abq 格式
+comp load do                      // 补全包含 load 节点集的面(特例使用)
+send load abq surf                // 导出 load 集中面的 abq 格式文件 load.sur
 
 # 抓取外管内表面
 valu R1i - R1 T1                  // 定义外管内径 R1i = R1 - T1 
 enq n1 ind cx R1i _ _ 0.1         // 极坐标筛选，抓取节点集 n1 中极坐标为 (R1i,*,*) 的节点集 ind，误差精度为 0.1
-comp ind do                       // 获取 ind 节点集的所有下游单元(down)：线/面/体
-send ind abq surf                 // 生成 ind 集中面的 abq 格式文件 ind.sur  
+comp ind do                       // 补全包含 ind 节点集的面(特例使用)
+send ind abq surf                 // 导出 ind 集中面的 abq 格式文件 ind.sur  
 
 # 抓取内管外表面
 enq n2 dep cx R2 _ _ 0.1          // 极坐标筛选，抓取节点集 n2 中极坐标为 (R2,*,*) 的节点集 dep，误差精度为 0.1
-comp dep do                       // 获取 dep 节点集的所有下游单元(down)：线/面/体
-send dep abq surf                 // 生成 dep 集中面的 abq 格式文件 dep.sur  
+comp dep do                       // 补全包含 dep 节点集的面(特例使用)
+send dep abq surf                 // 导出 dep 集中面的 abq 格式文件 dep.sur  
 
 # 计算前可视化
 rot -y                            // 从 y 轴负方向看模型
@@ -102,7 +102,7 @@ hcpy png contact                  // 将当前视图截图保存为 contact.png
 plot n fix m 6                    // 显示 fix 节点集的所有节点，颜色 m，尺寸 6
 plus n load t 6                   // 显示 load 节点集的所有节点，颜色 t，尺寸 6
 plus n ysym r 4                   // 显示 ysym 节点集的所有节点，颜色 r，尺寸 4
-ulin fix (magenta), ysym (red), load (turq) // 图片下方显示图例
+ulin fix (magenta), ysym (red), load (turq) // 图片下方显示***
 hcpy png sets                     // 将当前视图截图保存为 sets.png
 ```
 
