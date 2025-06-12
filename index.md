@@ -107,6 +107,29 @@ Explore this note &rarr;
 
 ::::
 
+# 友情链接
+
+::::{card-carousel} 2
+
+:::{card}
+:margin: 2
+:class-body: text-center
+:class-header: bg-light text-center
+:link: https://wangyl-01.github.io/WYL2025/intro.html
+
+```{image} images/Cover/wyl.png
+:height: 120
+```
+
++++
+<div style="text-align: center;">
+Explore this note &rarr;
+</div>
+:::
+
+::::
+
+
 
 ## 致谢
 
