@@ -90,7 +90,7 @@ node Nref X 0 Zc1       // 定义节点坐标，编号 Nref，坐标(X, 0, 0)
 seta ref n Nref         // 定义 Nref 集中的节点集为 ref 
 node Nrot X 1 Zc1       // 定义节点坐标，编号 Nrot，坐标 (X,1,Zc1)
 seta rot n Nrot         // 定义 Nrot 集中的节点集为 rot
-sys echo *rigid body, nset=Nrmov, ref node = Nref , rot node = Nrot > rb1.inp               // 调用系统命令写入到 rb1.inp 文件中
+sys echo *rigid body, nset=Nrmov, ref node = Nref , rot node = Nrot > rb1.inp // 调用系统命令写入到 rb1.inp 文件中
 
 elty all he8i           // 单元类型：所有单元，C3D8I
 mesh all                // 生成所有网格
@@ -179,14 +179,16 @@ hcpy png parts            // 将当前视图截图保存为 parts.png
 *include, input=mdep.sur
 *include, input=mind.sur
 *include, input=rb1.inp
+
 ** 边界设置
 *boundary
-Nref, 1,3                     // 约束节点集 Nref 的 x,y,z 自由度
-Nrot, 1,3                     // 约束节点集 Nrot 的 x,y,z 自由度
-** 包含文件
+Nref, 1,3                     // 约束节点集 Nref 的 1-3 自由度初始为 0
+Nrot, 1,3                     // 约束节点集 Nrot 的 1-3 自由度初始为 0
+** 包含边界条件文件
 *include, input=symy_2.bou     
 *include, input=rfix_123.bou
 *include, input=wfix_123.bou
+
 ** 材料设置
 *material, name=draht        // 定义材料属性 draht 
 *elastic                     // 弹性属性
@@ -197,10 +199,12 @@ Nrot, 1,3                     // 约束节点集 Nrot 的 x,y,z 自由度
 *material, name=tool         // 定义材料属性 tool
 *elastic                     // 弹性属性
 210000,0.3                   // 弹性模量为 210000，泊松比为 0.3 
+
 ** 材料属性分配
 *solid section, elset=Edraht, material=draht // 分配属性 draht 给 Edraht
 *solid section, elset=Erfix, material=tool   // 分配属性 tool 给 Erfix
 *solid section, elset=Ermov, material=tool   // 分配属性 tool 给 Ermov
+
 ** 接触定义
 *surface interaction, name=itool   // 定义表面相互作用 itool
 ***surface behavior, pressure-overclosure=linear
@@ -214,13 +218,17 @@ Nrot, 1,3                     // 约束节点集 Nrot 的 x,y,z 自由度
 *contact pair, interaction=itool, type=node to surface // 采用 itool 相互作用定义两个表面之间的点-面接触
 Smdep,Smind                  // Smdep 与 Smind 接触
 Sfdep,Sfind                  // Sfdep 与 Sfind 接触
+
+** 分析步设置
 *step,nlgeom, inc=200        // 定义一个分析步，启用几何非线性，最大增量步数量为 200
 *controls, parameters=field  // 非线性求解器控制参数，收敛准则设置(field)
 0.005,1,0.1,0.1              // 最大残差/平均力，最大增量解，新步初始平均力，用户自定义平均力
 *static                      // 使用静力学分析
 0.01,1,0.00000000000001,0.1  // 初始时间步长 0.01，总步长 1，最小步长 0.00000000000001，最大步长 0.1
 *boundary                    // 边界设置
-Nrot,2,2,1.57                // 对 Nrot 点集的第 2 个自由度施加 1.57 的变化
+Nrot,2,2,1.57                // 对 Nrot 点集的第 2 个自由度施加 1.57 的变化（绕 y 轴旋转 90°）
+
+** 结果输出
 *node file, frequency=10     // 每 10 步输出节点量
 U                            // 输出位移
 *el file                     // 输出单元变量
@@ -238,30 +246,32 @@ ELSE                                 // 单元能量
 ## 后处理文件
 
 ```
-read Biegung.frd
-read Biegung.inp nom
+# 读取文件
+# read Biegung.inp nom // 读取文件 Biegung.frd (no mesh)
+read Biegung.frd       // 读取文件 Biegung.inp
 
-view disp
-view elem
-frame
-tra u 2
-rot y
-rot r 130
-zoom 1.5
-ds -1 e 1
-seta ! all
-hcpy png deform
+view disp              // 显示变形结构
+view elem              // 显示单元
+frame                  // 自动调整视图，默认使得整个模型或指定集合完全显示在当前窗口内
 
-rot y
-frame
-text Plastic equivalent strain
-ds -3 e 1
-comp Ndraht do
-zoom 1.5
-tra r 2
-plot fv Ndraht
-min 0 f
-hcpy png PE
+tra u 2                // 将模型向上平移尺寸的 2 倍
+rot y                  // 从 y 轴正向看模型
+rot r 130              // 绕右端旋转 130°
+zoom 1.5               // 放大 1.5 倍
+ds -1 e 1              // 展示倒数第二个数据集的第一个变量值
+seta ! all             // 对 all 集合中的元素进行分析，自动识别不相连的网格并分别存入新集合
+hcpy png deform        // 将当前截图保存为 deform.png
+
+rot y                  // 从 y 轴正向看模型
+frame                  // 自动调整视图，默认使得整个模型或指定集合完全显示在当前窗口内
+text Plastic equivalent strain  // 图片下方显示*** 
+ds -3 e 1              // 展示倒数第四个数据集的第一个变量值
+comp Ndraht do         // 补全包含 Ndraht 点集的面
+zoom 1.5               // 放大 1.5 倍
+tra r 2                // 将模型向上平移尺寸的 2 倍
+plot fv Ndraht         // 绘制 Ndraht 的面值(face value)视图
+min 0 f                // 设置区间最小值为 0，浮点数格式
+hcpy png PE            // 将当前截图保存为 PE.png
 
 
 
@@ -270,11 +280,9 @@ zoom 0.55
 rot -y
 view surf
 movi delay 0.3
+anim real             // 显示真实变形
 movi frames auto
-ds 3 ah 7
-
-
-quit
+ds 2 ah 7
 ```
 
 ## 计算结果

@@ -171,48 +171,48 @@ CSTR                 // contact stress, 接触应力
 
 ```{dropdown} post.fbd
 ```cgx
-wsize 1920 1080                // 窗口大小设置为 1920x1080
-font l 5                       // 左侧字体大小为 5
+wsize 1920 1080           // 窗口大小设置为 1920x1080
+font l 5                  // 左侧字体大小为 5
 
 # 读取文件
-read solve.inp                 // 读取文件 solve.inp
-read solve.frd                 // 读取文件 solve.frd
+read solve.inp            // 读取文件 solve.inp
+read solve.frd            // 读取文件 solve.frd
 
 # 视图设置
-view disp                      // 显示变形结构
-view sh                        // 打开阴影显示
-rot -y                         // 从 y 轴负方向看模型
+view disp                 // 显示变形结构
+view sh                   // 打开阴影显示
+rot -y                    // 从 y 轴负方向看模型
 
 # 应力排序：S11, S22, S33, S12, S13, S23, Mises 应力
 # 绘制 Mises 应力云图
-ds -2 e 7                      // 选择倒数第 3 个数据集的第 7 个实体
-plot fv all                    // 绘制所有单元的面视图
-frame                          // 显示框架
-# zoom 1.5                     // 放大 1.5 倍
-hcpy png SE                    // 将当前截图保存为 SE.png
-zoom 4                         // 放大 4 倍
-hcpy png SE_zoom               // 将当前截图保存为 SE_zoom.png
+ds -2 e 7                 // 展示倒数第 3 个数据集的第 7 个变量值
+plot fv all               // 绘制所有单元的面值(face value)视图
+frame                     // 自动调整视图，默认使得整个模型或指定集合完全显示在当前窗口内
+# zoom 1.5                // 放大 1.5 倍
+hcpy png SE               // 将当前截图保存为 SE.png
+zoom 4                    // 放大 4 倍
+hcpy png SE_zoom          // 将当前截图保存为 SE_zoom.png
 
 # 绘制接触应力云图
-ds -1 e 4                      // 选择倒数第 2 个数据集的第 4 个实体
-plot fv Sdep                   // 绘制面 Sdep 的视图
-view sh off                    // 关闭阴影显示
-hcpy png cpress                // 将当前截图保存为 cpress.png    
-rot u 60                       // 向上旋转 60°
-hcpy png cpress_rot            // 将当前截图保存为 cpress_rot.png
+ds -1 e 4                 // 展示倒数第 2 个数据集的第 4 个变量值
+plot fv Sdep              // 绘制 Sdep 的面值(face value)视图
+view sh off               // 关闭阴影显示
+hcpy png cpress           // 将当前截图保存为 cpress.png    
+rot u 60                  // 向上旋转 60°
+hcpy png cpress_rot       // 将当前截图保存为 cpress_rot.png
 
-#sys dat2txt.py                // 运行 dat2txt.py 脚本，将dat文件转换为文本格式
-#sys gnuplot moment.plt        // 运行 gnuplot 脚本 moment.plt，用于绘制力矩曲线
+#sys dat2txt.py           // 运行 dat2txt.py 脚本，将dat文件转换为文本格式
+#sys gnuplot moment.plt   // 运行 gnuplot 脚本 moment.plt，用于绘制力矩曲线
 
-# movie                        // 制作 gif 动画
-zoom 0.3                       // 视图缩小 0.3 倍
-rot -y                         // 从 y 轴负方向看模型
-rot u 45                       // 绕上侧（u = up）轴旋转 45°
-rot l -30                      // 绕左侧（l = left）轴旋转 -30°
-view surf                      // 显示所有面
-movi delay 0.3                 // 帧延迟 0.3 s
-movi frames auto               // 自动抓取帧
-ds 3 ah 7                      // 选择第 3 个数据集的第 7 个实体的历史数据
+# 制作 gif 动画 
+zoom 0.3                  // 视图缩小 0.3 倍
+rot -y                    // 从 y 轴负方向看模型
+rot u 45                  // 绕上侧（u = up）轴旋转 45°
+rot l -30                 // 绕左侧（l = left）轴旋转 -30°
+view surf                 // 显示所有面
+movi delay 0.3            // 帧延迟 0.3 s
+movi frames auto          // 自动抓取帧
+ds 3 ah 7                 // 展示第 3 个数据集的第 7 个变量值的历史数据
 ```
 
 ## 计算结果
