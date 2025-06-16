@@ -16,8 +16,8 @@ hide-nav: true
 
 **数值计算**
 
-```{image} images/Cover/math2.png
-:height: 120
+```{image} images/Cover/2D-rectangular-shapefunctions.png
+:height: 130
 ```
 
 +++
