@@ -79,6 +79,7 @@ parts:
       - file: content/CCX/chap2/intro
         sections:
         - file: content/CCX/chap2/sec1-rigid
+        - file: content/CCX/chap2/sec2-surfaceinteraction
       - file: content/CCX/chap3/intro
         sections:
         - file: content/CCX/chap3/sec1-hexahedralelement

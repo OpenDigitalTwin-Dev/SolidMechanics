@@ -1,6 +1,12 @@
 # 刚体
 
-关键字类型：`model definition`
+关键字：
+
+- `*RIGID BODY`
+
+参考示例：
+
+- [Wire Bending](../chap6/sec2-wirebending.md)
 
 ## 刚体定义
 

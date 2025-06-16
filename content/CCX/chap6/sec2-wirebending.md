@@ -178,7 +178,7 @@ hcpy png parts            // 将当前视图截图保存为 parts.png
 *include, input=find.sur
 *include, input=mdep.sur
 *include, input=mind.sur
-*include, input=rb1.inp
+*include, input=rb1.inp (content: *rigid body, nset=Nrmov, ref node = 1 , rot node = 2)
 
 ** 边界设置
 *boundary
@@ -207,7 +207,7 @@ Nrot, 1,3                     // 约束节点集 Nrot 的 1-3 自由度初始为
 
 ** 接触定义
 *surface interaction, name=itool   // 定义表面相互作用 itool
-***surface behavior, pressure-overclosure=linear
+**surface behavior, pressure-overclosure=linear
 **1e6
 **surface behavior, pressure-overclosure=exponential
 **0.02,100
@@ -276,13 +276,13 @@ hcpy png PE            // 将当前截图保存为 PE.png
 
 
 # movie
-zoom 0.55
-rot -y
-view surf
-movi delay 0.3
+zoom 0.55             // 缩放 0.55
+rot -y                // 从 y 轴负向看模型
+view surf             // 显示曲面
+movi delay 0.3        // 帧延迟 0.3 s
 anim real             // 显示真实变形
-movi frames auto
-ds 2 ah 7
+movi frames auto      // 自动抓取
+ds 2 ah 7             // 展示第 3 个数据集的第 7 个变量值的历史数据
 ```
 
 ## 计算结果
