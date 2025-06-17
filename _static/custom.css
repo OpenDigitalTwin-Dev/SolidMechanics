@@ -52,3 +52,8 @@ blockquote {
   font-style: normal;               /* 去斜体 */
   border-radius: 4px;               /* 可选：圆角 */
 }
+
+
+td, th {
+  vertical-align: middle;
+}
