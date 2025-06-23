@@ -40,7 +40,7 @@ $$
 \mathbf{x} = Q\mathbf{X},
 $$
 
-其中，$Q\in\mathbb{M}^{3}$ 是[正交矩阵](../chap2/sec1-OT.md)，则物体发生旋转，此时
+其中，$Q\in\mathbb{M}^{3}$ 是[正交矩阵](../chap1/sec1-OT.md)，则物体发生旋转，此时
 
 $$
 \mathbf{u}(\mathbf{X}) = (Q-I)\mathbf{X}.

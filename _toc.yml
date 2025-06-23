@@ -79,8 +79,9 @@ parts:
       - file: content/CCX/chap2/intro
         sections:
         - file: content/CCX/chap2/sec1-rigid
-        - file: content/CCX/chap2/sec2-surfaceinteraction
-        - file: content/CCX/chap2/sec3-solvecontrol
+        - file: content/CCX/chap2/sec2-plasticity
+        - file: content/CCX/chap2/sec3-surfaceinteraction
+        - file: content/CCX/chap2/sec4-solvecontrol
       - file: content/CCX/chap3/intro
         sections:
         - file: content/CCX/chap3/sec1-hexahedralelement

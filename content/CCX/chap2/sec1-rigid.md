@@ -50,7 +50,7 @@
 
 ```
 ** 刚体定义
-*RIGID BODY, NSET=rigid1, REF NODE=100, ROT NODE=101
+*RIGID BODY, NSET=rigid, REF NODE=100, ROT NODE=101
 
 ** 约束施加
 *CLOAD
@@ -59,7 +59,7 @@
 101,2,2,1.57 // 对 Nrot 点集的第 2 个自由度施加 1.57 的变化（绕 y 轴旋转 90°）
 
 ** 材料属性定义
-*material, name=tool         // 定义材料属性 tool
+*material, name=property     // 定义材料属性 property
 *elastic                     // 弹性属性
 210000,0.3                   // 弹性模量为 210000，泊松比为 0.3 
 
