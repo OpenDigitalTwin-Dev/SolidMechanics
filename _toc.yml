@@ -96,4 +96,5 @@ parts:
         sections:
         - file: content/CCX/chap6/sec1-tubes
         - file: content/CCX/chap6/sec2-wirebending
+        - file: content/CCX/chap6/sec3-weldingshrinkage 
       

@@ -166,7 +166,8 @@ hcpy png parts            // 将当前视图截图保存为 parts.png
 
 ## 求解器文件
 
-```
+```{dropdown} Biegung.inp
+```ccx
 ** 包含文件
 *include, input=all.msh    
 *include, input=draht.nam
@@ -245,7 +246,8 @@ ELSE                                 // 单元能量
 
 ## 后处理文件
 
-```
+```{dropdown} post.fbd
+```cgx
 # 读取文件
 # read Biegung.inp nom // 读取文件 Biegung.frd (no mesh)
 read Biegung.frd       // 读取文件 Biegung.inp

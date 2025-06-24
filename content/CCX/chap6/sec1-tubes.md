@@ -1,13 +1,13 @@
-# Tubes 算例
+# Nested Tubes 算例
 
-[Tubes 算例](https://github.com/calculix/CalculiX-Examples/tree/master/Drahtbiegen/Biegung)展现了具有伸缩结构的线弹性管在纯弯曲载荷（无剪切力）下的力学响应，如下图所示
+[Nested Tubes 算例](https://github.com/calculix/CalculiX-Examples/tree/master/Drahtbiegen/Biegung)展现了具有伸缩结构的线弹性管在纯弯曲载荷（无剪切力）下的力学响应，如下图所示
 
-```{figure} ../../../images/CCX/chap6/tubes.gif
+```{figure} ../../../images/CCX/chap6/nested-tubes.gif
 ---
 width: 600px
-name: sec1-fig:tubes
+name: sec1-fig:nested-tubes
 ---
-Tubes 算例示意图，外管左端中心为原点（由于对称性，只计算一半区域即可）
+Nested Tubes 算例示意图，外管左端中心为原点（由于对称性，只计算一半区域即可）
 ```
 
 其中，外管内表面与内管外表面有一定的接触面积，外管左端固定，内管右端绕 $y$ 轴旋转
@@ -228,18 +228,18 @@ ds 3 ah 7                 // 展示第 3 个数据集的第 7 个变量值的历
 :margin: 0
 
 :::{grid-item}
-```{figure} ../../../images/CCX/chap6/tubes-mises-static.png
+```{figure} ../../../images/CCX/chap6/nested-tubes-mises-static.png
 :width: 100%
-:name: tubes-mises-static
+:name: nested-tubes-mises-static
 
 静力学分析结果-Mises 应力
 ```
 :::
 
 :::{grid-item}
-```{figure} ../../../images/CCX/chap6/tubes-cpress-static.png
+```{figure} ../../../images/CCX/chap6/nested-tubes-cpress-static.png
 :width: 100%
-:name: tubes-cpress-static
+:name: nested-tubes-cpress-static
 
 静力学分析结果-接触应力
 ```
