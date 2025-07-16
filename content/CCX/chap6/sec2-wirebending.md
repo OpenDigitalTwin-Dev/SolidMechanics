@@ -19,6 +19,12 @@ name: sec2-fig:wirebending-1
 Wire Bending 算例示意图，线材左端中心为原点
 ```
 
+## 关键特征
+
+- 大变形
+- 塑性本构
+- 点面接触
+
 
 ## 前处理文件
 
