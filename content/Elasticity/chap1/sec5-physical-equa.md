@@ -41,6 +41,10 @@ $$ (sec5-eq:strain-stress-2)
 
 应力与应变的关系可以写为
 
+```{margin}
+$\mathbf{:}$ 是双点积运算，即 $\mathbf{A}:\mathbf{B}=\mathbf{A}_{ij}\mathbf{B}_{ij}$
+```
+
 $$
 \boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
 $$
