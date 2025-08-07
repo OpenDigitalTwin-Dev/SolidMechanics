@@ -57,3 +57,18 @@ blockquote {
 td, th {
   vertical-align: middle;
 }
+
+pre, code {
+  font-family:
+    "JetBrains Mono",
+    "Fira Mono",
+    "Source Code Pro",
+    "IBM Plex Mono",
+    "DejaVu Sans Mono",
+    "Consolas",
+    "Menlo",
+    "Monaco",
+    "Courier New",
+    monospace !important;
+  font-size: 1em;
+}

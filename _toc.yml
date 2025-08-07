@@ -96,5 +96,8 @@ parts:
         sections:
         - file: content/CCX/chap6/sec1-tubes
         - file: content/CCX/chap6/sec2-wirebending
-        - file: content/CCX/chap6/sec3-welding 
+        - file: content/CCX/chap6/sec3-welding
+  - caption: MFEM 笔记
+    chapters:
+      - file: content/MFEM/intro
       
