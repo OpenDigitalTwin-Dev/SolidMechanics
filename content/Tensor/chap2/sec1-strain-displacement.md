@@ -165,7 +165,7 @@ $$
 \end{bmatrix}\frac{\partial \mathbf{X}}{\partial \xi},
 $$
 
-定义变形梯度矩阵为
+定义**变形梯度矩阵**为
 
 $$
 F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} = 

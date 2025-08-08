@@ -80,7 +80,7 @@ $$ (sec4-eq:geometry)
 可以写为
 
 $$
-\boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,
+\boldsymbol{\varepsilon} = \frac{1}{2}(\nabla \mathbf{u} + \nabla\mathbf{u}^{T}),
 $$
 
 其中，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{u} = [u\,v]^{T}$ 是位移向量，即

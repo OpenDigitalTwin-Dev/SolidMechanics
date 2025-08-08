@@ -10,7 +10,7 @@ $$
 \sigma_{\text{mises}} = \sqrt{3J_{2}}=\sqrt{\frac{1}{2}[(\sigma_{1}-\sigma_{2})^{2} + (\sigma_{2}-\sigma_{3})^{2}+(\sigma_{3}-\sigma_{1})^{2}]}\geq\sigma_{y},
 $$
 
-$\sigma_{\text{mises}}$ 也被称为等效应力，$\sigma_{y}$ 是**单轴拉伸**下的屈服强度，于是在屈服面上
+$\sigma_{\text{mises}}$ 也被称为**等效应力**，$\sigma_{y}$ 是**单轴拉伸**下的屈服强度，于是在屈服面上
 
 $$
 \sigma_{1}=\sigma_{y},\quad\sigma_{2} = 0,\quad \sigma_{3} = 0,

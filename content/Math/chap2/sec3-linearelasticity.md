@@ -6,7 +6,7 @@ $$
 \begin{equation}
 \begin{aligned}
 &\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \mathbf{0},\\
-&\boldsymbol{\varepsilon} = (\nabla \mathbf{u} + (\nabla\mathbf{u})^{T})/2,\\
+&\boldsymbol{\varepsilon} = \frac{1}{2}(\nabla \mathbf{u} + \nabla\mathbf{u}^{T}),\\
 &\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
 \end{aligned}
 \end{equation}

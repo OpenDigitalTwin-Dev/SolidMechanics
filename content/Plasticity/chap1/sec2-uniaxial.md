@@ -117,7 +117,7 @@ $$
 
 ### 塑性流动规则
 
-塑性应变速率 $\dot{\varepsilon}^{p}$ 可正（拉伸），可负（压缩），定义塑性乘子，表示塑性流动的速率
+塑性应变速率 $\dot{\varepsilon}^{p}$ 可正（拉伸），可负（压缩），定义**塑性乘子**，表示塑性流动的速率
 
 $$
 \dot{\varepsilon}^{p} = \dot{\gamma}\cdot\text{sign}(\sigma),
@@ -147,11 +147,44 @@ $$
 \sigma_{y} = \sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-其中，$\bar{\varepsilon}^{p}$ 是累积轴向塑性应变
+其中，$\bar{\varepsilon}^{p}$ 是累积轴向塑性应变（等效塑性应变）
 
 $$
 \bar{\varepsilon}^p \equiv \int_0^t |\dot{\varepsilon}^p| \, \mathrm{d}t,
 $$
+
+```{admonition} 等效塑性应变 $\bar{\varepsilon}^{p}$
+:class: tip, dropdown
+
+等效塑性应变综合了所有塑性应变分量的信息，用来描述材料在塑性变形过程中**累计的、无方向性的总塑性变形量**，反映材料的**塑性损伤程度**或**硬化程度**，是一个**标量**
+
+对于各向同性的材料，其增量通常基于 [Mises 屈服准则](../chap2/sec2-mises.md) 下等效应力定义为
+
+$$
+\begin{equation}
+\mathrm{d}\bar{\varepsilon}^{p} = \sqrt{\frac{2}{3} \mathrm{d}\boldsymbol{\varepsilon}^p : \mathrm{d}\boldsymbol{\varepsilon}^p},
+\end{equation}
+$$
+
+即
+
+$$
+\begin{equation}
+\dot{\bar{\varepsilon}}^{p} = \sqrt{\frac{2}{3} \dot{\boldsymbol{\varepsilon}}^p : \dot{\boldsymbol{\varepsilon}}^p},
+\end{equation}
+$$
+
+其中，$\boldsymbol{\varepsilon}^p$ 是塑性应变张量，因此，累积的等效塑性应变为
+
+$$
+\begin{equation}
+\bar{\varepsilon}^{p} =\int_{0}^{t} \sqrt{\frac{2}{3} \dot{\boldsymbol{\varepsilon}}^p : \dot{\boldsymbol{\varepsilon}}^p}\ \mathrm{d}t.
+\end{equation}
+$$
+
+注意，上述积分是**路径相关**的，即其最终计算结果依赖于加载历史
+```
+
 
 因此，在单调拉伸试验‌中，有
 
@@ -213,9 +246,11 @@ $$
 
 $$
 \begin{equation}
-\dot{\gamma} = \frac{E}{H + E} \cdot \text{sign}(\sigma) \cdot \dot{\varepsilon} = \frac{E}{H + E} |\dot{\varepsilon}|.
+\dot{\gamma} = \frac{E}{H + E} \cdot \text{sign}(\sigma) \cdot \dot{\varepsilon} = \frac{E}{H + E} |\dot{\varepsilon}|
 \end{equation}
 $$ (sec1-eq:plasticity-multiplier)
+
+为塑性乘子
 
 ### 弹塑性切线模量
 
