@@ -43,10 +43,10 @@ $$
 使用位移法求解，选择测试函数 $\mathbf{v}\in\mathcal{V}$，其中
 
 $$
-\mathcal{V}=\left\{\left.\mathbf{v}\in \left[H^{1}(\Omega)\right]^d \,\,\right|\,\, \mathbf{v}=\mathbf{0} \,\, \text{on}\,\, \Gamma_{D} \right\},
+\mathcal{V}=\left\{\left.\mathbf{v}\in \left[H^{k}(\Omega)\right]^d \,\,\right|\,\, \mathbf{v}=\mathbf{0} \,\, \text{on}\,\, \Gamma_{D} \right\},
 $$
 
-$H^{1}(\Omega)$ 是一阶 Sobolev 空间，$d$ 是空间维数。将方程转为积分形式
+$H^{k}(\Omega)$ 是 $k$ 阶 Sobolev 空间，$d$ 是空间维数。将方程转为积分形式
 
 $$
 \int_{\Omega}\left(\nabla\cdot\boldsymbol{\sigma}\right)\cdot \mathbf{v}\,\mathrm{d}\Omega  + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
@@ -93,13 +93,13 @@ $$
 定义对称算子
 
 $$
-\boldsymbol{\varepsilon}(\mathbf{u})=\frac{1}{2}\left(\nabla\mathbf{u} + (\nabla\mathbf{u})^{T}\right),
+\boldsymbol{\varepsilon}(\mathbf{u})=\frac{1}{2}\left(\nabla\mathbf{u} + \nabla\mathbf{u}^{T}\right),
 $$
 
 类似地
 
 $$
-\boldsymbol{\varepsilon}(\mathbf{v})=\frac{1}{2}\left(\nabla\mathbf{v} + (\nabla\mathbf{v})^{T}\right),
+\boldsymbol{\varepsilon}(\mathbf{v})=\frac{1}{2}\left(\nabla\mathbf{v} + \nabla\mathbf{v}^{T}\right),
 $$
 
 由于 $\boldsymbol{\sigma}$ 是对称张量，因此 $\boldsymbol{\sigma} : \nabla \mathbf{v} = \boldsymbol{\sigma} : (\nabla \mathbf{v})^T$，故 
