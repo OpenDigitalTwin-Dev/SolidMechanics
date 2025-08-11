@@ -73,6 +73,7 @@ parts:
         sections:
         - file: content/Plasticity/chap4/sec1-isotropichardening
         - file: content/Plasticity/chap4/sec2-kinematichardening
+      - file: content/Plasticity/chap5/intro
   - caption: CCX 笔记
     chapters:
       - file: content/CCX/intro
