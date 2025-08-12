@@ -112,7 +112,7 @@ $$
 
 其中，$h_{\text{t}}^{\text{p}}=\frac{\mathrm{d}k}{\mathrm{d} \vartheta}$ 是**纯剪切变形中的塑性切线模量**
 
-根据式 {eq}`(intro-eq:strain-p)`，得到
+根据式 {eq}`intro-eq:strain-p`，得到
 
 $$
 \mathbf{D}^{\text{p}} = \frac{1}{H} \left( \frac{\partial f}{\partial \boldsymbol{\sigma}} : \overset{\nabla}{\boldsymbol{\tau}} \right) \frac{\partial f}{\partial \boldsymbol{\sigma}} = \frac{1}{H} \left( \mathbf{s} : \overset{\nabla}{\boldsymbol{\tau}} \right) \mathbf{s},
