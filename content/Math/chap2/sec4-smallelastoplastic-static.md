@@ -40,7 +40,7 @@ $$
 
 **屈服函数**
 
-以经典的 [Mises 准则](../../Plasticity/chap2/sec2-mises.md) 为例
+例如，对于经典的 [Mises 准则](../../Plasticity/chap2/sec2-mises.md)
 
 $$
 \begin{equation}
@@ -59,6 +59,8 @@ $$
 
 **流动法则**
 
+例如，考虑关联性流动法则
+
 $$
 \begin{equation}
 \dot{\boldsymbol{\varepsilon}}^p = \dot{\gamma} \frac{\partial f}{\partial \boldsymbol{\sigma}}，
@@ -69,7 +71,7 @@ $$
 
 **硬化法则**
 
-若初始屈服应力为 $\sigma_{y0}$，对于线性硬化，则有
+例如，对于线性硬化
 
 $$
 \begin{equation}
@@ -77,7 +79,7 @@ $$
 \end{equation}
 $$
 
-其中，$H$ 是硬化模量
+其中，$\sigma_{y0}$ 是初始屈服强度，$H$ 是硬化模量
 
 **塑性加载/卸载条件**
 
@@ -130,86 +132,146 @@ $$
 
 将总时间划分为 $N$ 个离散时刻，记为 $\{t_{i}\}_{i=1}^{N}$。在数值仿真中，通常根据第 $n$ 个时间点的状态递推求解第 $n+1$ 个时间点的状态，其中最关键的环节包括：
 
-1. 在积分点处通过回归映射算法处理材料的塑性变形
+1. [在积分点处通过本构积分处理材料的弹塑性变形](../../Plasticity/chap5/intro.md)
 2. 通过有限元方法求解结构的位移响应
 
 两者协同作用，确保材料和结构在每个新时间步上的状态能够合理更新
-
-### 回归映射算法（return mapping）
-
-回归映射算法是一种弹塑性本构积分方法，通过预测应力状态并判断是否超出屈服面，当发生塑性变形时，将应力**回映射**到屈服面上，同时更新材料的塑性变量，从而准确模拟材料在加载过程中的弹塑性响应
-
-回归映射算法的目标是：已知
-
-$$
-\begin{equation}
-\boldsymbol{\varepsilon}_{n}^{e},\ \boldsymbol{\varepsilon}_{n}^{p},\ \bar{\varepsilon}_{n}^{p},\ \boldsymbol{\sigma}_{n},\ \boldsymbol{\varepsilon}_{n+1}
-\end{equation}
-$$
-
-求解
-
-$$
-\begin{equation}
-\boldsymbol{\varepsilon}_{n+1}^{p},\ \bar{\varepsilon}_{n+1}^{p},\ \boldsymbol{\sigma}_{n+1}
-\end{equation}
-$$
-
-#### 弹性预测
-
-在分析步 $[t_{n},t_{n+1}]$ 内的总应变增量为
-
-$$
-\Delta\boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}_{n+1} - \boldsymbol{\varepsilon}_{n},
-$$
-
-假设为纯弹性变形，于是在时间步 $t_{n+1}$，有
-
-$$
-\begin{equation}
-\begin{aligned}
-&\boldsymbol{\varepsilon}_{n+1}^{e,\mathrm{trial}} = \boldsymbol{\varepsilon}_{n}^{e} + \Delta \boldsymbol{\varepsilon},\\
-&\boldsymbol{\varepsilon}_{n+1}^{p} = \boldsymbol{\varepsilon}_{n}^{p},\\
-&\bar{\varepsilon}_{n+1}^{p}=\bar{\varepsilon}_{n}^{p},\\
-&\boldsymbol{\sigma}_{n+1}^{\mathrm{trial}} = \mathbf{D} : \boldsymbol{\varepsilon}_{n+1}^{e,\mathrm{trial}} = \mathbf{D} :(\boldsymbol{\varepsilon}_{n+1} - \boldsymbol{\varepsilon}_{n+1}^{p}),\\
-&\bar{\sigma}_{n+1}^{\mathrm{trial}} = \sqrt{\frac{3}{2} \left\| \mathbf{s}_{n+1}^{\mathrm{trial}} \right\|^2 },
-\end{aligned}
-\end{equation}
-$$
-
-于是，试探屈服函数为
-
-$$
-\begin{equation}
-f_{\mathrm{trial}} = \bar{\sigma}_{n+1}^{\mathrm{trial}} - \sigma_y(\bar{\varepsilon}_n^p) = \bar{\sigma}_{n+1}^{\mathrm{trial}} - (\sigma_{y0} + H\bar{\varepsilon}_{n}^{p}).
-\end{equation}
-$$
-
-#### 塑性修正
-
-若 $f_{\mathrm{trial}} \leq 0$，则此步为弹性，则接受试探步
-
-$$
-\boldsymbol{\sigma}_{n+1}=\boldsymbol{\sigma}_{n+1}^{\mathrm{trial}},\ \boldsymbol{\varepsilon}_{n+1}^{p} = \boldsymbol{\varepsilon}_{n}^{p},\ \bar{\varepsilon}_{n+1}^{p}=\bar{\varepsilon}_{n}^{p}.
-$$
-
-若 $f_{\mathrm{trial}} > 0$，则发生塑性变形，需要进行塑性修正，使应力回到屈服面上
-
-根据[流动法则](../../Plasticity/chap3/intro.md)，塑性应变增量为
-
-$$
-\Delta\boldsymbol{\varepsilon}^{p}=\dot{\gamma}\frac{\partial f}{\partial \boldsymbol{\sigma}},\quad \dot{\gamma}>0,
-$$
-
-其中，$\dot{\gamma}$ 是塑性乘子，$\frac{\partial f}{\partial \boldsymbol{\sigma}}$ 是塑性流动的方向，记为 $\mathbf{n}_{n+1}$
 
 ### 有限元弱形式
 
 与 [线弹性方程](../chap2/sec3-linearelasticity.md) 类似，弱形式为
 
 $$
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
 = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 其中，$\mathbf{v}\in\mathcal{V}$ 是试验函数，$\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}$
+
+### 有限元离散形式
+
+设有限元解空间 $\mathcal{U}_{h}$ 的基函数为
+
+$$
+\boldsymbol{\phi}_{1},\boldsymbol{\phi}_{2},\cdots,\boldsymbol{\phi}_{N},
+$$
+
+$\boldsymbol{\phi}_{i} = \left[\phi_{x,i},\phi_{y,i},\phi_{z,i}\right]$，其中，$\phi_{x,i},\phi_{y,i},\phi_{z,i}$ 表示位移在 $x,y,z$ 方向的插值基函数，通常 $\phi_{x,i}=\phi_{y,i}=\phi_{z,i}=:\phi_{i}$，于是位移分布函数为
+
+$$
+\mathbf{u} = \sum_{i=1}^{N}\mathbf{u}_{i}\phi_{i},
+$$
+
+其中，$\mathbf{u}_{i} = \left[u_{x,i},u_{y,i},u_{z,i}\right]^{T}$. 测试函数空间 $\mathcal{V}_{h} = \mathcal{U}_{h}$，在节点 $i$ 上，测试函数选为
+
+$$
+\begin{bmatrix}
+\phi_{i} \\ 0 \\ 0
+\end{bmatrix},\quad 
+\begin{bmatrix}
+ 0  \\ \phi_{i} \\ 0
+\end{bmatrix},\quad
+\begin{bmatrix}
+ 0 \\ 0 \\ \phi_{i} 
+\end{bmatrix}，
+$$
+
+分别记为 $\mathbf{v}_{x,i},\mathbf{v}_{y,i},\mathbf{v}_{z,i}$
+
+共计 $3N$ 个位移自由度 
+
+$$
+u_{x,1},u_{y,1},u_{z,1},u_{x,2},u_{y,2},u_{z,2},\cdots,u_{x,N},u_{y,N},u_{z,N},
+$$
+
+和 $3N$ 个求解方程
+
+$$
+\begin{equation}
+\begin{aligned}
+&\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
+=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+\end{aligned}
+\end{equation}
+$$
+
+不同于线弹性问题，由于 $\boldsymbol{\sigma}$ 是关于历史应变的非线性函数，因此上述方程是一个非线性方程组，通常采用 Newton-Rapshon 方法求解
+
+将上述方程记为
+
+$$
+\mathbf{R}(\mathbf{u}) = \mathbf{F}_{\text{int}} + \mathbf{F}_{r}-\mathbf{F}_{\text{ext}} = \mathbf{0},
+$$
+
+其中
+
+- 内力项向量：$\mathbf{F}_{\text{int}}:=\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega$
+- Robin 边界条件贡献向量：$\mathbf{F}_{\text{r}}:=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
+- 外力向量：$\mathbf{F}_{\text{ext}}:=\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
+
+#### $\mathbf{F}_{\text{int}}$ 对刚度矩阵的贡献
+
+使用 Vogit 形式，对于每个单元，由于 $\mathbf{v}$ 选为单元上所有基函数，于是单元的内力项
+
+$$
+\mathbf{F}_{\text{int}} := \int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}E,
+$$
+
+由于 
+
+$$
+\boldsymbol{\varepsilon}=\mathcal{B}\mathbf{u} = \mathbf{B}\mathbf{u}^{e},
+$$
+
+故 Jacobian 矩阵为
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}_{\text{int}}}{\partial \mathbf{u}^{e}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}^{e}}\ \mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}^{e}} \mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\mathbf{D}_{ep}^{\text{alg}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}^{e}} \mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\mathbf{D}_{ep}^{\text{alg}}\ \mathbf{B} \mathbf{d}E,
+\end{aligned}
+\end{equation}
+$$
+
+其中，$\mathbf{D}_{ep}^{\text{alg}}$ 是一致性切线模量
+
+#### $\mathbf{F}_{\text{r}}$ 对刚度矩阵的贡献
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{F}_{r}&=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S.
+\end{aligned}
+\end{equation}
+$$
+
+由于
+
+$$
+\mathbf{u} = \mathbf{N}\mathbf{u}^{e},
+$$
+
+故
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{K}_{r} = \frac{\partial \mathbf{F}_{r}}{\partial \mathbf{u}^{e}}&=\int_{\Gamma_{R}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S\\
+&=\int_{\Gamma_{R}} \alpha\left(\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}}\right)^{T} \mathbf{v}_{*,i} \, \mathrm{d}S\\
+&=\int_{\Gamma_{R}} \alpha\mathbf{N}^{T}\mathbf{N} \, \mathrm{d}S.
+\end{aligned}
+\end{equation}
+$$
+
+#### $\mathbf{F}_{\text{ext}}$ 对右端项的贡献
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{F}_{\text{ext}}=\int_{\Omega}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S.
+\end{aligned}
+\end{equation}
+$$

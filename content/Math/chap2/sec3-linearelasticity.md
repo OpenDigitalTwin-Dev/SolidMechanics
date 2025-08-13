@@ -134,7 +134,7 @@ $$
 
 $$
 \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) 
-\rightarrow\mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})= \begin{bmatrix}
+\Rightarrow\mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})= \begin{bmatrix}
 \lambda + 2\mu & \lambda & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda + 2\mu & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda & \lambda + 2\mu & 0 & 0 & 0 \\
@@ -149,12 +149,12 @@ $$
 以及
 
 ```{margin}
-$\mathbf{B}$ 是应变-位移算子矩阵
+$\mathcal{B}$ 是应变-位移算子矩阵
 ```
 
 $$
 \begin{equation}
-\boldsymbol{\varepsilon}({\mathbf{u}}) = \mathcal{B}\mathbf{u}\quad \rightarrow\quad
+\boldsymbol{\varepsilon}({\mathbf{u}}) = \mathcal{B}\mathbf{u}\quad \Rightarrow\quad
 \begin{bmatrix}
 \varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{yz}\\2\varepsilon_{zx}
 \end{bmatrix}

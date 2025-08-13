@@ -86,9 +86,17 @@ $$
 = \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{C}^e :\mathbf{n}_{n+1}.
 $$
 
+也可以写为
+
+$$
+\boldsymbol{\varepsilon}^{e}_{n+1} = \boldsymbol{\varepsilon}^{\text{trial}} - \Delta\gamma\mathbf{n}_{n+1},
+$$
+
+其中，$\boldsymbol{\varepsilon}^{\text{trial}} = \mathbf{M}^{e}\boldsymbol{\sigma}^{\text{trial}}$，$\mathbf{M}^{e}$ 是四阶柔度张量
+
 ### 各向同性硬化
 
-此时，Mises 屈服函数为
+Mises 屈服函数为
 
 $$
 f(\boldsymbol{\sigma},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
@@ -124,7 +132,9 @@ $$
 \boldsymbol{\sigma}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \Delta \gamma
 $$
 
-通常这一非线性方程组使用 Newton-Raphson 方法进行求解：
+#### 求解
+
+这一非线性方程组通常使用 Newton-Raphson 方法进行求解：
 
 记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\varepsilon=\bar{\varepsilon}_{n+1}^p,\Delta \gamma\right]^{T}$，
 
@@ -157,7 +167,7 @@ $$
 
 ### 运动硬化
 
-此时，Mises 屈服函数为
+Mises 屈服函数为
 
 $$
 f(\boldsymbol{\sigma},\boldsymbol{\alpha})=\sqrt{\frac{3}{2}}\|\mathbf{s}-\boldsymbol{\alpha}\|-\sigma_{y},
@@ -192,6 +202,10 @@ $$
 $$
 \boldsymbol{\sigma}_{n+1},\quad \boldsymbol{\alpha}_{n+1},\quad \Delta \gamma
 $$
+
+#### 求解
+
+使用 Newton-Raphson 方法求解方程组：
 
 记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\boldsymbol{\alpha}=\boldsymbol{\alpha}_{n+1},\Delta \gamma\right]^{T}$，
 
@@ -249,6 +263,10 @@ $$
 \boldsymbol{\sigma}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \boldsymbol{\alpha}_{n+1},\quad \Delta \gamma
 $$
 
+#### 求解
+
+使用 Newton-Raphson 方法求解方程组：
+
 记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\varepsilon=\bar{\varepsilon}_{n+1}^p,\boldsymbol{\alpha}=\boldsymbol{\alpha}_{n+1},\Delta \gamma\right]^{T}$，
 
 记 $\mathbf{r}=\left[\mathbf{r}_{\boldsymbol{\sigma}},r_{\varepsilon},r_{\boldsymbol{\alpha}},r_{f}\right]^{T}$，其中
@@ -293,3 +311,24 @@ $$
 $$
 C_{ep}^{\text{alg}}=\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}_{n+1}}.
 $$
+
+## 求解注记
+
+### $\Delta\gamma$ 的正值
+
+虽然方程要求满足 $\dot{\gamma}(t)>0$，但在求解过程中仍有可能出现收敛到 $\Delta\gamma<0$ 的情况，这在常规材料与基础塑性模型中不太可能出现，但在复杂本构中可能出现。这样的解在物理上没有意义，必须舍弃，且需通过一定的策略进行修正
+
+### 非线性求解
+
+对于一些本构模型，return mapping 方程的非线性通常很强，这使得 Newton 类方法的收敛域很小，此时必须采用如初值优化，线搜索等策略提升收敛性能
+
+## 其他算法
+
+### Closest Point Projection
+
+### The Generalised Trapezoidal Return Mapping
+
+### The Generalised Midpoint Return Mapping
+
+### The Cutting-Plane Return Mapping
+
