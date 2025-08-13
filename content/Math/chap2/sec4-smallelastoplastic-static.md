@@ -236,7 +236,7 @@ $$
 \end{equation}
 $$
 
-其中，$\mathbf{D}_{ep}^{\text{alg}}$ 是一致性切线模量
+其中，$\mathbf{D}_{ep}^{\text{alg}}$ 是[一致性切线模量](../../Plasticity/chap5/returnmapping.md)
 
 #### $\mathbf{F}_{\text{r}}$ 对刚度矩阵的贡献
 

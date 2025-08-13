@@ -304,13 +304,30 @@ $$
 一致性切线模量与算法匹配，若使用非算法相关的理论弹塑性模量 $\mathbf{C}_{ep}^{\text{theo}}$，则牛顿迭代肯能够收敛缓慢甚至发散
 ```
 
-一致性切线模量（也称为**算法切线模量**）反映了应力对总应变的线性化增量关系，能够准确描述材料在弹塑性等非线性行为下的刚度变化。**在非线性有限元分析中，Jacobian 矩阵的计算采用一致性切线模量，可以显著提高全局非线性迭代的收敛速度和数值稳定性**。因此，在本构积分后，计算并返回一致性切线模量是实现高效、稳健有限元求解的关键步骤
+一致性切线模量（也称为**算法切线模量**）反映了应力对总应变的线性化增量关系，能够准确描述材料在弹塑性等非线性行为下的刚度变化。**在非线性有限元分析中，Jacobian 矩阵的计算采用一致性切线模量，可以显著提高全局非线性迭代的收敛速度和数值稳定性**。因此，在本构积分后，计算并返回一致性切线模量是实现高效、稳健的有限元求解的关键步骤
 
 一致性切线模量定义为
 
 $$
-C_{ep}^{\text{alg}}=\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}_{n+1}}.
+\mathbf{D}_{ep}^{\text{alg}}=\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}_{n+1}}.
 $$
+
+### 弹性材料
+
+对于弹性材料，有
+
+$$
+\mathbf{D}_{ep}^{\text{alg}} = \mathbf{D}^{e} = 2\mu \mathbf{I}^{s}+\lambda \mathbf{I}\otimes\mathbf{I}.
+$$
+
+### 弹塑性材料
+
+对于弹塑性材料，在已知前一步内变量 $\boldsymbol{\alpha}_{n}$ 和当前步总应变 $\boldsymbol{\varepsilon}_{n+1}$ 的情况下，通常通过本构积分算法来更新应力。这个过程自然定义了一个算子形式的增量本构函数 $\hat{\boldsymbol{\sigma}}$，即
+
+$$
+\boldsymbol{\sigma}_{n+1}=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1})
+$$
+
 
 ## 求解注记
 
