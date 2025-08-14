@@ -72,13 +72,13 @@ $$
 例如，各向同性硬化自由能为
 
 $$
-\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbf{C} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} \mathbf{H} \boldsymbol{\alpha}^2,
+\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbf{D} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} \mathbf{H} \boldsymbol{\alpha}^2,
 $$
 
 运动硬化自由能为
 
 $$
-\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbf{C} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} c (\boldsymbol{\alpha} - \boldsymbol{\alpha}_0)^2.
+\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbf{D} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} c (\boldsymbol{\alpha} - \boldsymbol{\alpha}_0)^2.
 $$
 
 此外，有

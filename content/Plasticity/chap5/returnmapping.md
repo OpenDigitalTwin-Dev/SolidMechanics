@@ -5,20 +5,6 @@ Return Mapping Algorithm（返回映射算法）是解决弹塑性材料本构�
 - **弹性预测**：假设在时间步长内，材料行为完全是弹性的，计算试应力
 - **塑性修正**：检查试应力是否超出屈服面，若超出，则将应力拉回更新后的屈服面
 
-以 Mises 屈服准则和关联流动法则为例，考虑小变形假设，故
-
-**Mises 屈服函数**
-
-$$
-f(\boldsymbol{\sigma},\boldsymbol{\alpha},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s} - \boldsymbol{\alpha}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
-$$
-
-**关联流动法则**
-
-$$
-\dot{\boldsymbol{\varepsilon}}^{p}=\dot{\gamma}\frac{\partial f}{\partial \boldsymbol{\sigma}} = \dot{\gamma}\mathbf{n},
-$$
-
 ## 弹性预测
 
 假设整个步长是弹性的，则
@@ -30,8 +16,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\boldsymbol{\varepsilon}_{n+1}^{e, \text{trial}} = \boldsymbol{\varepsilon}_n^e + \Delta \boldsymbol{\varepsilon},\\
-&\boldsymbol{\sigma}^{\text{trial}} = \mathbf{C}^e : \boldsymbol{\varepsilon}_{n+1}^{e, \text{trial}} = \boldsymbol{\sigma}_n + \mathbf{C}^e : \Delta \boldsymbol{\varepsilon}.
+&\boldsymbol{\varepsilon}^{e, \text{trial}} = \boldsymbol{\varepsilon}_n^e + \Delta \boldsymbol{\varepsilon},\\
+&\boldsymbol{\sigma}^{\text{trial}} = \mathbf{D}^e : \boldsymbol{\varepsilon}^{e, \text{trial}} = \boldsymbol{\sigma}_n + \mathbf{D}^e : \Delta \boldsymbol{\varepsilon}.
 \end{aligned}
 \end{equation}
 $$
@@ -42,13 +28,7 @@ $$
 \boldsymbol{\varepsilon}_{n+1}^{p, \text{trial}} = \boldsymbol{\varepsilon}_n^p, \quad \bar{\varepsilon}_{n+1}^{p, \text{trial}} = \bar{\varepsilon}_n^p,
 $$
 
-计算屈服函数
-
-$$
-f^{\text{trial}} = \sqrt{\frac{3}{2}} \left\| \mathbf{s}^{\text{trial}} \right\| - \sigma_y \left( \bar{\varepsilon}_n^p \right)
-$$
-
-若 $f^{\text{trial}} \leq 0$：则步长内为弹性变形，接受预测值：
+计算屈服函数$f^{\text{trial}}$，若 $f^{\text{trial}} \leq 0$：则步长内为弹性变形，接受预测值：
 
 $$
 \boldsymbol{\sigma}_{n+1} = \boldsymbol{\sigma}^{\text{trial}}, \quad
@@ -56,43 +36,38 @@ $$
 \bar{\varepsilon}_{n+1}^p = \bar{\varepsilon}_n^p.
 $$
 
-否则，进入塑性修正阶段，找到满足 $t_{n+1}$ 时刻屈服条件的应力状态
+否则，进入塑性修正阶段
 
 ## 塑性修正
 
-结合流动法则
+塑性修正的目标是将应力状态拉回到更新后的屈服面上，即找到 $t_{n+1}$ 时刻满足下述方程的应力状态
 
 $$
-\boldsymbol{\varepsilon}_{n+1}^p = \boldsymbol{\varepsilon}_n^p + \Delta \gamma\, \mathbf{n}_{n+1},
+\begin{equation}
+\begin{aligned}
+&\boldsymbol{\varepsilon}^{e}_{n+1} = \boldsymbol{\varepsilon}^{e, \text{trial}} - \Delta\gamma\mathbf{n}_{n+1},\\
+&\boldsymbol{\alpha}_{n+1} = \boldsymbol{\alpha}_{n} + \Delta\gamma\mathbf{H}(\boldsymbol{\sigma}_{n+1},\mathbf{A}_{n+1}),\\
+&\Phi(\boldsymbol{\sigma}_{n+1}, \mathbf{A}_{n+1}) = 0,\\
+&\Delta\gamma\geq0,
+\end{aligned}
+\end{equation}
 $$
 
-弹性关系
+上述方程组对于变量 $\boldsymbol{\varepsilon}^{e}_{n+1},\boldsymbol{\alpha}_{n+1},\Delta\gamma$ 封闭
+
+接下来以 Mises 屈服准则和关联流动法则为例，考虑小变形假设的情形
+
+**Mises 屈服函数**
 
 $$
-\boldsymbol{\sigma}_{n+1} = \mathbf{C}^e : \left( \boldsymbol{\varepsilon}_{n+1} - \boldsymbol{\varepsilon}_{n+1}^p \right)
-= \mathbf{C}^e : \left( \boldsymbol{\varepsilon}_n + \Delta\boldsymbol{\varepsilon} - \boldsymbol{\varepsilon}_{n+1}^p \right),
+f(\boldsymbol{\sigma},\boldsymbol{\alpha},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s} - \boldsymbol{\alpha}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-以及应变分解
+**关联流动法则**
 
 $$
-\boldsymbol{\varepsilon}_n = \boldsymbol{\varepsilon}_n^e + \boldsymbol{\varepsilon}_n^p,
+\dot{\boldsymbol{\varepsilon}}^{p} = \dot{\gamma}\mathbf{n}=\dot{\gamma}\frac{\partial f}{\partial \boldsymbol{\sigma}},
 $$
-
-得到
-
-$$
-\boldsymbol{\sigma}_{n+1} = \boldsymbol{\sigma}^{\text{trial}} - \mathbf{C}^e : \left( \boldsymbol{\varepsilon}_{n+1}^p - \boldsymbol{\varepsilon}_n^p \right)
-= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{C}^e :\mathbf{n}_{n+1}.
-$$
-
-也可以写为
-
-$$
-\boldsymbol{\varepsilon}^{e}_{n+1} = \boldsymbol{\varepsilon}^{\text{trial}} - \Delta\gamma\mathbf{n}_{n+1},
-$$
-
-其中，$\boldsymbol{\varepsilon}^{\text{trial}} = \mathbf{M}^{e}\boldsymbol{\sigma}^{\text{trial}}$，$\mathbf{M}^{e}$ 是四阶柔度张量
 
 ### 各向同性硬化
 
@@ -102,7 +77,7 @@ $$
 f(\boldsymbol{\sigma},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-因此 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}}{\|\mathbf{s}\|}$，结合关联流动法则，有
+此时 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}}{\|\mathbf{s}\|}$，结合关联流动法则，有
 
 $$
 \dot{\bar{\varepsilon}}^{p}=\sqrt{\frac{2}{3}}\|\dot{\boldsymbol{\varepsilon}}^{p}\|=\sqrt{\frac{2}{3}}\|\dot{\gamma}\mathbf{n}\| =\dot{\gamma},
@@ -119,7 +94,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{C}^e :\mathbf{n}_{n+1},\\
+\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{n}_{n+1},\\
 \bar{\varepsilon}_{n+1}^p &= \bar{\varepsilon}_n^p + \Delta \gamma,\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}\|-\sigma_{y}(\bar{\varepsilon}^{p}_{n+1})=0,
 \end{aligned}
@@ -132,9 +107,9 @@ $$
 \boldsymbol{\sigma}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \Delta \gamma
 $$
 
-#### 求解
+#### 方程组求解
 
-这一非线性方程组通常使用 Newton-Raphson 方法进行求解：
+这一非线性方程组可使用 Newton-Raphson 方法进行求解：
 
 记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\varepsilon=\bar{\varepsilon}_{n+1}^p,\Delta \gamma\right]^{T}$，
 
@@ -143,7 +118,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{C}^e : \mathbf{n}_{n+1},\\
+\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{D}^e : \mathbf{n}_{n+1},\\
 r_{\varepsilon}&=\varepsilon - \bar{\varepsilon}_n^p - \Delta \gamma,\\
 r_{f}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}\|-\sigma_{y}(\varepsilon),
 \end{aligned}
@@ -165,6 +140,71 @@ $$
 
 初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\bar{\varepsilon}_{n}^p,0\right]$. 注意，$\bar{\varepsilon}_{n}^p$ 使用的是当前时间步上一个外层非线性迭代的结果
 
+#### 单方程简化
+
+Newton-Raphson 方法可以用于求解一般的非线性方程组。然而，由于在每一个高斯积分点都需要对非线性方程组进行求解，尤其在三维情况下，方程的维数达到 8，非线性求解的难度也较大，因此计算代价非常高。在某些特定情况下，可以通过消元，将方程组简化为单个方程，从而降低求解的复杂度
+
+由于塑性流动不可压，因此
+
+$$
+\text{tr}(\dot{\boldsymbol{\varepsilon}})=0\quad \Longrightarrow\quad \text{tr}(\Delta\boldsymbol{\varepsilon})=0，
+$$
+
+故
+
+$$
+\mathbf{D}^e:\Delta\boldsymbol{\varepsilon} = 2G\ \text{dev}(\Delta\boldsymbol{\varepsilon})+K\text{tr}(\Delta\boldsymbol{\varepsilon})\mathbf{I}=2G\ \text{dev}(\Delta\boldsymbol{\varepsilon}),
+$$
+
+其中，$\text{dev}(\cdot)$ 表示偏张量的部分，由于 $\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=\Delta\boldsymbol{\varepsilon}^{p}$，故
+
+$$
+\mathbf{D}^e:(\Delta\gamma\mathbf{n}_{n+1})=\mathbf{D}^e:(\Delta\boldsymbol{\varepsilon}^{p})=2G\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=2G\Delta\boldsymbol{\varepsilon}^{p}=2G\Delta\gamma\mathbf{n}_{n+1},
+$$
+
+于是
+
+$$
+\boldsymbol{\sigma}_{n+1} = \boldsymbol{\sigma}^{\text{trial}} - 2G\Delta\gamma\sqrt{\frac{3}{2}} \frac{\mathbf{s}_{n+1}}{\|\mathbf{s}_{n+1}\|},
+$$
+
+从而
+
+$$
+\mathbf{s}_{n+1} = \mathbf{s}^{\text{trial}} - 2G\Delta\gamma\sqrt{\frac{3}{2}} \frac{\mathbf{s}_{n+1}}{\|\mathbf{s}_{n+1}\|},
+$$
+
+这表明 $\mathbf{s}_{n+1}$ 和 $\mathbf{s}^{\text{trial}}$ 同向，因此
+
+$$
+\frac{\mathbf{s}_{n+1}}{\|\mathbf{s}_{n+1}\|}=\frac{\mathbf{s}^{\text{trial}}}{\|\mathbf{s}^{\text{trial}}\|},
+$$
+
+于是
+
+```{margin}
+由于 $\mathbf{s}^{\text{trial}}$ 是常值，因此 $\mathbf{s}_{n+1}$ 是关于 $\Delta\gamma$ 的线性函数
+```
+
+$$
+\mathbf{s}_{n+1} = \left(1-\frac{\sqrt{6}G\Delta\gamma}{\|\mathbf{s}^{\text{trial}}\|}\right)\mathbf{s}^{\text{trial}},
+$$
+
+
+将上式和 $\bar{\varepsilon}_{n+1}^p = \bar{\varepsilon}_n^p + \Delta \gamma$ 代入到屈服面函数，得到关于 $\Delta\gamma$ 的方程
+
+$$
+\sqrt{\frac{3}{2}}\left(\|\mathbf{s}^{\text{trial}}\|-\sqrt{6}G\Delta\gamma\right)-\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma)=0,
+$$
+
+即
+
+$$
+\sqrt{\frac{3}{2}}\|\mathbf{s}^{\text{trial}}\|-3G\Delta\gamma-\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma)=0.
+$$
+
+对于线性硬化，该方程是线性的，对于非线性硬化，方程是非线性的，通常使用 Newton-Rapshon 求解
+
 ### 运动硬化
 
 Mises 屈服函数为
@@ -173,7 +213,7 @@ $$
 f(\boldsymbol{\sigma},\boldsymbol{\alpha})=\sqrt{\frac{3}{2}}\|\mathbf{s}-\boldsymbol{\alpha}\|-\sigma_{y},
 $$
 
-根据 Prager 运动硬化公式
+此时 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，根据 Prager 运动硬化公式
 
 $$
 \mathrm{d}\boldsymbol{\alpha}=C\mathrm{d}\gamma\mathbf{n}_{n+1},
@@ -190,7 +230,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{C}^e :\mathbf{n}_{n+1},\\
+\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{n}_{n+1},\\
 \boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{n}_{n+1},\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_{y}=0,
 \end{aligned}
@@ -203,38 +243,7 @@ $$
 \boldsymbol{\sigma}_{n+1},\quad \boldsymbol{\alpha}_{n+1},\quad \Delta \gamma
 $$
 
-#### 求解
-
-使用 Newton-Raphson 方法求解方程组：
-
-记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\boldsymbol{\alpha}=\boldsymbol{\alpha}_{n+1},\Delta \gamma\right]^{T}$，
-
-记 $\mathbf{r}=\left[\mathbf{r}_{\boldsymbol{\sigma}},r_{\boldsymbol{\alpha}},r_{f}\right]^{T}$，其中
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{C}^e : \mathbf{n}_{n+1},\\
-r_{\boldsymbol{\alpha}}&=\boldsymbol{\alpha}_{n+1}-\boldsymbol{\alpha}_{n} - C\Delta\gamma\mathbf{n}_{n+1},\\
-r_{f}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_{y},
-\end{aligned}
-\end{equation}
-$$
-
-于是，Jacobian 矩阵为
-
-$$
-\begin{equation}
-\mathbf{J} = \frac{\partial \mathbf{r}}{\partial \mathbf{v}}=
-\begin{bmatrix}
-\frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \boldsymbol{\sigma}} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \boldsymbol{\alpha}} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \Delta \gamma} \\
-\frac{\partial r_{\boldsymbol{\alpha}}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{\boldsymbol{\alpha}}}{\partial \boldsymbol{\alpha}} & \frac{\partial r_{\boldsymbol{\alpha}}}{\partial \Delta \gamma} \\
-\frac{\partial r_{f}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{f}}{\partial \boldsymbol{\alpha}} & \frac{\partial r_{f}}{\partial \Delta \gamma}
-\end{bmatrix}.
-\end{equation}
-$$
-
-初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\boldsymbol{\alpha}_{n},0\right]$. 注意，$\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
+使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\boldsymbol{\alpha}_{n},0\right]$. 注意，$\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
 
 ### 混合硬化
 
@@ -244,12 +253,12 @@ $$
 f(\boldsymbol{\sigma},\boldsymbol{\alpha},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s} - \boldsymbol{\alpha}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-结合各向同性硬化和 Prager 运动硬化公式，得到求解方程组为
+此时 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，结合各向同性硬化和 Prager 运动硬化公式，得到求解方程组为
 
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{C}^e :\mathbf{n}_{n+1},\\
+\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{n}_{n+1},\\
 \bar{\varepsilon}_{n+1}^p &= \bar{\varepsilon}_n^p + \Delta \gamma,\\
 \boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{n}_{n+1},\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_y \left( \bar{\varepsilon}_{n+1}^p \right)=0,
@@ -263,40 +272,8 @@ $$
 \boldsymbol{\sigma}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \boldsymbol{\alpha}_{n+1},\quad \Delta \gamma
 $$
 
-#### 求解
 
-使用 Newton-Raphson 方法求解方程组：
-
-记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\varepsilon=\bar{\varepsilon}_{n+1}^p,\boldsymbol{\alpha}=\boldsymbol{\alpha}_{n+1},\Delta \gamma\right]^{T}$，
-
-记 $\mathbf{r}=\left[\mathbf{r}_{\boldsymbol{\sigma}},r_{\varepsilon},r_{\boldsymbol{\alpha}},r_{f}\right]^{T}$，其中
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{C}^e : \mathbf{n}_{n+1},\\
-r_{\varepsilon}&=\varepsilon - \bar{\varepsilon}_n^p - \Delta \gamma,\\
-r_{\boldsymbol{\alpha}}&=\boldsymbol{\alpha}_{n+1}-\boldsymbol{\alpha}_{n} - C\Delta\gamma\mathbf{n}_{n+1},\\
-r_{f}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_{y},
-\end{aligned}
-\end{equation}
-$$
-
-于是，Jacobian 矩阵为
-
-$$
-\begin{equation}
-\mathbf{J} = \frac{\partial \mathbf{r}}{\partial \mathbf{v}}=
-\begin{bmatrix}
-\frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \boldsymbol{\sigma}} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \varepsilon} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \boldsymbol{\alpha}} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \Delta \gamma} \\
-\frac{\partial r_{\varepsilon}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{\varepsilon}}{\partial \varepsilon} & \frac{\partial r_{\varepsilon}}{\partial \boldsymbol{\alpha}} & \frac{\partial r_{\varepsilon}}{\partial \Delta \gamma} \\
-\frac{\partial r_{\boldsymbol{\alpha}}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{\boldsymbol{\alpha}}}{\partial \varepsilon} & \frac{\partial r_{\boldsymbol{\alpha}}}{\partial \boldsymbol{\alpha}} & \frac{\partial r_{\boldsymbol{\alpha}}}{\partial \Delta \gamma} \\
-\frac{\partial r_{f}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{f}}{\partial \varepsilon} & \frac{\partial r_{f}}{\partial \boldsymbol{\alpha}} & \frac{\partial r_{f}}{\partial \Delta \gamma}
-\end{bmatrix}.
-\end{equation}
-$$
-
-初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n},0\right]$. 注意，$\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
+使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n},0\right]$. 注意，$\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
 
 ## 一致性切线模量 $\mathbf{C}_{ep}^{\text{alg}}$
 

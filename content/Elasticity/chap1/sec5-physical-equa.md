@@ -29,7 +29,7 @@ $$ (sec5-eq:strain-stress-1)
 由于假定材料具有完全弹性、均匀性和各向同性，这些常数不随应力应变的大小、位置或方向发生变化
 ```
 
-1. $E$（**拉压弹性模量**）：又称**弹性模量**，是衡量材料在弹性范围内抵抗拉伸或压缩形变能力的物理量，反映材料的刚性或硬度
+1. $E$（**拉压弹性模量**）：又称**弹性模量**或**杨氏模量**，是衡量材料在弹性范围内抵抗拉伸或压缩形变能力的物理量，反映材料的刚性或硬度
 2. $G$（**切变模量**）：又称**剪切模量**或**刚度模量**，是描述材料在弹性范围内抵抗剪切形变能力的物理量，反映材料在受剪切力作用下的刚性
 3. $\nu$（**泊松比**）：又称**泊松系数**，是描述材料在一个方向受拉伸或压缩时，横向形变与轴向形变之比的物理量，反映材料**变形**的各向异性特征
 
@@ -52,14 +52,22 @@ $$
 其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{D}$ 是四阶本构张量
 
 $$
-D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})
+D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}),
 $$
 
 其中，$\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}$ 是第一拉梅常数，$\mu=G=\frac{E}{2(1+\nu)}$ 是第二拉梅常数，于是
 
 $$
-\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\varepsilon}_{kl}
+\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\varepsilon}_{kl},
 $$
+
+也可以写为
+
+$$
+D_{ijkl} = K \delta_{ij} \delta_{kl} + 2G \left( \frac{1}{2}(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) - \frac{1}{3}\delta_{ij}\delta_{kl} \right),
+$$
+
+其中，$K=\frac{E}{3(1-2\nu)}$ 是**体积模量**
 
 也可以写为 Voigt 形式
 
@@ -90,5 +98,3 @@ $$
 \end{bmatrix}.
 \end{equation}
 $$
-
-其中，$\lambda$ 和 $\mu$ 是拉梅常数
