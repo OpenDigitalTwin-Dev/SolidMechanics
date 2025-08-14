@@ -26,7 +26,7 @@ $$
 
 $$
 \begin{equation}
-\boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}^e + \boldsymbol{\varepsilon}^p，
+\boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}^e + \boldsymbol{\varepsilon}^p,
 \end{equation}
 $$
 

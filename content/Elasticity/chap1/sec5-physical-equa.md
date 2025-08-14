@@ -52,7 +52,7 @@ $$
 其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{D}$ 是四阶本构张量
 
 $$
-D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}),
+D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})=2\mu\mathbf{I}^{(4)}+\lambda\mathbf{I}\otimes\mathbf{I},
 $$
 
 其中，$\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}$ 是第一拉梅常数，$\mu=G=\frac{E}{2(1+\nu)}$ 是第二拉梅常数，于是
