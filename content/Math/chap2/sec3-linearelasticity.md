@@ -49,7 +49,7 @@ $$
 $H^{k}(\Omega)$ 是 $k$ 阶 Sobolev 空间，$d$ 是空间维数。将方程转为积分形式
 
 $$
-\int_{\Omega}\left(\nabla\cdot\boldsymbol{\sigma}\right)\cdot \mathbf{v}\,\mathrm{d}\Omega  + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega}\left(\nabla\cdot\boldsymbol{\sigma}+\mathbf{f}\right)\cdot \mathbf{v}\,\mathrm{d}\Omega = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 由于
