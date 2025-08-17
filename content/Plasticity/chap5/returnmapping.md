@@ -378,6 +378,40 @@ $$
 \boldsymbol{\sigma}_{n+1}=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1})
 $$
 
+有限应变塑性理论中，常常使用乘子应变分解，即
+
+$$
+\mathbf{F} = \mathbf{F}^{e}\cdot\mathbf{F}^{p},
+$$
+
+其中
+- $\mathbf{F}$ 是总变形梯度
+- $\mathbf{F}^{e}$ 是弹性变形梯度
+- $\mathbf{F}^{p}$ 是塑性变形梯度
+
+因此在有限应变塑性中，不定义总非线性应变 $\boldsymbol{\varepsilon}_{n+1}$，但弹性试应变 $\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}$ 仍自然出现在弹性预测-塑性校正算法中。由于 
+
+$$
+\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}} = \boldsymbol{\varepsilon}_{n}^{e} + \Delta\boldsymbol{\varepsilon}_{n+1} = \boldsymbol{\varepsilon}_{n} - \boldsymbol{\varepsilon}_{n}^{p} + \Delta\boldsymbol{\varepsilon}_{n+1} = \boldsymbol{\varepsilon}_{n+1} - \boldsymbol{\varepsilon}_{n}^{p},
+$$
+
+因此，将 $\boldsymbol{\sigma}_{n+1}$ 表示为 $\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}$ 的函数
+
+$$
+\boldsymbol{\sigma}_{n+1}=\bar{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}})=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}+\boldsymbol{\varepsilon}_{n}^{p})=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1}),
+$$
+
+此时有
+
+$$
+\mathbf{D}_{ep}^{\text{alg}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}} = \frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}.
+$$
+
+为了使小应变塑性模型和有限应变塑性模型拥有形式一致的一致性切线模量，我们采用如下形式
+
+$$
+\mathbf{D}_{ep}^{\text{alg}} =\frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}
+$$
 
 ## 求解注记
 
