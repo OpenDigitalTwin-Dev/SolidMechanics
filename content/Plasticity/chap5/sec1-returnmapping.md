@@ -28,7 +28,7 @@ $$
 \boldsymbol{\varepsilon}_{n+1}^{p, \text{trial}} = \boldsymbol{\varepsilon}_n^p, \quad \bar{\varepsilon}_{n+1}^{p, \text{trial}} = \bar{\varepsilon}_n^p,
 $$
 
-计算屈服函数$f^{\text{trial}}$，若 $f^{\text{trial}} \leq 0$：则步长内为弹性变形，接受预测值：
+计算屈服函数 $\Phi^{\text{trial}}=f^{\text{trial}}$，若 $f^{\text{trial}} \leq 0$：则步长内为弹性变形，接受预测值：
 
 $$
 \boldsymbol{\sigma}_{n+1} = \boldsymbol{\sigma}^{\text{trial}}, \quad
@@ -201,9 +201,15 @@ $$
 
 $$
 \sqrt{\frac{3}{2}}\|\mathbf{s}^{\text{trial}}\|-3G\Delta\gamma-\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma)=0.
+$$ (sec1-eq:gamma)
+
+对于线性硬化，如
+
+$$
+\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma) = \sigma_{0} + H(\bar{\varepsilon}_n^p + \Delta \gamma),
 $$
 
-对于线性硬化，该方程是线性的，对于非线性硬化，方程是非线性的，通常使用 Newton-Rapshon 求解
+方程 {eq}`sec1-eq:gamma` 是线性的；对于非线性硬化，方程是非线性的，通常使用 Newton-Rapshon 求解
 
 ```{admonition} $\boldsymbol{\sigma}_{n+1} = \boldsymbol{\sigma}_{n+1}(\Delta\gamma)$
 :class: tip, dropdown
@@ -347,71 +353,6 @@ $$
 
 
 使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n},0\right]$. 注意，$\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
-
-## 一致性切线模量 $\mathbf{C}_{ep}^{\text{alg}}$
-
-```{margin}
-一致性切线模量与算法匹配，若使用非算法相关的理论弹塑性模量 $\mathbf{C}_{ep}^{\text{theo}}$，则牛顿迭代肯能够收敛缓慢甚至发散
-```
-
-一致性切线模量（也称为**算法切线模量**）反映了应力对总应变的线性化增量关系，能够准确描述材料在弹塑性等非线性行为下的刚度变化。**在非线性有限元分析中，Jacobian 矩阵的计算采用一致性切线模量，可以显著提高全局非线性迭代的收敛速度和数值稳定性**。因此，在本构积分后，计算并返回一致性切线模量是实现高效、稳健的有限元求解的关键步骤
-
-一致性切线模量定义为
-
-$$
-\mathbf{D}_{ep}^{\text{alg}}=\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}_{n+1}}.
-$$
-
-### 弹性材料
-
-对于弹性材料，有
-
-$$
-\mathbf{D}_{ep}^{\text{alg}} = \mathbf{D}^{e} = 2\mu \mathbf{I}^{s}+\lambda \mathbf{I}\otimes\mathbf{I}.
-$$
-
-### 弹塑性材料
-
-对于弹塑性材料，在已知前一步内变量 $\boldsymbol{\alpha}_{n}$ 和当前步总应变 $\boldsymbol{\varepsilon}_{n+1}$ 的情况下，通常通过本构积分算法来更新应力。这个过程自然定义了一个算子形式的增量本构函数 $\hat{\boldsymbol{\sigma}}$，即
-
-$$
-\boldsymbol{\sigma}_{n+1}=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1})
-$$
-
-有限应变塑性理论中，常常使用乘子应变分解，即
-
-$$
-\mathbf{F} = \mathbf{F}^{e}\cdot\mathbf{F}^{p},
-$$
-
-其中
-- $\mathbf{F}$ 是总变形梯度
-- $\mathbf{F}^{e}$ 是弹性变形梯度
-- $\mathbf{F}^{p}$ 是塑性变形梯度
-
-因此在有限应变塑性中，不定义总非线性应变 $\boldsymbol{\varepsilon}_{n+1}$，但弹性试应变 $\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}$ 仍自然出现在弹性预测-塑性校正算法中。由于 
-
-$$
-\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}} = \boldsymbol{\varepsilon}_{n}^{e} + \Delta\boldsymbol{\varepsilon}_{n+1} = \boldsymbol{\varepsilon}_{n} - \boldsymbol{\varepsilon}_{n}^{p} + \Delta\boldsymbol{\varepsilon}_{n+1} = \boldsymbol{\varepsilon}_{n+1} - \boldsymbol{\varepsilon}_{n}^{p},
-$$
-
-因此，将 $\boldsymbol{\sigma}_{n+1}$ 表示为 $\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}$ 的函数
-
-$$
-\boldsymbol{\sigma}_{n+1}=\bar{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}})=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}+\boldsymbol{\varepsilon}_{n}^{p})=\hat{\boldsymbol{\sigma}}(\boldsymbol{\alpha}_{n},\boldsymbol{\varepsilon}_{n+1}),
-$$
-
-此时有
-
-$$
-\mathbf{D}_{ep}^{\text{alg}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}} = \frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}.
-$$
-
-为了使小应变塑性模型和有限应变塑性模型拥有形式一致的一致性切线模量，我们采用如下形式
-
-$$
-\mathbf{D}_{ep}^{\text{alg}} =\frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}
-$$
 
 ## 求解注记
 

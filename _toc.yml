@@ -75,7 +75,8 @@ parts:
         - file: content/Plasticity/chap4/sec2-kinematichardening
       - file: content/Plasticity/chap5/intro
         sections:
-        - file: content/Plasticity/chap5/returnmapping
+        - file: content/Plasticity/chap5/sec1-returnmapping
+        - file: content/Plasticity/chap5/sec2-consistenttangent
   - caption: CCX 笔记
     chapters:
       - file: content/CCX/intro
