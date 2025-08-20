@@ -230,7 +230,6 @@ $$
 \begin{aligned}
 \mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}_{\text{int}}}{\partial \mathbf{u}^{e}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}^{e}}\ \mathbf{d}E\\
 &=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}^{e}} \mathbf{d}E\\
-&=\int_{E}\mathbf{B}^{T}\mathbf{D}_{ep}^{\text{alg}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}^{e}} \mathbf{d}E\\
 &=\int_{E}\mathbf{B}^{T}\mathbf{D}_{ep}^{\text{alg}}\ \mathbf{B} \mathbf{d}E,
 \end{aligned}
 \end{equation}

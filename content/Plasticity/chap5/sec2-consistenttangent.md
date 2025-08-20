@@ -7,7 +7,15 @@
 
 ## 连续切线模量
 
-[连续切线模量](../chap3/sec1-tangent.md)
+[连续切线模量](../chap3/sec1-tangent.md)是从材料的本构关系直接推导出的数学上的切线刚度，它描述了在无限小的应变增量下，应力增量和应变增量之间的瞬时关系，代表了材料应力-应变曲线在某个点的真实斜率
+
+$$
+\begin{equation}
+\frac{\partial \dot{\boldsymbol{\sigma}}}{\partial \dot{\boldsymbol{\varepsilon}}}
+\end{equation}
+$$
+
+然而，在有限元求解非线性问题的 Newton-Raphson 迭代过程中，应力更新通常采用**本构积分算法**，使得实际使用的本构方程成为理想本构关系在时间上的离散形式。因此，如果仍然使用连续切线模量来计算 Jacobian 矩阵，会导致其与实际数值算法不一致，进而影响收敛性，表现为收敛速度降低甚至出现发散现象
 
 ## 一致性切线模量
 
@@ -74,7 +82,7 @@ $\hat{\boldsymbol{\sigma}}$ 是一个分段函数，当
 - $\Phi^{\text{trial}} > 0$，则 $\hat{\boldsymbol{\sigma}}$ 随着塑性曲线演化，此时 $\mathbf{D} = \mathbf{D}^{ep}$
 - $\Phi^{\text{trial}} = 0$，则可能发生弹性卸载，或发生塑性演化，在切换点处，$\hat{\boldsymbol{\sigma}}$ 不可微
 
-### Mises 屈服准则和各向同性硬化准则
+### 各向同性硬化的 Mises 屈服准则
 
 接下来以 Mises 屈服准则和各向同性硬化准则为例，介绍一致性切线模量 $\mathbf{D}$ 的计算过程，根据 [return mapping 算法](./sec1-returnmapping.md)，有
 
@@ -183,5 +191,32 @@ $$
 $$
 
 此处，$\mathbf{D}$ 是对称的
+
+#### 连续切线模量
+
+对于各向同性的线性硬化的 Mises 屈服准则，有
+
+$$
+\begin{equation}
+\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}=\frac{\partial \psi^p}{\partial {\bar{\varepsilon}_{n}^{p}}^{2}}=\frac{\partial \kappa}{\partial \bar{\varepsilon}_{n}^{p}}=H,
+\end{equation}
+$$
+
+又
+
+$$
+
+$$
+
+于是，连续切线模量
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{D}^{ep} &= \mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}\\
+&=\mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}
+\end{aligned}
+\end{equation}
+$$
 
 ### 一般情形

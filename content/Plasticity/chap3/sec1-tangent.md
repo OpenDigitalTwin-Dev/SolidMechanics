@@ -59,7 +59,7 @@ $$
 \mathbf{D}^{ep} = \mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}},
 $$
 
-是**弹塑性切线模量**，通常也被称为**连续弹塑性切线算子**，它是单轴拉伸应力-应变曲线中的常量模量 $E_{ep}$ 的高维一般化
+是**弹塑性切线模量**，通常也被称为**连续弹塑性切线模量**，它是单轴拉伸应力-应变曲线中的常量模量 $E_{ep}$ 的高维一般化
 
 ### 对称性
 
