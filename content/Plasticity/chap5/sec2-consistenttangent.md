@@ -4,7 +4,14 @@
 一致性切线模量与算法匹配，若使用非算法相关（直接从本构方程计算）的理论弹塑性模量，则牛顿迭代可能收敛缓慢甚至发散
 </span>
 
-一致性切线模量（也称为**算法切线模量**）反映了应力对总应变的线性化增量关系，能够准确描述材料在弹塑性等非线性行为下的刚度变化。**在非线性有限元分析中，Jacobian 矩阵的计算采用一致性切线模量，可以显著提高全局非线性迭代的收敛速度和数值稳定性**。因此，在本构积分后，计算并返回一致性切线模量是实现高效、稳健的有限元求解的关键步骤
+
+## 连续切线模量
+
+[连续切线模量](../chap3/sec1-tangent.md)
+
+## 一致性切线模量
+
+一致性切线模量（也称为**算法切线模量**）反映了数值算法中应力对总应变的线性化增量关系，**用于非线性有限元分析 Jacobian 矩阵的计算中，以显著提高全局非线性迭代的收敛速度和数值稳定性**。因此，在本构积分后，计算并返回一致性切线模量是实现高效、稳健的有限元求解的关键步骤
 
 一致性切线模量定义为
 
@@ -17,9 +24,6 @@ $$
 $$
 
 下简记为 $\mathbf{D}$
-
-
-## 弹塑性材料
 
 对于弹塑性材料，在已知前一步内变量 $\boldsymbol{\alpha}_{n}$ 和当前步总应变 $\boldsymbol{\varepsilon}_{n+1}$ 的情况下，通常通过本构积分算法来更新应力。这个过程自然定义了一个算子形式的增量本构函数 $\hat{\boldsymbol{\sigma}}$，即
 
@@ -70,7 +74,7 @@ $\hat{\boldsymbol{\sigma}}$ 是一个分段函数，当
 - $\Phi^{\text{trial}} > 0$，则 $\hat{\boldsymbol{\sigma}}$ 随着塑性曲线演化，此时 $\mathbf{D} = \mathbf{D}^{ep}$
 - $\Phi^{\text{trial}} = 0$，则可能发生弹性卸载，或发生塑性演化，在切换点处，$\hat{\boldsymbol{\sigma}}$ 不可微
 
-## Mises 屈服准则和各向同性硬化准则
+### Mises 屈服准则和各向同性硬化准则
 
 接下来以 Mises 屈服准则和各向同性硬化准则为例，介绍一致性切线模量 $\mathbf{D}$ 的计算过程，根据 [return mapping 算法](./sec1-returnmapping.md)，有
 
@@ -111,15 +115,15 @@ $$
 \frac{\partial q^{\text{trial}}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}},
 \end{aligned}
 \end{equation}
-$$
+$$ (sec2-eq:tar-der)
 
 其中，$\boldsymbol{\varepsilon}^{e, \text{trial}}_{d} = \text{dev}(\boldsymbol{\varepsilon}^{e, \text{trial}}) = \mathbf{I}_{d}:\boldsymbol{\varepsilon}^{e, \text{trial}}$
 
 由于
 
 $$
-q^{\text{trial}} = \sqrt{\frac{3}{2}}\|\mathbf{s}^{\text{trial}}\| = 2G\sqrt{\frac{3}{2}}\|\mathbf{I}_{d}:\boldsymbol{\varepsilon}^{e,\text{trial}}\|,
-$$
+q^{\text{trial}} = \sqrt{\frac{3}{2}}\|\mathbf{s}^{\text{trial}}\| = 2G\sqrt{\frac{3}{2}}\|\mathbf{I}_{d}:\boldsymbol{\varepsilon}^{e,\text{trial}}\|=2G\sqrt{\frac{3}{2}}\|\boldsymbol{\varepsilon}^{e, \text{trial}}_{d}\|,
+$$ (sec2-eq:q)
 
 故
 
@@ -127,13 +131,57 @@ $$
 \begin{equation}
 \frac{\partial q^{\text{trial}}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}=2G\sqrt{\frac{3}{2}}\frac{\mathbf{s}^{\text{trial}}}{\|\mathbf{s}^{\text{trial}}\|}=2G\sqrt{\frac{3}{2}}\frac{\boldsymbol{\varepsilon}^{e, \text{trial}}_{d}}{\|\boldsymbol{\varepsilon}^{e, \text{trial}}_{d}\|}.
 \end{equation}
-$$
+$$ (sec2-eq:q-der)
 
 此外，根据式 {eq}`sec2-eq:yield`，有
 
 $$
 \frac{\partial q^{\text{trial}}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}-3G\frac{\partial \Delta\gamma}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}-\frac{\partial \sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma)}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}=0,
+$$ (sec2-eq:hardening-der)
+
+一般地，可从上式求解出 $\frac{\partial \Delta\gamma}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}$，对于线性硬化模型，有
+
+$$
+\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma) = \sigma_{0} + H(\bar{\varepsilon}_n^p + \Delta \gamma),
 $$
 
-可从上式求解出 $\frac{\partial \Delta\gamma}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}$，
+得到
 
+$$
+\frac{\partial \sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma)}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}} = H\frac{\partial \Delta\gamma}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}},
+$$
+
+故，代入式 {eq}`sec2-eq:hardening-der` 中，得到
+
+$$
+\begin{equation}
+\frac{\partial \Delta\gamma}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}} = \frac{1}{3G+H}\frac{\partial q^{\text{trial}}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}} = \frac{2G}{3G+H}\sqrt{\frac{3}{2}}\frac{\mathbf{s}^{\text{trial}}}{\|\mathbf{s}^{\text{trial}}\|}.
+\end{equation}
+$$ (sec2-eq:gamma-der)
+
+记
+
+$$
+\mathbf{\bar{N}} = \frac{\mathbf{s}^{\text{trial}}}{\|\mathbf{s}^{\text{trial}}\|} = \frac{\boldsymbol{\varepsilon}^{e, \text{trial}}_{d}}{\|\boldsymbol{\varepsilon}^{e, \text{trial}}_{d}\|},
+$$
+
+将式 {eq}`sec2-eq:q-der` 和式 {eq}`sec2-eq:gamma-der` 代入到 {eq}`sec2-eq:tar-der`，并结合式 {eq}`sec2-eq:q` 得到
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{D}=
+\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}
+&=
+\mathbf{D}^e
+-
+\frac{\Delta \gamma \, 6 G^2}{q^{\text{trial}}} \mathbf{I}_d
++
+6G^2\left(\frac{\Delta\gamma}{q^{\text{trial}}}-\frac{1}{3G+H}\right)\mathbf{\bar{N}}\otimes\mathbf{\bar{N}},
+\end{aligned}
+\end{equation}
+$$
+
+此处，$\mathbf{D}$ 是对称的
+
+### 一般情形

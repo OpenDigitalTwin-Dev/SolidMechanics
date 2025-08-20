@@ -45,7 +45,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\boldsymbol{\varepsilon}^{e}_{n+1} = \boldsymbol{\varepsilon}^{e, \text{trial}} - \Delta\gamma\mathbf{n}_{n+1},\\
+&\boldsymbol{\varepsilon}^{e}_{n+1} = \boldsymbol{\varepsilon}^{e, \text{trial}} - \Delta\gamma\mathbf{N}_{n+1},\\
 &\boldsymbol{\alpha}_{n+1} = \boldsymbol{\alpha}_{n} + \Delta\gamma\mathbf{H}(\boldsymbol{\sigma}_{n+1},\mathbf{A}_{n+1}),\\
 &\Phi(\boldsymbol{\sigma}_{n+1}, \mathbf{A}_{n+1}) = 0,\\
 &\Delta\gamma\geq0,
@@ -66,7 +66,7 @@ $$
 **关联流动法则**
 
 $$
-\dot{\boldsymbol{\varepsilon}}^{p} = \dot{\gamma}\mathbf{n}=\dot{\gamma}\frac{\partial f}{\partial \boldsymbol{\sigma}},
+\dot{\boldsymbol{\varepsilon}}^{p} = \dot{\gamma}\mathbf{N}=\dot{\gamma}\frac{\partial f}{\partial \boldsymbol{\sigma}},
 $$
 
 ### 各向同性硬化
@@ -77,10 +77,10 @@ $$
 f(\boldsymbol{\sigma},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-此时 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}}{\|\mathbf{s}\|}$，结合关联流动法则，有
+此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}}{\|\mathbf{s}\|}$，结合关联流动法则，有
 
 $$
-\dot{\bar{\varepsilon}}^{p}=\sqrt{\frac{2}{3}}\|\dot{\boldsymbol{\varepsilon}}^{p}\|=\sqrt{\frac{2}{3}}\|\dot{\gamma}\mathbf{n}\| =\dot{\gamma},
+\dot{\bar{\varepsilon}}^{p}=\sqrt{\frac{2}{3}}\|\dot{\boldsymbol{\varepsilon}}^{p}\|=\sqrt{\frac{2}{3}}\|\dot{\gamma}\mathbf{N}\| =\dot{\gamma},
 $$
 
 其离散形式为
@@ -94,7 +94,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{n}_{n+1},\\
+\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{N}_{n+1},\\
 \bar{\varepsilon}_{n+1}^p &= \bar{\varepsilon}_n^p + \Delta \gamma,\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}\|-\sigma_{y}(\bar{\varepsilon}^{p}_{n+1})=0,
 \end{aligned}
@@ -118,7 +118,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{D}^e : \mathbf{n}_{n+1},\\
+\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{D}^e : \mathbf{N}_{n+1},\\
 r_{\varepsilon}&=\varepsilon - \bar{\varepsilon}_n^p - \Delta \gamma,\\
 r_{f}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}\|-\sigma_{y}(\varepsilon),
 \end{aligned}
@@ -159,7 +159,7 @@ $$
 其中，$\text{dev}(\cdot)$ 表示偏张量的部分，由于 $\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=\Delta\boldsymbol{\varepsilon}^{p}$，故
 
 $$
-\mathbf{D}^e:(\Delta\gamma\mathbf{n}_{n+1})=\mathbf{D}^e:(\Delta\boldsymbol{\varepsilon}^{p})=2G\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=2G\Delta\boldsymbol{\varepsilon}^{p}=2G\Delta\gamma\mathbf{n}_{n+1},
+\mathbf{D}^e:(\Delta\gamma\mathbf{N}_{n+1})=\mathbf{D}^e:(\Delta\boldsymbol{\varepsilon}^{p})=2G\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=2G\Delta\boldsymbol{\varepsilon}^{p}=2G\Delta\gamma\mathbf{N}_{n+1},
 $$
 
 于是
@@ -292,16 +292,16 @@ $$
 f(\boldsymbol{\sigma},\boldsymbol{\alpha})=\sqrt{\frac{3}{2}}\|\mathbf{s}-\boldsymbol{\alpha}\|-\sigma_{y},
 $$
 
-此时 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，根据 Prager 运动硬化公式
+此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，根据 Prager 运动硬化公式
 
 $$
-\mathrm{d}\boldsymbol{\alpha}=C\mathrm{d}\gamma\mathbf{n}_{n+1},
+\mathrm{d}\boldsymbol{\alpha}=C\mathrm{d}\gamma\mathbf{N}_{n+1},
 $$
 
 其中，$C$ 是运动硬化模量，其离散形式为
 
 $$
-\boldsymbol{\alpha}_{n+1}=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{n}_{n+1},
+\boldsymbol{\alpha}_{n+1}=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{N}_{n+1},
 $$
 
 因此，求解方程组为
@@ -309,8 +309,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{n}_{n+1},\\
-\boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{n}_{n+1},\\
+\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{N}_{n+1},\\
+\boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{N}_{n+1},\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_{y}=0,
 \end{aligned}
 \end{equation}
@@ -332,14 +332,14 @@ $$
 f(\boldsymbol{\sigma},\boldsymbol{\alpha},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s} - \boldsymbol{\alpha}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-此时 $\mathbf{n} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，结合各向同性硬化和 Prager 运动硬化公式，得到求解方程组为
+此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，结合各向同性硬化和 Prager 运动硬化公式，得到求解方程组为
 
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{n}_{n+1},\\
+\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{N}_{n+1},\\
 \bar{\varepsilon}_{n+1}^p &= \bar{\varepsilon}_n^p + \Delta \gamma,\\
-\boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{n}_{n+1},\\
+\boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{N}_{n+1},\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_y \left( \bar{\varepsilon}_{n+1}^p \right)=0,
 \end{aligned}
 \end{equation}
