@@ -19,6 +19,7 @@ parts:
         - file: content/Math/chap2/sec2-isoparametric
         - file: content/Math/chap2/sec3-linearelasticity
         - file: content/Math/chap2/sec4-smallelastoplastic-static
+        - file: content/Math/chap2/sec5-smallelastoplastic-dynamic
   - caption: 张量分析
     chapters:
       - file: content/Tensor/intro

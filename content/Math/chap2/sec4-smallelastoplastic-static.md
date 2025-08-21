@@ -8,11 +8,11 @@
 
 $$
 \begin{equation}
-\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \rho\mathbf{a},
+\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \rho\ddot{\mathbf{u}},
 \end{equation}
 $$
 
-在静力学求解中，假定加速度 $\mathbf{a} = \mathbf{0}$
+在静力学求解中，假定加速度 $\mathbf{a}=\ddot{\mathbf{u}} = \mathbf{0}$
 
 **几何方程**
 
@@ -52,7 +52,7 @@ $$
 
 $$
 \begin{equation}
-\dot{\bar{\varepsilon}}^{p} = \sqrt{\frac{2}{3} \dot{\boldsymbol{\varepsilon}}^p : \dot{\boldsymbol{\varepsilon}}^p}.
+\dot{\bar{\varepsilon}}^{p} = \sqrt{\frac{2}{3} \dot{\boldsymbol{\varepsilon}}^p : \dot{\boldsymbol{\varepsilon}}^p}=\sqrt{\frac{2}{3}}\|\dot{\boldsymbol{\varepsilon}}^p\|.
 \end{equation}
 $$
 
@@ -200,21 +200,21 @@ $$
 将上述方程记为
 
 $$
-\mathbf{R}(\mathbf{u}) = \mathbf{F}_{\text{int}} + \mathbf{F}_{r}-\mathbf{F}_{\text{ext}} = \mathbf{0},
+\mathbf{R}(\mathbf{u}) = \mathbf{F}^{\text{int}} + \mathbf{F}^{r}-\mathbf{F}^{\text{ext}} = \mathbf{0},
 $$
 
 其中
 
-- 内力项向量：$\mathbf{F}_{\text{int}}:=\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega$
-- Robin 边界条件贡献向量：$\mathbf{F}_{\text{r}}:=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
-- 外力向量：$\mathbf{F}_{\text{ext}}:=\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
+- 内力项向量：$\mathbf{F}^{\text{int}}:=\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega$
+- Robin 边界条件贡献向量：$\mathbf{F}^{\text{r}}:=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
+- 外力向量：$\mathbf{F}^{\text{ext}}:=\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
 
-#### $\mathbf{F}_{\text{int}}$ 对刚度矩阵的贡献
+#### $\mathbf{F}^{\text{int}}$ 对刚度矩阵的贡献
 
 使用 Vogit 形式，对于每个单元，由于 $\mathbf{v}$ 选为单元上所有基函数，于是单元的内力项
 
 $$
-\mathbf{F}_{\text{int}} := \int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}E,
+\mathbf{F}^{\text{int}} := \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}E = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}E,
 $$
 
 由于 
@@ -228,7 +228,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}_{\text{int}}}{\partial \mathbf{u}^{e}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}^{e}}\ \mathbf{d}E\\
+\mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}^{\text{int}}}{\partial \mathbf{u}^{e}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}^{e}}\ \mathbf{d}E\\
 &=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}^{e}} \mathbf{d}E\\
 &=\int_{E}\mathbf{B}^{T}\mathbf{D}_{ep}^{\text{alg}}\ \mathbf{B} \mathbf{d}E,
 \end{aligned}
@@ -237,12 +237,12 @@ $$
 
 其中，$\mathbf{D}_{ep}^{\text{alg}}$ 是[一致性切线模量](../../Plasticity/chap5/returnmapping.md)
 
-#### $\mathbf{F}_{\text{r}}$ 对刚度矩阵的贡献
+#### $\mathbf{F}^{\text{r}}$ 对刚度矩阵的贡献
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{F}_{r}&=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S.
+\mathbf{F}^{r}&=\int_{\Gamma_{R,E}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S.
 \end{aligned}
 \end{equation}
 $$
@@ -258,19 +258,19 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{K}_{r} = \frac{\partial \mathbf{F}_{r}}{\partial \mathbf{u}^{e}}&=\int_{\Gamma_{R}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S\\
+\mathbf{K}_{r} = \frac{\partial \mathbf{F}^{r}}{\partial \mathbf{u}^{e}}&=\int_{\Gamma_{R}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S\\
 &=\int_{\Gamma_{R}} \alpha\left(\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}}\right)^{T} \mathbf{v}_{*,i} \, \mathrm{d}S\\
 &=\int_{\Gamma_{R}} \alpha\mathbf{N}^{T}\mathbf{N} \, \mathrm{d}S.
 \end{aligned}
 \end{equation}
 $$
 
-#### $\mathbf{F}_{\text{ext}}$ 对右端项的贡献
+#### $\mathbf{F}^{\text{ext}}$ 对右端项的贡献
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{F}_{\text{ext}}=\int_{\Omega}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S.
+\mathbf{F}^{\text{ext}}=\int_{E}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}E + \int_{\Gamma_{N,E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R,E}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S.
 \end{aligned}
 \end{equation}
 $$

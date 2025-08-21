@@ -341,5 +341,5 @@ $$
 $$
 \mathbf{D}_{11} = \frac{\mathrm{d} \boldsymbol{\sigma}_{n+1}}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}},\quad
 \mathbf{D}_{21} = \frac{\mathrm{d} \mathbf{A}_{n+1}}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}},\quad
-\mathbf{D}_{31} = \frac{\mathrm{d} \Delta\gamma}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}}
+\mathbf{D}_{31} = \frac{\mathrm{d} \Delta\gamma}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}}.
 $$
