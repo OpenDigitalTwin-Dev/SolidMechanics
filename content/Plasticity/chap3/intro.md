@@ -94,10 +94,10 @@ $$
 为**硬化热力学力**，
 
 $$
-\Upsilon^p \equiv \boldsymbol{\sigma}\dot{\boldsymbol{\varepsilon}}_{p} - \frac{\partial \psi}{\partial \boldsymbol{\alpha}}:\dot{\boldsymbol{\alpha}}
+\Upsilon^p(\boldsymbol{\sigma},\mathbf{A};\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}) \equiv \boldsymbol{\sigma}\dot{\boldsymbol{\varepsilon}}_{p} - \frac{\partial \psi}{\partial \boldsymbol{\alpha}}:\dot{\boldsymbol{\alpha}}
 $$
 
-为塑性耗散函数
+为**塑性耗散函数**
 
 对于各向同性的线弹性材料，自由能形式为
 
@@ -152,3 +152,40 @@ $$
 $$
 
 此时，$\Psi$ 是一个非负的，关于 $\boldsymbol{\sigma}$ 和 $\mathbf{A}$，且在原点处零值，即 $\Psi(\mathbf{0},\mathbf{0}) = 0$
+
+## 关联塑性流动理论
+
+关联塑性流动模型假定
+
+$$
+\Psi = \Phi,
+$$
+
+塑性应变和硬化变量的演化方程如下
+
+$$
+\begin{equation}
+\begin{aligned}
+\dot{\boldsymbol{\varepsilon}}&=\dot{\gamma}\frac{\partial \Phi}{\partial \boldsymbol{\sigma}},\\
+\dot{\boldsymbol{\alpha}}&=-\dot{\gamma}\frac{\partial \Phi}{\partial \mathbf{A}},
+\end{aligned}
+\end{equation}
+$$
+
+其中，$\dot{\gamma}$ 是塑性乘子
+
+### 最大塑性耗散原理
+
+任何可行的应力状态 $(\boldsymbol{\sigma},\mathbf{A})$ 应满足 $\Phi(\boldsymbol{\sigma},\mathbf{A}) \leq 0$，把它们形成的集合记为 $\mathcal{A}$，最大塑性耗散原理揭示了，对于任意给定的塑性应变率 $\dot{\boldsymbol{\varepsilon}}^{p}$ 和 硬化内变量变化速率 $\dot{\boldsymbol{\alpha}}$，真实应力状态应满足
+
+$$
+\Upsilon^p(\boldsymbol{\sigma},\mathbf{A};\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}) \geq \Upsilon^p(\boldsymbol{\sigma}^{*},\mathbf{A}^{*},;\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}),\quad \forall\ (\boldsymbol{\sigma}^{*},\mathbf{A}^{*})\in\mathcal{A},
+$$
+
+同时，Kuhn-Tucker 最优性条件对应为
+
+$$
+\Phi(\boldsymbol{\sigma},\mathbf{A}) \leq 0,\quad \dot{\gamma}\geq0,\quad \Phi(\boldsymbol{\sigma},\mathbf{A})\dot{\gamma}=0.
+$$
+
+最大塑性耗散原理及其关联性定律并非普遍适用。虽然该原理在晶体塑性和金属材料中得到了验证，但对于土壤等颗粒材料，实验结果常常与关联性定律不符。在这些情况下，需采用非关联性定律来更准确地描述材料行为
