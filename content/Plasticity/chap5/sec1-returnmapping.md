@@ -71,7 +71,7 @@ $$
 
 ### 各向同性硬化
 
-Mises 屈服函数为
+$\boldsymbol{\alpha}$ 选为 $\bar{\varepsilon}^{p}$，Mises 屈服函数为
 
 $$
 f(\boldsymbol{\sigma},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
@@ -94,7 +94,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{N}_{n+1},\\
+\boldsymbol{\varepsilon}^{e}_{n+1} &= \boldsymbol{\varepsilon}^{e, \text{trial}} - \Delta\gamma\mathbf{N}_{n+1},\\
 \bar{\varepsilon}_{n+1}^p &= \bar{\varepsilon}_n^p + \Delta \gamma,\\
 f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}\|-\sigma_{y}(\bar{\varepsilon}^{p}_{n+1})=0,
 \end{aligned}
@@ -104,22 +104,22 @@ $$
 求解变量为
 
 $$
-\boldsymbol{\sigma}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \Delta \gamma
+\boldsymbol{\varepsilon}_{n+1}^{e},\quad \bar{\varepsilon}_{n+1}^p,\quad \Delta \gamma
 $$
 
 #### 方程组求解
 
 这一非线性方程组可使用 Newton-Raphson 方法进行求解：
 
-记 $\mathbf{v} = \left[\boldsymbol{\sigma}=\boldsymbol{\sigma}_{n+1},\varepsilon=\bar{\varepsilon}_{n+1}^p,\Delta \gamma\right]^{T}$，
+记 $\mathbf{v} = \left[\boldsymbol{\varepsilon}=\boldsymbol{\varepsilon}_{n+1}^{e},\bar{\varepsilon}=\bar{\varepsilon}_{n+1}^p,\Delta \gamma\right]^{T}$，
 
-记 $\mathbf{r}=\left[\mathbf{r}_{\boldsymbol{\sigma}},r_{\varepsilon},r_{f}\right]^{T}$，其中
+记 $\mathbf{r}=\left[\mathbf{r}_{\boldsymbol{\varepsilon}},r_{\bar{\varepsilon}},r_{f}\right]^{T}$，其中
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{r}_{\boldsymbol{\sigma}} &= \boldsymbol{\sigma} - \boldsymbol{\sigma}^{\text{trial}} + \Delta\gamma\mathbf{D}^e : \mathbf{N}_{n+1},\\
-r_{\varepsilon}&=\varepsilon - \bar{\varepsilon}_n^p - \Delta \gamma,\\
+\mathbf{r}_{\boldsymbol{\varepsilon}} &= \boldsymbol{\varepsilon}^{e}_{n+1} - \boldsymbol{\varepsilon}^{e, \text{trial}} + \Delta\gamma\mathbf{N}_{n+1},\\
+r_{\bar{\varepsilon}}&=\bar{\varepsilon} - \bar{\varepsilon}_n^p - \Delta \gamma,\\
 r_{f}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}\|-\sigma_{y}(\varepsilon),
 \end{aligned}
 \end{equation}
@@ -131,14 +131,14 @@ $$
 \begin{equation}
 \mathbf{J} = \frac{\partial \mathbf{r}}{\partial \mathbf{v}}=
 \begin{bmatrix}
-\frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \boldsymbol{\sigma}} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \varepsilon} & \frac{\partial \mathbf{r}_{\boldsymbol{\sigma}}}{\partial \Delta \gamma} \\
-\frac{\partial r_{\varepsilon}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{\varepsilon}}{\partial \varepsilon} & \frac{\partial r_{\varepsilon}}{\partial \Delta \gamma} \\
-\frac{\partial r_{f}}{\partial \boldsymbol{\sigma}} & \frac{\partial r_{f}}{\partial \varepsilon} & \frac{\partial r_{f}}{\partial \Delta \gamma}
+\frac{\partial \mathbf{r}_{\boldsymbol{\varepsilon}}}{\partial \boldsymbol{\varepsilon}} & \frac{\partial \mathbf{r}_{\boldsymbol{\varepsilon}}}{\partial \bar{\varepsilon}} & \frac{\partial \mathbf{r}_{\boldsymbol{\varepsilon}}}{\partial \Delta \gamma} \\
+\frac{\partial r_{\bar{\varepsilon}}}{\partial \boldsymbol{\varepsilon}} & \frac{\partial r_{\bar{\varepsilon}}}{\partial \bar{\varepsilon}} & \frac{\partial r_{\bar{\varepsilon}}}{\partial \Delta \gamma} \\
+\frac{\partial r_{f}}{\partial \boldsymbol{\varepsilon}} & \frac{\partial r_{f}}{\partial \bar{\varepsilon}} & \frac{\partial r_{f}}{\partial \Delta \gamma}
 \end{bmatrix}.
 \end{equation}
 $$
 
-初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\bar{\varepsilon}_{n}^p,0\right]$. 注意，$\bar{\varepsilon}_{n}^p$ 使用的是当前时间步上一个外层非线性迭代的结果
+初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\varepsilon}^{e, \text{trial}},\bar{\varepsilon}_{n}^p,0\right]$. 注意，$\bar{\varepsilon}_{n}^p$ 使用的是当前时间步上一个外层非线性迭代的结果
 
 #### 单方程简化
 
@@ -286,22 +286,22 @@ $$
 
 ### 运动硬化
 
-Mises 屈服函数为
+$\boldsymbol{\alpha}$ 选为 $\boldsymbol{\beta}$，Mises 屈服函数为
 
 $$
-f(\boldsymbol{\sigma},\boldsymbol{\alpha})=\sqrt{\frac{3}{2}}\|\mathbf{s}-\boldsymbol{\alpha}\|-\sigma_{y},
+f(\boldsymbol{\sigma},\boldsymbol{\beta})=\sqrt{\frac{3}{2}}\|\mathbf{s}-\boldsymbol{\beta}\|-\sigma_{y},
 $$
 
-此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，根据 Prager 运动硬化公式
+此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\beta}}{\|\mathbf{s}-\boldsymbol{\beta}\|}$，根据 Prager 运动硬化公式
 
 $$
-\mathrm{d}\boldsymbol{\alpha}=C\mathrm{d}\gamma\mathbf{N}_{n+1},
+\mathrm{d}\boldsymbol{\beta}=C\mathrm{d}\gamma\mathbf{N}_{n+1},
 $$
 
 其中，$C$ 是运动硬化模量，其离散形式为
 
 $$
-\boldsymbol{\alpha}_{n+1}=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{N}_{n+1},
+\boldsymbol{\beta}_{n+1}=\boldsymbol{\beta}_{n} + C\Delta\gamma\mathbf{N}_{n+1},
 $$
 
 因此，求解方程组为
@@ -309,9 +309,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{N}_{n+1},\\
-\boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{N}_{n+1},\\
-f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_{y}=0,
+\boldsymbol{\varepsilon}^{e}_{n+1} &= \boldsymbol{\varepsilon}^{e, \text{trial}} - \Delta\gamma\mathbf{N}_{n+1},\\
+\boldsymbol{\beta}_{n+1}&=\boldsymbol{\beta}_{n} + C\Delta\gamma\mathbf{N}_{n+1},\\
+f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\beta}_{n+1}\|-\sigma_{y}=0,
 \end{aligned}
 \end{equation}
 $$
@@ -319,28 +319,28 @@ $$
 求解变量为
 
 $$
-\boldsymbol{\sigma}_{n+1},\quad \boldsymbol{\alpha}_{n+1},\quad \Delta \gamma
+\boldsymbol{\varepsilon}^{e}_{n+1},\quad \boldsymbol{\beta}_{n+1},\quad \Delta \gamma
 $$
 
-使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\boldsymbol{\alpha}_{n},0\right]$. 注意，$\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
+使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\varepsilon}^{e, \text{trial}},\boldsymbol{\alpha}_{n},0\right]$. 注意，$\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
 
 ### 混合硬化
 
-此时，Mises 屈服函数为
+$\boldsymbol{\alpha}$ 选为 $\{\bar{\varepsilon}^{p},\boldsymbol{\beta}\}$，Mises 屈服函数为
 
 $$
-f(\boldsymbol{\sigma},\boldsymbol{\alpha},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s} - \boldsymbol{\alpha}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
+f(\boldsymbol{\sigma},\boldsymbol{\beta},\bar{\varepsilon}^{p})=\sqrt{\frac{3}{2}}\|\mathbf{s} - \boldsymbol{\beta}\|-\sigma_{y}(\bar{\varepsilon}^{p}),
 $$
 
-此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\alpha}}{\|\mathbf{s}-\boldsymbol{\alpha}\|}$，结合各向同性硬化和 Prager 运动硬化公式，得到求解方程组为
+此时 $\mathbf{N} = \sqrt{\frac{3}{2}} \frac{\mathbf{s}-\boldsymbol{\beta}}{\|\mathbf{s}-\boldsymbol{\beta}\|}$，结合各向同性硬化和 Prager 运动硬化公式，得到求解方程组为
 
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - \Delta\gamma\mathbf{D}^e :\mathbf{N}_{n+1},\\
+\boldsymbol{\varepsilon}^{e}_{n+1} &= \boldsymbol{\varepsilon}^{e, \text{trial}} - \Delta\gamma\mathbf{N}_{n+1},\\
 \bar{\varepsilon}_{n+1}^p &= \bar{\varepsilon}_n^p + \Delta \gamma,\\
-\boldsymbol{\alpha}_{n+1}&=\boldsymbol{\alpha}_{n} + C\Delta\gamma\mathbf{N}_{n+1},\\
-f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\alpha}_{n+1}\|-\sigma_y \left( \bar{\varepsilon}_{n+1}^p \right)=0,
+\boldsymbol{\beta}_{n+1}&=\boldsymbol{\beta}_{n} + C\Delta\gamma\mathbf{N}_{n+1},\\
+f_{n+1}&=\sqrt{\frac{3}{2}}\|\mathbf{s}_{n+1}-\boldsymbol{\beta}_{n+1}\|-\sigma_y \left( \bar{\varepsilon}_{n+1}^p \right)=0,
 \end{aligned}
 \end{equation}
 $$
@@ -348,11 +348,11 @@ $$
 求解变量为
 
 $$
-\boldsymbol{\sigma}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \boldsymbol{\alpha}_{n+1},\quad \Delta \gamma
+\boldsymbol{\varepsilon}^{e}_{n+1},\quad \bar{\varepsilon}_{n+1}^p,\quad \boldsymbol{\beta}_{n+1},\quad \Delta \gamma
 $$
 
 
-使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\sigma}^{\text{trial}},\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n},0\right]$. 注意，$\bar{\varepsilon}_{n}^p,\boldsymbol{\alpha}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
+使用 Newton-Raphson 方法求解方程组，初值可选为 $\mathbf{v}^{(0)}=\left[\boldsymbol{\varepsilon}^{e,\text{trial}},\bar{\varepsilon}_{n}^p,\boldsymbol{\beta}_{n},0\right]$. 注意，$\bar{\varepsilon}_{n}^p,\boldsymbol{\beta}_{n}$ 使用的是当前时间步上一个外层非线性迭代的结果
 
 ## 求解注记
 

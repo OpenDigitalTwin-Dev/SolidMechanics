@@ -262,3 +262,84 @@ $$
 当 $\Delta\gamma\rightarrow0$ 时，$\mathbf{D}_{c}^{ep}\rightarrow\mathbf{D}$；然而，当 $\Delta\gamma$ 较大（例如时间步长较大时），$\mathbf{D}{c}^{ep}$ 将逐渐偏离 $\mathbf{D}$。如果此时仍继续采用 $\mathbf{D}_{c}^{ep}$，可能会导致明显的数值不一致性，从而影响牛顿迭代的收敛性，甚至导致收敛速度显著降低
 
 ### 一般情形
+
+在隐式 Return Mapping 算法中，需满足
+
+$$
+\begin{equation}
+\left\{
+\begin{array}{l}
+\boldsymbol{\varepsilon}^e_{n+1} - \boldsymbol{\varepsilon}^{e,\text{trial}} + \Delta\gamma\, \mathbf{N}_{n+1} \\
+\boldsymbol{\alpha}_{n+1} - \boldsymbol{\alpha}_n - \Delta\gamma\, \mathbf{H}_{n+1} \\
+\Phi(\boldsymbol{\sigma}_{n+1}, \mathbf{A}_{n+1})
+\end{array}
+\right\}
+=
+\left\{
+\begin{array}{l}
+\mathbf{0} \\
+\mathbf{0} \\
+0
+\end{array}
+\right\},
+\end{equation}
+$$ (sec2-eq:eqs)
+
+求解变量为
+
+$$
+\boldsymbol{\varepsilon}^{e}_{n+1},\quad\boldsymbol{\alpha},\quad\Delta\gamma.
+$$
+
+对方程 {eq}`sec2-eq:eqs` 两边微分，得到（为了方便，将下标 $n+1$ 隐去）
+
+$$
+\begin{equation}
+\left\{
+\begin{array}{l}
+\mathrm{d}\boldsymbol{\varepsilon}^e + \Delta\gamma \dfrac{\partial \mathbf{N}}{\partial \boldsymbol{\sigma}} : \mathrm{d}\boldsymbol{\sigma} + \Delta\gamma \dfrac{\partial \mathbf{N}}{\partial \mathbf{A}}  \mathrm{d}\mathbf{A} + \mathrm{d}\Delta\gamma\, \mathbf{N} \\[2ex]
+\mathrm{d}\boldsymbol{\alpha} - \Delta\gamma \dfrac{\partial \mathbf{H}}{\partial \boldsymbol{\sigma}}  \mathrm{d}\boldsymbol{\sigma} - \Delta\gamma \dfrac{\partial \mathbf{H}}{\partial \mathbf{A}}  \mathrm{d}\mathbf{A} - \mathrm{d}\Delta\gamma\, \mathbf{H} \\[2ex]
+\dfrac{\partial \Phi}{\partial \boldsymbol{\sigma}} : \mathrm{d}\boldsymbol{\sigma} + \dfrac{\partial \Phi}{\partial \mathbf{A}}  \mathrm{d}\mathbf{A}
+\end{array}
+\right\}
+=
+\left\{
+\begin{array}{l}
+\mathrm{d}\boldsymbol{\varepsilon}^{e,\text{trial}} \\
+\mathbf{0} \\
+0
+\end{array}
+\right\},
+\end{equation}
+$$
+
+整理得到
+
+$$
+\begin{equation}
+\begin{bmatrix}
+\mathrm{d}\boldsymbol{\sigma} \\
+\mathrm{d}\mathbf{A} \\
+\mathrm{d}\Delta\gamma
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{D}_{11} & \mathbf{D}_{12} & \mathbf{D}_{13} \\
+\mathbf{D}_{21} & \mathbf{D}_{22} & \mathbf{D}_{23} \\
+\mathbf{D}_{31} & \mathbf{D}_{32} & D_{33}
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{d}\boldsymbol{\varepsilon}^{e,\mathrm{trial}} \\
+\mathbf{0} \\
+0
+\end{bmatrix}.
+\end{equation}
+$$
+
+于是
+
+$$
+\mathbf{D}_{11} = \frac{\mathrm{d} \boldsymbol{\sigma}_{n+1}}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}},\quad
+\mathbf{D}_{21} = \frac{\mathrm{d} \mathbf{A}_{n+1}}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}},\quad
+\mathbf{D}_{31} = \frac{\mathrm{d} \Delta\gamma}{\mathrm{d} \boldsymbol{\varepsilon}^{e,\mathrm{trial}}}
+$$

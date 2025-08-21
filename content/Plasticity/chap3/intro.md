@@ -166,7 +166,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\dot{\boldsymbol{\varepsilon}}&=\dot{\gamma}\frac{\partial \Phi}{\partial \boldsymbol{\sigma}},\\
+\dot{\boldsymbol{\varepsilon}}^{p}&=\dot{\gamma}\frac{\partial \Phi}{\partial \boldsymbol{\sigma}},\\
 \dot{\boldsymbol{\alpha}}&=-\dot{\gamma}\frac{\partial \Phi}{\partial \mathbf{A}},
 \end{aligned}
 \end{equation}
@@ -179,7 +179,7 @@ $$
 任何可行的应力状态 $(\boldsymbol{\sigma},\mathbf{A})$ 应满足 $\Phi(\boldsymbol{\sigma},\mathbf{A}) \leq 0$，把它们形成的集合记为 $\mathcal{A}$，最大塑性耗散原理揭示了，对于任意给定的塑性应变率 $\dot{\boldsymbol{\varepsilon}}^{p}$ 和 硬化内变量变化速率 $\dot{\boldsymbol{\alpha}}$，真实应力状态应满足
 
 $$
-\Upsilon^p(\boldsymbol{\sigma},\mathbf{A};\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}) \geq \Upsilon^p(\boldsymbol{\sigma}^{*},\mathbf{A}^{*},;\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}),\quad \forall\ (\boldsymbol{\sigma}^{*},\mathbf{A}^{*})\in\mathcal{A},
+\Upsilon^p(\boldsymbol{\sigma},\mathbf{A};\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}) \geq \Upsilon^p(\boldsymbol{\sigma}^{*},\mathbf{A}^{*};\dot{\boldsymbol{\varepsilon}}^{p},\dot{\boldsymbol{\alpha}}),\quad \forall\ (\boldsymbol{\sigma}^{*},\mathbf{A}^{*})\in\mathcal{A},
 $$
 
 同时，Kuhn-Tucker 最优性条件对应为
