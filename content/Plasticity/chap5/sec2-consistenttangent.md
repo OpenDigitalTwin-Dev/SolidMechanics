@@ -150,7 +150,7 @@ $$ (sec2-eq:hardening-der)
 一般地，可从上式求解出 $\frac{\partial \Delta\gamma}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}$，对于线性硬化模型，有
 
 $$
-\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma) = \sigma_{0} + H(\bar{\varepsilon}_n^p + \Delta \gamma),
+\sigma_{y}(\bar{\varepsilon}_n^p + \Delta \gamma) = \sigma_{0} + H\cdot(\bar{\varepsilon}_n^p + \Delta \gamma),
 $$
 
 得到
@@ -194,29 +194,71 @@ $$
 
 #### 连续切线模量
 
-对于各向同性的线性硬化的 Mises 屈服准则，有
+对于各向同性硬化
+
+$$
+\sigma_{y}(\bar{\varepsilon}^p) = \sigma_{0} + \kappa(\bar{\varepsilon}^p),
+$$
+
+有
+
+$$
+\boldsymbol{\alpha} = \{\bar{\varepsilon}_{n}^{p}\},\quad \mathbf{A} = \{\kappa\},
+$$
+
+故
 
 $$
 \begin{equation}
-\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}=\frac{\partial \psi^p}{\partial {\bar{\varepsilon}_{n}^{p}}^{2}}=\frac{\partial \kappa}{\partial \bar{\varepsilon}_{n}^{p}}=H,
+\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}=\frac{\partial \psi^p}{\partial {\bar{\varepsilon}^{p}}^{2}}=\frac{\partial \kappa}{\partial \bar{\varepsilon}^{p}} = H(\bar{\varepsilon}^{p}),
 \end{equation}
 $$
 
-又
+对于线性硬化，有 $H(\bar{\varepsilon}^{p}) \equiv H$. 此外，对于 Mises 屈服准则，有
 
 $$
-
+\mathbf{H} = -\frac{\partial \Phi}{\partial \mathbf{A}} = -\frac{\partial \Phi}{\partial \kappa} = 1
 $$
 
-于是，连续切线模量
+且对于关联塑性流动，有
+
+$$
+\mathbf{N} = \frac{\partial \Phi}{\partial \boldsymbol{\sigma}},
+$$
+
+于是
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{D}^{ep} &= \mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}\\
-&=\mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}
+\mathbf{D}^{ep}_{c} &= \mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}\\
+&=\mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\mathbf{N})}{\mathbf{N}:\mathbf{D}^{e}:\mathbf{N}+H}
 \end{aligned}
 \end{equation}
 $$
+
+由于 $\mathbf{N}$ 是偏张量，故
+
+$$
+\mathbf{D}^{e}:\mathbf{N} = 2G\mathbf{N}\quad \Longrightarrow\quad \mathbf{N}:\mathbf{D}^{e}:\mathbf{N} = 3G,
+$$
+
+最终，连续切线模量化简为
+
+```{margin}
+$\bar{\mathbf{N}}=\sqrt{\frac{2}{3}}\mathbf{N}$
+```
+
+$$
+\mathbf{D}^{ep}_{c} =\mathbf{D}^{e} - \frac{6G^2}{3G+H}\bar{\mathbf{N}}\otimes\bar{\mathbf{N}}.
+$$
+
+连续切线模量与一致性切线模量关系如下
+
+$$
+\mathbf{D}=\mathbf{D}_{c}^{ep}-\frac{\Delta \gamma \, 6 G^2}{q^{\text{trial}}}\left[\mathbf{I}_d-\bar{\mathbf{N}}\otimes\bar{\mathbf{N}}\right],
+$$
+
+当 $\Delta\gamma\rightarrow0$ 时，$\mathbf{D}_{c}^{ep}\rightarrow\mathbf{D}$；然而，当 $\Delta\gamma$ 较大（例如时间步长较大时），$\mathbf{D}{c}^{ep}$ 将逐渐偏离 $\mathbf{D}$。如果此时仍继续采用 $\mathbf{D}_{c}^{ep}$，可能会导致明显的数值不一致性，从而影响牛顿迭代的收敛性，甚至导致收敛速度显著降低
 
 ### 一般情形
