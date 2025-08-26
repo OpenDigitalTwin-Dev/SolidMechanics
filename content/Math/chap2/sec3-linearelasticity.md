@@ -798,6 +798,10 @@ $$
 
 通常，[选择位移作为求解变量](../../Elasticity/chap1/sec8-two-2D-solution.md)。经过离散化后，可以得到有限元节点上以位移自由度为未知量的线性方程组：
 
+```{margin}
+这里对 $\mathbf{u}$ 记号混用
+```
+
 $$
 \mathbf{K}\mathbf{u} = \mathbf{F}.
 $$

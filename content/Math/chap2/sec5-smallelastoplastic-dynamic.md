@@ -4,15 +4,15 @@
 
 ## 求解方程
 
-与静力学求解不同，平衡方程中的加速度项不可忽略
+与静力学求解不同，平衡方程中的速度项和加速度项均不可忽略
 
 $$
 \begin{equation}
-\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \rho\ddot{\mathbf{u}},
+\nabla\cdot \boldsymbol{\sigma} + \mathbf{f}= \rho\ddot{\mathbf{u}} + c\dot{\mathbf{u}} ,
 \end{equation}
 $$
 
-除此之外，还需要给出初始条件
+其中，$c$ 是阻尼系数；除此之外，还需要给出初始条件
 
 $$
 \mathbf{u}(\mathbf{x},0) = \mathbf{u}_{0}(\mathbf{x}),\quad \dot{\mathbf{u}}(\mathbf{x},0) = \dot{\mathbf{u}_{0}}(\mathbf{x}).
@@ -30,9 +30,14 @@ $$
 类似地，弱形式为
 
 $$
+\begin{equation}
+\begin{aligned}
 \int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v} \, \mathrm{d}\Omega + 
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
+\int_{\Omega}c\dot{\mathbf{u}}\cdot\mathbf{v} \, \mathrm{d}\Omega +
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S\\
 = \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\end{aligned}
+\end{equation}
 $$
 
 其中，$\mathbf{v}\in\mathcal{V}$ 是试验函数，$\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}$
@@ -82,7 +87,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}\Omega +\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
+&\int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}\Omega +
+\int_{\Omega}c\dot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}\Omega +
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
 =& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
@@ -93,52 +100,120 @@ $$
 将上述方程记为
 
 $$
-\ddot{\mathbf{F}}^{\text{u}}(t)+\mathbf{F}^{\text{int}} (t)+ \mathbf{F}^{r}(t)-\mathbf{F}^{\text{ext}}(t) = \mathbf{0},
+\ddot{\mathbf{F}}^{\text{a}}(t)+\dot{\mathbf{F}}^{\text{v}}(t)+\mathbf{F}^{\text{int}} (t)+ \mathbf{F}^{r}(t) = \mathbf{F}^{\text{ext}}(t),
 $$ (sec5-eq:fea-space)
 
 其中
-- 时间微分项向量：$\ddot{\mathbf{F}}^{\text{u}}(t):=\int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}\Omega$
+- 加速度项（二阶导）：$\ddot{\mathbf{F}}^{\text{a}}(t):=\int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}\Omega$
+- 速度项（一阶导）：$\dot{\mathbf{F}}^{\text{v}}(t):=\int_{\Omega}c\dot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}\Omega$
 - 内力项向量：$\mathbf{F}^{\text{int}}(t):=\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega$
 - Robin 边界条件贡献向量：$\mathbf{F}^{\text{r}}(t):=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
 - 外力向量：$\mathbf{F}^{\text{ext}}(t):=\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
 
-类似地，在每个单元上
+在每个单元上
+
+```{margin}
+这里对 $\mathbf{u}$ 记号混用，即 $\mathbf{u} = \mathbf{N}\mathbf{u}$
+```
 
 $$
 \begin{equation}
 \begin{aligned}
-&\ddot{\mathbf{F}}^{\text{u}} = \int_{E} \rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E = \int_{E}\rho\mathbf{N}^{T}\ddot{\mathbf{u}}\ \mathbf{d}E,\\
-&\mathbf{F}^{\text{int}} = \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}E = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}E,\\
-&\mathbf{F}^{r}=\int_{\Gamma_{R,E}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S,\\
-&\mathbf{F}^{\text{ext}}=\int_{E}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}E + \int_{\Gamma_{N,E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R,E}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S
+&\ddot{\mathbf{F}}^{\text{a}} = \int_{E} \rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E = \int_{E}\rho\mathbf{N}^{T}\ddot{\mathbf{u}}\ \mathbf{d}E= \int_{E}\rho\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E\cdot\ddot{\mathbf{u}},\\
+&\dot{\mathbf{F}}^{\text{v}} = \int_{E} c\dot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E = \int_{E}\rho\mathbf{N}^{T}\dot{\mathbf{u}}\ \mathbf{d}E= \int_{E}c\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E\cdot\dot{\mathbf{u}},\\
+&\mathbf{F}^{\text{int}} = \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}E = \int_{E}\boldsymbol{\varepsilon}(\mathbf{v_{*,i}}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u})\ \mathbf{d}E=\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathbf{d}E\cdot\mathbf{u},\\
+&\mathbf{F}^{r}=\int_{\Gamma_{R,E}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{N}\, \mathrm{d}S\cdot\mathbf{u},\\
+&\mathbf{F}^{\text{ext}}=\int_{E}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}E + \int_{\Gamma_{N,E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R,E}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S,
+\end{aligned}
+\end{equation}
+$$
+
+上式通常写为
+
+$$
+\mathbf{M}\ddot{\mathbf{u}}+\mathbf{C}\dot{\mathbf{u}}+\mathbf{K}\mathbf{u}+\mathbf{K}_{r}\mathbf{u}-\mathbf{F}^{\text{ext}} = \mathbf{0},
+$$
+
+其中
+
+$$
+\begin{equation}
+\begin{aligned}
+&\mathbf{M} = \int_{E}\rho\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E,\quad & \mathbf{C} = \int_{E}c\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E,\\
+&\mathbf{K} = \int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathbf{d}E,\quad  & \mathbf{K}_{r}=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{N}\, \mathrm{d}S.
 \end{aligned}
 \end{equation}
 $$
 
 ### 时间离散
 
-接下来对方程 {eq}`sec5-eq:fea-space` 进行时间离散，对 $\ddot{\mathbf{F}}_{\text{u}}(t)$ 通常使用中心差分
+通常对 $\ddot{\mathbf{u}}$ 和 $\dot{\mathbf{u}}$ 使用中心差分
 
 $$
-\ddot{\mathbf{F}}^{\text{u}}(t) \approx \frac{\mathbf{F}^{\text{u}}(t+\Delta t)-2\mathbf{F}^{\text{u}}(t)+\mathbf{F}^{\text{u}}(t-\Delta t)}{\Delta t^2},
+\begin{equation}
+\begin{aligned}
+\dot{\mathbf{u}}&=\frac{\mathbf{u}(t+\Delta t) - \mathbf{u}(t-\Delta t)}{2\Delta t}\approx\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t},\\
+\ddot{\mathbf{u}}&=\frac{\mathbf{u}(t+\Delta t) - 2\mathbf{u}(t) + \mathbf{u}(t-\Delta t)}{\Delta t^2}\approx\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2},
+\end{aligned}
+\end{equation}
 $$
 
 于是，方程 {eq}`sec5-eq:fea-space` 变为
 
 $$
-\frac{\mathbf{F}^{\text{u}}(t+\Delta t)-2\mathbf{F}^{\text{u}}(t)+\mathbf{F}^{\text{u}}(t-\Delta t)}{\Delta t^2}+\mathbf{F}^{\text{int}} (t)+ \mathbf{F}^{r}(t)-\mathbf{F}^{\text{ext}}(t) = \mathbf{0}.
+\begin{equation}
+\begin{aligned}
+\mathbf{M}\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2}+\mathbf{C}\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t}
++\mathbf{K}\mathbf{u}+ \mathbf{K}_{r}\mathbf{u}-\mathbf{F}^{\text{ext}} = \mathbf{0}.
+\end{aligned}
+\end{equation}
 $$
 
 #### 显式步求解
 
 $$
-\frac{\mathbf{F}^{\text{u}}_{n+1}-2\mathbf{F}^{\text{u}}_{n}+\mathbf{F}^{\text{u}}_{n-1}}{\Delta t^2}+\mathbf{F}^{\text{int}}_{n}+ \mathbf{F}^{r}_{n}-\mathbf{F}^{\text{ext}}_{n} = \mathbf{0}.
+\mathbf{M}\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2}+\mathbf{C}\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t}+
+\mathbf{K}\mathbf{u}_{n}+ \mathbf{K}_{r}\mathbf{u}_{n}-\mathbf{F}^{\text{ext}}_{n} = \mathbf{0}.
+$$ (sec5-eq:dynamic)
+
+此时，方程 {eq}`sec5-eq:dynamic` 是关于 $\mathbf{u}_{n+1}$ 的线性方程组
+
 $$
+\mathbf{M}_{\text{consitent}}\mathbf{u} = \mathbf{F},
+$$
+
+矩阵 $\mathbf{M}_{\text{consitent}}$ 被称为**一致质量矩阵**，是一个非对角、稀疏的矩阵，反映了节点之间的动力耦合
+
+在显式动力学中，为了避免求解线性方程组，将一致质量矩阵的质量分配到节点上形成对角矩阵，得到**集中质量矩阵**
+
+$$
+\mathbf{M}_{\text{lumped}}=
+\begin{bmatrix}
+m_{1}&0&\cdots&0\\
+0&m_{2}&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&m_{3N}
+\end{bmatrix}.
+$$
+
+由于在隐式动力学中，时间步长通常非常小，因此，使用集中质量矩阵不会带来显著误差，且具备以下重要优势
+- 高效性：大幅提升计算效率（无需求解线性方程组）
+- 稳定性：更大的临界时间步长
+- 低内存：无需存储和求解线性方程组
+- 稳健性：一定程度控制沙漏效应
+
+常用的集中质量矩阵构造方法包括
+
+- **行求和法**
+- **HRZ 集中法**
+- **比例法**
+- **特殊积分法**
 
 #### 隐式步求解
 
 $$
-\frac{\mathbf{F}^{\text{u}}_{n+1}-2\mathbf{F}^{\text{u}}_{n}+\mathbf{F}^{\text{u}}_{n-1}}{\Delta t^2}+\mathbf{F}^{\text{int}}_{n+1}+ \mathbf{F}^{r}_{n+1}-\mathbf{F}^{\text{ext}}_{n+1} = \mathbf{0}.
+\mathbf{M}\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2}+\mathbf{C}\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t}+
+\mathbf{K}\mathbf{u}_{n+1}+ \mathbf{K}_{r}\mathbf{u}_{n+1}-\mathbf{F}^{\text{ext}}_{n+1} = \mathbf{0}.
 $$
 
 通常，在求解过程中，$\Delta t$ 不是均匀分布的，此时需要使用变步长的中心差分公式
