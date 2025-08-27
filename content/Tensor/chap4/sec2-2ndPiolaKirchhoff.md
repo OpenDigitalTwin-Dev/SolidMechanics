@@ -7,18 +7,18 @@
 第二类 Piola-Kirchhoff 应力张量（简记为 PK2 应力张量）定义为
 
 $$
-\mathbf{S}  = F^{-1}\mathbf{P} = JF^{-1}\boldsymbol{\sigma}F^{-T},
+\mathbf{S}  = \mathbf{F}^{-1}\mathbf{P} = J\mathbf{F}^{-1}\boldsymbol{\sigma}\mathbf{F}^{-T},
 $$
 
 
 [PK1 应力](./sec1-1stPiolaKirchhoff.md)描述的是**当前力在参考面积上的分布**，表示参考构型下单位面积上所受的当前构型下的力
 
-PK2 应力描述的是**参考力在参考面积上的分布**，该参考力并非真实存在的力，而是通过逆变形梯度 $F^{-1}$ 将真实力 $\mathrm{d}\mathbf{f}$ 映射回参考构型的等效力 $\mathrm{d}\mathbf{F}_{\text{ref}}$
+PK2 应力描述的是**参考力在参考面积上的分布**，该参考力并非真实存在的力，而是通过逆变形梯度 $\mathbf{F}^{-1}$ 将真实力 $\mathrm{d}\mathbf{f}$ 映射回参考构型的等效力 $\mathrm{d}\mathbf{F}_{\text{ref}}$
 
 也可以用 $\mathbf{S}$ 表示 $\boldsymbol{\sigma}$
 
 $$
-\boldsymbol{\sigma} = J^{-1}F\mathbf{S}F^{T}.
+\boldsymbol{\sigma} = J^{-1}\mathbf{F}\mathbf{S}\mathbf{F}^{T}.
 $$
 
 ## 对称性
@@ -27,16 +27,16 @@ $$
 
 ## 客观性
 
-对于刚体旋转，$F' = RF$，$R$ 是旋转变换矩阵，满足 $RR^{T} = I$，且 
+对于刚体旋转，$\mathbf{F}' = R\mathbf{F}$，$R$ 是旋转变换矩阵，满足 $RR^{T} = \mathbf{I}$，且 
 
 $$
-J' = \det(F') = \det(R)\det(F) = \det(F) = J,
+J' = \det(\mathbf{F}') = \det(R)\det(\mathbf{F}) = \det(\mathbf{F}) = J,
 $$
 
 此时
 
 $$
-\mathbf{S}'  = J'F'^{-1}\boldsymbol{\sigma}'F'^{-T} = JF^{-1}R^{-1}(R\boldsymbol{\sigma}R^{T})RF^{-T} = \mathbf{S},
+\mathbf{S}'  = J'\mathbf{F}'^{-1}\boldsymbol{\sigma}'\mathbf{F}'^{-T} = J\mathbf{F}^{-1}R^{-1}(R\boldsymbol{\sigma}R^{T})R\mathbf{F}^{-T} = \mathbf{S},
 $$
 
 即 PK2 应力在刚体旋转下保持不变，具有客观性
@@ -47,13 +47,13 @@ $$
 由于
 
 $$
-\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(F^{T}F-I) = \frac{1}{2}(F^{T}\dot{F}+\dot{F}^{T}F) = F^{T}\mathbf{D}F,
+\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(\mathbf{F}^{T}\mathbf{F}-\mathbf{I}) = \frac{1}{2}(\mathbf{F}^{T}\dot{\mathbf{F}}+\dot{\mathbf{F}}^{T}\mathbf{F}) = \mathbf{F}^{T}\mathbf{D}\mathbf{F},
 $$
 
 故
 
 $$
-\mathbf{D} = F^{-T}\dot{\mathbf{E}}F,
+\mathbf{D} = \mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F},
 $$
 
 由于相似变换保迹，于是
@@ -61,8 +61,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}:\mathbf{D} &= \boldsymbol{\sigma}:F^{-T}\dot{\mathbf{E}}F = \text{tr}(\boldsymbol{\sigma}F^{-T}\dot{\mathbf{E}}F) \\
-&= \text{tr}(F^{-1}\boldsymbol{\sigma}F^{-T}\dot{\mathbf{E}}) = F^{-1}\boldsymbol{\sigma}F^{-T}:\dot{\mathbf{E}}\\
+\boldsymbol{\sigma}:\mathbf{D} &= \boldsymbol{\sigma}:\mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F} = \text{tr}(\boldsymbol{\sigma}\mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F}) \\
+&= \text{tr}(\mathbf{F}^{-1}\boldsymbol{\sigma}\mathbf{F}^{-T}\dot{\mathbf{E}}) = \mathbf{F}^{-1}\boldsymbol{\sigma}\mathbf{F}^{-T}:\dot{\mathbf{E}}\\
 &=J^{-1}\mathbf{S}:\dot{\mathbf{E}},
 \end{aligned}
 \end{equation}

@@ -43,7 +43,7 @@ $$
 其中，$Q\in\mathbb{M}^{3}$ 是[正交矩阵](../chap1/sec1-OT.md)，则物体发生旋转，此时
 
 $$
-\mathbf{u}(\mathbf{X}) = (Q-I)\mathbf{X}.
+\mathbf{u}(\mathbf{X}) = (Q-\mathbf{I})\mathbf{X}.
 $$
 
 ## 均匀拉伸和压缩
@@ -57,7 +57,7 @@ $$
 其中，$k_{i}>0$，当 $k_{i}>1$ 时，为拉伸变形；当 $k_{i}<1$ 时，为压缩变形。此时
 
 $$
-\mathbf{u}(\mathbf{X}) = (I - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
+\mathbf{u}(\mathbf{X}) = (\mathbf{I} - \text{diag}(k_{1},k_{2},k_{3}))\mathbf{X}.
 $$
 
 ## 剪切变形
@@ -168,7 +168,7 @@ $$
 定义**变形梯度矩阵**为
 
 $$
-F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} = 
+\mathbf{F} = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} = 
 \begin{bmatrix}
 \frac{\partial x_1}{\partial X_1} & \frac{\partial x_1}{\partial X_2} & \frac{\partial x_1}{\partial X_3} \\
 \frac{\partial x_2}{\partial X_1} & \frac{\partial x_2}{\partial X_2} & \frac{\partial x_2}{\partial X_3} \\
@@ -176,7 +176,7 @@ F = \frac{\partial \mathbf{x}}{\partial{\mathbf{X}}} =
 \end{bmatrix},
 $$
 
-$F$ 包含了由于变形所产生的长度、角度和体积变化的所有必要的局部信息。例如，[$\det(F^{T}) = \det(F)$ 反映了局部体积变化](../../Math/chap2/sec2-isoparametric.md)
+$\mathbf{F}$ 包含了由于变形所产生的长度、角度和体积变化的所有必要的局部信息。例如，[$\det(\mathbf{F}^{T}) = \det(\mathbf{F})$ 反映了局部体积变化](../../Math/chap2/sec2-isoparametric.md)
 
 此时
 
@@ -187,13 +187,13 @@ $$
 \frac{\partial u_2}{\partial X_1} & \frac{\partial u_2}{\partial X_2} & \frac{\partial u_2}{\partial X_3} \\
 \frac{\partial u_3}{\partial X_1} & \frac{\partial u_3}{\partial X_2} & \frac{\partial u_3}{\partial X_3}
 \end{bmatrix}=
-\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = F - I.
+\frac{\partial \mathbf{u}}{\partial \mathbf{X}} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}} - \frac{\partial \mathbf{X}}{\partial \mathbf{X}} = \mathbf{F} - \mathbf{I}.
 $$
 
 于是
 
 $$
-\mathrm{d}\mathbf{u} = (F-I)\mathrm{d}\mathbf{X},
+\mathrm{d}\mathbf{u} = (\mathbf{F}-\mathbf{I})\mathrm{d}\mathbf{X},
 $$
 
 得到

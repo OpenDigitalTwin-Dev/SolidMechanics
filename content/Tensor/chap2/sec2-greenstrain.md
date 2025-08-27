@@ -72,7 +72,7 @@ $$
 \begin{aligned}
 \mathrm{d}s^2 &= \left|\mathbf{x}(\mathbf{X}+\mathrm{d}\mathbf{X}) - \mathbf{x}(\mathbf{X})\right|^2 \\
 &\approx (\frac{\partial \mathbf{x}}{\partial \mathbf{X}}\mathrm{d}\mathbf{X})\cdot(\frac{\partial \mathbf{x}}{\partial \mathbf{X}}\mathrm{d}\mathbf{X}) \\
-&= \mathrm{d}\mathbf{X}^{T}F^{T}F\mathrm{d}\mathbf{X}
+&= \mathrm{d}\mathbf{X}^{T}\mathbf{F}^{T}\mathbf{F}\mathrm{d}\mathbf{X}
 \end{aligned}
 \end{equation}
 $$
@@ -80,21 +80,21 @@ $$
 于是
 
 $$
-\mathrm{d}s^2 - \mathrm{d}S^2 = \mathrm{d}\mathbf{X}^{T}(F^{T}F-I)\mathrm{d}\mathbf{X} = 2\ \mathrm{d}\mathbf{X}^{T}E\mathrm{d}\mathbf{X},
+\mathrm{d}s^2 - \mathrm{d}S^2 = \mathrm{d}\mathbf{X}^{T}(\mathbf{F}^{T}\mathbf{F}-\mathbf{I})\mathrm{d}\mathbf{X} = 2\ \mathrm{d}\mathbf{X}^{T}E\mathrm{d}\mathbf{X},
 $$
 
 定义格林应变张量为
 
 $$
-\mathbf{E} = \frac{1}{2}(F^{T}F-I),
+\mathbf{E} = \frac{1}{2}(\mathbf{F}^{T}\mathbf{F}-\mathbf{I}),
 $$
 
-代入 $F = \frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I$，得到
+代入 $\mathbf{F} = \frac{\partial \mathbf{u}}{\partial \mathbf{X}} + \mathbf{I}$，得到
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{E}  &= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I)^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + I) - I)\\
+\mathbf{E}  &= \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + \mathbf{I})^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}} + \mathbf{I}) - \mathbf{I})\\
 & = \frac{1}{2}((\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T} + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}}) + (\frac{\partial \mathbf{u}}{\partial \mathbf{X}})^{T}(\frac{\partial \mathbf{u}}{\partial \mathbf{X}})),
 \end{aligned}
 \end{equation}
@@ -131,25 +131,25 @@ $$
 其中，$Q$ 是常正交矩阵，$\mathbf{c}$ 是常向量，于是
 
 $$
-F' = \frac{\partial \mathbf{x}'}{\partial \mathbf{X}} = Q\frac{\partial \mathbf{x}}{\partial \mathbf{X}} = QF,
+\mathbf{F}' = \frac{\partial \mathbf{x}'}{\partial \mathbf{X}} = Q\frac{\partial \mathbf{x}}{\partial \mathbf{X}} = Q\mathbf{F},
 $$
 
 于是
 
 $$
-\mathbf{E} ' = \frac{1}{2}((F')^{T}F' - I) =  \frac{1}{2}(F^{T}Q^{T}QF - I) = \frac{1}{2}(F^{T}F - I) = \mathbf{E} .
+\mathbf{E} ' = \frac{1}{2}((\mathbf{F}')^{T}\mathbf{F}' - \mathbf{I}) =  \frac{1}{2}(\mathbf{F}^{T}Q^{T}Q\mathbf{F} - \mathbf{I}) = \frac{1}{2}(\mathbf{F}^{T}\mathbf{F} - \mathbf{I}) = \mathbf{E} .
 $$
 
 这也可以通过矩阵的[极分解](../chap1/sec1-OT.md)得出，任意矩阵都可以分解为正交矩阵（表示刚体运动）$R$ 和对称半正定矩阵（表示形状变化）$U$ 的乘积
 
 $$
-F = RU,
+\mathbf{F} = RU,
 $$
 
 于是
 
 $$
-\mathbf{E}  = \frac{1}{2}(U^{T}R^{T}RU - I) = \frac{1}{2}(U^{T}U - I),
+\mathbf{E}  = \frac{1}{2}(U^{T}R^{T}RU - \mathbf{I}) = \frac{1}{2}(U^{T}U - \mathbf{I}),
 $$
 
 这意味着在 $\mathbf{E} $ 中，刚体运动被消除了

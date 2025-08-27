@@ -8,11 +8,11 @@
 
 $$
 \begin{equation}
-\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \rho\ddot{\mathbf{u}},
+\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \mathbf{0},
 \end{equation}
 $$
 
-在静力学求解中，假定加速度 $\mathbf{a}=\ddot{\mathbf{u}} = \mathbf{0}$
+在静力学求解中，$\dot{\mathbf{u}} = \mathbf{0},\ddot{\mathbf{u}} = \mathbf{0}$
 
 **几何方程**
 
@@ -38,13 +38,13 @@ $$
 \end{equation}
 $$
 
-**屈服函数**
+**屈服准则**
 
 例如，对于经典的 [Mises 准则](../../Plasticity/chap2/sec2-mises.md)
 
 $$
 \begin{equation}
-f(\boldsymbol{\sigma}, \bar{\varepsilon}^p) = \sqrt{\frac{3}{2} \mathbf{s} : \mathbf{s}} - \sigma_y(\bar{\varepsilon}^p)，
+f(\boldsymbol{\sigma}, \bar{\varepsilon}^p) = \sqrt{\frac{3}{2} \mathbf{s} : \mathbf{s}} - \sigma_y(\bar{\varepsilon}^p)\leq0，
 \end{equation}
 $$
 
@@ -57,7 +57,7 @@ $$
 $$
 
 
-**流动法则**
+**塑性流动法则**
 
 例如，考虑关联性流动法则
 
@@ -69,7 +69,7 @@ $$
 
 其中，$\dot{\gamma}$ 是[塑性乘子](../../Plasticity/chap3/intro.md)
 
-**硬化法则**
+**硬化规律**
 
 例如，对于线性硬化
 
@@ -81,9 +81,7 @@ $$
 
 其中，$\sigma_{y0}$ 是初始屈服强度，$H$ 是硬化模量
 
-**塑性加载/卸载条件**
-
-也称 Kuhn-Tucker 条件
+**Kuhn-Tucker 条件**
 
 $$
 \begin{equation}
@@ -108,7 +106,7 @@ $$
 
 **边界条件**
 
-以及用来描述边界载荷的三类边界条件
+描述边界载荷的三类边界条件
 
 $$
 \begin{equation}

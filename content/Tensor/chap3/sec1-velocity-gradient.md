@@ -29,7 +29,7 @@ $$
 根据定义，速度梯度场还可以表示为
 
 $$
-\mathbf{L} = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\partial \mathbf{v}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \frac{\partial^2 \mathbf{u}}{\partial \mathbf{X}\partial t}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \dot{F}F^{-1}.
+\mathbf{L} = \nabla\mathbf{v} = \frac{\partial \mathbf{v}}{\partial \mathbf{x}} = \frac{\partial \mathbf{v}}{\partial \mathbf{X}}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \frac{\partial^2 \mathbf{u}}{\partial \mathbf{X}\partial t}\frac{\partial \mathbf{X}}{\partial \mathbf{x}} = \dot{\mathbf{F}}\mathbf{F}^{-1}.
 $$
 
 ## 速度梯度场分解
@@ -113,10 +113,10 @@ name: sec3-fig:general-shear
 
 ### 极分解
 
-对 $F$ 进行极分解
+对 $\mathbf{F}$ 进行极分解
 
 $$
-F = QU,
+\mathbf{F} = QU,
 $$
 
 其中，$Q$ 是正交矩阵（旋转变换矩阵），$U$ 是对称正定矩阵，于是
@@ -148,7 +148,7 @@ $$
 
 ### 刚体旋转阶段
 
-$F$ 记录了从初始到当前的全部运动，当某一段运动为刚体旋转时，$U$ 保持不变（不为 0），即
+$\mathbf{F}$ 记录了从初始到当前的全部运动，当某一段运动为刚体旋转时，$U$ 保持不变（不为 0），即
 
 $$
 \dot{U} = 0,
@@ -168,10 +168,10 @@ $$
 
 ### 局部体积变化速率
 
-记 $J= \det(F)$，则
+记 $J= \det(\mathbf{F})$，则
 
 $$
-\dot{J} = J\ \text{tr}(\dot{F}F^{-1}) = J\ \text{tr}(\mathbf{L}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
+\dot{J} = J\ \text{tr}(\dot{\mathbf{F}}\mathbf{F}^{-1}) = J\ \text{tr}(\mathbf{L}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
 $$
 
 该公式表明，**单位体积的变化速率 $\dot{J}$，等于体积本身 $J$ 乘以速度梯度场张量的迹（速度场的散度）**
@@ -187,7 +187,7 @@ $$
 
 
 $$
-J = \det(F) = \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}},
+J = \det(\mathbf{F}) = \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}},
 $$
 
 对 $t$ 求导
@@ -248,10 +248,10 @@ $$
 设 $\mathbf{a},\mathbf{b},\mathbf{c}\in\mathbb{R}^{3}$ 是三个线性无关的向量，则
 
 $$
-J = \det(F) = \frac{F\mathbf{a}\cdot(F\mathbf{b}\times F\mathbf{c})}{\mathbf{a}\cdot(\mathbf{b}\times \mathbf{c})}
+J = \det(\mathbf{F}) = \frac{\mathbf{F}\mathbf{a}\cdot(\mathbf{F}\mathbf{b}\times \mathbf{F}\mathbf{c})}{\mathbf{a}\cdot(\mathbf{b}\times \mathbf{c})}
 =
 \frac{\det\left(\begin{bmatrix}
-F\mathbf{a}&F\mathbf{b}&F\mathbf{c}
+\mathbf{F}\mathbf{a}&\mathbf{F}\mathbf{b}&\mathbf{F}\mathbf{c}
 \end{bmatrix}\right)}{
 \det\left(\begin{bmatrix}
 \mathbf{a}&\mathbf{b}&\mathbf{c}
@@ -264,10 +264,10 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\dot{J} &= \frac{\dot{F}\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
-&=\frac{\dot{F}F^{-1}F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}F^{-1}F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}F^{-1}F\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
-&=\frac{\dot{F}F^{-1}F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (\dot{F}F^{-1}F\mathbf{b} \times F\mathbf{c}) + F\mathbf{a} \cdot (F\mathbf{b} \times \dot{F}F^{-1}F\mathbf{c})}{F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c})}\frac{F\mathbf{a} \cdot (F\mathbf{b} \times F\mathbf{c})}{a \cdot (\mathbf{b} \times \mathbf{c})}\\
-&=J\ \text{tr}(\dot{F}F^{-1})\\
+\dot{J} &= \frac{\dot{\mathbf{F}}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\dot{\mathbf{F}}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \dot{\mathbf{F}}\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
+&=\frac{\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
+&=\frac{\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{c})}{\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c})}\frac{\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c})}{a \cdot (\mathbf{b} \times \mathbf{c})}\\
+&=J\ \text{tr}(\dot{\mathbf{F}}\mathbf{F}^{-1})\\
 &= J\ \text{tr}(\mathbf{L}).
 \end{aligned}
 \end{equation}
