@@ -20,7 +20,7 @@ parts:
         - file: content/Math/chap2/sec3-linearelasticity
         - file: content/Math/chap2/sec4-smallelastoplastic-static
         - file: content/Math/chap2/sec5-smallelastoplastic-dynamic
-        - file: content/Math/chap2/sec6-largeelastoplastic-static
+        - file: content/Math/chap2/sec6-largeelastoplastic-1
   - caption: 张量分析
     chapters:
       - file: content/Tensor/intro
@@ -82,6 +82,7 @@ parts:
         sections:
         - file: content/Plasticity/chap5/sec1-returnmapping
         - file: content/Plasticity/chap5/sec2-consistenttangent
+      - file: content/Plasticity/chap6/intro 
   - caption: CCX 笔记
     chapters:
       - file: content/CCX/intro

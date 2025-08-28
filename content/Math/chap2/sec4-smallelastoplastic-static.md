@@ -30,11 +30,11 @@ $$
 \end{equation}
 $$
 
-**弹塑性本构关系**
+**弹性本构关系**
 
 $$
 \begin{equation}
-\boldsymbol{\sigma} = \mathbf{D} : \boldsymbol{\varepsilon}^e = \mathbf{D} : (\boldsymbol{\varepsilon} - \boldsymbol{\varepsilon}^p)，
+\boldsymbol{\sigma} = \mathbb{C} : \boldsymbol{\varepsilon}^e = \mathbb{C} : (\boldsymbol{\varepsilon} - \boldsymbol{\varepsilon}^p)，
 \end{equation}
 $$
 
@@ -140,8 +140,8 @@ $$
 与 [线弹性方程](../chap2/sec3-linearelasticity.md) 类似，弱形式为
 
 $$
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
-= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}V + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
+= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 其中，$\mathbf{v}\in\mathcal{V}$ 是试验函数，$\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}$
@@ -187,8 +187,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
-=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+&\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}V + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
+=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 $$
@@ -203,9 +203,9 @@ $$
 
 其中
 
-- 内力项向量：$\mathbf{F}^{\text{int}}:=\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}\Omega$
+- 内力项向量：$\mathbf{F}^{\text{int}}:=\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}V$
 - Robin 边界条件贡献向量：$\mathbf{F}^{\text{r}}:=\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
-- 外力向量：$\mathbf{F}^{\text{ext}}:=\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
+- 外力向量：$\mathbf{F}^{\text{ext}}:=\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S$
 
 #### $\mathbf{F}^{\text{int}}$ 对刚度矩阵的贡献
 
@@ -218,7 +218,7 @@ $$
 由于 
 
 $$
-\boldsymbol{\varepsilon}=\mathcal{B}\mathbf{u} = \mathbf{B}\mathbf{u}^{e},
+\boldsymbol{\varepsilon}=\mathcal{B}\mathbf{u} = \mathbf{B}\mathbf{u}_{E},
 $$
 
 故 Jacobian 矩阵为
@@ -226,14 +226,14 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}^{\text{int}}}{\partial \mathbf{u}^{e}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}^{e}}\ \mathbf{d}E\\
-&=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}^{e}} \mathbf{d}E\\
-&=\int_{E}\mathbf{B}^{T}\mathbf{D}_{ep}^{\text{alg}}\ \mathbf{B} \mathbf{d}E,
+\mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}^{\text{int}}}{\partial \mathbf{u}_{E}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}_{E}}\ \mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}_{E}} \mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\mathbb{C}_{ep}^{\text{alg}}\ \mathbf{B} \mathbf{d}E,
 \end{aligned}
 \end{equation}
 $$
 
-其中，$\mathbf{D}_{ep}^{\text{alg}}$ 是[一致性切线模量](../../Plasticity/chap5/returnmapping.md)
+其中，$\mathbb{C}_{ep}^{\text{alg}}$ 是[一致性切线模量](../../Plasticity/chap5/returnmapping.md)
 
 #### $\mathbf{F}^{\text{r}}$ 对刚度矩阵的贡献
 
@@ -248,7 +248,7 @@ $$
 由于
 
 $$
-\mathbf{u} = \mathbf{N}\mathbf{u}^{e},
+\mathbf{u} = \mathbf{N}\mathbf{u}_{E},
 $$
 
 故
@@ -256,8 +256,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{K}_{r} = \frac{\partial \mathbf{F}^{r}}{\partial \mathbf{u}^{e}}&=\int_{\Gamma_{R}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S\\
-&=\int_{\Gamma_{R}} \alpha\left(\frac{\partial \mathbf{u}}{\partial \mathbf{u}^{e}}\right)^{T} \mathbf{v}_{*,i} \, \mathrm{d}S\\
+\mathbf{K}_{r} = \frac{\partial \mathbf{F}^{r}}{\partial \mathbf{u}_{E}}&=\int_{\Gamma_{R}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}_{E}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S\\
+&=\int_{\Gamma_{R}} \alpha\left(\frac{\partial \mathbf{u}}{\partial \mathbf{u}_{E}}\right)^{T} \mathbf{v}_{*,i} \, \mathrm{d}S\\
 &=\int_{\Gamma_{R}} \alpha\mathbf{N}^{T}\mathbf{N} \, \mathrm{d}S.
 \end{aligned}
 \end{equation}

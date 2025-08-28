@@ -17,7 +17,7 @@ $$
 \begin{equation}
 \begin{aligned}
 &\boldsymbol{\varepsilon}^{e, \text{trial}} = \boldsymbol{\varepsilon}_n^e + \Delta \boldsymbol{\varepsilon},\\
-&\boldsymbol{\sigma}^{\text{trial}} = \mathbf{D}^e : \boldsymbol{\varepsilon}^{e, \text{trial}} = \boldsymbol{\sigma}_n + \mathbf{D}^e : \Delta \boldsymbol{\varepsilon}.
+&\boldsymbol{\sigma}^{\text{trial}} = \mathbb{C}^e : \boldsymbol{\varepsilon}^{e, \text{trial}} = \boldsymbol{\sigma}_n + \mathbb{C}^e : \Delta \boldsymbol{\varepsilon}.
 \end{aligned}
 \end{equation}
 $$
@@ -153,13 +153,13 @@ $$
 故
 
 $$
-\mathbf{D}^e:\Delta\boldsymbol{\varepsilon} = 2G\ \text{dev}(\Delta\boldsymbol{\varepsilon})+K\text{tr}(\Delta\boldsymbol{\varepsilon})\mathbf{I}=2G\ \text{dev}(\Delta\boldsymbol{\varepsilon}),
+\mathbb{C}^e:\Delta\boldsymbol{\varepsilon} = 2G\ \text{dev}(\Delta\boldsymbol{\varepsilon})+K\text{tr}(\Delta\boldsymbol{\varepsilon})\mathbf{I}=2G\ \text{dev}(\Delta\boldsymbol{\varepsilon}),
 $$
 
 其中，$\text{dev}(\cdot)$ 表示偏张量的部分，由于 $\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=\Delta\boldsymbol{\varepsilon}^{p}$，故
 
 $$
-\mathbf{D}^e:(\Delta\gamma\mathbf{N}_{n+1})=\mathbf{D}^e:(\Delta\boldsymbol{\varepsilon}^{p})=2G\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=2G\Delta\boldsymbol{\varepsilon}^{p}=2G\Delta\gamma\mathbf{N}_{n+1},
+\mathbb{C}^e:(\Delta\gamma\mathbf{N}_{n+1})=\mathbb{C}^e:(\Delta\boldsymbol{\varepsilon}^{p})=2G\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=2G\Delta\boldsymbol{\varepsilon}^{p}=2G\Delta\gamma\mathbf{N}_{n+1},
 $$
 
 于是
@@ -218,7 +218,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \boldsymbol{\sigma}_{n+1} &= \boldsymbol{\sigma}^{\text{trial}} - 2G\Delta\gamma\sqrt{\frac{3}{2}} \frac{\mathbf{s}_{n+1}}{\|\mathbf{s}_{n+1}\|}\\
-&=\mathbf{D}^e : \boldsymbol{\varepsilon}^{e, \text{trial}} - \sqrt{6}G\Delta\gamma\frac{\mathbf{s}^{\text{trial}}}{\|\mathbf{s}^{\text{trial}}\|}
+&=\mathbb{C}^e : \boldsymbol{\varepsilon}^{e, \text{trial}} - \sqrt{6}G\Delta\gamma\frac{\mathbf{s}^{\text{trial}}}{\|\mathbf{s}^{\text{trial}}\|}
 \end{aligned}
 \end{equation}
 $$
@@ -226,7 +226,7 @@ $$
 由于
 
 $$
-\boldsymbol{\sigma}^{\text{trial}} = \mathbf{D}^{e}:\boldsymbol{\varepsilon}^{e,\text{trial}}
+\boldsymbol{\sigma}^{\text{trial}} = \mathbb{C}^{e}:\boldsymbol{\varepsilon}^{e,\text{trial}}
 $$
 
 因此
@@ -234,7 +234,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\text{dev}(\boldsymbol{\sigma}^{\text{trial}}) + \frac{1}{3}\text{tr}(\boldsymbol{\sigma}^{\text{trial}})\mathbf{I} &= \mathbf{D}^{e}:(\text{dev}(\boldsymbol{\varepsilon}^{e,\text{trial}}) + \frac{1}{3}\text{tr}(\boldsymbol{\varepsilon}^{e,\text{trial}})\mathbf{I})
+\text{dev}(\boldsymbol{\sigma}^{\text{trial}}) + \frac{1}{3}\text{tr}(\boldsymbol{\sigma}^{\text{trial}})\mathbf{I} &= \mathbb{C}^{e}:(\text{dev}(\boldsymbol{\varepsilon}^{e,\text{trial}}) + \frac{1}{3}\text{tr}(\boldsymbol{\varepsilon}^{e,\text{trial}})\mathbf{I})
 \end{aligned}
 \end{equation}
 $$
@@ -244,7 +244,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{D}^{e}:\text{tr}(\boldsymbol{\varepsilon}^{e,\text{trial}})\mathbf{I} = \text{tr}(\boldsymbol{\sigma}^{\text{trial}})\mathbf{I}
+\mathbb{C}^{e}:\text{tr}(\boldsymbol{\varepsilon}^{e,\text{trial}})\mathbf{I} = \text{tr}(\boldsymbol{\sigma}^{\text{trial}})\mathbf{I}
 \end{aligned}
 \end{equation}
 $$
@@ -254,7 +254,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{s}^{\text{trial}}&=\text{dev}(\boldsymbol{\sigma}^{\text{trial}}) = \mathbf{D}^{e}:\text{dev}(\boldsymbol{\varepsilon}^{e,\text{trial}})\\
+\mathbf{s}^{\text{trial}}&=\text{dev}(\boldsymbol{\sigma}^{\text{trial}}) = \mathbb{C}^{e}:\text{dev}(\boldsymbol{\varepsilon}^{e,\text{trial}})\\
 &=2G\text{dev}(\boldsymbol{\varepsilon}^{e,\text{trial}}) = 2G\mathbf{I}_{d}:\boldsymbol{\varepsilon}^{e,\text{trial}}
 \end{aligned}
 \end{equation}
@@ -265,7 +265,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1}=\left(\mathbf{D}^e - \frac{2\sqrt{6}G^{2}\Delta\gamma}{\|\mathbf{s}^{\text{trial}}\|}\mathbf{I}_{d}\right) : \boldsymbol{\varepsilon}^{e, \text{trial}}
+\boldsymbol{\sigma}_{n+1}=\left(\mathbb{C}^e - \frac{2\sqrt{6}G^{2}\Delta\gamma}{\|\mathbf{s}^{\text{trial}}\|}\mathbf{I}_{d}\right) : \boldsymbol{\varepsilon}^{e, \text{trial}}
 \end{aligned}
 \end{equation}
 $$
@@ -275,7 +275,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1}=\left(\mathbf{D}^e - \frac{6G^{2}\Delta\gamma}{\sqrt{3J_{2}(\mathbf{s}^{\text{trial}})}}\mathbf{I}_{d}\right) : \boldsymbol{\varepsilon}^{e, \text{trial}}
+\boldsymbol{\sigma}_{n+1}=\left(\mathbb{C}^e - \frac{6G^{2}\Delta\gamma}{\sqrt{3J_{2}(\mathbf{s}^{\text{trial}})}}\mathbf{I}_{d}\right) : \boldsymbol{\varepsilon}^{e, \text{trial}}
 \end{aligned}
 \end{equation}
 $$

@@ -7,12 +7,12 @@ $$
 \begin{aligned}
 &\nabla\cdot \boldsymbol{\sigma} + \mathbf{f} = \mathbf{0},\\
 &\boldsymbol{\varepsilon} = \frac{1}{2}(\nabla \mathbf{u} + \nabla\mathbf{u}^{T}),\\
-&\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
+&\boldsymbol{\sigma}=\mathbb{C}:\boldsymbol{\varepsilon},
 \end{aligned}
 \end{equation}
 $$
 
-其中，$\boldsymbol{\sigma}$ 是应力张量，$\mathbf{f}$ 是体积力向量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{u}$ 是位移向量，$\mathbf{D}$ 是四阶本构张量
+其中，$\boldsymbol{\sigma}$ 是应力张量，$\mathbf{f}$ 是体积力向量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{u}$ 是位移向量，$\mathbb{C}$ 是四阶本构张量
 
 计算区域为 $\Omega$，边界 $\partial\Omega=\Gamma_{D}\cup\Gamma_{N}\cup\Gamma_{R}$，边界条件为
 
@@ -49,7 +49,7 @@ $$
 $H^{k}(\Omega)$ 是 $k$ 阶 Sobolev 空间，$d$ 是空间维数。将方程转为积分形式
 
 $$
-\int_{\Omega}\left(\nabla\cdot\boldsymbol{\sigma}+\mathbf{f}\right)\cdot \mathbf{v}\,\mathrm{d}\Omega = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega}\left(\nabla\cdot\boldsymbol{\sigma}+\mathbf{f}\right)\cdot \mathbf{v}\,\mathrm{d}V = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 由于
@@ -65,16 +65,16 @@ $\boldsymbol{\sigma}$ 是对称的，因此 $(\boldsymbol{\sigma}\mathbf{v})\cdo
 ```
 
 $$
-\int_{\Omega} \left(\nabla \cdot \boldsymbol{\sigma}\right) \cdot \mathbf{v} \, \mathrm{d}\Omega =
+\int_{\Omega} \left(\nabla \cdot \boldsymbol{\sigma}\right) \cdot \mathbf{v} \, \mathrm{d}V =
 \int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S -
-\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega,
+\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}V,
 $$
 
 其中，$\mathbf{n}$ 是 $\partial \Omega$ 的外法向量。于是
 
 $$
 -
-\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}V + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}V + \int_{\partial \Omega} \left(\boldsymbol{\sigma} \mathbf{n}\right) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 代入边界条件
@@ -87,7 +87,7 @@ $$
 
 $$
 -
-\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V}.
+\int_{\Omega} \boldsymbol{\sigma} : \nabla \mathbf{v} \, \mathrm{d}V + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V}.
 $$
 
 定义对称算子
@@ -112,14 +112,14 @@ $$
 
 $$
 -
-\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}\Omega + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\sigma} : \boldsymbol{\varepsilon}(\mathbf{v}) \, \mathrm{d}V + \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} (\mathbf{f}_{R}- \alpha\mathbf{u}) \cdot \mathbf{v} \, \mathrm{d}S = 0,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
-再将本构方程 $\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon}(\mathbf{u})$ 代入上述方程，最终得到弱形式
+再将本构方程 $\boldsymbol{\sigma}=\mathbb{C}:\boldsymbol{\varepsilon}(\mathbf{u})$ 代入上述方程，最终得到弱形式
 
 $$
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
-= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}V + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S
+= \int_{\Omega}\mathbf{f}\cdot \mathbf{v}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S,\quad \forall \, \mathbf{v} \in \, \mathcal{V},
 $$
 
 且 $\mathbf{u} = \mathbf{\tilde{u}},\, \text{on}\, \Gamma_{D}$
@@ -133,8 +133,8 @@ $$
 为了便于有限元计算，通常将第一项写为 Voigt 形式
 
 $$
-\mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) 
-\Rightarrow\mathbf{D}\boldsymbol{\varepsilon}(\mathbf{u})= \begin{bmatrix}
+\mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u}) 
+\Rightarrow\mathbb{C}\boldsymbol{\varepsilon}(\mathbf{u})= \begin{bmatrix}
 \lambda + 2\mu & \lambda & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda + 2\mu & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda & \lambda + 2\mu & 0 & 0 & 0 \\
@@ -175,7 +175,7 @@ $$
 于是 
 
 $$
-\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbf{D} \boldsymbol{\varepsilon}(\mathbf{u})=(\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}),
+\boldsymbol{\varepsilon}(\mathbf{v}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u}) = \boldsymbol{\varepsilon}(\mathbf{v})^{T} \mathbb{C} \boldsymbol{\varepsilon}(\mathbf{u})=(\mathcal{B}\mathbf{v})^{T}\mathbb{C}(\mathcal{B}\mathbf{u}),
 $$
 
 
@@ -183,8 +183,8 @@ $$
 
 $$
 \begin{align}
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{D} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}\Omega 
-&= \int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega.
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}V 
+&= \int_{\Omega} (\mathcal{B}\mathbf{v})^{T}\mathbb{C}(\mathcal{B}\mathbf{u}) \, \mathrm{d}V.
 \end{align}
 $$
 
@@ -231,8 +231,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}\Omega + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
-=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+&\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbb{C}(\mathcal{B}\mathbf{u}) \, \mathrm{d}V + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
+=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 $$ (chap2-sec3-eq:discrete-eqs)
@@ -372,7 +372,7 @@ $$ (chap2-sec3:shape-der)
 
 在有限元方法中，积分运算被划分至每个物理单元
 
-$$ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbf{D}(\mathcal{B}\mathbf{u})\, \mathrm{d}E,
+$$ \sum_{E}\int_{E} (\mathcal{B}\mathbf{v})^{T}\mathbb{C}(\mathcal{B}\mathbf{u})\, \mathrm{d}E,
 $$
 
 在物理单元 $E$ 上（以下为局部编号），测试函数 $\mathbf{v}$ 为
@@ -433,7 +433,7 @@ $$
 
 $$
 \begin{equation}
-\int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbf{D}(\mathcal{B}\mathbf{u}) \, \mathrm{d}E,\quad *=x,y,z;\ i=1:n.
+\int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbb{C}(\mathcal{B}\mathbf{u}) \, \mathrm{d}E,\quad *=x,y,z;\ i=1:n.
 \end{equation}
 $$ (chap2-sec3-eq:element-stiffness)
 
@@ -474,7 +474,7 @@ $$
 \end{bmatrix}
 \begin{bmatrix}
 u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
-\end{bmatrix} = \mathbf{B}\mathbf{u}^{e},
+\end{bmatrix} = \mathbf{B}\mathbf{u}_{E},
 $$
 
 代入 $v_{*,i}$，将积分式 {eq}`chap2-sec3-eq:element-stiffness` 写为矩阵形式
@@ -483,13 +483,13 @@ $$
 \begin{align*}
 &\int_{E}
 \begin{bmatrix}
-(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
-(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
-(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
+(\mathcal{B}\mathbf{v}_{x,1})^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{y,1})^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{z,1})^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E} \\
 \vdots \\
-(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
-(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e} \\
-(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e}
+(\mathcal{B}\mathbf{v}_{x,n})^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{y,n})^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E} \\
+(\mathcal{B}\mathbf{v}_{z,n})^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E}
 \end{bmatrix}\ 
 \mathrm{d}E
 = \int_{E}
@@ -501,7 +501,7 @@ $$
 (\mathcal{B}\mathbf{v}_{x,n})^{T} \\
 (\mathcal{B}\mathbf{v}_{y,n})^{T} \\
 (\mathcal{B}\mathbf{v}_{z,n})^{T} \\
-\end{bmatrix}\mathbf{D}\mathbf{B}\mathbf{u}^{e}\ 
+\end{bmatrix}\mathbb{C}\mathbf{B}\mathbf{u}_{E}\ 
 \mathrm{d}E,
 \end{align*}
 $$
@@ -535,9 +535,9 @@ $$
 
 $$
 \int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\mathbf{u}^{e}\ \mathrm{d}E
+\mathbf{B}^{T}\mathbb{C}\mathbf{B}\mathbf{u}_{E}\ \mathrm{d}E
 =\int_{E}
-\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}^{e}=\mathbf{K}^{e}\cdot\mathbf{u}^{e}.
+\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathrm{d}E\cdot\mathbf{u}_{E}=\mathbf{K}^{e}\cdot\mathbf{u}_{E}.
 $$
 
 其中 $\mathbf{K}^{e}$ 是单元刚度矩阵
@@ -546,8 +546,8 @@ $$
 
 $$
 \mathbf{K}^{e} 
-=\int_{E}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\ \mathrm{d}E
-=\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbf{D}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
+=\int_{E}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathrm{d}E
+=\int_{E_{\text{参考}}}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\left|\det(\mathbf{J})\right|\ \mathrm{d}E_{\text{参考}},
 $$
 
 其中 $\mathbf{B}$ 中的导数应依据公式 {eq}`chap2-sec3:shape-der` 转换为自然坐标下的导数进行计算
@@ -591,7 +591,7 @@ $$
 右端项的计算方式与刚度矩阵类似，首先将积分划分到各个物理单元内，然后通过坐标映射将物理单元上的积分转化为参考单元上的积分运算
 
 $$
-\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}\Omega = \sum_{E}\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}E,\quad *=x,y,z;\ i=1:N.
+\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V = \sum_{E}\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}E,\quad *=x,y,z;\ i=1:N.
 $$
 
 在物理单元 $E$ 上（以下为局部编号），得到的关系式如下
@@ -774,12 +774,12 @@ $$
 \begin{aligned}
 \mathbf{F}_{\Gamma_{R}^{E}} 
 &= 
-\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N}\mathbf{u}^{e} \ \mathrm{d}\Gamma_{R}^{E}\\
+\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N}\mathbf{u}_{E} \ \mathrm{d}\Gamma_{R}^{E}\\
 &= 
-\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N} \ \mathrm{d}\Gamma_{R}^{E} \cdot \mathbf{u}^{e}\\
-&=\int_{\partial E_{\text{参考}}} \alpha\mathbf{N}^{T}\mathbf{N}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \ \mathbf{u}^{e} \\
-&= \sum_{q}\alpha\mathbf{N}^{T}_{q}\mathbf{N}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|\mathbf{u}^{e}\\
-&=\mathbf{K}_{r}^{e}\cdot \mathbf{u}^{e},
+\int_{\Gamma_{R}^{E}} \alpha\mathbf{N}^{T}\mathbf{N} \ \mathrm{d}\Gamma_{R}^{E} \cdot \mathbf{u}_{E}\\
+&=\int_{\partial E_{\text{参考}}} \alpha\mathbf{N}^{T}\mathbf{N}\ \left|\det(\mathbf{J}^{(\xi,\eta)})\right| \mathrm{d} S \ \mathbf{u}_{E} \\
+&= \sum_{q}\alpha\mathbf{N}^{T}_{q}\mathbf{N}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}^{(\xi,\eta)}_{q})\right|\mathbf{u}_{E}\\
+&=\mathbf{K}_{r}^{e}\cdot \mathbf{u}_{E},
 \end{aligned}
 \end{equation}
 $$

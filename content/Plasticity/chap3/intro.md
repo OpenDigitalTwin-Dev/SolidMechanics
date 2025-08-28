@@ -103,7 +103,7 @@ $$
 
 $$
 \begin{equation}
-\psi^e = \frac{1}{2}\boldsymbol{\varepsilon}^{e}:\mathbf{D}^{e}:\boldsymbol{\varepsilon}^{e}=G\boldsymbol{\varepsilon}^{e}_{d}:\boldsymbol{\varepsilon}^{e}_{d}+\frac{K}{2}\text{tr}(\boldsymbol{\varepsilon}^{e})^2,
+\psi^e = \frac{1}{2}\boldsymbol{\varepsilon}^{e}:\mathbb{C}^{e}:\boldsymbol{\varepsilon}^{e}=G\boldsymbol{\varepsilon}^{e}_{d}:\boldsymbol{\varepsilon}^{e}_{d}+\frac{K}{2}\text{tr}(\boldsymbol{\varepsilon}^{e})^2,
 \end{equation}
 $$
 
@@ -113,20 +113,20 @@ $$
 :class: tip, dropdown
 
 $$
-\boldsymbol{\sigma}=\mathbf{D}^e:\boldsymbol{\varepsilon}^{e} = 2G\ \text{dev}(\boldsymbol{\varepsilon}^{e})+K\text{tr}(\boldsymbol{\varepsilon}^{e})\mathbf{I}
+\boldsymbol{\sigma}=\mathbb{C}^e:\boldsymbol{\varepsilon}^{e} = 2G\ \text{dev}(\boldsymbol{\varepsilon}^{e})+K\text{tr}(\boldsymbol{\varepsilon}^{e})\mathbf{I}
 $$
 ```
 
 例如，通常各向同性硬化自由能为
 
 $$
-\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbf{D}^{e} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} \mathbf{H} \boldsymbol{\alpha}^2,
+\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbb{C}^{e} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} \mathbf{H} \boldsymbol{\alpha}^2,
 $$
 
 运动硬化自由能为
 
 $$
-\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbf{D}^{e} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} c (\boldsymbol{\alpha} - \boldsymbol{\alpha}_0)^2.
+\psi = \frac{1}{2} \boldsymbol{\varepsilon}^{e} : \mathbb{C}^{e} : \boldsymbol{\varepsilon}^{e} + \frac{1}{2} c (\boldsymbol{\alpha} - \boldsymbol{\alpha}_0)^2.
 $$
 
 ## 塑性流动势

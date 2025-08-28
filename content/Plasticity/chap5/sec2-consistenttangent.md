@@ -24,14 +24,12 @@ $$
 一致性切线模量定义为
 
 ```{margin}
-区别于 $\mathbf{D}_{ep}^{\text{theo}}=\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}$
+区别于 $\mathbb{C}_{ep}^{\text{theo}}=\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}$
 ```
 
 $$
-\mathbf{D}_{ep}^{\text{alg}}=\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}_{n+1}}.
+\mathbb{C}_{ep}^{\text{alg}}=\frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}_{n+1}}.
 $$
-
-下简记为 $\mathbf{D}$
 
 对于弹塑性材料，在已知前一步内变量 $\boldsymbol{\alpha}_{n}$ 和当前步总应变 $\boldsymbol{\varepsilon}_{n+1}$ 的情况下，通常通过本构积分算法来更新应力。这个过程自然定义了一个算子形式的增量本构函数 $\hat{\boldsymbol{\sigma}}$，即
 
@@ -65,31 +63,31 @@ $$
 此时有
 
 $$
-\mathbf{D} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}} = \frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}.
+\mathbb{C}_{ep}^{\text{alg}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}} = \frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}.
 $$
 
 为了使小应变塑性模型和有限应变塑性模型拥有形式一致的一致性切线模量，我们采用如下形式
 
 $$
-\mathbf{D} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}} = \frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}.
+\mathbb{C}_{ep}^{\text{alg}} = \frac{\partial \hat{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}} = \frac{\partial \bar{\boldsymbol{\sigma}}}{\partial \boldsymbol{\varepsilon}_{n+1}^{e,\text{trail}}}.
 $$
 
 ### 分段性
 
 $\hat{\boldsymbol{\sigma}}$ 是一个分段函数，当
 
-- $\Phi^{\text{trial}} < 0$，则 $\hat{\boldsymbol{\sigma}}$ 随着弹性曲线演化，此时 $\mathbf{D} = \mathbf{D}^{e}$
-- $\Phi^{\text{trial}} > 0$，则 $\hat{\boldsymbol{\sigma}}$ 随着塑性曲线演化，此时 $\mathbf{D} = \mathbf{D}^{ep}$
+- $\Phi^{\text{trial}} < 0$，则 $\hat{\boldsymbol{\sigma}}$ 随着弹性曲线演化，此时 $\mathbb{C}_{ep}^{\text{alg}} = \mathbb{C}^{e}$
+- $\Phi^{\text{trial}} > 0$，则 $\hat{\boldsymbol{\sigma}}$ 随着塑性曲线演化，此时 $\mathbb{C}_{ep}^{\text{alg}} = \mathbb{C}^{ep}$
 - $\Phi^{\text{trial}} = 0$，则可能发生弹性卸载，或发生塑性演化，在切换点处，$\hat{\boldsymbol{\sigma}}$ 不可微
 
 ### 各向同性硬化的 Mises 屈服准则
 
-接下来以 Mises 屈服准则和各向同性硬化准则为例，介绍一致性切线模量 $\mathbf{D}$ 的计算过程，根据 [return mapping 算法](./sec1-returnmapping.md)，有
+接下来以 Mises 屈服准则和各向同性硬化准则为例，介绍一致性切线模量 $\mathbb{C}$ 的计算过程，根据 [return mapping 算法](./sec1-returnmapping.md)，有
 
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}_{n+1}=\left(\mathbf{D}^e - \frac{6G^{2}\Delta\gamma}{q^{\text{trial}}}\mathbf{I}_{d}\right) : \boldsymbol{\varepsilon}^{e, \text{trial}},
+\boldsymbol{\sigma}_{n+1}=\left(\mathbb{C}^e - \frac{6G^{2}\Delta\gamma}{q^{\text{trial}}}\mathbf{I}_{d}\right) : \boldsymbol{\varepsilon}^{e, \text{trial}},
 \end{aligned}
 \end{equation}
 $$
@@ -109,7 +107,7 @@ $$
 \begin{aligned}
 \frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}
 =
-\mathbf{D}^e
+\mathbb{C}^e
 -
 \frac{\Delta \gamma \, 6 G^2}{q^{\text{trial}}} \mathbf{I}_d
 -
@@ -178,10 +176,10 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{D}=
+\mathbb{C}_{ep}^{\text{alg}}=
 \frac{\partial \boldsymbol{\sigma}_{n+1}}{\partial \boldsymbol{\varepsilon}^{e, \text{trial}}}
 &=
-\mathbf{D}^e
+\mathbb{C}^e
 -
 \frac{\Delta \gamma \, 6 G^2}{q^{\text{trial}}} \mathbf{I}_d
 +
@@ -190,7 +188,7 @@ $$
 \end{equation}
 $$
 
-此处，$\mathbf{D}$ 是对称的
+此处，$\mathbb{C}_{ep}^{\text{alg}}$ 是对称的
 
 #### 连续切线模量
 
@@ -226,13 +224,13 @@ $$
 \mathbf{N} = \frac{\partial \Phi}{\partial \boldsymbol{\sigma}},
 $$
 
-于是
+于是连续切线模量为（方便比较，记为 $\mathbb{C}^{ep}_{c}$）
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{D}^{ep}_{c} &= \mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}\\
-&=\mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\mathbf{N})}{\mathbf{N}:\mathbf{D}^{e}:\mathbf{N}+H}
+\mathbb{C}^{ep}_{c} &= \mathbb{C}^{e} - \frac{(\mathbb{C}^{e}:\mathbf{N})\otimes(\mathbb{C}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbb{C}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}}\\
+&=\mathbb{C}^{e} - \frac{(\mathbb{C}^{e}:\mathbf{N})\otimes(\mathbb{C}^{e}:\mathbf{N})}{\mathbf{N}:\mathbb{C}^{e}:\mathbf{N}+H}
 \end{aligned}
 \end{equation}
 $$
@@ -240,7 +238,7 @@ $$
 由于 $\mathbf{N}$ 是偏张量，故
 
 $$
-\mathbf{D}^{e}:\mathbf{N} = 2G\mathbf{N}\quad \Longrightarrow\quad \mathbf{N}:\mathbf{D}^{e}:\mathbf{N} = 3G,
+\mathbb{C}^{e}:\mathbf{N} = 2G\mathbf{N}\quad \Longrightarrow\quad \mathbf{N}:\mathbb{C}^{e}:\mathbf{N} = 3G,
 $$
 
 最终，连续切线模量化简为
@@ -250,16 +248,16 @@ $\bar{\mathbf{N}}=\sqrt{\frac{2}{3}}\mathbf{N}$
 ```
 
 $$
-\mathbf{D}^{ep}_{c} =\mathbf{D}^{e} - \frac{6G^2}{3G+H}\bar{\mathbf{N}}\otimes\bar{\mathbf{N}}.
+\mathbb{C}^{ep}_{c} =\mathbb{C}^{e} - \frac{6G^2}{3G+H}\bar{\mathbf{N}}\otimes\bar{\mathbf{N}}.
 $$
 
 连续切线模量与一致性切线模量关系如下
 
 $$
-\mathbf{D}=\mathbf{D}_{c}^{ep}-\frac{\Delta \gamma \, 6 G^2}{q^{\text{trial}}}\left[\mathbf{I}_d-\bar{\mathbf{N}}\otimes\bar{\mathbf{N}}\right],
+\mathbb{C}_{ep}^{\text{alg}}=\mathbb{C}_{c}^{ep}-\frac{\Delta \gamma \, 6 G^2}{q^{\text{trial}}}\left[\mathbf{I}_d-\bar{\mathbf{N}}\otimes\bar{\mathbf{N}}\right],
 $$
 
-当 $\Delta\gamma\rightarrow0$ 时，$\mathbf{D}_{c}^{ep}\rightarrow\mathbf{D}$；然而，当 $\Delta\gamma$ 较大（例如时间步长较大时），$\mathbf{D}{c}^{ep}$ 将逐渐偏离 $\mathbf{D}$。如果此时仍继续采用 $\mathbf{D}_{c}^{ep}$，可能会导致明显的数值不一致性，从而影响牛顿迭代的收敛性，甚至导致收敛速度显著降低
+当 $\Delta\gamma\rightarrow0$ 时，$\mathbb{C}_{c}^{ep}\rightarrow\mathbb{C}_{ep}^{\text{alg}}$；然而，当 $\Delta\gamma$ 较大（例如时间步长较大时），$\mathbb{C}_{c}^{ep}$ 将逐渐偏离 $\mathbb{C}_{ep}^{\text{alg}}$。如果此时仍继续采用 $\mathbb{C}_{c}^{ep}$，可能会导致明显的数值不一致性，从而影响牛顿迭代的收敛性，甚至导致收敛速度显著降低
 
 ### 一般情形
 

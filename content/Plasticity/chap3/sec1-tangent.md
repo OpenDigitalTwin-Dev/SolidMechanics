@@ -24,7 +24,7 @@ $$ (sec1-eq:phi-der)
 代入
 
 $$
-\dot{\boldsymbol{\sigma}} = \mathbf{D}^{e}:(\dot{\boldsymbol{\varepsilon}}-\dot{\boldsymbol{\varepsilon}}^p) = \mathbf{D}^{e}:(\dot{\boldsymbol{\varepsilon}}-\dot{\gamma}\mathbf{N})
+\dot{\boldsymbol{\sigma}} = \mathbb{C}^{e}:(\dot{\boldsymbol{\varepsilon}}-\dot{\boldsymbol{\varepsilon}}^p) = \mathbb{C}^{e}:(\dot{\boldsymbol{\varepsilon}}-\dot{\gamma}\mathbf{N})
 $$ (sec1-eq:sigma-der)
 
 和
@@ -36,13 +36,13 @@ $$
 到式 {eq}`sec1-eq:phi-der` 得到
 
 $$
-\dot{\Phi} = \frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:(\dot{\boldsymbol{\varepsilon}}-\dot{\gamma}\mathbf{N}) + \dot{\gamma}\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}
+\dot{\Phi} = \frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbb{C}^{e}:(\dot{\boldsymbol{\varepsilon}}-\dot{\gamma}\mathbf{N}) + \dot{\gamma}\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}
 $$
 
 于是得到
 
 $$
-\dot{\gamma} = \frac{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\dot{\boldsymbol{\varepsilon}}}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}},
+\dot{\gamma} = \frac{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbb{C}^{e}:\dot{\boldsymbol{\varepsilon}}}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbb{C}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}},
 $$ (sec1-eq:gamma)
 
 ## 弹塑性切线模量
@@ -50,13 +50,13 @@ $$ (sec1-eq:gamma)
 将式 {eq}`sec1-eq:gamma` 代入到式 {eq}`sec1-eq:sigma-der` 中，得到
 
 $$
-\dot{\boldsymbol{\sigma}} = \mathbf{D}^{ep}:\dot{\boldsymbol{\varepsilon}},
+\dot{\boldsymbol{\sigma}} = \mathbb{C}^{ep}:\dot{\boldsymbol{\varepsilon}},
 $$
 
 其中
 
 $$
-\mathbf{D}^{ep} = \mathbf{D}^{e} - \frac{(\mathbf{D}^{e}:\mathbf{N})\otimes(\mathbf{D}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbf{D}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}},
+\mathbb{C}^{ep} = \mathbb{C}^{e} - \frac{(\mathbb{C}^{e}:\mathbf{N})\otimes(\mathbb{C}^{e}:\frac{\partial \Phi}{\partial \boldsymbol{\sigma}})}{\frac{\partial \Phi}{\partial \boldsymbol{\sigma}}:\mathbb{C}^{e}:\mathbf{N}-\frac{\partial \Phi}{\partial \mathbf{A}}\frac{\partial^2 \psi^p}{\partial \boldsymbol{\alpha}^2}\mathbf{H}},
 $$
 
 是**弹塑性切线模量**，通常也被称为**连续弹塑性切线模量**，它是单轴拉伸应力-应变曲线中的常量模量 $E_{ep}$ 的高维一般化
@@ -69,5 +69,5 @@ $$
 \mathbf{N} = \frac{\partial \Phi}{\partial \boldsymbol{\sigma}},
 $$
 
-此时， $\mathbf{D}^{ep}$ 是对称的；而对于非关联塑性流动，$\mathbf{D}^{ep}$ 一般是非对称的
+此时， $\mathbb{C}^{ep}$ 是对称的；而对于非关联塑性流动，$\mathbb{C}^{ep}$ 一般是非对称的
 

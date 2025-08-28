@@ -46,10 +46,10 @@ $\mathbf{:}$ 是双点积运算，即 $\mathbf{A}:\mathbf{B}=\mathbf{A}_{ij}\mat
 ```
 
 $$
-\boldsymbol{\sigma}=\mathbf{D}:\boldsymbol{\varepsilon},
+\boldsymbol{\sigma}=\mathbb{C}:\boldsymbol{\varepsilon},
 $$
 
-其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbf{D}$ 是四阶本构张量
+其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbb{C}$ 是四阶本构张量
 
 $$
 D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})=2\mu\mathbf{I}^{(4)}+\lambda\mathbf{I}\otimes\mathbf{I},
@@ -58,7 +58,7 @@ $$
 其中，$\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}$ 是第一拉梅常数，$\mu=G=\frac{E}{2(1+\nu)}$ 是第二拉梅常数，于是
 
 $$
-\boldsymbol{\sigma}_{ij}=\mathbf{D}_{ijkl}\boldsymbol{\varepsilon}_{kl},
+\boldsymbol{\sigma}_{ij}=\mathbb{C}_{ijkl}\boldsymbol{\varepsilon}_{kl},
 $$
 
 也可以写为
@@ -72,10 +72,10 @@ $$
 也可以写为 Voigt 形式
 
 $$
-\boldsymbol{\sigma}=\mathbf{D}\boldsymbol{\varepsilon},
+\boldsymbol{\sigma}=\mathbb{C}\boldsymbol{\varepsilon},
 $$
 
-其中，$\boldsymbol{\sigma}$ 是应力向量，$\boldsymbol{\varepsilon}$ 是应变向量，$\mathbf{D}$ 是本构矩阵
+其中，$\boldsymbol{\sigma}$ 是应力向量，$\boldsymbol{\varepsilon}$ 是应变向量，$\mathbb{C}$ 是本构矩阵
 
 $$
 \begin{equation}
@@ -87,7 +87,7 @@ $$
 \begin{bmatrix}
 \varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\2\varepsilon_{xy}\\2\varepsilon_{xz}\\2\varepsilon_{yz}
 \end{bmatrix},\quad
-\mathbf{D} =
+\mathbb{C} =
 \begin{bmatrix}
 \lambda + 2\mu & \lambda & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda + 2\mu & \lambda & 0 & 0 & 0 \\
