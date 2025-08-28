@@ -52,7 +52,7 @@ $$
 其中，$\boldsymbol{\sigma}$ 是应力张量，$\boldsymbol{\varepsilon}$ 是应变张量，$\mathbb{C}$ 是四阶本构张量
 
 $$
-D_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})=2\mu\mathbf{I}^{(4)}+\lambda\mathbf{I}\otimes\mathbf{I},
+\mathbb{C}_{ijkl} = \lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})=2\mu\mathbf{I}^{(4)}+\lambda\mathbf{I}\otimes\mathbf{I},
 $$
 
 其中，$\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}$ 是第一拉梅常数，$\mu=G=\frac{E}{2(1+\nu)}$ 是第二拉梅常数，于是
@@ -64,7 +64,7 @@ $$
 也可以写为
 
 $$
-D_{ijkl} = K \delta_{ij} \delta_{kl} + 2G \left( \frac{1}{2}(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) - \frac{1}{3}\delta_{ij}\delta_{kl} \right),
+\mathbb{C}_{ijkl} = K \delta_{ij} \delta_{kl} + 2G \left( \frac{1}{2}(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) - \frac{1}{3}\delta_{ij}\delta_{kl} \right),
 $$
 
 其中，$K=\frac{E}{3(1-2\nu)}$ 是**体积模量**

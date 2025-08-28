@@ -760,7 +760,7 @@ N_{1} & & &  & N_{n} \\
 & & N_{1} & & & & N_{n}
 \end{bmatrix}\begin{bmatrix}
 u_{x,1} \\ u_{y,1} \\ u_{z,1} \\ u_{x,2} \\ u_{y,2} \\ u_{z,2} \\ \vdots \\ u_{x,n} \\ u_{y,n} \\ u_{z,n}
-\end{bmatrix},
+\end{bmatrix}=\mathbf{N}\mathbf{u}_{E},
 $$
 
 对于单元 $E$ ，积分写为矩阵形式

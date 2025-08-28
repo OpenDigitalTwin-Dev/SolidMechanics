@@ -142,7 +142,22 @@ $$
 **面元转换**
 
 $$
-\mathbf{n}\mathrm{d}A = J\mathbf{F}^{-T}\mathbf{N}\mathrm{d}A_{0},
+\mathbf{n}\mathrm{d}S = J\mathbf{F}^{-T}\mathbf{N}\mathrm{d}S_{0}\quad \Longrightarrow\quad \mathrm{d}S = J\|\mathbf{F}^{-T}\mathbf{N}\|\mathrm{d}S_{0}
+$$
+
+**物理量变换**
+
+将相关物理量转换到初始构型上
+
+$$
+\begin{equation}
+\begin{aligned}
+&\rho J = \rho_{0},\quad cJ=c_{0},\quad \mathbf{f}J = \mathbf{f}_{0},\\
+&\alpha J\|\mathbf{F}^{-T}\mathbf{N}\|=\alpha_{0},\\
+&\tilde{\mathbf{p}} J\|\mathbf{F}^{-T}\mathbf{N}\|=\tilde{\mathbf{p}}_{0},\\
+&\mathbf{F}_{R} J\|\mathbf{F}^{-T}\mathbf{N}\|=\mathbf{F}_{R_{0}},
+\end{aligned}
+\end{equation}
 $$
 
 于是
@@ -150,8 +165,132 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}\mathrm{d}V  = \int_{\Omega_{0}}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}J\mathrm{d}V_{0},\\
-&\int_{\Omega}c\dot{\mathbf{u}}\cdot\mathbf{v} \, \mathrm{d}V=\int_{\Omega_{0}}c\dot{\mathbf{u}}\cdot\mathbf{v}J \, \mathrm{d}V_{0},
+&\int_{\Omega}\rho\ddot{\mathbf{u}}\cdot\mathbf{v}\mathrm{d}V  = \int_{\Omega_{0}}\rho_{0}\ddot{\mathbf{u}}\cdot\mathbf{v}\mathrm{d}V_{0},\\
+&\int_{\Omega}c\dot{\mathbf{u}}\cdot\mathbf{v} \, \mathrm{d}V=\int_{\Omega_{0}}c_{0}\dot{\mathbf{u}}\cdot\mathbf{v} \, \mathrm{d}V_{0},\\
+&\int_{\Omega}\mathbf{f}\cdot\mathbf{v} \, \mathrm{d}V=\int_{\Omega_{0}}\mathbf{f}_{0}\cdot\mathbf{v} \, \mathrm{d}V_{0},\\
+&\int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v} \, \mathrm{d}S=\int_{\Gamma_{R_{0}}} \alpha_{0}\mathbf{u} \cdot \mathbf{v} \, \,\mathrm{d}S_{0},\\
+&\int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v} \, \mathrm{d}S=\int_{\Gamma_{N_{0}}} \tilde{\mathbf{p}}_{0} \cdot \mathbf{v} \, \,\mathrm{d}S_{0},\\
+&\int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v} \, \mathrm{d}S=\int_{\Gamma_{R_{0}}} \mathbf{f}_{R_{0}} \cdot \mathbf{v}\,\mathrm{d}S_{0},\\
+&\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}V = \int_{\Omega_{0}} \delta\mathbf{E}:\mathbf{S} \, \mathrm{d}V_{0}.
+\end{aligned}
+\end{equation}
+$$
+
+:::{admonition} $\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}V = \int_{\Omega_{0}} \delta\mathbf{E}:\mathbf{S} \, \mathrm{d}V_{0}$
+:class: tip, dropdown
+
+由于 
+
+$$
+\begin{equation}
+\begin{aligned}
+\boldsymbol{\varepsilon}(\mathbf{v}) &= \frac{1}{2}\left(\nabla_{x}\mathbf{v} + \nabla_{x}\mathbf{v}^{T}\right)\\
+&=\frac{1}{2}\left(\nabla_{X}\mathbf{v}\mathbf{F}^{-1} + \mathbf{F}^{-T}\nabla_{X}\mathbf{v}^{T}\right)
+\end{aligned}
+\end{equation}
+$$
+
+故
+
+$$
+\boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} = \frac{1}{2}\left(\nabla_{X}\mathbf{v}\mathbf{F}^{-1} + \mathbf{F}^{-T}\nabla_{X}\mathbf{v}^{T}\right) : J^{-1}\mathbf{F}\mathbf{S}\mathbf{F}^{T},
+$$
+
+由于 $A:B = \text{tr}(A^{T}B)$，第一项
+
+$$
+\begin{equation}
+\begin{aligned}
+\nabla_{X}\mathbf{v}\mathbf{F}^{-1}:(\mathbf{F}\mathbf{S}\mathbf{F}^{T})
+&=\text{tr}(F^{-T}\nabla_{X}\mathbf{v}^{T}\mathbf{F}\mathbf{S}\mathbf{F}^{T})\\
+&=\text{tr}(\nabla_{X}\mathbf{v}^{T}\mathbf{F}\mathbf{S})\\
+&=\text{tr}((\mathbf{F}^{T}\nabla_{X}\mathbf{v})^{T}\mathbf{S})\\
+&=\mathbf{F}^{T}\nabla_{X}\mathbf{v}:\mathbf{S},
+\end{aligned}
+\end{equation}
+$$
+
+类似地，第二项
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{F}^{-T}\nabla_{X}\mathbf{v}^{T}:(\mathbf{F}\mathbf{S}\mathbf{F}^{T})
+&=\text{tr}(\nabla_{X}\mathbf{v}\mathbf{F}^{-1}\mathbf{F}\mathbf{S}\mathbf{F}^{T})\\
+&=\text{tr}(\nabla_{X}\mathbf{v}\mathbf{S}\mathbf{F}^{T})\\
+&=\text{tr}(\mathbf{F}^{T}\nabla_{X}\mathbf{v}\mathbf{S})\\
+&=(\mathbf{F}^{T}\nabla_{X}\mathbf{v})^{T}:\mathbf{S},
+\end{aligned}
+\end{equation}
+$$
+
+于是
+
+$$
+\boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} = \frac{J^{-1}}{2}\left(\mathbf{F}^{T}\nabla_{X}\mathbf{v}+(\mathbf{F}^{T}\nabla_{X}\mathbf{v})^{T}\right):\mathbf{S},
+$$
+
+
+$\delta(\cdot):=\mathbf{D}_{\mathbf{v}}(\cdot)$ ：对 $(\cdot)$ 的每个分量求 $\mathbf{v}$ 的方向导数
+
+另一方面，由于
+
+$$
+\delta\mathbf{F} = \delta\frac{\partial \mathbf{x}}{\partial \mathbf{X}} =  \frac{\mathrm{d}}{\mathrm{d}\epsilon}\frac{\partial(\mathbf{x}+\epsilon\mathbf{v})}{\partial \mathbf{X}} = \nabla_{X}\mathbf{v},
+$$
+
+故
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{E} = \frac{1}{2}\left(\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right)\quad\Longrightarrow\quad
+\delta\mathbf{E}&=\frac{1}{2}\left((\delta\mathbf{F}^{T})\mathbf{F} + \mathbf{F}^{T}(\delta\mathbf{F})\right)\\
+&=\frac{1}{2}\left(\nabla_{X}\mathbf{v}^{T}\mathbf{F}+\mathbf{F}^{T}\nabla_{X}\mathbf{v}\right),
+\end{aligned}
+\end{equation}
+$$
+
+于是
+
+$$
+\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}V = \int_{\Omega_{0}} \delta\mathbf{E}:\mathbf{S} \, \mathrm{d}V_{0}.
+$$
+:::
+
+最终，合并所有的式子，得到初始构型上的弱形式
+
+$$
+\begin{equation}
+\begin{aligned}
+&\int_{\Omega_{0}}\rho_{0}\ddot{\mathbf{u}}\cdot\mathbf{v}\mathrm{d}V_{0}
++\int_{\Omega_{0}}c_{0}\dot{\mathbf{u}}\cdot\mathbf{v} \, \mathrm{d}V_{0}
++\int_{\Omega_{0}} \delta\mathbf{E}:\mathbf{S} \, \mathrm{d}V_{0}
++\int_{\Gamma_{R_{0}}} \alpha_{0}\mathbf{u} \cdot \mathbf{v} \, \,\mathrm{d}S_{0} \\
+&=\int_{\Omega_{0}}\mathbf{f}_{0}\cdot\mathbf{v} \, \mathrm{d}V_{0}
++\int_{\Gamma_{N_{0}}} \tilde{\mathbf{p}}_{0} \cdot \mathbf{v} \, \,\mathrm{d}S_{0}+\int_{\Gamma_{R_{0}}} \mathbf{f}_{R_{0}} \cdot \mathbf{v} \,\mathrm{d}S_{0},\quad \forall \, \mathbf{v} \in \, \mathcal{V},
+\end{aligned}
+\end{equation}
+$$
+
+## 有限元离散形式
+
+### 空间离散
+
+由于
+
+$$
+\mathbf{F} = \frac{\partial (\mathbf{X} + \mathbf{u})}{\partial \mathbf{X}} = \mathbf{I} + \nabla_{X}\mathbf{u},
+$$
+
+故
+
+$$
+\begin{equation}
+\begin{aligned}
+\delta\mathbf{E}&=\frac{1}{2}\left(\nabla_{X}\mathbf{v}_{*,i}^{T}\mathbf{F}+\mathbf{F}^{T}\nabla_{X}\mathbf{v}_{*,i}\right),\\
+&=\frac{1}{2}\left(\nabla_{X}\mathbf{v}_{*,i} + \nabla_{X}\mathbf{v}_{*,i}^{T}\right) + \frac{1}{2}\left(\nabla_{X}\mathbf{v}_{*,i}^{T}\nabla_{X}\mathbf{u} + \nabla_{X}\mathbf{u}^{T}\nabla_{X}\mathbf{v}_{*,i}\right),\\
+&\qquad\qquad\qquad\qquad\qquad\qquad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 $$
@@ -159,9 +298,17 @@ $$
 由于
 
 $$
-
+\mathbf{u} = \mathbf{N}\mathbf{u}_{E},
 $$
 
+故
+
 $$
-\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}) : \boldsymbol{\sigma} \, \mathrm{d}V = \int_{\Omega_{0}} \boldsymbol{\varepsilon}(\mathbf{v}) : J^{-1}\mathbf{F}\mathbf{S}\mathbf{F}^{T}J \, \mathrm{d}V_{0} = \int_{\Omega_{0}} \boldsymbol{\varepsilon}(\mathbf{v}) : \mathbf{F}\mathbf{S}\mathbf{F}^{T} \, \mathrm{d}V_{0}
+\nabla_{X}\mathbf{u} = \frac{\partial \mathbf{N}}{\partial \mathbf{X}}\mathbf{u}_{E} = \mathbf{B}_{L}\mathbf{u}_{E},
+$$
+
+对于全体 $\mathbf{v}_{*,i}$，写作矩阵形式，得到
+
+$$
+\nabla_{X}\mathbf{v}_{*,i} = \mathbf{B}_{L}
 $$
