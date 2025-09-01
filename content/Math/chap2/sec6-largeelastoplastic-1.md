@@ -304,7 +304,7 @@ $$
 故
 
 $$
-\nabla_{X}\mathbf{u} = \frac{\partial \mathbf{N}}{\partial \mathbf{X}}\mathbf{u}_{E} = \mathbf{B}_{L}\mathbf{u}_{E},
+\nabla_{X}\mathbf{u} =  \mathbf{B}_{L}\mathbf{u}_{E},
 $$
 
 对于全体 $\mathbf{v}_{*,i}$，写作矩阵形式，得到
