@@ -146,6 +146,8 @@ $$
 \end{bmatrix},
 $$
 
+其中，$\lambda=\frac{E \nu}{(1+\nu)(1-2\nu)}$，$\mu=G=\frac{E}{2(1+\nu)}$.
+
 以及
 
 ```{margin}

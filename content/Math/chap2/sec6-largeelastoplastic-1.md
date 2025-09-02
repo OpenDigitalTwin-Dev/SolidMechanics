@@ -231,7 +231,7 @@ $$
 $$
 
 
-$\delta(\cdot):=\mathbf{D}_{\mathbf{v}}(\cdot)$ ：对 $(\cdot)$ 的每个分量求 $\mathbf{v}$ 的方向导数
+$\delta(\cdot)$ 是变分算子，是一种“广义微分”，描述对象在某种扰动下的一阶变化，例如：对于泛函 $J[u]$，其在函数 $u(x)$ 沿方向 $\eta(x)$ 的变分定义为 $\delta J[u;\eta]=\frac{\mathrm{d}}{\mathrm{d}\epsilon}J[u+\epsilon\eta]\big|_{\epsilon=0}$，变分类似于“函数空间中的方向导数”，是泛函对函数变化的敏感性描述
 
 另一方面，由于
 
