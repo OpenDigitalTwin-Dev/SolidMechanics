@@ -121,7 +121,7 @@ $$
 \begin{aligned}
 &\ddot{\mathbf{F}}^{\text{a}} = \int_{E} \rho\ddot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E = \int_{E}\rho\mathbf{N}^{T}\ddot{\mathbf{u}}\ \mathbf{d}E= \int_{E}\rho\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E\cdot\ddot{\mathbf{u}},\\
 &\dot{\mathbf{F}}^{\text{v}} = \int_{E} c\dot{\mathbf{u}}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E = \int_{E}\rho\mathbf{N}^{T}\dot{\mathbf{u}}\ \mathbf{d}E= \int_{E}c\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E\cdot\dot{\mathbf{u}},\\
-&\mathbf{F}^{\text{int}} = \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}E = \int_{E}\boldsymbol{\varepsilon}(\mathbf{v_{*,i}}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u})\ \mathbf{d}E=\int_{E}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathbf{d}E\cdot\mathbf{u},\\
+&\mathbf{F}^{\text{int}} = \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}E = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\, \mathrm{d}E,\\
 &\mathbf{F}^{r}=\int_{\Gamma_{R,E}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{N}\, \mathrm{d}S\cdot\mathbf{u},\\
 &\mathbf{F}^{\text{ext}}=\int_{E}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}E + \int_{\Gamma_{N,E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R,E}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S,
 \end{aligned}
@@ -131,7 +131,7 @@ $$
 上式通常写为
 
 $$
-\mathbf{M}\ddot{\mathbf{u}}+\mathbf{C}\dot{\mathbf{u}}+\mathbf{K}\mathbf{u}+\mathbf{K}_{r}\mathbf{u}-\mathbf{F}^{\text{ext}} = \mathbf{0},
+\mathbf{M}\ddot{\mathbf{u}}+\mathbf{C}\dot{\mathbf{u}}+\mathbf{F}^{\text{int}}+\mathbf{K}_{r}\mathbf{u}-\mathbf{F}^{\text{ext}} = \mathbf{0},
 $$
 
 其中
@@ -139,10 +139,15 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&\mathbf{M} = \int_{E}\rho\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E,\quad & \mathbf{C} = \int_{E}c\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E,\\
-&\mathbf{K} = \int_{E}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathbf{d}E,\quad  & \mathbf{K}_{r}=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{N}\, \mathrm{d}S.
+&\mathbf{M} = \int_{E}\rho\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E,\quad \mathbf{C} = \int_{E}c\mathbf{N}^{T}\mathbf{N}\ \mathbf{d}E,\quad \mathbf{K}_{r}=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{N}\, \mathrm{d}S.
 \end{aligned}
 \end{equation}
+$$
+
+对于线弹性本构，有
+
+$$
+\mathbf{F}^{\text{int}} =\int_{E}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathbf{d}E\cdot\mathbf{u},
 $$
 
 ### 时间离散
@@ -164,7 +169,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \mathbf{M}\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2}+\mathbf{C}\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t}
-+\mathbf{K}\mathbf{u}+ \mathbf{K}_{r}\mathbf{u}-\mathbf{F}^{\text{ext}} = \mathbf{0}.
++\mathbf{F}^{\text{int}}+ \mathbf{K}_{r}\mathbf{u}-\mathbf{F}^{\text{ext}} = \mathbf{0}.
 \end{aligned}
 \end{equation}
 $$
@@ -173,7 +178,7 @@ $$
 
 $$
 \mathbf{M}\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2}+\mathbf{C}\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t}+
-\mathbf{K}\mathbf{u}_{n}+ \mathbf{K}_{r}\mathbf{u}_{n}-\mathbf{F}^{\text{ext}}_{n} = \mathbf{0}.
+\mathbf{F}^{\text{int}}_{n}+ \mathbf{K}_{r}\mathbf{u}_{n}-\mathbf{F}^{\text{ext}}_{n} = \mathbf{0}.
 $$ (sec5-eq:dynamic)
 
 此时，方程 {eq}`sec5-eq:dynamic` 是关于 $\mathbf{u}_{n+1}$ 的线性方程组
@@ -213,7 +218,7 @@ $$
 
 $$
 \mathbf{M}\frac{\mathbf{u}_{n+1} - 2\mathbf{u}_{n} + \mathbf{u}_{n-1}}{\Delta t^2}+\mathbf{C}\frac{\mathbf{u}_{n+1} - \mathbf{u}_{n-1}}{2\Delta t}+
-\mathbf{K}\mathbf{u}_{n+1}+ \mathbf{K}_{r}\mathbf{u}_{n+1}-\mathbf{F}^{\text{ext}}_{n+1} = \mathbf{0}.
+\mathbf{F}^{\text{int}}_{n+1}+ \mathbf{K}_{r}\mathbf{u}_{n+1}-\mathbf{F}^{\text{ext}}_{n+1} = \mathbf{0}.
 $$
 
 通常，在求解过程中，$\Delta t$ 不是均匀分布的，此时需要使用变步长的中心差分公式
