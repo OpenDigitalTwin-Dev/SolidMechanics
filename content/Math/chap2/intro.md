@@ -1,15 +1,15 @@
-# 有限元计算
+# 有限元计算基础
 
-在有限元方法中，偏微分方程通过变分法与分片多项式进行离散，最终被转化为线性方程组的形式。例如，对于[一维线弹性问题](../../Elasticity/chap1/sec9-numerical-simple.md)，其形式为
-
-$$
-\left(\phi_{j}\sum_{i=0}^{n}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{n}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x,\quad j=0:n.
-$$
-
-其中，$\left\{\phi_{i}\right\}_{i=1}^{n}$ 是分片多项式函数空间的基函数，$\left\{c_{i}\right\}_{i=1}^{n}$ 是待定求解的系数，通过求解线性方程组得到，于是有限元近似解为
+在有限元方法中，偏微分方程通过变分法与分片多项式进行离散，最终被转化为线性/非线性方程组的形式。例如，对于[一维线弹性问题](../../Elasticity/chap1/sec9-numerical-simple.md)，其形式为
 
 $$
-u_{h} = \sum_{i=1}^{n}c_{i}\phi_{i} = \sum_{i=1}^{n}u_{i}\phi_{i}.
+\left(\phi_{j}\sum_{i=0}^{n}u_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{n}u_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\,\phi_{j}\,\mathrm{d}x,\quad j=0:n.
+$$
+
+其中，$\left\{\phi_{i}\right\}_{i=1}^{n}$ 是分片多项式函数空间的基函数，$\left\{u_{i}\right\}_{i=1}^{n}$ 是待定求解的系数，通过求解线性方程组得到，于是有限元近似解为
+
+$$
+u_{h} = \sum_{i=1}^{n}u_{i}\phi_{i}.
 $$
 
 

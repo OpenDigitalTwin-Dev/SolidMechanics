@@ -5,7 +5,7 @@ format: jb-book
 root: index
 options:  # The options key will be applied to all chapters, but not sub-sections
 parts:
-  - caption: 数值计算
+  - caption: 有限元计算
     chapters:
       - file: content/Math/chap1/intro
         sections:
@@ -17,11 +17,18 @@ parts:
         sections:
         - file: content/Math/chap2/sec1-shapefunction
         - file: content/Math/chap2/sec2-isoparametric
-        - file: content/Math/chap2/sec3-linearelasticity
-        - file: content/Math/chap2/sec4-smallelastoplastic-static
-        - file: content/Math/chap2/sec5-smallelastoplastic-dynamic
+      - file: content/Math/chap3/intro
+        sections:
+        - file: content/Math/chap3/sec1-variation
+        - file: content/Math/chap3/sec2-discretization
+      - file: content/Math/chap4/intro
+        sections:
+        - file: content/Math/chap4/sec1-smallelastoplastic-static
+        - file: content/Math/chap4/sec2-smallelastoplastic-dynamic
+      - file: content/Math/chap5/intro
+        #sections:
         #- file: content/Math/chap2/sec6-largeelastoplastic-1
-  - caption: 张量分析
+  - caption: 大变形分析
     chapters:
       - file: content/Tensor/intro
       - file: content/Tensor/chap1/sec1-OT

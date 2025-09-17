@@ -61,6 +61,12 @@ $$
 \boldsymbol{\sigma}_{ij}=\mathbb{C}_{ijkl}\boldsymbol{\varepsilon}_{kl},
 $$
 
+即
+
+$$
+\boldsymbol{\sigma} = \mathbb{C}:\boldsymbol{\varepsilon} = \lambda\text{tr}(\boldsymbol{\varepsilon})\mathbf{I} + 2\mu\boldsymbol{\varepsilon},
+$$
+
 也可以写为
 
 $$

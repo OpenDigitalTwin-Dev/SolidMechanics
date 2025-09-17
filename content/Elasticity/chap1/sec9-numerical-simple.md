@@ -210,10 +210,10 @@ $\mathcal{P}^1_h=\text{span}\{\phi_{0},\phi_{1},...\}$
 $g$ 可以表示为一组基函数的线性组合
 
 $$
-g = \sum_{i=0}^{5}c_{i}\phi_{i},
+g = \sum_{i=0}^{5}u_{i}\phi_{i},
 $$
 
-其中，$c_{i}$ 是系数。对于内部的节点（$x_{1},x_{2},x_{3},x_{4}$）
+其中，$u_{i}$ 是系数。对于内部的节点（$x_{1},x_{2},x_{3},x_{4}$）
 
 ```{margin}
 $\phi_{i}$ 定义在网格节点上，因此被称为**节点基**，广泛用于拉格朗日元
@@ -257,7 +257,7 @@ $$ (sec9-eq:fem-4)
 ```{margin}
 算子 $\mathcal{L}(x)$ 是线性的，即
 
-$\sum_{i=1}^{n}c_{i}\mathcal{L}(v_{i}) = \mathcal{L}(\sum_{i=1}^{n}c_{i}v_{i})$
+$\sum_{i=1}^{n}u_{i}\mathcal{L}(v_{i}) = \mathcal{L}(\sum_{i=1}^{n}u_{i}v_{i})$
 ```
 
 由于算子对 $v$ 是线性的，上述问题等价于求解 $u\in\mathcal{P}^{1}_{h}$ 满足
@@ -269,29 +269,29 @@ $$ (sec9-eq:fem-5)
 由于 $u\in\mathcal{P}^{1}_{h}$，因此可以表示成
 
 $$
-u = \sum_{i=0}^{5}c_{i}\phi_{i}.
+u = \sum_{i=0}^{5}u_{i}\phi_{i}.
 $$
 
 将上式代入到 {eq}`sec9-eq:fem-5`，得到
 
 $$
-\left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\phi_{j}\,\mathrm{d}x,\quad j=0:5.
+\left(\phi_{j}\sum_{i=0}^{5}u_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} + \sum_{i=0}^{5}u_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}f\phi_{j}\,\mathrm{d}x,\quad j=0:5.
 $$ (sec9-eq:fem-6)
 
-这是一个关于 $c_{i}$ 的线性方程组
+这是一个关于 $u_{i}$ 的线性方程组
 
 #### 边界条件
 
 对于内部节点 $x_1,x_2,x_3,x_4$，有
 
 $$
-\left(\phi_{j}\sum_{i=0}^{5}c_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} = 0,
+\left(\phi_{j}\sum_{i=0}^{5}u_{i}\left.\frac{\partial \phi_{i}}{\partial x}\, \right)\right|^{x=L}_{x=0} = 0,
 $$
 
 由于 $u(0) = 0, u(L) = u_L$，因此 $c_{0} = 0, c_{5} = u_{L}$，代入到式 {eq}`sec9-eq:fem-6` 中的 $j=1,2,3,4$，得到
 
 $$
-\sum_{i=1}^{4}c_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
+\sum_{i=1}^{4}u_{i}\int_{0}^{L}\frac{\partial \phi_{i}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\,\mathrm{d}x = \int_{0}^{L}\left(f\phi_{j} - c_{5}\frac{\partial \phi_{5}}{\partial x}\frac{\partial \phi_{j}}{\partial x}\right)\mathrm{d}x,\quad j=1:4.
 $$ (sec9-eq:fem-7)
 
 将其写为矩阵形式
@@ -322,7 +322,7 @@ $$
 f_{j} = \frac{1}{h}\int_{0}^{L}f\phi_{j}\,\mathrm{d}x.
 $$
 
-通过求解线性方程组 {eq}`sec9-eq:fem-8`，可以得到 $c_{i}$，从而得到方程 {eq}`sec9-eq:example` 在有限元函数空间 $\mathcal{P}_{h}^1$ 的逼近解 $u(x)\approx \sum_{i=0}^{5}c_{i}\phi_{i}$
+通过求解线性方程组 {eq}`sec9-eq:fem-8`，可以得到 $u_{i}$，从而得到方程 {eq}`sec9-eq:example` 在有限元函数空间 $\mathcal{P}_{h}^1$ 的逼近解 $u(x)\approx \sum_{i=0}^{5}u_{i}\phi_{i}$
 
 随着 $h\to0$，有限元函数空间 $\mathcal{P}_{h}^1$ 中的函数能够以任意精度逼近任意连续函数，从而保证离散解逐渐逼近问题的真解
 
