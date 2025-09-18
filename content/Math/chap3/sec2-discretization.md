@@ -264,14 +264,26 @@ $$
 使用数值积分，得到
 
 $$
-\mathbf{K}^{e}_{(*,i),(+,j)} \approx \left(\sum_{q}\lambda\text{tr}(\boldsymbol{\varepsilon}(\mathbf{v}_{*,i}))\text{tr}(\boldsymbol{\varepsilon}(\mathbf{v}_{+,j})) + 2\mu\boldsymbol{\varepsilon}(\mathbf{v}_{*,i}):\boldsymbol{\varepsilon}(\mathbf{v}_{+,j})\right)\cdot w_{q} \left|\det(\mathbf{J}_{q})\right|.
-$$
+\mathbf{K}^{e}_{(*,i),(+,j)} \approx \sum_{q}\left(\lambda\text{tr}(\boldsymbol{\varepsilon}(\mathbf{v}_{*,i}))\text{tr}(\boldsymbol{\varepsilon}(\mathbf{v}_{+,j})) + 2\mu\boldsymbol{\varepsilon}(\mathbf{v}_{*,i}):\boldsymbol{\varepsilon}(\mathbf{v}_{+,j})\right)\cdot w_{q} \left|\det(\mathbf{J}_{q})\right|.
+$$ (sec2-eq:K-tensor-1)
 
 通常 $\mathbf{v}_{*,i}$ 的排序为
 
 $$
 \mathbf{v}_{x,1},\mathbf{v}_{y,1},\mathbf{v}_{z,1},\mathbf{v}_{x,2},\mathbf{v}_{y,2},\mathbf{v}_{z,2},\cdots
 $$
+
+由于
+
+$$
+\text{tr}(\boldsymbol{\varepsilon}(\mathbf{u})) = \frac{1}{2}\text{tr}(\nabla\mathbf{u} + \nabla\mathbf{u}^{T}) = \nabla\cdot\mathbf{u},
+$$
+
+故式 {eq}`sec2-eq:K-tensor-1` 也可以写为
+
+$$
+\mathbf{K}^{e}_{(*,i),(+,j)} \approx \sum_{q}\left(\lambda(\nabla\cdot\mathbf{v}_{*,i})(\nabla\cdot\mathbf{v}_{+,j}) + 2\mu\boldsymbol{\varepsilon}(\mathbf{v}_{*,i}):\boldsymbol{\varepsilon}(\mathbf{v}_{+,j})\right)\cdot w_{q} \left|\det(\mathbf{J}_{q})\right|.
+$$ (sec2-eq:K-tensor-2)
 
 ### Vogit 形式
 
