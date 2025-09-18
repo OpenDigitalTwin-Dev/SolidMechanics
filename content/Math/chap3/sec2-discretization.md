@@ -70,7 +70,7 @@ $$
 \sum_{E}\int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}V\quad \text{或} \quad \sum_{E}\int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbb{C}(\mathcal{B}\mathbf{u}) \, \mathrm{d}V,
 $$
 
-根据 {eq}`sec2-eq:u-exp`，$\mathbf{u}$ 可以表示为 $\mathbf{v}_{*,i}$ 的线性组合，且由于 $a(\mathbf{u},\mathbf{v})$ 的双线性形式，故只需考虑
+根据 {eq}`sec2-eq:u-exp`，$\mathbf{u}$ 可以表示为 $\mathbf{v}_{*,i}$ 的线性组合，且起系数为待求解自由度，由于 $a(\mathbf{u},\mathbf{v})$ 的双线性形式，故只需考虑
 
 $$
 \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{v}_{+,j}) \, \mathrm{d}V\quad \text{或} \quad \int_{E} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbb{C}(\mathcal{B}\mathbf{v}_{+,j}) \, \mathrm{d}V,
