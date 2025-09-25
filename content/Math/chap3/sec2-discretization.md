@@ -122,28 +122,17 @@ $$
 \begin{aligned}
 \mathbf{J} =
 \begin{bmatrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} & \frac{\partial z}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} & \frac{\partial z}{\partial \eta} \\
-\frac{\partial x}{\partial \zeta} & \frac{\partial y}{\partial \zeta} & \frac{\partial z}{\partial \zeta}
+\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta}& \frac{\partial x}{\partial \zeta} \\
+\frac{\partial y}{\partial \xi}  & \frac{\partial y}{\partial \eta} & \frac{\partial y}{\partial \zeta} \\
+\frac{\partial z}{\partial \xi} & \frac{\partial z}{\partial \eta} & \frac{\partial z}{\partial \zeta}
 \end{bmatrix}
 &=
 \sum_{i=1}^{n}
 \begin{bmatrix}
-\frac{\partial N_i}{\partial \xi} x_i & \frac{\partial N_i}{\partial \xi} y_i & \frac{\partial N_i}{\partial \xi} z_i \\
-\frac{\partial N_i}{\partial \eta} x_i & \frac{\partial N_i}{\partial \eta} y_i & \frac{\partial N_i}{\partial \eta} z_i \\
-\frac{\partial N_i}{\partial \zeta} x_i & \frac{\partial N_i}{\partial \zeta} y_i & \frac{\partial N_i}{\partial \zeta} z_i
-\end{bmatrix}\\
-&=\begin{bmatrix}
-\frac{\partial N_{1}}{\partial \xi} & \frac{\partial N_{2}}{\partial \xi} & \cdots & \frac{\partial {N_n}}{\partial \xi} \\
- \frac{\partial N_{1}}{\partial \eta} & \frac{\partial N_{2}}{\partial \eta} & \cdots & \frac{\partial N_{n}}{\partial \eta} \\ 
- \frac{\partial N_{1}}{\partial \zeta} &  \frac{\partial N_{2}}{\partial \zeta} & \cdots & \frac{\partial N_{n}}{\partial \zeta}
+\frac{\partial N_i}{\partial \xi} x_i & \frac{\partial N_i}{\partial \eta} x_i & \frac{\partial N_i}{\partial \zeta} x_i \\
+\frac{\partial N_i}{\partial \xi} y_i & \frac{\partial N_i}{\partial \eta} y_i & \frac{\partial N_i}{\partial \zeta} y_i \\
+\frac{\partial N_i}{\partial \xi} z_i & \frac{\partial N_i}{\partial \eta} z_i& \frac{\partial N_i}{\partial \zeta} z_i
 \end{bmatrix}
-\begin{bmatrix}
-x_{1} & y_{1} & z_{1}     \\
-x_{2} & y_{2} & z_{2}     \\
-\vdots & \vdots & \vdots  \\
-x_{n} & y_{n} & z_{n}
-\end{bmatrix}.
 \end{aligned}
 \end{equation}
 $$
@@ -190,7 +179,7 @@ $$
 \frac{\partial u_{x}}{\partial \eta} & \frac{\partial u_{y}}{\partial \eta} & \frac{\partial u_{z}}{\partial \eta} \\ 
 \frac{\partial u_{x}}{\partial \zeta} & \frac{\partial u_{y}}{\partial \zeta} & \frac{\partial u_{z}}{\partial \zeta}
 \end{bmatrix}\\
-&=\mathbf{J}^{-1}
+&=\mathbf{J}^{-T}
 \begin{bmatrix}
 \frac{\partial N_{1}}{\partial \xi} & \frac{\partial {N_2}}{\partial \xi} & \cdots & \frac{\partial {N_n}}{\partial \xi} \\ 
 \frac{\partial N_{1}}{\partial \eta} & \frac{\partial N_{2}}{\partial \eta} & \cdots & \frac{\partial N_{n}}{\partial \eta} \\ 
@@ -216,7 +205,7 @@ $$
 \frac{\partial N_{1}(x,y,z)}{\partial z}
 \end{bmatrix} 
 = 
-\mathbf{J}^{-1}
+\mathbf{J}^{-T}
 \begin{bmatrix}
 \frac{\partial N_{1}(\xi,\eta,\zeta)}{\partial \xi}  \\
 \frac{\partial N_{1}(\xi,\eta,\zeta)}{\partial \eta} \\ 

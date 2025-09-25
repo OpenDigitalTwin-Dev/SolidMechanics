@@ -44,8 +44,8 @@ $$
 \begin{equation}
 \mathbf{J} = \left[
 \begin{matrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} 
+\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} \\
+\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta} 
 \end{matrix}
 \right].
 \end{equation}
@@ -129,8 +129,8 @@ $$
 $$
 \mathbf{J} = \left[
 \begin{matrix}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} & \cdots \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} & \cdots  \\
+\frac{\partial x}{\partial \xi} & \frac{\partial x}{\partial \eta} & \cdots \\
+\frac{\partial y}{\partial \xi} & \frac{\partial y}{\partial \eta} & \cdots  \\
 \vdots & \vdots & \ddots
 \end{matrix}
 \right].
@@ -176,7 +176,7 @@ $$
 \frac{\partial u}{\partial x} \\
 \frac{\partial u}{\partial y}
 \end{bmatrix}
-=\mathbf{J}\begin{bmatrix}
+=\mathbf{J}^{T}\begin{bmatrix}
 \frac{\partial u}{\partial x} \\
 \frac{\partial u}{\partial y}
 \end{bmatrix},
@@ -194,12 +194,12 @@ $$
 \frac{\partial u}{\partial y}
 \end{bmatrix}
 =
-\mathbf{J}^{-1}
+\mathbf{J}^{-T}
 \begin{bmatrix}
 \frac{\partial u}{\partial \xi} \\
 \frac{\partial u}{\partial \eta}
 \end{bmatrix} 
-= \mathbf{J}^{-1}\sum_{i}u_{i}
+= \mathbf{J}^{-T}\sum_{i}u_{i}
 \begin{bmatrix}
 \frac{\partial N_{i}}{\partial \xi} \\
 \frac{\partial N_{i}}{\partial \eta}
