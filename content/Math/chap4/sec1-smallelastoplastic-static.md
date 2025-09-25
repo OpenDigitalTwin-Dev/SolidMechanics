@@ -200,7 +200,7 @@ $$
 由于基函数具有局部支撑性，因此只需考虑 $E_{\text{物理}}$ 上的基函数，将积分运算映射回参考单元，记为
 
 $$
-F_{*,i}^{\text{int}} = \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma}(\boldsymbol{\varepsilon}(\sum_{+,j}u_{+,j}\mathbf{v}_{+,j}))\left|\det(\mathbf{J})\right| \, \mathrm{d}V,
+F_{*,i}^{\text{int}} = \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma}(\boldsymbol{\varepsilon}(\mathbf{u}))\left|\det(\mathbf{J})\right| \, \mathrm{d}V,
 $$
 
 此时，$\mathbf{v}_{*,i},\mathbf{v}_{+,j}$ 为参考单元上所有形函数的组合，于是
@@ -208,9 +208,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\frac{\partial F_{*,i}^{\text{int}}}{\partial u_{+,j}} &= \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \frac{\partial \boldsymbol{\sigma}(\boldsymbol{\varepsilon}(\sum_{+,j}u_{+,j}\mathbf{v}_{+,j}))}{\partial u_{+,j}}\left|\det(\mathbf{J})\right| \, \mathrm{d}V\\
-&= \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \left(\frac{\partial \boldsymbol{\sigma}(\boldsymbol{\varepsilon}(\sum_{+,j}u_{+,j}\mathbf{v}_{+,j}))}{\partial \boldsymbol{\varepsilon}}:\frac{\partial \boldsymbol{\varepsilon}}{\partial u_{+,j}}\right)\left|\det(\mathbf{J})\right| \, \mathrm{d}V\\
-&=\int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \left(\mathbb{C}_{ep}^{\text{alg}}:\frac{\partial \boldsymbol{\varepsilon}}{\partial u_{+,j}}\right)\left|\det(\mathbf{J})\right| \, \mathrm{d}V,
+\frac{\partial F_{*,i}^{\text{int}}}{\partial u_{+,j}} &= \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \frac{\partial \boldsymbol{\sigma}(\boldsymbol{\varepsilon}(\mathbf{u}))}{\partial u_{+,j}}\left|\det(\mathbf{J})\right| \, \mathrm{d}V\\
+&= \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \left(\frac{\partial \boldsymbol{\sigma}(\boldsymbol{\varepsilon}(\mathbf{u}))}{\partial \boldsymbol{\varepsilon}}:\frac{\partial \boldsymbol{\varepsilon}(\mathbf{u})}{\partial u_{+,j}}\right)\left|\det(\mathbf{J})\right| \, \mathrm{d}V\\
+&=\int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \left(\mathbb{C}_{ep}^{\text{alg}}:\frac{\partial \boldsymbol{\varepsilon}(\mathbf{u})}{\partial u_{+,j}}\right)\left|\det(\mathbf{J})\right| \, \mathrm{d}V,
 \end{aligned}
 \end{equation}
 $$
@@ -218,13 +218,13 @@ $$
 由于
 
 $$
-\boldsymbol{\varepsilon}(\sum_{+,j}u_{+,j}\mathbf{v}_{+,j}) = \sum_{+,j}\boldsymbol{\varepsilon}\left(u_{+,j}\mathbf{v}_{+,j}\right) =\sum_{+,j}\frac{u_{+,j}}{2}\left(\nabla\mathbf{v}_{+,j} + \nabla\mathbf{v}_{+,j}^{T}\right),
+\boldsymbol{\varepsilon}(\mathbf{u})=\boldsymbol{\varepsilon}(\sum_{+,j}u_{+,j}\mathbf{v}_{+,j}) = \sum_{+,j}\boldsymbol{\varepsilon}\left(u_{+,j}\mathbf{v}_{+,j}\right) =\sum_{+,j}\frac{u_{+,j}}{2}\left(\nabla\mathbf{v}_{+,j} + \nabla\mathbf{v}_{+,j}^{T}\right),
 $$
 
 因此
 
 $$
-\frac{\partial \boldsymbol{\varepsilon}}{\partial u_{+,j}} = \boldsymbol{\varepsilon}\left(\mathbf{v}_{+,j}\right),
+\frac{\partial \boldsymbol{\varepsilon}(\mathbf{u})}{\partial u_{+,j}} = \boldsymbol{\varepsilon}\left(\mathbf{v}_{+,j}\right),
 $$
 
 故
@@ -233,11 +233,12 @@ $$
 \begin{equation}
 \begin{aligned}
 \frac{\partial F_{*,i}^{\text{int}}}{\partial u_{+,j}} &= \int_{E_{\text{参考}}} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \mathbb{C}_{ep}^{\text{alg}}:\boldsymbol{\varepsilon}\left(\mathbf{v}_{+,j}\right)\left|\det(\mathbf{J})\right| \, \mathrm{d}V\\
-&= \sum_{q} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \mathbb{C}_{ep}^{\text{alg}}:\boldsymbol{\varepsilon}\left(\mathbf{v}_{+,j}\right)\cdot w_{q}\left|\det(\mathbf{J})\right|
+&= \sum_{q} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \mathbb{C}_{ep}^{\text{alg}}:\boldsymbol{\varepsilon}\left(\mathbf{v}_{+,j}\right)\cdot w_{q}\left|\det(\mathbf{J}_{q})\right|,
 \end{aligned}
 \end{equation}
 $$
 
+其中，$\mathbb{C}_{ep}^{\text{alg}}$ 是[一致性切线模量](../../Plasticity/chap5/returnmapping.md)
 
 #### $\mathbf{F}^{\text{r}}$ 对刚度矩阵的贡献
 
@@ -263,7 +264,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \frac{\partial F_{*,i}^{\text{r}}}{\partial u_{+,j}} &= \int_{\partial E_{\text{参考}}} \alpha \mathbf{v}_{*,i} \cdot\mathbf{v}_{+,j}\left|\det(\mathbf{J})\right| \, \mathrm{d}S\\
-&\approx \sum_{q} \alpha \mathbf{v}_{*,i} \cdot\mathbf{v}_{+,j}\cdot w_{q}\left|\det(\mathbf{J})\right|.
+&\approx \sum_{q} \alpha \mathbf{v}_{*,i} \cdot\mathbf{v}_{+,j}\cdot w_{q}\left|\det(\mathbf{J}_{q})\right|.
 \end{aligned}
 \end{equation}
 $$
@@ -277,7 +278,7 @@ $$
 考虑每个物理单元上的积分，映射回参考单元计算
 
 $$
-\mathbf{F}^{\text{int}} := \int_{E} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \boldsymbol{\sigma} \, \mathrm{d}V = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}V = \int_{E_{\text{物理}}}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}V,
+\mathbf{F}^{\text{int}}_{E} = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}V = \int_{E_{\text{参考}}}\mathbf{B}^{T}\boldsymbol{\sigma}\left|\det(\mathbf{J})\right|\ \mathbf{d}V,
 $$
 
 
@@ -285,7 +286,15 @@ $$
 由于 
 
 $$
-\boldsymbol{\varepsilon}=\mathcal{B}\mathbf{u} = \mathbf{B}\mathbf{u}_{E},
+\boldsymbol{\varepsilon}=\mathcal{B}\mathbf{u} = \mathcal{B}\mathbf{N}\mathbf{u}_{E} = \mathbf{B}\mathbf{u}_{E},
+$$
+
+其中
+
+$$
+\mathbf{u}_{E} = \begin{bmatrix}
+u_{x,1}&u_{y,1}&u_{z,1}&\cdots&u_{x,n}&u_{y,n}&u_{z,n}
+\end{bmatrix},
 $$
 
 故 Jacobian 矩阵为
@@ -293,21 +302,20 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{K}_{\text{int}}=\frac{\partial \mathbf{F}^{\text{int}}}{\partial \mathbf{u}_{E}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}_{E}}\ \mathbf{d}E\\
-&=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}_{E}} \mathbf{d}E\\
-&=\int_{E}\mathbf{B}^{T}\mathbb{C}_{ep}^{\text{alg}}\ \mathbf{B} \mathbf{d}E,
+\mathbf{K}^{\text{int}}_{E}=\frac{\partial \mathbf{F}^{\text{int}}_{E}}{\partial \mathbf{u}_{E}} &= \int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}_{E}}\left|\det(\mathbf{J})\right|\mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\frac{\partial \boldsymbol{\sigma}}{\partial \boldsymbol{\varepsilon}}\frac{\partial \boldsymbol{\varepsilon}}{\partial \mathbf{u}_{E}}\left|\det(\mathbf{J})\right|\mathbf{d}E\\
+&=\int_{E}\mathbf{B}^{T}\mathbb{C}_{ep}^{\text{alg}}\ \mathbf{B}\left|\det(\mathbf{J})\right|\mathbf{d}E\\
+&\approx \sum_{q}\mathbf{B}^{T}_{q}\mathbb{C}_{ep}^{\text{alg}}\ \mathbf{B}_{q}\cdot w_{q}\left|\det(\mathbf{J})\right|.
 \end{aligned}
 \end{equation}
 $$
-
-其中，$\mathbb{C}_{ep}^{\text{alg}}$ 是[一致性切线模量](../../Plasticity/chap5/returnmapping.md)
 
 #### $\mathbf{F}^{\text{r}}$ 对刚度矩阵的贡献
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{F}^{r}&=\int_{\Gamma_{R,E}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R,E}} \alpha\mathbf{N}^{T}\mathbf{u}\, \mathrm{d}S.
+\mathbf{F}^{r}_{E}&=\int_{\Gamma_{R}^{E}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S=\int_{\Gamma_{R}^{E_{参考}}} \alpha\mathbf{N}^{T}\mathbf{u}\left|\det(\mathbf{J}_{q})\right|\, \mathrm{d}S.
 \end{aligned}
 \end{equation}
 $$
@@ -323,9 +331,11 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{K}_{r} = \frac{\partial \mathbf{F}^{r}}{\partial \mathbf{u}_{E}}&=\int_{\Gamma_{R}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}_{E}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S\\
-&=\int_{\Gamma_{R}} \alpha\left(\frac{\partial \mathbf{u}}{\partial \mathbf{u}_{E}}\right)^{T} \mathbf{v}_{*,i} \, \mathrm{d}S\\
-&=\int_{\Gamma_{R}} \alpha\mathbf{N}^{T}\mathbf{N} \, \mathrm{d}S.
+\mathbf{K}^{r}_{E} = \frac{\partial \mathbf{F}^{r}_{E}}{\partial \mathbf{u}_{E}}
+&=\int_{\Gamma_{R}^{E_{参考}}} \alpha\frac{\partial \mathbf{u}}{\partial \mathbf{u}_{E}} \cdot \mathbf{v}_{*,i}\left|\det(\mathbf{J})\right| \, \mathrm{d}S\\
+&=\int_{\Gamma_{R}^{E_{参考}}} \alpha\left(\frac{\partial \mathbf{u}}{\partial \mathbf{u}_{E}}\right)^{T} \mathbf{v}_{*,i}\left|\det(\mathbf{J})\right| \, \mathrm{d}S\\
+&=\int_{\Gamma_{R}^{E_{参考}}} \alpha\mathbf{N}^{T}\mathbf{N} \left|\det(\mathbf{J})\right|\, \mathrm{d}S\\
+&\approx\sum_{q}\alpha\mathbf{N}^{T}_{q}\mathbf{N}_{q}w_{q} \left|\det(\mathbf{J}_{q})\right|.
 \end{aligned}
 \end{equation}
 $$
@@ -335,7 +345,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\mathbf{F}^{\text{ext}}=\int_{E}\mathbf{N}^{T}\mathbf{f}\,\mathrm{d}E + \int_{\Gamma_{N,E}} \mathbf{N}^{T}\tilde{\mathbf{p}}\ \mathrm{d}S + \int_{\Gamma_{R,E}} \mathbf{N}^{T}\mathbf{f}_{R}\, \mathrm{d}S.
+\mathbf{F}^{\text{ext}}&=\int_{E_{\text{参考}}}\mathbf{N}^{T}\mathbf{f}\left|\det(\mathbf{J})\right|\,\mathrm{d}E + \int_{\Gamma_{R}^{E_{\text{参考}}}} \mathbf{N}^{T}\tilde{\mathbf{p}}\left|\det(\mathbf{J})\right|\ \mathrm{d}S + \int_{\Gamma_{R}^{E_{\text{参考}}}} \mathbf{N}^{T}\mathbf{f}_{R}\left|\det(\mathbf{J})\right|\, \mathrm{d}S\\
+&\approx \sum_{q}\mathbf{N}^{T}_{q}\mathbf{f}_{q}w_{q}\left|\det(\mathbf{J})_{q}\right| + \sum_{q}\mathbf{N}^{T}_{q}\tilde{\mathbf{p}}w_{q}\left|\det(\mathbf{J})_{q}\right| + \sum_{q}\mathbf{N}^{T}_{q}\mathbf{f}_{R}w_{q}\left|\det(\mathbf{J})_{q}\right|
 \end{aligned}
 \end{equation}
 $$

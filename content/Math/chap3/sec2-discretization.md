@@ -42,7 +42,7 @@ $$
 \begin{equation}
 \begin{aligned}
 &\int_{\Omega} \boldsymbol{\varepsilon}(\mathbf{v}_{*,i}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u}) \, \mathrm{d}V + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
-=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 $$  (chap2-sec3-eq:discrete-eqs-tensor)
@@ -53,7 +53,7 @@ $$
 \begin{equation}
 \begin{aligned}
 &\int_{\Omega} (\mathcal{B}\mathbf{v}_{*,i})^{T}\mathbb{C}(\mathcal{B}\mathbf{u}) \, \mathrm{d}V + \int_{\Gamma_{R}} \alpha\mathbf{u} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S \\
-=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad \forall \, \mathbf{v}_{*,i} \in \, \mathcal{V},\quad *=x,y,z;\ i=1:N.
+=& \int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V + \int_{\Gamma_{N}} \tilde{\mathbf{p}} \cdot \mathbf{v}_{*,i}\ \mathrm{d}S + \int_{\Gamma_{R}} \mathbf{f}_{R} \cdot \mathbf{v}_{*,i} \, \mathrm{d}S,\quad *=x,y,z;\ i=1:N.
 \end{aligned}
 \end{equation}
 $$ (chap2-sec3-eq:discrete-eqs-vogit)
@@ -382,16 +382,12 @@ $$
 带入积分，得到单元刚度矩阵，记为 
 
 $$
-\mathbf{K}^{e} = \int_{E_{\text{参考}}} \mathbf{B}^{T}\mathbb{C}\mathbf{B}\left|\det(\mathbf{J})\right|\, \mathrm{d}V_{\text{参考}}
-$$
-
-
-### 数值积分
-
-单元刚度矩阵 $\mathbf{K}^{e}$ 通常采用数值积分方法计算
-
-$$
-\mathbf{K}^{e}\approx\sum_{q}\mathbf{B}_{q}^{T}\mathbb{C}\mathbf{B}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|,
+\begin{equation}
+\begin{aligned}
+\mathbf{K}^{e} &= \int_{E_{\text{参考}}} \mathbf{B}^{T}\mathbb{C}\mathbf{B}\left|\det(\mathbf{J})\right|\, \mathrm{d}V\\
+&\approx\sum_{q}\mathbf{B}_{q}^{T}\mathbb{C}\mathbf{B}_{q}\cdot w_{q}\cdot\left|\det(\mathbf{J}_{q})\right|
+\end{aligned}
+\end{equation}
 $$
 
 其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$
@@ -424,15 +420,24 @@ $$
 
 右端项的计算方式与刚度矩阵类似，首先将积分划分到各个物理单元内，然后通过坐标映射将物理单元上的积分转化为参考单元上的积分运算
 
+### 分量形式
+
 $$
-\int_{\Omega}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V = \sum_{E}\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V = \sum_{E}\int_{E_{\text{参考}}}\mathbf{f}\cdot \mathbf{v}_{*,i}\left|\det(\mathbf{J}_{q})\right|\,\mathrm{d}V_{\text{参考}},\quad *=x,y,z;\ i=1:N.
+\begin{equation}
+\begin{aligned}
+F_{*,i}^{E}&=
+\int_{E}\mathbf{f}\cdot \mathbf{v}_{*,i}\,\mathrm{d}V = \int_{E_{\text{参考}}}\mathbf{f}\cdot \mathbf{v}_{*,i}\left|\det(\mathbf{J})\right|\,\mathrm{d}V\\
+&=\sum_{q}\mathbf{f}_{q}\cdot \mathbf{v_{*,i}}\cdot w_{q}\left|\det(\mathbf{J})_{q}\right|.
+\end{aligned}
+\end{equation}
 $$
+
+### 矩阵形式
 
 写为矩阵形式
 
 $$
 \begin{align*}
-&
 \begin{bmatrix}
 (\mathbf{v}_{x,1})^{T}\mathbf{f} \\
 (\mathbf{v}_{y,1})^{T}\mathbf{f} \\
@@ -456,19 +461,19 @@ $$
 \end{align*}
 $$
 
-数值积分技术计算得到
+故
 
 $$
-\mathbf{F}^{e}
+\mathbf{F}^{E}
 \approx \sum_{q}\mathbf{N}^{T}_{q}\mathbf{f}_{q}\cdot w_{q} \cdot \left|\det(\mathbf{J}_{q})\right|,
 $$
 
-其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$，$\mathbf{f}$ 需使用 $\xi,\eta,\zeta$ 坐标表示
+其中，积分点是 $\left\{(\xi_{q},\eta_{q},\zeta_{q})\right\}$，积分权重是 $w_{q}$
 
 类似地，单元右端项到全局右端项的映射关系如下
 
 $$
-\mathbf{F}(g(E,i))\ +\!\!= \ \mathbf{F}^{e}(i).
+\mathbf{F}(g(E,i))\ +\!\!= \ \mathbf{F}^{E}(i).
 $$
 
 ## 边界条件
@@ -607,4 +612,4 @@ $$
 
 通过求解线性方程组（直接法或迭代法），可以得到有限元节点上的位移解
 
-**接着，通过场变量插值，可以得到任意单元内任意点的位移值，特别是积分点上的位移值，进而通过几何方程和本构方程求得积分点上的应变和应力（对于非线性问题，这些结果还可以用于更新刚度矩阵；对于线性问题，刚度矩阵只需组装一次，因此没有必要）。而有限元节点上的应力应变值则通常通过积分点上的应力应变进行插值得到，以满足可视化的需求**
+**通过场变量插值，可以得到任意单元内任意点的位移值，特别是积分点上的位移值，进而通过几何方程和本构方程求得积分点上的应变和应力（对于非线性问题，这些结果还可以用于更新刚度矩阵；对于线性问题，刚度矩阵只需组装一次，因此没有必要）。而有限元节点上的应力应变值则通常通过积分点上的应力应变进行插值得到，以满足可视化的需求**
