@@ -110,7 +110,7 @@ $$ (sec2-eq:shape-value)
 有
 
 $$
-\nabla_{\mathbf{x}}v_{i} = \nabla_{\mathbf{x}}N_{i} = \mathbf{J}^{-1}\nabla_{\boldsymbol{\xi}}N_{i}.
+\nabla_{\mathbf{x}}v_{i} = \nabla_{\mathbf{x}}N_{i} = \mathbf{J}^{-T}\nabla_{\boldsymbol{\xi}}N_{i}.
 $$ (sec2-eq:shape-gradient)
 
 ### Jacobian 矩阵
