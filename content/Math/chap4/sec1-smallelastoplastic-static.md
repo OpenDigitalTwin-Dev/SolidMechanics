@@ -281,8 +281,6 @@ $$
 \mathbf{F}^{\text{int}}_{E} = \int_{E}\mathbf{B}^{T}\boldsymbol{\sigma}\ \mathbf{d}V = \int_{E_{\text{参考}}}\mathbf{B}^{T}\boldsymbol{\sigma}\left|\det(\mathbf{J})\right|\ \mathbf{d}V,
 $$
 
-
-
 由于 
 
 $$

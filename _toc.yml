@@ -25,7 +25,8 @@ parts:
         sections:
         - file: content/Math/chap4/sec1-smallelastoplastic-static
         - file: content/Math/chap4/sec2-smallelastoplastic-dynamic
-      - file: content/Math/chap5/intro
+      - file: content/Math/chap5/intro  
+      - file: content/Math/chap6/intro
         #sections:
         #- file: content/Math/chap2/sec6-largeelastoplastic-1
   - caption: 大变形分析

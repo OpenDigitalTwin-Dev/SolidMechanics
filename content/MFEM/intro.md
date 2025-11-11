@@ -30,7 +30,9 @@ make install
 ## 调试 MFEM
 如果想要在 VSCode 中调试 MFEM 的算例，则需要编译 Debug 版本
 ```
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=../install ..
+cmake .. -DCMAKE_BUILD_TYPE=Debug \
+         -DCMAKE_CXX_FLAGS_DEBUG="-g3 -O0 -fno-omit-frame-pointer -fno-inline -fno-optimize-sibling-calls" \
+         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 make -j8
 ```
 以调试 `ex1` 为例
