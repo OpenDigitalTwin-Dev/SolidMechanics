@@ -117,3 +117,27 @@ $$
 $$
 \mathbf{F}^{\text{int}} =\int_{E}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathbf{d}E\cdot\mathbf{u}=\mathbf{K}\mathbf{u},
 $$
+
+### 分量计算
+
+#### 矩阵分量
+
+$$
+\begin{equation}
+\begin{aligned}
+&\ddot{\mathbf{F}}^{\text{a}}_{ij*+} = \int_{E} \rho\mathbf{v}_{+,j}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E\ \ddot{\mathbf{u}}_{j+} = \delta_{*,+}\int_{E} \rho v_{j}v_{i} \, \mathrm{d}E\ \ddot{\mathbf{u}}_{j+},\\
+&\dot{\mathbf{F}}^{\text{v}}_{ij*+} = \int_{E} c\mathbf{v}_{+,j}\cdot\mathbf{v}_{*,i} \, \mathrm{d}E\ \dot{\mathbf{u}}_{j+} = \delta_{*,+}\int_{E} c v_{j}v_{i} \, \mathrm{d}E\ \dot{\mathbf{u}}_{j+},\\
+\end{aligned}
+\end{equation}
+$$
+
+#### 右端项分量
+
+$$
+\begin{equation}
+\begin{aligned}
+&\ddot{\mathbf{F}}^{\text{a}}_{i*} = \int_{E} \rho\mathbf{v}_{*,i}\sum_{+,j}\mathbf{v}_{+,j}\ddot{\mathbf{u}}_{j+}\, \mathrm{d}E = \delta_{*,+}\int_{E} \rho v_{i}\sum_{j}v_{j} \ddot{\mathbf{u}}_{j*} \, \mathrm{d}E = \delta_{*,+}\sum_{j}\int_{E} \rho v_{i}v_{j} \ddot{\mathbf{u}}_{j*} \, \mathrm{d}E,\\
+&\dot{\mathbf{F}}^{\text{v}}_{i*} = \int_{E} c\mathbf{v}_{*,i}\sum_{+,j}\mathbf{v}_{+,j}\dot{\mathbf{u}}_{j+} \mathrm{d}E = \delta_{*,+}\int_{E} c v_{i}\sum_{j}v_{j} \dot{\mathbf{u}}_{j*} \, \mathrm{d}E = \delta_{*,+}\sum_{j}\int_{E} c v_{i}v_{j} \dot{\mathbf{u}}_{j*} \, \mathrm{d}E,\\
+\end{aligned}
+\end{equation}
+$$
