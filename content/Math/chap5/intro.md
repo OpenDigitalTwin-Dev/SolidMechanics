@@ -257,12 +257,12 @@ $\mathbf{K}$ 是一致刚度矩阵
 1. $\tilde{\mathbf{u}}_{k+1} \leftarrow \mathbf{u}_k + \dot{\mathbf{u}}_k \Delta t + \ddot{\mathbf{u}}_k ( \frac{1}{2} - \beta ) \Delta t^2 $
 2. $\mathbf{u}_{k+1} \leftarrow \tilde{\mathbf{u}}_{k+1}$
 3. $\ddot{\mathbf{u}}_{k+1} \leftarrow \frac{\mathbf{u}_{k+1} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t^2}$
-4. $\dot{\mathbf{u}}_{k+1} \leftarrow \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t + \frac{\mathbf{u}_{k+1} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t} \gamma$
+4. $\dot{\mathbf{u}}_{k+1} \leftarrow \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t$
 5. &nbsp;$\varepsilon \leftarrow \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{C} \dot{\mathbf{u}}_{k+1} - \mathbf{F}^{\text{int}}_{k+1} - \mathbf{M}\ddot{\mathbf{u}}_{k+1}$
 6. **while** $\|\varepsilon\| \geq \text{tol}$ **do**
 7. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\Delta\mathbf{u}_{k+1} \leftarrow \left(\frac{\mathbf{M}}{\beta \Delta t^2} + \mathbf{C}\frac{\gamma}{\beta\Delta t} + \mathbf{K}\right)^{-1} \varepsilon$
 8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\mathbf{u}_{k+1} \leftarrow \mathbf{u}_{k+1} + \Delta\mathbf{u}_{k+1}$
 9. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\ddot{\mathbf{u}}_{k+1} \leftarrow \frac{\mathbf{u}_{k+1} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t^2}$
-10. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\dot{\mathbf{u}}_{k+1} = \dot{\tilde{\mathbf{u}}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t$
+10. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\dot{\mathbf{u}}_{k+1} \leftarrow \dot{\mathbf{u}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t$
 11. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\varepsilon \leftarrow \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{C} \dot{\mathbf{u}}_{k+1} - \mathbf{F}^{\text{int}}_{k+1} - \mathbf{M}\ddot{\mathbf{u}}_{k+1}$
 12. **end while**
