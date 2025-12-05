@@ -1,269 +1,51 @@
-# Newmark 方法
+# 大变形弹塑性问题
 
-Newmark 方法是一类针对微分方程求解的时间积分方法，对于弹塑性初值问题
+大位移与大变形是两个相关但本质不同的力学概念。二者的关系具有**非对称性**:大变形必然伴随大位移,但大位移未必产生大变形。例如,当刚度较大的细长杆在一端受力作用时,虽然杆件整体产生显著的空间位移,但其自身应变很小,变形量微乎其微。相反,在小位移情况下,结构的变形通常也保持在小变形范畴内
 
-$$
-\begin{equation}
-\begin{cases}
-\mathbf{M} \ddot{\mathbf{u}}_{k+1} + \mathbf{C} \dot{\mathbf{u}}_{k+1} + \mathbf{F}^{\text{int}}_{k+1} = \mathbf{F}^{\text{ext}}_{k+1} \\
-\mathbf{u}(t_0) = \mathbf{u}_0, \quad \dot{\mathbf{u}}(t_0) = \dot{\mathbf{u}}_0
-\end{cases}
-\end{equation}
-$$ (intro-eq:equations)
-
-使用插值公式
+在小位移问题中，由于位移量很小，我们通常将平衡方程建立在**初始构型**上，这种假定是合理的。具体而言，当前构型与初始构型近似重合：
 
 $$
 \begin{equation}
-\begin{aligned}
-\mathbf{u}_{k+1} &= \mathbf{u}_k + \dot{\mathbf{u}}_k \Delta t + \ddot{\mathbf{u}}_k ( \frac{1}{2} - \beta ) \Delta t^2 + \ddot{\mathbf{u}}_{k+1} \beta \Delta t^2 \\
-\dot{\mathbf{u}}_{k+1} &= \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t
-\end{aligned}
-\end{equation}
-$$ (intro-eq:interpolations)
-
-其中，$\beta$ 和 $\gamma$ 是积分算法的参数，下面给出了一些重要的特例
-
-- $\beta = 0,\gamma = \frac{1}{2}$：中心差分方法，$\Delta t_{cr} = \frac{2}{\omega}$
-- $\beta = \frac{1}{4}, \gamma = \frac{1}{2}$：梯形法则，具有常平均加速，无条件稳定
-- $\gamma = \frac{1}{2}, \beta = \frac{1}{6}$：具有线性加速，$\Delta t_{cr} = \frac{3.464}{\omega}$
-- $\beta\geq\frac{\gamma}{2}\geq\frac{1}{4}$：无条件稳定
-
-此外，当 $\beta=0$ 时，是显式方法，$\beta > 0$ 时，为隐式方法；$\gamma$ 控制了人工粘度，在计算中引入了阻尼，被用来抑制解中的噪声，当 $\gamma = \frac{1}{2}$ 时，没有阻尼，当 $\gamma>\frac{1}{2}$ 时，人造阻尼正比于 $\gamma - \frac{1}{2}$，
-
-记
-
-$$
-\begin{equation}
-\begin{aligned}
-\tilde{\mathbf{u}}_{k+1} &= \mathbf{u}_k + \dot{\mathbf{u}}_k \Delta t + \ddot{\mathbf{u}}_k ( \frac{1}{2} - \beta ) \Delta t^2 \\
-\dot{\tilde{\mathbf{u}}}_{k+1} &= \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t
-\end{aligned}
-\end{equation}
-$$ (intro-eq:interpolations-1)
-
-于是
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathbf{u}_{k+1} &= \tilde{\mathbf{u}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \beta \Delta t^2 \\
-\dot{\mathbf{u}}_{k+1} &= \dot{\tilde{\mathbf{u}}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t
-\end{aligned}
-\end{equation}
-$$ (intro-eq:interpolations-2)
-
-## 加速度形式
-
-加速度形式的主求解变量是加速度，即先求解加速度，再求解速度和位移
-，将插值公式代入到 {eq}`intro-eq:equations`，得到
-
-$$
-\begin{equation}
-\mathbf{M}{\color{red}\ddot{\mathbf{u}}_{k+1}} + \mathbf{C}(\dot{\tilde{\mathbf{u}}}_{k+1} + {\color{red}\ddot{\mathbf{u}}_{k+1}} \gamma \Delta t) + \mathbf{F}^{\text{int}}_{k+1} = \mathbf{F}^{\text{ext}}_{k+1}
-\end{equation}
-$$ (intro-eq:equations-1)
-
-### 线弹性问题
-
-对于线弹性问题，有
-
-$$
-\begin{equation}
-\mathbf{F}^{\text{int}} =\int_{E}\mathbf{B}^{T}\mathbb{C}\mathbf{B}\ \mathbf{d}E\cdot\mathbf{u}=\mathbf{K}\mathbf{u},
+x\approx X \Longrightarrow \frac{\partial}{\partial x}\approx \frac{\partial}{\partial X},
 \end{equation}
 $$
 
-其中 $\mathbf{K}$ 是常量，于是，式 {eq}`intro-eq:equations-1` 可以写为
-
-$$
-\mathbf{M}{\color{red}\ddot{\mathbf{u}}_{k+1}} + \mathbf{C}(\dot{\tilde{\mathbf{u}}}_{k+1} + {\color{red}\ddot{\mathbf{u}}_{k+1}} \gamma \Delta t) + \mathbf{K}(\tilde{\mathbf{u}}_{k+1} + {\color{red}\ddot{\mathbf{u}}_{k+1}} \beta \Delta t^2) = \mathbf{F}^{\text{ext}}_{k+1}
-$$
-
-该方程关于 $\ddot{\mathbf{u}}_{k+1}$ 是线性的
-
-算法流程如下
-
-**Step 1: 预测**
+此时，积分区域已知且固定，无需追踪构型变化，计算得以大大简化。与此同时，小位移问题通常伴随小变形，因此可以忽略位移梯度的高阶项，采用**线性的应变-位移关系**：
 
 $$
 \begin{equation}
-\begin{aligned}
-\tilde{\mathbf{u}}_{k+1} &= \mathbf{u}_k + \dot{\mathbf{u}}_k \Delta t + \ddot{\mathbf{u}}_k ( \frac{1}{2} - \beta ) \Delta t^2 \\
-\dot{\tilde{\mathbf{u}}}_{k+1} &= \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t
-\end{aligned}
+\boldsymbol{\varepsilon} = \frac{1}{2}(\nabla \mathbf{u} + \nabla\mathbf{u}^{T}).
 \end{equation}
 $$
 
-**Step 2: 求解**
+```{margin}
+纯平移不改变应力应变状态，不影响方程求解
+```
+
+而在大位移问题中，情况变得复杂得多。首先，平衡方程必须建立在**未知的当前构型**上，积分区域随变形而变化。其次，大位移通常伴随显著的刚体转动，此时不得不考虑**应力应变的客观性问题**（即物理量对刚体转动的不变性）。此外，若同时存在大变形，则必须采用**非线性的应变-位移关系**，例如 Green-Lagrange 应变
 
 $$
 \begin{equation}
-\begin{aligned}
-\ddot{\mathbf{u}}_{k+1} &= \left( \mathbf{M} + \mathbf{C} \gamma \Delta t + \mathbf{K} \beta \Delta t^2 \right)^{-1}
-\left( \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{K} \tilde{\mathbf{u}}_{k+1} - \mathbf{C} \dot{\tilde{\mathbf{u}}}_{k+1} \right)\\
-&=\left( \mathbf{M} + \mathbf{C} \gamma \Delta t + \mathbf{K} \beta \Delta t^2 \right)^{-1}
-\left( \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{F}^{\text{int}}(\tilde{\mathbf{u}}_{k+1}) - \mathbf{C} \dot{\tilde{\mathbf{u}}}_{k+1} \right)
-\end{aligned}
-\end{equation}
-$$
-
-**Step 3: 校正**
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathbf{u}_{k+1} &= \tilde{\mathbf{u}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \beta \Delta t^2 \\
-\dot{\mathbf{u}}_{k+1} &= \dot{\tilde{\mathbf{u}}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t
-\end{aligned}
-\end{equation}
-$$
-
-其中
-
-$$
-\begin{aligned}
-    \beta& = 0 : \text{explicit algorithm}\\
-    \beta& \neq 0 : \text{implicit algorithm}
-\end{aligned}
-$$
-
-### 弹塑性问题
-
-对于弹塑性问题，将式 {eq}`intro-eq:equations` 记为
-
-$$
-\begin{equation}
-\begin{cases}
-\mathbf{M} \ddot{\mathbf{u}}_{k+1} + \mathbf{C} \dot{\mathbf{u}}_{k+1} + \mathbf{F}^{\text{int}}(\mathbf{u}_{k+1}) = \mathbf{F}^{\text{ext}}_{k+1} \\
-\mathbf{u}(t_0) = \mathbf{u}_0, \quad \dot{\mathbf{u}}(t_0) = \dot{\mathbf{u}}_0
-\end{cases}
-\end{equation}
-$$
-
-代入插值公式，得到
-
-$$
-\mathbf{M}{\color{red}\ddot{\mathbf{u}}_{k+1}} + \mathbf{C}\cdot(\dot{\tilde{\mathbf{u}}}_{k+1} + {\color{red}\ddot{\mathbf{u}}_{k+1}} \gamma \Delta t) + \mathbf{F}^{\text{int}}(\tilde{\mathbf{u}}_{k+1} + {\color{red}\ddot{\mathbf{u}}_{k+1}} \beta \Delta t^2) = \mathbf{F}^{\text{ext}}_{k+1}
-$$
-
-**若 $\beta = 0$，则 $\mathbf{F}^{\text{int}}\equiv\mathbf{F}^{\text{int}}(\tilde{\mathbf{u}}_{k+1})$ 是常量，因此方程关于 $\ddot{\mathbf{u}}_{k+1}$ 仍然是线性的，求解流程同上；而当 $\beta>0$ 时，方程关于 $\ddot{\mathbf{u}}_{k+1}$ 是非线性的，需要进行非线性迭代，求解流程如下。因此，$\beta$ 既决定了方程了显/隐性，又决定了方程的线性/非线性：$\beta=0$，显式/线性；$\beta>0$，隐式/非线性**
-
-此时，Jacobia 矩阵的各项计算如下
-
-**质量项**
-
-$$
-\begin{equation}
-\frac{\partial }{\partial \ddot{\mathbf{u}}_{k+1}}\left(\mathbf{M}\ddot{\mathbf{u}}_{k+1}\right) = \mathbf{M},
-\end{equation}
-$$
-
-**阻尼项**
-
-$$
-\begin{equation}
-\begin{aligned}
-\frac{\partial }{\partial \ddot{\mathbf{u}}_{k+1}}\left(\mathbf{C}\cdot(\dot{\tilde{\mathbf{u}}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t)\right)=\mathbf{C}\gamma\Delta t,
-\end{aligned}
-\end{equation}
-$$
-
-**内力项**
-
-$$
-\begin{equation}
-\begin{aligned}
-\frac{\partial }{\partial \ddot{\mathbf{u}}_{k+1}}\mathbf{F}^{\text{int}}(\tilde{\mathbf{u}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \beta \Delta t^2) = \frac{\partial \mathbf{F}^{\text{int}}}{\partial \mathbf{u}_{k+1}}\frac{\partial \mathbf{u}_{k+1}}{\partial \ddot{\mathbf{u}}_{k+1}}=\mathbf{K}\beta \Delta t^{2},
-\end{aligned}
-\end{equation}
-$$
-
-$\mathbf{K}$ 是一致刚度矩阵
-
-算法流程如下
-
-1. $\ddot{\mathbf{u}}_{k+1} \leftarrow \ddot{\mathbf{u}}_{k}$
-2. $\dot{\mathbf{u}}_{k+1} \leftarrow \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1-\gamma)\Delta t + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t$
-3. $\mathbf{u}_{k+1} \leftarrow \mathbf{u}_k + \dot{\mathbf{u}}_k \Delta t + \ddot{\mathbf{u}}_k \left(\frac{1}{2} - \beta \right) \Delta t^2 + \ddot{\mathbf{u}}_{k+1} \beta \Delta t^2$
-4. &nbsp;$\varepsilon \leftarrow \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{C} \dot{\mathbf{u}}_{k+1} - \mathbf{F}^{\text{int}}_{k+1} - \mathbf{M}\ddot{\mathbf{u}}_{k+1}$
-5. **while** $\|\varepsilon\| \geq \text{tol}$ **do**
-6. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\Delta\ddot{\mathbf{u}}_{k+1} \leftarrow \left(\mathbf{M} + \mathbf{C}\gamma\Delta t + \mathbf{K}\beta\Delta t^2\right)^{-1} \varepsilon$
-7. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\ddot{\mathbf{u}}_{k+1} \leftarrow \ddot{\mathbf{u}}_{k+1} + \Delta\ddot{\mathbf{u}}_{k+1}$
-8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\dot{\mathbf{u}}_{k+1} \leftarrow \dot{\mathbf{u}}_{k+1} + \Delta\ddot{\mathbf{u}}_{k+1} \gamma \Delta t$
-9. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\mathbf{u}_{k+1} \leftarrow \mathbf{u}_{k+1} + \Delta\ddot{\mathbf{u}}_{k+1} \beta \Delta t^2$
-10. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\varepsilon \leftarrow \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{C} \dot{\mathbf{u}}_{k+1} - \mathbf{F}^{\text{int}}_{k+1} - \mathbf{M}\ddot{\mathbf{u}}_{k+1}$
-11. **end while**
-
-**对于隐式方法，一般使用位移形式，它对边界条件的处理更加自然**
-
-## 位移形式
-
-位移形式以位移作为主求解变量，即先求解位移，再求解速度和加速度，使用位移来表示速度和加速度项
-
-$$
-\begin{equation}
-\begin{aligned}
-\ddot{\mathbf{u}}_{k+1} &= \frac{\mathbf{u}_{k+1} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t^2},\\
-\dot{\mathbf{u}}_{k+1}&=\dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t + \frac{\mathbf{u}_{k+1} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t} \gamma
-\end{aligned}
+\mathbf{E} = \frac{1}{2}(\mathbf{F}^{T}\mathbf{F}-\mathbf{I}).
 \end{equation}
 $$
 
 
+在小位移问题中，使用线性的应变-位移关系，在固定的初始构型上求解，这是大变形 Total Lagrangian 方法的线性特例。在大位移问题中，根据问题的物理特点和数值效率，常采用以下三种方法：
 
-此时，方程 {eq}`intro-eq:equations` 写为
+**Total Lagrangian (TL)** 方法始终以初始构型为参考，积分域固定，数学框架严谨。该方法天然适合**超弹性材料**，因其应变能函数通常基于右Cauchy-Green张量定义，直接导出PK2应力。然而，PK2应力非直接可测物理量，物理直观性差；对于基于Cauchy应力的弹塑性本构，需转换至PK2应力-应变空间，引入额外复杂性（必要时还需使用客观应力率）。此外，TL方法在处理依赖于当前构型的载荷和接触条件时较为困难
 
-$$
-\mathbf{M}\frac{{\color{red}\mathbf{u}_{k+1}} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t^2} + \mathbf{C}\cdot(\dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t + \frac{{\color{red}\mathbf{u}_{k+1}} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t} \gamma) + \mathbf{F}^{\text{int}}({\color{red}\mathbf{u}_{k+1}}) = \mathbf{F}^{\text{ext}}_{k+1}
-$$
+**Updated Lagrangian (UL)** 方法以上一收敛构型为参考，使用Cauchy应力，物理意义清晰。该方法直接支持基于Cauchy应力的材料模型（如**金属弹塑性模型**），包括需要客观应力率的弹塑性本构，能够处理大变形，大位移的问题。UL格式天然适合处理接触、摩擦等边界非线性问题，因相关条件定义在当前构型。其代价是参考构型不断更新，需重新计算几何量，且本构积分需确保客观性
 
-**注意到，上述形式中必须有 $\beta>0$，因此位移形式总是隐式求解的,而方程的线性/非线性由问题的自身特性决定（例如，$\mathbf{F}^{\text{int}}$）**
+**Corotational (CR)** 方法专为大转动、中小应变问题设计。通过显式分离刚体转动（通常经极分解），在随转的局部材料坐标系中使用小变形本构，避免了有限应变本构的复杂性和客观性问题。CR方法特别适合**梁、壳等结构单元，以及转动主导的实体问题**。其主要局限在于极分解的计算开销，以及对大应变问题（应变>20%）的适用性不足
 
-对于线弹性问题，$\mathbf{F}^{\text{int}}_{k+1} = \mathbf{K}\mathbf{u}_{k+1}$，因此上述方程是关于 $\mathbf{u}_{k+1}$ 的线性方程，不需要牛顿迭代；而对于弹塑性问题，上述方程是非线性的，需要牛顿迭代
 
-此时，Jacobia 矩阵的各项计算如下
+在实际工程分析中，方法的选择由问题类型、材料模型、接触条件、计算效率要求、收敛性预期及软件默认设置共同决定。现代商业有限元软件通常根据单元类型和材料属性为常见问题类型提供合适的默认格式
 
-**质量项**
+在具体求解策略上，通常分为**动力学**方法和**静力学**方法。动力学方法考虑惯性和阻尼效应，适合求解变形或运动速率较快的**瞬态问题**，如冲击、振动和波传播问题；静力学方法忽略惯性效应，适用于**准静态加载过程**，如结构强度校核、残余应力分析
 
-$$
-\begin{equation}
-\frac{\partial }{\partial \mathbf{u}_{k+1}}\left(\cdot\right) = \frac{\mathbf{M}}{\beta \Delta t^2},
-\end{equation}
-$$
+从时间积分角度，又可分为**显式**方法和**隐式**方法：
 
-**阻尼项**
+显式方法（如中心差分法）无需迭代求解全局方程组、单步计算成本低，实现简单，且天然适合并行计算，但受条件稳定性约束，时间步长受Courant条件等限制，适合高速冲击、爆炸、复杂接触及材料失效等问题
 
-$$
-\begin{equation}
-\begin{aligned}
-\frac{\partial }{\partial \mathbf{u}_{k+1}}\left(\cdot\right)=\mathbf{C}\frac{\gamma}{\beta\Delta t},
-\end{aligned}
-\end{equation}
-$$
-
-**内力项**
-
-$$
-\begin{equation}
-\begin{aligned}
-\frac{\partial }{\partial \mathbf{u}_{k+1}}\mathbf{F}^{\text{int}}(\mathbf{u}_{k+1})=\mathbf{K},
-\end{aligned}
-\end{equation}
-$$
-
-$\mathbf{K}$ 是一致刚度矩阵
-
-算法流程如下
-
-1. $\tilde{\mathbf{u}}_{k+1} \leftarrow \mathbf{u}_k + \dot{\mathbf{u}}_k \Delta t + \ddot{\mathbf{u}}_k ( \frac{1}{2} - \beta ) \Delta t^2 $
-2. $\dot{\tilde{\mathbf{u}}}_{k+1} = \dot{\mathbf{u}}_k + \ddot{\mathbf{u}}_k (1 - \gamma) \Delta t$
-3. $\mathbf{u}_{k+1}=\mathbf{u}_{k},\dot{\mathbf{u}}_{k+1}=\dot{\mathbf{u}}_{k},\ddot{\mathbf{u}}_{k+1}=\ddot{\mathbf{u}}_{k},$
-4. &nbsp;$\varepsilon \leftarrow \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{C} \dot{\mathbf{u}}_{k+1} - \mathbf{F}^{\text{int}}_{k+1} - \mathbf{M}\ddot{\mathbf{u}}_{k+1}$
-5. **while** $\|\varepsilon\| \geq \text{tol}$ **do**
-6. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\Delta\mathbf{u}_{k+1} \leftarrow \left(\frac{\mathbf{M}}{\beta \Delta t^2} + \mathbf{C}\frac{\gamma}{\beta\Delta t} + \mathbf{K}\right)^{-1} \varepsilon$
-7. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\mathbf{u}_{k+1} \leftarrow \mathbf{u}_{k+1} + \Delta\mathbf{u}_{k+1}$
-8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\ddot{\mathbf{u}}_{k+1} \leftarrow \frac{\mathbf{u}_{k+1} - \tilde{\mathbf{u}}_{k+1}}{\beta \Delta t^2}$
-9. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\dot{\mathbf{u}}_{k+1} \leftarrow \dot{\tilde{\mathbf{u}}}_{k+1} + \ddot{\mathbf{u}}_{k+1} \gamma \Delta t$
-10. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\varepsilon \leftarrow \mathbf{F}^{\text{ext}}_{k+1} - \mathbf{C} \dot{\mathbf{u}}_{k+1} - \mathbf{F}^{\text{int}}_{k+1} - \mathbf{M}\ddot{\mathbf{u}}_{k+1}$
-11. **end while**
+隐式方法（如Newmark法、牛顿-拉夫森法）需迭代求解非线性方程组，单步计算成本高，实现复杂，但通常具有更大的稳定域，允许使用较大时间步长，计算更为稳健，是静力学和大多数准静态分析的首选。对于高度非线性问题，当隐式方法迭代困难时，也可采用显式方法模拟准静态过程，此时需控制加载速率并监控动能以确保结果的准静态特性

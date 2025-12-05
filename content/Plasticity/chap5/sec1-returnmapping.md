@@ -147,19 +147,25 @@ Newton-Raphson 方法可以用于求解一般的非线性方程组。然而，�
 由于塑性流动不可压，因此
 
 $$
-\text{tr}(\dot{\boldsymbol{\varepsilon}})=0\quad \Longrightarrow\quad \text{tr}(\Delta\boldsymbol{\varepsilon})=0，
+\text{tr}(\dot{\boldsymbol{\varepsilon}^{p}})=0\quad \Longrightarrow\quad \text{tr}(\Delta\boldsymbol{\varepsilon}^{p})=0，
 $$
 
 故
 
 $$
-\mathbb{C}^e:\Delta\boldsymbol{\varepsilon} = 2G\ \text{dev}(\Delta\boldsymbol{\varepsilon})+K\text{tr}(\Delta\boldsymbol{\varepsilon})\mathbf{I}=2G\ \text{dev}(\Delta\boldsymbol{\varepsilon}),
+\mathbb{C}^e:\Delta\boldsymbol{\varepsilon}^{p} = 2G\ \text{dev}(\Delta\boldsymbol{\varepsilon}^{p})+K\text{tr}(\Delta\boldsymbol{\varepsilon}^{p})\mathbf{I}=2G\ \text{dev}(\Delta\boldsymbol{\varepsilon}^{p}),
 $$
 
 其中，$\text{dev}(\cdot)$ 表示偏张量的部分，由于 $\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=\Delta\boldsymbol{\varepsilon}^{p}$，故
 
 $$
 \mathbb{C}^e:(\Delta\gamma\mathbf{N}_{n+1})=\mathbb{C}^e:(\Delta\boldsymbol{\varepsilon}^{p})=2G\text{dev}(\Delta\boldsymbol{\varepsilon}^{p})=2G\Delta\boldsymbol{\varepsilon}^{p}=2G\Delta\gamma\mathbf{N}_{n+1},
+$$
+
+另一方面
+
+$$
+\mathbb{C}^e:(\Delta\boldsymbol{\varepsilon}^{p})=\mathbb{C}^e:(\Delta\boldsymbol{\varepsilon} - \Delta\boldsymbol{\varepsilon}^{e})=\mathbb{C}^e:((\boldsymbol{\varepsilon}_{n}^{e}+\Delta\boldsymbol{\varepsilon}) - (\boldsymbol{\varepsilon}_{n}^{e} + \Delta\boldsymbol{\varepsilon}^{e}))=\boldsymbol{\sigma}_{\text{trial}}-\boldsymbol{\sigma}_{n+1},
 $$
 
 于是
