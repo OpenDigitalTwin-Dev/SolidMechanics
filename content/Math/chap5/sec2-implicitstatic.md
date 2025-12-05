@@ -40,6 +40,6 @@ $$
 依次考虑每一项，首先
 
 $$
-\frac{\partial (J\boldsymbol{\sigma})}{\partial \mathbf{u}} = \frac{\partial J}{\partial \mathbf{u}}\boldsymbol{\sigma} + J\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}}
+\frac{\partial (J\boldsymbol{\sigma})}{\partial \mathbf{u}} = \frac{\partial J}{\partial \mathbf{u}}\boldsymbol{\sigma} + J\frac{\partial \boldsymbol{\sigma}}{\partial \mathbf{u}},
 $$
 
