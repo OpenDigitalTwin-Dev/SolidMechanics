@@ -1,4 +1,4 @@
-jupyter-book
-matplotlib
-numpy
-sphinx-proof
+jupyter-book==1.0.4.post1
+matplotlib==3.10.1
+numpy==2.2.3
+sphinx-proof==0.2.1
