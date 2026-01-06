@@ -12,7 +12,7 @@
 
 下图展示了**等厚薄板**的受力情况，其中厚度远小于板的长度与宽度
 
-```{figure} ../../../images/Elasticity/chap1/2D-stress.png
+```{figure} ../../images/Elasticity/2D-stress.png
 ---
 width: 400px
 name: sec5-fig:2D-stress
@@ -94,7 +94,7 @@ $$
 柱体两端通常受到约束，使得长度方向的变形受到限制，即 $\varepsilon_{zz} = 0$
 ```
 
-```{figure} ../../../images/Elasticity/chap1/2D-strain.png
+```{figure} ../../images/Elasticity/2D-strain.png
 ---
 width: 400px
 name: sec5-fig:2D-strain

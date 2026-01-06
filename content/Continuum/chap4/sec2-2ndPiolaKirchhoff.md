@@ -47,21 +47,28 @@ $$
 由于
 
 $$
-\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(\mathbf{F}^{T}\mathbf{F}-\mathbf{I}) = \frac{1}{2}(\mathbf{F}^{T}\dot{\mathbf{F}}+\dot{\mathbf{F}}^{T}\mathbf{F}) = \mathbf{F}^{T}\mathbf{D}\mathbf{F},
+\begin{equation}
+\begin{aligned}
+\dot{\mathbf{E}} = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}t}(\mathbf{F}^{T}\mathbf{F}-\mathbf{I}) &= \frac{1}{2}(\mathbf{F}^{T}\dot{\mathbf{F}}+\dot{\mathbf{F}}^{T}\mathbf{F}) \\
+&= \frac{1}{2}(\mathbf{F}^{T}\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}+\mathbf{F}^{T}\mathbf{F}^{-T}\dot{\mathbf{F}}^{T}\mathbf{F})\\
+&=\frac{1}{2}\mathbf{F}^{T}(\mathbf{L}+\mathbf{L}^{T})\mathbf{F}\\
+&=\mathbf{F}^{T}\mathbf{D}\mathbf{F},
+\end{aligned}
+\end{equation}
 $$
 
 故
 
 $$
-\mathbf{D} = \mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F},
+\mathbf{D} = \mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F}^{-1},
 $$
 
-由于相似变换保迹，于是
+由于 $\boldsymbol{\sigma}$ 对称，且相似变换保迹，于是
 
 $$
 \begin{equation}
 \begin{aligned}
-\boldsymbol{\sigma}:\mathbf{D} &= \boldsymbol{\sigma}:\mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F} = \text{tr}(\boldsymbol{\sigma}\mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F}) \\
+\boldsymbol{\sigma}:\mathbf{D} &= \boldsymbol{\sigma}:\mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F}^{-1} = \text{tr}(\boldsymbol{\sigma}\mathbf{F}^{-T}\dot{\mathbf{E}}\mathbf{F}^{-1}) \\
 &= \text{tr}(\mathbf{F}^{-1}\boldsymbol{\sigma}\mathbf{F}^{-T}\dot{\mathbf{E}}) = \mathbf{F}^{-1}\boldsymbol{\sigma}\mathbf{F}^{-T}:\dot{\mathbf{E}}\\
 &=J^{-1}\mathbf{S}:\dot{\mathbf{E}},
 \end{aligned}

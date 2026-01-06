@@ -22,7 +22,8 @@ $$
 在微分体中，各个面上所受的应力被假定为均匀分布，并作用于对应面的中心
 ```
 
-```{figure} ../../../images/Elasticity/chap1/balance-equa.png
+
+```{figure} ../../images/Elasticity/balance-equa.png
 ---
 width: 800px
 name: sec3-fig:balance-equa
@@ -53,6 +54,11 @@ $$
 $$ (sec3-eq:Shear_stress)
 
 ## 平衡方程
+
+```{margin}
+对于动能，阻尼项等可类似考虑
+```
+
 考虑 $x$ 轴方向的平衡方程 $\Sigma F_{x}=0$：
 
 $$
@@ -98,7 +104,7 @@ $$
 \mathrm{d}x = m\mathrm{d}s,\quad \mathrm{d}y = l\mathrm{d}s.
 $$
 
-```{figure} ../../../images/Elasticity/chap1/stress-tensor.png
+```{figure} ../../images/Elasticity/stress-tensor.png
 ---
 width: 400px
 name: sec3-fig:stress-tensor
@@ -210,7 +216,7 @@ $$
 ```{admonition} 基变换与张量变换
 :class: tip, dropdown
 
-将张量视为一个将任意截面法向量映射为作用在该截面上的应力的线性算子，则在不同的基选择下，应力张量的矩阵表示是相似的
+应力张量作为线性算子，将任意截面的法向量映射为该截面上的应力矢量。在不同基底下，应力张量的矩阵表示通过相似变换关联；当基底间为旋转关系时,其矩阵表示满足正交相似变换。
 ```
 
 #### 最大切应力
@@ -235,5 +241,5 @@ $$
 此时对应截面的法向量与主应力面之间的夹角为 $ 45^\circ $，此时正应力为 $\sigma_{n} = \frac{1}{2} (\sigma_1 + \sigma_2)$
 
 ```{note}
-对于三维情形，参阅[最大剪切应力](../../Plasticity/chap2/sec2-tresca.md) 
+对于三维情形，参阅[最大剪切应力](../Plasticity/chap2/sec1-tresca.md) 
 ```

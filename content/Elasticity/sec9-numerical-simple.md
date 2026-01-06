@@ -19,7 +19,7 @@
 
 ## 问题描述
 
-```{figure} ../../../images/Elasticity/chap1/1D-example.png
+```{figure} ../../images/Elasticity/1D-example.png
 ---
 width: 400px
 name: sec9-fig:1D-example
@@ -27,15 +27,35 @@ name: sec9-fig:1D-example
 一维均匀弹性杆
 ```
 
-考虑一根长度为 $L$ 的一维均匀弹性杆，受力后在长度方向上的位移 $u(x)$ 满足以下控制方程：
+考虑一根长度为 $L$ 的一维均匀弹性杆，受力后在长度方向上的位移 $u(x)$ 满足以下控制方程（简便起见，令弹性模量 $E=1$）：
 
-```{margin}
-该方程可通过平面应力问题，按位移求解方程 {eq}`sec8-eq:solution-displ` 退化成一维问题得到；简便起见，令弹性模量 $E=1$
-```
 
 $$
-\frac{\partial^2 u}{\partial x^2} + f= 0,\quad 0\leq x \leq L
+\frac{\partial^2 u}{\partial x^2} + f= 0,\quad 0\leq x \leq L,
 $$ (sec9-eq:example)
+
+```{admonition} 方程推导
+:class: tip, dropdown
+
+根据平衡方程
+
+$$
+\frac{\partial \sigma}{\partial x} + f = 0,
+$$
+
+代入应力-应变-位移关系
+
+$$
+\sigma = E\varepsilon_{x}=E\frac{\partial u}{\partial x},
+$$
+
+由于 $E=1$，故得到
+
+$$
+\frac{\partial^2 u}{\partial x^2} + f= 0.
+$$
+
+```
 
 其中
 
@@ -195,7 +215,7 @@ $$ (sec9-eq:fem-3)
 
 下图给出了一个线性分片多项式空间 $\mathcal{P}^{1}_h$ 的示例，其中，$g\in\mathcal{P}^{1}_h$ 在每个网格单元上均为一次多项式
 
-```{figure} ../../../images/Elasticity/chap1/fem.png
+```{figure} ../../images/Elasticity/fem.png
 ---
 width: 400px
 name: sec9-fig:1D-fem

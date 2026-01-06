@@ -50,7 +50,7 @@
 $A$ 为截面面积
 ```
 
-```{figure} ../../../images/Elasticity/chap1/SV-principle.png
+```{figure} ../../images/Elasticity/SV-principle.png
 ---
 width: 400px
 name: sec7-fig:SV-principle

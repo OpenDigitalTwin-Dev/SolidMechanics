@@ -30,12 +30,12 @@ parts:
         sections:
         - file: content/Math/chap5/sec1-explicitdynamics
         - file: content/Math/chap5/sec2-implicitstatic
-  - caption: 大变形分析
+  - caption: 非线性连续介质力学
     chapters:
-      - file: content/Tensor/intro
-      - file: content/Tensor/chap1/sec1-OT
+      - file: content/Continuum/chap1/intro
         sections:  
-        - file: content/Tensor/chap1/sec2-invarient
+        - file: content/Continuum/chap1/sec1-description
+        - file: content/Continuum/chap1/sec2-deformation
       - file: content/Tensor/chap2/intro
         sections:
         - file: content/Tensor/chap2/sec1-strain-displacement
@@ -56,16 +56,16 @@ parts:
         - file: content/Tensor/chap5/sec3-truesdell
   - caption: 弹性力学
     chapters:
-      - file: content/Elasticity/chap1/intro
-      - file: content/Elasticity/chap1/sec1-stress_strain_displ
-      - file: content/Elasticity/chap1/sec2-assumptions
-      - file: content/Elasticity/chap1/sec3-balance-equa
-      - file: content/Elasticity/chap1/sec4-geometry-equa
-      - file: content/Elasticity/chap1/sec5-physical-equa
-      - file: content/Elasticity/chap1/sec6-two-2D
-      - file: content/Elasticity/chap1/sec7-boundary
-      - file: content/Elasticity/chap1/sec8-two-2D-solution
-      - file: content/Elasticity/chap1/sec9-numerical-simple
+      - file: content/Elasticity/intro
+      - file: content/Elasticity/sec1-stress_strain_displ
+      - file: content/Elasticity/sec2-assumptions
+      - file: content/Elasticity/sec3-balance-equa
+      - file: content/Elasticity/sec4-geometry-equa
+      - file: content/Elasticity/sec5-physical-equa
+      - file: content/Elasticity/sec6-two-2D
+      - file: content/Elasticity/sec7-boundary
+      - file: content/Elasticity/sec8-two-2D-solution
+      - file: content/Elasticity/sec9-numerical-simple
   - caption: 塑性力学
     chapters:
       - file: content/Plasticity/chap1/intro
