@@ -36,6 +36,9 @@ parts:
         sections:  
         - file: content/Continuum/chap1/sec1-description
         - file: content/Continuum/chap1/sec2-deformation
+        - file: content/Continuum/chap1/sec3-strain
+        - file: content/Continuum/chap1/sec4-stress
+        - file: content/Continuum/chap1/sec5-objective
       - file: content/Tensor/chap2/intro
         sections:
         - file: content/Tensor/chap2/sec1-strain-displacement
