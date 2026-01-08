@@ -108,7 +108,7 @@ $$
 
 $$
 \frac{\mathrm{d}}{\mathrm{d}t}=\frac{\partial}{\partial t} + \mathbf{v}\cdot\nabla
-$$
+$$ (sec1-eq:material-derivative)
 
 ```{admonition} 示例
 :class: tip, dropdown
@@ -116,7 +116,7 @@ $$
 例如，对于 $t$ 时刻占据位置 $\mathbf{x}$ 的物质点 $\mathbf{X}$ 的加速度为
 
 $$
-\mathbf{a}(\mathbf{x},t)=\frac{\mathrm{d} \mathbf{v}(\mathbf{x},t)}{\mathrm{d}t}=\frac{\partial \mathbf{v}}{\partial t}+\mathbf{v}\cdot\nabla\mathbf{v},
+\mathbf{a}(\mathbf{x},t)=\frac{\mathrm{d} \mathbf{v}(\mathbf{x},t)}{\mathrm{d}t}=\frac{\partial \mathbf{v}}{\partial t}+(\mathbf{v}\cdot\nabla)\mathbf{v},
 $$
 
 即
