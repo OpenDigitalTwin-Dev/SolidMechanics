@@ -68,6 +68,7 @@ $$
 
 是第一 Piola-Kirchhoff 应力张量（简称为 PK1 应力张量），通常，PK1 应力张量不是对称的
 
+
 ### 第二 Piola-Kirchhoff 应力张量
 
 第一 Piola-Kirchhoff 应力张量定义为

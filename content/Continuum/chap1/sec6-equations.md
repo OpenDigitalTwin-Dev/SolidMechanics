@@ -127,9 +127,14 @@ $$
 
 写为分量形式
 
+```{margin}
+$[\nabla\mathbf{v}]_{ij} = \frac{\partial v_{i}}{\partial x_{j}}$
+```
+
 $$
 \frac{\sigma_{ij}}{\partial x_{j}} + f_{i} = \rho\left(\frac{\partial v_{i}}{\partial t} + v_{j}\frac{\partial v_{i}}{\partial x_{j}}\right)
 $$
+
 
 #### 物质形式
 
@@ -145,7 +150,7 @@ $$
 ```{admonition} 证明
 :class: tip, dropdown
 
-由于
+记
 
 $$
 \nabla\cdot\boldsymbol{\sigma} = 
@@ -153,33 +158,40 @@ $$
 \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xy}}{\partial y} + \frac{\partial \sigma_{xz}}{\partial z} \\
 \frac{\partial \sigma_{yx}}{\partial x} + \frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{yz}}{\partial z} \\
 \frac{\partial \sigma_{zx}}{\partial x} + \frac{\partial \sigma_{zy}}{\partial y} + \frac{\partial \sigma_{zz}}{\partial z} \\
+\end{bmatrix}=\begin{bmatrix}
+\nabla\cdot\boldsymbol{\sigma}_{1}\\
+\nabla\cdot\boldsymbol{\sigma}_{2}\\
+\nabla\cdot\boldsymbol{\sigma}_{3}
 \end{bmatrix}
 $$
 
-而
+根据 Piola 恒等式 {eq}`sec2-eq:piola-eqs`，有
+
+$$
+\nabla\cdot\boldsymbol{\sigma}_{i}=\frac{1}{J}\nabla_{0}\cdot(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{i})
+$$
+
+于是
 
 $$
 \begin{aligned}
-\frac{\partial \sigma_{xx}}{\partial x} &= \frac{\partial \sigma_{xx}}{\partial X}\frac{\partial X}{\partial x} + \frac{\partial \sigma_{xx}}{\partial Y}\frac{\partial Y}{\partial x} + \frac{\partial \sigma_{xx}}{\partial Z}\frac{\partial Z}{\partial x}\\
-&= \frac{\partial }{\partial X}\left(\sigma_{xx}\frac{\partial X}{\partial x}\right) + \frac{\partial }{\partial Y}\left(\sigma_{xx}\frac{\partial Y}{\partial x}\right) + \frac{\partial }{\partial Z}\left(\sigma_{xx}\frac{\partial Z}{\partial x}\right)
+\nabla\cdot\boldsymbol{\sigma}&=\frac{1}{J}\begin{bmatrix}
+\nabla_{0}\cdot(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{1})\\
+\nabla_{0}\cdot(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{2})\\
+\nabla_{0}\cdot(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{3})
+\end{bmatrix}=\frac{1}{J}\nabla_{0}\cdot\begin{bmatrix}
+(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{1})^{T}\\
+(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{2})^{T}\\
+(J\mathbf{F}^{-1}\boldsymbol{\sigma}_{3})^{T}
+\end{bmatrix}\\
+&= \frac{1}{J}\nabla_{0}\cdot(J\boldsymbol{\sigma}\mathbf{F}^{-T})=\frac{1}{J}\nabla_{0}\cdot\mathbf{P}
 \end{aligned}
 $$
 
 故
 
 $$
-\begin{aligned}
-\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xy}}{\partial y} + \frac{\partial \sigma_{xz}}{\partial z}&=\frac{\partial }{\partial X}\left(\sigma_{xx}\frac{\partial X}{\partial x}\right) + \frac{\partial }{\partial Y}\left(\sigma_{xx}\frac{\partial Y}{\partial x}\right) + \frac{\partial }{\partial Z}\left(\sigma_{xx}\frac{\partial Z}{\partial x}\right)\\
-&+\frac{\partial }{\partial X}\left(\sigma_{xy}\frac{\partial X}{\partial y}\right) + \frac{\partial }{\partial Y}\left(\sigma_{xy}\frac{\partial Y}{\partial y}\right) + \frac{\partial }{\partial Z}\left(\sigma_{xy}\frac{\partial Z}{\partial y}\right)\\
-&+\frac{\partial }{\partial X}\left(\sigma_{xz}\frac{\partial X}{\partial z}\right) + \frac{\partial }{\partial Y}\left(\sigma_{xz}\frac{\partial Y}{\partial z}\right) + \frac{\partial }{\partial Z}\left(\sigma_{xz}\frac{\partial Z}{\partial z}\right)\\
-&=\frac{\partial }{\partial X}[\boldsymbol{\sigma}\mathbf{F}^{-T}]_{11}+\frac{\partial }{\partial Y}[\boldsymbol{\sigma}\mathbf{F}^{-T}]_{12}+\frac{\partial }{\partial Z}[\boldsymbol{\sigma}\mathbf{F}^{-T}]_{13}
-\end{aligned}
-$$
-
-因此
-
-$$
-\nabla\cdot\boldsymbol{\sigma}=\nabla_{0}\cdot(\boldsymbol{\sigma}\mathbf{F}^{-T})
+\int_{\Omega}\nabla\cdot\boldsymbol{\sigma}\mathrm{d}v = \int_{\Omega_{0}}J\nabla\cdot\boldsymbol{\sigma}\mathrm{d}V = \int_{\Omega_{0}}\nabla_{0}\cdot\mathbf{P}\mathrm{d}V 
 $$
 
 ```
@@ -193,7 +205,10 @@ $$
 于是，方程 {eq}`sec6-eq:linear-momentum` 在初始构型上写为
 
 $$
-0=\int_{\Omega_{0}}\left(\nabla_{0}\cdot\mathbf{P}+\mathbf{f}_{0}-\rho_{0}\frac{\partial \mathbf{V}}{\partial t}\right)\mathrm{d}V
+\begin{aligned}
+0&=\int_{\Omega_{0}}\left(\nabla_{0}\cdot\mathbf{P}+\mathbf{f}_{0}-\rho_{0}\frac{\partial \mathbf{V}}{\partial t}\right)\mathrm{d}V\\
+&=\int_{\Omega_{0}}\left(\nabla_{0}\cdot(\mathbf{F}\mathbf{S})+\mathbf{f}_{0}-\rho_{0}\frac{\partial \mathbf{V}}{\partial t}\right)\mathrm{d}V
+\end{aligned}
 $$
 
 其中

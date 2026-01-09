@@ -113,7 +113,8 @@ $$
 
 $$
 \begin{aligned}
-\int_{\Omega}\rho\epsilon\mathrm{d}v&=\int_{\Omega_{0}}\rho_{0}(e_{c}+ \frac{1}{2}(\mathbf{V}\cdot\mathbf{V}))\mathrm{d}V
+\frac{\mathrm{d}}{\mathrm{d}t}\int_{\Omega}\rho\epsilon\mathrm{d}v&=\frac{\mathrm{d}}{\mathrm{d}t}\int_{\Omega_{0}}\rho_{0}(e_{c}+ \frac{1}{2}(\mathbf{V}\cdot\mathbf{V}))\mathrm{d}V \\
+&= \int_{\Omega_{0}}\rho_{0}\frac{\partial e_{c}}{\partial t}+\frac{1}{2}\rho_{0}\frac{\partial}{\partial t}(\mathbf{V}\cdot \mathbf{V})\mathrm{d}V
 \end{aligned}
 $$
 
@@ -123,6 +124,47 @@ $$
 \begin{aligned}
 W_{\text{net}}&=\int_{\Omega}\left[\frac{1}{2}\rho\frac{\mathrm{d}}{\mathrm{d}t}(\mathbf{v}\cdot \mathbf{v})+\boldsymbol{\sigma}:\nabla\mathbf{v}\right]\mathrm{d}v\\
 &=\int_{\Omega_{0}}\left[\frac{1}{2}\rho_{0}\frac{\partial}{\partial t}(\mathbf{V}\cdot \mathbf{V})+\mathbf{P}:\nabla_{0}\mathbf{V}\right]\mathrm{d}V
+\end{aligned}
+$$
+
+```{admonition} 证明
+:class: tip, dropdown
+
+由于 $\boldsymbol{\sigma}$ 是对称的，故
+
+$$
+\begin{aligned}
+\boldsymbol{\sigma}:\nabla\mathbf{v} = \boldsymbol{\sigma}:((\nabla_{0}\mathbf{v})\mathbf{F}^{-1})
+&= \text{tr}(\boldsymbol{\sigma}(\nabla_{0}\mathbf{v})\mathbf{F}^{-1}))\\
+&=\text{tr}(\mathbf{F}^{-1}\boldsymbol{\sigma}(\nabla_{0}\mathbf{v}))\\
+&=\boldsymbol{\sigma}\mathbf{F}^{-T}:\nabla_{0}\mathbf{v}
+\end{aligned}
+$$
+
+```
+
+净热传递速率
+
+$$
+H_{\text{net}} = \int_{\Omega}(-\nabla\cdot\mathbf{q}+g)\mathrm{d}v = \int_{\Omega_{0}}(-\nabla_{0}\cdot\mathbf{q}_{0}+g_{0})\mathrm{d}V
+$$
+
+其中，$g_{0} = Jg$，根据 Piola 恒等式 {eq}`sec2-eq:piola-eqs`，有
+
+$$
+\begin{aligned}
+\nabla\cdot\mathbf{q}=\frac{1}{J}\nabla_{0}\cdot(J\mathbf{F}^{-1}\mathbf{q})
+\end{aligned}
+$$
+
+因此 $\mathbf{q}_{0}=J\mathbf{F}^{-1}\mathbf{q}$
+
+因此，物质描述的能量方程为
+
+$$
+\begin{aligned}
+\rho_{0}\frac{\partial e_{c}}{\partial t}&=\mathbf{P}:\nabla_{0}\mathbf{V}-\nabla_{0}\cdot\mathbf{q}_{0}+g_{0}\\
+&=(\mathbf{F}\mathbf{S}):\nabla_{0}\mathbf{V}-\nabla_{0}\cdot\mathbf{q}_{0}+g_{0}
 \end{aligned}
 $$
 

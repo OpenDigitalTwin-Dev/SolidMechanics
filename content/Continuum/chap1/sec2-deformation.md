@@ -63,7 +63,7 @@ $$
 \mathbf{n}\mathrm{d}a = J\mathbf{F}^{-T}\mathbf{N}\mathrm{d}A
 $$
 
-```{admonition} Nanson 公式
+```{admonition} Nanson 公式证明
 :class: tip, dropdown
 
 在参考构型 $\Omega_{0}$ 中，取两个微小线元，$\mathrm{d}\mathbf{X}_{1}$ 和 $\mathrm{d}\mathbf{X}_{2}$，于是
@@ -104,6 +104,40 @@ $$
 分别取 $\mathbf{a} = \mathbf{e}_{1},\mathbf{e}_{2},\mathbf{e}_{3}$ 代入，得到结论
 
 ```
+
+```{admonition} Piola 恒等式
+:class: tip, dropdown
+
+$$
+\nabla\cdot\mathbf{q}=\frac{1}{J}\nabla_{0}\cdot(J\mathbf{F}^{-1}\mathbf{q})
+$$ (sec2-eq:piola-eqs)
+
+其中，$\mathbf{q}$ 是向量场
+
+**证明：**
+
+$$
+\begin{aligned}
+\int_{\Omega}\nabla\cdot\mathbf{q}\ \mathrm{d}v=\oint_{\partial\Omega}\mathbf{q}\cdot\mathbf{n}\ \mathrm{d}s&=\oint_{\partial\Omega_{0}}\mathbf{q}\cdot (J\mathbf{F}^{-T}\mathbf{N})\ \mathrm{d}S\\
+&=\oint_{\partial\Omega_{0}}\mathbf{N}\cdot (J\mathbf{F}^{-1}\mathbf{q})\ \mathrm{d}S\\
+&=\int_{\Omega_{0}}\nabla_{0}\cdot (J\mathbf{F}^{-1}\mathbf{q})\ \mathrm{d}V
+\end{aligned}
+$$
+
+另一方面
+
+$$
+\int_{\Omega}\nabla\cdot\mathbf{q}\ \mathrm{d}v = \int_{\Omega_{0}}J\nabla\cdot\mathbf{q}\ \mathrm{d}V
+$$
+
+由 $\Omega_{0}$ 的任意性，得到
+
+$$
+\nabla\cdot\mathbf{q} = \frac{1}{J}\nabla_{0}\cdot (J\mathbf{F}^{-1}\mathbf{q})
+$$
+
+```
+
 
 ### 体积变换
 
