@@ -107,6 +107,19 @@ $$
 \frac{\mathrm{d}}{\mathrm{d}\mathrm{t}}\int_{\Omega}\rho\mathbf{v}\mathrm{d}v=\oint_{\Gamma}\mathbf{t}\mathrm{d}s+\int_{\Omega}\mathbf{f}\mathrm{d}v=\int_{\Omega}\left(\nabla\cdot\boldsymbol{\sigma}+\mathbf{f}\right)\mathrm{d}v
 $$
 
+```{admonition} $\nabla\cdot\boldsymbol{\sigma}$
+:class: tip, dropdown
+
+记 $\boldsymbol{\sigma}_{i}$ 为 $\boldsymbol{\sigma}$ 的行向量
+
+$$
+\begin{aligned}
+\oint_{\Gamma}\mathbf{t}\mathrm{d}s &= \oint_{\Gamma}\boldsymbol{\sigma}\mathbf{n}\mathrm{d}s=\oint_{\Gamma}\begin{bmatrix}\boldsymbol{\sigma}_{1}\cdot\mathbf{n}\\\boldsymbol{\sigma}_{2}\cdot\mathbf{n}\\\boldsymbol{\sigma}_{3}\cdot\mathbf{n}\end{bmatrix}\mathrm{d}s=\int_{\Omega}\begin{bmatrix}\nabla\cdot\boldsymbol{\sigma}_{1}\\\nabla\cdot\boldsymbol{\sigma}_{2}\\\nabla\cdot\boldsymbol{\sigma}_{3}\end{bmatrix}\mathrm{d}v
+\end{aligned}=\int_{\Omega}\nabla\cdot\boldsymbol{\sigma}\mathrm{d}v
+$$
+
+```
+
 根据 Reynolds 输运定理，得到
 
 $$
