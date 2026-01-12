@@ -97,7 +97,7 @@ $$
 
 $$
 \rho\frac{\mathrm{d}e_{c}}{\mathrm{d}t}=\boldsymbol{\sigma}:\mathbf{d}-\nabla\cdot\mathbf{q}+g
-$$
+$$ (sec7-eq:thermo1)
 
 也被称为热力学形式，其中 $\boldsymbol{\sigma}:\mathbf{d}$ 被称为应力功，$\mathbf{q}$ 可以写为
 
@@ -168,4 +168,69 @@ $$
 \end{aligned}
 $$
 
-## 焓不等式
+## 熵增原理
+
+熵通常被视为衡量原子趋向无序程度的一种指标。根据热力学第二定律，系统内部的熵产生始终为正，这一规律被称为熵增原理或 Clausius–Duhem 不等式
+
+记单位质量的熵密度为 $\eta$，故系统的总熵为
+
+$$
+\mathcal{E}=\int_{\Omega}\rho\eta\ \mathrm{d}v,
+$$
+
+记 $\theta\geq0$ 为绝对温度，因此熵增定义为
+
+$$
+\begin{aligned}
+\Gamma &= \frac{\mathrm{d}\mathcal{E}}{\mathrm{d}t}-\left[-\oint_{\Gamma}\frac{1}{\theta}\mathbf{q}\cdot\mathbf{n}\mathrm{d}s+\int_{\Omega}\frac{g}{\theta}\mathrm{d}v\right]\\
+&=\int_{\Omega}\left[\rho\frac{\mathrm{d}\eta}{\mathrm{d}t}+\nabla\cdot\left(\frac{\mathbf{q}}{\theta}\right)-\frac{g}{\theta}\right]\mathrm{d}v
+\end{aligned}
+$$
+
+根据热力学第二定律，有 $\Gamma\geq0$，故
+
+$$
+\int_{\Omega}\rho\frac{\mathrm{d}\eta}{\mathrm{d}t}\mathrm{d}v\geq\int_{\Omega}\left[\frac{g}{\theta}-\nabla\cdot\left(\frac{\mathbf{q}}{\theta}\right)\right]\mathrm{d}v
+$$ (sec7-eq:entropy)
+
+其局部形式为
+
+$$
+\rho\frac{\mathrm{d}\eta}{\mathrm{d}t}\geq\frac{g}{\theta}-\nabla\cdot\left(\frac{\mathbf{q}}{\theta}\right)
+$$
+
+或
+
+$$
+\theta\rho\frac{\mathrm{d}\eta}{\mathrm{d}t}\geq g-\nabla\cdot\mathbf{q}-\frac{1}{\theta}\mathbf{q}\cdot\nabla\theta
+$$ (sec7-eq:entropy1)
+
+$\mathbf{q}/\theta$ 被称为熵流量，内能 $e_{c}$ 和不可逆的热能之和被称为 Helmohtz 自由能
+
+$$
+\Psi = e_{c} - \theta\eta
+$$
+
+于是，代入到 {eq}`sec7-eq:thermo1`，得到
+
+$$
+\begin{aligned}
+\rho\frac{\mathrm{d}\Psi}{\mathrm{d}t} &= \boldsymbol{\sigma}:\mathbf{d}-\nabla\cdot\mathbf{q}+g - \rho\frac{\mathrm{d}(\theta\eta)}{\mathrm{d}t}\\
+&=\boldsymbol{\sigma}:\mathbf{d}-\nabla\cdot\mathbf{q}+g - \rho\theta\frac{\mathrm{d}\eta}{\mathrm{d}t} - \rho\eta\frac{\mathrm{d}\theta}{\mathrm{d}t}\\
+&=\boldsymbol{\sigma}:\mathbf{d} - \rho\eta\frac{\mathrm{d}\theta}{\mathrm{d}t} - \mathcal{D}
+\end{aligned}
+$$
+
+其中
+
+$$
+\mathcal{D} = \rho\theta\frac{\mathrm{d}\eta}{\mathrm{d}t}+\nabla\cdot\mathbf{q} - g
+$$
+
+被称为内部耗散，于是方程 {eq}`sec7-eq:entropy1` 被写为
+
+$$
+\mathcal{D}-\frac{1}{\theta}\mathbf{q}\cdot\nabla\theta\geq0
+$$
+
+当 $\mathcal{D} > 0$ 时，该过程不可逆；当 $\mathcal{D}=0$ 时，过程可逆
