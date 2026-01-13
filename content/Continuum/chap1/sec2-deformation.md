@@ -53,6 +53,26 @@ $$
 \mathbf{F} = \nabla_{0}\mathbf{x} = \nabla_{0}\mathbf{u} + \mathbf{I},\quad \mathbf{F}^{-1}=\nabla\mathbf{X} = \mathbf{I} - \nabla\mathbf{u}
 $$
 
+```{admonition} $\nabla$ 和 $\nabla_{0}$
+:class: tip, dropdown
+
+$\mathbf{x}$ 和 $\mathbf{X}$ 是在同一坐标系下的位置参数
+
+$$
+\nabla\mathbf{u}(\mathbf{x}) = \begin{bmatrix}
+\frac{\partial u_{1}}{\partial x_{1}}&\frac{\partial u_{1}}{\partial x_{2}}&\frac{\partial u_{1}}{\partial x_{3}}\\
+\frac{\partial u_{2}}{\partial x_{1}}&\frac{\partial u_{2}}{\partial x_{2}}&\frac{\partial u_{2}}{\partial x_{3}}\\
+\frac{\partial u_{3}}{\partial x_{1}}&\frac{\partial u_{3}}{\partial x_{2}}&\frac{\partial u_{3}}{\partial x_{3}}
+\end{bmatrix},\quad
+\nabla_{0}\mathbf{u}(\mathbf{X}) = \begin{bmatrix}
+\frac{\partial u_{1}}{\partial X_{1}}&\frac{\partial u_{1}}{\partial X_{2}}&\frac{\partial u_{1}}{\partial X_{3}}\\
+\frac{\partial u_{2}}{\partial X_{1}}&\frac{\partial u_{2}}{\partial X_{2}}&\frac{\partial u_{2}}{\partial X_{3}}\\
+\frac{\partial u_{3}}{\partial X_{1}}&\frac{\partial u_{3}}{\partial X_{2}}&\frac{\partial u_{3}}{\partial X_{3}}
+\end{bmatrix}
+$$
+
+```
+
 ## 面积与体积变换
 
 ### 面积变换

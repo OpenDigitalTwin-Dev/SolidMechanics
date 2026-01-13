@@ -14,13 +14,13 @@ name: sec1-fig:stress-1
 
 考虑连续物质体（下简称物质体） $\mathcal{B}$，在给定几何条件和外力作用下，$\mathcal{B}$ 发生宏观几何变化，称为变形。变形过程中，$\mathcal{B}$ 占据的空间区域随时间连续演化，其在任一时刻所占据的空间区域称为**构型**，记为 $\Omega$
 
-如下图所示，物质体 $\mathcal{B}$ 在初始时刻的构型为 $\Omega_0$，称为参考构型；在当前时刻的构型为 $\Omega$，称为当前构型。映射
+如下图所示，物质体 $\mathcal{B}$ 在初始时刻的构型为 $\Omega_0$，称为参考构型；在当前时刻的构型为 $\Omega$，称为当前构型映射
 
 $$
 \mathcal{X}:\Omega_{0}\rightarrow \Omega
 $$
 
-称为物质体 $\mathcal{B}$ 的变形映射（或运动映射），它给出了物质点从参考位置 $\mathbf{X}$ 到当前位置 $\mathbf{x}=\mathcal{X}(\mathbf{X})$ 的变换关系
+称为物质体 $\mathcal{B}$ 的变形映射（或运动映射），它给出了物质点从参考位置 $\mathbf{X}$ 到当前位置 $\mathbf{x}=\mathcal{X}(\mathbf{X})$ 的变换关系。**$\mathbf{X}$ 和 $\mathbf{x}$ 是在同一坐标系下不同构型的位置参数，它们不代表坐标系本身**
 
 
 ## 物质描述与空间描述

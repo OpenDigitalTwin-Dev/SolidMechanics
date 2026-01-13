@@ -41,6 +41,7 @@ parts:
         - file: content/Continuum/chap1/sec5-objective
         - file: content/Continuum/chap1/sec6-equations
         - file: content/Continuum/chap1/sec7-thermodynamic
+        - file: content/Continuum/chap1/sec8-virtualwork
       - file: content/Tensor/chap2/intro
         sections:
         - file: content/Tensor/chap2/sec1-strain-displacement

@@ -59,7 +59,7 @@ $$
 
 ### 几何解释
 
-在 [几何方程](../../Elasticity/chap1/sec4-geometry-equa.md) 中可以看到，位移梯度决定了应变，因此速度梯度场决定了物体的变形速率。以微元在 $xOy$ 平面上的剪切应变为例，考虑两种特殊情况：
+在 [几何方程](../../Elasticity/sec4-geometry-equa.md) 中可以看到，位移梯度决定了应变，因此速度梯度场决定了物体的变形速率。以微元在 $xOy$ 平面上的剪切应变为例，考虑两种特殊情况：
 
 $$
 2\varepsilon_{xy} = \frac{\partial u_{x}}{\partial y} + \frac{\partial u_{y}}{\partial x},

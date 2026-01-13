@@ -219,7 +219,7 @@ $$
 &=\boldsymbol{\sigma}:\mathbf{d}-\nabla\cdot\mathbf{q}+g - \rho\theta\frac{\mathrm{d}\eta}{\mathrm{d}t} - \rho\eta\frac{\mathrm{d}\theta}{\mathrm{d}t}\\
 &=\boldsymbol{\sigma}:\mathbf{d} - \rho\eta\frac{\mathrm{d}\theta}{\mathrm{d}t} - \mathcal{D}
 \end{aligned}
-$$
+$$ (sec7-eq:Helmohtz)
 
 其中
 
@@ -234,3 +234,7 @@ $$
 $$
 
 当 $\mathcal{D} > 0$ 时，该过程不可逆；当 $\mathcal{D}=0$ 时，过程可逆
+
+## 本构方程
+
+本构方程是连接运动学变量（如应变）和动力学变量（如应力）的关系式，所有本构方程应当与热力学原理一致
