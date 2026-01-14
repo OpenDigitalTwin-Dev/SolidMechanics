@@ -30,13 +30,6 @@ $$
 
 也被称为 G$\mathrm{\hat{a}}$teaux 导数，$\delta$ 被称为变分算子
 
-**注意，在上述定义中，存在一个关键问题，即 $\mathbf{u}$ 的构型表示**
-
-- **$\mathbf{u} = \mathbf{u}(\mathbf{X})$，此时应有 $\delta\mathbf{u} = \delta\mathbf{u}(\mathbf{X})$，被称为 Lagrangian 变分**
-- **$\mathbf{u} = \mathbf{u}(\mathbf{x})$，此时应有 $\delta\mathbf{u} = \delta\mathbf{u}(\mathbf{x})$，被称为 Eulerian 变分**
-
-**在连续介质力学，特别是固体力学中，虚位移的变分通常采用物质描述，对应的变分方式被成为 Lagrangian 变分**
-
 ```{admonition} $\delta\mathbf{u}$
 :class: tip, dropdown
 
@@ -79,21 +72,94 @@ $$
 
 ```
 
-类似地，变分算子在和，积，比，幂与微分算子一致；此外，变分算子与微分算子和积分算子具有可交换性
+类似地，变分算子在和，积，比，幂与微分算子一致
+
+## 变分运算的可交换性
+
+**在变分算子的定义中，存在一个关键的描述问题**
+
+- **Lagrangian 变分: $\mathbf{u} = \mathbf{u}(\mathbf{X})$，此时 $\delta\mathbf{u} = \delta\mathbf{u}(\mathbf{X})$ 是针对所有材料点的全局扰动，进行变分运算时，$\mathbf{X}$ 保持不变**
+- **Eulerian 变分: $\mathbf{u} = \mathbf{u}(\mathbf{x})$，此时 $\delta\mathbf{u} = \delta\mathbf{u}(\mathbf{x})$ 是针对所有空间点全局扰动，为表示区分，记为 $\delta_{x}$，进行变分运算时，$\mathbf{x}$ 保持不变**
+
+**在连续介质力学，特别是固体力学中，虚位移的变分通常采用物质描述，也就是 Lagrangian 变分**
+
+### 交换性
+
+对于 Lagrangian 变分和初始构型，显然有
 
 $$
 \begin{aligned}
-\delta(\nabla\mathbf{u})&=\left[\frac{\mathrm{d}}{\mathrm{d}\epsilon}\nabla(\mathbf{u}+\epsilon\delta\mathbf{u})\right]_{\epsilon=0}=\nabla(\delta\mathbf{u})\\
-\delta\left(\int_{\Omega}\mathbf{u}\mathrm{d}v\right)&=\left[\frac{\mathrm{d}}{\mathrm{d}\epsilon}\int_{\Omega}(\mathbf{u}+\epsilon\delta\mathbf{u})\mathrm{d}v\right]_{\epsilon=0}=\int_{\Omega}\delta\mathbf{u}\mathrm{d}v
+\delta(\nabla_{0}\mathbf{u})&=\left[\frac{\mathrm{d}}{\mathrm{d}\epsilon}\nabla_{0}(\mathbf{u}+\epsilon\delta\mathbf{u})\right]_{\epsilon=0}=\nabla_{0}(\delta\mathbf{u})\\
+\delta\left(\int_{\Omega_{0}}\mathbf{u}\mathrm{d}V\right)&=\left[\frac{\mathrm{d}}{\mathrm{d}\epsilon}\int_{\Omega_{0}}(\mathbf{u}+\epsilon\delta\mathbf{u})\mathrm{d}V\right]_{\epsilon=0}=\int_{\Omega_{0}}\delta\mathbf{u}\mathrm{d}V
 \end{aligned}
 $$
 
+```{admonition} 一个例子
+:class: tip, dropdown
 
+考虑 $a(x) = x^{2}$，给定一个材料扰动
+
+$$
+x_{\epsilon}=x+\epsilon\eta(x)
+$$
+
+于是
+
+$$
+\begin{aligned}
+\delta\nabla a &= \delta (2x) = 2\eta\\
+\nabla\delta a &= \nabla(2x\eta) = 2\eta+2x\nabla\eta
+\end{aligned}
+$$
+
+前者是梯度场的变分，后者是变分后场的梯度，得到 $\delta\nabla a \neq \nabla\delta a$，其原因在于**变分与梯度所使用的描述不同**
+
+
+如果都使用 **Lagrangian 描述**，记初始状态为 $x = X$，变形后为 $x = X + \epsilon\eta(X)$，此时
+
+$$
+A(X) = a(x(X)) = (X + \epsilon\eta(X))^{2}
+$$
+
+于是
+
+$$
+\begin{aligned}
+\delta\nabla_{0} a &= \frac{\mathrm{d}}{\mathrm{d}\epsilon} \left[2(X + \epsilon\eta)(1+\epsilon\nabla\eta)\right]_{\epsilon=0}\\
+&=2\frac{\mathrm{d}}{\mathrm{d}\epsilon}\left[X+\epsilon\eta + \epsilon X\nabla\eta + \epsilon^{2}\eta\nabla\eta\right]_{\epsilon=0}\\
+&=2\eta+2X\nabla\eta
+\end{aligned}
+$$
+
+另一方面
+
+$$
+\begin{aligned}
+\nabla_{0} \delta a &= \nabla_{0}\frac{\mathrm{d}}{\mathrm{d}\epsilon} \left[(X + \epsilon\eta(X))^{2}\right]_{\epsilon=0}\\
+&=\nabla_{0}(2X\eta)\\
+&=2\eta+2X\nabla\eta
+\end{aligned}
+$$
+
+此时有，$\delta\nabla_{0} a = \nabla_{0} \delta a$
+
+如果都使用 **Eulerian 描述**，则
+
+$$
+\begin{aligned}
+\delta_{x}\nabla a &= \delta_{x} (2x) =  2\frac{\mathrm{d}}{\mathrm{d}\epsilon} (x + \epsilon\eta) = 2\eta \\
+\nabla \delta_{x}a &= \nabla (\frac{\mathrm{d}}{\mathrm{d}\epsilon}\left[(x+\epsilon\eta)^2\right]_{\epsilon=0})
+\end{aligned}
+$$
+
+```
+
+ 
 ```{admonition} 一些重要的变分运算
 :class: tip, dropdown
 
 $$
-\nabla\delta\mathbf{u} = \mathbf{F}^{-T}  \nabla_0 \delta\mathbf{u}; \quad \nabla\delta\mathbf{v} = \mathbf{F}^{-T}  \nabla_0 \delta\mathbf{v}
+\nabla\delta\mathbf{u} = \nabla_0 \delta\mathbf{u}\ \mathbf{F}^{-1}; \quad \nabla\delta\mathbf{v} = \nabla_0 \delta\mathbf{v}\ \mathbf{F}^{-1}
 $$
 
 $$
