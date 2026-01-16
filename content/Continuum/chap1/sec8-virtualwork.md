@@ -18,7 +18,7 @@ $$
 \delta {W} = \int_{\Omega}\mathbf{F}\cdot\delta \mathbf{u}\ \mathrm{d}v
 $$
 
-称为**虚功**
+称为**虚功**。系统处于平衡时，对任意满足约束的虚位移，所有外力（或主动力）的合虚功为零
 
 ## 一阶变分
 
@@ -266,7 +266,7 @@ $$
 ```
 
 $$
-\delta_{\mathbf{v}}\mathbf{d} = \frac{1}{2}\left[(\nabla\delta\mathbf{v})^{\mathrm{T}} + \nabla\delta\mathbf{v}\right] = \text{sym}(\delta\dot{\mathbf{F}}\mathbf{F}^{-1})
+\delta\mathbf{d} = \frac{1}{2}\left[(\nabla\delta\mathbf{v})^{\mathrm{T}} + \nabla\delta\mathbf{v}\right] = \text{sym}(\nabla\delta\mathbf{v}) = \text{sym}(\delta\dot{\mathbf{F}}\mathbf{F}^{-1})
 $$
 
 对 $\mathbf{d}$ 来说，变分变量为 $\mathbf{v}$，而 $\mathbf{u}$ 保持不变
@@ -289,6 +289,14 @@ $$
 P = \int_{V_0} \mathbf{S} : \dot{\mathbf{E}} \, dV_0 = \int_{V} \boldsymbol{\sigma} : \mathbf{d} \, dV
 $$
 
+这是因为
+
+$$
+\begin{aligned}
+\dot{\mathbf{E}} = \frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}}) &= \frac{1}{2}\mathbf{F}^{T}(\mathbf{F}^{-T}\dot{\mathbf{F}}+\dot{\mathbf{F}}\mathbf{F}^{-1})\mathbf{F}=\frac{1}{2}\mathbf{F}^{T}\mathbf{d}\mathbf{F}
+\end{aligned}
+$$
+
 虚功率
 
 $$
@@ -299,7 +307,7 @@ $$
 
 $$
 \begin{aligned}
-\delta \dot{\mathbf{E}} &= \delta \left( \frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}}) \right)\\
+\delta \dot{\mathbf{E}} &= \delta \left(\frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}})\right)\\
 &= \frac{1}{2} \delta\left( (\nabla_0 \mathbf{v})^T \mathbf{F} + \mathbf{F}^T (\nabla_0 \mathbf{v}) \right)\\
 &=\frac{1}{2} \left( (\nabla_0 \delta\mathbf{v})^T \mathbf{F} + \mathbf{F}^T (\nabla_0 \delta\mathbf{v}) \right)\\
 &=\mathbf{F}^T [\operatorname{sym}(\nabla \delta \mathbf{v})] \mathbf{F}
@@ -318,5 +326,24 @@ $$
 \mathbf{S} : (\mathbf{F}^T \mathbf{X} \mathbf{F}) = (\mathbf{F} \mathbf{S} \mathbf{F}^T) : \mathbf{X}
 $$
 
+故
+
+$$
+\begin{aligned}
+\delta P &= \int_{V_0} (\mathbf{F}\mathbf{S}\mathbf{F}^{T}) : \operatorname{sym}(\nabla \delta \mathbf{v})  \, dV_0\\
+&=\int_{V} \frac{1}{J}(\mathbf{F}\mathbf{S}\mathbf{F}^{T}) : \operatorname{sym}(\nabla \delta \mathbf{v})  \, dV\\
+&=\int_{V} \boldsymbol{\sigma} : \operatorname{sym}(\nabla \delta \mathbf{v})  \, dV
+\end{aligned}
+$$
+
+因此
+
+$$
+\int_{V_0} \mathbf{S} : \delta \dot{\mathbf{E}} \, dV_0=\int_{V} \boldsymbol{\sigma} : \delta\mathbf{d}  \, dV
+$$
+
 ```
+
+### 虚位移原理
+
 
