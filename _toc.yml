@@ -41,11 +41,11 @@ parts:
         - file: content/Continuum/chap1/sec5-objective
         - file: content/Continuum/chap1/sec6-equations
         - file: content/Continuum/chap1/sec7-thermodynamic
-        - file: content/Continuum/chap1/sec8-virtualwork
-      - file: content/Tensor/chap2/intro
+      - file: content/Continuum/chap2/intro
         sections:
-        - file: content/Tensor/chap2/sec1-strain-displacement
-        - file: content/Tensor/chap2/sec2-greenstrain
+        - file: content/Continuum/chap2/sec1-variation
+        - file: content/Continuum/chap2/sec2-virtualwork
+        - file: content/Continuum/chap2/sec3-volumelock
       - file: content/Tensor/chap3/sec1-velocity-gradient
         sections:
         - file: content/Tensor/chap3/sec2-SSM

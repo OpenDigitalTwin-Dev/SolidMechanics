@@ -178,3 +178,185 @@ $$
 &=J\mathrm{d}V
 \end{aligned}
 $$
+
+#### 局部体积变化速率
+
+
+$$
+\dot{J} = J\ \text{tr}(\dot{\mathbf{F}}\mathbf{F}^{-1}) = J\ \text{tr}(\mathbf{L}) = J\ \text{tr}(\nabla\mathbf{v}) = J\ (\nabla\cdot\mathbf{v}),
+$$
+
+该公式表明，**单位体积的变化速率 $\dot{J}$，等于体积本身 $J$ 乘以速度梯度场张量的迹（速度场的散度）**
+
+对于等容行为，有
+
+$$
+J = 1 \Rightarrow \dot{J} = 1 \Rightarrow \text{tr}(\nabla\mathbf{v}) = \nabla\cdot\mathbf{v} = 0.
+$$
+
+:::{admonition} 证明一
+:class: tip, dropdown
+
+
+$$
+J = \det(\mathbf{F}) = \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}},
+$$
+
+对 $t$ 求导
+
+$$
+\dot{J} =  \sum_{i,j,k=1}^{3}\varepsilon_{ijk}\left(\frac{\partial \dot{x}_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}} + \frac{\partial x_{1}}{\partial X_{i}}\frac{\partial \dot{x}_{2}}{\partial X_{j}}\frac{\partial x_{3}}{\partial X_{k}} + \frac{\partial x_{1}}{\partial X_{i}}\frac{\partial x_{2}}{\partial X_{j}}\frac{\partial \dot{x}_{3}}{\partial X_{k}}\right),
+$$
+
+代入
+
+$$
+\frac{\partial \dot{x}_{k}}{\partial X_{l}} = \sum_{i=1}^{3}\frac{\partial \dot{x}_{k}}{\partial x_{i}}\frac{\partial x_{i}}{\partial X_{l}},
+$$
+
+由于
+
+$$
+\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
+\frac{\partial x_a}{\partial X_i}
+\frac{\partial x_a}{\partial X_j}
+\frac{\partial x_b}{\partial X_k}
+=
+\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
+\frac{\partial x_b}{\partial X_i}
+\frac{\partial x_b}{\partial X_j}
+\frac{\partial x_a}{\partial X_k}
+=
+\sum_{i,j,k=1}^{3} \varepsilon_{ijk} 
+\frac{\partial x_a}{\partial X_i}
+\frac{\partial x_b}{\partial X_j}
+\frac{\partial x_a}{\partial X_k}
+=0,
+$$
+
+于是
+
+$$
+\dot{J} = \sum_{i,j,k=1}^{3} \varepsilon_{ijk} \left(
+\frac{\partial \dot{x}_1}{\partial x_1} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
++
+\frac{\partial \dot{x}_2}{\partial x_2} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
++
+\frac{\partial \dot{x}_3}{\partial x_3} \frac{\partial x_1}{\partial X_i} \frac{\partial x_2}{\partial X_j} \frac{\partial x_3}{\partial X_k}
+\right),
+$$
+
+故
+
+$$
+\dot{J} = J\ \left(\frac{\partial \dot{x}_1}{\partial x_1} + \frac{\partial \dot{x}_2}{\partial x_2} + \frac{\partial \dot{x}_3}{\partial x_3}\right) = J\ \text{tr}(\mathbf{L}).
+$$
+
+:::
+
+:::{admonition} 证明二
+:class: tip, dropdown
+
+设 $\mathbf{a},\mathbf{b},\mathbf{c}\in\mathbb{R}^{3}$ 是三个线性无关的向量，则
+
+$$
+J = \det(\mathbf{F}) = \frac{\mathbf{F}\mathbf{a}\cdot(\mathbf{F}\mathbf{b}\times \mathbf{F}\mathbf{c})}{\mathbf{a}\cdot(\mathbf{b}\times \mathbf{c})}
+=
+\frac{\det\left(\begin{bmatrix}
+\mathbf{F}\mathbf{a}&\mathbf{F}\mathbf{b}&\mathbf{F}\mathbf{c}
+\end{bmatrix}\right)}{
+\det\left(\begin{bmatrix}
+\mathbf{a}&\mathbf{b}&\mathbf{c}
+\end{bmatrix}\right)
+},
+$$
+
+于是
+
+$$
+\begin{equation}
+\begin{aligned}
+\dot{J} &= \frac{\dot{\mathbf{F}}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\dot{\mathbf{F}}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \dot{\mathbf{F}}\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
+&=\frac{\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})}\\
+&=\frac{\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c}) + \mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \dot{\mathbf{F}}\mathbf{F}^{-1}\mathbf{F}\mathbf{c})}{\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c})}\frac{\mathbf{F}\mathbf{a} \cdot (\mathbf{F}\mathbf{b} \times \mathbf{F}\mathbf{c})}{a \cdot (\mathbf{b} \times \mathbf{c})}\\
+&=J\ \text{tr}(\dot{\mathbf{F}}\mathbf{F}^{-1})\\
+&= J\ \text{tr}(\mathbf{L}).
+\end{aligned}
+\end{equation}
+$$
+
+**注：**
+
+$$
+\frac{M\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}) + \mathbf{a} \cdot (M\mathbf{b} \times \mathbf{c}) + \mathbf{a} \cdot (\mathbf{b} \times M\mathbf{c})}{\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})} = \text{tr}(M)
+$$
+
+证明：
+
+由于
+
+$$
+\begin{equation}
+\begin{aligned}
+M\mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}) &= \det(\begin{bmatrix}M\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}),\\
+\mathbf{a} \cdot (M\mathbf{b} \times \mathbf{c}) &= \det(\begin{bmatrix}a & M\mathbf{b} & \mathbf{c}\end{bmatrix}),\\
+\mathbf{a} \cdot (\mathbf{b} \times M\mathbf{c}) &= \det(\begin{bmatrix}a & \mathbf{b} & M\mathbf{c}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+$$
+
+记 $M = \begin{bmatrix}\mathbf{m}_{1} & \mathbf{m}_{2} & \mathbf{m}_{3}\end{bmatrix}$，于是
+
+$$
+\begin{equation}
+\begin{aligned}
+\det(\begin{bmatrix}M\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}) & =a_{1}\det(\begin{bmatrix}\mathbf{m}_{1} & \mathbf{b} & \mathbf{c}\end{bmatrix}) + a_{2}\det(\begin{bmatrix}\mathbf{m}_{2} & \mathbf{b} & \mathbf{c}\end{bmatrix}) + a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} & \mathbf{b} & \mathbf{c}\end{bmatrix}),\\
+\det(\begin{bmatrix}\mathbf{a} & M\mathbf{b} & \mathbf{c}\end{bmatrix}) & =b_{1}\det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{1} & \mathbf{c}\end{bmatrix}) + b_{2}\det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{2} & \mathbf{c}\end{bmatrix}) + b_{3}\det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{3} & \mathbf{c}\end{bmatrix}),\\
+\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & M\mathbf{c}\end{bmatrix}) & =c_{1}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{1}\end{bmatrix}) + c_{2}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{2}\end{bmatrix}) + c_{3}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{3}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+$$
+
+其中，根据克拉默法则，式
+
+$$
+\det(\begin{bmatrix}\mathbf{m}_{1} & \mathbf{b} & \mathbf{c}\end{bmatrix}), \quad \det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{1} & \mathbf{c}\end{bmatrix}), \quad  \det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{1}\end{bmatrix})
+$$
+
+是线性方程组
+
+$$
+\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}\mathbf{x} = \det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}) \cdot \mathbf{m}_{1}
+$$
+
+的解，即
+
+$$
+\begin{equation}
+\begin{aligned}
+&\det(\begin{bmatrix}\mathbf{m}_{1} & \mathbf{b} & \mathbf{c}\end{bmatrix})\cdot\mathbf{a} + \det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{1} & \mathbf{c}\end{bmatrix})\cdot \mathbf{b} + \det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{1}\end{bmatrix})\cdot\mathbf{c}
+=\mathbf{m}_{1} \cdot \det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+$$
+
+于是，根据向量第一项的等式，得到
+
+$$
+a_{1}\det(\begin{bmatrix}\mathbf{m}_{1} & \mathbf{b} & \mathbf{c}\end{bmatrix}) + b_{1}\det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{1} & \mathbf{c}\end{bmatrix}) + c_{1}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{1}\end{bmatrix}) = m_{11}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}).
+$$
+
+类似地，对于第二列和第三列，有
+
+$$
+\begin{equation}
+\begin{aligned}
+a_{2}\det(\begin{bmatrix}\mathbf{m}_{2} & \mathbf{b} & \mathbf{c}\end{bmatrix}) + b_{2}\det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{2} & \mathbf{c}\end{bmatrix}) + c_{2}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{2}\end{bmatrix}) = m_{22}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}),\\
+a_{3}\det(\begin{bmatrix}\mathbf{m}_{3} & \mathbf{b} & \mathbf{c}\end{bmatrix}) + b_{3}\det(\begin{bmatrix}\mathbf{a} & \mathbf{m}_{3} & \mathbf{c}\end{bmatrix}) + c_{3}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{m}_{3}\end{bmatrix}) = m_{33}\det(\begin{bmatrix}\mathbf{a} & \mathbf{b} & \mathbf{c}\end{bmatrix}),
+\end{aligned}
+\end{equation}
+$$
+
+代入即可
+
+:::

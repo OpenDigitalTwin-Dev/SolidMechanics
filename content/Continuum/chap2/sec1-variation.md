@@ -1,26 +1,6 @@
-# 虚功原理
+# 变分
 
-当一个力 $\mathbf{F}$ 作用于材料点并使其发生位移 $\mathbf{u}$ 时，力所做的功定义为力在位移方向上的分量与位移大小的乘积，即
-
-$$
-\mathbf{F}\cdot\mathbf{u}
-$$
-
-对于一个物质体 $\Omega$，力 $\mathbf{F}$ 在其上所做的总功为
-
-$$
-W = \int_{\Omega}\mathbf{F}\cdot\mathbf{u}\ \mathrm{d}v
-$$
-
-如果物质体在力 $\mathbf{F}$ 的作用下发生了一段无穷小的位移 $\delta \mathbf{u}$（称为虚位移），则此时力 $\mathbf{F}$ 所做的功为
-
-$$
-\delta {W} = \int_{\Omega}\mathbf{F}\cdot\delta \mathbf{u}\ \mathrm{d}v
-$$
-
-称为**虚功**。系统处于平衡时，对任意满足约束的虚位移，所有外力（或主动力）的合虚功为零
-
-## 一阶变分
+## 一阶变分（G$\mathrm{\hat{a}}$teaux 导数）
 
 设 $\mathcal{F}$ 对 $\psi$ **可微**，则其一阶变分定义为
 
@@ -178,7 +158,7 @@ $$
 ```
 
 
-### 一些重要的变分运算
+## 一些重要的变分运算
 
 **虽然都统一使用 $\delta$ 来表示变分，但也区分为对不同变量的微分，例如 $\mathbf{u}$ 的变分和对 $\mathbf{v}$ 的变分，可以通过右端的变分量进行区分**
 
@@ -279,71 +259,3 @@ $$
 $$
 
 ```
-
-```{admonition} 共轭性
-:class: tip, dropdown
-
-应力功率是标量，在任何描述下都相等，故
-
-$$
-P = \int_{V_0} \mathbf{S} : \dot{\mathbf{E}} \, dV_0 = \int_{V} \boldsymbol{\sigma} : \mathbf{d} \, dV
-$$
-
-这是因为
-
-$$
-\begin{aligned}
-\dot{\mathbf{E}} = \frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}}) &= \frac{1}{2}\mathbf{F}^{T}(\mathbf{F}^{-T}\dot{\mathbf{F}}+\dot{\mathbf{F}}\mathbf{F}^{-1})\mathbf{F}=\frac{1}{2}\mathbf{F}^{T}\mathbf{d}\mathbf{F}
-\end{aligned}
-$$
-
-虚功率
-
-$$
-\delta P = \int_{V_0} \mathbf{S} : \delta \dot{\mathbf{E}} \, dV_0
-$$
-
-由于
-
-$$
-\begin{aligned}
-\delta \dot{\mathbf{E}} &= \delta \left(\frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}})\right)\\
-&= \frac{1}{2} \delta\left( (\nabla_0 \mathbf{v})^T \mathbf{F} + \mathbf{F}^T (\nabla_0 \mathbf{v}) \right)\\
-&=\frac{1}{2} \left( (\nabla_0 \delta\mathbf{v})^T \mathbf{F} + \mathbf{F}^T (\nabla_0 \delta\mathbf{v}) \right)\\
-&=\mathbf{F}^T [\operatorname{sym}(\nabla \delta \mathbf{v})] \mathbf{F}
-\end{aligned}
-$$
-
-于是
-
-$$
-\delta P = \int_{V_0} \mathbf{S} : (\mathbf{F}^T [\operatorname{sym}(\nabla \delta \mathbf{v})] \mathbf{F}) \, dV_0
-$$
-
-由于（迹运算交换）
-
-$$
-\mathbf{S} : (\mathbf{F}^T \mathbf{X} \mathbf{F}) = (\mathbf{F} \mathbf{S} \mathbf{F}^T) : \mathbf{X}
-$$
-
-故
-
-$$
-\begin{aligned}
-\delta P &= \int_{V_0} (\mathbf{F}\mathbf{S}\mathbf{F}^{T}) : \operatorname{sym}(\nabla \delta \mathbf{v})  \, dV_0\\
-&=\int_{V} \frac{1}{J}(\mathbf{F}\mathbf{S}\mathbf{F}^{T}) : \operatorname{sym}(\nabla \delta \mathbf{v})  \, dV\\
-&=\int_{V} \boldsymbol{\sigma} : \operatorname{sym}(\nabla \delta \mathbf{v})  \, dV
-\end{aligned}
-$$
-
-因此
-
-$$
-\int_{V_0} \mathbf{S} : \delta \dot{\mathbf{E}} \, dV_0=\int_{V} \boldsymbol{\sigma} : \delta\mathbf{d}  \, dV
-$$
-
-```
-
-### 虚位移原理
-
-
