@@ -46,9 +46,9 @@ parts:
         - file: content/Continuum/chap2/sec1-variation
         - file: content/Continuum/chap2/sec2-virtualwork
         - file: content/Continuum/chap2/sec3-volumelock
-      - file: content/Tensor/chap3/sec1-velocity-gradient
+      - file: content/Continuum/chap3/intro
         sections:
-        - file: content/Tensor/chap3/sec2-SSM
+        - file: content/Continuum/chap3/sec1-TL
         - file: content/Tensor/chap3/sec3-energy
       - file: content/Tensor/chap4/intro
         sections:

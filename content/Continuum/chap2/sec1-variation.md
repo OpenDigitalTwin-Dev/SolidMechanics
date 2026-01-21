@@ -16,7 +16,7 @@ $$
 \delta\mathcal{F}(\psi;\delta\psi)\equiv\left.\frac{\mathrm{d}}{\mathrm{d}\epsilon}\mathcal{F}(\psi+\epsilon\delta\psi)\right|_{\epsilon=0}
 $$
 
-当 $\mathcal{F} = \psi$ 时，代入上式，是自洽的
+令 $\mathcal{F} = \psi$ 时，代入上式，是自洽的
 
 对构型的扰动，称为 Lagrangian 微分，此时 $\mathbf{X}$ 固定；对物理场的扰动，称为 Eulerian 微分，此时 $\mathbf{x}$ 固定
 
@@ -182,15 +182,15 @@ $$
 ```
 
 $$
-\delta\mathbf{F} = \delta(\nabla_0 \mathbf{u}) = \nabla_0\delta\mathbf{u}
+\delta\mathbf{F} = \delta(\nabla_0 \mathbf{u}) = \nabla_0\delta\mathbf{u} = \nabla(\delta\mathbf{u})\mathbf{F}
 $$
 
 $$
-\delta\dot{\mathbf{F}} = \delta(\nabla_0 \mathbf{v}) = \nabla_0\delta\mathbf{v}
+\delta\dot{\mathbf{F}} = \delta(\nabla_0 \mathbf{v}) = \nabla_0\delta\mathbf{v} = \nabla(\delta\mathbf{v})\mathbf{F}
 $$
 
 $$
-\delta\mathbf{F}^{-1} = -\nabla\delta\mathbf{u}
+\delta\mathbf{F}^{-1} = -\delta\nabla\mathbf{u}= -\mathbf{F}^{-1}\nabla\delta\mathbf{u}
 $$
 
 ```{admonition} 证明
@@ -211,7 +211,7 @@ $$
 通常 $\delta\nabla\mathbf{u}\neq\nabla\delta\mathbf{u}$，接下来证明 $\delta\nabla\mathbf{u} = \mathbf{F}^{-1}\nabla\delta\mathbf{u}$，根据交换公式
 
 $$
-\delta \nabla \mathbf{u} = \nabla (\delta \mathbf{u}) - (\nabla \mathbf{u}) \cdot (\nabla \delta \mathbf{u}) = (\mathbf{I} - \nabla \mathbf{u})\nabla \delta \mathbf{u} = \mathbf{F}^{-1}\nabla \delta \mathbf{u}
+\delta \nabla \mathbf{u} = \nabla \delta \mathbf{u} - (\nabla \mathbf{u}) \cdot (\nabla \delta \mathbf{u}) = (\mathbf{I} - \nabla \mathbf{u})\nabla \delta \mathbf{u} = \mathbf{F}^{-1}\nabla \delta \mathbf{u}
 $$
 
 ```
@@ -236,7 +236,8 @@ $$
 
 $$
 \begin{aligned}
-\delta\mathbf{E} = \frac{1}{2}\delta (\mathbf{F}^{T}\mathbf{F}-\mathbf{I})&=\frac{1}{2}(\delta\mathbf{F}^{T}\mathbf{F}+\mathbf{F}^{T}\delta\mathbf{F})\\
+\delta\mathbf{E} = \frac{1}{2}\delta (\mathbf{F}^{T}\mathbf{F}-\mathbf{I})
+&=\frac{1}{2}(\delta\mathbf{F}^{T}\mathbf{F}+\mathbf{F}^{T}\delta\mathbf{F})\\
 &=\frac{1}{2}\left((\nabla_{0}\delta\mathbf{u})^{T}\mathbf{F}+\mathbf{F}^{T}\nabla_0\delta\mathbf{u}\right)\\
 &=\frac{1}{2}\mathbf{F}^{T}\left((\nabla_{0}\delta\mathbf{u}\ \mathbf{F}^{-1})^{T}+\nabla_{0}\delta\mathbf{u}\ \mathbf{F}^{-1}\right)\mathbf{F}\\
 &=\frac{1}{2}\mathbf{F}^{T}\left((\nabla\delta\mathbf{u})^{T}+\nabla\delta\mathbf{u}\right)\mathbf{F}\\
@@ -244,6 +245,7 @@ $$
 $$
 
 ```
+
 
 $$
 \delta\mathbf{d} = \frac{1}{2}\left[(\nabla\delta\mathbf{v})^{\mathrm{T}} + \nabla\delta\mathbf{v}\right] = \text{sym}(\nabla\delta\mathbf{v}) = \text{sym}(\delta\dot{\mathbf{F}}\mathbf{F}^{-1})

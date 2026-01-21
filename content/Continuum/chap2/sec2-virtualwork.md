@@ -57,11 +57,13 @@ $$
 \end{aligned}
 $$
 
-对于平衡状态，满足
+对于**平衡状态**，满足
 
 $$
 \mathbf{f}+\nabla\cdot\boldsymbol{\sigma} = \mathbf{0},
 $$
+
+*对于非平衡的情形，右端则需要加上惯性项（加速度）和阻尼项（速度）*
 
 因此
 
@@ -85,23 +87,30 @@ $$
 \delta W \equiv \delta W_{E} + \delta W_{I} = 0
 $$
 
-对于线弹性问题，使用虚位移 $\delta\mathbf{u}$ 推导，则得到
+使用虚位移 $\delta\mathbf{u}$ 推导，则得到
 
 $$
-\int_{\Omega}\boldsymbol{\sigma}:\delta\boldsymbol{\varepsilon}\ \mathrm{d}v-\left(\int_{\Omega}\mathbf{f}\cdot\delta\mathbf{u}\ \mathrm{d}v+\oint_{\Gamma}\mathbf{t}\cdot\delta\mathbf{u}\ \mathrm{d}s\right) = 0
+\int_{\Omega}\boldsymbol{\sigma}:\frac{1}{2}\left(\nabla\delta\mathbf{u} + (\nabla\delta\mathbf{u})^{T}\right)\ \mathrm{d}v-\left(\int_{\Omega}\mathbf{f}\cdot\delta\mathbf{u}\ \mathrm{d}v+\oint_{\Gamma}\mathbf{t}\cdot\delta\mathbf{u}\ \mathrm{d}s\right) = 0
+$$
+
+
+对于线弹性问题，有 $\nabla\delta\mathbf{u}\approx\nabla_{0}\delta\mathbf{u}$，故第一项变为
+
+$$
+\int_{\Omega}\boldsymbol{\sigma}:\frac{1}{2}\left(\nabla\delta\mathbf{u}\ \mathrm{d}v + (\nabla\delta\mathbf{u})^{T}\right) \approx \int_{\Omega}\boldsymbol{\sigma}: \delta\boldsymbol{\varepsilon}\ \mathrm{d}v
 $$
 
 将 {eq}`sec8-eq:virtualworkpower` 转换到初始构型上，得到
 
 $$
-\int_{\Omega_{0}}J\boldsymbol{\sigma}:\nabla\delta V\ \mathrm{d}V - \left(\int_{\Omega_{0}}\mathbf{f}_{0}\cdot\delta\mathbf{V}\ \mathrm{d}V+\oint_{\Gamma_{0}}\mathbf{t}_{0}\cdot\delta\mathbf{V}\ \mathrm{d}S\right) = 0
+\int_{\Omega_{0}}J\boldsymbol{\sigma}:\nabla\delta \mathbf{v}\ \mathrm{d}V - \left(\int_{\Omega_{0}}\mathbf{f}_{0}\cdot\delta\mathbf{v}\ \mathrm{d}V+\oint_{\Gamma_{0}}\mathbf{t}_{0}\cdot\delta\mathbf{v}\ \mathrm{d}S\right) = 0
 $$
 
 其中，$\mathbf{f}_{0} = J\mathbf{f},\mathbf{t}_{0}=\mathbf{t}(\mathrm{d}s/\mathrm{d}S)$，$J\boldsymbol{\sigma}$ 被称为 Kirchhoff 应力张量，故
 
 $$
 \begin{aligned}
-\delta W_{I} &= \int_{\Omega_{0}}J\boldsymbol{\sigma}:\nabla\delta V\ \mathrm{d}V = \int_{\Omega_{0}}J\boldsymbol{\sigma}:\delta \mathbf{d}\ \mathrm{d}V\\
+\delta W_{I} &= \int_{\Omega_{0}}J\boldsymbol{\sigma}:\nabla\delta \mathbf{v}\ \mathrm{d}V = \int_{\Omega_{0}}J\boldsymbol{\sigma}:\delta \mathbf{d}\ \mathrm{d}V\\
 &=\int_{\Omega_{0}}J\boldsymbol{\sigma}:\text{sym}(\delta\dot{\mathbf{F}}\mathbf{F}^{-1})\ \mathrm{d}V = \int_{\Omega_{0}}J\boldsymbol{\sigma}:\delta\dot{\mathbf{F}}\mathbf{F}^{-1}\ \mathrm{d}V\\
 &=\int_{\Omega_{0}}J\boldsymbol{\sigma}\mathbf{F}^{-T}:\delta\dot{\mathbf{F}}\ \mathrm{d}V=\int_{\Omega_{0}}\mathbf{P}:\delta\dot{\mathbf{F}}\ \mathrm{d}V
 \end{aligned}
@@ -128,7 +137,7 @@ $$
 
 $$
 \begin{aligned}
-\dot{\mathbf{E}} = \frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}}) &= \frac{1}{2}\mathbf{F}^{T}(\mathbf{F}^{-T}\dot{\mathbf{F}}+\dot{\mathbf{F}}\mathbf{F}^{-1})\mathbf{F}=\mathbf{F}^{T}\mathbf{d}\mathbf{F}
+\dot{\mathbf{E}} = \frac{1}{2} (\dot{\mathbf{F}}^T \mathbf{F} + \mathbf{F}^T \dot{\mathbf{F}}) &= \frac{1}{2}\mathbf{F}^{T}(\mathbf{F}^{-T}\dot{\mathbf{F}}^{T}+\dot{\mathbf{F}}\mathbf{F}^{-1})\mathbf{F}=\mathbf{F}^{T}\mathbf{d}\mathbf{F}
 \end{aligned}
 $$
 
@@ -187,13 +196,27 @@ $$
 
 ```
 
-类似地，对于平衡问题，使用虚位移 $\delta\mathbf{u}$ 推导，得到
+类似地，对于平衡问题，使用虚位移 $\delta\mathbf{u}$ 推导
 
-```{margin}
-此处不区分：$\delta\mathbf{U} = \delta\mathbf{u}$
-```
+由于
+
+$$
+\delta\mathbf{E} = \frac{1}{2}\mathbf{F}^{\mathrm{T}}  \left[(\nabla\delta\mathbf{u})^{\mathrm{T}} + \nabla\delta\mathbf{u}\right]  \mathbf{F}
+$$
+
+故
+
+$$
+\begin{aligned}
+\int_{\Omega}\boldsymbol{\sigma}:\frac{1}{2}\left(\nabla\delta\mathbf{u} + (\nabla\delta\mathbf{u})^{T}\right)\ \mathrm{d}v&=\int_{\Omega}J^{-1}\mathbf{F}\mathbf{S}\mathbf{F}^{T}:\frac{1}{2}\left(\nabla\delta\mathbf{u} + (\nabla\delta\mathbf{u})^{T}\right)\ \mathrm{d}v\\
+&=\int_{\Omega_{0}}\mathbf{S}:\frac{1}{2}\mathbf{F}^{T}\left(\nabla\delta\mathbf{u} + (\nabla\delta\mathbf{u})^{T}\right)\mathbf{F}\ \mathrm{d}V\\
+&=\int_{\Omega_{0}} \mathbf{S}:\delta\mathbf{E}\ \mathrm{d}V 
+\end{aligned}
+$$
+
+故得到
 
 $$
 \int_{\Omega_{0}} \mathbf{S}:\delta\mathbf{E}\ \mathrm{d}V - \left(\int_{\Omega_{0}}\mathbf{f}_{0}\cdot\delta\mathbf{u}\ \mathrm{d}V+\oint_{\Gamma_{0}}\mathbf{t}_{0}\cdot\delta\mathbf{u}\ \mathrm{d}S\right) = 0
-$$
+$$ (sec2-eq:vw-u)
 

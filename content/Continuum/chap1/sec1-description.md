@@ -7,7 +7,7 @@
 ```{figure} ../../../images/Continuum/chap1/configuration.png
 ---
 width: 400px
-name: sec1-fig:stress-1
+name: sec1-fig:configuration
 ---
 构型与连续体映射
 ```
@@ -32,7 +32,7 @@ $$
 ```{figure} ../../../images/Continuum/chap1/material.png
 ---
 width: 400px
-name: sec1-fig:material
+name: sec1-fig:material-description
 ---
 物质描述
 ```
@@ -60,7 +60,7 @@ $$
 ```{figure} ../../../images/Continuum/chap1/spacial.png
 ---
 width: 400px
-name: sec1-fig:spacial
+name: sec1-fig:spacial-description
 ---
 空间描述
 ```
@@ -132,7 +132,7 @@ $$
 ```{figure} ../../../images/Continuum/chap1/displacement.png
 ---
 width: 400px
-name: sec1-fig:displacement
+name: sec1-fig:displacement-field
 ---
 位移场
 ```
